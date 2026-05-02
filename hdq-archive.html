@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Archive — HDQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hdq-shared.css">
+<style>
+.archive-header{background:var(--navy-50);border-bottom:1px solid var(--navy-100);padding:40px 0;}
+.archive-header h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,36px);font-weight:800;color:var(--navy-900);margin-bottom:8px;}
+.archive-header p{font-size:14px;color:var(--n600);font-family:'DM Sans',sans-serif;}
+.filter-bar{background:var(--card);border-bottom:1px solid var(--n200);padding:14px 0;position:sticky;top:60px;z-index:49;}
+.filter-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.filter-label{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--n600);white-space:nowrap;}
+.filter-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--n600);background:var(--n50);border:1px solid var(--n200);padding:5px 12px;border-radius:3px;cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+.filter-btn.active,.filter-btn:hover{color:var(--navy-700);background:var(--navy-50);border-color:var(--navy-300);}
+.search-input{margin-left:auto;padding:7px 12px;border:1px solid var(--n200);border-radius:4px;font-size:12px;font-family:'DM Sans',sans-serif;background:var(--n50);width:200px;}
+.archive-area{padding:36px 0 60px;}
+.results-meta{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--n600);margin-bottom:20px;}
+.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:900px){.archive-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.archive-grid{grid-template-columns:1fr;}}
+.archive-card{background:var(--card);border:1px solid var(--n200);border-radius:6px;overflow:hidden;display:block;transition:box-shadow 0.2s;}
+.archive-card:hover{box-shadow:0 6px 24px rgba(0,0,0,0.07);}
+.archive-card-img{aspect-ratio:16/9;}
+.archive-card-body{padding:14px 16px 16px;}
+.archive-card-title{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:var(--n900);line-height:1.3;margin:8px 0;}
+.archive-card:hover .archive-card-title{color:var(--navy-700);}
+.archive-card-desc{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--n600);line-height:1.55;margin-bottom:10px;}
+.archive-card-meta{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--n600);padding-top:10px;border-top:1px solid var(--n100);font-family:'DM Sans',sans-serif;}
+.pagination{display:flex;gap:6px;justify-content:center;margin-top:44px;}
+.page-btn{width:36px;height:36px;border:1px solid var(--n200);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--n600);font-family:'DM Sans',sans-serif;transition:all 0.15s;}
+.page-btn:hover,.page-btn.active{color:var(--navy-700);border-color:var(--navy-300);background:var(--navy-50);}
+</style>
+</head><body>
+<header class="masthead"><div class="masthead-inner"><a href="hdq-homepage.html" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="hdq-news.html" class="nav-link  active">News</a></li><li><a href="hdq-prodev.html" class="nav-link">Professional Development</a></li><li><a href="hdq-whitelabel.html" class="nav-link">For Firms</a></li><li><a href="hdq-homepage.html" class="nav-link">About</a></li></ul></nav><div class="nav-right"><a href="#" class="nav-subscribe">Subscribe</a><div class="hamburger"><span></span><span></span><span></span></div></div></div></header><div class="date-strip"><div class="date-strip-inner"><span class="date-left">Wednesday, April 30, 2026</span></div></div>
+  </div>
+</header>
+<div class="desk-nav">
+  <div class="desk-nav-inner">
+    <a href="hdq-news.html" class="dnav-link">All</a>
+    <a href="hdq-news.html" class="dnav-link">Equities</a>
+    <a href="hdq-news.html" class="dnav-link">Fixed Income</a>
+    <a href="hdq-news.html" class="dnav-link">Economy</a>
+    <a href="hdq-news.html" class="dnav-link">Alternatives</a>
+    <a href="hdq-news.html" class="dnav-link">Practice</a>
+    <div class="dnav-div"></div>
+    <a href="hdq-daily-thread.html" class="dnav-link">Daily Thread</a>
+    <a href="hdq-weekend.html" class="dnav-link">Weekend Edition</a>
+    <a href="hdq-month.html" class="dnav-link">Month at a Glance</a>
+    <a href="hdq-archive.html" class="dnav-link">Archive</a>
+  </div>
+</div>
+
+<div class="archive-header"><div class="container">
+  <h1>Archive</h1>
+  <p>370+ editions. Every desk article, Daily Thread, Weekend Edition, and Month at a Glance — searchable and filterable.</p>
+</div></div>
+
+<div class="filter-bar"><div class="filter-inner">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active">All</button>
+  <button class="filter-btn">Equities</button>
+  <button class="filter-btn">Fixed Income</button>
+  <button class="filter-btn">Economy</button>
+  <button class="filter-btn">Alternatives</button>
+  <button class="filter-btn">Practice</button>
+  <button class="filter-btn">Daily Thread</button>
+  <button class="filter-btn">Weekend Edition</button>
+  <input class="search-input" type="search" placeholder="Search the archive…">
+</div></div>
+
+<div class="archive-area"><div class="container">
+  <div class="results-meta">Showing 370 articles · sorted by date</div>
+  <div class="archive-grid">
+    <a href="hdq-daily-thread.html" class="archive-card">
+      <div class="archive-card-img photo-wrap gold-overlay"><img src="img-trading.jpg" alt="" loading="lazy"></div>
+      <div class="archive-card-body"><span class="cat-tag cat-thread"><span class="dot"></span>Daily Thread</span><div class="archive-card-title">The Bank of Canada holds — but the language is shifting under the surface</div><div class="archive-card-desc">Three phrases that weren't in the March statement, and what they mean for June.</div><div class="archive-card-meta"><span>Apr 30, 2026</span><span class="meta-dot"></span><span>6 min</span></div></div>
+    </a>
+    <a href="hdq-article.html" class="archive-card">
+      <div class="archive-card-img photo-wrap gold-overlay"><img src="img-tsx.jpg" alt="" loading="lazy"></div>
+      <div class="archive-card-body"><span class="cat-tag cat-equities">Equities</span><div class="archive-card-title">TSX banks diverge on Q1 provisions as credit normalization timelines differ</div><div class="archive-card-desc">TD and RBC reported materially different assumptions — implying different rate-sensitivity profiles.</div><div class="archive-card-meta"><span>Apr 30, 2026</span><span class="meta-dot"></span><span>4 min</span></div></div>
+    </a>
+    <a href="hdq-article.html" class="archive-card">
+      <div class="archive-card-img photo-wrap gold-overlay"><img src="img-boc.jpg" alt="" loading="lazy"></div>
+      <div class="archive-card-body"><span class="cat-tag cat-fixed">Fixed Income</span><div class="archive-card-title">Short-end yields reprice following the hold; 2-year GOC finds a bid at 3.64</div><div class="archive-card-desc">The front end flattened in the hour after the statement — consistent with markets extending the plateau.</div><div class="archive-card-meta"><span>Apr 30, 2026</span><span class="meta-dot"></span><span>3 min</span></div></div>
+    </a>
+    <a href="hdq-article.html" class="archive-card">
+      <div class="archive-card-img photo-wrap gold-overlay"><img src="img-charts.jpg" alt="" loading="lazy"></div>
+      <div class="archive-card-body"><span class="cat-tag cat-economy">Economy</span><div class="archive-card-title">GDP flash estimate points to Q1 expansion of 1.8% annualized — above consensus</div><div class="archive-card-desc">Statistics Canada's advance estimate surprised to the upside, driven by goods exports and residential investment.</div><div class="archive-card-meta"><span>Apr 30, 2026</span><span class="meta-dot"></span><span>3 min</span></div></div>
+    </a>
+    <a href="hdq-article.html" class="archive-card">
+      <div class="archive-card-img photo-wrap gold-overlay"><img src="img-realestate.jpg" alt="" loading="lazy"></div>
+      <div class="archive-card-body"><span class="cat-tag cat-alts">Alternatives</span><div class="archive-card-title">Canadian real estate debt funds see inflows as rate plateau extends deal timelines</div><div class="archive-card-desc">With the BoC on hold longer than modelled, closed-end RE debt funds attract capital from yield-seeking advisors.</div><div class="archive-card-meta"><span>Apr 30, 2026</span><span class="meta-dot"></span><span>4 min</span></div></div>
+    </a>
+    <a href="hdq-article.html" class="archive-card">
+      <div class="archive-card-img photo-wrap gold-overlay"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&h=340&fit=crop&q=80&auto=format" alt="" loading="lazy"></div>
+      <div class="archive-card-body"><span class="cat-tag cat-practice">Practice</span><div class="archive-card-title">CIRO proposes new suitability documentation standard; comment period opens May 12</div><div class="archive-card-desc">Proposed amendments to NI 31-103 would require 48-hour documentation and seven-year record retention.</div><div class="archive-card-meta"><span>Apr 30, 2026</span><span class="meta-dot"></span><span>5 min</span></div></div>
+    </a>
+    <a href="hdq-article.html" class="archive-card">
+      <div class="archive-card-img photo-wrap gold-overlay"><img src="https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&h=340&fit=crop&q=80&auto=format" alt="" loading="lazy"></div>
+      <div class="archive-card-body"><span class="cat-tag cat-equities">Equities</span><div class="archive-card-title">Shopify beats on revenue but margin compression widens; stock down 4% pre-market</div><div class="archive-card-desc">Q1 gross margin came in at 48.2% versus the 50.1% consensus estimate.</div><div class="archive-card-meta"><span>Apr 30, 2026</span><span class="meta-dot"></span><span>3 min</span></div></div>
+    </a>
+    <a href="hdq-article.html" class="archive-card">
+      <div class="archive-card-img photo-wrap gold-overlay"><img src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=600&h=340&fit=crop&q=80&auto=format" alt="" loading="lazy"></div>
+      <div class="archive-card-body"><span class="cat-tag cat-fixed">Fixed Income</span><div class="archive-card-title">Provincial spread widening resumes as Ontario announces supplemental borrowing</div><div class="archive-card-desc">Ontario's $4.2B supplemental borrowing will hit the market in three tranches through June.</div><div class="archive-card-meta"><span>Apr 30, 2026</span><span class="meta-dot"></span><span>4 min</span></div></div>
+    </a>
+    <a href="hdq-article.html" class="archive-card">
+      <div class="archive-card-img photo-wrap gold-overlay"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=340&fit=crop&q=80&auto=format" alt="" loading="lazy"></div>
+      <div class="archive-card-body"><span class="cat-tag cat-economy">Economy</span><div class="archive-card-title">CPI components diverge: services inflation accelerating while goods deflation deepens</div><div class="archive-card-desc">Shelter and services running hot at 4.1% and 3.8%; goods deflation reached -0.9%.</div><div class="archive-card-meta"><span>Apr 30, 2026</span><span class="meta-dot"></span><span>4 min</span></div></div>
+    </a>
+  </div>
+  <div class="pagination">
+    <a href="#" class="page-btn active">1</a>
+    <a href="#" class="page-btn">2</a>
+    <a href="#" class="page-btn">3</a>
+    <span class="page-btn" style="border:none;color:var(--n400);">…</span>
+    <a href="#" class="page-btn">37</a>
+    <a href="#" class="page-btn" style="width:auto;padding:0 12px;">Next →</a>
+  </div>
+</div></div>
+<footer><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><a href="hdq-homepage.html" class="brand" style="margin-bottom:10px;"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span></a><p>Financial intelligence for Canada's advisor community. Published every weekday by 7 a.m. Eastern.</p></div><div class="footer-nav"><h6>Publication</h6><ul><li><a href="hdq-news.html">Daily Briefing</a></li><li><a href="hdq-daily-thread.html">Daily Thread</a></li><li><a href="hdq-weekend.html">Weekend Edition</a></li><li><a href="hdq-month.html">Month at a Glance</a></li><li><a href="hdq-archive.html">Archive</a></li></ul></div><div class="footer-nav"><h6>Learning</h6><ul><li><a href="hdq-prodev.html">Module Library</a></li><li><a href="hdq-prodev.html#reading">Reading List</a></li><li><a href="hdq-prodev.html#frameworks">Frameworks</a></li><li><a href="hdq-prodev.html#glossary">Glossary</a></li></ul></div><div class="footer-nav"><h6>Company</h6><ul><li><a href="hdq-whitelabel.html">For Firms</a></li><li><a href="hdq-homepage.html">About HDQ</a></li><li><a href="#">Subscribe</a></li><li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 HDQ. All rights reserved.</span><span class="footer-badge">hdq.ca</span></div></div></footer>
+<script>
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+  });
+});
+</script>
+</body></html>
