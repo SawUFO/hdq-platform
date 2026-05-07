@@ -60,6 +60,9 @@ export async function renderThread(env, slug) {
       </div>
       ${briefHtml}
       <div class="article-body">${article.body_html || ''}</div>
+      <div class="edu-disclaimer" role="note">
+        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice or a recommendation to buy or sell any security. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer →</a>
+      </div>
       <div class="share-row">
         <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied.'))">📋 Copy Link</button>
         <a href="mailto:?subject=${encodeURIComponent('HDQ Daily Thread: ' + article.title)}&body=${encodeURIComponent('https://hdqca.com/' + article.slug)}" class="btn-share">📧 Email</a>
@@ -118,6 +121,12 @@ ${subscribeFooterBand()}`;
 .share-row { display:flex; gap:10px; margin-top:32px; flex-wrap:wrap; }
 .btn-share { font-size:12px; font-weight:600; padding:8px 16px; border-radius:4px; border:1px solid var(--n200); background:#fff; cursor:pointer; color:var(--n800); transition:all 0.15s; text-decoration:none; }
 .btn-share:hover { border-color:var(--navy-700); color:var(--navy-700); }
+.hdq-chart { margin:32px 0; }
+.hdq-chart__title { font-family:'Bricolage Grotesque',sans-serif; font-size:14px; font-weight:700; color:var(--n900); margin-bottom:4px; }
+.hdq-chart__subtitle { font-size:12px; color:var(--n600); margin-bottom:12px; }
+.hdq-chart__source { font-size:11px; color:var(--n600); margin-top:10px; font-style:italic; }
+.edu-disclaimer { background:#fff; padding:0 0 20px 0; margin-bottom:8px; font-size:12px; color:var(--n800); line-height:1.5; font-style:italic; border-bottom:1px solid var(--n200); }
+.edu-disclaimer strong { font-weight:600; font-style:normal; }
 `;
 
   return htmlResponse(pageShell(body, {

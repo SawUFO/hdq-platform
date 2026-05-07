@@ -110,6 +110,16 @@ article { min-width:0; }
 .related-item:hover .related-item-title { color:var(--navy-700); }
 
 .sidebar-legal { font-size:11px; color:var(--n600); line-height:1.5; padding:14px; background:var(--n50); border-radius:4px; border:1px solid var(--n200); }
+
+/* ── Chart source ───────────────────────────────────────────────────────── */
+.hdq-chart { margin:32px 0; }
+.hdq-chart__title { font-family:'Bricolage Grotesque',sans-serif; font-size:14px; font-weight:700; color:var(--n900); margin-bottom:4px; }
+.hdq-chart__subtitle { font-size:12px; color:var(--n600); margin-bottom:12px; }
+.hdq-chart__source { font-size:11px; color:var(--n600); margin-top:10px; font-style:italic; }
+
+/* ── Educational disclaimer ─────────────────────────────────────────────── */
+.edu-disclaimer { background:#fff; padding:0 0 20px 0; margin-bottom:8px; font-size:12px; color:var(--n800); line-height:1.5; font-style:italic; border-bottom:1px solid var(--n200); }
+.edu-disclaimer strong { font-weight:600; font-style:normal; }
 `;
 
 export async function renderArticle(env, slug) {
@@ -191,6 +201,10 @@ export async function renderArticle(env, slug) {
 
       <div class="article-body">
         ${article.body_html || ''}
+      </div>
+
+      <div class="edu-disclaimer" role="note">
+        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice, financial planning advice, or a recommendation to buy or sell any security. Canadian advisors should apply their own professional judgment. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer →</a>
       </div>
 
       <div class="share-row" aria-label="Share article">
