@@ -8,8 +8,10 @@ const ARTICLE_CSS = `
 
 article { min-width:0; }
 
-.article-hero { aspect-ratio:16/7; overflow:hidden; border-radius:6px; margin-bottom:28px; }
+.article-hero { aspect-ratio:16/7; overflow:hidden; border-radius:6px; margin-bottom:0; }
+.article-hero-caption { font-size:11px; color:var(--n500); line-height:1.4; padding:6px 2px 20px; font-style:italic; }
 .article-hero img { width:100%; height:100%; object-fit:cover; display:block; }
+.article-caption { font-size:11px; color:var(--n500); line-height:1.5; margin-top:8px; margin-bottom:20px; font-style:italic; }
 
 .article-kicker { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
 
@@ -130,10 +132,14 @@ export async function renderArticle(env, slug) {
 
   const keyNumbers = jsonKeyNumbers(article.key_numbers);
 
+  const captionHtml = article.caption ? `<p class="article-caption">${escHtml(article.caption)}</p>` : '';
+
+  const captionHtml = article.hero_caption ? `<div class="article-hero-caption">${escHtml(article.hero_caption)}</div>` : '';
+
   const heroHtml = `
 <div class="article-hero">
   <img src="/${escHtml(article.hero_image)}" alt="${escHtml(article.title)}" loading="eager">
-</div>`;
+</div>${captionHtml}`;
 
   const briefHtml = article.brief_html ? `
 <section class="brief-box" aria-label="Article summary">
