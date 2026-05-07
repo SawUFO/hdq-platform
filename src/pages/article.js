@@ -183,7 +183,7 @@ export async function renderArticle(env, slug) {
 
       <div class="share-row" aria-label="Share article">
         <button class="btn-share" onclick="copyLink()">📋 Copy Link</button>
-        <a href="mailto:?subject=${encodeURIComponent('HDQ: ' + article.title)}&body=${encodeURIComponent('Thought you\'d find this useful: https://hdqca.com/' + article.slug)}" class="btn-share">📧 Email</a>
+        <a href="mailto:?subject=${encodeURIComponent('HDQ: ' + article.title)}&body=${encodeURIComponent('Thought you\'d find this useful: https://hdq.ca/' + article.slug)}" class="btn-share">📧 Email</a>
       </div>
 
       ${toolkitHtml}

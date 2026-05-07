@@ -10,6 +10,7 @@ export function pageShell(bodyHtml, opts = {}) {
     activeDesk = 'all',    // desk nav highlight
     extraHead = '',
     extraStyle = '',
+    extraScript = '',
   } = opts;
 
   const navLinks = [
@@ -180,6 +181,7 @@ ${bodyHtml}
   if(active)inner.scrollLeft=active.offsetLeft-(inner.offsetWidth/2)+(active.offsetWidth/2);
 })();
 </script>
+${extraScript}
 </body></html>`;
 }
 
