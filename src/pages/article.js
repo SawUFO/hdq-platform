@@ -117,8 +117,13 @@ article { min-width:0; }
 .hdq-chart__subtitle { font-size:12px; color:var(--n600); margin-bottom:12px; }
 .hdq-chart__source { font-size:11px; color:var(--n600); margin-top:10px; font-style:italic; }
 
+/* ── Sources ────────────────────────────────────────────────────────────── */
+.sources-box { border-top:1px solid var(--n200); margin-top:40px; padding-top:20px; margin-bottom:8px; }
+.sources-label { font-size:11px; font-weight:700; color:var(--n600); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; }
+.sources-text { font-size:12px; color:var(--n600); line-height:1.6; }
+
 /* ── Educational disclaimer ─────────────────────────────────────────────── */
-.edu-disclaimer { background:#fff; padding:0 0 20px 0; margin-bottom:8px; font-size:12px; color:var(--n800); line-height:1.5; font-style:italic; border-bottom:1px solid var(--n200); }
+.edu-disclaimer { background:var(--n50); border:1px solid var(--n200); border-radius:4px; padding:14px 16px; margin-bottom:24px; font-size:12px; color:var(--n800); line-height:1.5; font-style:italic; }
 .edu-disclaimer strong { font-weight:600; font-style:normal; }
 `;
 
@@ -203,6 +208,11 @@ export async function renderArticle(env, slug) {
         ${article.body_html || ''}
       </div>
 
+      \${article.sources_text ? `
+      <div class="sources-box" role="contentinfo">
+        <div class="sources-label">Sources</div>
+        <p class="sources-text">\${escHtml(article.sources_text)}</p>
+      </div>` : ''}
       <div class="edu-disclaimer" role="note">
         <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice, financial planning advice, or a recommendation to buy or sell any security. Canadian advisors should apply their own professional judgment. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer →</a>
       </div>

@@ -1,9 +1,9 @@
--- May 7, 2026 — Five Desk Articles (v6: v2 body + new images + captions)
+-- May 7, 2026 — Five Desk Articles (v7: with sources)
 
 
 
 INSERT OR REPLACE INTO articles 
-  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated)
+  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
 VALUES 
   ('2026/05/07/tsx-energy-earnings-oil-decline-market-signal-may-2026', 'market', 'article', 'Energy Earnings Beat, Shares Fall: The TSX’s Contradictory Morning and What It’s Signalling', 'Cenovus posted an 83% profit jump. Suncor beat expectations. Both fell roughly 4%. The TSX is opening flat against record highs in the US. The market is not confused. It is pricing a specific future.', '<ul>
 <li><strong>Cenovus reported an 83% profit jump and Suncor beat expectations,</strong> yet both stocks fell roughly 4% on Thursday as oil prices declined on Iran peace hopes</li>
@@ -201,10 +201,10 @@ If you would find it useful to talk through your current positioning and what th
 <em>This communication is for educational purposes only.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(\''prospect-email\'', this)">Copy email</button>
-</div>', '[{"value":"83%","label":"Cenovus Q1 profit jump"},{"value":"-4%","label":"Energy sector drop"},{"value":"57.7","label":"Ivey PMI April"},{"value":"$98","label":"Brent crude today"}]', 'may07-market.jpg', 'Photo: iStock.', 6, '2026-05-07', 'TSX,Energy,Cenovus,Suncor,Oil,OPEC,Sector Rotation', 1);
+</div>', '[{"value":"83%","label":"Cenovus Q1 profit jump"},{"value":"-4%","label":"Energy sector drop"},{"value":"57.7","label":"Ivey PMI April"},{"value":"$98","label":"Brent crude today"}]', 'may07-market.jpg', 'Photo: iStock.', 6, '2026-05-07', 'TSX,Energy,Cenovus,Suncor,Oil,OPEC,Sector Rotation', 1, 'Trading Economics (TSX, Cenovus, Suncor earnings, Ivey PMI), Motley Fool Canada (TSX Today May 7), TheStreet (Stock Market Today May 7), CNBC (stock market live updates), BNN Bloomberg (UAE OPEC+ departure, Russia statement), Sprott Inc. Q1 2026 results, Axios (US-Iran MOU reporting)');
 
 INSERT OR REPLACE INTO articles 
-  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated)
+  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
 VALUES 
   ('2026/05/07/us-iran-mou-framework-hormuz-premium-may-2026', 'geo', 'article', 'The One-Page Framework: What the US-Iran MOU Would Actually Mean for the Hormuz Premium', 'Washington and Tehran are reportedly within 48 hours of agreeing on a preliminary memorandum of understanding. What it would and would not resolve, and what it means for the oil price in every Canadian portfolio.', '<ul>
 <li><strong>The White House believes it is close to a one-page MOU with Iran,</strong> according to two US officials cited by Axios. The framework would involve Iran committing to a moratorium on nuclear enrichment in exchange for sanctions relief and frozen asset releases</li>
@@ -387,10 +387,10 @@ If you would find it useful to talk through how your current positioning maps on
 <em>This communication is for educational purposes only.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(\''prospect-email\'', this)">Copy email</button>
-</div>', '[{"value":"$98","label":"Brent crude today"},{"value":"$73","label":"Pre-war level"},{"value":"30","label":"Day negotiation window"},{"value":"$115","label":"April peak"}]', 'may07-geo.jpg', 'Photo: iStock.', 7, '2026-05-07', 'Iran,Hormuz,Oil,Geopolitical,MOU,OPEC,Energy', 1);
+</div>', '[{"value":"$98","label":"Brent crude today"},{"value":"$73","label":"Pre-war level"},{"value":"30","label":"Day negotiation window"},{"value":"$115","label":"April peak"}]', 'may07-geo.jpg', 'Photo: iStock.', 7, '2026-05-07', 'Iran,Hormuz,Oil,Geopolitical,MOU,OPEC,Energy', 1, 'Axios (US-Iran one-page MOU reporting), Wikipedia (2026 Iran War Ceasefire, Islamabad Talks, 2025-2026 Iran-United States Negotiations), House of Commons Library (UK), Al Jazeera, NPR, TheStreet market data, Trading Economics (TSX, Cenovus, Suncor earnings data), Council on Foreign Relations');
 
 INSERT OR REPLACE INTO articles 
-  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated)
+  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
 VALUES 
   ('2026/05/07/bank-of-canada-two-directional-dilemma-may-2026', 'economy', 'article', 'The Bank of Canada’s Two-Directional Dilemma: What the April 29 Hold Actually Said', 'The BoC held at 2.25% and said both cuts and hikes remain on the table. That is not a hedge. It is a precise description of the most difficult monetary policy environment in a generation.', '<ul>
 <li><strong>The Bank of Canada held its overnight rate at 2.25% on April 29,</strong> the fourth consecutive hold, with the next decision scheduled for June 10</li>
@@ -568,10 +568,10 @@ For anyone with a variable-rate mortgage, a fixed income portfolio, or rate-sens
 <em>This communication is for educational purposes only.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(\''prospect-email\'', this)">Copy email</button>
-</div>', '[{"value":"2.25%","label":"BoC overnight rate"},{"value":"2.4%","label":"CPI March 2026"},{"value":"1.2%","label":"BoC 2026 GDP forecast"},{"value":"84%","label":"No-change probability Jun 10"}]', 'may07-economy.jpg', 'Photo: iStock.', 6, '2026-05-07', 'Bank of Canada,Interest Rates,Inflation,GDP,CUSMA,Monetary Policy', 1);
+</div>', '[{"value":"2.25%","label":"BoC overnight rate"},{"value":"2.4%","label":"CPI March 2026"},{"value":"1.2%","label":"BoC 2026 GDP forecast"},{"value":"84%","label":"No-change probability Jun 10"}]', 'may07-economy.jpg', 'Photo: iStock.', 6, '2026-05-07', 'Bank of Canada,Interest Rates,Inflation,GDP,CUSMA,Monetary Policy', 1, 'Bank of Canada April 29 press release and Monetary Policy Report, Globe and Mail BoC rate tracker, Morningstar Canada (BMO Economics, BlackRock, TD Bank commentary), nesto.ca rate schedule, RBC Economics, Council on Foreign Relations (CUSMA review analysis), Statistics Canada CPI March 2026');
 
 INSERT OR REPLACE INTO articles 
-  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated)
+  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
 VALUES 
   ('2026/05/07/april-jobs-report-mortgage-renewal-math-may-2026', 'tax', 'article', 'Tomorrow’s Jobs Report and the Mortgage Renewal Math That Doesn’t Add Up', 'Statistics Canada releases April employment data tomorrow. With the BoC holding at 2.25% and a wave of mortgage renewals hitting at rates far above what borrowers locked in, the jobs number matters more than usual.', '<ul>
 <li><strong>Statistics Canada releases April employment data tomorrow, May 8.</strong> RBC Economics forecasts roughly 25,000 jobs added, which would push the unemployment rate down to approximately 6.6% from 6.7%</li>
@@ -751,10 +751,10 @@ If you''re in this situation and would find it useful to think through the numbe
 <em>This communication is for educational purposes only.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(\''prospect-email\'', this)">Copy email</button>
-</div>', '[{"value":"4.04%","label":"Lowest 5yr fixed rate"},{"value":"6.7%","label":"Unemployment March"},{"value":"$570","label":"Monthly payment increase on $500K"},{"value":"25K","label":"RBC forecast April jobs"}]', 'may07-tax.jpg', 'Portland, Oregon, USA — October 6, 2011. Thousands gather at Pioneer Square during Occupy Portland. Photo: iStock.', 6, '2026-05-07', 'Mortgage,Labour Force Survey,BoC,RRSP,TFSA,Housing,Cash Flow', 1);
+</div>', '[{"value":"4.04%","label":"Lowest 5yr fixed rate"},{"value":"6.7%","label":"Unemployment March"},{"value":"$570","label":"Monthly payment increase on $500K"},{"value":"25K","label":"RBC forecast April jobs"}]', 'may07-tax.jpg', 'Portland, Oregon, USA — October 6, 2011. Thousands gather at Pioneer Square during Occupy Portland. Photo: iStock.', 6, '2026-05-07', 'Mortgage,Labour Force Survey,BoC,RRSP,TFSA,Housing,Cash Flow', 1, 'Statistics Canada Labour Force Survey (March 2026), RBC Economics Forward Guidance, Bank of Canada April 29 rate decision, nesto.ca mortgage rate data, NerdWallet Canada mortgage rates, WOWA mortgage rate forecast, CREA national benchmark price data');
 
 INSERT OR REPLACE INTO articles 
-  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated)
+  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
 VALUES 
   ('2026/05/07/peace-rally-trap-investor-discipline-may-2026', 'behaviour', 'article', 'The Peace Rally Trap: Why Oil’s Drop Is Testing Investor Discipline Right Now', 'Oil is dropping 3-4% on Iran peace hopes and equity futures are rising. History says this is the moment investors make their worst moves.', '<ul>
 <li><strong>Oil is falling 3-4% this morning.</strong> Reports of a US-Iran one-page framework have Brent crude dropping toward $98 and WTI below $92, reversing weeks of war-premium pricing</li>
@@ -937,4 +937,4 @@ If you''d like a second opinion on how your portfolio is positioned heading into
 <em>This communication is for educational purposes only.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(\''prospect-email\'', this)">Copy email</button>
-</div>', '[{"value":"-3.4%","label":"Oil drop today"},{"value":"$25","label":"War premium remaining"},{"value":"21hrs","label":"Islamabad talks duration"},{"value":"$115","label":"April oil peak"}]', 'may07-behaviour.jpg', 'Photo: iStock.', 5, '2026-05-07', 'Behavioural Finance,Investor Psychology,Oil,Iran,FOMO,Portfolio Discipline', 1);
+</div>', '[{"value":"-3.4%","label":"Oil drop today"},{"value":"$25","label":"War premium remaining"},{"value":"21hrs","label":"Islamabad talks duration"},{"value":"$115","label":"April oil peak"}]', 'may07-behaviour.jpg', 'Photo: iStock.', 5, '2026-05-07', 'Behavioural Finance,Investor Psychology,Oil,Iran,FOMO,Portfolio Discipline', 1, 'Axios, TheStreet, CNBC, Wikipedia (2026 Iran War Ceasefire), The Street market data, Kahneman (Thinking Fast and Slow), Behavioral Finance Research Review');
