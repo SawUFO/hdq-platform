@@ -13,20 +13,3 @@ database_id = "ca05159d-cb5a-406b-b1a9-4ca984df4d9c"
 [assets]
 directory = "./static"
 binding = "ASSETS"
-
-# ── Routes — both domains ─────────────────────────────────────────────────────
-[[routes]]
-pattern = "hdq.ca/*"
-zone_name = "hdq.ca"
-
-[[routes]]
-pattern = "www.hdq.ca/*"
-zone_name = "hdq.ca"
-
-[[routes]]
-pattern = "hdqca.com/*"
-zone_name = "hdqca.com"
-
-[[routes]]
-pattern = "www.hdqca.com/*"
-zone_name = "hdqca.com"
