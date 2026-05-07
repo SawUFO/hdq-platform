@@ -132,8 +132,6 @@ export async function renderArticle(env, slug) {
 
   const keyNumbers = jsonKeyNumbers(article.key_numbers);
 
-  const captionHtml = article.caption ? `<p class="article-caption">${escHtml(article.caption)}</p>` : '';
-
   const captionHtml = article.hero_caption ? `<div class="article-hero-caption">${escHtml(article.hero_caption)}</div>` : '';
 
   const heroHtml = `
