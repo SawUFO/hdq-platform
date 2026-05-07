@@ -60,10 +60,10 @@ export async function renderThread(env, slug) {
       </div>
       ${briefHtml}
       <div class="article-body">${article.body_html || ''}</div>
-      \${article.sources_text ? `
+      ${article.sources_text ? `
       <div class="sources-box" role="contentinfo">
         <div class="sources-label">Sources</div>
-        <p class="sources-text">\${escHtml(article.sources_text)}</p>
+        <p class="sources-text">${escHtml(article.sources_text)}</p>
       </div>` : ''}
       <div class="edu-disclaimer" role="note">
         <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice or a recommendation to buy or sell any security. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer →</a>
