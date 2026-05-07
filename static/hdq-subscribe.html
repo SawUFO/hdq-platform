@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Subscribe to HDQ — By Application Only</title>
+<meta name="description" content="HDQ is a by-application financial intelligence publication for licensed Canadian advisors. CIRO-registered and CFP professionals only. $775 CAD per year.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hdqca.com/hdq-subscribe">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "HDQ Annual Subscription",
+  "description": "Daily financial intelligence for licensed Canadian financial advisors. By application only.",
+  "offers": {
+    "@type": "Offer",
+    "price": "775",
+    "priceCurrency": "CAD",
+    "availability": "https://schema.org/LimitedAvailability"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "HDQ",
+    "url": "https://hdqca.com"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hdq-shared.css">
+<link rel="icon" type="image/svg+xml" href="HDQ_LOGO_Gold.svg">
+<style>
+/* ── HERO ──────────────────────────────────────────────────────── */
+.sub-hero { background:var(--navy-900); padding:72px 24px 64px; text-align:center; }
+.sub-hero-inner { max-width:680px; margin:0 auto; }
+.sub-eyebrow { font-family:'DM Sans',sans-serif; font-size:11px; font-weight:700; color:var(--gold-400); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:20px; display:flex; align-items:center; justify-content:center; gap:10px; }
+.sub-eyebrow::before, .sub-eyebrow::after { content:''; flex:1; max-width:40px; height:1px; background:var(--gold-400); opacity:0.4; }
+.sub-hero h1 { font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(28px,4vw,44px); font-weight:800; color:#fff; line-height:1.1; letter-spacing:-0.02em; margin-bottom:16px; }
+.sub-hero p { font-size:16px; color:rgba(255,255,255,0.6); line-height:1.65; max-width:520px; margin:0 auto 32px; }
+.sub-price-tag { display:inline-flex; flex-direction:column; align-items:center; background:rgba(232,168,37,0.1); border:1px solid rgba(232,168,37,0.3); border-radius:8px; padding:20px 40px; }
+.sub-price-amount { font-family:'Bricolage Grotesque',sans-serif; font-size:42px; font-weight:800; color:#fff; line-height:1; }
+.sub-price-amount sup { font-size:20px; vertical-align:super; }
+.sub-price-period { font-size:12px; color:rgba(255,255,255,0.45); margin-top:4px; letter-spacing:0.04em; }
+
+/* ── WHAT YOU GET ──────────────────────────────────────────────── */
+.sub-wrap { max-width:1100px; margin:0 auto; padding:64px 24px 80px; display:grid; grid-template-columns:1fr 420px; gap:56px; align-items:start; }
+@media(max-width:900px){ .sub-wrap{grid-template-columns:1fr;gap:48px;} }
+
+.sub-offering h2 { font-family:'Bricolage Grotesque',sans-serif; font-size:26px; font-weight:800; color:var(--n900); margin-bottom:8px; }
+.sub-offering > p { font-size:14px; color:var(--n600); margin-bottom:36px; }
+
+.offering-group { margin-bottom:36px; }
+.offering-group-label { font-size:11px; font-weight:700; color:var(--gold-600); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+.offering-group-label::after { content:''; flex:1; height:1px; background:var(--n200); }
+
+.offering-item { display:flex; gap:14px; align-items:flex-start; margin-bottom:16px; }
+.offering-icon { width:20px; height:20px; flex-shrink:0; margin-top:1px; }
+.offering-item-text { }
+.offering-item-title { font-size:14px; font-weight:600; color:var(--n900); margin-bottom:2px; }
+.offering-item-desc { font-size:13px; color:var(--n600); line-height:1.55; }
+
+.sub-notice { background:var(--navy-50); border-left:3px solid var(--gold-400); border-radius:0 6px 6px 0; padding:16px 20px; margin-top:32px; }
+.sub-notice p { font-size:13px; color:var(--navy-800); line-height:1.6; margin:0; }
+.sub-notice strong { color:var(--navy-900); }
+
+/* ── APPLICATION FORM ──────────────────────────────────────────── */
+.sub-form-col { }
+.sub-form-card { background:#fff; border:1px solid var(--n200); border-radius:8px; overflow:hidden; position:sticky; top:80px; box-shadow:0 4px 24px rgba(0,0,0,0.07); }
+.sub-form-header { background:var(--navy-800); padding:24px 28px; }
+.sub-form-header h3 { font-family:'Bricolage Grotesque',sans-serif; font-size:18px; font-weight:700; color:#fff; margin-bottom:4px; }
+.sub-form-header p { font-size:12px; color:rgba(255,255,255,0.5); margin:0; }
+.sub-form-body { padding:28px; }
+
+.form-group { margin-bottom:18px; }
+.form-label { display:block; font-size:12px; font-weight:600; color:var(--n700); margin-bottom:6px; letter-spacing:0.02em; }
+.form-label span { color:var(--gold-600); }
+.form-input, .form-select, .form-textarea {
+  width:100%; font-family:'DM Sans',sans-serif; font-size:14px;
+  padding:10px 14px; border:1px solid var(--n200); border-radius:4px;
+  color:var(--n900); background:#fff; transition:border-color 0.15s;
+  box-sizing:border-box;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline:none; border-color:var(--navy-700);
+  box-shadow:0 0 0 3px rgba(26,53,96,0.08);
+}
+.form-textarea { min-height:90px; resize:vertical; line-height:1.5; }
+.form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; }
+
+.form-checkbox-row { display:flex; gap:10px; align-items:flex-start; }
+.form-checkbox { width:16px; height:16px; flex-shrink:0; margin-top:2px; accent-color:var(--navy-700); }
+.form-checkbox-label { font-size:12px; color:var(--n700); line-height:1.5; }
+.form-checkbox-label a { color:var(--navy-700); }
+
+.form-submit { width:100%; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:700; padding:14px 24px; background:var(--gold-400); color:var(--navy-900); border:none; border-radius:4px; cursor:pointer; transition:background 0.15s; margin-top:8px; letter-spacing:0.01em; }
+.form-submit:hover { background:var(--gold-600); color:#fff; }
+
+.form-disclaimer { font-size:11px; color:var(--n600); line-height:1.5; margin-top:14px; text-align:center; }
+
+.form-success { display:none; text-align:center; padding:40px 28px; }
+.form-success-icon { font-size:40px; margin-bottom:16px; }
+.form-success h4 { font-family:'Bricolage Grotesque',sans-serif; font-size:20px; font-weight:700; color:var(--n900); margin-bottom:8px; }
+.form-success p { font-size:14px; color:var(--n600); line-height:1.6; }
+
+/* ── SOCIAL PROOF ──────────────────────────────────────────────── */
+.sub-trust { background:var(--navy-900); padding:48px 24px; }
+.sub-trust-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+@media(max-width:700px){ .sub-trust-inner{grid-template-columns:1fr;gap:24px;} }
+.trust-item { text-align:center; }
+.trust-number { font-family:'Bricolage Grotesque',sans-serif; font-size:36px; font-weight:800; color:var(--gold-400); margin-bottom:6px; }
+.trust-label { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.5; }
+
+/* ── ELIGIBILITY NOTICE ────────────────────────────────────────── */
+.eligibility-section { background:var(--n50); border-top:1px solid var(--n200); border-bottom:1px solid var(--n200); padding:48px 24px; }
+.eligibility-inner { max-width:700px; margin:0 auto; text-align:center; }
+.eligibility-inner h3 { font-family:'Bricolage Grotesque',sans-serif; font-size:22px; font-weight:700; color:var(--n900); margin-bottom:12px; }
+.eligibility-inner p { font-size:14px; color:var(--n700); line-height:1.7; margin-bottom:16px; }
+.eligibility-inner p:last-child { margin-bottom:0; }
+.eligibility-inner strong { color:var(--navy-800); }
+</style>
+<style>
+/* CRITICAL MOBILE — inline, cannot be overridden */
+@media(max-width:768px){
+  .desk-nav-inner{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:scroll!important;
+    -webkit-overflow-scrolling:touch!important;
+    white-space:nowrap!important;
+  }
+  .dnav-link{
+    flex-shrink:0!important;
+    white-space:nowrap!important;
+  }
+}
+</style>
+<script>
+// Global nav functions - defined immediately so onclick attrs work
+window.openMobileNav = function() {
+  var nav = document.getElementById('mobile-nav');
+  if (!nav) return;
+  nav.style.cssText = 'display:flex!important;position:fixed;inset:0;z-index:10000;background:#0b1a30;flex-direction:column;overflow-y:auto;';
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+};
+window.closeMobileNav = function() {
+  var nav = document.getElementById('mobile-nav');
+  if (!nav) return;
+  nav.style.cssText = 'display:none!important;';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+};
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') window.closeMobileNav();
+});
+</script>
+</head>
+<body>
+
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mobile-nav-header">
+    <a href="hdq-news.html" class="brand" aria-label="HDQ Home" onclick="window.closeMobileNav()">
+      <img src="HDQ_LOGO_Gold.svg" width="28" height="28" alt="HDQ Logo" style="display:block;">
+      <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
+    </a>
+    <button class="mobile-nav-close" onclick="window.closeMobileNav()" aria-label="Close menu">×</button>
+  </div>
+  <nav class="mobile-nav-links" aria-label="Mobile navigation">
+    <a href="hdq-news.html" class="mobile-nav-link" onclick="window.closeMobileNav()">News</a>
+    <a href="hdq-prodev.html" class="mobile-nav-link" onclick="window.closeMobileNav()">Professional Development</a>
+    <a href="hdq-whitelabel.html" class="mobile-nav-link" onclick="window.closeMobileNav()">For Firms</a>
+    <a href="hdq-homepage.html" class="mobile-nav-link" onclick="window.closeMobileNav()">About</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="hdq-daily-thread.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
+    <a href="hdq-weekend.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
+    <a href="hdq-month.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
+    <a href="hdq-archive.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
+    <a href="hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
+  </nav>
+  <div class="mobile-nav-footer">
+    <a href="hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Subscribe — $775/year →</a>
+  </div>
+</div>
+<header class="masthead" role="banner">
+  <div class="masthead-inner">
+    <a href="hdq-news.html" class="brand" aria-label="HDQ Home">
+      <img src="HDQ_LOGO_Gold.svg" width="32" height="32" alt="HDQ Logo" style="display:block;flex-shrink:0;">
+      <span class="wordmark">HD<span class="wq">Q</span></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="hdq-news.html" class="nav-link">News</a></li>
+        <li><a href="hdq-prodev.html" class="nav-link">Professional Development</a></li>
+        <li><a href="hdq-whitelabel.html" class="nav-link">For Firms</a></li>
+        <li><a href="hdq-homepage.html" class="nav-link">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a href="hdq-subscribe.html" class="nav-subscribe">Subscribe</a>
+      <div class="hamburger" aria-label="Menu"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="sub-hero" aria-labelledby="subscribe-heading">
+  <div class="sub-hero-inner">
+    <div class="sub-eyebrow">By Application Only</div>
+    <h1 id="subscribe-heading">Financial intelligence built for licensed Canadian advisors.</h1>
+    <p>HDQ is not a general financial newsletter. Every article is written for CIRO-registered advisors and CFP professionals — the analysis, the toolkits, and the framing assume a licensed practitioner on the other end.</p>
+    <div class="sub-price-tag" role="complementary" aria-label="Pricing">
+      <div class="sub-price-amount"><sup>$</sup>775</div>
+      <div class="sub-price-period">CAD · per year · billed annually</div>
+    </div>
+  </div>
+</section>
+
+<main>
+<div class="sub-wrap">
+
+  <!-- OFFERING COLUMN -->
+  <div class="sub-offering">
+    <h2>What subscribers receive</h2>
+    <p>Every weekday, before most client calls begin.</p>
+
+    <!-- Daily Intelligence -->
+    <div class="offering-group">
+      <div class="offering-group-label">Daily Intelligence</div>
+
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 7h6M7 10h6M7 13h4"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">Five-desk daily briefing</div>
+          <div class="offering-item-desc">Market, Geopolitical, Economy, Tax &amp; Wealth, and Behavioural — five independent frameworks synthesized into one publication, published every weekday by 7 a.m. Eastern.</div>
+        </div>
+      </div>
+
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 3"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">Daily Thread</div>
+          <div class="offering-item-desc">Every afternoon, the day's most important development — analysed in depth, with the cross-desk implications made explicit. What the five desks saw together that neither could see alone.</div>
+        </div>
+      </div>
+
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h8"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">Weekend Edition</div>
+          <div class="offering-item-desc">Five charts that mattered from the week, annotated with what they mean for Canadian portfolios. Plus what to watch in the week ahead — the calendar items that will move markets before Monday's open.</div>
+        </div>
+      </div>
+
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><path d="M10 3v14M3 10h14"/><circle cx="10" cy="10" r="7"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">Month at a Glance</div>
+          <div class="offering-item-desc">A structured end-of-month review: what the data said, what the desks got right, what changed. A professional accountability framework for staying calibrated over a full market cycle.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscriber Toolkits -->
+    <div class="offering-group">
+      <div class="offering-group-label">Subscriber Toolkits</div>
+
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="14" height="14" rx="2"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">RESPOND toolkit — with every article</div>
+          <div class="offering-item-desc">What clients are feeling, what to say, action checklists by client priority, and a ready-to-send follow-up email template. Written for the specific event covered, not generic talking points.</div>
+        </div>
+      </div>
+
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><path d="M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/><path d="M10 7v3l2 2"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">PROSPECT toolkit — with every article</div>
+          <div class="offering-item-desc">The client profiles most affected, opening lines, discovery questions, and a prospecting email template — built around the specific insight in the article, not generic outreach scripts.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Professional Development -->
+    <div class="offering-group">
+      <div class="offering-group-label">Professional Development</div>
+
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><path d="M4 6h12M4 10h8M4 14h10"/><rect x="2" y="3" width="16" height="14" rx="2"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">Module library</div>
+          <div class="offering-item-desc">Structured learning modules on market structure, behavioural finance, tax strategy, and client communication — built for advisors, not students. CE credit accreditation in development.</div>
+        </div>
+      </div>
+
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><path d="M4 4h12v3l-6 4-6-4V4z"/><path d="M4 7v9h12V7"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">Decision frameworks</div>
+          <div class="offering-item-desc">The analytical frameworks behind HDQ's editorial approach — asset location under rate regimes, inflation pass-through sequencing, sector rotation logic, and client communication under uncertainty.</div>
+        </div>
+      </div>
+
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><path d="M3 17l4-8 4 4 3-6 3 10"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">Preferred book pricing</div>
+          <div class="offering-item-desc">Subscriber discounts on a curated selection of titles from HDQ's professional reading list — books that have materially shaped how the publication thinks about markets, behaviour, and practice management.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial Standards -->
+    <div class="offering-group">
+      <div class="offering-group-label">Editorial Standards</div>
+      <div class="offering-item">
+        <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><path d="M10 2l2.4 4.8 5.3.8-3.8 3.7.9 5.3L10 14l-4.8 2.6.9-5.3L2.3 7.6l5.3-.8z"/></svg>
+        <div class="offering-item-text">
+          <div class="offering-item-title">Named sources · Canadian focus · No speculation</div>
+          <div class="offering-item-desc">Every claim is sourced and attributed. Every article addresses CAD implications, BoC policy, and TSX exposure. No anonymous sources, no price targets, no recommendations — only analysis you can stand behind in a client meeting.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-notice" role="note">
+      <p><strong>Note on public content:</strong> HDQ's five daily desk articles are available to all visitors as a demonstration of editorial quality. Subscriber toolkits (RESPOND and PROSPECT), the Daily Thread full analysis, Weekend Edition, Month at a Glance, and the full Professional Development library are exclusive to verified subscribers.</p>
+    </div>
+  </div>
+
+  <!-- APPLICATION FORM -->
+  <div class="sub-form-col">
+    <div class="sub-form-card" role="complementary" aria-label="Application form">
+      <div class="sub-form-header">
+        <h3>Request Access</h3>
+        <p>Applications reviewed within 2 business days</p>
+      </div>
+      <div class="sub-form-body" id="form-body">
+        <form id="application-form" novalidate>
+
+          <div class="form-group">
+            <label class="form-label" for="full-name">Full name <span>*</span></label>
+            <input class="form-input" type="text" id="full-name" name="full_name" placeholder="Your full legal name" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="firm">Firm name <span>*</span></label>
+            <input class="form-input" type="text" id="firm" name="firm" placeholder="Your registered firm" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Professional email <span>*</span></label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="name@yourfirm.ca" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="designation">Designation <span>*</span></label>
+            <select class="form-input form-select" id="designation" name="designation" required>
+              <option value="" disabled selected>Select your designation</option>
+              <option value="ciro-ia">CIRO — Investment Advisor (IA)</option>
+              <option value="ciro-rep">CIRO — Registered Representative</option>
+              <option value="cfp">Certified Financial Planner (CFP)</option>
+              <option value="cfp-ciro">CFP + CIRO Registered</option>
+              <option value="portfolio-mgr">Portfolio Manager</option>
+              <option value="other-licensed">Other licensed designation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="licence">Licence / registration number <span>*</span></label>
+            <input class="form-input" type="text" id="licence" name="licence" placeholder="CIRO or CFP registration number" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="note">Why HDQ? <span style="color:var(--n500);font-weight:400;">(optional)</span></label>
+            <textarea class="form-input form-textarea" id="note" name="note" placeholder="Tell us briefly what you're looking for in a financial intelligence publication. This helps us understand your practice."></textarea>
+          </div>
+
+          <div class="form-group">
+            <div class="form-checkbox-row">
+              <input class="form-checkbox" type="checkbox" id="confirm-licensed" name="confirm_licensed" required>
+              <label class="form-checkbox-label" for="confirm-licensed">I confirm that I hold a valid Canadian securities licence or CFP designation and that the registration number provided above is current and accurate. I understand that HDQ verifies all applicants against the CIRO AdvisorReport and CSA National Registration Search.</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-checkbox-row">
+              <input class="form-checkbox" type="checkbox" id="confirm-terms" name="confirm_terms" required>
+              <label class="form-checkbox-label" for="confirm-terms">I have read and agree to HDQ's <a href="hdq-legal.html">Terms of Use and Disclaimer</a>. I understand that HDQ content is for educational purposes only and does not constitute investment advice.</label>
+            </div>
+          </div>
+
+          <button type="submit" class="form-submit">Submit Application →</button>
+
+          <p class="form-disclaimer">Your application will be reviewed within 2 business days. We verify every applicant against the CIRO AdvisorReport and CSA National Registration Search before approving access. Questions? <a href="mailto:support@hdq.ca" style="color:var(--navy-700);">support@hdq.ca</a></p>
+        </form>
+
+        <div class="form-success" id="form-success" aria-live="polite">
+          <div class="form-success-icon">✅</div>
+          <h4>Application received.</h4>
+          <p>We'll verify your registration and be in touch within 2 business days. If approved, you'll receive access instructions at the email address you provided.</p>
+          <p style="margin-top:12px;font-size:12px;color:var(--n500);">Questions in the meantime? <a href="mailto:support@hdq.ca" style="color:var(--navy-700);">support@hdq.ca</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end sub-wrap -->
+</main>
+
+<!-- TRUST SIGNALS -->
+<div class="sub-trust" role="complementary" aria-label="About HDQ">
+  <div class="sub-trust-inner">
+    <div class="trust-item">
+      <div class="trust-number">5</div>
+      <div class="trust-label">Editorial desks covering every dimension of the Canadian advisor's day</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">7 AM</div>
+      <div class="trust-label">Published every weekday before most client calls begin</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">100%</div>
+      <div class="trust-label">Licensed advisors — every subscriber verified against CIRO and CSA registries</div>
+    </div>
+  </div>
+</div>
+
+<!-- ELIGIBILITY -->
+<section class="eligibility-section" aria-labelledby="eligibility-heading">
+  <div class="eligibility-inner">
+    <h3 id="eligibility-heading">Eligibility &amp; Verification</h3>
+    <p>HDQ is published exclusively for <strong>CIRO-registered investment advisors and representatives</strong> and <strong>Certified Financial Planners (CFP)</strong> practising in Canada. We do not accept applications from retail investors, students, or unlicensed individuals regardless of their financial background or interest.</p>
+    <p>Every application is manually reviewed. We verify each applicant's registration status against the <strong>CIRO AdvisorReport</strong> and the <strong>CSA National Registration Search</strong> before approving access. Applications that cannot be verified will not be approved, and the application fee will not be charged.</p>
+    <p>HDQ reserves the right to decline any application without explanation and to revoke access if a subscriber's registration status changes or if the publication's terms of use are violated.</p>
+    <p style="font-size:12px;color:var(--n500);margin-top:8px;">Questions about eligibility: <a href="mailto:support@hdq.ca" style="color:var(--navy-700);">support@hdq.ca</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="hdq-news.html" class="brand" style="margin-bottom:10px;" aria-label="HDQ Home">
+          <img src="HDQ_LOGO_Gold.svg" width="32" height="32" alt="HDQ Logo" style="display:block;flex-shrink:0;">
+          <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
+        </a>
+        <p>Financial intelligence for Canada's advisor community. Published every weekday by 7 a.m. Eastern. For educational purposes only — not investment advice.</p>
+      </div>
+      <div class="footer-nav">
+        <h6>Publication</h6>
+        <ul>
+          <li><a href="hdq-news.html">Daily Briefing</a></li>
+          <li><a href="hdq-daily-thread.html">Daily Thread</a></li>
+          <li><a href="hdq-weekend.html">Weekend Edition</a></li>
+          <li><a href="hdq-month.html">Month at a Glance</a></li>
+          <li><a href="hdq-archive.html">Archive</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h6>Learning</h6>
+        <ul>
+          <li><a href="hdq-prodev.html">Module Library</a></li>
+          <li><a href="hdq-prodev.html#frameworks">Frameworks</a></li>
+          <li><a href="hdq-prodev.html#reading">Reading List</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h6>Company</h6>
+        <ul>
+          <li><a href="hdq-whitelabel.html">For Firms</a></li>
+          <li><a href="hdq-homepage.html">About HDQ</a></li>
+          <li><a href="hdq-subscribe.html">Subscribe</a></li>
+          <li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h6>Legal</h6>
+        <ul>
+          <li><a href="hdq-legal.html">Disclaimer</a></li>
+          <li><a href="hdq-legal.html#terms">Terms of Use</a></li>
+          <li><a href="hdq-legal.html#privacy">Privacy Policy</a></li>
+          <li><a href="hdq-legal.html#compliance">Compliance</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HDQ. All rights reserved. Content is for educational and informational purposes only. Not investment advice. Not a solicitation. HDQ is not a registered investment advisor. <a href="hdq-legal.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span>
+      <span class="footer-badge">hdq.ca</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Dynamic date
+(function(){
+  var d = new Date();
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var str = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  document.querySelectorAll('.date-left').forEach(function(el){ el.textContent = str; });
+})();
+
+// Form submission
+document.getElementById('application-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var valid = true;
+  var required = this.querySelectorAll('[required]');
+  required.forEach(function(el) {
+    if (!el.value || (el.type === 'checkbox' && !el.checked)) {
+      el.style.borderColor = '#ef4444';
+      valid = false;
+    } else {
+      el.style.borderColor = '';
+    }
+  });
+  if (!valid) { return; }
+
+  var btn = this.querySelector('.form-submit');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  fetch('https://formspree.io/f/xzdogdkv', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(this)
+  }).then(function(r) {
+    if (r.ok) {
+      document.getElementById('application-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      btn.textContent = 'Submit Application →';
+      btn.disabled = false;
+      alert('There was an error submitting your application. Please email submissions@hdq.ca directly.');
+    }
+  }).catch(function() {
+    btn.textContent = 'Submit Application →';
+    btn.disabled = false;
+    alert('There was an error. Please email submissions@hdq.ca directly.');
+  });
+});
+</script>
+
+
+
+<script>
+// Center active desk nav tab on page load
+(function() {
+  function initDeskNav() {
+    var inner = document.querySelector('.desk-nav-inner');
+    if (!inner) return;
+    var active = inner.querySelector('.dnav-link.active');
+    if (active) {
+      inner.scrollLeft = active.offsetLeft - (inner.offsetWidth / 2) + (active.offsetWidth / 2);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDeskNav);
+  } else {
+    initDeskNav();
+  }
+})();
+</script>
+</body>
+</html>

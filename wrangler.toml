@@ -1,0 +1,23 @@
+name = "hdq-platform"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ── D1 Database ───────────────────────────────────────────────────────────────
+[[d1_databases]]
+binding = "DB"
+database_name = "hdq-articles"
+database_id = "ca05159d-cb5a-406b-b1a9-4ca984df4d9c"
+
+# ── Static assets (images, CSS, SVGs, static HTML pages) ─────────────────────
+[assets]
+directory = "./static"
+binding = "ASSETS"
+
+# ── Routes — both domains serve the same worker ───────────────────────────────
+routes = [
+  { pattern = "hdq.ca/*", zone_name = "hdq.ca" },
+  { pattern = "www.hdq.ca/*", zone_name = "hdq.ca" },
+  { pattern = "hdqca.com/*", zone_name = "hdqca.com" },
+  { pattern = "www.hdqca.com/*", zone_name = "hdqca.com" }
+]

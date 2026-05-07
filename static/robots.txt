@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /subscriber-tools/
+
+Sitemap: https://hdqca.com/sitemap.xml
