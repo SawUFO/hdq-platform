@@ -212,7 +212,7 @@ export const DESK_DISPLAY = {
   market:    'Market',
   economy:   'Economy',
   geo:       'Geopolitical',
-  tax:       'Tax &amp; Wealth',
+  tax:       'Tax & Wealth',
   behaviour: 'Behavioural',
   thread:    'Daily Thread',
   weekend:   'Weekend Edition',

@@ -22,9 +22,8 @@ article { min-width:0; }
 .brief-box { background:#fff; border:1px solid var(--n200); border-top:3px solid var(--gold-400); border-radius:0 0 6px 6px; padding:24px 28px 20px; margin-bottom:36px; }
 .brief-label { font-family:'DM Sans',sans-serif; font-size:10px; font-weight:700; color:var(--gold-600); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:16px; }
 .brief-box ul { margin:0; padding:0; list-style:none; }
-.brief-box li { font-size:14px; line-height:1.6; color:var(--n800); padding:11px 0; border-bottom:1px solid var(--n100); display:grid; grid-template-columns:220px 1fr; gap:0; align-items:start; position:relative; }
+.brief-box li { font-size:14px; line-height:1.6; color:var(--n800); padding:11px 0; border-bottom:1px solid var(--n100); display:grid; grid-template-columns:220px 1fr; gap:0; align-items:start; }
 .brief-box li:last-child { border-bottom:none; padding-bottom:0; }
-.brief-box li::after { content:''; position:absolute; left:220px; top:0; bottom:0; width:1px; background:var(--gold-400); opacity:0.35; }
 .brief-box li strong { color:var(--n900); font-weight:600; display:block; padding-right:20px; }
 .brief-box li > span { padding-left:20px; }
 @media(max-width:680px){
@@ -106,7 +105,7 @@ article { min-width:0; }
 .related-item { display:block; padding:12px 0; border-bottom:1px solid var(--n100); text-decoration:none; }
 .related-item:last-child { border-bottom:none; padding-bottom:0; }
 .related-item-tag { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
-.related-item-title { font-size:13px; color:var(--n900); line-height:1.4; transition:color 0.15s; }
+.related-item-title { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; color:var(--n900); line-height:1.3; transition:color 0.15s; }
 .related-item:hover .related-item-title { color:var(--navy-700); }
 
 .sidebar-legal { font-size:11px; color:var(--n600); line-height:1.5; padding:14px; background:var(--n50); border-radius:4px; border:1px solid var(--n200); }
