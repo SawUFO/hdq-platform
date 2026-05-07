@@ -11,7 +11,7 @@ export const PAGE_CSS = `
 .feat-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
 .feat-inner { display: grid; grid-template-columns: 1fr 1fr; }
 @media(max-width:680px) { .feat-inner { grid-template-columns: 1fr; } }
-.feat-img { aspect-ratio: 4/3; overflow: hidden; }
+.feat-img { aspect-ratio: 16/9; overflow: hidden; }
 .feat-img img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.3s ease; }
 .feat-card:hover .feat-img img { transform: scale(1.04); }
 .feat-body { padding: 24px 24px 20px; display: flex; flex-direction: column; gap: 10px; }
