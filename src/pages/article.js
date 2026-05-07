@@ -13,7 +13,7 @@ article { min-width:0; }
 .article-hero img { width:100%; height:100%; object-fit:cover; display:block; }
 .article-caption { font-size:11px; color:var(--n500); line-height:1.5; margin-top:8px; margin-bottom:20px; font-style:italic; }
 
-.article-kicker { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.article-kicker { display:flex; align-items:center; gap:12px; margin-top:20px; margin-bottom:14px; }
 
 .article-headline { font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(24px,3.5vw,40px); font-weight:800; line-height:1.1; letter-spacing:-0.02em; color:var(--n900); margin:16px 0 20px; }
 
@@ -115,7 +115,10 @@ article { min-width:0; }
 
 export async function renderArticle(env, slug) {
   const article = await env.DB.prepare(`
-    SELECT * FROM articles WHERE slug=?
+    SELECT slug, desk, article_type, title, dek, brief_html, body_html,
+           respond_html, prospect_html, key_numbers, hero_image, hero_caption,
+           read_time, published_at, tags, toolkit_gated
+    FROM articles WHERE slug=?
   `).bind(slug).first();
 
   if (!article) {
@@ -124,7 +127,8 @@ export async function renderArticle(env, slug) {
 
   // Related: other articles same date
   const related = await env.DB.prepare(`
-    SELECT * FROM articles
+    SELECT slug, desk, title, hero_image, published_at, read_time
+    FROM articles
     WHERE published_at=? AND slug!=?
     ORDER BY desk ASC
     LIMIT 4
