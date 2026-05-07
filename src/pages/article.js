@@ -13,7 +13,7 @@ article { min-width:0; }
 .article-hero img { width:100%; height:100%; object-fit:cover; display:block; }
 .article-caption { font-size:11px; color:var(--n500); line-height:1.5; margin-top:8px; margin-bottom:20px; font-style:italic; }
 
-.article-kicker { display:flex; align-items:center; gap:12px; margin-top:20px; margin-bottom:14px; }
+.article-kicker { display:flex; align-items:center; gap:12px; margin-top:16px; margin-bottom:14px; }
 
 .article-headline { font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(24px,3.5vw,40px); font-weight:800; line-height:1.1; letter-spacing:-0.02em; color:var(--n900); margin:16px 0 20px; }
 
@@ -136,7 +136,8 @@ export async function renderArticle(env, slug) {
 
   const keyNumbers = jsonKeyNumbers(article.key_numbers);
 
-  const captionHtml = article.hero_caption ? `<div class="article-hero-caption">${escHtml(article.hero_caption)}</div>` : '';
+  const caption = article.hero_caption || 'Photo: iStock.';
+  const captionHtml = `<div class="article-hero-caption">${escHtml(caption)}</div>`;
 
   const heroHtml = `
 <div class="article-hero">

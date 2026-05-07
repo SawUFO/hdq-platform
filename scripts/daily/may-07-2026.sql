@@ -1,4 +1,4 @@
--- May 7, 2026 — Five Desk Articles (v4, new images + captions)
+-- May 7, 2026 — Five Desk Articles (v5, fixed body extraction + default captions)
 
 
 
@@ -105,11 +105,7 @@ VALUES
 
 <p>Russia''s statement that it plans to remain in OPEC+ despite the UAE''s exit is a moderating signal: the cartel''s largest non-Middle East producer is not following the UAE out the door, which limits the immediate downside to oil prices from a cartel fragmentation perspective. But the combination of a potential Hormuz reopening, a departing UAE, and the existing OPEC+ production increase of 206,000 barrels per day announced in early April creates a supply picture that is more bearish for oil than it appeared even two weeks ago.</p>
 
-<p>For Canadian energy producers whose economics improve materially above $70 WTI, this supply picture matters. Oil sands remain profitable at $80 to $85 Brent. The question is whether the war premium fully unwinds to pre-conflict levels near $73, which would squeeze margins meaningfully, or whether structural supply tightness from the conflict''s damage to Iranian infrastructure keeps a residual floor under prices even after a diplomatic resolution.</p>
-</div>
-<!-- /wp:html -->
-
-<!-- wp:html -->', '<div class="toolkit-section">
+<p>For Canadian energy producers whose economics improve materially above $70 WTI, this supply picture matters. Oil sands remain profitable at $80 to $85 Brent. The question is whether the war premium fully unwinds to pre-conflict levels near $73, which would squeeze margins meaningfully, or whether structural supply tightness from the conflict''s damage to Iranian infrastructure keeps a residual floor under prices even after a diplomatic resolution.</p>', '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
 <p>Clients with Canadian equity exposure are facing a morning of contradictory signals and will want help making sense of them. The client who holds energy names and saw strong earnings is confused and possibly frustrated that the stocks are down. The client with a balanced TSX exposure is watching one part of the portfolio fall while another rises. The client who has been waiting for a "safe" moment to add equity exposure is seeing record US highs alongside a flat TSX and wondering whether this is the moment or not. The dominant emotion is not fear. It is interpretive paralysis: too many things moving in too many directions to know what to do.</p>
 </div>
@@ -205,7 +201,7 @@ If you would find it useful to talk through your current positioning and what th
 <em>This communication is for educational purposes only.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(\''prospect-email\'', this)">Copy email</button>
-</div>', '[{"value":"83%","label":"Cenovus Q1 profit jump"},{"value":"-4%","label":"Energy sector drop"},{"value":"57.7","label":"Ivey PMI April"},{"value":"$98","label":"Brent crude today"}]', 'may07-market.jpg', '', 6, '2026-05-07', 'TSX,Energy,Cenovus,Suncor,Oil,OPEC,Sector Rotation', 1);
+</div>', '[{"value":"83%","label":"Cenovus Q1 profit jump"},{"value":"-4%","label":"Energy sector drop"},{"value":"57.7","label":"Ivey PMI April"},{"value":"$98","label":"Brent crude today"}]', 'may07-market.jpg', 'Photo: iStock.', 6, '2026-05-07', 'TSX,Energy,Cenovus,Suncor,Oil,OPEC,Sector Rotation', 1);
 
 INSERT OR REPLACE INTO articles 
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated)
@@ -297,11 +293,7 @@ VALUES
 
 <p>Three scenarios define the near-term range for energy markets and, by extension, for the inflation and rate dynamics that affect every Canadian portfolio. In the first, a signed MOU leads to a credible 30-day negotiation and a final agreement, Brent retreats toward $80 to $85, headline inflation in Canada eases faster than the Bank of Canada projected, and the June 10 rate decision tilts back toward neutral or mildly dovish. In the second, an MOU is signed but negotiations stall or collapse during the window, oil volatility spikes, the war premium partially restores, and the Bank faces the same two-directional dilemma it described on April 29. In the third, no MOU is reached in the near term, Trump resumes military strikes at higher intensity as threatened, oil surges past its prior peak, and the inflation-growth collision the Bank has been managing becomes acute.</p>
 
-<p>Markets this morning are pricing the first scenario as most probable. The unresolved issues catalogued above suggest the second scenario deserves more weight than the current oil price implies. That asymmetry, between market pricing and fundamental complexity, is the analytical frame for portfolio decisions over the next 30 days.</p>
-</div>
-<!-- /wp:html -->
-
-<!-- wp:html -->', '<div class="toolkit-section">
+<p>Markets this morning are pricing the first scenario as most probable. The unresolved issues catalogued above suggest the second scenario deserves more weight than the current oil price implies. That asymmetry, between market pricing and fundamental complexity, is the analytical frame for portfolio decisions over the next 30 days.</p>', '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
 <p>Clients are experiencing cautious relief this morning, but the complexity of the situation is producing a specific kind of confusion: they cannot tell whether to be optimistic or cautious, and they are looking to their advisor to resolve that ambiguity. Clients with energy holdings will have noticed that Suncor and Cenovus reported strong earnings and their stocks fell anyway. That disconnect is disorienting and will generate questions. Clients with broader equity exposure are seeing markets near record highs and wondering whether it is safe to relax.</p>
 </div>
@@ -395,7 +387,7 @@ If you would find it useful to talk through how your current positioning maps on
 <em>This communication is for educational purposes only.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(\''prospect-email\'', this)">Copy email</button>
-</div>', '[{"value":"$98","label":"Brent crude today"},{"value":"$73","label":"Pre-war level"},{"value":"30","label":"Day negotiation window"},{"value":"$115","label":"April peak"}]', 'may07-geo.jpg', '', 7, '2026-05-07', 'Iran,Hormuz,Oil,Geopolitical,MOU,OPEC,Energy', 1);
+</div>', '[{"value":"$98","label":"Brent crude today"},{"value":"$73","label":"Pre-war level"},{"value":"30","label":"Day negotiation window"},{"value":"$115","label":"April peak"}]', 'may07-geo.jpg', 'Photo: iStock.', 7, '2026-05-07', 'Iran,Hormuz,Oil,Geopolitical,MOU,OPEC,Energy', 1);
 
 INSERT OR REPLACE INTO articles 
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated)
@@ -488,11 +480,7 @@ VALUES
 
 <p>The practical implication of a prolonged hold at 2.25% is that the rate environment Canadian households and businesses are planning around today is likely to persist through June and possibly through the rest of 2026. Variable mortgage rates at approximately 3.3% and 5-year fixed rates at approximately 4.04% are not going to move dramatically in either direction without a significant shift in the inflation or growth picture. For financial planning purposes, that is useful certainty even if the absolute rates remain uncomfortable for borrowers renewing from the low-rate era.</p>
 
-<p>The scenario worth monitoring is the one where both risks materialize simultaneously: energy inflation stays elevated and CUSMA renegotiation introduces new trade uncertainty. That combination would force the Bank into the most difficult choice in its recent history, tightening into weakness, and the bond market''s current pricing of a 16% hike probability suggests it is not dismissing the possibility entirely.</p>
-</div>
-<!-- /wp:html -->
-
-<!-- wp:html -->', '<div class="toolkit-section">
+<p>The scenario worth monitoring is the one where both risks materialize simultaneously: energy inflation stays elevated and CUSMA renegotiation introduces new trade uncertainty. That combination would force the Bank into the most difficult choice in its recent history, tightening into weakness, and the bond market''s current pricing of a 16% hike probability suggests it is not dismissing the possibility entirely.</p>', '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
 <p>Clients who have been waiting for rate relief are frustrated. They watched nine consecutive cuts bring the overnight rate from 5% down to 2.25%, only to see the cutting cycle end before rates returned to the sub-2% environment many of them budgeted around. Now they are hearing that hikes are back on the table. The emotional state is a combination of rate fatigue and recalibration anxiety: they had mentally settled into an expectation of stability, and the two-directional language from the Bank has unsettled that.</p>
 </div>
@@ -580,7 +568,7 @@ For anyone with a variable-rate mortgage, a fixed income portfolio, or rate-sens
 <em>This communication is for educational purposes only.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(\''prospect-email\'', this)">Copy email</button>
-</div>', '[{"value":"2.25%","label":"BoC overnight rate"},{"value":"2.4%","label":"CPI March 2026"},{"value":"1.2%","label":"BoC 2026 GDP forecast"},{"value":"84%","label":"No-change probability Jun 10"}]', 'may07-economy.jpg', '', 6, '2026-05-07', 'Bank of Canada,Interest Rates,Inflation,GDP,CUSMA,Monetary Policy', 1);
+</div>', '[{"value":"2.25%","label":"BoC overnight rate"},{"value":"2.4%","label":"CPI March 2026"},{"value":"1.2%","label":"BoC 2026 GDP forecast"},{"value":"84%","label":"No-change probability Jun 10"}]', 'may07-economy.jpg', 'Photo: iStock.', 6, '2026-05-07', 'Bank of Canada,Interest Rates,Inflation,GDP,CUSMA,Monetary Policy', 1);
 
 INSERT OR REPLACE INTO articles 
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated)
@@ -673,11 +661,7 @@ VALUES
 
 <p>The rate conversation is largely settled: the BoC is on hold at 2.25%, variable rates are around 3.3%, and fixed rates are around 4.04%. The planning conversation is different and more nuanced. For clients in the renewal window, the advisor''s value is not in finding them the best rate. That is a mortgage broker''s job. The value is in understanding what the payment increase does to the entire financial plan and sequencing the response intelligently.</p>
 
-<p>The sequencing questions are specific. Which registered accounts should contribution rates be reduced in, if any? Is there RRSP room from prior years that should be used now, before the cash flow squeeze arrives? Is an FHSA still relevant for children of these clients? Does the renewal trigger a conversation about accelerated mortgage paydown versus continued market exposure? These questions require a complete picture of the client''s balance sheet, not just their mortgage balance.</p>
-</div>
-<!-- /wp:html -->
-
-<!-- wp:html -->', '<div class="toolkit-section">
+<p>The sequencing questions are specific. Which registered accounts should contribution rates be reduced in, if any? Is there RRSP room from prior years that should be used now, before the cash flow squeeze arrives? Is an FHSA still relevant for children of these clients? Does the renewal trigger a conversation about accelerated mortgage paydown versus continued market exposure? These questions require a complete picture of the client''s balance sheet, not just their mortgage balance.</p>', '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
 <p>Clients in the renewal window are experiencing what is often described as "payment shock": the gap between what they expected their renewal to cost and what it actually costs is wider than they anticipated. Many clients mentally anchored to the rate environment of 2022-2023, when the BoC was hiking, and assumed that the 2024-2025 cuts meant renewals would be more manageable. At 4.04% for a 5-year fixed, they are still renewing into a rate more than double what they originally locked in. The emotional state is a mixture of frustration, resignation, and anxiety about what the payment increase means for other financial goals.</p>
 </div>
@@ -858,11 +842,7 @@ VALUES
 
 <p>One of the less-discussed findings in behavioural finance is what researchers call the "discipline asymmetry": investors who maintain their process during downturns frequently abandon it during apparent recoveries. The logic is intuitive. Discipline during a crisis feels like virtue. Discipline during a rally feels like leaving money on the table.</p>
 
-<p>A balanced portfolio built to withstand a geopolitical shock is also built to participate in the recovery when it comes. That recovery participation does not require active repositioning. It is the design of the portfolio working as intended. The error occurs when investors treat an apparent resolution as a signal to increase risk exposure, only to discover that the resolution was premature.</p>
-</div>
-<!-- /wp:html -->
-
-<!-- wp:html -->', '<div class="toolkit-section">
+<p>A balanced portfolio built to withstand a geopolitical shock is also built to participate in the recovery when it comes. That recovery participation does not require active repositioning. It is the design of the portfolio working as intended. The error occurs when investors treat an apparent resolution as a signal to increase risk exposure, only to discover that the resolution was premature.</p>', '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
 <p>Clients who have been anxious since February are now feeling something more complicated: cautious relief. Oil is down, markets are up, and the news feels positive for the first time in weeks. Some will feel validated in having stayed put. Others, particularly those who reduced equity exposure during the crisis, will feel the pull to re-enter. The emotional state is not panic. It is optimistic impatience, and it is harder to reason with than fear.</p>
 </div>
@@ -957,4 +937,4 @@ If you''d like a second opinion on how your portfolio is positioned heading into
 <em>This communication is for educational purposes only.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(\''prospect-email\'', this)">Copy email</button>
-</div>', '[{"value":"-3.4%","label":"Oil drop today"},{"value":"$25","label":"War premium remaining"},{"value":"21hrs","label":"Islamabad talks duration"},{"value":"$115","label":"April oil peak"}]', 'may07-behaviour.jpg', '', 5, '2026-05-07', 'Behavioural Finance,Investor Psychology,Oil,Iran,FOMO,Portfolio Discipline', 1);
+</div>', '[{"value":"-3.4%","label":"Oil drop today"},{"value":"$25","label":"War premium remaining"},{"value":"21hrs","label":"Islamabad talks duration"},{"value":"$115","label":"April oil peak"}]', 'may07-behaviour.jpg', 'Photo: iStock.', 5, '2026-05-07', 'Behavioural Finance,Investor Psychology,Oil,Iran,FOMO,Portfolio Discipline', 1);
