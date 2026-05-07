@@ -19,10 +19,14 @@ article { min-width:0; }
 .meta-dot { width:3px; height:3px; background:var(--n400); border-radius:50%; }
 
 /* ── The Brief ──────────────────────────────────────────────────────────── */
-.brief-box { background:var(--navy-50); border-left:3px solid var(--gold-400); border-radius:0 6px 6px 0; padding:28px 32px; margin-bottom:36px; }
-.brief-label { font-family:'DM Sans',sans-serif; font-size:11px; font-weight:700; color:var(--gold-600); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; }
-.brief-box ul { margin:0; padding-left:18px; }
-.brief-box li { font-size:13px; line-height:1.65; color:var(--n800); margin-bottom:6px; }
+.brief-box { background:var(--navy-900); border-radius:8px; padding:28px 32px; margin-bottom:36px; }
+.brief-label { font-family:'DM Sans',sans-serif; font-size:10px; font-weight:700; color:var(--gold-400); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:8px; }
+.brief-label::after { content:''; flex:1; height:1px; background:rgba(255,255,255,0.1); }
+.brief-box ul { margin:0; padding:0; list-style:none; }
+.brief-box li { font-size:14px; line-height:1.6; color:rgba(255,255,255,0.85); margin-bottom:0; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; gap:12px; align-items:baseline; }
+.brief-box li:last-child { border-bottom:none; padding-bottom:0; }
+.brief-box li::before { content:'\2014'; color:var(--gold-400); font-weight:700; flex-shrink:0; font-size:13px; }
+.brief-box li strong { color:#fff; font-weight:600; }
 
 /* ── Article body ───────────────────────────────────────────────────────── */
 .article-body { font-size:15px; line-height:1.75; color:#2a2a2a; }
