@@ -8,9 +8,9 @@ const ARTICLE_CSS = `
 
 article { min-width:0; }
 
-.article-hero { aspect-ratio:16/7; overflow:hidden; border-radius:6px; margin-bottom:28px; }
+.article-hero { aspect-ratio:16/7; overflow:hidden; border-radius:6px; margin-bottom:0; }
 .article-hero img { width:100%; height:100%; object-fit:cover; display:block; }
-.article-hero-caption { font-size:11px; color:var(--n500); line-height:1.4; padding:5px 2px 16px; font-style:italic; }
+.article-hero-caption { font-size:11px; color:var(--n500); line-height:1.4; padding:6px 0 24px; font-style:italic; border-bottom:1px solid var(--n100); margin-bottom:4px; }
 
 .article-kicker { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
 
