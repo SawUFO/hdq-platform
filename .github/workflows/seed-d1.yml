@@ -1,0 +1,29 @@
+name: Seed D1 Articles
+
+on:
+  workflow_dispatch:
+    inputs:
+      sql_file:
+        description: 'SQL file to run (in scripts/daily/)'
+        required: true
+        default: 'may-07-2026.sql'
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Execute SQL against D1
+        run: wrangler d1 execute hdq-articles --file=scripts/daily/${{ github.event.inputs.sql_file }} --remote
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
