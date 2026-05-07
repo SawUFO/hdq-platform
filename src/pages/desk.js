@@ -1,5 +1,5 @@
 import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse } from '../shell.js';
-import { renderHeroCard, renderSubCard, renderNewsItem, renderSidebar, subscribeFooterBand, PAGE_CSS } from './news-shared.js';
+import { subscribeFooterBand, PAGE_CSS } from './news.js';
 
 const DESK_TO_NAV = {
   market: 'market', economy: 'economy', geo: 'geo',

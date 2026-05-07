@@ -9,15 +9,24 @@ binding = "DB"
 database_name = "hdq-articles"
 database_id = "ca05159d-cb5a-406b-b1a9-4ca984df4d9c"
 
-# ── Static assets (images, CSS, SVGs, static HTML pages) ─────────────────────
+# ── Static assets ─────────────────────────────────────────────────────────────
 [assets]
 directory = "./static"
 binding = "ASSETS"
 
-# ── Routes — both domains serve the same worker ───────────────────────────────
-routes = [
-  { pattern = "hdq.ca/*", zone_name = "hdq.ca" },
-  { pattern = "www.hdq.ca/*", zone_name = "hdq.ca" },
-  { pattern = "hdqca.com/*", zone_name = "hdqca.com" },
-  { pattern = "www.hdqca.com/*", zone_name = "hdqca.com" }
-]
+# ── Routes — both domains ─────────────────────────────────────────────────────
+[[routes]]
+pattern = "hdq.ca/*"
+zone_name = "hdq.ca"
+
+[[routes]]
+pattern = "www.hdq.ca/*"
+zone_name = "hdq.ca"
+
+[[routes]]
+pattern = "hdqca.com/*"
+zone_name = "hdqca.com"
+
+[[routes]]
+pattern = "www.hdqca.com/*"
+zone_name = "hdqca.com"

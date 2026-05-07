@@ -1,6 +1,6 @@
 import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, jsonKeyNumbers, htmlResponse } from '../shell.js';
 
-const PAGE_CSS = `
+export const PAGE_CSS = `
 .content-area { padding: 36px 0 60px; }
 .content-grid { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; max-width: 100%; }
 @media(max-width:1000px) { .content-grid { grid-template-columns: 1fr; } }
