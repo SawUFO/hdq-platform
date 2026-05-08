@@ -135,7 +135,7 @@ function renderHeroCard(a) {
 <div class="feat-wrap">
   <a href="${articleUrl(a)}" class="feat-card">
     <div class="feat-inner">
-      <div class="feat-img photo-wrap gold-overlay">
+      <div class="feat-img photo-wrap">
         <img src="/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
       </div>
       <div class="feat-body">
@@ -160,7 +160,7 @@ function renderHeroCard(a) {
 function renderSubCard(a) {
   return `
 <a href="${articleUrl(a)}" class="sub-card">
-  <div class="sub-img photo-wrap gold-overlay">
+  <div class="sub-img photo-wrap">
     <img src="/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
   </div>
   <div class="sub-body">
