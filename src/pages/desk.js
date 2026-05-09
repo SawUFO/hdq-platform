@@ -100,7 +100,7 @@ function renderSubCardDesk(a) {
   return `
 <a href="${articleUrl(a)}" class="sub-card">
   <div class="sub-img photo-wrap">
-    <img src="/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
+    <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
   </div>
   <div class="sub-body">
     <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</span>
@@ -120,7 +120,7 @@ function renderNewsItemDesk(a) {
   return `
 <div class="news-item">
   <a href="${articleUrl(a)}" class="news-thumb photo-wrap thumb-treat">
-    <img src="/${escHtml(a.hero_image)}" alt="" loading="lazy">
+    <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="" loading="lazy">
   </a>
   <div>
     <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</span>
@@ -139,7 +139,7 @@ function renderSidebarDesk(flash, trendingTags) {
   const flashHtml = flash.map(a => `
 <div class="flash-item">
   <a href="${articleUrl(a)}" class="flash-thumb photo-wrap thumb-treat">
-    <img src="/${escHtml(a.hero_image)}" alt="" loading="lazy">
+    <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="" loading="lazy">
   </a>
   <div>
     <a href="${articleUrl(a)}" class="flash-title">${escHtml(a.title)}</a>
