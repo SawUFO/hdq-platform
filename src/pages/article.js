@@ -149,7 +149,7 @@ export async function renderArticle(env, slug) {
   const caption = article.hero_caption || 'Photo: iStock.';
   const heroHtml = `
 <div class="article-hero">
-  <img src="/${escHtml(article.hero_image)}" alt="${escHtml(article.title)}" loading="eager">
+  <img src="https://assets.hdq.ca/${escHtml(article.hero_image)}" alt="${escHtml(article.title)}" loading="eager">
 </div>
 <div class="article-hero-caption">${escHtml(caption)}</div>`;
 
