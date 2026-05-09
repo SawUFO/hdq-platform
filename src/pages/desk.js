@@ -77,7 +77,7 @@ function renderHeroCardDesk(a) {
   <a href="${articleUrl(a)}" class="feat-card">
     <div class="feat-inner">
       <div class="feat-img photo-wrap">
-        <img src="/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
+        <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
       </div>
       <div class="feat-body">
         <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</span>
