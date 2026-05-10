@@ -14,24 +14,24 @@ export function pageShell(bodyHtml, opts = {}) {
   } = opts;
 
   const navLinks = [
-    { href: '/news',       label: 'News',                    key: 'news' },
-    { href: '/hdq-prodev.html', label: 'Professional Development', key: 'prodev' },
-    { href: '/hdq-whitelabel.html', label: 'For Firms',     key: 'whitelabel' },
-    { href: '/hdq-homepage.html', label: 'About',           key: 'about' },
+    { href: '/news',                  label: 'News',                    key: 'news' },
+    { href: '/hdq-prodev.html',       label: 'Professional Development', key: 'prodev' },
+    { href: '/hdq-whitelabel.html',   label: 'For Firms',               key: 'whitelabel' },
+    { href: '/hdq-homepage.html',     label: 'About',                   key: 'about' },
   ];
 
   const deskLinks = [
-    { href: '/news',        label: 'All',            key: 'all' },
-    { href: '/market',      label: 'Market',         key: 'market' },
-    { href: '/geopolitical',label: 'Geopolitical',   key: 'geo' },
-    { href: '/economy',     label: 'Economy',        key: 'economy' },
-    { href: '/tax-wealth',  label: 'Tax &amp; Wealth', key: 'tax' },
-    { href: '/behavioural', label: 'Behavioural',    key: 'behaviour' },
+    { href: '/news',              label: 'All',                key: 'all' },
+    { href: '/market',            label: 'Market',             key: 'market' },
+    { href: '/geopolitical',      label: 'Geopolitical',       key: 'geo' },
+    { href: '/economy',           label: 'Economy',            key: 'economy' },
+    { href: '/tax-wealth',        label: 'Tax &amp; Wealth',   key: 'tax' },
+    { href: '/behavioural',       label: 'Behavioural',        key: 'behaviour' },
     null, // divider
-    { href: '/news',        label: 'Daily Thread',   key: 'thread' },
-    { href: '/news',        label: 'Weekend Edition',key: 'weekend' },
-    { href: '/news',        label: 'Month at a Glance', key: 'month' },
-    { href: '/archive',     label: 'Archive',        key: 'archive' },
+    { href: '/daily-thread',      label: 'Daily Thread',       key: 'thread' },
+    { href: '/weekend',           label: 'Weekend Edition',    key: 'weekend' },
+    { href: '/month-at-a-glance', label: 'Month at a Glance', key: 'month' },
+    { href: '/archive',           label: 'Archive',            key: 'archive' },
   ];
 
   const navHtml = navLinks.map(l =>
@@ -83,9 +83,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
   <nav class="mobile-nav-links" aria-label="Mobile navigation">
     ${mobileNavLinks}
     <div class="mobile-nav-divider"></div>
-    <a href="/news" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
-    <a href="/news" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
-    <a href="/news" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
+    <a href="/daily-thread" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
+    <a href="/weekend" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
+    <a href="/month-at-a-glance" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
     <a href="/archive" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
     <a href="/hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
   </nav>
@@ -136,9 +136,9 @@ ${bodyHtml}
     </div>
     <div class="footer-nav"><h6>Publication</h6><ul>
       <li><a href="/news">Daily Briefing</a></li>
-      <li><a href="/news">Daily Thread</a></li>
-      <li><a href="/news">Weekend Edition</a></li>
-      <li><a href="/news">Month at a Glance</a></li>
+      <li><a href="/daily-thread">Daily Thread</a></li>
+      <li><a href="/weekend">Weekend Edition</a></li>
+      <li><a href="/month-at-a-glance">Month at a Glance</a></li>
       <li><a href="/archive">Archive</a></li>
     </ul></div>
     <div class="footer-nav"><h6>Learning</h6><ul>
