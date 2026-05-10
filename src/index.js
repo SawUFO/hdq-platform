@@ -3,7 +3,6 @@
  * Routes all dynamic page requests and serves static assets.
  * Static pages (legal, subscribe, whitelabel, prodev, homepage) are served directly by Pages.
  */
-
 import { renderNews } from './pages/news.js';
 import { renderDesk } from './pages/desk.js';
 import { renderArticle } from './pages/article.js';
@@ -31,6 +30,11 @@ export default {
       if (path === '/tax-wealth' || path === '/tax' || path === '/hdq-tax-wealth') return renderDesk(env, 'tax');
       if (path === '/behavioural' || path === '/behavioral' || path === '/hdq-behavioural') return renderDesk(env, 'behaviour');
 
+      // Special edition pages
+      if (path === '/daily-thread') return renderDesk(env, 'thread');
+      if (path === '/weekend') return renderDesk(env, 'weekend');
+      if (path === '/month-at-a-glance') return renderDesk(env, 'month');
+
       // Archive
       if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams);
 
@@ -55,9 +59,9 @@ export default {
         '/hdq-tax-wealth.html': '/tax-wealth',
         '/hdq-behavioural.html': '/behavioural',
         '/hdq-archive.html': '/archive',
-        '/hdq-daily-thread.html': '/news',
-        '/hdq-weekend.html': '/news',
-        '/hdq-month.html': '/news',
+        '/hdq-daily-thread.html': '/daily-thread',
+        '/hdq-weekend.html': '/weekend',
+        '/hdq-month.html': '/month-at-a-glance',
       };
       if (legacyMap[path + '.html'] || legacyMap[path]) {
         const dest = legacyMap[path + '.html'] || legacyMap[path];
