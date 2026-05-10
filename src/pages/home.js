@@ -44,6 +44,8 @@ const HOME_CSS = `
 .division-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
 @media(max-width:900px) { .division-grid { grid-template-columns: repeat(2,1fr); } }
 @media(max-width:520px) { .division-grid { grid-template-columns: 1fr; } }
+
+/* Active division cards */
 .division-card {
   background: var(--card); border: 1px solid var(--n200); border-radius: 6px;
   padding: 28px 24px 24px; transition: border-color 0.2s, box-shadow 0.2s;
@@ -56,20 +58,25 @@ const HOME_CSS = `
 }
 .division-card:hover { border-color: var(--n400); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
 .division-card:hover::after { transform: scaleX(1); }
-.division-card.coming { background: var(--n50); border-style: dashed; border-color: var(--n300); cursor: default; pointer-events: none; }
+
+/* Coming card — same structure, uniform opacity overlay effect */
+.division-card.coming {
+  background: var(--n50);
+  border-style: dashed;
+  border-color: var(--n300);
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.55;
+}
 .division-card.coming::after { display: none; }
+
+/* Shared inner elements — same styles, coming card inherits opacity from parent */
 .division-number { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; color: var(--gold-600); letter-spacing: 0.1em; margin-bottom: 16px; }
-.division-card.coming .division-number { color: var(--gold-500); opacity: 0.7; }
 .division-icon { width: 36px; height: 36px; background: var(--navy-50); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-.division-card.coming .division-icon { background: var(--n100); }
 .division-icon svg { width: 18px; height: 18px; color: var(--navy-700); }
-.division-card.coming .division-icon svg { color: var(--n500); }
 .division-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 17px; font-weight: 700; color: var(--n900); margin-bottom: 8px; line-height: 1.25; }
-.division-card.coming .division-name { color: var(--n500); }
 .division-desc { font-size: 13px; color: var(--n600); line-height: 1.55; margin-bottom: 20px; }
-.division-card.coming .division-desc { color: var(--n400); }
 .division-link { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: var(--navy-700); display: flex; align-items: center; gap: 5px; }
-.division-card.coming .division-link { color: var(--n400); }
 .division-card:not(.coming):hover .division-link { gap: 9px; }
 
 /* TODAY'S EDITION */
@@ -82,8 +89,13 @@ const HOME_CSS = `
 .edition-meta { font-size: 12px; color: var(--n600); margin-bottom: 14px; display: flex; gap: 10px; }
 .edition-teaser { font-size: 14px; color: var(--n800); line-height: 1.65; margin-bottom: 20px; }
 .desk-list { list-style: none; border-top: 1px solid var(--navy-100); margin: 0; padding: 0; }
-.desk-item { display: grid; grid-template-columns: 84px 1fr; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--navy-100); align-items: center; }
-.desk-tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 3px; white-space: nowrap; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; border: 1px solid; display: block; text-decoration: none; }
+.desk-item { display: grid; grid-template-columns: 96px 1fr; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--navy-100); align-items: center; }
+.desk-tag {
+  font-size: 10px; font-weight: 700; padding: 3px 0;
+  border-radius: 3px; letter-spacing: 0.06em; text-transform: uppercase;
+  text-align: center; border: 1px solid; display: block; text-decoration: none;
+  width: 96px; box-sizing: border-box; overflow: hidden;
+}
 .desk-title-link { font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 600; color: var(--n900); line-height: 1.3; text-decoration: none; display: block; }
 .desk-title-link:hover { color: var(--navy-700); }
 
