@@ -5,17 +5,12 @@ const ARTICLE_CSS = `
 /* ── Article layout ─────────────────────────────────────────────────────── */
 .article-wrap { max-width:1200px; margin:0 auto; padding:48px 24px 80px; display:grid; grid-template-columns:1fr 300px; gap:56px; }
 @media(max-width:900px){ .article-wrap{grid-template-columns:1fr;gap:40px;padding:32px 16px 60px;} }
-
 article { min-width:0; }
-
 .article-hero { aspect-ratio:16/7; overflow:hidden; border-radius:6px; margin-bottom:0; }
 .article-hero img { width:100%; height:100%; object-fit:cover; display:block; }
 .article-hero-caption { font-size:11px; color:var(--n500); line-height:1.4; padding:6px 0 24px; font-style:italic; border-bottom:1px solid var(--n100); margin-bottom:4px; }
-
 .article-kicker { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
-
 .article-headline { font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(24px,3.5vw,40px); font-weight:800; line-height:1.1; letter-spacing:-0.02em; color:var(--n900); margin:16px 0 20px; }
-
 .article-byline { font-size:13px; color:var(--n600); display:flex; gap:8px; align-items:center; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid var(--n200); }
 .meta-dot { width:3px; height:3px; background:var(--n400); border-radius:50%; }
 
@@ -42,20 +37,18 @@ article { min-width:0; }
 .article-body h4 { font-family:'Bricolage Grotesque',sans-serif; font-size:15px; font-weight:700; color:var(--n900); margin:20px 0 8px; }
 
 /* ── Share row ──────────────────────────────────────────────────────────── */
-.share-row { display:flex; gap:10px; margin-top:32px; margin-bottom:48px; flex-wrap:wrap; }
+.share-row { display:flex; gap:10px; margin-top:32px; flex-wrap:wrap; }
 .btn-share { font-size:12px; font-weight:600; padding:8px 16px; border-radius:4px; border:1px solid var(--n200); background:#fff; cursor:pointer; color:var(--n800); transition:all 0.15s; text-decoration:none; }
 .btn-share:hover { border-color:var(--navy-700); color:var(--navy-700); }
 
 /* ── Sidebar ────────────────────────────────────────────────────────────── */
 .sidebar-sticky { position:sticky; top:80px; display:flex; flex-direction:column; gap:24px; }
-
 .key-numbers { background:var(--navy-900); border-radius:6px; padding:24px; }
 .key-numbers-label { font-size:11px; font-weight:700; color:var(--gold-400); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; }
 .key-number { border-bottom:1px solid rgba(255,255,255,0.08); padding:14px 0; }
 .key-number:last-child { border-bottom:none; padding-bottom:0; }
 .key-number-value { font-family:'Bricolage Grotesque',sans-serif; font-size:26px; font-weight:800; color:#fff; line-height:1; margin-bottom:4px; }
 .key-number-label { font-size:11px; color:rgba(255,255,255,0.45); }
-
 .related-box { background:#fff; border:1px solid var(--n200); border-radius:6px; padding:20px; }
 .related-label { font-size:11px; font-weight:700; color:var(--n600); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; }
 .related-item { display:block; padding:12px 0; border-bottom:1px solid var(--n100); text-decoration:none; }
@@ -63,7 +56,6 @@ article { min-width:0; }
 .related-item-tag { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
 .related-item-title { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; color:var(--n900); line-height:1.3; transition:color 0.15s; }
 .related-item:hover .related-item-title { color:var(--navy-700); }
-
 .sidebar-legal { font-size:11px; color:var(--n600); line-height:1.5; padding:14px; background:var(--n50); border-radius:4px; border:1px solid var(--n200); }
 
 /* ── Chart ──────────────────────────────────────────────────────────────── */
@@ -78,7 +70,7 @@ article { min-width:0; }
 .sources-text { font-size:12px; color:var(--n600); line-height:1.6; }
 
 /* ── Educational disclaimer ─────────────────────────────────────────────── */
-.edu-disclaimer { background:var(--n50); border:1px solid var(--n200); border-radius:4px; padding:14px 16px; margin-bottom:24px; font-size:12px; color:var(--n800); line-height:1.5; font-style:italic; }
+.edu-disclaimer { background:var(--n50); border:1px solid var(--n200); border-radius:4px; padding:14px 16px; margin-top:32px; margin-bottom:24px; font-size:12px; color:var(--n800); line-height:1.5; font-style:italic; }
 .edu-disclaimer strong { font-weight:600; font-style:normal; }
 `;
 
@@ -119,8 +111,6 @@ export async function renderThread(env, slug) {
   ${article.brief_html}
 </section>` : '';
 
-  const articleUrl_ = `https://hdq.ca/${article.slug}`;
-
   const body = `
 <main>
   <div class="article-wrap">
@@ -143,11 +133,11 @@ export async function renderThread(env, slug) {
       ${briefHtml}
       <div class="article-body">${article.body_html || ''}</div>
       ${article.sources_text ? `
-      <div class="sources-box" role="contentinfo">
+      <div class="sources-box">
         <div class="sources-label">Sources</div>
         <p class="sources-text">${escHtml(article.sources_text)}</p>
       </div>` : ''}
-      <div class="edu-disclaimer" role="note">
+      <div class="edu-disclaimer">
         <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice or a recommendation to buy or sell any security. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer →</a>
       </div>
       <div class="share-row">
