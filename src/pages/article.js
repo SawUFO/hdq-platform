@@ -42,7 +42,7 @@ article { min-width:0; }
 .article-body h4 { font-family:'Bricolage Grotesque',sans-serif; font-size:15px; font-weight:700; color:var(--n900); margin:20px 0 8px; }
 
 /* ── Share row ──────────────────────────────────────────────────────────── */
-.share-row { display:flex; gap:10px; margin-top:32px; flex-wrap:wrap; }
+.share-row { display:flex; gap:10px; margin-top:32px; margin-bottom:48px; flex-wrap:wrap; }
 .btn-share { font-size:12px; font-weight:600; padding:8px 16px; border-radius:4px; border:1px solid var(--n200); background:#fff; cursor:pointer; color:var(--n800); transition:all 0.15s; text-decoration:none; }
 .btn-share:hover { border-color:var(--navy-700); color:var(--navy-700); }
 
@@ -136,7 +136,6 @@ export async function renderArticle(env, slug) {
     return new Response('Article not found', { status: 404 });
   }
 
-  // Related: other articles same date
   const related = await env.DB.prepare(`
     SELECT * FROM articles
     WHERE published_at=? AND slug!=?
@@ -325,6 +324,7 @@ function renderPublicToolkit(article) {
 }
 
 function articleScripts(article) {
+  const articleUrl_ = `https://hdq.ca/${article.slug}`;
   return `
 <script>
 function unlockToolkit(){
@@ -352,8 +352,10 @@ function togglePanel(header){
 function copyEmail(id,btn){
   var el=document.getElementById(id);
   var text=el.innerText;
-  navigator.clipboard.writeText(text).then(function(){
-    btn.textContent='Copied ✓';btn.classList.add('copied');
+  // Append article URL to copied email content
+  var fullText=text+'\n\nRead the full article: ${articleUrl_}';
+  navigator.clipboard.writeText(fullText).then(function(){
+    btn.textContent='Copied \u2713';btn.classList.add('copied');
     setTimeout(function(){btn.textContent='Copy email';btn.classList.remove('copied');},2000);
   });
 }
@@ -383,7 +385,7 @@ function deskNavHref(desk) {
   const map = {
     market:'/market', economy:'/economy', geo:'/geopolitical',
     tax:'/tax-wealth', behaviour:'/behavioural',
-    thread:'/news', weekend:'/news', month:'/news',
+    thread:'/daily-thread', weekend:'/weekend', month:'/month-at-a-glance',
   };
   return map[desk] || '/news';
 }
