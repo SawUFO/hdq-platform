@@ -42,7 +42,7 @@ article { min-width:0; }
 .article-body h4 { font-family:'Bricolage Grotesque',sans-serif; font-size:15px; font-weight:700; color:var(--n900); margin:20px 0 8px; }
 
 /* ── Share row ──────────────────────────────────────────────────────────── */
-.share-row { display:flex; gap:10px; margin-top:32px; margin-bottom:48px; flex-wrap:wrap; }
+.share-row { display:flex; gap:10px; margin-top:32px; flex-wrap:wrap; }
 .btn-share { font-size:12px; font-weight:600; padding:8px 16px; border-radius:4px; border:1px solid var(--n200); background:#fff; cursor:pointer; color:var(--n800); transition:all 0.15s; text-decoration:none; }
 .btn-share:hover { border-color:var(--navy-700); color:var(--navy-700); }
 
@@ -93,14 +93,12 @@ article { min-width:0; }
 
 /* ── Sidebar ────────────────────────────────────────────────────────────── */
 .sidebar-sticky { position:sticky; top:80px; display:flex; flex-direction:column; gap:24px; }
-
 .key-numbers { background:var(--navy-900); border-radius:6px; padding:24px; }
 .key-numbers-label { font-size:11px; font-weight:700; color:var(--gold-400); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; }
 .key-number { border-bottom:1px solid rgba(255,255,255,0.08); padding:14px 0; }
 .key-number:last-child { border-bottom:none; padding-bottom:0; }
 .key-number-value { font-family:'Bricolage Grotesque',sans-serif; font-size:26px; font-weight:800; color:#fff; line-height:1; margin-bottom:4px; }
 .key-number-label { font-size:11px; color:rgba(255,255,255,0.45); }
-
 .related-box { background:#fff; border:1px solid var(--n200); border-radius:6px; padding:20px; }
 .related-label { font-size:11px; font-weight:700; color:var(--n600); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; }
 .related-item { display:block; padding:12px 0; border-bottom:1px solid var(--n100); text-decoration:none; }
@@ -108,10 +106,9 @@ article { min-width:0; }
 .related-item-tag { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
 .related-item-title { font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:700; color:var(--n900); line-height:1.3; transition:color 0.15s; }
 .related-item:hover .related-item-title { color:var(--navy-700); }
-
 .sidebar-legal { font-size:11px; color:var(--n600); line-height:1.5; padding:14px; background:var(--n50); border-radius:4px; border:1px solid var(--n200); }
 
-/* ── Chart source ───────────────────────────────────────────────────────── */
+/* ── Chart ──────────────────────────────────────────────────────────────── */
 .hdq-chart { margin:32px 0; }
 .hdq-chart__title { font-family:'Bricolage Grotesque',sans-serif; font-size:14px; font-weight:700; color:var(--n900); margin-bottom:4px; }
 .hdq-chart__subtitle { font-size:12px; color:var(--n600); margin-bottom:12px; }
@@ -123,29 +120,21 @@ article { min-width:0; }
 .sources-text { font-size:12px; color:var(--n600); line-height:1.6; }
 
 /* ── Educational disclaimer ─────────────────────────────────────────────── */
-.edu-disclaimer { background:var(--n50); border:1px solid var(--n200); border-radius:4px; padding:14px 16px; margin-bottom:24px; font-size:12px; color:var(--n800); line-height:1.5; font-style:italic; }
+.edu-disclaimer { background:var(--n50); border:1px solid var(--n200); border-radius:4px; padding:14px 16px; margin-top:32px; margin-bottom:24px; font-size:12px; color:var(--n800); line-height:1.5; font-style:italic; }
 .edu-disclaimer strong { font-weight:600; font-style:normal; }
 `;
 
 export async function renderArticle(env, slug) {
-  const article = await env.DB.prepare(`
-    SELECT * FROM articles WHERE slug=?
-  `).bind(slug).first();
-
-  if (!article) {
-    return new Response('Article not found', { status: 404 });
-  }
+  const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
+  if (!article) return new Response('Article not found', { status: 404 });
 
   const related = await env.DB.prepare(`
-    SELECT * FROM articles
-    WHERE published_at=? AND slug!=?
-    ORDER BY desk ASC
-    LIMIT 4
+    SELECT * FROM articles WHERE published_at=? AND slug!=? ORDER BY desk ASC LIMIT 4
   `).bind(article.published_at, slug).all();
 
   const keyNumbers = jsonKeyNumbers(article.key_numbers);
-
   const caption = article.hero_caption || 'Photo: iStock.';
+
   const heroHtml = `
 <div class="article-hero">
   <img src="https://assets.hdq.ca/${escHtml(article.hero_image)}" alt="${escHtml(article.title)}" loading="eager">
@@ -163,7 +152,7 @@ export async function renderArticle(env, slug) {
     : (article.respond_html || article.prospect_html ? renderPublicToolkit(article) : '');
 
   const keyNumbersHtml = keyNumbers.length ? `
-<div class="key-numbers" aria-label="Key numbers">
+<div class="key-numbers">
   <div class="key-numbers-label">Key Numbers</div>
   ${keyNumbers.map(kn => `
   <div class="key-number">
@@ -173,7 +162,7 @@ export async function renderArticle(env, slug) {
 </div>` : '';
 
   const relatedHtml = (related.results || []).length ? `
-<div class="related-box" aria-label="Related articles">
+<div class="related-box">
   <div class="related-label">Also Today</div>
   ${(related.results || []).map(r => `
   <a href="${articleUrl(r)}" class="related-item">
@@ -190,45 +179,37 @@ export async function renderArticle(env, slug) {
     <article aria-labelledby="article-headline">
       ${heroHtml}
       <div class="article-kicker">
-        <a href="${deskHref}" class="cat-tag ${escHtml(DESK_CAT_CLASS[article.desk] || '')}" style="display:inline-flex;" aria-label="Category: ${escHtml(DESK_DISPLAY[article.desk] || article.desk)}">${escHtml(DESK_DISPLAY[article.desk] || article.desk)}</a>
+        <a href="${deskHref}" class="cat-tag ${escHtml(DESK_CAT_CLASS[article.desk] || '')}" style="display:inline-flex;">${escHtml(DESK_DISPLAY[article.desk] || article.desk)}</a>
       </div>
       <h1 class="article-headline" id="article-headline">${escHtml(article.title)}</h1>
       <div class="article-byline">
         <span>${fmtDate(article.published_at)}</span>
-        <span class="meta-dot" aria-hidden="true"></span>
+        <span class="meta-dot"></span>
         <span>${article.read_time} min read</span>
-        <span class="meta-dot" aria-hidden="true"></span>
+        <span class="meta-dot"></span>
         <span>HDQ Editorial</span>
       </div>
-
       ${briefHtml}
-
-      <div class="article-body">
-        ${article.body_html || ''}
-      </div>
-
+      <div class="article-body">${article.body_html || ''}</div>
       ${article.sources_text ? `
-      <div class="sources-box" role="contentinfo">
+      <div class="sources-box">
         <div class="sources-label">Sources</div>
         <p class="sources-text">${escHtml(article.sources_text)}</p>
       </div>` : ''}
-      <div class="edu-disclaimer" role="note">
+      <div class="edu-disclaimer">
         <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice, financial planning advice, or a recommendation to buy or sell any security. Canadian advisors should apply their own professional judgment. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer →</a>
       </div>
-
-      <div class="share-row" aria-label="Share article">
+      <div class="share-row">
         <button class="btn-share" onclick="copyLink()">📋 Copy Link</button>
         <a href="mailto:?subject=${encodeURIComponent('HDQ: ' + article.title)}&body=${encodeURIComponent('Thought you\'d find this useful: https://hdq.ca/' + article.slug)}" class="btn-share">📧 Email</a>
       </div>
-
       ${toolkitHtml}
     </article>
-
-    <aside aria-label="Article sidebar">
+    <aside>
       <div class="sidebar-sticky">
         ${keyNumbersHtml}
         ${relatedHtml}
-        <div class="sidebar-legal" role="note" aria-label="Legal notice">
+        <div class="sidebar-legal">
           <strong>Educational content only.</strong> HDQ articles are written for Canadian financial advisors for professional development purposes. Nothing published by HDQ constitutes personalized investment advice. <a href="/hdq-legal.html" style="color:var(--navy-700);">Full legal disclaimer →</a>
         </div>
       </div>
@@ -249,22 +230,21 @@ ${subscribeFooterBand()}`;
 
 function renderGatedToolkit(article) {
   return `
-<section class="toolkit-gate" aria-label="Subscriber tools">
+<section class="toolkit-gate">
   <div class="toolkit-locked" id="toolkit-locked">
-    <svg class="toolkit-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+    <svg class="toolkit-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
       <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
     </svg>
     <h3>Subscriber Tools</h3>
     <p>The RESPOND and PROSPECT toolkits — including client scripts, action checklists, and email templates — are available to HDQ subscribers.</p>
     <div class="toolkit-input-row">
-      <input type="password" class="toolkit-input" id="toolkit-password" placeholder="Access code" aria-label="Enter access code">
-      <button class="toolkit-unlock-btn" onclick="unlockToolkit()" aria-label="Unlock subscriber tools">Unlock</button>
+      <input type="password" class="toolkit-input" id="toolkit-password" placeholder="Access code">
+      <button class="toolkit-unlock-btn" onclick="unlockToolkit()">Unlock</button>
     </div>
-    <div class="toolkit-error" id="toolkit-error" role="alert">Incorrect access code. Please try again.</div>
+    <div class="toolkit-error" id="toolkit-error">Incorrect access code. Please try again.</div>
   </div>
-
-  <div class="toolkit-content" id="toolkit-content" aria-live="polite">
+  <div class="toolkit-content" id="toolkit-content">
     <div class="toolkit-header-row">
       <div class="toolkit-title">Subscriber Tools — ${fmtDate(article.published_at)}</div>
       <div class="toolkit-badge">🔓 Unlocked</div>
@@ -272,19 +252,19 @@ function renderGatedToolkit(article) {
     <div class="toolkit-panels">
       ${article.respond_html ? `
       <div class="toolkit-panel">
-        <div class="toolkit-panel-header" onclick="togglePanel(this)" aria-expanded="false" role="button" tabindex="0">
-          <span class="toolkit-panel-icon" aria-hidden="true">🛡️</span>
+        <div class="toolkit-panel-header" onclick="togglePanel(this)">
+          <span class="toolkit-panel-icon">🛡️</span>
           <span class="toolkit-panel-label">Respond</span>
-          <span class="toolkit-panel-chevron" aria-hidden="true">▼</span>
+          <span class="toolkit-panel-chevron">▼</span>
         </div>
         <div class="toolkit-panel-body">${article.respond_html}</div>
       </div>` : ''}
       ${article.prospect_html ? `
       <div class="toolkit-panel">
-        <div class="toolkit-panel-header" onclick="togglePanel(this)" aria-expanded="false" role="button" tabindex="0">
-          <span class="toolkit-panel-icon" aria-hidden="true">🎯</span>
+        <div class="toolkit-panel-header" onclick="togglePanel(this)">
+          <span class="toolkit-panel-icon">🎯</span>
           <span class="toolkit-panel-label">Prospect</span>
-          <span class="toolkit-panel-chevron" aria-hidden="true">▼</span>
+          <span class="toolkit-panel-chevron">▼</span>
         </div>
         <div class="toolkit-panel-body">${article.prospect_html}</div>
       </div>` : ''}
@@ -296,26 +276,26 @@ function renderGatedToolkit(article) {
 function renderPublicToolkit(article) {
   if (!article.respond_html && !article.prospect_html) return '';
   return `
-<section class="toolkit-gate" aria-label="Advisor tools">
+<section class="toolkit-gate">
   <div class="toolkit-header-row">
     <div class="toolkit-title">Advisor Tools — ${fmtDate(article.published_at)}</div>
   </div>
   <div class="toolkit-panels">
     ${article.respond_html ? `
     <div class="toolkit-panel">
-      <div class="toolkit-panel-header" onclick="togglePanel(this)" aria-expanded="false" role="button" tabindex="0">
-        <span class="toolkit-panel-icon" aria-hidden="true">🛡️</span>
+      <div class="toolkit-panel-header" onclick="togglePanel(this)">
+        <span class="toolkit-panel-icon">🛡️</span>
         <span class="toolkit-panel-label">Respond</span>
-        <span class="toolkit-panel-chevron" aria-hidden="true">▼</span>
+        <span class="toolkit-panel-chevron">▼</span>
       </div>
       <div class="toolkit-panel-body">${article.respond_html}</div>
     </div>` : ''}
     ${article.prospect_html ? `
     <div class="toolkit-panel">
-      <div class="toolkit-panel-header" onclick="togglePanel(this)" aria-expanded="false" role="button" tabindex="0">
-        <span class="toolkit-panel-icon" aria-hidden="true">🎯</span>
+      <div class="toolkit-panel-header" onclick="togglePanel(this)">
+        <span class="toolkit-panel-icon">🎯</span>
         <span class="toolkit-panel-label">Prospect</span>
-        <span class="toolkit-panel-chevron" aria-hidden="true">▼</span>
+        <span class="toolkit-panel-chevron">▼</span>
       </div>
       <div class="toolkit-panel-body">${article.prospect_html}</div>
     </div>` : ''}
@@ -352,7 +332,6 @@ function togglePanel(header){
 function copyEmail(id,btn){
   var el=document.getElementById(id);
   var text=el.innerText;
-  // Append article URL to copied email content
   var fullText=text+'\n\nRead the full article: ${articleUrl_}';
   navigator.clipboard.writeText(fullText).then(function(){
     btn.textContent='Copied \u2713';btn.classList.add('copied');
@@ -367,11 +346,9 @@ function copyLink(){
 
 function articleSchemaTag(article) {
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": article.title,
-    "datePublished": article.published_at,
-    "publisher": { "@type": "Organization", "name": "HDQ" },
+    "@context":"https://schema.org","@type":"Article",
+    "headline":article.title,"datePublished":article.published_at,
+    "publisher":{"@type":"Organization","name":"HDQ"},
   };
   return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
 }
