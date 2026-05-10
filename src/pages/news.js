@@ -79,6 +79,10 @@ export async function renderNews(env) {
   `).all();
   const trendingTags = extractTopTags(trendingRows.results || []);
 
+  // Live article count for sidebar
+  const countRow = await env.DB.prepare(`SELECT COUNT(*) as total FROM articles`).first();
+  const articleCount = countRow?.total || 0;
+
   const hero = heroRow;
   const subs = subRows.results || [];
   const recent = recentRows.results || [];
@@ -92,7 +96,7 @@ export async function renderNews(env) {
     <div style="padding:20px 0 0;"><a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">View archive →</a></div>
   ` : '';
 
-  const sidebarHtml = renderSidebar(flash, trendingTags);
+  const sidebarHtml = renderSidebar(flash, trendingTags, articleCount);
 
   const body = `
 <div class="content-area"><div class="container">
@@ -191,7 +195,7 @@ function renderNewsItem(a) {
 </div>`;
 }
 
-function renderSidebar(flash, trendingTags) {
+function renderSidebar(flash, trendingTags, articleCount) {
   const flashHtml = flash.map(a => `
 <div class="flash-item">
   <a href="${articleUrl(a)}" class="flash-thumb photo-wrap thumb-treat">
@@ -224,7 +228,7 @@ function renderSidebar(flash, trendingTags) {
 <div>
   <div class="sidebar-label">Past Editions</div>
   <a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">Browse the full archive →</a>
-  <p style="font-size:12px;color:var(--n600);line-height:1.5;margin-top:6px;">370+ editions. Search by desk, topic, or date.</p>
+  <p style="font-size:12px;color:var(--n600);line-height:1.5;margin-top:6px;">${articleCount} editions. Search by desk, topic, or date.</p>
 </div>`;
 }
 
