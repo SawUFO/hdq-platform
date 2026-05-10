@@ -84,7 +84,7 @@ export async function renderArchive(env, params) {
   const gridHtml = articles.length ? articles.map(a => `
 <a href="${articleUrl(a)}" class="archive-card">
   <div class="archive-card-img">
-    <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="" loading="lazy">
+    <img src="https://assets.hdq.ca/cdn-cgi/image/width=400,quality=75,format=webp/${escHtml(a.hero_image)}" alt="" loading="lazy">
   </div>
   <div class="archive-card-body">
     <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}" style="align-self:flex-start;">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</span>
