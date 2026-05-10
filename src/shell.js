@@ -6,8 +6,8 @@
 export function pageShell(bodyHtml, opts = {}) {
   const {
     title = 'HDQ — Financial Intelligence for Canadian Advisors',
-    activePage = 'news',   // nav link highlight
-    activeDesk = 'all',    // desk nav highlight
+    activePage = 'news',
+    activeDesk = 'all',
     extraHead = '',
     extraStyle = '',
     extraScript = '',
@@ -17,7 +17,7 @@ export function pageShell(bodyHtml, opts = {}) {
     { href: '/news',                  label: 'News',                    key: 'news' },
     { href: '/hdq-prodev.html',       label: 'Professional Development', key: 'prodev' },
     { href: '/hdq-whitelabel.html',   label: 'For Firms',               key: 'whitelabel' },
-    { href: '/hdq-homepage.html',     label: 'About',                   key: 'about' },
+    { href: '/about',                 label: 'About',                   key: 'about' },
   ];
 
   const deskLinks = [
@@ -74,7 +74,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
 <!-- MOBILE NAV -->
 <div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav-header">
-    <a href="/news" class="brand" aria-label="HDQ Home" onclick="window.closeMobileNav()">
+    <a href="/about" class="brand" aria-label="HDQ Home" onclick="window.closeMobileNav()">
       <img src="/HDQ_LOGO_Gold.svg" width="28" height="28" alt="HDQ Logo" style="display:block;">
       <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
     </a>
@@ -96,7 +96,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
 
 <!-- MASTHEAD -->
 <header class="masthead"><div class="masthead-inner">
-  <a href="/hdq-homepage.html" class="brand">
+  <a href="/about" class="brand">
     <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
     <span class="wordmark">HD<span class="wq">Q</span></span>
   </a>
@@ -128,7 +128,7 @@ ${bodyHtml}
 <footer><div class="footer-inner">
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="/hdq-homepage.html" class="brand" style="margin-bottom:10px;">
+      <a href="/about" class="brand" style="margin-bottom:10px;">
         <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
         <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
       </a>
@@ -149,7 +149,7 @@ ${bodyHtml}
     </ul></div>
     <div class="footer-nav"><h6>Company</h6><ul>
       <li><a href="/hdq-whitelabel.html">For Firms</a></li>
-      <li><a href="/hdq-homepage.html">About HDQ</a></li>
+      <li><a href="/about">About HDQ</a></li>
       <li><a href="/hdq-subscribe.html">Subscribe</a></li>
       <li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li>
     </ul></div>
