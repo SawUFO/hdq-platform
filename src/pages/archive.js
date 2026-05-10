@@ -8,10 +8,9 @@ const ARCHIVE_CSS = `
 .archive-search { width:100%; font-family:'DM Sans',sans-serif; font-size:14px; padding:10px 16px 10px 38px; border:1px solid var(--n200); border-radius:4px; background:var(--card); color:var(--n900); outline:none; transition:border-color 0.15s; box-sizing:border-box; }
 .archive-search:focus { border-color:var(--navy-400); }
 .archive-search-icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--n400); pointer-events:none; }
-.archive-date-wrap { position:relative; }
-.archive-date { font-family:'DM Sans',sans-serif; font-size:14px; padding:10px 32px 10px 14px; border:1px solid var(--n200); border-radius:4px; background:var(--card); color:var(--n900); outline:none; transition:border-color 0.15s; appearance:none; -webkit-appearance:none; cursor:pointer; }
+.archive-date { font-family:'DM Sans',sans-serif; font-size:14px; padding:10px 14px; border:1px solid var(--n200); border-radius:4px; background:var(--card); color:var(--n900); outline:none; transition:border-color 0.15s; cursor:pointer; }
 .archive-date:focus { border-color:var(--navy-400); }
-.archive-date-chevron { position:absolute; right:10px; top:50%; transform:translateY(-50%); pointer-events:none; color:var(--n400); }
+.archive-date::-webkit-calendar-picker-indicator { cursor:pointer; opacity:0.6; }
 .archive-filters { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:28px; }
 .filter-label { font-size:11px; font-weight:700; color:var(--n500); text-transform:uppercase; letter-spacing:0.08em; margin-right:4px; }
 .filter-pill { font-size:12px; font-weight:500; padding:5px 14px; border-radius:20px; border:1px solid var(--n200); color:var(--n700); background:var(--card); text-decoration:none; transition:all 0.15s; white-space:nowrap; }
@@ -77,7 +76,8 @@ export async function renderArchive(env, params) {
     binds.push(filterDesk);
   }
   if (dateFilter) {
-    conditions.push("strftime('%Y-%m', published_at)=?");
+    // dateFilter is YYYY-MM-DD — match exact date
+    conditions.push('published_at=?');
     binds.push(dateFilter);
   }
 
@@ -96,17 +96,11 @@ export async function renderArchive(env, params) {
   ).bind(...binds, PER_PAGE, offset).all();
   const articles = rows.results || [];
 
-  // Distinct months for dropdown
-  const monthRows = await env.DB.prepare(
-    `SELECT DISTINCT strftime('%Y-%m', published_at) as ym FROM articles ORDER BY ym DESC LIMIT 36`
-  ).all();
-  const months = (monthRows.results || []).map(r => r.ym);
-
   const totalPages = Math.ceil(total / PER_PAGE);
   const startNum = total === 0 ? 0 : offset + 1;
   const endNum = Math.min(offset + PER_PAGE, total);
 
-  // URL builder for pagination — preserves all active filters
+  // URL builder — preserves active filters across pages
   function pageUrl(p) {
     const u = new URLSearchParams();
     if (filterDesk && filterDesk !== 'all') u.set('desk', filterDesk);
@@ -127,15 +121,6 @@ export async function renderArchive(env, params) {
     return `<a href="${href}" class="filter-pill${isActive ? ' active' : ''}">${escHtml(d.label)}</a>`;
   }).join('');
 
-  // Month dropdown options
-  const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const monthOptions = months.map(ym => {
-    const [y, m] = ym.split('-');
-    const label = `${monthNames[parseInt(m,10)-1]} ${y}`;
-    const selected = dateFilter === ym ? ' selected' : '';
-    return `<option value="${escHtml(ym)}"${selected}>${escHtml(label)}</option>`;
-  }).join('');
-
   // Active filter banners
   const tagBanner = filterTag ? `
 <div style="background:var(--navy-50);border:1px solid var(--n200);border-radius:6px;padding:10px 16px;margin-bottom:20px;font-size:13px;color:var(--n700);">
@@ -147,14 +132,10 @@ export async function renderArchive(env, params) {
   Results for: <strong>${escHtml(search)}</strong> — <a href="/archive" style="color:var(--navy-700);">Clear</a>
 </div>` : '';
 
-  const dateBanner = dateFilter ? (() => {
-    const [y, m] = dateFilter.split('-');
-    const label = `${monthNames[parseInt(m,10)-1]} ${y}`;
-    return `
+  const dateBanner = dateFilter ? `
 <div style="background:var(--navy-50);border:1px solid var(--n200);border-radius:6px;padding:10px 16px;margin-bottom:20px;font-size:13px;color:var(--n700);">
-  ${escHtml(label)} — <a href="/archive" style="color:var(--navy-700);">Clear</a>
-</div>`;
-  })() : '';
+  Date: <strong>${escHtml(dateFilter)}</strong> — <a href="/archive" style="color:var(--navy-700);">Clear</a>
+</div>` : '';
 
   // Article grid
   const gridHtml = articles.length ? articles.map(a => `
@@ -197,15 +178,9 @@ export async function renderArchive(env, params) {
     <div class="block-header" style="margin-bottom:0;"><h6>Archive</h6></div>
     <div class="archive-search-wrap">
       <svg class="archive-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" class="archive-search" id="archive-search-input" placeholder="Search articles..." value="${escHtml(search)}" aria-label="Search archive">
+      <input type="text" class="archive-search" id="archive-search-input" placeholder="Search articles... (press Enter)" value="${escHtml(search)}" aria-label="Search archive">
     </div>
-    <div class="archive-date-wrap">
-      <select class="archive-date" id="archive-date-select" aria-label="Filter by month">
-        <option value="">All dates</option>
-        ${monthOptions}
-      </select>
-      <svg class="archive-date-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
+    <input type="date" class="archive-date" id="archive-date-input" value="${escHtml(dateFilter)}" aria-label="Filter by date">
     <span class="archive-count">${total} article${total !== 1 ? 's' : ''}</span>
   </div>
   ${tagBanner}${searchBanner}${dateBanner}
@@ -225,35 +200,22 @@ ${subscribeFooterBand()}`;
     extraStyle: ARCHIVE_CSS,
     extraScript: `<script>
 (function(){
-  // Debounced search — waits 400ms after you stop typing
+  // Search fires only on Enter key
   var input = document.getElementById('archive-search-input');
   if(input){
-    var timer;
-    input.addEventListener('input', function(){
-      clearTimeout(timer);
-      timer = setTimeout(function(){
-        var q = input.value.trim();
-        if(q.length > 1){
-          window.location.href = '/archive?q=' + encodeURIComponent(q);
-        } else if(q.length === 0){
-          window.location.href = '/archive';
-        }
-      }, 400);
-    });
     input.addEventListener('keydown', function(e){
       if(e.key === 'Enter'){
-        clearTimeout(timer);
         var q = input.value.trim();
         window.location.href = q ? '/archive?q=' + encodeURIComponent(q) : '/archive';
       }
     });
   }
 
-  // Date dropdown — fires immediately on selection
-  var dateSelect = document.getElementById('archive-date-select');
-  if(dateSelect){
-    dateSelect.addEventListener('change', function(){
-      var val = dateSelect.value;
+  // Date picker fires when a date is selected
+  var dateInput = document.getElementById('archive-date-input');
+  if(dateInput){
+    dateInput.addEventListener('change', function(){
+      var val = dateInput.value;
       window.location.href = val ? '/archive?date=' + encodeURIComponent(val) : '/archive';
     });
   }
