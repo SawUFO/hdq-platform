@@ -59,7 +59,7 @@ const HOME_CSS = `
 .division-card:hover { border-color: var(--n400); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
 .division-card:hover::after { transform: scaleX(1); }
 
-/* Coming card — same structure, uniform opacity overlay effect */
+/* Coming card */
 .division-card.coming {
   background: var(--n50);
   border-style: dashed;
@@ -70,7 +70,6 @@ const HOME_CSS = `
 }
 .division-card.coming::after { display: none; }
 
-/* Shared inner elements — same styles, coming card inherits opacity from parent */
 .division-number { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; color: var(--gold-600); letter-spacing: 0.1em; margin-bottom: 16px; }
 .division-icon { width: 36px; height: 36px; background: var(--navy-50); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
 .division-icon svg { width: 18px; height: 18px; color: var(--navy-700); }
@@ -124,37 +123,36 @@ const HOME_CSS = `
 const DESK_ORDER = ['market', 'geo', 'economy', 'tax', 'behaviour'];
 
 export async function renderHome(env) {
-  // Fetch latest thread
-  const thread = await env.DB.prepare(`
-    SELECT * FROM articles WHERE desk='thread' ORDER BY published_at DESC LIMIT 1
+  // Fetch latest desk article (not thread) for hero slot
+  const featured = await env.DB.prepare(`
+    SELECT * FROM articles WHERE article_type='article' ORDER BY published_at DESC LIMIT 1
   `).first();
 
   // Fetch latest article from each of the 5 desks
   const deskArticles = await Promise.all(
     DESK_ORDER.map(desk =>
       env.DB.prepare(`
-        SELECT * FROM articles WHERE desk=? ORDER BY published_at DESC LIMIT 1
+        SELECT * FROM articles WHERE desk=? AND article_type='article' ORDER BY published_at DESC LIMIT 1
       `).bind(desk).first()
     )
   );
 
-  // Build thread section
-  const threadHtml = thread ? `
+  // Build featured section
+  const featuredHtml = featured ? `
     <div>
-      <div class="edition-label-pill"><span class="dot"></span>Daily Thread</div>
-      <a href="${articleUrl(thread)}" class="edition-headline">${escHtml(thread.title)}</a>
+      <div class="edition-label-pill">${escHtml(DESK_DISPLAY[featured.desk] || featured.desk)}</div>
+      <a href="${articleUrl(featured)}" class="edition-headline">${escHtml(featured.title)}</a>
       <div class="edition-meta">
-        <span>${fmtDate(thread.published_at)}</span>
+        <span>${fmtDate(featured.published_at)}</span>
         <span>·</span>
-        <span>${thread.read_time} min read</span>
+        <span>${featured.read_time} min read</span>
       </div>
-      <p class="edition-teaser">${escHtml(thread.dek || '')}</p>
-      <a href="${articleUrl(thread)}" class="btn-primary" style="font-size:13px;">Read the full thread →</a>
+      <p class="edition-teaser">${escHtml(featured.dek || '')}</p>
+      <a href="${articleUrl(featured)}" class="btn-primary" style="font-size:13px;">Read the full article →</a>
     </div>` : `
     <div>
-      <div class="edition-label-pill"><span class="dot"></span>Daily Thread</div>
-      <p style="color:var(--n600);font-size:14px;padding-top:12px;">Today's thread will be published at 4 PM ET.</p>
-      <a href="/daily-thread" class="btn-primary" style="font-size:13px;margin-top:16px;display:inline-block;">View recent threads →</a>
+      <p style="color:var(--n600);font-size:14px;padding-top:12px;">Today's briefing will be published shortly.</p>
+      <a href="/news" class="btn-primary" style="font-size:13px;margin-top:16px;display:inline-block;">View all editions →</a>
     </div>`;
 
   // Build desk list
@@ -225,7 +223,7 @@ export async function renderHome(env) {
 <section class="todays-edition"><div class="container">
   <div class="section-header"><span class="section-title">Today's Edition</span><div class="section-rule"></div></div>
   <div class="edition-grid">
-    ${threadHtml}
+    ${featuredHtml}
     <ul class="desk-list">
       ${deskListHtml}
     </ul>
