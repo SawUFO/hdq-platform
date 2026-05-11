@@ -46,7 +46,6 @@ export const PAGE_CSS = `
 `;
 
 export async function renderNews(env) {
-  // Fetch hero (latest Daily Thread OR latest Market article)
   const heroRow = await env.DB.prepare(`
     SELECT * FROM articles
     WHERE article_type IN ('thread','article')
@@ -54,7 +53,6 @@ export async function renderNews(env) {
     LIMIT 1
   `).first();
 
-  // Two sub-cards: next two desk articles after hero
   const subRows = await env.DB.prepare(`
     SELECT * FROM articles
     WHERE article_type='article'
@@ -63,7 +61,6 @@ export async function renderNews(env) {
     LIMIT 2
   `).bind(heroRow?.slug || '').all();
 
-  // Recent News: up to 9 articles (mix, excluding hero + sub)
   const usedSlugs = [heroRow?.slug, ...(subRows.results || []).map(r => r.slug)].filter(Boolean);
   const placeholders = usedSlugs.map(() => '?').join(',');
   const recentRows = await env.DB.prepare(`
@@ -73,16 +70,18 @@ export async function renderNews(env) {
     LIMIT 9
   `).bind(...usedSlugs).all();
 
-  // Flash News: 5 most recent articles for sidebar
   const flashRows = await env.DB.prepare(`
     SELECT * FROM articles ORDER BY published_at DESC LIMIT 5
   `).all();
 
-  // Trending tags: extract from recent articles
   const trendingRows = await env.DB.prepare(`
     SELECT tags FROM articles ORDER BY published_at DESC LIMIT 20
   `).all();
   const trendingTags = extractTopTags(trendingRows.results || []);
+
+  // Live article count for sidebar
+  const countRow = await env.DB.prepare(`SELECT COUNT(*) as total FROM articles`).first();
+  const articleCount = countRow?.total || 0;
 
   const hero = heroRow;
   const subs = subRows.results || [];
@@ -97,7 +96,7 @@ export async function renderNews(env) {
     <div style="padding:20px 0 0;"><a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">View archive →</a></div>
   ` : '';
 
-  const sidebarHtml = renderSidebar(flash, trendingTags);
+  const sidebarHtml = renderSidebar(flash, trendingTags, articleCount);
 
   const body = `
 <div class="content-area"><div class="container">
@@ -196,7 +195,7 @@ function renderNewsItem(a) {
 </div>`;
 }
 
-function renderSidebar(flash, trendingTags) {
+function renderSidebar(flash, trendingTags, articleCount) {
   const flashHtml = flash.map(a => `
 <div class="flash-item">
   <a href="${articleUrl(a)}" class="flash-thumb photo-wrap thumb-treat">
@@ -229,7 +228,7 @@ function renderSidebar(flash, trendingTags) {
 <div>
   <div class="sidebar-label">Past Editions</div>
   <a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">Browse the full archive →</a>
-  <p style="font-size:12px;color:var(--n600);line-height:1.5;margin-top:6px;">370+ editions. Search by desk, topic, or date.</p>
+  <p style="font-size:12px;color:var(--n600);line-height:1.5;margin-top:6px;">${articleCount} editions. Search by desk, topic, or date.</p>
 </div>`;
 }
 

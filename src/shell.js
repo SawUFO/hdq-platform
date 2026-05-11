@@ -6,32 +6,32 @@
 export function pageShell(bodyHtml, opts = {}) {
   const {
     title = 'HDQ — Financial Intelligence for Canadian Advisors',
-    activePage = 'news',   // nav link highlight
-    activeDesk = 'all',    // desk nav highlight
+    activePage = 'news',
+    activeDesk = 'all',
     extraHead = '',
     extraStyle = '',
     extraScript = '',
   } = opts;
 
   const navLinks = [
-    { href: '/news',       label: 'News',                    key: 'news' },
-    { href: '/hdq-prodev.html', label: 'Professional Development', key: 'prodev' },
-    { href: '/hdq-whitelabel.html', label: 'For Firms',     key: 'whitelabel' },
-    { href: '/hdq-homepage.html', label: 'About',           key: 'about' },
+    { href: '/news',                  label: 'News',                    key: 'news' },
+    { href: '/hdq-prodev.html',       label: 'Professional Development', key: 'prodev' },
+    { href: '/hdq-whitelabel.html',   label: 'For Firms',               key: 'whitelabel' },
+    { href: '/about',                 label: 'About',                   key: 'about' },
   ];
 
   const deskLinks = [
-    { href: '/news',        label: 'All',            key: 'all' },
-    { href: '/market',      label: 'Market',         key: 'market' },
-    { href: '/geopolitical',label: 'Geopolitical',   key: 'geo' },
-    { href: '/economy',     label: 'Economy',        key: 'economy' },
-    { href: '/tax-wealth',  label: 'Tax &amp; Wealth', key: 'tax' },
-    { href: '/behavioural', label: 'Behavioural',    key: 'behaviour' },
+    { href: '/news',              label: 'All',                key: 'all' },
+    { href: '/market',            label: 'Market',             key: 'market' },
+    { href: '/geopolitical',      label: 'Geopolitical',       key: 'geo' },
+    { href: '/economy',           label: 'Economy',            key: 'economy' },
+    { href: '/tax-wealth',        label: 'Tax &amp; Wealth',   key: 'tax' },
+    { href: '/behavioural',       label: 'Behavioural',        key: 'behaviour' },
     null, // divider
-    { href: '/news',        label: 'Daily Thread',   key: 'thread' },
-    { href: '/news',        label: 'Weekend Edition',key: 'weekend' },
-    { href: '/news',        label: 'Month at a Glance', key: 'month' },
-    { href: '/archive',     label: 'Archive',        key: 'archive' },
+    { href: '/daily-thread',      label: 'Daily Thread',       key: 'thread' },
+    { href: '/weekend',           label: 'Weekend Edition',    key: 'weekend' },
+    { href: '/month-at-a-glance', label: 'Month at a Glance', key: 'month' },
+    { href: '/archive',           label: 'Archive',            key: 'archive' },
   ];
 
   const navHtml = navLinks.map(l =>
@@ -74,7 +74,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
 <!-- MOBILE NAV -->
 <div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav-header">
-    <a href="/news" class="brand" aria-label="HDQ Home" onclick="window.closeMobileNav()">
+    <a href="/about" class="brand" aria-label="HDQ Home" onclick="window.closeMobileNav()">
       <img src="/HDQ_LOGO_Gold.svg" width="28" height="28" alt="HDQ Logo" style="display:block;">
       <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
     </a>
@@ -83,9 +83,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
   <nav class="mobile-nav-links" aria-label="Mobile navigation">
     ${mobileNavLinks}
     <div class="mobile-nav-divider"></div>
-    <a href="/news" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
-    <a href="/news" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
-    <a href="/news" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
+    <a href="/daily-thread" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
+    <a href="/weekend" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
+    <a href="/month-at-a-glance" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
     <a href="/archive" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
     <a href="/hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
   </nav>
@@ -96,7 +96,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
 
 <!-- MASTHEAD -->
 <header class="masthead"><div class="masthead-inner">
-  <a href="/hdq-homepage.html" class="brand">
+  <a href="/about" class="brand">
     <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
     <span class="wordmark">HD<span class="wq">Q</span></span>
   </a>
@@ -128,7 +128,7 @@ ${bodyHtml}
 <footer><div class="footer-inner">
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="/hdq-homepage.html" class="brand" style="margin-bottom:10px;">
+      <a href="/about" class="brand" style="margin-bottom:10px;">
         <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
         <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
       </a>
@@ -136,9 +136,9 @@ ${bodyHtml}
     </div>
     <div class="footer-nav"><h6>Publication</h6><ul>
       <li><a href="/news">Daily Briefing</a></li>
-      <li><a href="/news">Daily Thread</a></li>
-      <li><a href="/news">Weekend Edition</a></li>
-      <li><a href="/news">Month at a Glance</a></li>
+      <li><a href="/daily-thread">Daily Thread</a></li>
+      <li><a href="/weekend">Weekend Edition</a></li>
+      <li><a href="/month-at-a-glance">Month at a Glance</a></li>
       <li><a href="/archive">Archive</a></li>
     </ul></div>
     <div class="footer-nav"><h6>Learning</h6><ul>
@@ -149,7 +149,7 @@ ${bodyHtml}
     </ul></div>
     <div class="footer-nav"><h6>Company</h6><ul>
       <li><a href="/hdq-whitelabel.html">For Firms</a></li>
-      <li><a href="/hdq-homepage.html">About HDQ</a></li>
+      <li><a href="/about">About HDQ</a></li>
       <li><a href="/hdq-subscribe.html">Subscribe</a></li>
       <li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li>
     </ul></div>

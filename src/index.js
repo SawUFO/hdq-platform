@@ -1,10 +1,9 @@
 /**
  * HDQ Platform — Cloudflare Worker
  * Routes all dynamic page requests and serves static assets.
- * Static pages (legal, subscribe, whitelabel, prodev, homepage) are served directly by Pages.
  */
-
 import { renderNews } from './pages/news.js';
+import { renderHome } from './pages/home.js';
 import { renderDesk } from './pages/desk.js';
 import { renderArticle } from './pages/article.js';
 import { renderArchive } from './pages/archive.js';
@@ -19,6 +18,9 @@ export default {
     try {
       // ── Dynamic routes ─────────────────────────────────────────────────────
 
+      // Homepage / About
+      if (path === '/about') return renderHome(env);
+
       // News index
       if (path === '' || path === '/' || path === '/news' || path === '/hdq-news') {
         return renderNews(env);
@@ -31,6 +33,11 @@ export default {
       if (path === '/tax-wealth' || path === '/tax' || path === '/hdq-tax-wealth') return renderDesk(env, 'tax');
       if (path === '/behavioural' || path === '/behavioral' || path === '/hdq-behavioural') return renderDesk(env, 'behaviour');
 
+      // Special edition pages
+      if (path === '/daily-thread') return renderDesk(env, 'thread');
+      if (path === '/weekend') return renderDesk(env, 'weekend');
+      if (path === '/month-at-a-glance') return renderDesk(env, 'month');
+
       // Archive
       if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams);
 
@@ -38,15 +45,15 @@ export default {
       const articleMatch = path.match(/^\/(\d{4}\/\d{2}\/\d{2}\/.+)$/);
       if (articleMatch) {
         const slug = articleMatch[1];
-        // Route special types by slug pattern
         if (slug.includes('/hdq-thread-')) return renderThread(env, slug);
         if (slug.includes('/weekend-')) return renderWeekend(env, slug);
-        if (slug.includes('/hdq-month-')) return renderWeekend(env, slug); // same template
+        if (slug.includes('/hdq-month-')) return renderWeekend(env, slug);
         return renderArticle(env, slug);
       }
 
-      // ── Redirect legacy .html paths ────────────────────────────────────────
-      const legacyMap = {
+      // ── Redirects ──────────────────────────────────────────────────────────
+      const redirectMap = {
+        '/hdq-homepage.html': '/about',
         '/index.html': '/',
         '/hdq-news.html': '/news',
         '/hdq-market.html': '/market',
@@ -55,13 +62,12 @@ export default {
         '/hdq-tax-wealth.html': '/tax-wealth',
         '/hdq-behavioural.html': '/behavioural',
         '/hdq-archive.html': '/archive',
-        '/hdq-daily-thread.html': '/news',
-        '/hdq-weekend.html': '/news',
-        '/hdq-month.html': '/news',
+        '/hdq-daily-thread.html': '/daily-thread',
+        '/hdq-weekend.html': '/weekend',
+        '/hdq-month.html': '/month-at-a-glance',
       };
-      if (legacyMap[path + '.html'] || legacyMap[path]) {
-        const dest = legacyMap[path + '.html'] || legacyMap[path];
-        return Response.redirect(new URL(dest, url.origin).href, 301);
+      if (redirectMap[path]) {
+        return Response.redirect(new URL(redirectMap[path], url.origin).href, 301);
       }
 
       // ── 404 ────────────────────────────────────────────────────────────────
