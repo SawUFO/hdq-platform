@@ -22,7 +22,7 @@ VALUES (
 <p>The flip side is the TSX''s largest sector: financials at roughly 30% of index weight. Canadian banks are contending with a rate outlook that has shifted from "cuts coming" to "hold indefinitely, hike risk emerging." The Bank of Canada''s April Monetary Policy Report explicitly stated it will not allow energy-driven inflation to become persistent, and money markets are now pricing at least one 25-basis-point hike before year-end. Bank stocks face two-sided dynamics: net interest margin tailwinds from higher-for-longer rates, offset by concern about credit quality in a consumer sector being squeezed by fuel and food costs.</p>
 
 <div class="hdq-chart">
-<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;max-width:680px;font-family:''Courier New'',monospace;">
+<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:''Courier New'',monospace;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:bold;color:#111111;letter-spacing:0.05em;">TSXC — S&amp;P/TSX COMPOSITE</span>
 <span style="font-size:20px;font-weight:bold;color:#111111;">34,078</span>
@@ -32,61 +32,41 @@ VALUES (
 <div style="padding:12px 14px 8px;">
 <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" width="100%">
   <line x1="58" y1="20" x2="620" y2="20" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="60" x2="620" y2="60" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="100" x2="620" y2="100" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="140" x2="620" y2="140" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="180" x2="620" y2="180" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="65" x2="620" y2="65" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="110" x2="620" y2="110" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="155" x2="620" y2="155" stroke="#e8e8e8" stroke-width="0.5"/>
   <line x1="58" y1="200" x2="620" y2="200" stroke="#d0d0d0" stroke-width="1"/>
   <line x1="58" y1="20" x2="58" y2="200" stroke="#d0d0d0" stroke-width="1"/>
   <text x="52" y="204" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">32,500</text>
-  <text x="52" y="164" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">33,000</text>
-  <text x="52" y="124" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">33,500</text>
-  <text x="52" y="84" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">34,000</text>
-  <text x="52" y="44" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">34,500</text>
-  <!-- bars: scale 32500-34500=2000 range over 180px. each 100pts = 9px -->
-  <!-- Mar 1: ~33,200 → y=200-((33200-32500)/2000)*180=200-63=137, h=63 -->
-  <rect x="66" y="137" width="7" height="63" fill="#888888"/>
-  <!-- Mar 8: ~33,100 → y=200-54=146 -->
-  <rect x="82" y="146" width="7" height="54" fill="#888888"/>
-  <!-- Mar 15: ~32,900 → y=200-36=164 -->
-  <rect x="98" y="164" width="7" height="36" fill="#888888"/>
-  <!-- Mar 22: ~33,000 → y=200-45=155 -->
-  <rect x="114" y="155" width="7" height="45" fill="#888888"/>
-  <!-- Mar 29: ~33,300 → y=200-72=128 -->
-  <rect x="130" y="128" width="7" height="72" fill="#888888"/>
-  <!-- Apr 5: ~33,500 → y=200-90=110 -->
-  <rect x="146" y="110" width="7" height="90" fill="#888888"/>
-  <!-- Apr 12: ~33,800 → y=200-117=83 -->
-  <rect x="162" y="83" width="7" height="117" fill="#888888"/>
-  <!-- Apr 19: ~34,100 → y=200-144=56 -->
-  <rect x="178" y="56" width="7" height="144" fill="#888888"/>
-  <!-- Apr 26: ~33,900 → y=200-126=74 -->
-  <rect x="194" y="74" width="7" height="126" fill="#888888"/>
-  <!-- Apr 29 BoC: ~33,870 -->
-  <rect x="210" y="77" width="7" height="123" fill="#888888"/>
-  <!-- May 1: ~33,891 -->
-  <rect x="226" y="75" width="7" height="125" fill="#888888"/>
-  <!-- May 5: ~34,000 -->
-  <rect x="242" y="65" width="7" height="135" fill="#888888"/>
-  <!-- May 6: ~33,950 -->
-  <rect x="258" y="69" width="7" height="131" fill="#888888"/>
-  <!-- May 7: ~33,856 -->
-  <rect x="274" y="78" width="7" height="122" fill="#888888"/>
-  <!-- May 8: ~34,020 -->
-  <rect x="290" y="66" width="7" height="134" fill="#888888"/>
-  <!-- May 9: 34,078 — green: positive close -->
-  <rect x="306" y="61" width="7" height="139" fill="#2e7d32"/>
-  <text x="313" y="56" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">34,078</text>
-  <!-- resistance line: 34,200 -->
-  <line x1="58" y1="51" x2="620" y2="51" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="622" y="55" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">34,200</text>
-  <!-- support line: 33,000 -->
-  <line x1="58" y1="155" x2="620" y2="155" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="622" y="159" font-family="Courier New" font-size="10" fill="#c0392b" font-weight="bold">33,000</text>
-  <text x="71" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Mar 1</text>
-  <text x="179" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Apr 1</text>
-  <text x="242" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">May 1</text>
-  <text x="309" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">May 9</text>
+  <text x="52" y="159" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">33,000</text>
+  <text x="52" y="114" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">33,500</text>
+  <text x="52" y="69" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">34,000</text>
+  <text x="52" y="24" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">34,500</text>
+  <!-- 16 weekly bars. Range 32500-34500=2000. 180px height. x spread: 68 to 607, step=35.9, bar width=28 -->
+  <!-- y = 200 - ((val-32500)/2000)*180 -->
+  <!-- Mar 1: 33,200 --> <rect x="68" y="128" width="28" height="72" fill="#888888"/>
+  <!-- Mar 8: 33,100 --> <rect x="104" y="137" width="28" height="63" fill="#888888"/>
+  <!-- Mar 15: 32,900 --> <rect x="140" y="155" width="28" height="45" fill="#888888"/>
+  <!-- Mar 22: 33,000 --> <rect x="176" y="146" width="28" height="54" fill="#888888"/>
+  <!-- Mar 29: 33,300 --> <rect x="212" y="119" width="28" height="81" fill="#888888"/>
+  <!-- Apr 5: 33,500 --> <rect x="248" y="101" width="28" height="99" fill="#888888"/>
+  <!-- Apr 12: 33,800 --> <rect x="284" y="74" width="28" height="126" fill="#888888"/>
+  <!-- Apr 19: 34,100 --> <rect x="320" y="47" width="28" height="153" fill="#888888"/>
+  <!-- Apr 26: 33,900 --> <rect x="356" y="65" width="28" height="135" fill="#888888"/>
+  <!-- Apr 29: 33,870 --> <rect x="392" y="68" width="28" height="132" fill="#888888"/>
+  <!-- May 1: 33,891 --> <rect x="428" y="66" width="28" height="134" fill="#888888"/>
+  <!-- May 5: 34,000 --> <rect x="464" y="56" width="28" height="144" fill="#888888"/>
+  <!-- May 7: 33,856 --> <rect x="500" y="69" width="28" height="131" fill="#888888"/>
+  <!-- May 9: 34,078 green --> <rect x="536" y="49" width="28" height="151" fill="#2e7d32"/>
+  <text x="550" y="44" text-anchor="middle" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">34,078</text>
+  <!-- resistance 34,200 --> <line x1="58" y1="38" x2="620" y2="38" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="622" y="42" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">34,200</text>
+  <!-- support 33,000 --> <line x1="58" y1="146" x2="620" y2="146" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="622" y="150" font-family="Courier New" font-size="10" fill="#c0392b" font-weight="bold">33,000</text>
+  <text x="82" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Mar 1</text>
+  <text x="298" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Apr 12</text>
+  <text x="442" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">May 1</text>
+  <text x="550" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">May 9</text>
   <text x="612" y="212" text-anchor="end" font-family="Courier New" font-size="9" fill="#cccccc">hdq.ca</text>
 </svg>
 </div>
@@ -195,7 +175,7 @@ VALUES (
 <p>The negative channels are less visible but more pervasive. Jet fuel spiked approximately 95% since the war began, contributing to travel cost inflation. Fertiliser prices have risen because natural gas, used to produce ammonia, has become scarcer through the LNG disruption. The IEA warned in its April Oil Market Report that demand destruction has begun in Asia, projecting a Q2 2026 contraction of roughly 1.5 million barrels per day. That demand destruction threatens the global growth outlook and, through that channel, commodity prices broadly.</p>
 
 <div class="hdq-chart">
-<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;max-width:680px;font-family:''Courier New'',monospace;">
+<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:''Courier New'',monospace;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:bold;color:#111111;letter-spacing:0.05em;">BRENT — BRENT CRUDE OIL</span>
 <span style="font-size:20px;font-weight:bold;color:#111111;">$101</span>
@@ -211,49 +191,35 @@ VALUES (
   <line x1="58" y1="164" x2="620" y2="164" stroke="#e8e8e8" stroke-width="0.5"/>
   <line x1="58" y1="200" x2="620" y2="200" stroke="#d0d0d0" stroke-width="1"/>
   <line x1="58" y1="20" x2="58" y2="200" stroke="#d0d0d0" stroke-width="1"/>
-  <!-- y scale: $70 to $125, range 55, 180px. 1$=3.27px -->
+  <!-- y scale $70-$125, range 55, 180px. 1$=3.27px. y=200-((v-70)/55*180) -->
   <text x="52" y="204" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$70</text>
   <text x="52" y="168" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$80</text>
-  <text x="52" y="135" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$90</text>
-  <text x="52" y="101" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$100</text>
-  <text x="52" y="68" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$110</text>
-  <text x="52" y="34" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$120</text>
-  <!-- bars: y = 200 - ((price-70)/55)*180 -->
-  <!-- Feb 27: $72 → y=200-((2/55)*180)=200-6.5=193.5 -->
-  <rect x="68" y="194" width="8" height="6" fill="#888888"/>
-  <!-- Mar 6: $88 → y=200-((18/55)*180)=200-59=141 -->
-  <rect x="90" y="141" width="8" height="59" fill="#888888"/>
-  <!-- Mar 13: $108 → y=200-((38/55)*180)=200-124=76 -->
-  <rect x="112" y="76" width="8" height="124" fill="#888888"/>
-  <!-- Mar 20: $119 (peak) → y=200-((49/55)*180)=200-160=40 -->
-  <rect x="134" y="40" width="8" height="160" fill="#888888"/>
-  <!-- Mar 27: $112 → y=200-((42/55)*180)=200-137=63 -->
-  <rect x="156" y="63" width="8" height="137" fill="#888888"/>
-  <!-- Apr 3: $105 → y=200-((35/55)*180)=200-114=86 -->
-  <rect x="178" y="86" width="8" height="114" fill="#888888"/>
-  <!-- Apr 10: $98 → y=200-((28/55)*180)=200-91=109 -->
-  <rect x="200" y="109" width="8" height="91" fill="#888888"/>
-  <!-- Apr 17: $100 → y=200-((30/55)*180)=200-98=102 -->
-  <rect x="222" y="102" width="8" height="98" fill="#888888"/>
-  <!-- Apr 24: $103 → y=200-((33/55)*180)=200-108=92 -->
-  <rect x="244" y="92" width="8" height="108" fill="#888888"/>
-  <!-- May 1: $101 → y=200-((31/55)*180)=200-101=99 -->
-  <rect x="266" y="99" width="8" height="101" fill="#888888"/>
-  <!-- May 9: $101, down on week — red -->
-  <rect x="288" y="99" width="8" height="101" fill="#c0392b"/>
-  <text x="296" y="94" font-family="Courier New" font-size="10" fill="#c0392b" font-weight="bold">$101</text>
-  <!-- resistance: $119 peak -->
-  <line x1="58" y1="40" x2="620" y2="40" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="622" y="44" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">$119</text>
-  <text x="80" y="34" font-family="Courier New" font-size="9" fill="#2e7d32">MAR PEAK</text>
-  <!-- support: pre-war $72 -->
-  <line x1="58" y1="194" x2="620" y2="194" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="52" y="132" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$90</text>
+  <text x="52" y="96" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$100</text>
+  <text x="52" y="60" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$110</text>
+  <text x="52" y="24" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">$120</text>
+  <!-- 11 weekly bars. x: 68 to 572, step=50.4, bar width=40 -->
+  <!-- Feb 27: $72 --> <rect x="68" y="194" width="40" height="6" fill="#888888"/>
+  <!-- Mar 6: $88 --> <rect x="118" y="141" width="40" height="59" fill="#888888"/>
+  <!-- Mar 13: $108 --> <rect x="168" y="75" width="40" height="125" fill="#888888"/>
+  <!-- Mar 20: $119 peak --> <rect x="218" y="39" width="40" height="161" fill="#888888"/>
+  <!-- Mar 27: $112 --> <rect x="268" y="62" width="40" height="138" fill="#888888"/>
+  <!-- Apr 3: $105 --> <rect x="318" y="85" width="40" height="115" fill="#888888"/>
+  <!-- Apr 17: $100 --> <rect x="368" y="101" width="40" height="99" fill="#888888"/>
+  <!-- Apr 24: $103 --> <rect x="418" y="91" width="40" height="109" fill="#888888"/>
+  <!-- May 1: $101 --> <rect x="468" y="98" width="40" height="102" fill="#888888"/>
+  <!-- May 9: $101 red (down week) --> <rect x="518" y="98" width="40" height="102" fill="#c0392b"/>
+  <text x="538" y="92" text-anchor="middle" font-family="Courier New" font-size="10" fill="#c0392b" font-weight="bold">$101</text>
+  <!-- resistance: $119 --> <line x1="58" y1="39" x2="620" y2="39" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="622" y="43" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">$119</text>
+  <text x="80" y="33" font-family="Courier New" font-size="9" fill="#2e7d32">MAR PEAK</text>
+  <!-- support: $72 pre-war --> <line x1="58" y1="194" x2="620" y2="194" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>
   <text x="622" y="198" font-family="Courier New" font-size="10" fill="#c0392b" font-weight="bold">$72</text>
   <text x="80" y="188" font-family="Courier New" font-size="9" fill="#c0392b">PRE-WAR</text>
-  <text x="71" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Feb 27</text>
-  <text x="142" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Mar 20</text>
-  <text x="222" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Apr 17</text>
-  <text x="292" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">May 9</text>
+  <text x="88" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Feb 27</text>
+  <text x="238" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Mar 20</text>
+  <text x="388" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Apr 17</text>
+  <text x="538" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">May 9</text>
   <text x="612" y="212" text-anchor="end" font-family="Courier New" font-size="9" fill="#cccccc">hdq.ca</text>
 </svg>
 </div>
@@ -267,7 +233,7 @@ VALUES (
 <p>JPMorgan''s economists told clients in a May 8 note that supply buffers are eroding and that even after shipping access is restored, roughly one billion barrels of lost production must be replenished before the market normalizes. For Canadian portfolios with energy exposure, that is the base case to plan around: an oil floor meaningfully above pre-war levels even in the resolution scenario, for a period that extends beyond the diplomatic headline.</p>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
-<p>Clients have developed headline fatigue from the war. Many have stopped reading closely because the situation shifts daily. Some are quietly pleased their Canadian energy exposure has performed well. Others are anxious about gas prices, food costs, and travel expenses and are connecting that lived experience to investment anxiety. The sense of a world more dangerous than it was in January is shaping conversations even with clients who don''t follow markets closely.</p>
+<p>Clients have developed headline fatigue from the war. Many have stopped reading closely because the situation shifts daily. Some are quietly pleased their Canadian energy exposure has performed well. Others are anxious about gas prices, food costs, and travel expenses and are connecting that lived experience to investment anxiety.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">What to Say</div>
@@ -337,7 +303,7 @@ I work with clients who want to understand and position for these kinds of compl
   '2026-05-11',
   'Iran,Hormuz,Oil,Geopolitics,Canada,Energy,CUSMA',
   1,
-  'IEA Oil Market Report April 2026; OilPrice.com: Oil Prices Whipsaw US-Iran Conflict May 3-7 2026; Wikipedia: 2026 Iran war fuel crisis; Wikipedia: Economic impact of the 2026 Iran war; JPMorgan research note via CNBC May 8 2026; Crestwood Advisors May 2026 Economic and Market Update.'
+  'IEA Oil Market Report April 2026; OilPrice.com: Oil Prices Whipsaw US-Iran Conflict May 3-7 2026; Wikipedia: 2026 Iran war fuel crisis; JPMorgan research note via CNBC May 8 2026; Crestwood Advisors May 2026 Economic and Market Update.'
 );
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
@@ -353,16 +319,16 @@ VALUES (
 <li><strong>April CPI is projected by the BoC to print near 3%,</strong><span> driven by the largest monthly gasoline price increase on record in March, which pushed March CPI to 2.4% from 1.8% in February. Core inflation held just above 2%, suggesting the shock has not yet broadened.</span></li>
 <li><strong>Canadian employment unexpectedly declined in April,</strong><span> reinforcing expectations that the Bank of Canada will refrain from raising interest rates this year despite the inflation overshoot, and keeping alive the scenario where a trade shock later in 2026 requires cuts rather than hikes.</span></li>
 <li><strong>The BoC''s baseline assumes oil declines from roughly $90 per barrel in Q2 to $75 by mid-2027,</strong><span> an assumption that oil''s current $101 level already challenges, and that a slow diplomatic resolution would keep challenged through the rest of 2026.</span></li>
-<li><strong>The next BoC decision is June 10,</strong><span> and the April CPI print due in mid-May will be the most important single data point between now and that decision, testing whether the BoC''s "look through" posture remains credible or requires a policy response.</span></li>
+<li><strong>The next BoC decision is June 10,</strong><span> and the April CPI print due in mid-May will be the most important single data point between now and that decision, testing whether the BoC''s look-through posture remains credible or requires a policy response.</span></li>
 </ul>',
   '<p>The Bank of Canada''s April 29 decision to hold at 2.25% was expected. The language in Governor Tiff Macklem''s opening statement was more instructive than the decision itself. Macklem identified two competing risks that could push monetary policy in opposite directions and acknowledged, with unusual directness, that the BoC cannot currently assign higher probability to one over the other.</p>
-<p>The first risk is that oil-driven inflation, currently pushing CPI toward a projected 3% peak in April, does not stay contained. Macklem said explicitly that the BoC is "looking through the war''s immediate impact on inflation but will not let higher energy prices become persistent inflation." The second risk is that the CUSMA review, which reaches its July 1 deadline with formal negotiations still at an early stage, produces an outcome that removes tariff exemptions protecting roughly 90% of Canadian exports. Since the April decision, the picture has been further complicated: the April jobs report showed an unexpected decline in Canadian employment, reinforcing expectations that the BoC will hold rather than hike.</p>
+<p>The first risk is that oil-driven inflation, currently pushing CPI toward a projected 3% peak in April, does not stay contained. Macklem said explicitly that the BoC is looking through the war''s immediate impact on inflation but will not let higher energy prices become persistent inflation. The second risk is that the CUSMA review, which reaches its July 1 deadline with formal negotiations still at an early stage, produces an outcome that removes tariff exemptions protecting roughly 90% of Canadian exports. Since the April decision, the picture has been further complicated: the April jobs report showed an unexpected decline in Canadian employment, reinforcing expectations that the BoC will hold rather than hike.</p>
 
 <h2>What the Core Measures Are Actually Saying</h2>
 <p>The headline CPI number captures the war''s effect most visibly. The jump from 1.8% in February to 2.4% in March reflected the largest single-month gasoline price increase on record in Canada. The projected 3% April print would represent the fastest pace of CPI growth in more than a year. But the BoC''s preferred core measures held steady at just above 2% in March. The proportion of CPI basket components rising faster than 3% has actually declined in recent months. So far, the oil shock has remained concentrated in energy and, to a lesser degree, food through the fertiliser channel. The April CPI print due in mid-May will be the first test of whether broadening is beginning.</p>
 
 <div class="hdq-chart">
-<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;max-width:680px;font-family:''Courier New'',monospace;">
+<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:''Courier New'',monospace;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:bold;color:#111111;letter-spacing:0.05em;">CACPI — CANADA CPI &amp; CORE INFLATION</span>
 <span style="font-size:20px;font-weight:bold;color:#111111;">2.4%</span>
@@ -372,52 +338,46 @@ VALUES (
 <div style="padding:12px 14px 8px;">
 <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" width="100%">
   <line x1="58" y1="20" x2="620" y2="20" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="60" x2="620" y2="60" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="100" x2="620" y2="100" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="140" x2="620" y2="140" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="180" x2="620" y2="180" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="65" x2="620" y2="65" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="110" x2="620" y2="110" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="155" x2="620" y2="155" stroke="#e8e8e8" stroke-width="0.5"/>
   <line x1="58" y1="200" x2="620" y2="200" stroke="#d0d0d0" stroke-width="1"/>
   <line x1="58" y1="20" x2="58" y2="200" stroke="#d0d0d0" stroke-width="1"/>
-  <!-- y scale: 1.0% to 4.0%, range 3.0, 180px. 1pp = 60px -->
+  <!-- y scale 1.0%-4.0%, range 3.0pp, 180px. 1pp=60px. y=200-((v-1.0)/3.0*180) -->
   <text x="52" y="204" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">1.0%</text>
   <text x="52" y="164" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">1.5%</text>
   <text x="52" y="124" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">2.0%</text>
   <text x="52" y="84" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">2.5%</text>
   <text x="52" y="44" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">3.0%</text>
-  <!-- y = 200 - ((val - 1.0) / 3.0) * 180 -->
-  <!-- CPI bars: Jan25=2.2→y=200-((1.2/3)*180)=200-72=128 -->
-  <!-- months: Jan25 Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Jan26 Feb Mar Apr*(proj) -->
-  <!-- CPI:    2.2  2.3 2.4 2.3 2.2 2.1 2.0 2.0 2.0 1.9 1.9 1.8 1.9  1.8 2.4 3.0* -->
-  <rect x="68" y="128" width="18" height="72" fill="#888888"/>
-  <rect x="100" y="122" width="18" height="78" fill="#888888"/>
-  <rect x="132" y="116" width="18" height="84" fill="#888888"/>
-  <rect x="164" y="122" width="18" height="78" fill="#888888"/>
-  <rect x="196" y="128" width="18" height="72" fill="#888888"/>
-  <rect x="228" y="134" width="18" height="66" fill="#888888"/>
-  <rect x="260" y="140" width="18" height="60" fill="#888888"/>
-  <rect x="292" y="140" width="18" height="60" fill="#888888"/>
-  <rect x="324" y="140" width="18" height="60" fill="#888888"/>
-  <rect x="356" y="146" width="18" height="54" fill="#888888"/>
-  <rect x="388" y="146" width="18" height="54" fill="#888888"/>
-  <rect x="420" y="152" width="18" height="48" fill="#888888"/>
-  <rect x="452" y="146" width="18" height="54" fill="#888888"/>
-  <rect x="484" y="152" width="18" height="48" fill="#888888"/>
-  <!-- Mar 26: 2.4 — red uptick -->
-  <rect x="516" y="116" width="18" height="84" fill="#c0392b"/>
-  <!-- Apr 26 projected: 3.0 — red projection, lighter -->
-  <rect x="548" y="40" width="18" height="160" fill="#c0392b" opacity="0.4"/>
-  <text x="557" y="34" text-anchor="middle" font-family="Courier New" font-size="9" fill="#c0392b">3.0%*</text>
-  <!-- 2% target line -->
-  <line x1="58" y1="124" x2="620" y2="124" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="622" y="128" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">2%</text>
-  <text x="80" y="118" font-family="Courier New" font-size="9" fill="#2e7d32">BOC TARGET</text>
-  <!-- 3% warning line -->
-  <line x1="58" y1="44" x2="620" y2="44" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="622" y="48" font-family="Courier New" font-size="10" fill="#c0392b" font-weight="bold">3%</text>
-  <text x="71" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">J''25</text>
-  <text x="260" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">J''25</text>
-  <text x="420" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">D''25</text>
-  <text x="548" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">A''26*</text>
+  <!-- 16 monthly bars. x: 68 to 592, step=33.6, bar width=26 -->
+  <!-- CPI: Jan25=2.2 Feb=2.3 Mar=2.4 Apr=2.3 May=2.2 Jun=2.1 Jul=2.0 Aug=2.0 Sep=2.0 Oct=1.9 Nov=1.9 Dec=1.8 Jan26=1.9 Feb=1.8 Mar=2.4 Apr*=3.0 -->
+  <!-- y=200-((v-1.0)/3.0*180) -->
+  <rect x="68" y="128" width="26" height="72" fill="#888888"/>
+  <rect x="102" y="122" width="26" height="78" fill="#888888"/>
+  <rect x="136" y="116" width="26" height="84" fill="#888888"/>
+  <rect x="170" y="122" width="26" height="78" fill="#888888"/>
+  <rect x="204" y="128" width="26" height="72" fill="#888888"/>
+  <rect x="238" y="134" width="26" height="66" fill="#888888"/>
+  <rect x="272" y="140" width="26" height="60" fill="#888888"/>
+  <rect x="306" y="140" width="26" height="60" fill="#888888"/>
+  <rect x="340" y="140" width="26" height="60" fill="#888888"/>
+  <rect x="374" y="146" width="26" height="54" fill="#888888"/>
+  <rect x="408" y="146" width="26" height="54" fill="#888888"/>
+  <rect x="442" y="152" width="26" height="48" fill="#888888"/>
+  <rect x="476" y="146" width="26" height="54" fill="#888888"/>
+  <rect x="510" y="152" width="26" height="48" fill="#888888"/>
+  <!-- Mar 26: 2.4 red uptick --> <rect x="544" y="116" width="26" height="84" fill="#c0392b"/>
+  <!-- Apr 26 projected: 3.0 faded red --> <rect x="578" y="20" width="26" height="180" fill="#c0392b" opacity="0.35"/>
+  <text x="591" y="15" text-anchor="middle" font-family="Courier New" font-size="9" fill="#c0392b">3.0%*</text>
+  <!-- 2% target --> <line x1="58" y1="122" x2="620" y2="122" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="622" y="126" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">2%</text>
+  <text x="80" y="116" font-family="Courier New" font-size="9" fill="#2e7d32">BOC TARGET</text>
+  <!-- 3% warning --> <line x1="58" y1="22" x2="620" y2="22" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="622" y="26" font-family="Courier New" font-size="10" fill="#c0392b" font-weight="bold">3%</text>
+  <text x="81" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">J''25</text>
+  <text x="284" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">J''25</text>
+  <text x="455" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">D''25</text>
+  <text x="591" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">A''26*</text>
   <text x="612" y="212" text-anchor="end" font-family="Courier New" font-size="9" fill="#cccccc">hdq.ca</text>
 </svg>
 </div>
@@ -495,12 +455,12 @@ I''m reaching out to offer a quick conversation about how this changes the pictu
 </div>',
   '[{"value":"2.25%","label":"BoC rate, held Apr 29"},{"value":"~3%","label":"April CPI projection"},{"value":"Jun 10","label":"Next BoC decision"},{"value":"Jul 1","label":"CUSMA review deadline"}]',
   'economy-003.jpg',
-  'The Bank of Canada''s April decision to hold rates at 2.25% left markets with a two-directional rate outlook, balancing oil-driven inflation against trade uncertainty ahead of the July 1 CUSMA deadline. Photo: iStock.',
+  'The Bank of Canada''s April decision to hold rates at 2.25% left markets navigating a two-directional rate outlook, with oil-driven inflation pulling one way and trade uncertainty pulling the other. Photo: iStock.',
   7,
   '2026-05-11',
   'Bank of Canada,Interest Rates,Inflation,CPI,CUSMA,Monetary Policy,Employment',
   1,
-  'Bank of Canada press release and MPR April 29 2026; Bank of Canada opening statement April 29 2026; CBC News April 29 2026; MoneySense April 29 2026; Globe and Mail Bank of Canada tracker; CIBC Economics (Shenfeld via CBC); Minneapolis Fed May 4 2026; Trading Economics Canada TSX May 9 2026.'
+  'Bank of Canada press release and MPR April 29 2026; Bank of Canada opening statement April 29 2026; CBC News April 29 2026; MoneySense April 29 2026; Globe and Mail Bank of Canada tracker; CIBC Economics (Shenfeld via CBC); Minneapolis Fed May 4 2026.'
 );
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
@@ -526,7 +486,7 @@ VALUES (
 <p>For incorporated professionals and small business owners who have been accumulating investment assets inside their operating or holding companies, this is a mandatory review trigger. The question is not simply whether the current tax rate is higher than before. The more important question is whether the assets currently held inside the corporation are optimally structured relative to what the client would hold personally through a TFSA, RRSP, or FHSA. In many cases, the answer will involve reviewing shareholder loan structures or reconsidering the pace at which the corporation is paying dividends to reduce the asset base subject to the higher corporate inclusion rate.</p>
 
 <div class="hdq-chart">
-<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;max-width:680px;font-family:''Courier New'',monospace;">
+<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:''Courier New'',monospace;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:bold;color:#111111;letter-spacing:0.05em;">CAGR — CAPITAL GAINS INCLUSION RATE (2026)</span>
 <span style="font-size:20px;font-weight:bold;color:#111111;">66.67%</span>
@@ -536,35 +496,31 @@ VALUES (
 <div style="padding:12px 14px 8px;">
 <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" width="100%">
   <line x1="58" y1="20" x2="620" y2="20" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="74" x2="620" y2="74" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="128" x2="620" y2="128" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="182" x2="620" y2="182" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="65" x2="620" y2="65" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="110" x2="620" y2="110" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="155" x2="620" y2="155" stroke="#e8e8e8" stroke-width="0.5"/>
   <line x1="58" y1="200" x2="620" y2="200" stroke="#d0d0d0" stroke-width="1"/>
   <line x1="58" y1="20" x2="58" y2="200" stroke="#d0d0d0" stroke-width="1"/>
-  <!-- y scale: 0 to 80%, 180px. 10% = 22.5px -->
+  <!-- y scale 0-80%, range 80, 180px. 1%=2.25px. y=200-(v/80*180) -->
   <text x="52" y="204" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">0%</text>
-  <text x="52" y="182" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">10%</text>
-  <text x="52" y="128" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">33%</text>
-  <text x="52" y="74" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">57%</text>
-  <text x="52" y="20" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">80%</text>
-  <!-- Bar 1: Individual under $250K — 50% inclusion -->
-  <!-- 50% of 180px range (0-80%) = 50/80*180 = 112.5px, y = 200-112.5 = 87.5 -->
-  <rect x="100" y="88" width="100" height="112" fill="#888888"/>
-  <text x="150" y="80" text-anchor="middle" font-family="Courier New" font-size="11" fill="#444444" font-weight="bold">50%</text>
-  <text x="150" y="210" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">INDIVIDUAL</text>
-  <text x="150" y="220" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">UNDER $250K</text>
-  <!-- Bar 2: Individual over $250K — 66.67% inclusion -->
-  <!-- 66.67/80*180 = 150px, y = 200-150 = 50 -->
-  <rect x="270" y="50" width="100" height="150" fill="#555555"/>
-  <text x="320" y="42" text-anchor="middle" font-family="Courier New" font-size="11" fill="#444444" font-weight="bold">66.67%</text>
-  <text x="320" y="210" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">INDIVIDUAL</text>
-  <text x="320" y="220" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">OVER $250K</text>
-  <!-- Bar 3: Corporate — 66.67% -->
-  <rect x="440" y="50" width="100" height="150" fill="#c0392b" opacity="0.75"/>
-  <text x="490" y="42" text-anchor="middle" font-family="Courier New" font-size="11" fill="#444444" font-weight="bold">66.67%</text>
-  <text x="490" y="210" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">CORPORATE</text>
-  <text x="490" y="220" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">ALL GAINS</text>
-  <!-- Prior rate reference line: 50% -->
+  <text x="52" y="159" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">20%</text>
+  <text x="52" y="114" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">40%</text>
+  <text x="52" y="69" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">60%</text>
+  <text x="52" y="24" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">80%</text>
+  <!-- 3 bars spread across full width. Bar width=140, gaps=~40 -->
+  <!-- Bar 1: Individual <$250K — 50% → h=50/80*180=112.5, y=200-112.5=87.5 -->
+  <rect x="80" y="88" width="140" height="112" fill="#888888"/>
+  <text x="150" y="78" text-anchor="middle" font-family="Courier New" font-size="13" fill="#444444" font-weight="bold">50%</text>
+  <text x="150" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">INDIVIDUAL UNDER $250K</text>
+  <!-- Bar 2: Individual >$250K — 66.67% → h=66.67/80*180=150, y=200-150=50 -->
+  <rect x="250" y="50" width="140" height="150" fill="#555555"/>
+  <text x="320" y="40" text-anchor="middle" font-family="Courier New" font-size="13" fill="#444444" font-weight="bold">66.67%</text>
+  <text x="320" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">INDIVIDUAL OVER $250K</text>
+  <!-- Bar 3: Corporate — 66.67% red -->
+  <rect x="420" y="50" width="140" height="150" fill="#c0392b" opacity="0.75"/>
+  <text x="490" y="40" text-anchor="middle" font-family="Courier New" font-size="13" fill="#444444" font-weight="bold">66.67%</text>
+  <text x="490" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">CORPORATE ALL GAINS</text>
+  <!-- prior 50% reference line -->
   <line x1="58" y1="88" x2="620" y2="88" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3"/>
   <text x="622" y="92" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">50%</text>
   <text x="80" y="82" font-family="Courier New" font-size="9" fill="#2e7d32">PRIOR RATE</text>
@@ -651,7 +607,7 @@ With energy stocks up sharply since February and U.S. equities at all-time highs
   '2026-05-11',
   'Capital Gains,TFSA,RRSP,Tax Planning,Corporate Accounts,Inclusion Rate,CRA',
   1,
-  'WealthNorth: Canada Federal Budget 2026 personal finance impact; WealthNorth: Capital Gains Inclusion Rate Canada 2026; CBC News: New year new tax measures 2026; Waypoint: Capital Gains Tax Canada 2026; Canada Calculator Hub 2026; CFIB capital gains changes page.'
+  'WealthNorth: Canada Federal Budget 2026 personal finance impact; WealthNorth: Capital Gains Inclusion Rate Canada 2026; CBC News: New year new tax measures 2026; Waypoint: Capital Gains Tax Canada 2026; CFIB capital gains changes page.'
 );
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
@@ -677,7 +633,7 @@ VALUES (
 <p>University of Michigan consumer sentiment in early May hit a new low. The divergence between sentiment and actual market performance is not a coincidence. It is the availability heuristic in operation at scale. The daily flow of geopolitical news is feeding a mental model of risk that is systematically disconnected from the portfolio reality facing a broadly diversified long-term investor.</p>
 
 <div class="hdq-chart">
-<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;max-width:680px;font-family:''Courier New'',monospace;">
+<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:''Courier New'',monospace;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:bold;color:#111111;letter-spacing:0.05em;">SPX — S&amp;P 500 INDEX</span>
 <span style="font-size:20px;font-weight:bold;color:#111111;">7,399</span>
@@ -687,45 +643,36 @@ VALUES (
 <div style="padding:12px 14px 8px;">
 <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" width="100%">
   <line x1="58" y1="20" x2="620" y2="20" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="60" x2="620" y2="60" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="100" x2="620" y2="100" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="140" x2="620" y2="140" stroke="#e8e8e8" stroke-width="0.5"/>
-  <line x1="58" y1="180" x2="620" y2="180" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="56" x2="620" y2="56" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="92" x2="620" y2="92" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="128" x2="620" y2="128" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="58" y1="164" x2="620" y2="164" stroke="#e8e8e8" stroke-width="0.5"/>
   <line x1="58" y1="200" x2="620" y2="200" stroke="#d0d0d0" stroke-width="1"/>
   <line x1="58" y1="20" x2="58" y2="200" stroke="#d0d0d0" stroke-width="1"/>
-  <!-- y scale: 6,400 to 7,600, range 1200, 180px. 100pts = 15px -->
+  <!-- y scale 6,400-7,600, range 1200, 180px. 100pts=15px. y=200-((v-6400)/1200*180) -->
   <text x="52" y="204" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">6,400</text>
-  <text x="52" y="164" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">6,700</text>
-  <text x="52" y="124" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">7,000</text>
-  <text x="52" y="84" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">7,300</text>
-  <text x="52" y="44" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">7,600</text>
-  <!-- y = 200 - ((price - 6400) / 1200) * 180 -->
-  <!-- Mar 30: 6,550 → 200-((150/1200)*180)=200-22.5=177.5 -->
-  <rect x="80" y="178" width="30" height="22" fill="#888888"/>
-  <!-- Apr 6: 6,700 → 200-((300/1200)*180)=200-45=155 -->
-  <rect x="130" y="155" width="30" height="45" fill="#888888"/>
-  <!-- Apr 13: 6,900 → 200-((500/1200)*180)=200-75=125 -->
-  <rect x="180" y="125" width="30" height="75" fill="#888888"/>
-  <!-- Apr 20: 7,100 → 200-((700/1200)*180)=200-105=95 -->
-  <rect x="230" y="95" width="30" height="105" fill="#888888"/>
-  <!-- Apr 27: 7,200 → 200-((800/1200)*180)=200-120=80 -->
-  <rect x="280" y="80" width="30" height="120" fill="#888888"/>
-  <!-- May 1: 7,230 → 200-((830/1200)*180)=200-124.5=75.5 -->
-  <rect x="330" y="76" width="30" height="124" fill="#888888"/>
-  <!-- May 8: 7,399 — green: new ATH -->
-  <rect x="380" y="50" width="30" height="150" fill="#2e7d32"/>
-  <text x="395" y="44" text-anchor="middle" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">7,399</text>
-  <text x="395" y="34" text-anchor="middle" font-family="Courier New" font-size="9" fill="#2e7d32">ALL-TIME HIGH</text>
-  <!-- prior ATH reference -->
-  <line x1="58" y1="58" x2="620" y2="58" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="622" y="62" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">7,400</text>
-  <!-- Mar 30 base reference -->
-  <line x1="58" y1="178" x2="620" y2="178" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="52" y="159" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">6,700</text>
+  <text x="52" y="114" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">7,000</text>
+  <text x="52" y="69" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">7,300</text>
+  <text x="52" y="24" text-anchor="end" font-family="Courier New" font-size="10" fill="#666666">7,600</text>
+  <!-- 7 weekly bars. x: 68 to 540, step=78.7, bar width=62 -->
+  <!-- Mar 30: 6,550 → h=(150/1200)*180=22.5, y=200-22.5=177.5 --> <rect x="68" y="178" width="62" height="22" fill="#888888"/>
+  <!-- Apr 6: 6,720 → h=(320/1200)*180=48, y=152 --> <rect x="147" y="152" width="62" height="48" fill="#888888"/>
+  <!-- Apr 13: 6,950 → h=(550/1200)*180=82.5, y=117.5 --> <rect x="226" y="118" width="62" height="82" fill="#888888"/>
+  <!-- Apr 20: 7,150 → h=(750/1200)*180=112.5, y=87.5 --> <rect x="305" y="88" width="62" height="112" fill="#888888"/>
+  <!-- Apr 27: 7,230 → h=(830/1200)*180=124.5, y=75.5 --> <rect x="384" y="76" width="62" height="124" fill="#888888"/>
+  <!-- May 1: 7,230 --> <rect x="463" y="76" width="62" height="124" fill="#888888"/>
+  <!-- May 8: 7,399 green ATH → h=(999/1200)*180=149.9, y=50.1 --> <rect x="542" y="50" width="62" height="150" fill="#2e7d32"/>
+  <text x="573" y="44" text-anchor="middle" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">7,399</text>
+  <text x="573" y="34" text-anchor="middle" font-family="Courier New" font-size="9" fill="#2e7d32">ALL-TIME HIGH</text>
+  <!-- resistance ATH --> <line x1="58" y1="50" x2="620" y2="50" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="622" y="54" font-family="Courier New" font-size="10" fill="#2e7d32" font-weight="bold">7,400</text>
+  <!-- Mar 30 base --> <line x1="58" y1="178" x2="620" y2="178" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>
   <text x="622" y="182" font-family="Courier New" font-size="10" fill="#c0392b" font-weight="bold">6,550</text>
   <text x="80" y="172" font-family="Courier New" font-size="9" fill="#c0392b">MAR 30 BASE</text>
-  <text x="95" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Mar 30</text>
-  <text x="245" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Apr 20</text>
-  <text x="395" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">May 8</text>
+  <text x="99" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Mar 30</text>
+  <text x="336" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">Apr 20</text>
+  <text x="573" y="214" text-anchor="middle" font-family="Courier New" font-size="9" fill="#666666">May 8</text>
   <text x="612" y="212" text-anchor="end" font-family="Courier New" font-size="9" fill="#cccccc">hdq.ca</text>
 </svg>
 </div>
