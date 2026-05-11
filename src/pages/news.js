@@ -48,8 +48,8 @@ export const PAGE_CSS = `
 export async function renderNews(env) {
   const heroRow = await env.DB.prepare(`
     SELECT * FROM articles
-    WHERE article_type IN ('thread','article')
-    ORDER BY published_at DESC, CASE WHEN desk='thread' THEN 0 ELSE 1 END ASC
+    WHERE article_type = 'article'
+    ORDER BY published_at DESC
     LIMIT 1
   `).first();
 
