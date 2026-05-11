@@ -123,9 +123,9 @@ const HOME_CSS = `
 const DESK_ORDER = ['market', 'geo', 'economy', 'tax', 'behaviour'];
 
 export async function renderHome(env) {
-  // Fetch latest desk article (not thread) for hero slot
+  // Fetch most recent article of any type for hero slot
   const featured = await env.DB.prepare(`
-    SELECT * FROM articles WHERE article_type='article' ORDER BY published_at DESC LIMIT 1
+    SELECT * FROM articles ORDER BY published_at DESC LIMIT 1
   `).first();
 
   // Fetch latest article from each of the 5 desks
@@ -155,7 +155,7 @@ export async function renderHome(env) {
       <a href="/news" class="btn-primary" style="font-size:13px;margin-top:16px;display:inline-block;">View all editions →</a>
     </div>`;
 
-  // Build desk list
+  // Build desk list (always shows the 5 morning desk articles regardless of hero)
   const deskListHtml = deskArticles.filter(Boolean).map(a => {
     const deskHref = {
       market: '/market', geo: '/geopolitical', economy: '/economy',
