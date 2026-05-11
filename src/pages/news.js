@@ -48,15 +48,13 @@ export const PAGE_CSS = `
 export async function renderNews(env) {
   const heroRow = await env.DB.prepare(`
     SELECT * FROM articles
-    WHERE article_type = 'article'
     ORDER BY published_at DESC
     LIMIT 1
   `).first();
 
   const subRows = await env.DB.prepare(`
     SELECT * FROM articles
-    WHERE article_type='article'
-      AND slug != ?
+    WHERE slug != ?
     ORDER BY published_at DESC
     LIMIT 2
   `).bind(heroRow?.slug || '').all();
