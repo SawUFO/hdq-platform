@@ -25,7 +25,7 @@ VALUES (
 <p>The condition is WTI staying near $95 to $100. The afternoon delivered WTI at $97.55 as of the close of Canadian trading, with the June futures contract at $97.55 and the market pricing Hormuz disruption as durable rather than fleeting.</p>
 
 <div class="hdq-chart">
-<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:'Courier New',monospace;">
+<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:''Courier New'',monospace;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111111;letter-spacing:0.05em;">WTI — CRUDE OIL FRONT-MONTH (USD/BBL)</span>
 <span style="font-size:20px;font-weight:700;color:#111111;">$97.55</span>
@@ -136,7 +136,7 @@ VALUES (
 <p>Read that alongside today''s oil data. Canadian energy stocks traded higher Monday, lifted by WTI''s bounce. But the Carney signal introduces a second-order consequence that is moving in the opposite direction from the near-term oil price support. If Canada offers the U.S. preferential access to Canadian energy under a "fortress North America" framework, that access likely involves pricing mechanisms, supply guarantees, or regulatory alignment that constrains the terms on which Canadian producers sell. The upside from higher WTI is not fully the Canadian energy sector''s to capture if a portion of that production is effectively earmarked for U.S. integration at negotiated terms.</p>
 
 <div class="hdq-chart">
-<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:'Courier New',monospace;">
+<div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:''Courier New'',monospace;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111111;letter-spacing:0.05em;">^TSX — S&P/TSX COMPOSITE INDEX (CAD)</span>
 <span style="font-size:20px;font-weight:700;color:#111111;">34,115</span>
