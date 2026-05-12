@@ -22,7 +22,7 @@ export async function renderWeekend(env, slug) {
   <div class="article-wrap">
     <article>
       <div class="article-hero photo-wrap gold-overlay">
-        <img src="/${escHtml(article.hero_image)}" alt="${escHtml(article.title)}" loading="eager">
+        <img src="https://assets.hdq.ca/${escHtml(article.hero_image)}" alt="${escHtml(article.title)}" loading="eager">
       </div>
       <div class="article-kicker">
         <span class="cat-tag ${catClass}">${label}</span>
