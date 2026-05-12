@@ -21,7 +21,7 @@ export async function renderWeekend(env, slug) {
 <main><div class="container">
   <div class="article-wrap">
     <article>
-      <div class="article-hero photo-wrap gold-overlay">
+      <div class="article-hero">
         <img src="https://assets.hdq.ca/${escHtml(article.hero_image)}" alt="${escHtml(article.title)}" loading="eager">
       </div>
       <div class="article-kicker">
