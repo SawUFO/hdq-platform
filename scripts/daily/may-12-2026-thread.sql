@@ -178,16 +178,16 @@ VALUES (
 <rect x="572" y="18" width="68" height="247" fill="#c0392b" fill-opacity="0.04"/>
 <!-- CPI event marker -->
 <line x1="620" y1="18" x2="620" y2="265" stroke="#1a3560" stroke-width="1.2" stroke-dasharray="2,3" opacity="0.6"/>
-<text x="624" y="30" font-size="7" font-weight="700" fill="#1a3560" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">CPI</text>
-<text x="624" y="40" font-size="7" font-weight="700" fill="#1a3560" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">May 12</text>
+<text x="624" y="220" font-size="7" font-weight="700" fill="#1a3560" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">CPI</text>
+<text x="624" y="230" font-size="7" font-weight="700" fill="#1a3560" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">May 12</text>
 <!-- Gold pill on WTI endpoint -->
-<rect x="604" y="37" width="38" height="14" rx="3" fill="#e8a825"/>
-<text x="623" y="47" text-anchor="middle" font-size="9" font-weight="700" fill="#111" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">WTI +45%</text>
+<rect x="500" y="24" width="38" height="14" rx="3" fill="#e8a825"/>
+<text x="519" y="34" text-anchor="middle" font-size="9" font-weight="700" fill="#111" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">WTI +45%</text>
 <!-- Gold series endpoint annotation -->
 <text x="625" y="148" font-size="7.5" fill="#4a5568" font-weight="700" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">Gold +6%</text>
 <!-- Peak annotation for WTI -->
-<text x="140" y="20" font-size="7.5" fill="#444" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">WTI near $120 peak</text>
-<text x="140" y="30" font-size="7.5" fill="#444" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">Mar 9 (Iran facilities hit)</text>
+<text x="68" y="52" font-size="7.5" fill="#444" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">WTI near $120 peak</text>
+<text x="68" y="63" font-size="7.5" fill="#444" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">Mar 9 (Iran facilities hit)</text>
 <!-- Legend -->
 <line x1="68" y1="285" x2="90" y2="285" stroke="#8a3030" stroke-width="2.5"/>
 <text x="94" y="289" font-size="8" fill="#444" font-family="-apple-system,BlinkMacSystemFont,''Segoe UI'',Roboto,Helvetica,Arial,sans-serif">WTI Crude (indexed to 100)</text>
