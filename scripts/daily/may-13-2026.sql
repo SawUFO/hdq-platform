@@ -61,21 +61,21 @@ VALUES (
 
   <!-- Y-axis labels: 5800 to 7400 in steps of 250 -->
   <!-- y=274 → 5900 approx. Let me set: y_bottom=18+256=274. y(v) = 274 - (v-5800)*0.16 -->
-  <text x="57" y="277" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">5,900</text>
-  <text x="57" y="237" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">6,150</text>
-  <text x="57" y="197" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">6,400</text>
-  <text x="57" y="157" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">6,650</text>
-  <text x="57" y="117" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">6,900</text>
-  <text x="57" y="77" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">7,150</text>
+  <text x="57" y="277" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">5,900</text>
+  <text x="57" y="237" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">6,150</text>
+  <text x="57" y="197" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">6,400</text>
+  <text x="57" y="157" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">6,650</text>
+  <text x="57" y="117" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">6,900</text>
+  <text x="57" y="77" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">7,150</text>
 
   <!-- Shock band: Feb 28 (day 22) to Mar 30 (day 43) -->
   <!-- x(22)=62+22*7.92=236.2, x(43)=62+43*7.92=402.6 -->
   <rect x="236" y="18" width="167" height="256" fill="#8a3030" opacity="0.05"/>
-  <text x="319" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#8a3030">IRAN WAR SHOCK</text>
+  <text x="319" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#8a3030">IRAN WAR SHOCK</text>
 
   <!-- Recovery band: Mar 30 (day 43) to May 13 (day 75) -->
   <rect x="403" y="18" width="253" height="256" fill="#2e7d32" opacity="0.05"/>
-  <text x="529" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#2e7d32">RECOVERY</text>
+  <text x="529" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#2e7d32">RECOVERY</text>
 
   <!-- S&P 500 price line — approximate daily closes -->
   <!-- Data points (day, price): 0=7126(Jan27 peak), then decline begins Feb 28 (day22) -->
@@ -91,36 +91,36 @@ VALUES (
 
   <!-- Event marker: Feb 28 strikes -->
   <line x1="236" y1="18" x2="236" y2="274" stroke="#1a3560" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2,3"/>
-  <text x="239" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">US-ISRAEL</text>
-  <text x="239" y="59" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">STRIKES</text>
+  <text x="239" y="50" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">US-ISRAEL</text>
+  <text x="239" y="59" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">STRIKES</text>
 
   <!-- Event marker: April 8 ceasefire -->
   <line x1="490" y1="18" x2="490" y2="274" stroke="#1a3560" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2,3"/>
-  <text x="493" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">CEASEFIRE</text>
-  <text x="493" y="59" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">APR 8</text>
+  <text x="493" y="50" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">CEASEFIRE</text>
+  <text x="493" y="59" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">APR 8</text>
 
   <!-- Reference line: pre-war peak 7126 -->
   <!-- y(7126) = 274 - (7126-5800)*0.16 = 274 - 212.2 = 61.8 ≈ 62 -->
   <line x1="62" x2="656" y1="62" y2="62" stroke="#2e7d32" stroke-dasharray="4,3" stroke-width="1"/>
-  <text x="658" y="65" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#2e7d32">PRE-WAR PEAK 7,126</text>
+  <text x="658" y="65" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#2e7d32">PRE-WAR PEAK 7,126</text>
 
   <!-- Gold pill: current value near day 75 -->
   <rect x="624" y="124" width="50" height="16" rx="3" fill="#e8a825"/>
-  <text x="649" y="136" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">~7,100</text>
+  <text x="649" y="136" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">~7,100</text>
 
   <!-- 20-MA label -->
-  <text x="400" y="204" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#888">20-day MA</text>
+  <text x="400" y="204" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#888">20-day MA</text>
 
   <!-- Annotation: -9% drawdown -->
-  <text x="290" y="248" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#444">-9% peak-to-trough</text>
+  <text x="290" y="248" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#444">-9% peak-to-trough</text>
 
   <!-- X-axis labels -->
-  <text x="62" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan 27</text>
-  <text x="182" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Feb 19</text>
-  <text x="302" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Mar 19</text>
-  <text x="410" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr 8</text>
-  <text x="530" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr 29</text>
-  <text x="650" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">May 13</text>
+  <text x="62" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan 27</text>
+  <text x="182" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Feb 19</text>
+  <text x="302" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Mar 19</text>
+  <text x="410" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr 8</text>
+  <text x="530" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr 29</text>
+  <text x="650" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">May 13</text>
 
   <!-- Axis lines -->
   <line x1="62" y1="18" x2="62" y2="274" stroke="#d8d8d8" stroke-width="1"/>
@@ -277,24 +277,24 @@ VALUES (
   <line x1="62" x2="656" y1="51" y2="51" stroke="#ececec" stroke-width="0.5"/>
 
   <!-- Y-axis labels -->
-  <text x="57" y="257" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">40</text>
-  <text x="57" y="223" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">50</text>
-  <text x="57" y="189" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">60</text>
-  <text x="57" y="155" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">70</text>
-  <text x="57" y="121" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">80</text>
-  <text x="57" y="87" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">90</text>
-  <text x="57" y="53" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">100</text>
+  <text x="57" y="257" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">40</text>
+  <text x="57" y="223" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">50</text>
+  <text x="57" y="189" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">60</text>
+  <text x="57" y="155" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">70</text>
+  <text x="57" y="121" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">80</text>
+  <text x="57" y="87" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">90</text>
+  <text x="57" y="53" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">100</text>
 
   <!-- Y-axis label: CAD$ -->
-  <text x="14" y="150" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#aaa" transform="rotate(-90,14,150)">Price (CAD $)</text>
+  <text x="14" y="150" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#aaa" transform="rotate(-90,14,150)">Price (CAD $)</text>
 
   <!-- Surge band: months 0-3 (Jan-May) -->
   <rect x="62" y="18" width="162" height="236" fill="#2e7d32" opacity="0.05"/>
-  <text x="143" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#2e7d32">SURGE WINDOW</text>
+  <text x="143" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#2e7d32">SURGE WINDOW</text>
 
   <!-- Correction band: months 3-7 (May-Sep) -->
   <rect x="224" y="18" width="216" height="236" fill="#8a3030" opacity="0.05"/>
-  <text x="332" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#8a3030">2022 CORRECTION: -30%</text>
+  <text x="332" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#8a3030">2022 CORRECTION: -30%</text>
 
   <!-- 2022 SU price series (indexed to Jan 2022 = 100%, actual ~$47 → $68 → $47) -->
   <!-- Jan=47, Feb=51, Mar=56, Apr=62, May=68, Jun=63, Jul=57, Aug=53, Sep=50, Oct=48, Nov=49, Dec=50 -->
@@ -311,39 +311,39 @@ VALUES (
 
   <!-- Gold pill: current 2026 price -->
   <rect x="294" y="62" width="54" height="16" rx="3" fill="#e8a825"/>
-  <text x="321" y="74" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">~$94</text>
+  <text x="321" y="74" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">~$94</text>
 
   <!-- Reference line: pre-war 2026 price ~$61 -->
   <line x1="62" x2="656" y1="183" y2="183" stroke="#7a3030" stroke-dasharray="4,3" stroke-width="1"/>
-  <text x="658" y="186" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#7a3030">PRE-WAR ~$61</text>
+  <text x="658" y="186" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#7a3030">PRE-WAR ~$61</text>
 
   <!-- Event markers -->
   <line x1="62" y1="18" x2="62" y2="254" stroke="#1a3560" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="2,3"/>
-  <text x="65" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">WAR BEGINS</text>
+  <text x="65" y="48" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">WAR BEGINS</text>
 
   <!-- Annotation: correction target -->
-  <text x="390" y="180" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#8a3030">2022: corrected to ~$47</text>
-  <text x="390" y="190" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#8a3030">after +45% surge</text>
+  <text x="390" y="180" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#8a3030">2022: corrected to ~$47</text>
+  <text x="390" y="190" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#8a3030">after +45% surge</text>
 
   <!-- Legend -->
   <line x1="400" y1="248" x2="420" y2="248" stroke="#4a5568" stroke-width="2"/>
-  <text x="423" y="251" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">2026 (current)</text>
+  <text x="423" y="251" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">2026 (current)</text>
   <line x1="500" y1="248" x2="520" y2="248" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="6,3"/>
-  <text x="523" y="251" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">2022 analog</text>
+  <text x="523" y="251" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">2022 analog</text>
 
   <!-- X-axis labels -->
-  <text x="62" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan</text>
-  <text x="116" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Feb</text>
-  <text x="170" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Mar</text>
-  <text x="224" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr</text>
-  <text x="278" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">May</text>
-  <text x="332" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jun</text>
-  <text x="386" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jul</text>
-  <text x="440" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Aug</text>
-  <text x="494" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Sep</text>
-  <text x="548" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Oct</text>
-  <text x="602" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Nov</text>
-  <text x="656" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Dec</text>
+  <text x="62" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan</text>
+  <text x="116" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Feb</text>
+  <text x="170" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Mar</text>
+  <text x="224" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr</text>
+  <text x="278" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">May</text>
+  <text x="332" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jun</text>
+  <text x="386" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jul</text>
+  <text x="440" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Aug</text>
+  <text x="494" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Sep</text>
+  <text x="548" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Oct</text>
+  <text x="602" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Nov</text>
+  <text x="656" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Dec</text>
 
   <!-- Axis lines -->
   <line x1="62" y1="18" x2="62" y2="254" stroke="#d8d8d8" stroke-width="1"/>
@@ -485,7 +485,7 @@ VALUES (
 
   <!-- Zero reference line -->
   <line x1="62" x2="656" y1="175" y2="175" stroke="#7a3030" stroke-dasharray="4,3" stroke-width="1"/>
-  <text x="658" y="178" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#7a3030">0%</text>
+  <text x="658" y="178" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#7a3030">0%</text>
 
   <!-- Gridlines -->
   <line x1="62" x2="656" y1="254" y2="254" stroke="#ececec" stroke-width="0.5"/>
@@ -493,10 +493,10 @@ VALUES (
   <line x1="62" x2="656" y1="18" y2="18" stroke="#ececec" stroke-width="0.5"/>
 
   <!-- Y-axis labels -->
-  <text x="57" y="257" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">-1.0%</text>
-  <text x="57" y="178" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">0%</text>
-  <text x="57" y="99" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">+1.0%</text>
-  <text x="57" y="21" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">+2.0%</text>
+  <text x="57" y="257" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">-1.0%</text>
+  <text x="57" y="178" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">0%</text>
+  <text x="57" y="99" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">+1.0%</text>
+  <text x="57" y="21" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">+2.0%</text>
 
   <!-- PPI MoM data (approx monthly, Jan2022=i0 to Apr2026=i51) -->
   <!-- 2022: Jan1.2, Feb0.8, Mar1.4, Apr0.5, May0.8, Jun-0.1, Jul-0.5, Aug-0.1, Sep0.2, Oct0.3, Nov0.3, Dec-0.4 -->
@@ -588,26 +588,26 @@ VALUES (
 
   <!-- Shaded band: 2022 peak period -->
   <rect x="63" y="18" width="127" height="236" fill="#c0392b" opacity="0.04"/>
-  <text x="92" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#8a3030">2022 SURGE</text>
+  <text x="92" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#8a3030">2022 SURGE</text>
 
   <!-- Event marker: Apr 2026 reading -->
   <line x1="653" y1="18" x2="653" y2="65" stroke="#1a3560" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2,3"/>
-  <text x="648" y="60" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">APR 2026</text>
+  <text x="648" y="60" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">APR 2026</text>
 
   <!-- Gold pill -->
   <rect x="629" y="38" width="42" height="16" rx="3" fill="#e8a825"/>
-  <text x="650" y="50" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">+1.4%</text>
+  <text x="650" y="50" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">+1.4%</text>
 
   <!-- Reference line: +1.0% threshold -->
   <line x1="62" x2="656" y1="96" y2="96" stroke="#2e7d32" stroke-dasharray="4,3" stroke-width="1"/>
-  <text x="658" y="99" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#2e7d32">+1.0%</text>
+  <text x="658" y="99" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#2e7d32">+1.0%</text>
 
   <!-- X-axis labels — annual markers only -->
-  <text x="62" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''22</text>
-  <text x="201" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''23</text>
-  <text x="339" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''24</text>
-  <text x="477" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''25</text>
-  <text x="615" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''26</text>
+  <text x="62" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''22</text>
+  <text x="201" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''23</text>
+  <text x="339" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''24</text>
+  <text x="477" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''25</text>
+  <text x="615" y="286" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Jan ''26</text>
 
   <!-- Axis lines -->
   <line x1="62" y1="18" x2="62" y2="254" stroke="#d8d8d8" stroke-width="1"/>
@@ -756,21 +756,21 @@ VALUES (
 
   <!-- Y-axis labels: y(v)=264-(v-55)*3.514 -->
   <!-- 60: y=264-17.6=246; 70: y=264-52.7=211; 80: y=264-87.9=176; 90: y=264-123=141; 100: y=264-158.1=106; 110: y=264-193.3=71; 120: y=264-228.4=36 -->
-  <text x="57" y="249" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$60</text>
-  <text x="57" y="214" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$70</text>
-  <text x="57" y="179" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$80</text>
-  <text x="57" y="144" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$90</text>
-  <text x="57" y="109" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$100</text>
-  <text x="57" y="74" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$110</text>
-  <text x="57" y="39" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$120</text>
+  <text x="57" y="249" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$60</text>
+  <text x="57" y="214" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$70</text>
+  <text x="57" y="179" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$80</text>
+  <text x="57" y="144" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$90</text>
+  <text x="57" y="109" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$100</text>
+  <text x="57" y="74" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$110</text>
+  <text x="57" y="39" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#aaa">$120</text>
 
   <!-- BoC $90 Q2 assumption reference line: y(90)=141 -->
   <line x1="62" x2="656" y1="141" y2="141" stroke="#2e7d32" stroke-dasharray="4,3" stroke-width="1"/>
-  <text x="658" y="144" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#2e7d32">BoC Q2 ~$90</text>
+  <text x="658" y="144" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#2e7d32">BoC Q2 ~$90</text>
 
   <!-- Pre-war price ~$60 reference: y(60)=246 -->
   <line x1="62" x2="656" y1="246" y2="246" stroke="#7a3030" stroke-dasharray="4,3" stroke-width="1"/>
-  <text x="658" y="249" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#7a3030">Pre-war ~$60</text>
+  <text x="658" y="249" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" fill="#7a3030">Pre-war ~$60</text>
 
   <!-- Brent price line — daily approximation Feb28(i=0)→May13(i=73) -->
   <!-- Surge from $60 → peak ~$120 around Apr7 ceasefire announcement (i=27), -->
@@ -782,45 +782,45 @@ VALUES (
   <!-- Event markers -->
   <!-- Feb 28 strikes: i=0 x=62 -->
   <line x1="62" y1="18" x2="62" y2="264" stroke="#1a3560" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2,3"/>
-  <text x="65" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">FEB 28</text>
-  <text x="65" y="57" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">STRIKES</text>
+  <text x="65" y="48" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">FEB 28</text>
+  <text x="65" y="57" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">STRIKES</text>
 
   <!-- Apr 8 ceasefire: ~27 trading days from Feb28 → x=62+27*8.137=282 -->
   <line x1="282" y1="18" x2="282" y2="264" stroke="#1a3560" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2,3"/>
-  <text x="285" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">APR 8</text>
-  <text x="285" y="57" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">CEASEFIRE</text>
+  <text x="285" y="48" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">APR 8</text>
+  <text x="285" y="57" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">CEASEFIRE</text>
 
   <!-- May 7 naval skirmish: ~48 days → x=62+48*8.137=452 -->
   <line x1="452" y1="18" x2="452" y2="264" stroke="#1a3560" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2,3"/>
-  <text x="455" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">MAY 7</text>
-  <text x="455" y="57" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">NAVAL</text>
-  <text x="455" y="66" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">CLASH</text>
+  <text x="455" y="48" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">MAY 7</text>
+  <text x="455" y="57" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">NAVAL</text>
+  <text x="455" y="66" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">CLASH</text>
 
   <!-- May 14 summit: i=73 x=656 -->
   <line x1="653" y1="18" x2="653" y2="264" stroke="#1a3560" stroke-opacity="0.7" stroke-width="1.5" stroke-dasharray="2,3"/>
-  <text x="632" y="82" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">TRUMP-XI</text>
-  <text x="632" y="91" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">SUMMIT</text>
-  <text x="632" y="100" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">MAY 14-15</text>
+  <text x="632" y="82" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">TRUMP-XI</text>
+  <text x="632" y="91" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">SUMMIT</text>
+  <text x="632" y="100" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7" font-weight="700" fill="#1a3560">MAY 14-15</text>
 
   <!-- Gold pill current price $107.40: y(107.4)=264-(107.4-55)*3.514=264-184.1=80 -->
   <rect x="617" y="56" width="54" height="16" rx="3" fill="#e8a825"/>
-  <text x="644" y="68" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">$107.40</text>
+  <text x="644" y="68" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">$107.40</text>
 
   <!-- Gap annotation -->
   <line x1="560" y1="71" x2="560" y2="141" stroke="#888" stroke-width="1"/>
   <line x1="555" y1="71" x2="565" y2="71" stroke="#888" stroke-width="1"/>
   <line x1="555" y1="141" x2="565" y2="141" stroke="#888" stroke-width="1"/>
-  <text x="563" y="108" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">+$17</text>
-  <text x="563" y="118" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">above</text>
-  <text x="563" y="128" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">BoC</text>
+  <text x="563" y="108" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">+$17</text>
+  <text x="563" y="118" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">above</text>
+  <text x="563" y="128" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="7.5" fill="#444">BoC</text>
 
   <!-- X-axis labels -->
-  <text x="62" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Feb 28</text>
-  <text x="184" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Mar 19</text>
-  <text x="306" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr 8</text>
-  <text x="428" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr 29</text>
-  <text x="550" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">May 7</text>
-  <text x="653" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">May 13</text>
+  <text x="62" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Feb 28</text>
+  <text x="184" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Mar 19</text>
+  <text x="306" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr 8</text>
+  <text x="428" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">Apr 29</text>
+  <text x="550" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">May 7</text>
+  <text x="653" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">May 13</text>
 
   <!-- Axis lines -->
   <line x1="62" y1="18" x2="62" y2="264" stroke="#d8d8d8" stroke-width="1"/>
@@ -968,76 +968,76 @@ VALUES (
 
   <!-- Zero line -->
   <line x1="333" y1="18" x2="333" y2="266" stroke="#7a3030" stroke-dasharray="3,3" stroke-width="1"/>
-  <text x="333" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">0%</text>
+  <text x="333" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">0%</text>
 
   <!-- Gridlines at -20, +20, +40, +60 -->
   <!-- x(-20)=200+10*4.42=244.2 -->
   <line x1="244" y1="18" x2="244" y2="266" stroke="#ececec" stroke-width="0.5"/>
-  <text x="244" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">-20%</text>
+  <text x="244" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">-20%</text>
   <!-- x(+20)=200+50*4.42=421 -->
   <line x1="421" y1="18" x2="421" y2="266" stroke="#ececec" stroke-width="0.5"/>
-  <text x="421" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">+20%</text>
+  <text x="421" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">+20%</text>
   <!-- x(+40)=200+70*4.42=509 -->
   <line x1="509" y1="18" x2="509" y2="266" stroke="#ececec" stroke-width="0.5"/>
-  <text x="509" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">+40%</text>
+  <text x="509" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">+40%</text>
   <!-- x(+60)=200+90*4.42=597 -->
   <line x1="597" y1="18" x2="597" y2="266" stroke="#ececec" stroke-width="0.5"/>
-  <text x="597" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">+60%</text>
+  <text x="597" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8" fill="#999">+60%</text>
 
   <!-- SECTORS (top to bottom, best to worst YTD) -->
   <!-- Energy: +52%. x_start=333, width=52*4.42=229.8 -->
   <rect x="333" y="22" width="230" height="18" fill="#3a7a55"/>
-  <text x="196" y="35" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Energy</text>
-  <text x="568" y="35" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#3a7a55">+52%</text>
+  <text x="196" y="35" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Energy</text>
+  <text x="568" y="35" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#3a7a55">+52%</text>
 
   <!-- Materials (gold): +38%. width=38*4.42=167.9 -->
   <rect x="333" y="48" width="168" height="18" fill="#3a7a55"/>
-  <text x="196" y="61" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Materials</text>
-  <text x="506" y="61" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#3a7a55">+38%</text>
+  <text x="196" y="61" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Materials</text>
+  <text x="506" y="61" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#3a7a55">+38%</text>
 
   <!-- Financials: +12%. width=12*4.42=53 -->
   <rect x="333" y="74" width="53" height="18" fill="#4a5568"/>
-  <text x="196" y="87" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Financials</text>
-  <text x="391" y="87" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#4a5568">+12%</text>
+  <text x="196" y="87" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Financials</text>
+  <text x="391" y="87" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#4a5568">+12%</text>
 
   <!-- Utilities: +8%. width=8*4.42=35 -->
   <rect x="333" y="100" width="35" height="18" fill="#4a5568"/>
-  <text x="196" y="113" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Utilities</text>
-  <text x="373" y="113" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#4a5568">+8%</text>
+  <text x="196" y="113" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Utilities</text>
+  <text x="373" y="113" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#4a5568">+8%</text>
 
   <!-- Industrials: +5%. width=5*4.42=22 -->
   <rect x="333" y="126" width="22" height="18" fill="#4a5568"/>
-  <text x="196" y="139" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Industrials</text>
-  <text x="360" y="139" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#4a5568">+5%</text>
+  <text x="196" y="139" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Industrials</text>
+  <text x="360" y="139" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#4a5568">+5%</text>
 
   <!-- Consumer Staples: +2%. width=2*4.42=9 -->
   <rect x="333" y="152" width="9" height="18" fill="#4a5568"/>
-  <text x="196" y="165" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Cons. Staples</text>
-  <text x="347" y="165" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#4a5568">+2%</text>
+  <text x="196" y="165" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Cons. Staples</text>
+  <text x="347" y="165" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#4a5568">+2%</text>
 
   <!-- Real Estate: -4%. Negative bar left of zero. width=4*4.42=17.7 -->
   <rect x="315" y="178" width="18" height="18" fill="#8a3030"/>
-  <text x="196" y="191" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Real Estate</text>
-  <text x="286" y="191" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#8a3030">-4%</text>
+  <text x="196" y="191" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Real Estate</text>
+  <text x="286" y="191" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#8a3030">-4%</text>
 
   <!-- Consumer Discretionary: -8%. width=8*4.42=35 -->
   <rect x="298" y="204" width="35" height="18" fill="#8a3030"/>
-  <text x="196" y="217" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Cons. Discret.</text>
-  <text x="270" y="217" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#8a3030">-8%</text>
+  <text x="196" y="217" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Cons. Discret.</text>
+  <text x="270" y="217" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#8a3030">-8%</text>
 
   <!-- Health Care: -12%. width=12*4.42=53 -->
   <rect x="280" y="230" width="53" height="18" fill="#8a3030"/>
-  <text x="196" y="243" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Health Care</text>
-  <text x="248" y="243" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#8a3030">-12%</text>
+  <text x="196" y="243" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Health Care</text>
+  <text x="248" y="243" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#8a3030">-12%</text>
 
   <!-- Info Technology: -27%. width=27*4.42=119 -->
   <rect x="214" y="256" width="119" height="18" fill="#8a3030"/>
-  <text x="196" y="269" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Info Tech</text>
-  <text x="201" y="269" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#8a3030">-27%</text>
+  <text x="196" y="269" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" fill="#444">Info Tech</text>
+  <text x="201" y="269" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#8a3030">-27%</text>
 
   <!-- Gold pill on Energy bar -->
   <rect x="540" y="23" width="42" height="16" rx="3" fill="#e8a825"/>
-  <text x="561" y="35" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">+52%</text>
+  <text x="561" y="35" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" font-size="9" font-weight="700" fill="#111">+52%</text>
 
   <!-- Axis line -->
   <line x1="200" y1="18" x2="200" y2="274" stroke="#d8d8d8" stroke-width="1"/>
