@@ -1,5 +1,23 @@
 import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, jsonKeyNumbers, htmlResponse } from '../shell.js';
 
+// Maps a desk code to its canonical page URL.
+// Must match the route table in src/index.js — never concatenate `/${desk}`
+// directly, because `thread` would produce `/thread` which is not a route
+// (the actual route is `/daily-thread`).
+function deskHref(desk) {
+  const map = {
+    market:    '/market',
+    geo:       '/geopolitical',
+    economy:   '/economy',
+    tax:       '/tax-wealth',
+    behaviour: '/behavioural',
+    thread:    '/daily-thread',
+    weekend:   '/weekend',
+    month:     '/month-at-a-glance',
+  };
+  return map[desk] || '/news';
+}
+
 export const PAGE_CSS = `
 .content-area { padding: 36px 0 60px; }
 .content-grid { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; max-width: 100%; }
@@ -181,7 +199,7 @@ function renderNewsItem(a) {
     <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="" loading="lazy">
   </a>
   <div>
-    <a href="/${escHtml(a.desk)}" class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</a>
+    <a href="${deskHref(a.desk)}" class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</a>
     <a href="${articleUrl(a)}" class="news-title">${escHtml(a.title)}</a>
     <div class="news-desc">${escHtml(a.dek || '')}</div>
     <div class="news-meta">
