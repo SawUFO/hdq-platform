@@ -78,8 +78,14 @@ export async function renderThread(env, slug) {
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
   if (!article) return new Response('Not found', { status: 404 });
 
+  // Match desk articles published on the SAME DAY (date portion only),
+  // not the exact published_at timestamp. Articles are now staggered with
+  // full datetimes, so exact-match would never return siblings.
   const related = await env.DB.prepare(`
-    SELECT * FROM articles WHERE published_at=? AND slug!=? AND article_type='article'
+    SELECT * FROM articles
+    WHERE substr(published_at,1,10) = substr(?,1,10)
+      AND slug != ?
+      AND article_type = 'article'
     ORDER BY desk ASC LIMIT 5
   `).bind(article.published_at, slug).all();
 
