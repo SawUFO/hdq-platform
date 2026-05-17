@@ -128,8 +128,15 @@ export async function renderArticle(env, slug) {
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
   if (!article) return new Response('Article not found', { status: 404 });
 
+  // Match other articles published on the SAME DAY (date portion only),
+  // not the exact published_at timestamp. Articles are now staggered with
+  // full datetimes, so exact-match would never return siblings.
   const related = await env.DB.prepare(`
-    SELECT * FROM articles WHERE published_at=? AND slug!=? ORDER BY desk ASC LIMIT 4
+    SELECT * FROM articles
+    WHERE substr(published_at,1,10) = substr(?,1,10)
+      AND slug != ?
+      AND article_type = 'article'
+    ORDER BY desk ASC LIMIT 4
   `).bind(article.published_at, slug).all();
 
   const keyNumbers = jsonKeyNumbers(article.key_numbers);
@@ -332,7 +339,7 @@ function togglePanel(header){
 function copyEmail(id,btn){
   var el=document.getElementById(id);
   var text=el.innerText;
-  var fullText=text+'\n\nRead the full article: ${articleUrl_}';
+  var fullText=text+'\\n\\nRead the full article: ${articleUrl_}';
   navigator.clipboard.writeText(fullText).then(function(){
     btn.textContent='Copied \u2713';btn.classList.add('copied');
     setTimeout(function(){btn.textContent='Copy email';btn.classList.remove('copied');},2000);
