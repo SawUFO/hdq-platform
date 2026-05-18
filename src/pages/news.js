@@ -1,9 +1,5 @@
 import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, jsonKeyNumbers, htmlResponse, getIssueNo } from '../shell.js';
 
-// Maps a desk code to its canonical page URL.
-// Must match the route table in src/index.js — never concatenate `/${desk}`
-// directly, because `thread` would produce `/thread` which is not a route
-// (the actual route is `/daily-thread`).
 function deskHref(desk) {
   const map = {
     market:    '/market',
@@ -61,9 +57,85 @@ export const PAGE_CSS = `
 .news-title:hover { color: var(--navy-700); }
 .news-desc { font-size: 12px; color: var(--n600); line-height: 1.5; margin-bottom: 6px; }
 .news-meta { font-size: 11px; color: var(--n600); display: flex; gap: 6px; align-items: center; }
+
+/* ── Locked state ─────────────────────────────────────────────────────── */
+.hdq-locked-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 26, 48, 0.72);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.hdq-locked-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 44px 40px 36px;
+  max-width: 460px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+  position: relative;
+}
+.hdq-locked-logo {
+  width: 52px; height: 52px;
+  background: var(--gold-50);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+.hdq-locked-wordmark {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px; font-weight: 800;
+  color: var(--navy-900);
+  letter-spacing: -0.02em;
+}
+.hdq-locked-card h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px; font-weight: 800;
+  color: var(--navy-900);
+  margin-bottom: 12px; line-height: 1.2;
+}
+.hdq-locked-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 700;
+  color: var(--navy-700);
+  background: var(--navy-50);
+  border: 1px solid var(--navy-100);
+  border-radius: 3px;
+  padding: 4px 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hdq-locked-card p {
+  font-size: 13px; color: var(--n600);
+  line-height: 1.7; margin-bottom: 10px;
+}
+.hdq-locked-btn {
+  display: block; width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 700;
+  padding: 14px 24px;
+  background: var(--gold-400); color: var(--navy-900);
+  border: none; border-radius: 4px;
+  text-decoration: none; cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 24px;
+  box-sizing: border-box;
+}
+.hdq-locked-btn:hover { background: var(--gold-600); color: #fff; }
+.hdq-locked-note {
+  font-size: 11px; color: var(--n400);
+  margin-top: 14px; line-height: 1.6;
+}
+body.overlay-active { overflow: hidden; }
 `;
 
-export async function renderNews(env) {
+export async function renderNews(env, authed = true) {
   const heroRow = await env.DB.prepare(`
     SELECT * FROM articles
     ORDER BY published_at DESC
@@ -95,7 +167,6 @@ export async function renderNews(env) {
   `).all();
   const trendingTags = extractTopTags(trendingRows.results || []);
 
-  // Live article count for sidebar
   const countRow = await env.DB.prepare(`SELECT COUNT(*) as total FROM articles`).first();
   const articleCount = countRow?.total || 0;
 
@@ -104,17 +175,35 @@ export async function renderNews(env) {
   const recent = recentRows.results || [];
   const flash = flashRows.results || [];
 
-  const heroHtml = hero ? renderHeroCard(hero) : '';
-  const subHtml = subs.length ? `<div class="sub-grid">${subs.map(renderSubCard).join('')}</div>` : '';
+  const heroHtml = hero ? renderHeroCard(hero, authed) : '';
+  const subHtml = subs.length ? `<div class="sub-grid">${subs.map(a => renderSubCard(a, authed)).join('')}</div>` : '';
   const recentHtml = recent.length ? `
     <div class="block-header"><h6>Recent News</h6></div>
-    <div class="news-list">${recent.map(renderNewsItem).join('')}</div>
+    <div class="news-list">${recent.map(a => renderNewsItem(a, authed)).join('')}</div>
     <div style="padding:20px 0 0;"><a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">View archive →</a></div>
   ` : '';
 
   const sidebarHtml = renderSidebar(flash, trendingTags, articleCount);
 
+  // Locked overlay — only rendered for unauthenticated visitors
+  const lockedOverlay = !authed ? `
+<div class="hdq-locked-overlay">
+  <div class="hdq-locked-card">
+    <div class="hdq-locked-logo">
+      <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
+    </div>
+    <span class="hdq-locked-tag">Member Access</span>
+    <h2>A closed membership of 137.</h2>
+    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders.</p>
+    <p>The founding 37 Charter Fellows are admitted by invitation. The remaining 100 HDQ Fellows are admitted by peer nomination and vote.</p>
+    <p>When the 137 seats are filled, HDQ remains closed.</p>
+    <a href="/subscribe" class="hdq-locked-btn">Waiting list &rarr;</a>
+    <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
+  </div>
+</div>` : '';
+
   const body = `
+${lockedOverlay}
 <div class="content-area"><div class="container">
   <div class="content-grid">
     <div style="min-width:0;">
@@ -129,7 +218,7 @@ export async function renderNews(env) {
   </div>
 </div></div>
 
-${subscribeFooterBand()}
+${membershipFooterBand()}
 `;
 
   return htmlResponse(pageShell(body, {
@@ -138,18 +227,21 @@ ${subscribeFooterBand()}
     activeDesk: 'all',
     issueNo: articleCount,
     extraStyle: PAGE_CSS,
+    bodyClass: authed ? '' : 'overlay-active',
   }));
 }
 
-function renderHeroCard(a) {
+// Renders hero card — links disabled for guests
+function renderHeroCard(a, authed) {
+  const href = authed ? articleUrl(a) : '#';
   const tags = (a.tags || '').split(',').slice(0, 5).filter(Boolean);
   const tagHtml = tags.map(t =>
-    `<a href="/archive?tag=${encodeURIComponent(t.trim())}" class="tag">${escHtml(t.trim())}</a>`
+    `<a href="${authed ? `/archive?tag=${encodeURIComponent(t.trim())}` : '#'}" class="tag" ${authed ? '' : 'tabindex="-1"'}>${escHtml(t.trim())}</a>`
   ).join('');
 
   return `
 <div class="feat-wrap">
-  <a href="${articleUrl(a)}" class="feat-card">
+  <a href="${href}" class="feat-card" ${authed ? '' : 'style="pointer-events:none;cursor:default;"'}>
     <div class="feat-inner">
       <div class="feat-img photo-wrap">
         <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
@@ -164,7 +256,7 @@ function renderHeroCard(a) {
           <span>${fmtDate(a.published_at)}</span>
           <span class="meta-dot"></span>
           <span>${a.read_time} min</span>
-          <span class="read-more">Read →</span>
+          <span class="read-more">Read &rarr;</span>
         </div>
       </div>
     </div>
@@ -173,9 +265,10 @@ function renderHeroCard(a) {
 </div>`;
 }
 
-function renderSubCard(a) {
+function renderSubCard(a, authed) {
+  const href = authed ? articleUrl(a) : '#';
   return `
-<a href="${articleUrl(a)}" class="sub-card">
+<a href="${href}" class="sub-card" ${authed ? '' : 'style="pointer-events:none;cursor:default;"'}>
   <div class="sub-img photo-wrap">
     <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
   </div>
@@ -187,21 +280,22 @@ function renderSubCard(a) {
       <span>${fmtDateShort(a.published_at)}</span>
       <span class="meta-dot"></span>
       <span>${a.read_time} min</span>
-      <span class="read-more">Read →</span>
+      <span class="read-more">Read &rarr;</span>
     </div>
   </div>
 </a>`;
 }
 
-function renderNewsItem(a) {
+function renderNewsItem(a, authed) {
+  const href = authed ? articleUrl(a) : '#';
   return `
 <div class="news-item">
-  <a href="${articleUrl(a)}" class="news-thumb photo-wrap thumb-treat">
+  <a href="${href}" class="news-thumb photo-wrap thumb-treat" ${authed ? '' : 'style="pointer-events:none;"'}>
     <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="" loading="lazy">
   </a>
   <div>
-    <a href="${deskHref(a.desk)}" class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</a>
-    <a href="${articleUrl(a)}" class="news-title">${escHtml(a.title)}</a>
+    <a href="${authed ? deskHref(a.desk) : '#'}" class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}" ${authed ? '' : 'style="pointer-events:none;"'}>${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</a>
+    <a href="${href}" class="news-title" ${authed ? '' : 'style="pointer-events:none;"'}>${escHtml(a.title)}</a>
     <div class="news-desc">${escHtml(a.dek || '')}</div>
     <div class="news-meta">
       <span>${fmtDateShort(a.published_at)}</span>
@@ -220,7 +314,7 @@ function renderSidebar(flash, trendingTags, articleCount) {
   </a>
   <div>
     <a href="${articleUrl(a)}" class="flash-title">${escHtml(a.title)}</a>
-    <div class="flash-date">${fmtDateShort(a.published_at)} · ${a.read_time} min</div>
+    <div class="flash-date">${fmtDateShort(a.published_at)} &middot; ${a.read_time} min</div>
   </div>
 </div>`).join('');
 
@@ -234,9 +328,7 @@ function renderSidebar(flash, trendingTags, articleCount) {
   <div class="flash-list">${flashHtml}</div>
 </div>
 <div class="subscribe-box">
-  <h5>Subscribe to HDQ</h5>
-  <p>By application. $3,137 CAD per year. CIRO-registered advisors and CFP professionals.</p>
-  <button class="subscribe-btn" onclick="window.location.href='/hdq-subscribe.html'">Apply</button>
+  <p style="font-size:13px;color:var(--n600);line-height:1.6;margin:0;">Membership is closed at 137 seats. <a href="/subscribe" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
 </div>
 <div>
   <div class="sidebar-label">Topics</div>
@@ -263,11 +355,12 @@ function extractTopTags(rows) {
     .map(([tag]) => tag);
 }
 
-export function subscribeFooterBand() {
+export function membershipFooterBand() {
   return `
 <div class="nl-band"><div class="nl-inner">
-  <h4>Subscribe to HDQ</h4>
-  <p>A daily publication for CIRO-registered advisors and CFP professionals. By application. $3,137 CAD per year.</p>
-  <div class="nl-form"><a href="/hdq-subscribe.html" class="btn-primary" style="display:inline-block;padding:12px 28px;background:var(--gold-400);color:var(--navy-900);font-weight:700;font-family:'DM Sans',sans-serif;border-radius:4px;text-decoration:none;font-size:14px;transition:background 0.15s;">Apply</a></div>
+  <p style="font-size:15px;color:var(--n600);margin:0;">Membership is closed at 137 seats. <a href="/subscribe" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
 </div></div>`;
 }
+
+// Legacy export alias so any other file importing subscribeFooterBand still works
+export { membershipFooterBand as subscribeFooterBand };

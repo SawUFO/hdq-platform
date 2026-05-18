@@ -43,6 +43,7 @@ export function pageShell(bodyHtml, opts = {}) {
     extraHead = '',
     extraStyle = '',
     extraScript = '',
+    bodyClass = '',
   } = opts;
 
   const navLinks = [
@@ -108,7 +109,7 @@ window.openMobileNav=function(){var n=document.getElementById('mobile-nav');if(!
 window.closeMobileNav=function(){var n=document.getElementById('mobile-nav');if(!n)return;n.style.cssText='display:none!important;';document.documentElement.style.overflow='';document.body.style.overflow='';};
 document.addEventListener('keydown',function(e){if(e.key==='Escape')window.closeMobileNav();});
 </script>
-</head><body>
+</head><body${bodyClass ? ` class="${bodyClass}"` : ''}>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">

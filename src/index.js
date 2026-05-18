@@ -45,90 +45,6 @@ function setCookieHeader(token, expiresHours) {
   return `hdq_access=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;
 }
 
-// ── Locked landing page ─────────────────────────────────────────────────────
-
-function renderLocked() {
-  const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HDQ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; }
-  body {
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #1a3560;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 48px 24px;
-  }
-  .lockpage {
-    max-width: 560px;
-    width: 100%;
-  }
-  .wordmark {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 48px;
-    font-weight: 700;
-    color: #e8a825;
-    letter-spacing: -0.02em;
-    margin-bottom: 48px;
-  }
-  .lockpage p {
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 20px;
-  }
-  .lockpage p + p {
-    margin-top: 0;
-  }
-  .waitlist-link {
-    display: inline-block;
-    margin-top: 12px;
-    font-size: 14px;
-    color: #e8a825;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(232,168,37,0.4);
-    padding-bottom: 2px;
-    transition: border-color 0.2s;
-  }
-  .waitlist-link:hover { border-color: #e8a825; }
-  .disclosure {
-    margin-top: 56px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.35);
-    line-height: 1.6;
-  }
-</style>
-</head>
-<body>
-<div class="lockpage">
-  <div class="wordmark">HDQ</div>
-  <p>A closed membership of 137 senior Canadian finance professionals.</p>
-  <p>Membership is restricted to active holders of the FCSI or CFA designation. The founding 37 — Charter Fellows — are admitted by invitation. The remaining 100 — HDQ Fellows — are admitted by peer nomination and vote.</p>
-  <p>The annual subscription is $3,137 CAD. Of that, $1,137 is directed each year to a charity of the member's designation. HDQ is the donor of record.</p>
-  <p>When the 137 seats are filled, HDQ remains closed. A waiting list is maintained for qualified professionals who wish to be considered when a seat becomes available.</p>
-  <a href="/subscribe" class="waitlist-link">Waiting list &rarr;</a>
-  <p class="disclosure">HDQ is an independent publication produced under human editorial direction using a proprietary AI-assisted editorial framework. Educational use only. Not investment advice.</p>
-</div>
-</body>
-</html>`;
-  return new Response(html, {
-    status: 200,
-    headers: { 'Content-Type': 'text/html;charset=UTF-8' }
-  });
-}
-
 // ── Pages that are always public (no cookie required) ───────────────────────
 const PUBLIC_PATHS = new Set([
   '/about', '/subscribe', '/for-firms', '/legal',
@@ -175,21 +91,21 @@ export default {
       // ── Auth check for all other routes ──────────────────────────────────
       const authed = await checkAuth(request, env);
 
-      // Root: show locked page to guests, news to members
+      // Root: always render news page — authed flag controls modal overlay
       if (path === '' || path === '/') {
-        return authed ? renderNews(env) : renderLocked();
+        return renderNews(env, authed);
       }
 
       // Always-public dynamic pages (about handled above, subscribe/for-firms/legal are static)
       if (path === '/about') return renderHome(env);
 
-      // Everything below requires auth — redirect guests to locked landing
-      if (!authed) return renderLocked();
+      // Everything below requires auth — guests see the locked news page
+      if (!authed) return renderNews(env, false);
 
       // ── Authenticated routes ──────────────────────────────────────────────
 
       // News index
-      if (path === '/news' || path === '/hdq-news') return renderNews(env);
+      if (path === '/news' || path === '/hdq-news') return renderNews(env, true);
 
       // Desk pages
       if (path === '/market' || path === '/hdq-market') return renderDesk(env, 'market');
