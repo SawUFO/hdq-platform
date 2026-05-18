@@ -1,5 +1,5 @@
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse, getIssueNo } from '../shell.js';
-import { subscribeFooterBand } from './news.js';
+import { membershipFooterBand } from './news.js';
 
 const ARCHIVE_CSS = `
 .archive-wrap { padding:36px 0 60px; }
@@ -52,7 +52,7 @@ const DESKS = [
 
 const PER_PAGE = 24;
 
-export async function renderArchive(env, params) {
+export async function renderArchive(env, params, authed = true) {
   const filterDesk = params?.get('desk') || 'all';
   const filterTag  = params?.get('tag') || '';
   const search     = params?.get('q') || '';
@@ -139,7 +139,7 @@ export async function renderArchive(env, params) {
 
   // Article grid
   const gridHtml = articles.length ? articles.map(a => `
-<a href="${articleUrl(a)}" class="archive-card">
+<a href="${authed ? articleUrl(a) : '#'}" class="archive-card" ${authed ? '' : 'style="pointer-events:none;cursor:default;"'}>
   <div class="archive-card-img">
     <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="" loading="lazy">
   </div>
@@ -172,7 +172,62 @@ export async function renderArchive(env, params) {
   </div>
 </div>` : '';
 
+  const lockedOverlay = !authed ? `
+<div class="hdq-locked-overlay">
+  <div class="hdq-locked-card">
+    <div class="hdq-locked-logo">
+      <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
+    </div>
+    <span class="hdq-locked-tag">Member Access</span>
+    <h2>A publication with a fixed membership.</h2>
+    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders, admitted by nomination.</p>
+    <p>Total membership is permanently capped. When seats are filled, HDQ remains closed.</p>
+    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
+    <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
+  </div>
+</div>` : '';
+
+  const lockedOverlayCSS = !authed ? `
+.hdq-locked-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(11,26,48,0.72);
+  backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+}
+.hdq-locked-card {
+  background: #fff; border-radius: 10px; padding: 44px 40px 36px;
+  max-width: 460px; width: 90%; text-align: center;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+}
+.hdq-locked-logo {
+  width: 52px; height: 52px; background: var(--gold-50); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+}
+.hdq-locked-tag {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  color: var(--navy-700); background: var(--navy-50); border: 1px solid var(--navy-100);
+  border-radius: 3px; padding: 4px 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.hdq-locked-card h2 {
+  font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;
+  color: var(--navy-900); margin-bottom: 12px; line-height: 1.2;
+}
+.hdq-locked-card p { font-size: 13px; color: var(--n600); line-height: 1.7; margin-bottom: 10px; }
+.hdq-locked-btn {
+  display: block; width: 100%; font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 700; padding: 14px 24px;
+  background: var(--gold-400); color: var(--navy-900);
+  border: none; border-radius: 4px; text-decoration: none;
+  cursor: pointer; transition: background 0.15s; margin-top: 24px; box-sizing: border-box;
+}
+.hdq-locked-btn:hover { background: var(--gold-600); color: #fff; }
+.hdq-locked-note { font-size: 11px; color: var(--n400); margin-top: 14px; line-height: 1.6; }
+body.overlay-active { overflow: hidden; }
+` : '';
+
   const body = `
+${lockedOverlay}
 <div class="archive-wrap"><div class="container">
   <div class="archive-header">
     <div class="block-header" style="margin-bottom:0;"><h6>Archive</h6></div>
@@ -191,14 +246,15 @@ export async function renderArchive(env, params) {
   <div class="archive-grid">${gridHtml}</div>
   ${paginationHtml}
 </div></div>
-${subscribeFooterBand()}`;
+${membershipFooterBand()}`;
 
   return htmlResponse(pageShell(body, {
     title: 'HDQ Archive',
     activePage: 'news',
     activeDesk: filterDesk !== 'all' ? filterDesk : 'archive',
     issueNo: await getIssueNo(env),
-    extraStyle: ARCHIVE_CSS,
+    extraStyle: ARCHIVE_CSS + lockedOverlayCSS,
+    bodyClass: authed ? '' : 'overlay-active',
     extraScript: `<script>
 (function(){
   // Search fires only on Enter key
