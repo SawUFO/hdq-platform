@@ -327,8 +327,10 @@ function renderSidebar(flash, trendingTags, articleCount) {
   <div class="sidebar-label">Flash News</div>
   <div class="flash-list">${flashHtml}</div>
 </div>
-<div class="subscribe-box">
-  <p style="font-size:13px;color:var(--n600);line-height:1.6;margin:0;">Membership is closed at 137 seats. <a href="/hdq-subscribe.html" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
+<div style="background:var(--navy-50);border:1px solid var(--navy-100);border-radius:6px;padding:20px;">
+  <div style="font-size:10px;font-weight:700;color:var(--navy-600);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">Membership</div>
+  <p style="font-size:13px;color:var(--navy-800);line-height:1.6;margin:0 0 12px;">Membership is closed at 137 seats.</p>
+  <a href="/hdq-subscribe.html" style="font-size:13px;color:var(--navy-700);font-weight:600;text-decoration:none;border-bottom:1px solid var(--navy-200);padding-bottom:1px;">Waiting list &rarr;</a>
 </div>
 <div>
   <div class="sidebar-label">Topics</div>

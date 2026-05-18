@@ -99,6 +99,18 @@ export default {
       // Always-public dynamic pages (about handled above, subscribe/for-firms/legal are static)
       if (path === '/about') return renderHome(env);
 
+      // Archive and article pages — render for all visitors, authed flag controls modal
+      if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams, authed);
+
+      const articleMatch = path.match(/^\/(\d{4}\/\d{2}\/\d{2}\/.+)$/);
+      if (articleMatch) {
+        const slug = articleMatch[1];
+        if (slug.includes('/hdq-thread-')) return renderThread(env, slug);
+        if (slug.includes('/weekend-')) return renderWeekend(env, slug);
+        if (slug.includes('/hdq-month-')) return renderWeekend(env, slug);
+        return renderArticle(env, slug, authed);
+      }
+
       // Everything below requires auth — guests see the locked news page
       if (!authed) return renderNews(env, false);
 
@@ -118,19 +130,6 @@ export default {
       if (path === '/daily-thread') return renderDesk(env, 'thread');
       if (path === '/weekend') return renderDesk(env, 'weekend');
       if (path === '/month-at-a-glance') return renderDesk(env, 'month');
-
-      // Archive
-      if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams, authed);
-
-      // Article slugs: /YYYY/MM/DD/slug
-      const articleMatch = path.match(/^\/(\d{4}\/\d{2}\/\d{2}\/.+)$/);
-      if (articleMatch) {
-        const slug = articleMatch[1];
-        if (slug.includes('/hdq-thread-')) return renderThread(env, slug);
-        if (slug.includes('/weekend-')) return renderWeekend(env, slug);
-        if (slug.includes('/hdq-month-')) return renderWeekend(env, slug);
-        return renderArticle(env, slug, authed);
-      }
 
       // ── Redirects ─────────────────────────────────────────────────────────
       const redirectMap = {
