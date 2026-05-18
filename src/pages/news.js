@@ -193,10 +193,9 @@ export async function renderNews(env, authed = true) {
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
     <span class="hdq-locked-tag">Member Access</span>
-    <h2>A closed membership of 137.</h2>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders.</p>
-    <p>The founding 37 Charter Fellows are admitted by invitation. The remaining 100 HDQ Fellows are admitted by peer nomination and vote.</p>
-    <p>When the 137 seats are filled, HDQ remains closed.</p>
+    <h2>A publication with a fixed membership.</h2>
+    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders, admitted by nomination.</p>
+    <p>Total membership is permanently capped. When seats are filled, HDQ remains closed.</p>
     <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
     <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
   </div>
@@ -329,7 +328,7 @@ function renderSidebar(flash, trendingTags, articleCount) {
 </div>
 <div style="background:var(--navy-50);border:1px solid var(--navy-100);border-radius:6px;padding:20px;">
   <div style="font-size:10px;font-weight:700;color:var(--navy-600);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">Membership</div>
-  <p style="font-size:13px;color:var(--navy-800);line-height:1.6;margin:0 0 12px;">Membership is closed at 137 seats.</p>
+  <p style="font-size:13px;color:var(--navy-800);line-height:1.6;margin:0 0 12px;">Membership is permanently capped. Admitted by nomination only.</p>
   <a href="/hdq-subscribe.html" style="font-size:13px;color:var(--navy-700);font-weight:600;text-decoration:none;border-bottom:1px solid var(--navy-200);padding-bottom:1px;">Waiting list &rarr;</a>
 </div>
 <div>
@@ -360,7 +359,7 @@ function extractTopTags(rows) {
 export function membershipFooterBand() {
   return `
 <div class="nl-band"><div class="nl-inner">
-  <p style="font-size:15px;color:var(--n600);margin:0;">Membership is closed at 137 seats. <a href="/hdq-subscribe.html" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
+  <p style="font-size:15px;color:var(--n600);margin:0;">Membership is permanently capped. Admitted by nomination only. <a href="/hdq-subscribe.html" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
 </div></div>`;
 }
 
