@@ -120,7 +120,7 @@ export default {
       if (path === '/month-at-a-glance') return renderDesk(env, 'month');
 
       // Archive
-      if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams);
+      if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams, authed);
 
       // Article slugs: /YYYY/MM/DD/slug
       const articleMatch = path.match(/^\/(\d{4}\/\d{2}\/\d{2}\/.+)$/);
