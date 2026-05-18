@@ -1,4 +1,4 @@
-import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, jsonKeyNumbers, htmlResponse } from '../shell.js';
+import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, DESK_BYLINE, articleUrl, jsonKeyNumbers, htmlResponse, getArticleIssueNo } from '../shell.js';
 import { subscribeFooterBand } from './news.js';
 
 const ARTICLE_CSS = `
@@ -128,6 +128,9 @@ export async function renderArticle(env, slug) {
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
   if (!article) return new Response('Article not found', { status: 404 });
 
+  // This article's permanent issue number — its position in publish order.
+  const issueNo = await getArticleIssueNo(env, article.published_at);
+
   // Match other articles published on the SAME DAY (date portion only),
   // not the exact published_at timestamp. Articles are now staggered with
   // full datetimes, so exact-match would never return siblings.
@@ -192,9 +195,9 @@ export async function renderArticle(env, slug) {
       <div class="article-byline">
         <span>${fmtDate(article.published_at)}</span>
         <span class="meta-dot"></span>
-        <span>${article.read_time} min read</span>
+        <span>${article.read_time} min</span>
         <span class="meta-dot"></span>
-        <span>HDQ Editorial</span>
+        <span>${escHtml(DESK_BYLINE[article.desk] || 'HDQ Editorial')}</span>
       </div>
       ${briefHtml}
       <div class="article-body">${article.body_html || ''}</div>
@@ -204,11 +207,11 @@ export async function renderArticle(env, slug) {
         <p class="sources-text">${escHtml(article.sources_text)}</p>
       </div>` : ''}
       <div class="edu-disclaimer">
-        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice, financial planning advice, or a recommendation to buy or sell any security. Canadian advisors should apply their own professional judgment. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer →</a>
+        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice, financial planning advice, or a recommendation to buy or sell any security. Canadian advisors should apply their own professional judgment. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer</a>.
       </div>
       <div class="share-row">
-        <button class="btn-share" onclick="copyLink()">📋 Copy Link</button>
-        <a href="mailto:?subject=${encodeURIComponent('HDQ: ' + article.title)}&body=${encodeURIComponent('Thought you\'d find this useful: https://hdq.ca/' + article.slug)}" class="btn-share">📧 Email</a>
+        <button class="btn-share" onclick="copyLink()">Copy link</button>
+        <a href="mailto:?subject=${encodeURIComponent('HDQ: ' + article.title)}&body=${encodeURIComponent('Thought you\'d find this useful: https://hdq.ca/' + article.slug)}" class="btn-share">Email</a>
       </div>
       ${toolkitHtml}
     </article>
@@ -217,7 +220,7 @@ export async function renderArticle(env, slug) {
         ${keyNumbersHtml}
         ${relatedHtml}
         <div class="sidebar-legal">
-          <strong>Educational content only.</strong> HDQ articles are written for Canadian financial advisors for professional development purposes. Nothing published by HDQ constitutes personalized investment advice. <a href="/hdq-legal.html" style="color:var(--navy-700);">Full legal disclaimer →</a>
+          <strong>Educational content only.</strong> Editorial published for the professional development of Canadian financial advisors. Not investment advice. <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>.
         </div>
       </div>
     </aside>
@@ -229,6 +232,7 @@ ${subscribeFooterBand()}`;
     title: `${article.title} — HDQ`,
     activePage: 'news',
     activeDesk: article.desk,
+    issueNo,
     extraHead: articleSchemaTag(article),
     extraStyle: ARTICLE_CSS,
     extraScript: articleScripts(article),
@@ -243,18 +247,17 @@ function renderGatedToolkit(article) {
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
       <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
     </svg>
-    <h3>Subscriber Tools</h3>
-    <p>The RESPOND and PROSPECT toolkits — including client scripts, action checklists, and email templates — are available to HDQ subscribers.</p>
+    <h3>Subscriber Toolkits</h3>
+    <p>The RESPOND and PROSPECT toolkits are available to subscribers. Includes client scripts, action checklists, and follow-up email templates.</p>
     <div class="toolkit-input-row">
       <input type="password" class="toolkit-input" id="toolkit-password" placeholder="Access code">
-      <button class="toolkit-unlock-btn" onclick="unlockToolkit()">Unlock</button>
+      <button class="toolkit-unlock-btn" onclick="unlockToolkit()">Enter</button>
     </div>
     <div class="toolkit-error" id="toolkit-error">Incorrect access code. Please try again.</div>
   </div>
   <div class="toolkit-content" id="toolkit-content">
     <div class="toolkit-header-row">
-      <div class="toolkit-title">Subscriber Tools — ${fmtDate(article.published_at)}</div>
-      <div class="toolkit-badge">🔓 Unlocked</div>
+      <div class="toolkit-title">Subscriber Toolkits — ${fmtDate(article.published_at)}</div>
     </div>
     <div class="toolkit-panels">
       ${article.respond_html ? `
@@ -285,7 +288,7 @@ function renderPublicToolkit(article) {
   return `
 <section class="toolkit-gate">
   <div class="toolkit-header-row">
-    <div class="toolkit-title">Advisor Tools — ${fmtDate(article.published_at)}</div>
+    <div class="toolkit-title">Advisor Toolkits — ${fmtDate(article.published_at)}</div>
   </div>
   <div class="toolkit-panels">
     ${article.respond_html ? `

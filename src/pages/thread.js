@@ -1,4 +1,4 @@
-import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, jsonKeyNumbers, htmlResponse } from '../shell.js';
+import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, DESK_BYLINE, articleUrl, jsonKeyNumbers, htmlResponse, getArticleIssueNo } from '../shell.js';
 import { subscribeFooterBand } from './news.js';
 
 const ARTICLE_CSS = `
@@ -78,6 +78,9 @@ export async function renderThread(env, slug) {
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
   if (!article) return new Response('Not found', { status: 404 });
 
+  // This thread's permanent issue number — its position in publish order.
+  const issueNo = await getArticleIssueNo(env, article.published_at);
+
   // Match desk articles published on the SAME DAY (date portion only),
   // not the exact published_at timestamp. Articles are now staggered with
   // full datetimes, so exact-match would never return siblings.
@@ -132,9 +135,9 @@ export async function renderThread(env, slug) {
       <div class="article-byline">
         <span>${fmtDate(article.published_at)}</span>
         <span class="meta-dot"></span>
-        <span>${article.read_time} min read</span>
+        <span>${article.read_time} min</span>
         <span class="meta-dot"></span>
-        <span>HDQ Editorial Desk</span>
+        <span>${escHtml(DESK_BYLINE.thread)}</span>
       </div>
       ${briefHtml}
       <div class="article-body">${article.body_html || ''}</div>
@@ -144,11 +147,11 @@ export async function renderThread(env, slug) {
         <p class="sources-text">${escHtml(article.sources_text)}</p>
       </div>` : ''}
       <div class="edu-disclaimer">
-        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice or a recommendation to buy or sell any security. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer →</a>
+        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice or a recommendation to buy or sell any security. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer</a>.
       </div>
       <div class="share-row">
-        <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied.'))">📋 Copy Link</button>
-        <a href="mailto:?subject=${encodeURIComponent('HDQ Daily Thread: ' + article.title)}&body=${encodeURIComponent('https://hdq.ca/' + article.slug)}" class="btn-share">📧 Email</a>
+        <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied.'))">Copy link</button>
+        <a href="mailto:?subject=${encodeURIComponent('HDQ Daily Thread: ' + article.title)}&body=${encodeURIComponent('https://hdq.ca/' + article.slug)}" class="btn-share">Email</a>
       </div>
     </article>
     <aside>
@@ -156,8 +159,8 @@ export async function renderThread(env, slug) {
         ${keyNumbersHtml}
         ${relatedHtml}
         <div class="sidebar-legal">
-          <strong>Educational content only.</strong> HDQ is written for Canadian financial advisors. Not investment advice.
-          <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer →</a>
+          <strong>Educational content only.</strong> Editorial published for the professional development of Canadian financial advisors. Not investment advice.
+          <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>.
         </div>
       </div>
     </aside>
@@ -169,6 +172,7 @@ ${subscribeFooterBand()}`;
     title: `${article.title} — HDQ Daily Thread`,
     activePage: 'news',
     activeDesk: 'thread',
+    issueNo,
     extraStyle: ARTICLE_CSS,
   }));
 }

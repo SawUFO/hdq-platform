@@ -3,11 +3,43 @@
  * All dynamic pages call pageShell(content, opts) to wrap their body.
  */
 
+/**
+ * Helper that pages call to get the current issue number from D1.
+ * Counts every article ever published. Used by the news index, home page,
+ * desk pages, and archive — anywhere that displays site-level chrome.
+ * For individual articles, use getArticleIssueNo(env, slug) instead so
+ * the No. reflects that article's own position in publish order.
+ */
+export async function getIssueNo(env) {
+  try {
+    const row = await env.DB.prepare(`SELECT COUNT(*) as total FROM articles`).first();
+    return row?.total || 0;
+  } catch {
+    return 0;
+  }
+}
+
+/**
+ * Computes the permanent issue number for a single article — its position
+ * in chronological publish order. An article published 42nd is forever No. 42.
+ */
+export async function getArticleIssueNo(env, publishedAt) {
+  try {
+    const row = await env.DB.prepare(
+      `SELECT COUNT(*) as n FROM articles WHERE published_at <= ?`
+    ).bind(publishedAt).first();
+    return row?.n || 0;
+  } catch {
+    return 0;
+  }
+}
+
 export function pageShell(bodyHtml, opts = {}) {
   const {
-    title = 'HDQ — Financial Intelligence for Canadian Advisors',
+    title = 'HDQ — A daily publication for Canadian advisors',
     activePage = 'news',
     activeDesk = 'all',
+    issueNo = 0,
     extraHead = '',
     extraStyle = '',
     extraScript = '',
@@ -47,6 +79,12 @@ export function pageShell(bodyHtml, opts = {}) {
     `<a href="${l.href}" class="mobile-nav-link" onclick="window.closeMobileNav()">${l.label}</a>`
   ).join('');
 
+  // Vol/No displayed on the right side of the date strip.
+  // Vol. 1 covers May 7 2026 through May 6 2027.
+  const volNoHtml = issueNo > 0
+    ? `<span class="date-volno">Vol. 1 &nbsp;·&nbsp; No. ${issueNo}</span>`
+    : '';
+
   return `<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -62,6 +100,7 @@ ${extraHead}
   .desk-nav-inner{display:flex!important;flex-wrap:nowrap!important;overflow-x:scroll!important;-webkit-overflow-scrolling:touch!important;white-space:nowrap!important;}
   .dnav-link{flex-shrink:0!important;white-space:nowrap!important;}
 }
+.date-volno { color: var(--gold-400); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
 ${extraStyle}
 </style>
 <script>
@@ -90,7 +129,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
     <a href="/hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
   </nav>
   <div class="mobile-nav-footer">
-    <a href="/hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Subscribe — $775/year →</a>
+    <a href="/hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Subscribe — $3,137/year</a>
   </div>
 </div>
 
@@ -116,7 +155,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
 <!-- DATE STRIP -->
 <div class="date-strip"><div class="date-strip-inner">
   <span class="date-left"></span>
-  <span class="date-live"><span class="live-dot"></span>TODAY'S EDITION IS LIVE</span>
+  ${volNoHtml}
 </div></div>
 
 <!-- DESK NAV -->
@@ -132,7 +171,7 @@ ${bodyHtml}
         <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
         <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
       </a>
-      <p>Financial intelligence for Canada's advisor community. Published every weekday by 7 a.m. Eastern.</p>
+      <p>A daily publication for Canadian financial advisors. Published in Toronto.</p>
     </div>
     <div class="footer-nav"><h6>Publication</h6><ul>
       <li><a href="/news">Daily Briefing</a></li>
@@ -161,7 +200,7 @@ ${bodyHtml}
     </ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 HDQ. All rights reserved. Content is for educational and informational purposes only. Not investment advice. Not a solicitation. HDQ is not a registered investment advisor. <a href="/hdq-legal.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span>
+    <span>© 2026 HDQ Publishing. All rights reserved. HDQ is an independent publication. Content is published for the professional development of licensed Canadian financial advisors and does not constitute investment advice. <a href="/hdq-legal.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span>
     <span class="footer-badge">hdq.ca</span>
   </div>
 </div></footer>
@@ -228,6 +267,21 @@ export const DESK_CAT_CLASS = {
   thread:    'cat-thread',
   weekend:   'cat-weekend',
   month:     'cat-month',
+};
+
+/**
+ * Maps a desk code to the full byline string used in article meta lines.
+ * E.g. "market" → "The Market Desk", "economy" → "The Economy Desk".
+ */
+export const DESK_BYLINE = {
+  market:    'The Market Desk',
+  economy:   'The Economy Desk',
+  geo:       'The Geopolitical Desk',
+  tax:       'The Tax & Wealth Desk',
+  behaviour: 'The Behavioural Desk',
+  thread:    'The Daily Thread',
+  weekend:   'The Weekend Desk',
+  month:     'The Editorial Desk',
 };
 
 export function articleUrl(article) {

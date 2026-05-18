@@ -1,4 +1,4 @@
-import { pageShell, escHtml, fmtDate, articleUrl, htmlResponse } from '../shell.js';
+import { pageShell, escHtml, fmtDate, articleUrl, htmlResponse, getArticleIssueNo } from '../shell.js';
 import { subscribeFooterBand } from './news.js';
 import { ARTICLE_CSS } from './article-css.js';
 
@@ -63,6 +63,7 @@ ${subscribeFooterBand()}`;
     title: `${article.title} — HDQ ${label}`,
     activePage: 'news',
     activeDesk: deskKey,
+    issueNo: await getArticleIssueNo(env, article.published_at),
     extraStyle: ARTICLE_CSS,
   }));
 }

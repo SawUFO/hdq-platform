@@ -1,4 +1,4 @@
-import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse } from '../shell.js';
+import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse, getIssueNo } from '../shell.js';
 import { subscribeFooterBand, PAGE_CSS } from './news.js';
 
 const DESK_TO_NAV = {
@@ -31,6 +31,8 @@ export async function renderDesk(env, desk) {
   `).bind(desk).all();
   const trendTags = extractTopTags(trendRows.results || []);
 
+  const issueNo = await getIssueNo(env);
+
   const heroHtml = hero ? renderHeroCardDesk(hero) : '<p style="padding:40px 0;color:var(--n600);">No articles yet for this desk.</p>';
   const subHtml = (subs.results || []).length ? `<div class="sub-grid">${(subs.results || []).map(renderSubCardDesk).join('')}</div>` : '';
   const recentHtml = (recent.results || []).length ? `
@@ -62,6 +64,7 @@ ${subscribeFooterBand()}`;
     title: `HDQ ${deskTitle} Desk`,
     activePage: 'news',
     activeDesk: desk,
+    issueNo,
     extraStyle: PAGE_CSS,
   }));
 }

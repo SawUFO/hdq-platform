@@ -1,4 +1,4 @@
-import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse } from '../shell.js';
+import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse, getIssueNo } from '../shell.js';
 import { subscribeFooterBand } from './news.js';
 
 const ARCHIVE_CSS = `
@@ -197,6 +197,7 @@ ${subscribeFooterBand()}`;
     title: 'HDQ Archive',
     activePage: 'news',
     activeDesk: filterDesk !== 'all' ? filterDesk : 'archive',
+    issueNo: await getIssueNo(env),
     extraStyle: ARCHIVE_CSS,
     extraScript: `<script>
 (function(){

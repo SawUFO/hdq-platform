@@ -1,4 +1,4 @@
-import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, jsonKeyNumbers, htmlResponse } from '../shell.js';
+import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, jsonKeyNumbers, htmlResponse, getIssueNo } from '../shell.js';
 
 // Maps a desk code to its canonical page URL.
 // Must match the route table in src/index.js — never concatenate `/${desk}`
@@ -133,9 +133,10 @@ ${subscribeFooterBand()}
 `;
 
   return htmlResponse(pageShell(body, {
-    title: 'HDQ News — Daily Briefing',
+    title: 'HDQ — Today\'s Edition',
     activePage: 'news',
     activeDesk: 'all',
+    issueNo: articleCount,
     extraStyle: PAGE_CSS,
   }));
 }
@@ -233,18 +234,18 @@ function renderSidebar(flash, trendingTags, articleCount) {
   <div class="flash-list">${flashHtml}</div>
 </div>
 <div class="subscribe-box">
-  <h5>Get HDQ every morning</h5>
-  <p>Five-desk briefing by 7 a.m. Eastern. CIRO-registered advisors only.</p>
-  <button class="subscribe-btn" onclick="window.location.href='/hdq-subscribe.html'">Apply for access</button>
+  <h5>Subscribe to HDQ</h5>
+  <p>By application. $3,137 CAD per year. CIRO-registered advisors and CFP professionals.</p>
+  <button class="subscribe-btn" onclick="window.location.href='/hdq-subscribe.html'">Apply</button>
 </div>
 <div>
-  <div class="sidebar-label">Trending Topics</div>
+  <div class="sidebar-label">Topics</div>
   <div class="trending-tags">${trendHtml}</div>
 </div>
 <div>
   <div class="sidebar-label">Past Editions</div>
-  <a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">Browse the full archive →</a>
-  <p style="font-size:12px;color:var(--n600);line-height:1.5;margin-top:6px;">${articleCount} editions. Search by desk, topic, or date.</p>
+  <a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">View the archive</a>
+  <p style="font-size:12px;color:var(--n600);line-height:1.5;margin-top:6px;">${articleCount} editions on file. Search by desk, topic, or date.</p>
 </div>`;
 }
 
@@ -265,8 +266,8 @@ function extractTopTags(rows) {
 export function subscribeFooterBand() {
   return `
 <div class="nl-band"><div class="nl-inner">
-  <h4>Not yet a subscriber?</h4>
-  <p>HDQ is published every weekday for CIRO-registered advisors and CFP professionals. By application only — $775 CAD/year.</p>
-  <div class="nl-form"><a href="/hdq-subscribe.html" class="btn-primary" style="display:inline-block;padding:12px 28px;background:var(--gold-400);color:var(--navy-900);font-weight:700;font-family:'DM Sans',sans-serif;border-radius:4px;text-decoration:none;font-size:14px;transition:background 0.15s;">Apply for access →</a></div>
+  <h4>Subscribe to HDQ</h4>
+  <p>A daily publication for CIRO-registered advisors and CFP professionals. By application. $3,137 CAD per year.</p>
+  <div class="nl-form"><a href="/hdq-subscribe.html" class="btn-primary" style="display:inline-block;padding:12px 28px;background:var(--gold-400);color:var(--navy-900);font-weight:700;font-family:'DM Sans',sans-serif;border-radius:4px;text-decoration:none;font-size:14px;transition:background 0.15s;">Apply</a></div>
 </div></div>`;
 }
