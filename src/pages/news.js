@@ -197,7 +197,7 @@ export async function renderNews(env, authed = true) {
     <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders.</p>
     <p>The founding 37 Charter Fellows are admitted by invitation. The remaining 100 HDQ Fellows are admitted by peer nomination and vote.</p>
     <p>When the 137 seats are filled, HDQ remains closed.</p>
-    <a href="/subscribe" class="hdq-locked-btn">Waiting list &rarr;</a>
+    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
     <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
   </div>
 </div>` : '';
@@ -328,7 +328,7 @@ function renderSidebar(flash, trendingTags, articleCount) {
   <div class="flash-list">${flashHtml}</div>
 </div>
 <div class="subscribe-box">
-  <p style="font-size:13px;color:var(--n600);line-height:1.6;margin:0;">Membership is closed at 137 seats. <a href="/subscribe" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
+  <p style="font-size:13px;color:var(--n600);line-height:1.6;margin:0;">Membership is closed at 137 seats. <a href="/hdq-subscribe.html" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
 </div>
 <div>
   <div class="sidebar-label">Topics</div>
@@ -358,7 +358,7 @@ function extractTopTags(rows) {
 export function membershipFooterBand() {
   return `
 <div class="nl-band"><div class="nl-inner">
-  <p style="font-size:15px;color:var(--n600);margin:0;">Membership is closed at 137 seats. <a href="/subscribe" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
+  <p style="font-size:15px;color:var(--n600);margin:0;">Membership is closed at 137 seats. <a href="/hdq-subscribe.html" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
 </div></div>`;
 }
 
