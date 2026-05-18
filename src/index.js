@@ -129,7 +129,7 @@ export default {
         if (slug.includes('/hdq-thread-')) return renderThread(env, slug);
         if (slug.includes('/weekend-')) return renderWeekend(env, slug);
         if (slug.includes('/hdq-month-')) return renderWeekend(env, slug);
-        return renderArticle(env, slug);
+        return renderArticle(env, slug, authed);
       }
 
       // ── Redirects ─────────────────────────────────────────────────────────
