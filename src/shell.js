@@ -192,7 +192,7 @@ ${bodyHtml}
     <div class="footer-nav"><h6>Company</h6><ul>
       <li><a href="/hdq-whitelabel.html">For Firms</a></li>
       <li><a href="/about">About HDQ</a></li>
-      <li><a href="/hdq-subscribe.html">Subscribe</a></li>
+      <li><a href="/hdq-subscribe.html">Waiting List</a></li>
       <li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li>
     </ul></div>
     <div class="footer-nav"><h6>Legal</h6><ul>
