@@ -50,6 +50,7 @@ export function pageShell(bodyHtml, opts = {}) {
     { href: '/news',                  label: 'News',                    key: 'news' },
     { href: '/hdq-prodev.html',       label: 'Professional Development', key: 'prodev' },
     { href: '/hdq-whitelabel.html',   label: 'For Firms',               key: 'whitelabel' },
+    { href: '/archive',               label: 'Archive',                 key: 'archive' },
     { href: '/about',                 label: 'About',                   key: 'about' },
   ];
 
@@ -123,6 +124,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
   <nav class="mobile-nav-links" aria-label="Mobile navigation">
     ${mobileNavLinks}
     <div class="mobile-nav-divider"></div>
+    <a href="/archive" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
     <a href="/daily-thread" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
     <a href="/weekend" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
     <a href="/month-at-a-glance" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>

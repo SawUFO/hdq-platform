@@ -175,31 +175,18 @@ export async function renderNews(env, authed = true) {
   const recent = recentRows.results || [];
   const flash = flashRows.results || [];
 
-  const heroHtml = hero ? renderHeroCard(hero, authed) : '';
-  const subHtml = subs.length ? `<div class="sub-grid">${subs.map(a => renderSubCard(a, authed)).join('')}</div>` : '';
+  const heroHtml = hero ? renderHeroCard(hero, true) : '';
+  const subHtml = subs.length ? `<div class="sub-grid">${subs.map(a => renderSubCard(a, true)).join('')}</div>` : '';
   const recentHtml = recent.length ? `
     <div class="block-header"><h6>Recent News</h6></div>
-    <div class="news-list">${recent.map(a => renderNewsItem(a, authed)).join('')}</div>
+    <div class="news-list">${recent.map(a => renderNewsItem(a, true)).join('')}</div>
     <div style="padding:20px 0 0;"><a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">View archive →</a></div>
   ` : '';
 
   const sidebarHtml = renderSidebar(flash, trendingTags, articleCount);
 
-  // Locked overlay — only rendered for unauthenticated visitors
-  const lockedOverlay = !authed ? `
-<div class="hdq-locked-overlay">
-  <div class="hdq-locked-card">
-    <div class="hdq-locked-logo">
-      <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
-    </div>
-    <span class="hdq-locked-tag">Member Access</span>
-    <h2>A publication with a fixed membership.</h2>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders, admitted by nomination.</p>
-    <p>Total membership is permanently capped. When seats are filled, HDQ remains closed.</p>
-    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
-    <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
-  </div>
-</div>` : '';
+  // News page is always fully visible — the wall hits at the article level
+  const lockedOverlay = '';
 
   const body = `
 ${lockedOverlay}
@@ -226,7 +213,6 @@ ${membershipFooterBand()}
     activeDesk: 'all',
     issueNo: articleCount,
     extraStyle: PAGE_CSS,
-    bodyClass: authed ? '' : 'overlay-active',
   }));
 }
 
