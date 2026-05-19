@@ -1,5 +1,5 @@
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, DESK_BYLINE, articleUrl, jsonKeyNumbers, htmlResponse, getArticleIssueNo } from '../shell.js';
-import { subscribeFooterBand } from './news.js';
+import { membershipFooterBand } from './news.js';
 
 const ARTICLE_CSS = `
 /* ── Article layout ─────────────────────────────────────────────────────── */
@@ -124,16 +124,49 @@ article { min-width:0; }
 .edu-disclaimer strong { font-weight:600; font-style:normal; }
 `;
 
-export async function renderArticle(env, slug) {
+const lockedOverlayCSS = `
+.hdq-locked-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(11,26,48,0.72);
+  backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+}
+.hdq-locked-card {
+  background: #fff; border-radius: 10px; padding: 44px 40px 36px;
+  max-width: 460px; width: 90%; text-align: center;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+}
+.hdq-locked-logo {
+  width: 52px; height: 52px; background: var(--gold-50); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+}
+.hdq-locked-tag {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  color: var(--navy-700); background: var(--navy-50); border: 1px solid var(--navy-100);
+  border-radius: 3px; padding: 4px 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.hdq-locked-card h2 {
+  font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;
+  color: var(--navy-900); margin-bottom: 12px; line-height: 1.2;
+}
+.hdq-locked-card p { font-size: 13px; color: var(--n600); line-height: 1.7; margin-bottom: 10px; }
+.hdq-locked-btn {
+  display: block; width: 100%; font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 700; padding: 14px 24px;
+  background: var(--gold-400); color: var(--navy-900);
+  border: none; border-radius: 4px; text-decoration: none;
+  cursor: pointer; transition: background 0.15s; margin-top: 24px; box-sizing: border-box;
+}
+.hdq-locked-btn:hover { background: var(--gold-600); color: #fff; }
+.hdq-locked-note { font-size: 11px; color: var(--n400); margin-top: 14px; line-height: 1.6; }
+body.overlay-active { overflow: hidden; }
+`;(env, slug, authed = true) {
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
   if (!article) return new Response('Article not found', { status: 404 });
 
-  // This article's permanent issue number — its position in publish order.
   const issueNo = await getArticleIssueNo(env, article.published_at);
 
-  // Match other articles published on the SAME DAY (date portion only),
-  // not the exact published_at timestamp. Articles are now staggered with
-  // full datetimes, so exact-match would never return siblings.
   const related = await env.DB.prepare(`
     SELECT * FROM articles
     WHERE substr(published_at,1,10) = substr(?,1,10)
@@ -157,135 +190,8 @@ export async function renderArticle(env, slug) {
   ${article.brief_html}
 </section>` : '';
 
-  const toolkitHtml = article.toolkit_gated
-    ? renderGatedToolkit(article)
-    : (article.respond_html || article.prospect_html ? renderPublicToolkit(article) : '');
-
-  const keyNumbersHtml = keyNumbers.length ? `
-<div class="key-numbers">
-  <div class="key-numbers-label">Key Numbers</div>
-  ${keyNumbers.map(kn => `
-  <div class="key-number">
-    <div class="key-number-value">${escHtml(kn.value)}</div>
-    <div class="key-number-label">${escHtml(kn.label)}</div>
-  </div>`).join('')}
-</div>` : '';
-
-  const relatedHtml = (related.results || []).length ? `
-<div class="related-box">
-  <div class="related-label">Also Today</div>
-  ${(related.results || []).map(r => `
-  <a href="${articleUrl(r)}" class="related-item">
-    <div class="related-item-tag" style="color:${deskColour(r.desk)};">${escHtml(DESK_DISPLAY[r.desk] || r.desk)}</div>
-    <div class="related-item-title">${escHtml(r.title)}</div>
-  </a>`).join('')}
-</div>` : '';
-
-  const deskHref = deskNavHref(article.desk);
-
-  const body = `
-<main>
-  <div class="article-wrap">
-    <article aria-labelledby="article-headline">
-      ${heroHtml}
-      <div class="article-kicker">
-        <a href="${deskHref}" class="cat-tag ${escHtml(DESK_CAT_CLASS[article.desk] || '')}" style="display:inline-flex;">${escHtml(DESK_DISPLAY[article.desk] || article.desk)}</a>
-      </div>
-      <h1 class="article-headline" id="article-headline">${escHtml(article.title)}</h1>
-      <div class="article-byline">
-        <span>${fmtDate(article.published_at)}</span>
-        <span class="meta-dot"></span>
-        <span>${article.read_time} min</span>
-        <span class="meta-dot"></span>
-        <span>${escHtml(DESK_BYLINE[article.desk] || 'HDQ Editorial')}</span>
-      </div>
-      ${briefHtml}
-      <div class="article-body">${article.body_html || ''}</div>
-      ${article.sources_text ? `
-      <div class="sources-box">
-        <div class="sources-label">Sources</div>
-        <p class="sources-text">${escHtml(article.sources_text)}</p>
-      </div>` : ''}
-      <div class="edu-disclaimer">
-        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice, financial planning advice, or a recommendation to buy or sell any security. Canadian advisors should apply their own professional judgment. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer</a>.
-      </div>
-      <div class="share-row">
-        <button class="btn-share" onclick="copyLink()">Copy link</button>
-        <a href="mailto:?subject=${encodeURIComponent('HDQ: ' + article.title)}&body=${encodeURIComponent('Thought you\'d find this useful: https://hdq.ca/' + article.slug)}" class="btn-share">Email</a>
-      </div>
-      ${toolkitHtml}
-    </article>
-    <aside>
-      <div class="sidebar-sticky">
-        ${keyNumbersHtml}
-        ${relatedHtml}
-        <div class="sidebar-legal">
-          <strong>Educational content only.</strong> Editorial published for the professional development of Canadian financial advisors. Not investment advice. <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>.
-        </div>
-      </div>
-    </aside>
-  </div>
-</main>
-${subscribeFooterBand()}`;
-
-  return htmlResponse(pageShell(body, {
-    title: `${article.title} — HDQ`,
-    activePage: 'news',
-    activeDesk: article.desk,
-    issueNo,
-    extraHead: articleSchemaTag(article),
-    extraStyle: ARTICLE_CSS,
-    extraScript: articleScripts(article),
-  }));
-}
-
-function renderGatedToolkit(article) {
-  return `
-<section class="toolkit-gate">
-  <div class="toolkit-locked" id="toolkit-locked">
-    <svg class="toolkit-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
-      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-    </svg>
-    <h3>Subscriber Toolkits</h3>
-    <p>The RESPOND and PROSPECT toolkits are available to subscribers. Includes client scripts, action checklists, and follow-up email templates.</p>
-    <div class="toolkit-input-row">
-      <input type="password" class="toolkit-input" id="toolkit-password" placeholder="Access code">
-      <button class="toolkit-unlock-btn" onclick="unlockToolkit()">Enter</button>
-    </div>
-    <div class="toolkit-error" id="toolkit-error">Incorrect access code. Please try again.</div>
-  </div>
-  <div class="toolkit-content" id="toolkit-content">
-    <div class="toolkit-header-row">
-      <div class="toolkit-title">Subscriber Toolkits — ${fmtDate(article.published_at)}</div>
-    </div>
-    <div class="toolkit-panels">
-      ${article.respond_html ? `
-      <div class="toolkit-panel">
-        <div class="toolkit-panel-header" onclick="togglePanel(this)">
-          <span class="toolkit-panel-icon">🛡️</span>
-          <span class="toolkit-panel-label">Respond</span>
-          <span class="toolkit-panel-chevron">▼</span>
-        </div>
-        <div class="toolkit-panel-body">${article.respond_html}</div>
-      </div>` : ''}
-      ${article.prospect_html ? `
-      <div class="toolkit-panel">
-        <div class="toolkit-panel-header" onclick="togglePanel(this)">
-          <span class="toolkit-panel-icon">🎯</span>
-          <span class="toolkit-panel-label">Prospect</span>
-          <span class="toolkit-panel-chevron">▼</span>
-        </div>
-        <div class="toolkit-panel-body">${article.prospect_html}</div>
-      </div>` : ''}
-    </div>
-  </div>
-</section>`;
-}
-
-function renderPublicToolkit(article) {
-  if (!article.respond_html && !article.prospect_html) return '';
-  return `
+  // Toolkit: authed users see it open (no password). Guests don't reach this — they see the overlay.
+  const toolkitHtml = (article.respond_html || article.prospect_html) ? `
 <section class="toolkit-gate">
   <div class="toolkit-header-row">
     <div class="toolkit-title">Advisor Toolkits — ${fmtDate(article.published_at)}</div>
@@ -310,28 +216,109 @@ function renderPublicToolkit(article) {
       <div class="toolkit-panel-body">${article.prospect_html}</div>
     </div>` : ''}
   </div>
-</section>`;
+</section>` : '';
+
+  const keyNumbersHtml = keyNumbers.length ? `
+<div class="key-numbers">
+  <div class="key-numbers-label">Key Numbers</div>
+  ${keyNumbers.map(kn => `
+  <div class="key-number">
+    <div class="key-number-value">${escHtml(kn.value)}</div>
+    <div class="key-number-label">${escHtml(kn.label)}</div>
+  </div>`).join('')}
+</div>` : '';
+
+  const relatedHtml = (related.results || []).length ? `
+<div class="related-box">
+  <div class="related-label">Also Today</div>
+  ${(related.results || []).map(r => `
+  <a href="${articleUrl(r)}" class="related-item">
+    <div class="related-item-tag" style="color:${deskColour(r.desk)};">${escHtml(DESK_DISPLAY[r.desk] || r.desk)}</div>
+    <div class="related-item-title">${escHtml(r.title)}</div>
+  </a>`).join('')}
+</div>` : '';
+
+  const deskHref = deskNavHref(article.desk);
+
+  // Locked overlay for guests — shown over the article frame
+  const lockedOverlay = !authed ? `
+<div class="hdq-locked-overlay">
+  <div class="hdq-locked-card">
+    <div class="hdq-locked-logo">
+      <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
+    </div>
+    <span class="hdq-locked-tag">Member Access</span>
+    <h2>A closed membership of 137.</h2>
+    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders.</p>
+    <p>When the 137 seats are filled, HDQ remains closed.</p>
+    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
+    <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
+  </div>
+</div>` : '';
+
+  const body = `
+${lockedOverlay}
+<main>
+  <div class="article-wrap">
+    <article aria-labelledby="article-headline">
+      ${heroHtml}
+      <div class="article-kicker">
+        <a href="${deskHref}" class="cat-tag ${escHtml(DESK_CAT_CLASS[article.desk] || '')}" style="display:inline-flex;">${escHtml(DESK_DISPLAY[article.desk] || article.desk)}</a>
+      </div>
+      <h1 class="article-headline" id="article-headline">${escHtml(article.title)}</h1>
+      <div class="article-byline">
+        <span>${fmtDate(article.published_at)}</span>
+        <span class="meta-dot"></span>
+        <span>${article.read_time} min</span>
+        <span class="meta-dot"></span>
+        <span>${escHtml(DESK_BYLINE[article.desk] || 'HDQ Editorial')}</span>
+      </div>
+      ${authed ? briefHtml : ''}
+      <div class="article-body">${authed ? (article.body_html || '') : ''}</div>
+      ${authed && article.sources_text ? `
+      <div class="sources-box">
+        <div class="sources-label">Sources</div>
+        <p class="sources-text">${escHtml(article.sources_text)}</p>
+      </div>` : ''}
+      ${authed ? `
+      <div class="edu-disclaimer">
+        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice, financial planning advice, or a recommendation to buy or sell any security. Canadian advisors should apply their own professional judgment. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer</a>.
+      </div>
+      <div class="share-row">
+        <button class="btn-share" onclick="copyLink()">Copy link</button>
+        <a href="mailto:?subject=${encodeURIComponent('HDQ: ' + article.title)}&body=${encodeURIComponent('Thought you\'d find this useful: https://hdq.ca/' + article.slug)}" class="btn-share">Email</a>
+      </div>
+      ${toolkitHtml}` : ''}
+    </article>
+    <aside>
+      <div class="sidebar-sticky">
+        ${keyNumbersHtml}
+        ${relatedHtml}
+        <div class="sidebar-legal">
+          <strong>Educational content only.</strong> Editorial published for the professional development of Canadian financial advisors. Not investment advice. <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>.
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+${membershipFooterBand()}`;
+
+  return htmlResponse(pageShell(body, {
+    title: `${article.title} — HDQ`,
+    activePage: 'news',
+    activeDesk: article.desk,
+    issueNo,
+    extraHead: articleSchemaTag(article),
+    extraStyle: ARTICLE_CSS + lockedOverlayCSS,
+    extraScript: authed ? articleScripts(article) : '',
+    bodyClass: authed ? '' : 'overlay-active',
+  }));
 }
 
 function articleScripts(article) {
   const articleUrl_ = `https://hdq.ca/${article.slug}`;
   return `
 <script>
-function unlockToolkit(){
-  var pw=document.getElementById('toolkit-password').value;
-  var err=document.getElementById('toolkit-error');
-  if(pw==='HDQ2026'){
-    document.getElementById('toolkit-locked').style.display='none';
-    document.getElementById('toolkit-content').classList.add('unlocked');
-    err.style.display='none';
-    document.querySelectorAll('.toolkit-panel-header').forEach(function(h){togglePanel(h);});
-  } else {
-    err.style.display='block';
-    document.getElementById('toolkit-password').focus();
-  }
-}
-var pwInput=document.getElementById('toolkit-password');
-if(pwInput)pwInput.addEventListener('keydown',function(e){if(e.key==='Enter')unlockToolkit();});
 function togglePanel(header){
   var body=header.nextElementSibling;
   var isOpen=header.classList.contains('open');
@@ -351,6 +338,14 @@ function copyEmail(id,btn){
 function copyLink(){
   navigator.clipboard.writeText(window.location.href).then(function(){alert('Link copied to clipboard.');});
 }
+// Open all toolkit panels by default for authenticated members
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.toolkit-panel-header').forEach(function(h){
+    var body=h.nextElementSibling;
+    h.classList.add('open');
+    if(body)body.classList.add('open');
+  });
+});
 </script>`;
 }
 
