@@ -1,5 +1,5 @@
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse, getIssueNo } from '../shell.js';
-import { subscribeFooterBand } from './news.js';
+import { membershipFooterBand } from './news.js';
 
 const HOME_CSS = `
 /* HERO */
@@ -178,11 +178,11 @@ export async function renderHome(env) {
   <div class="hero-content">
     <div style="max-width:580px;">
       <div class="hero-eyebrow">Published in Toronto</div>
-      <h1>A daily financial intelligence publication for Canadian advisors.</h1>
+      <h1>A members-only daily publication for senior Canadian financial advisors.</h1>
       <p class="hero-sub">Five editorial desks. One Daily Thread. Published every weekday by 7 a.m. Eastern, for CIRO-registered advisors and CFP professionals.</p>
       <div class="hero-actions">
-        <a href="/hdq-subscribe.html" class="btn-primary">Subscribe — $3,137/year</a>
-        <a href="/news" class="btn-ghost">Read today's edition</a>
+        <a href="/news" class="btn-primary">Read today's edition</a>
+        <a href="/hdq-subscribe.html" class="btn-ghost">Waiting list</a>
       </div>
     </div>
   </div>
@@ -196,28 +196,27 @@ export async function renderHome(env) {
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg></div>
       <div class="division-name">The Daily Briefing</div>
       <div class="division-desc">Five desks — Market, Geopolitical, Economy, Tax &amp; Wealth, and Behavioural — published by 7 a.m. Eastern every weekday.</div>
-      <div class="division-link">Read today's edition</div>
+      <div class="division-link">Today's briefing &rarr;</div>
     </a>
     <a href="/hdq-prodev.html" class="division-card">
       <div class="division-number">02 / Learning</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
       <div class="division-name">Professional Development</div>
       <div class="division-desc">CE-eligible modules, a curated reading list, decision frameworks, and a glossary. For advisors.</div>
-      <div class="division-link">Explore the library</div>
+      <div class="division-link">The library &rarr;</div>
     </a>
     <a href="/hdq-whitelabel.html" class="division-card">
       <div class="division-number">03 / Firms</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
       <div class="division-name">For Firms</div>
       <div class="division-desc">HDQ content under a firm's brand. A client-ready daily publication for advisory practices.</div>
-      <div class="division-link">Enquire about firm licensing</div>
+      <div class="division-link">For firms &rarr;</div>
     </a>
     <div class="division-card coming">
       <div class="division-number">04 / Coming</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
       <div class="division-name">In Practice</div>
       <div class="division-desc">Video profiles of Canadian advisory firms, on location. A standing series.</div>
-      <div class="division-link">Coming soon</div>
     </div>
   </div>
 </div></section>
@@ -242,8 +241,8 @@ export async function renderHome(env) {
   <div class="prodev-modules">
     <a href="/hdq-prodev.html" class="module-card"><div class="module-label">Module Library</div><div class="module-title">Structured learning paths for key advisory competencies</div></a>
     <a href="/hdq-prodev.html#reading" class="module-card"><div class="module-label">Reading List</div><div class="module-title">Curated books and papers selected for practice relevance</div></a>
-    <a href="/hdq-prodev.html#frameworks" class="module-card"><div class="module-label">Frameworks</div><div class="module-title">Decision tools you can use in client conversations today</div></a>
-    <a href="/hdq-prodev.html#glossary" class="module-card"><div class="module-label">Glossary</div><div class="module-title">Plain-language definitions of the terms that matter most</div></a>
+    <a href="/hdq-prodev.html#frameworks" class="module-card"><div class="module-label">Frameworks</div><div class="module-title">Analytical frameworks behind HDQ editorial</div></a>
+    <a href="/hdq-prodev.html#glossary" class="module-card"><div class="module-label">Glossary</div><div class="module-title">Plain-language definitions of the terms that matter</div></a>
   </div>
 </div></div></section>
 
@@ -260,7 +259,7 @@ export async function renderHome(env) {
   </div>
 </div></section>
 
-${subscribeFooterBand()}`;
+${membershipFooterBand()}`;
 
   return htmlResponse(pageShell(body, {
     title: 'HDQ — A daily publication for Canadian advisors',
