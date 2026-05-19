@@ -132,7 +132,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
     <a href="/hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
   </nav>
   <div class="mobile-nav-footer">
-    <a href="/hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Subscribe — $3,137/year</a>
+    <a href="/hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Waiting List</a>
   </div>
 </div>
 
@@ -144,7 +144,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
   </a>
   <nav><ul class="nav-links">${navHtml}</ul></nav>
   <div class="nav-right">
-    <a href="/hdq-subscribe.html" class="nav-subscribe">Subscribe</a>
+    <a href="/hdq-subscribe.html" class="nav-subscribe">Waiting List</a>
     <button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu"
       style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger">
       <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
