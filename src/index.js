@@ -111,6 +111,16 @@ export default {
         return renderArticle(env, slug, authed);
       }
 
+      // Desk pages — open to all, articles within are gated
+      if (path === '/market' || path === '/hdq-market') return renderDesk(env, 'market');
+      if (path === '/geopolitical' || path === '/geo' || path === '/hdq-geopolitical') return renderDesk(env, 'geo');
+      if (path === '/economy' || path === '/hdq-economy') return renderDesk(env, 'economy');
+      if (path === '/tax-wealth' || path === '/tax' || path === '/hdq-tax-wealth') return renderDesk(env, 'tax');
+      if (path === '/behavioural' || path === '/behavioral' || path === '/hdq-behavioural') return renderDesk(env, 'behaviour');
+      if (path === '/daily-thread') return renderDesk(env, 'thread');
+      if (path === '/weekend') return renderDesk(env, 'weekend');
+      if (path === '/month-at-a-glance') return renderDesk(env, 'month');
+
       // Everything below requires auth — guests see the locked news page
       if (!authed) return renderNews(env, false);
 
@@ -118,18 +128,6 @@ export default {
 
       // News index
       if (path === '/news' || path === '/hdq-news') return renderNews(env, true);
-
-      // Desk pages
-      if (path === '/market' || path === '/hdq-market') return renderDesk(env, 'market');
-      if (path === '/geopolitical' || path === '/geo' || path === '/hdq-geopolitical') return renderDesk(env, 'geo');
-      if (path === '/economy' || path === '/hdq-economy') return renderDesk(env, 'economy');
-      if (path === '/tax-wealth' || path === '/tax' || path === '/hdq-tax-wealth') return renderDesk(env, 'tax');
-      if (path === '/behavioural' || path === '/behavioral' || path === '/hdq-behavioural') return renderDesk(env, 'behaviour');
-
-      // Special edition pages
-      if (path === '/daily-thread') return renderDesk(env, 'thread');
-      if (path === '/weekend') return renderDesk(env, 'weekend');
-      if (path === '/month-at-a-glance') return renderDesk(env, 'month');
 
       // ── Redirects ─────────────────────────────────────────────────────────
       const redirectMap = {
