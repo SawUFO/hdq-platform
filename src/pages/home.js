@@ -221,6 +221,17 @@ export async function renderHome(env) {
   </div>
 </div></section>
 
+<section style="background:var(--navy-50);border-top:1px solid var(--navy-100);border-bottom:1px solid var(--navy-100);padding:40px 0;">
+  <div class="container">
+    <div style="max-width:720px;">
+      <div style="font-size:10px;font-weight:700;color:var(--navy-600);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;">Editorial Methodology</div>
+      <p style="font-size:14px;color:var(--navy-800);line-height:1.7;margin-bottom:14px;">This publication is produced using HDQ's proprietary AI-assisted editorial framework, developed for the HDQ membership program.</p>
+      <p style="font-size:14px;color:var(--navy-800);line-height:1.7;margin-bottom:14px;">Unlike general-purpose consumer AI systems, the HDQ framework is configured specifically for financial narrative analysis, macroeconomic signal detection, market pattern recognition, and strategic synthesis across Canadian and global markets. Editorial direction, desk structure, and house standards are set and maintained by HDQ Editorial. Each edition is reviewed through HDQ editorial processes prior to publication.</p>
+      <p style="font-size:12px;color:var(--n500);line-height:1.6;margin:0;">Educational use only. Not investment advice.</p>
+    </div>
+  </div>
+</section>
+
 <section class="todays-edition"><div class="container">
   <div class="section-header"><span class="section-title">Today's Edition</span><div class="section-rule"></div></div>
   <div class="edition-grid">
