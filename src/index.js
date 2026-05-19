@@ -100,7 +100,7 @@ export default {
       if (path === '/about') return renderHome(env);
 
       // Archive and article pages — render for all visitors, authed flag controls modal
-      if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams, authed);
+      if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams);
 
       const articleMatch = path.match(/^\/(\d{4}\/\d{2}\/\d{2}\/.+)$/);
       if (articleMatch) {
