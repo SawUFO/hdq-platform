@@ -182,7 +182,7 @@ document.addEventListener('keydown', function(e) {
     <a href="hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
   </nav>
   <div class="mobile-nav-footer">
-    <a href="hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Subscribe — $3,137/year</a>
+    <a href="hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Waiting List</a>
   </div>
 </div>
 <header class="masthead" role="banner">
@@ -201,7 +201,13 @@ document.addEventListener('keydown', function(e) {
     </nav>
     <div class="nav-right">
       <a href="hdq-subscribe.html" class="nav-subscribe">Waiting List</a>
-      <div class="hamburger" aria-label="Menu"><span></span><span></span><span></span></div>
+      <button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu"
+        style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger">
+        <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
+        <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
+        <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
+      </button>
+      <script>(function(){var b=document.getElementById('hdq-hamburger');if(b&&window.innerWidth<=768)b.style.display='flex';window.addEventListener('resize',function(){if(b)b.style.display=window.innerWidth<=768?'flex':'none';});})();</script>
     </div>
   </div>
 </header>
@@ -210,11 +216,11 @@ document.addEventListener('keydown', function(e) {
 <section class="sub-hero" aria-labelledby="subscribe-heading">
   <div class="sub-hero-inner">
     <div class="sub-eyebrow">Waiting List &middot; By Nomination</div>
-    <h1 id="subscribe-heading">A publication with a fixed, permanently capped membership.</h1>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders. When seats are filled, HDQ remains closed.</p>
+    <h1 id="subscribe-heading">HDQ is a members-only publication.</h1>
+    <p>Membership is restricted to active FCSI and CFA holders. Total membership is permanently capped. When seats are filled, HDQ remains closed and access becomes available only through the waiting list.</p>
     <div class="sub-price-tag" role="complementary" aria-label="Pricing">
       <div class="sub-price-amount"><sup>$</sup>3,137</div>
-      <div class="sub-price-period">CAD per year &mdash; includes $1,137 directed annually to a charity of the member&rsquo;s designation</div>
+      <div class="sub-price-period">CAD per year &mdash; $1,137 directed annually to a charity of the member&rsquo;s designation</div>
     </div>
   </div>
 </section>
@@ -224,7 +230,7 @@ document.addEventListener('keydown', function(e) {
 
   <!-- OFFERING COLUMN -->
   <div class="sub-offering">
-    <h2>The subscription</h2>
+    <h2>What membership includes</h2>
     <p>Published every weekday by 7 a.m. Eastern.</p>
 
     <!-- Editorial -->
@@ -432,11 +438,11 @@ document.addEventListener('keydown', function(e) {
 <!-- ELIGIBILITY -->
 <section class="eligibility-section" aria-labelledby="eligibility-heading">
   <div class="eligibility-inner">
-    <h3 id="eligibility-heading">Eligibility &amp; Verification</h3>
-    <p>HDQ is published exclusively for <strong>CIRO-registered investment advisors and representatives</strong> and <strong>Certified Financial Planners (CFP)</strong> practising in Canada. We do not accept applications from retail investors, students, or unlicensed individuals regardless of their financial background or interest.</p>
-    <p>Every application is manually reviewed. We verify each applicant's registration status against the <strong>CIRO AdvisorReport</strong> and the <strong>CSA National Registration Search</strong> before approving access. Applications that cannot be verified will not be approved, and the application fee will not be charged.</p>
-    <p>HDQ reserves the right to decline any application without explanation and to revoke access if a subscriber's registration status changes or if the publication's terms of use are violated.</p>
-    <p style="font-size:12px;color:var(--n500);margin-top:8px;">Questions about eligibility: <a href="mailto:support@hdq.ca" style="color:var(--navy-700);">support@hdq.ca</a></p>
+    <h3 id="eligibility-heading">Eligibility</h3>
+    <p>HDQ is published for <strong>CIRO-registered investment advisors and representatives</strong> and <strong>Certified Financial Planners (CFP)</strong> practising in Canada. Applications from retail investors, students, or unlicensed individuals are not considered.</p>
+    <p>Every application is reviewed manually. Registration status is verified against the <strong>CIRO AdvisorReport</strong> and the <strong>CSA National Registration Search</strong>. Applications that cannot be verified will not proceed.</p>
+    <p>HDQ reserves the right to decline any application without explanation and to revoke access if a member's registration status changes or if the terms of use are violated.</p>
+    <p style="font-size:12px;color:var(--n500);margin-top:8px;">Questions: <a href="mailto:support@hdq.ca" style="color:var(--navy-700);">support@hdq.ca</a></p>
   </div>
 </section>
 
