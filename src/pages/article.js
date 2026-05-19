@@ -161,7 +161,9 @@ const lockedOverlayCSS = `
 .hdq-locked-btn:hover { background: var(--gold-600); color: #fff; }
 .hdq-locked-note { font-size: 11px; color: var(--n400); margin-top: 14px; line-height: 1.6; }
 body.overlay-active { overflow: hidden; }
-`;(env, slug, authed = true) {
+`;
+
+export async function renderArticle(env, slug, authed = true) {
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
   if (!article) return new Response('Article not found', { status: 404 });
 
