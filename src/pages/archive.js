@@ -76,8 +76,7 @@ export async function renderArchive(env, params) {
     binds.push(filterDesk);
   }
   if (dateFilter) {
-    // dateFilter is YYYY-MM-DD — match exact date
-    conditions.push('published_at=?');
+    conditions.push("substr(published_at,1,10) = ?");
     binds.push(dateFilter);
   }
 
