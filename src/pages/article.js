@@ -250,9 +250,9 @@ export async function renderArticle(env, slug, authed = true) {
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
     <span class="hdq-locked-tag">Member Access</span>
-    <h2>A closed membership of 137.</h2>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders.</p>
-    <p>When the 137 seats are filled, HDQ remains closed.</p>
+    <h2>A publication with a fixed membership.</h2>
+    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders, admitted by nomination.</p>
+    <p>Total membership is permanently capped. When seats are filled, HDQ remains closed.</p>
     <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
     <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
   </div>
