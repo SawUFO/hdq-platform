@@ -79,8 +79,8 @@ const ARCHIVE_CSS = `
 .sidebar-block-link:hover { text-decoration:underline; }
 
 /* Chart sidebar items */
-.sidebar-chart { border-bottom:1px solid var(--n100); text-decoration:none; display:block; transition:background 0.15s; }
-.sidebar-chart:last-child { border-bottom:none; }
+.sidebar-chart { border-bottom:2px solid var(--n100); text-decoration:none; display:block; transition:background 0.15s; padding-bottom:8px; margin-bottom:4px; }
+.sidebar-chart:last-child { border-bottom:none; margin-bottom:0; }
 .sidebar-chart:hover { background:var(--n50); }
 .sidebar-chart-header { padding:10px 14px 6px; display:flex; flex-direction:column; gap:2px; }
 .sidebar-chart-title { font-size:11px; font-weight:700; color:var(--n800); line-height:1.3; }
@@ -116,7 +116,7 @@ const DESKS = [
   { key: 'weekend', label: 'Weekend Edition' },
 ];
 
-const PER_PAGE = 12;
+const PER_PAGE = 24;
 
 export async function renderArchive(env, params) {
   const filterDesk = params?.get('desk') || 'all';
@@ -337,7 +337,7 @@ export async function renderArchive(env, params) {
   const chartSidebar = `
 <div class="sidebar-block">
   <div class="sidebar-block-header">
-    <span class="sidebar-block-title">Recent Charts</span>
+    <a href="/charts" class="sidebar-block-title" style="text-decoration:none;color:inherit;">Recent Charts</a>
   </div>
   ${chartItems || '<div style="padding:16px;font-size:12px;color:var(--n500);">No charts yet.</div>'}
   <a href="/charts" class="sidebar-all-charts">View All Charts →</a>
