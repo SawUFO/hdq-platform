@@ -321,12 +321,20 @@ export async function renderArchive(env, params) {
   // Sidebar: recent charts
   const chartItems = (recentCharts.results || []).map(c => {
     const deskLabel = DESK_DISPLAY[c.desk] || c.desk;
-    // Strip the header div (background:#f5f5f5) and footer source div from chart_html for sidebar
+    const isUp = c.chart_change && c.chart_change.startsWith('▲');
+    const isDown = c.chart_change && c.chart_change.startsWith('▼');
+    const changeClass = isUp ? 'up' : isDown ? 'down' : '';
+    // Strip the header and footer divs from chart_html — we render our own header above
     let thumbHtml = (c.chart_html || '')
       .replace(/<div style="background:#f5f5f5[^>]*>[\s\S]*?<\/div>/, '')
       .replace(/<div style="font-family[^"]*font-size:10px[^>]*>[\s\S]*?<\/div>/, '');
     return `
 <a href="/${escHtml(c.article_slug)}" class="sidebar-chart">
+  <div class="sidebar-chart-header">
+    <div class="sidebar-chart-title">${escHtml(c.chart_title || '')}</div>
+    <div class="sidebar-chart-value">${escHtml(c.chart_value || '')}</div>
+    ${c.chart_change ? `<div class="sidebar-chart-change ${changeClass}">${escHtml(c.chart_change)}</div>` : ''}
+  </div>
   <div class="sidebar-chart-thumb">${thumbHtml}</div>
   <div class="sidebar-chart-desk">${escHtml(deskLabel)} &middot; ${fmtDate(c.published_at)}</div>
 </a>`;
