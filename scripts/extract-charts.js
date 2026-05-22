@@ -1,12 +1,12 @@
-const ACCOUNT_ID = process.env.CF_ACCOUNT_ID;
-const API_TOKEN = process.env.CF_API_TOKEN;
+const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
+const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
 const DATABASE_ID = process.env.D1_DATABASE_ID;
 const SOURCE_FILE = process.env.SOURCE_FILE || '';
 
 async function d1Request(sql) {
-  const url = 'https://api.cloudflare.com/client/v4/accounts/' + ACCOUNT_ID + '/d1/database/' + DATABASE_ID + '/raw';
-  const body = JSON.stringify({ sql: sql, params: [] });
-  const res = await fetch(url, {
+  var url = 'https://api.cloudflare.com/client/v4/accounts/' + ACCOUNT_ID + '/d1/database/' + DATABASE_ID + '/raw';
+  var body = JSON.stringify({ sql: sql, params: [] });
+  var res = await fetch(url, {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer ' + API_TOKEN,
@@ -14,7 +14,7 @@ async function d1Request(sql) {
     },
     body: body
   });
-  const data = await res.json();
+  var data = await res.json();
   if (!data.success) {
     throw new Error(JSON.stringify(data.errors));
   }
@@ -22,7 +22,7 @@ async function d1Request(sql) {
 }
 
 async function query(sql) {
-  const data = await d1Request(sql);
+  var data = await d1Request(sql);
   var results = data.result[0];
   if (!results || !results.results) return [];
   var columns = results.results.columns;
@@ -127,6 +127,9 @@ async function getSlugsFromFile(filename) {
 
 async function main() {
   console.log('Starting chart extraction...');
+  console.log('Account ID present: ' + (ACCOUNT_ID ? 'yes' : 'NO - MISSING'));
+  console.log('API Token present: ' + (API_TOKEN ? 'yes' : 'NO - MISSING'));
+  console.log('Database ID present: ' + (DATABASE_ID ? 'yes' : 'NO - MISSING'));
 
   var articles;
   var slugsFromFile = await getSlugsFromFile(SOURCE_FILE);
