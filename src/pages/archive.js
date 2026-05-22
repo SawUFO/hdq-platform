@@ -320,17 +320,9 @@ export async function renderArchive(env, params) {
 
   // Sidebar: recent charts
   const chartItems = (recentCharts.results || []).map(c => {
-    const isUp = c.chart_change && c.chart_change.startsWith('▲');
-    const isDown = c.chart_change && c.chart_change.startsWith('▼');
-    const changeClass = isUp ? 'up' : isDown ? 'down' : '';
     const deskLabel = DESK_DISPLAY[c.desk] || c.desk;
     return `
 <a href="/${escHtml(c.article_slug)}" class="sidebar-chart">
-  <div class="sidebar-chart-header">
-    <div class="sidebar-chart-title">${escHtml(c.chart_title || '')}</div>
-    <div class="sidebar-chart-value">${escHtml(c.chart_value || '')}</div>
-    ${c.chart_change ? `<div class="sidebar-chart-change ${changeClass}">${escHtml(c.chart_change)}</div>` : ''}
-  </div>
   <div class="sidebar-chart-thumb">${c.chart_html || ''}</div>
   <div class="sidebar-chart-desk">${escHtml(deskLabel)} &middot; ${fmtDate(c.published_at)}</div>
 </a>`;
