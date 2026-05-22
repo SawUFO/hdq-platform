@@ -118,7 +118,7 @@ const DESKS = [
   { key: 'weekend', label: 'Weekend Edition' },
 ];
 
-const PER_PAGE = 24;
+const PER_PAGE = 16;
 
 export async function renderArchive(env, params) {
   const filterDesk = params?.get('desk') || 'all';
