@@ -14,6 +14,7 @@ const CHARTS_CSS = `
 @media(max-width:700px){ .charts-grid { grid-template-columns:1fr; } }
 .chart-card { background:var(--card); border:1px solid var(--n200); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; min-width:0; }
 .chart-card-chart { padding:0; min-width:0; overflow:hidden; }
+.chart-card-chart > p { padding:8px 14px; margin:0; font-size:11px; color:#666; line-height:1.5; }
 .chart-card-chart .hdq-chart { margin:0; min-width:0; }
 .chart-card-chart .hdq-chart-inner { display:contents; }
 .chart-card-chart svg { width:100% !important; height:auto !important; display:block !important; }
