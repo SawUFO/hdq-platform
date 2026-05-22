@@ -11,7 +11,7 @@ const CHARTS_CSS = `
 .filter-pill:hover { border-color:var(--navy-400); color:var(--navy-800); }
 .filter-pill.active { background:var(--navy-900); color:#fff; border-color:var(--navy-900); }
 .charts-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; align-items:start; }
-@media(max-width:900px){ .charts-grid { grid-template-columns:1fr; } }
+@media(max-width:700px){ .charts-grid { grid-template-columns:1fr; } }
 .chart-card { background:var(--card); border:1px solid var(--n200); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; min-width:0; }
 .chart-card-chart { padding:0; min-width:0; overflow:hidden; }
 .chart-card-chart .hdq-chart { margin:0; min-width:0; }
