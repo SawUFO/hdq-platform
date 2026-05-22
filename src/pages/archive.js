@@ -11,11 +11,14 @@ const ARCHIVE_CSS = `
 .archive-date { font-family:'DM Sans',sans-serif; font-size:14px; padding:10px 14px; border:1px solid var(--n200); border-radius:4px; background:var(--card); color:var(--n900); outline:none; transition:border-color 0.15s; cursor:pointer; }
 .archive-date:focus { border-color:var(--navy-400); }
 .archive-date::-webkit-calendar-picker-indicator { cursor:pointer; opacity:0.6; }
-.archive-filters { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:28px; }
+.archive-filters { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:16px; }
 .filter-label { font-size:11px; font-weight:700; color:var(--n500); text-transform:uppercase; letter-spacing:0.08em; margin-right:4px; }
 .filter-pill { font-size:12px; font-weight:500; padding:5px 14px; border-radius:20px; border:1px solid var(--n200); color:var(--n700); background:var(--card); text-decoration:none; transition:all 0.15s; white-space:nowrap; }
 .filter-pill:hover { border-color:var(--navy-400); color:var(--navy-800); }
 .filter-pill.active { background:var(--navy-900); color:#fff; border-color:var(--navy-900); }
+.archive-tag-wrap { display:flex; align-items:center; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
+.archive-tag-select { font-family:'DM Sans',sans-serif; font-size:13px; padding:7px 12px; border:1px solid var(--n200); border-radius:4px; background:var(--card); color:var(--n900); outline:none; cursor:pointer; }
+.archive-tag-select:focus { border-color:var(--navy-400); }
 .archive-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 @media(max-width:900px){ .archive-grid { grid-template-columns:repeat(2,1fr); } }
 @media(max-width:580px){ .archive-grid { grid-template-columns:1fr; } }
@@ -95,6 +98,21 @@ export async function renderArchive(env, params) {
   ).bind(...binds, PER_PAGE, offset).all();
   const articles = rows.results || [];
 
+  // Get distinct tags for dropdown
+  const tagRows = await env.DB.prepare(
+    `SELECT DISTINCT tags FROM articles WHERE tags IS NOT NULL AND tags != '' LIMIT 300`
+  ).all();
+  const tagSet = new Set();
+  (tagRows.results || []).forEach(r => {
+    if (r.tags) {
+      r.tags.split(',').forEach(t => {
+        t = t.trim();
+        if (t.startsWith('entity:') || t.startsWith('theme:')) tagSet.add(t);
+      });
+    }
+  });
+  const allTags = Array.from(tagSet).sort();
+
   const totalPages = Math.ceil(total / PER_PAGE);
   const startNum = total === 0 ? 0 : offset + 1;
   const endNum = Math.min(offset + PER_PAGE, total);
@@ -120,6 +138,22 @@ export async function renderArchive(env, params) {
     return `<a href="${href}" class="filter-pill${isActive ? ' active' : ''}">${escHtml(d.label)}</a>`;
   }).join('');
 
+  // Tag dropdown
+  const tagOptions = allTags.map(t => {
+    const label = t.replace('entity:', '').replace('theme:', '').replace(/-/g, ' ');
+    const prefix = t.startsWith('entity:') ? 'Entity: ' : 'Theme: ';
+    return `<option value="${escHtml(t)}"${filterTag === t ? ' selected' : ''}>${escHtml(prefix + label)}</option>`;
+  }).join('');
+
+  const tagSelect = `
+<div class="archive-tag-wrap">
+  <span class="filter-label">Tag:</span>
+  <select class="archive-tag-select" id="archive-tag-select" onchange="applyArchiveTag(this.value)">
+    <option value="">All tags</option>
+    ${tagOptions}
+  </select>
+</div>`;
+
   // Active filter banners
   const tagBanner = filterTag ? `
 <div style="background:var(--navy-50);border:1px solid var(--n200);border-radius:6px;padding:10px 16px;margin-bottom:20px;font-size:13px;color:var(--n700);">
@@ -137,7 +171,6 @@ export async function renderArchive(env, params) {
 </div>` : '';
 
   // Article grid
-  // Archive card links — always live, gate hits at article level
   const gridHtml = articles.length ? articles.map(a => `
 <a href="${articleUrl(a)}" class="archive-card">
   <div class="archive-card-img">
@@ -188,6 +221,7 @@ export async function renderArchive(env, params) {
     <span class="filter-label">Filter:</span>
     ${deskFilters}
   </div>
+  ${tagSelect}
   <div class="archive-grid">${gridHtml}</div>
   ${paginationHtml}
 </div></div>
@@ -201,7 +235,6 @@ ${membershipFooterBand()}`;
     extraStyle: ARCHIVE_CSS,
     extraScript: `<script>
 (function(){
-  // Search fires only on Enter key
   var input = document.getElementById('archive-search-input');
   if(input){
     input.addEventListener('keydown', function(e){
@@ -212,7 +245,6 @@ ${membershipFooterBand()}`;
     });
   }
 
-  // Date picker fires when a date is selected
   var dateInput = document.getElementById('archive-date-input');
   if(dateInput){
     dateInput.addEventListener('change', function(){
@@ -220,6 +252,13 @@ ${membershipFooterBand()}`;
       window.location.href = val ? '/archive?date=' + encodeURIComponent(val) : '/archive';
     });
   }
+
+  window.applyArchiveTag = function(val) {
+    var u = new URLSearchParams(window.location.search);
+    if(val) { u.set('tag', val); } else { u.delete('tag'); }
+    u.delete('page');
+    window.location.href = '/archive?' + u.toString();
+  };
 })();
 </script>`,
   }));
