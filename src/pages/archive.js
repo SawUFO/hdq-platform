@@ -321,9 +321,13 @@ export async function renderArchive(env, params) {
   // Sidebar: recent charts
   const chartItems = (recentCharts.results || []).map(c => {
     const deskLabel = DESK_DISPLAY[c.desk] || c.desk;
+    // Strip the header div (background:#f5f5f5) and footer source div from chart_html for sidebar
+    let thumbHtml = (c.chart_html || '')
+      .replace(/<div style="background:#f5f5f5[^>]*>[\s\S]*?<\/div>/, '')
+      .replace(/<div style="font-family[^"]*font-size:10px[^>]*>[\s\S]*?<\/div>/, '');
     return `
 <a href="/${escHtml(c.article_slug)}" class="sidebar-chart">
-  <div class="sidebar-chart-thumb">${c.chart_html || ''}</div>
+  <div class="sidebar-chart-thumb">${thumbHtml}</div>
   <div class="sidebar-chart-desk">${escHtml(deskLabel)} &middot; ${fmtDate(c.published_at)}</div>
 </a>`;
   }).join('');
