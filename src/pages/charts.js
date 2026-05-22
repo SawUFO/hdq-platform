@@ -15,7 +15,8 @@ const CHARTS_CSS = `
 .chart-card { background:var(--card); border:1px solid var(--n200); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; }
 .chart-card-chart { padding:0; overflow:hidden; }
 .chart-card-chart .hdq-chart { margin:0; }
-.chart-card-chart .hdq-chart > div > div:last-child { padding-left:14px; padding-right:14px; }
+.chart-card-chart svg { width:100%; height:auto; display:block; }
+.chart-card-chart div[style*="font-size:10px"] { padding-left:14px !important; padding-right:14px !important; }
 .chart-card-body { padding:12px 16px 14px; border-top:1px solid var(--n100); }
 .chart-card-caption { font-size:12px; color:var(--n600); line-height:1.5; margin-bottom:10px; }
 .chart-card-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
