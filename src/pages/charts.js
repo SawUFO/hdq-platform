@@ -180,7 +180,6 @@ export async function renderCharts(env, params) {
 <div class="chart-card">
   <div class="chart-card-chart">${c.chart_html}</div>
   <div class="chart-card-body">
-    ${c.chart_caption ? `<div class="chart-card-caption">${escHtml(c.chart_caption)}</div>` : ''}
     <div class="chart-card-meta">
       <span class="cat-tag ${escHtml(deskClass)} chart-card-desk">${escHtml(deskLabel)}</span>
       <span class="chart-card-date">${fmtDate(c.published_at)}</span>
@@ -251,16 +250,6 @@ ${membershipFooterBand()}`;
     var to = document.getElementById('charts-to').value;
     window.location.href = buildUrl({ from: from, to: to });
   };
-
-  // Re-execute chart scripts after server-side render
-  // Charts use self-executing functions via document.currentScript,
-  // which don't re-run when injected as innerHTML.
-  // We need to re-execute each script block inside chart divs.
-  document.querySelectorAll('.chart-card-chart script').forEach(function(oldScript) {
-    var newScript = document.createElement('script');
-    newScript.textContent = oldScript.textContent;
-    oldScript.parentNode.replaceChild(newScript, oldScript);
-  });
 })();
 </script>`,
   }));
