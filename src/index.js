@@ -9,6 +9,7 @@ import { renderArticle } from './pages/article.js';
 import { renderArchive } from './pages/archive.js';
 import { renderThread } from './pages/thread.js';
 import { renderWeekend } from './pages/weekend.js';
+import { renderCharts } from './pages/charts.js';
 
 // ── Auth helpers ────────────────────────────────────────────────────────────
 
@@ -101,6 +102,9 @@ export default {
 
       // Archive and article pages — render for all visitors, authed flag controls modal
       if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams);
+
+      // Chart gallery
+      if (path === '/charts') return renderCharts(env, url.searchParams);
 
       const articleMatch = path.match(/^\/(\d{4}\/\d{2}\/\d{2}\/.+)$/);
       if (articleMatch) {
