@@ -10,14 +10,14 @@ const CHARTS_CSS = `
 .filter-pill { font-size:12px; font-weight:500; padding:5px 14px; border-radius:20px; border:1px solid var(--n200); color:var(--n700); background:var(--card); text-decoration:none; transition:all 0.15s; white-space:nowrap; }
 .filter-pill:hover { border-color:var(--navy-400); color:var(--navy-800); }
 .filter-pill.active { background:var(--navy-900); color:#fff; border-color:var(--navy-900); }
-.charts-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.charts-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; align-items:start; }
 @media(max-width:900px){ .charts-grid { grid-template-columns:1fr; } }
-.chart-card { background:var(--card); border:1px solid var(--n200); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; }
-.chart-card-chart { padding:0; }
-.chart-card-chart .hdq-chart { margin:0; }
-.chart-card-chart svg { width:100% !important; height:auto !important; display:block !important; max-width:100%; }
+.chart-card { background:var(--card); border:1px solid var(--n200); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; min-width:0; }
+.chart-card-chart { padding:0; min-width:0; overflow:hidden; }
+.chart-card-chart .hdq-chart { margin:0; min-width:0; }
+.chart-card-chart svg { width:100% !important; height:auto !important; display:block !important; }
 .chart-card-chart div[style*="font-size:10px"] { padding-left:14px !important; padding-right:14px !important; }
-.chart-card-chart > div > div { width:100% !important; box-sizing:border-box; }
+.chart-card-chart > div > div { min-width:0; box-sizing:border-box; }
 .chart-card-body { padding:12px 16px 14px; border-top:1px solid var(--n100); }
 .chart-card-caption { font-size:12px; color:var(--n600); line-height:1.5; margin-bottom:10px; }
 .chart-card-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
