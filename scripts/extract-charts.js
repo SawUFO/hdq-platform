@@ -44,20 +44,58 @@ function extractCharts(bodyHtml, articleSlug, desk, articleType, publishedAt, in
   var charts = [];
   if (!bodyHtml) return charts;
 
-  var wrapperRegex = /<div class="hdq-chart">([\s\S]*?)<\/div>\s*<p[^>]*style="font-size:11px[^"]*"[^>]*>([\s\S]*?)<\/p>/g;
-  var match;
+  // Step 1: find all hdq-chart wrapper positions
+  // Each chart wrapper starts with <div class="hdq-chart"> and ends with its matching </div>
+  // We locate each one by scanning for the opening tag, then counting div depth to find the close
+
   var position = 1;
+  var searchFrom = 0;
+  var openTag = '<div class="hdq-chart">';
 
-  while ((match = wrapperRegex.exec(bodyHtml)) !== null) {
-    var chartBlock = match[0];
-    var captionText = match[2].replace(/<[^>]+>/g, '').trim();
+  while (true) {
+    var startIdx = bodyHtml.indexOf(openTag, searchFrom);
+    if (startIdx === -1) break;
 
+    // Walk forward counting div opens/closes to find the matching end of this hdq-chart div
+    var depth = 0;
+    var i = startIdx;
+    var wrapperEnd = -1;
+
+    while (i < bodyHtml.length) {
+      if (bodyHtml.slice(i, i + 4) === '<div') {
+        depth++;
+        i += 4;
+      } else if (bodyHtml.slice(i, i + 6) === '</div>') {
+        depth--;
+        if (depth === 0) {
+          wrapperEnd = i + 6;
+          break;
+        }
+        i += 6;
+      } else {
+        i++;
+      }
+    }
+
+    if (wrapperEnd === -1) break;
+
+    var chartWrapper = bodyHtml.slice(startIdx, wrapperEnd);
+
+    // Step 2: look for the caption <p> immediately after the wrapper (tolerant of whitespace)
+    var afterWrapper = bodyHtml.slice(wrapperEnd);
+    var captionText = '';
+    var captionMatch = afterWrapper.match(/^[\s\n\r]*<p[^>]*style="font-size:11px[^"]*"[^>]*>([\s\S]*?)<\/p>/);
+    if (captionMatch) {
+      captionText = captionMatch[1].replace(/<[^>]+>/g, '').trim();
+    }
+
+    // Step 3: extract header span values
     var chartTitle = '';
     var chartValue = '';
     var chartChange = '';
     var chartMetadata = '';
 
-    var headerDivMatch = chartBlock.match(/<div style="background:#f5f5f5[^>]*>([\s\S]*?)<\/div>/);
+    var headerDivMatch = chartWrapper.match(/<div style="background:#f5f5f5[^>]*>([\s\S]*?)<\/div>/);
     if (headerDivMatch) {
       var headerContent = headerDivMatch[1];
       var spanRegex = /<span[^>]*>([\s\S]*?)<\/span>/g;
@@ -72,8 +110,9 @@ function extractCharts(bodyHtml, articleSlug, desk, articleType, publishedAt, in
       chartMetadata = spans[3] || '';
     }
 
+    // Step 4: extract source attribution from footer
     var sourceAttribution = '';
-    var footerMatch = chartBlock.match(/<div style="[^"]*font-size:10px[^"]*"[^>]*>([\s\S]*?)<\/div>/);
+    var footerMatch = chartWrapper.match(/<div style="[^"]*font-size:10px[^"]*"[^>]*>([\s\S]*?)<\/div>/);
     if (footerMatch) {
       sourceAttribution = footerMatch[1].replace(/<[^>]+>/g, '').replace('| hdq.ca', '').trim();
     }
@@ -84,7 +123,7 @@ function extractCharts(bodyHtml, articleSlug, desk, articleType, publishedAt, in
       article_type: articleType,
       published_at: publishedAt,
       position_in_article: position,
-      chart_html: chartBlock,
+      chart_html: chartWrapper,
       chart_caption: captionText,
       chart_title: chartTitle,
       chart_value: chartValue,
@@ -96,6 +135,7 @@ function extractCharts(bodyHtml, articleSlug, desk, articleType, publishedAt, in
     });
 
     position++;
+    searchFrom = wrapperEnd;
   }
 
   return charts;
