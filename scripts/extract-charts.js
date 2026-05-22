@@ -117,6 +117,9 @@ function extractCharts(bodyHtml, articleSlug, desk, articleType, publishedAt, in
       sourceAttribution = footerMatch[1].replace(/<[^>]+>/g, '').replace('| hdq.ca', '').trim();
     }
 
+    // Strip any rogue hdq-chart-inner wrapper divs
+    chartWrapper = chartWrapper.replace(/<div class="hdq-chart-inner">/g, '');
+
     charts.push({
       article_slug: articleSlug,
       desk: desk,
