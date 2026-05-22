@@ -89,6 +89,14 @@ const ARCHIVE_CSS = `
 .sidebar-chart-change.up { color:#2e7d32; }
 .sidebar-chart-change.down { color:#c0392b; }
 .sidebar-chart-desk { font-size:10px; color:var(--n500); padding:0 14px 8px; }
+.sidebar-chart-thumb { padding:0 14px 10px; overflow:hidden; }
+.sidebar-chart-thumb .hdq-chart { pointer-events:none; }
+.sidebar-chart-thumb .hdq-chart > div { border:none !important; }
+.sidebar-chart-thumb svg { width:100% !important; height:auto !important; display:block !important; }
+.sidebar-chart-thumb div[style*="font-style:italic"] { display:none; }
+.sidebar-chart-thumb div[style*="background:#f5f5f5"] { display:none; }
+.sidebar-all-charts { display:block; margin:0 14px 14px; padding:10px 0; background:var(--navy-900); color:#fff; text-align:center; border-radius:4px; font-size:13px; font-weight:700; font-family:'DM Sans',sans-serif; text-decoration:none; transition:background 0.15s; letter-spacing:0.02em; }
+.sidebar-all-charts:hover { background:var(--navy-700); }
 
 /* Top tags sidebar */
 .sidebar-tag { display:flex; align-items:center; justify-content:space-between; padding:8px 16px; border-bottom:1px solid var(--n100); text-decoration:none; transition:background 0.15s; }
@@ -108,7 +116,7 @@ const DESKS = [
   { key: 'weekend', label: 'Weekend Edition' },
 ];
 
-const PER_PAGE = 24;
+const PER_PAGE = 12;
 
 export async function renderArchive(env, params) {
   const filterDesk = params?.get('desk') || 'all';
@@ -321,6 +329,7 @@ export async function renderArchive(env, params) {
     <div class="sidebar-chart-value">${escHtml(c.chart_value || '')}</div>
     ${c.chart_change ? `<div class="sidebar-chart-change ${changeClass}">${escHtml(c.chart_change)}</div>` : ''}
   </div>
+  <div class="sidebar-chart-thumb">${c.chart_html || ''}</div>
   <div class="sidebar-chart-desk">${escHtml(deskLabel)} &middot; ${fmtDate(c.published_at)}</div>
 </a>`;
   }).join('');
@@ -329,9 +338,9 @@ export async function renderArchive(env, params) {
 <div class="sidebar-block">
   <div class="sidebar-block-header">
     <span class="sidebar-block-title">Recent Charts</span>
-    <a href="/charts" class="sidebar-block-link">All charts →</a>
   </div>
   ${chartItems || '<div style="padding:16px;font-size:12px;color:var(--n500);">No charts yet.</div>'}
+  <a href="/charts" class="sidebar-all-charts">View All Charts →</a>
 </div>`;
 
   // Sidebar: top tags
