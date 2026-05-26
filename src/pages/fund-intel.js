@@ -1,8 +1,5 @@
 /**
  * HDQ Fund Intel page — src/pages/fund-intel.js
- *
- * Server renders the page shell only.
- * Browser fetches the briefing client-side to avoid Cloudflare Worker timeout.
  * Route: /fund-intel
  */
 
@@ -10,11 +7,9 @@ import { pageShell, escHtml, htmlResponse, getIssueNo } from '../shell.js';
 
 const FUND_INTEL_WORKER = 'https://fund-intel-query.jpatherton1.workers.dev';
 
-// ── Page CSS ─────────────────────────────────────────────────────────────────
 const FUND_INTEL_CSS = `
 .fi-header {
-  background: var(--navy-900);
-  padding: 48px 0 40px;
+  background: var(--navy-900); padding: 48px 0 40px;
   border-bottom: 3px solid var(--gold-400);
 }
 .fi-header-inner {
@@ -23,65 +18,48 @@ const FUND_INTEL_CSS = `
   gap: 24px; flex-wrap: wrap;
 }
 .fi-eyebrow {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px; font-weight: 600; color: var(--gold-400);
-  text-transform: uppercase; letter-spacing: 0.1em;
+  font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600;
+  color: var(--gold-400); text-transform: uppercase; letter-spacing: 0.1em;
   margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
 }
 .fi-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--gold-400); }
 .fi-header h1 {
   font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: clamp(26px, 3vw, 40px); font-weight: 800;
+  font-size: clamp(26px,3vw,40px); font-weight: 800;
   color: #fff; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 8px;
 }
-.fi-header-meta {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px; color: rgba(255,255,255,0.45); margin: 0;
-}
+.fi-header-meta { font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(255,255,255,0.45); margin: 0; }
 .fi-header-right { text-align: right; flex-shrink: 0; }
-.fi-doc-count {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 36px; font-weight: 800; color: var(--gold-400); line-height: 1;
-}
-.fi-doc-label {
-  font-family: 'DM Sans', sans-serif; font-size: 11px;
-  color: rgba(255,255,255,0.45); text-transform: uppercase;
-  letter-spacing: 0.08em; margin-top: 4px;
-}
+.fi-doc-count { font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 800; color: var(--gold-400); line-height: 1; }
+.fi-doc-label { font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
 .fi-body { padding: 40px 0 64px; }
-.fi-grid {
-  display: grid; grid-template-columns: 1fr 340px;
-  gap: 32px; align-items: start;
-}
+.fi-grid { display: grid; grid-template-columns: 1fr 340px; gap: 32px; align-items: start; }
 @media(max-width:960px) { .fi-grid { grid-template-columns: 1fr; } }
-.fi-section-header {
-  display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px;
-}
-.fi-section-title {
-  font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700;
-  color: var(--n900); text-transform: uppercase; letter-spacing: 0.1em;
-  white-space: nowrap;
-}
+.fi-section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+.fi-section-title { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; color: var(--n900); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
 .fi-section-rule { flex: 1; height: 1px; background: var(--n200); }
 
-/* Loading skeleton */
+/* Loading */
+.fi-loading-state { padding: 32px 0; }
+.fi-loading-notice {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--navy-50); border: 1px solid var(--navy-100);
+  border-radius: 6px; padding: 16px 20px; margin-bottom: 24px;
+}
+.fi-loading-spinner {
+  width: 18px; height: 18px; flex-shrink: 0;
+  border: 2px solid var(--navy-200); border-top-color: var(--navy-600);
+  border-radius: 50%; animation: fi-spin 0.8s linear infinite;
+}
+@keyframes fi-spin { to { transform: rotate(360deg); } }
+.fi-loading-text { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--navy-700); }
 .fi-skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 600px 100%;
-  animation: fi-shimmer 1.4s infinite;
-  border-radius: 5px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 50%, #f0f0f0 75%);
+  background-size: 600px 100%; animation: fi-shimmer 1.4s infinite; border-radius: 5px;
 }
-@keyframes fi-shimmer {
-  0%   { background-position: -600px 0; }
-  100% { background-position:  600px 0; }
-}
-.fi-loading-bar { height: 20px; margin-bottom: 12px; }
-.fi-loading-bar.tall { height: 120px; }
-.fi-loading-bar.short { width: 60%; }
-.fi-loading-label {
-  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--n400);
-  text-align: center; padding: 24px 0 8px;
-}
+@keyframes fi-shimmer { 0%{background-position:-600px 0} 100%{background-position:600px 0} }
+.fi-sk-block { height: 20px; margin-bottom: 10px; }
+.fi-sk-tall { height: 110px; }
 
 /* Top story */
 .fi-top-story {
@@ -95,158 +73,79 @@ const FUND_INTEL_CSS = `
   margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
 }
 .fi-story-label::before { content: ''; width: 16px; height: 2px; background: var(--gold-400); }
-.fi-story-headline {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: clamp(18px, 2vw, 24px); font-weight: 700;
-  color: var(--navy-900); line-height: 1.25; margin-bottom: 12px;
-}
+.fi-story-headline { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(18px,2vw,24px); font-weight: 700; color: var(--navy-900); line-height: 1.25; margin-bottom: 12px; }
 .fi-story-body { font-size: 14px; color: var(--n700); line-height: 1.7; margin: 0; }
 
 /* Two-col panels */
-.fi-two-col {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px;
-}
+.fi-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
 @media(max-width:640px) { .fi-two-col { grid-template-columns: 1fr; } }
 .fi-panel { background: var(--card); border: 1px solid var(--n200); border-radius: 6px; overflow: hidden; }
-.fi-panel-header {
-  background: var(--n50); border-bottom: 1px solid var(--n200); padding: 12px 18px;
-  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700;
-  color: var(--n700); text-transform: uppercase; letter-spacing: 0.08em;
-}
+.fi-panel-header { background: var(--n50); border-bottom: 1px solid var(--n200); padding: 12px 18px; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; color: var(--n700); text-transform: uppercase; letter-spacing: 0.08em; }
 .fi-panel-body { padding: 18px; }
 .fi-theme-item { margin-bottom: 18px; }
 .fi-theme-item:last-child { margin-bottom: 0; }
-.fi-theme-name {
-  display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600;
-  color: var(--navy-700); background: var(--navy-50); border: 1px solid var(--navy-100);
-  border-radius: 3px; padding: 2px 8px; margin-bottom: 6px;
-}
+.fi-theme-name { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; color: var(--navy-700); background: var(--navy-50); border: 1px solid var(--navy-100); border-radius: 3px; padding: 2px 8px; margin-bottom: 6px; }
 .fi-theme-detail { font-size: 13px; color: var(--n600); line-height: 1.6; margin: 0; }
-.fi-divergence-summary {
-  font-size: 13px; color: var(--n600); line-height: 1.6;
-  margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--n200);
-}
-.fi-div-item {
-  padding: 12px; border-radius: 4px; margin-bottom: 10px; border: 1px solid var(--n200);
-}
+.fi-divergence-summary { font-size: 13px; color: var(--n600); line-height: 1.6; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--n200); }
+.fi-div-item { padding: 12px; border-radius: 4px; margin-bottom: 10px; border: 1px solid var(--n200); }
 .fi-div-item:last-child { margin-bottom: 0; }
-.fi-div-label {
-  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
-}
+.fi-div-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
 .fi-div-label.bull { color: #2e7d32; }
 .fi-div-label.bear { color: #8a3030; }
 .fi-div-firms { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
-.fi-firm-tag {
-  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600;
-  background: var(--n100); border: 1px solid var(--n300); border-radius: 3px;
-  padding: 2px 7px; color: var(--n700);
-}
+.fi-firm-tag { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; background: var(--n100); border: 1px solid var(--n300); border-radius: 3px; padding: 2px 7px; color: var(--n700); }
 .fi-div-on { font-size: 12px; color: var(--n500); line-height: 1.5; margin: 0; }
 
 /* Takeaways */
 .fi-takeaways { margin-bottom: 28px; }
-.fi-takeaway-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 12px; }
-.fi-takeaway {
-  display: flex; gap: 12px; align-items: flex-start;
-  background: var(--card); border: 1px solid var(--n200); border-radius: 5px; padding: 14px 16px;
-}
-.fi-takeaway-num {
-  width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px;
-  background: var(--navy-50); border: 1px solid var(--navy-200); border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; color: var(--navy-700);
-}
+.fi-takeaway-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 12px; }
+.fi-takeaway { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--n200); border-radius: 5px; padding: 14px 16px; }
+.fi-takeaway-num { width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; background: var(--navy-50); border: 1px solid var(--navy-200); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; color: var(--navy-700); }
 .fi-takeaway-text { font-size: 13px; color: var(--n800); line-height: 1.6; margin: 0; }
 
 /* Feed */
-.fi-feed-item {
-  display: grid; grid-template-columns: 100px 1fr auto;
-  gap: 14px; align-items: flex-start; padding: 14px 0;
-  border-bottom: 1px solid var(--n100);
-}
+.fi-feed-item { display: grid; grid-template-columns: 100px 1fr auto; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--n100); }
 .fi-feed-item:last-child { border-bottom: none; }
 .fi-feed-date { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--n400); margin-bottom: 6px; }
-.fi-feed-firm {
-  display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600;
-  color: var(--navy-700); background: var(--navy-50); border: 1px solid var(--navy-100);
-  border-radius: 3px; padding: 1px 6px;
-}
-.fi-feed-type {
-  display: inline-block; margin-top: 5px; font-family: 'DM Sans', sans-serif;
-  font-size: 10px; font-weight: 600; color: var(--gold-700);
-  background: #fef9ec; border: 1px solid #f5d87a; border-radius: 3px; padding: 1px 6px;
-}
+.fi-feed-firm { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; color: var(--navy-700); background: var(--navy-50); border: 1px solid var(--navy-100); border-radius: 3px; padding: 1px 6px; }
+.fi-feed-type { display: inline-block; margin-top: 5px; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; color: var(--gold-700); background: #fef9ec; border: 1px solid #f5d87a; border-radius: 3px; padding: 1px 6px; }
 .fi-feed-summary { font-size: 13px; color: var(--n600); line-height: 1.55; margin: 0; }
-.fi-feed-link {
-  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
-  color: var(--navy-600); white-space: nowrap; text-decoration: none;
-  border-bottom: 1px dashed var(--navy-300); flex-shrink: 0;
-}
+.fi-feed-link { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; color: var(--navy-600); white-space: nowrap; text-decoration: none; border-bottom: 1px dashed var(--navy-300); flex-shrink: 0; }
 .fi-feed-link:hover { color: var(--navy-900); }
-.fi-quiet {
-  font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--n400);
-  margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--n200);
-}
+.fi-quiet { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--n400); margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--n200); }
 
 /* Sidebar */
-.fi-sidebar-panel {
-  background: var(--card); border: 1px solid var(--n200);
-  border-radius: 6px; overflow: hidden; margin-bottom: 20px;
-}
-.fi-sidebar-header {
-  background: var(--n50); border-bottom: 1px solid var(--n200); padding: 10px 16px;
-  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700;
-  color: var(--n600); text-transform: uppercase; letter-spacing: 0.08em;
-}
+.fi-sidebar-panel { background: var(--card); border: 1px solid var(--n200); border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
+.fi-sidebar-header { background: var(--n50); border-bottom: 1px solid var(--n200); padding: 10px 16px; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; color: var(--n600); text-transform: uppercase; letter-spacing: 0.08em; }
 .fi-sidebar-body { padding: 16px; }
-.fi-query-input {
-  width: 100%; padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 13px;
-  background: var(--n50); color: var(--n900); border: 1px solid var(--n300);
-  border-radius: 4px; box-sizing: border-box; outline: none; transition: border-color 0.15s;
-}
+.fi-query-input { width: 100%; padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; background: var(--n50); color: var(--n900); border: 1px solid var(--n300); border-radius: 4px; box-sizing: border-box; outline: none; transition: border-color 0.15s; }
 .fi-query-input:focus { border-color: var(--navy-500); }
-.fi-query-btn {
-  width: 100%; padding: 10px; margin-top: 8px;
-  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
-  background: var(--navy-800); color: #fff; border: none; border-radius: 4px;
-  cursor: pointer; transition: background 0.15s;
-}
+.fi-query-btn { width: 100%; padding: 10px; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; background: var(--navy-800); color: #fff; border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
 .fi-query-btn:hover { background: var(--navy-700); }
-.fi-chip {
-  width: 100%; font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--navy-700);
-  background: var(--navy-50); border: 1px solid var(--navy-100); border-radius: 3px;
-  padding: 6px 10px; cursor: pointer; text-align: left;
-  transition: background 0.12s; line-height: 1.4; margin-bottom: 5px;
-  display: block;
-}
+.fi-chip { width: 100%; font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--navy-700); background: var(--navy-50); border: 1px solid var(--navy-100); border-radius: 3px; padding: 6px 10px; cursor: pointer; text-align: left; transition: background 0.12s; line-height: 1.4; margin-bottom: 5px; display: block; }
 .fi-chip:hover { background: var(--navy-100); border-color: var(--navy-300); }
-.fi-error {
-  background: #fef2f2; border: 1px solid #fca5a5; border-radius: 5px;
-  padding: 14px 16px; font-size: 13px; color: #991b1b; margin-bottom: 20px;
-  font-family: 'DM Sans', sans-serif;
-}
-.fi-result {
-  background: var(--card); border: 1px solid var(--n200);
-  border-radius: 6px; padding: 20px; margin-bottom: 28px;
-}
-.fi-result-table-wrap { overflow-x: auto; margin-top: 12px; }
+.fi-error { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 5px; padding: 14px 16px; font-size: 13px; color: #991b1b; margin-bottom: 20px; font-family: 'DM Sans', sans-serif; }
+
+/* Query result */
+.fi-result { background: var(--card); border: 1px solid var(--n200); border-radius: 6px; overflow: hidden; margin-bottom: 28px; }
+.fi-result-header { background: var(--n50); border-bottom: 1px solid var(--n200); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+.fi-result-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 700; color: var(--navy-900); }
+.fi-result-meta { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--n500); }
+.fi-result-body { padding: 20px; }
+.fi-result-scope { font-size: 12px; color: var(--n500); line-height: 1.6; margin-bottom: 16px; padding: 10px 14px; background: var(--n50); border-radius: 4px; border-left: 3px solid var(--navy-200); font-family: 'DM Sans', sans-serif; }
+.fi-chart-wrap { margin-bottom: 20px; }
+.fi-insight-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--n200); }
+.fi-insight-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; color: var(--n500); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.fi-insight-bullet { font-size: 13px; color: var(--n700); line-height: 1.65; margin-bottom: 8px; padding-left: 14px; position: relative; }
+.fi-insight-bullet::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--navy-400); }
+.fi-result-table-wrap { overflow-x: auto; margin-top: 16px; }
 .fi-result-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-.fi-result-table th {
-  padding: 8px 10px; text-align: left; font-family: 'DM Sans', sans-serif;
-  font-size: 10px; font-weight: 700; color: var(--n600); text-transform: uppercase;
-  letter-spacing: 0.06em; border-bottom: 1px solid var(--n200); background: var(--n50);
-  white-space: nowrap;
-}
-.fi-result-table td {
-  padding: 9px 10px; color: var(--n700); border-bottom: 1px solid var(--n100);
-  vertical-align: top;
-}
+.fi-result-table th { padding: 8px 10px; text-align: left; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; color: var(--n600); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--n200); background: var(--n50); white-space: nowrap; }
+.fi-result-table td { padding: 9px 10px; color: var(--n700); border-bottom: 1px solid var(--n100); vertical-align: top; }
 .fi-result-table tr:last-child td { border-bottom: none; }
 .fi-result-table a { color: var(--navy-600); text-decoration: none; border-bottom: 1px dashed var(--navy-300); }
 `;
 
-// ── Render — server returns shell only, browser fetches briefing ──────────────
 export async function renderFundIntel(env, authed) {
   const issueNo = await getIssueNo(env);
 
@@ -257,8 +156,9 @@ export async function renderFundIntel(env, authed) {
     'Show me fee change announcements',
   ];
 
+  // Chips use global fiSetQuery — defined outside IIFE below
   const chipsHtml = SUGGESTED.map(q =>
-    `<button class="fi-chip" onclick="fiSetQuery(${JSON.stringify(q)})">${escHtml(q)}</button>`
+    `<button class="fi-chip" onclick="window.fiSetQuery(${JSON.stringify(q)})">${escHtml(q)}</button>`
   ).join('');
 
   const body = `
@@ -282,59 +182,69 @@ export async function renderFundIntel(env, authed) {
 <div class="container">
   <div class="fi-grid">
 
-    <!-- Main column: briefing renders here -->
     <div id="fi-main">
 
-      <!-- Query result area (hidden until a query runs) -->
+      <!-- Query result renders here, above briefing -->
       <div id="fi-result-area" style="display:none;" class="fi-result"></div>
 
-      <!-- Briefing loading state -->
-      <div id="fi-loading">
-        <p class="fi-loading-label">Generating your morning briefing&hellip;</p>
-        <div class="fi-skeleton fi-loading-bar tall" style="margin-bottom:20px;"></div>
-        <div class="fi-skeleton fi-loading-bar" style="width:80%;"></div>
-        <div class="fi-skeleton fi-loading-bar" style="width:65%;"></div>
-        <div class="fi-skeleton fi-loading-bar" style="width:72%;margin-bottom:20px;"></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
-          <div class="fi-skeleton fi-loading-bar tall"></div>
-          <div class="fi-skeleton fi-loading-bar tall"></div>
+      <!-- Briefing loading -->
+      <div id="fi-loading" class="fi-loading-state">
+        <div class="fi-loading-notice">
+          <div class="fi-loading-spinner"></div>
+          <span class="fi-loading-text">Please wait &mdash; preparing your briefing. This takes about 5 seconds.</span>
         </div>
-        <div class="fi-skeleton fi-loading-bar" style="width:55%;"></div>
-        <div class="fi-skeleton fi-loading-bar" style="width:70%;"></div>
+        <div class="fi-skeleton fi-sk-block fi-sk-tall" style="margin-bottom:20px;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+          <div class="fi-skeleton fi-sk-block fi-sk-tall"></div>
+          <div class="fi-skeleton fi-sk-block fi-sk-tall"></div>
+        </div>
+        <div class="fi-skeleton fi-sk-block" style="width:80%;"></div>
+        <div class="fi-skeleton fi-sk-block" style="width:65%;"></div>
+        <div class="fi-skeleton fi-sk-block" style="width:72%;"></div>
       </div>
 
-      <!-- Briefing content renders here -->
+      <!-- Briefing content -->
       <div id="fi-briefing" style="display:none;"></div>
 
     </div>
 
-    <!-- Sidebar -->
-    <aside class="fi-sidebar">
+    <aside>
       <div class="fi-sidebar-panel">
         <div class="fi-sidebar-header">Search the Archive</div>
         <div class="fi-sidebar-body">
-          <p style="font-size:12px;color:var(--n500);line-height:1.6;margin-bottom:12px;">
-            Ask anything about 900+ documents from 12 Canadian fund firms.
+          <p style="font-size:12px;color:var(--n600);line-height:1.6;margin-bottom:4px;font-family:'DM Sans',sans-serif;">
+            Search 900+ documents across 12 firms. Queries run against actual published materials:
           </p>
+          <ul style="font-size:11px;color:var(--n500);line-height:1.8;margin:0 0 12px 16px;padding:0;font-family:'DM Sans',sans-serif;">
+            <li>Press releases &amp; announcements</li>
+            <li>Fund launches &amp; ETF launches</li>
+            <li>Manager change notices</li>
+            <li>Fee change announcements</li>
+            <li>Market commentary &amp; outlooks</li>
+            <li>Fund merger &amp; material change notices</li>
+          </ul>
           <input type="text" class="fi-query-input" id="fi-query-input"
             placeholder="e.g. manager changes at Fidelity"
-            onkeydown="if(event.key==='Enter')fiRunQuery()">
-          <button class="fi-query-btn" onclick="fiRunQuery()">Run Query &rarr;</button>
+            onkeydown="if(event.key==='Enter')window.fiRunQuery()">
+          <button class="fi-query-btn" onclick="window.fiRunQuery()">Run Query &rarr;</button>
           <div style="margin-top:12px;">${chipsHtml}</div>
         </div>
       </div>
       <div class="fi-sidebar-panel">
         <div class="fi-sidebar-header">About Fund Intel</div>
         <div class="fi-sidebar-body">
-          <p style="font-size:12px;color:var(--n500);line-height:1.6;margin-bottom:10px;">
-            Fund Intel monitors press releases, commentary, fund launches, manager changes,
-            and fee announcements from 12 major Canadian fund firms. Updated daily at 6 a.m. ET.
+          <p style="font-size:12px;color:var(--n500);line-height:1.6;margin-bottom:10px;font-family:'DM Sans',sans-serif;">
+            Fund Intel tracks what 12 Canadian fund firms publish &mdash; not raw fund data.
+            It can tell you which firms announced fee cuts, who changed portfolio managers,
+            what new funds launched, and how firm tone has shifted over time.
           </p>
-          <p style="font-size:12px;color:var(--n500);line-height:1.6;margin-bottom:10px;">
-            Each new document is positioned against the historical record — firm by firm,
-            theme by theme — so even a quiet week has context.
+          <p style="font-size:12px;color:var(--n500);line-height:1.6;margin-bottom:10px;font-family:'DM Sans',sans-serif;">
+            It cannot look up MERs, NAVs, or fund prices &mdash; those live in fund facts and
+            prospectuses, not in published communications.
           </p>
-          <p style="font-size:11px;color:var(--n400);" id="fi-archive-note">900+ documents archived</p>
+          <p style="font-size:11px;color:var(--n400);font-family:'DM Sans',sans-serif;" id="fi-archive-note">
+            900+ documents archived &middot; updated daily
+          </p>
         </div>
       </div>
     </aside>
@@ -344,18 +254,18 @@ export async function renderFundIntel(env, authed) {
 </div>
 
 <script>
-(function() {
+// ── Global helpers (must be outside IIFE so onclick attributes can reach them) ──
 
-var WORKER = 'https://fund-intel-query.jpatherton1.workers.dev';
+var FI_WORKER = 'https://fund-intel-query.jpatherton1.workers.dev';
 
-var FIRM_LABEL = {
+var FI_FIRM_LABEL = {
   'mackenzie':'Mackenzie','fidelity-ca':'Fidelity','agf':'AGF',
   'ci':'CI Financial','dynamic':'Dynamic','rbc-gam':'RBC GAM',
   'bmo-gam':'BMO GAM','td-am':'TD AM','manulife-im':'Manulife',
   'ia-clarington':'IA Clarington','invesco-ca':'Invesco',
   'franklin-ca':'Franklin Templeton','sunlife-gi':'Sun Life GI'
 };
-var DOC_TYPE_LABEL = {
+var FI_DOC_LABEL = {
   press_release:'Press Release',commentary:'Commentary',
   fund_launch:'Fund Launch',etf_launch:'ETF Launch',
   manager_change_notice:'Manager Change',fee_change_notice:'Fee Change',
@@ -363,127 +273,124 @@ var DOC_TYPE_LABEL = {
   material_change_notice:'Material Change',market_outlook:'Market Outlook',other:'Other'
 };
 
-function esc(s) {
-  if (!s) return '';
+function fiEsc(s) {
+  if (s === null || s === undefined) return '';
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ── Fetch and render briefing ──────────────────────────────────────────────
-fetch(WORKER + '/briefing')
-  .then(function(r) { return r.json(); })
-  .then(function(data) {
-    var b = data.briefing || {};
-    var feed = data.recentFeed || [];
-    var docCount = data.docCount || 0;
-    var generatedAt = data.generatedAt
-      ? new Date(data.generatedAt).toLocaleString('en-CA', {
-          timeZone: 'America/Toronto',
-          month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
-        })
-      : null;
-
-    // Update header meta
-    if (generatedAt) {
-      var meta = document.getElementById('fi-header-meta');
-      if (meta) meta.textContent = 'Daily signals from Canadian fund firms \u00b7 12 firms monitored \u00b7 Briefing generated ' + generatedAt + ' ET';
-    }
-
-    // Update doc count
-    if (docCount > 0) {
-      var countArea = document.getElementById('fi-doc-count-area');
-      var countEl = document.getElementById('fi-doc-count');
-      if (countArea) countArea.style.display = '';
-      if (countEl) countEl.textContent = docCount.toLocaleString();
-      var noteEl = document.getElementById('fi-archive-note');
-      if (noteEl) noteEl.textContent = docCount.toLocaleString() + ' documents archived';
-    }
-
-    var html = '';
-
-    // Top Story
-    if (b.topStory) {
-      html += '<div class="fi-top-story">'
-        + '<div class="fi-story-label">Top Story</div>'
-        + '<div class="fi-story-headline">' + esc(b.topStory.headline) + '</div>'
-        + '<p class="fi-story-body">' + esc(b.topStory.body) + '</p>'
-        + '</div>';
-    }
-
-    // Themes + Divergence
-    var themesHtml = '', divHtml = '';
-    if (b.emergingThemes && b.emergingThemes.length) {
-      themesHtml = '<div class="fi-panel"><div class="fi-panel-header">Emerging Themes</div><div class="fi-panel-body">'
-        + b.emergingThemes.map(function(t) {
-            return '<div class="fi-theme-item"><div class="fi-theme-name">' + esc(t.theme) + '</div>'
-              + '<p class="fi-theme-detail">' + esc(t.detail) + '</p></div>';
-          }).join('')
-        + '</div></div>';
-    }
-    if (b.firmDivergence && b.firmDivergence.items && b.firmDivergence.items.length) {
-      divHtml = '<div class="fi-panel"><div class="fi-panel-header">Where Firms Diverge</div><div class="fi-panel-body">'
-        + (b.firmDivergence.summary ? '<p class="fi-divergence-summary">' + esc(b.firmDivergence.summary) + '</p>' : '')
-        + b.firmDivergence.items.map(function(item, i) {
-            return '<div class="fi-div-item"><div class="fi-div-label ' + (i===0?'bull':'bear') + '">' + esc(item.label) + '</div>'
-              + '<div class="fi-div-firms">' + (item.firms||[]).map(function(f){return '<span class="fi-firm-tag">'+esc(f)+'</span>';}).join('') + '</div>'
-              + '<p class="fi-div-on">' + esc(item.on) + '</p></div>';
-          }).join('')
-        + '</div></div>';
-    }
-    if (themesHtml || divHtml) {
-      html += '<div class="fi-two-col">' + themesHtml + divHtml + '</div>';
-    }
-
-    // Advisor takeaways
-    if (b.advisorTakeaways && b.advisorTakeaways.length) {
-      html += '<div class="fi-takeaways">'
-        + '<div class="fi-section-header"><span class="fi-section-title">Advisor Talking Points</span><div class="fi-section-rule"></div></div>'
-        + '<div class="fi-takeaway-grid">'
-        + b.advisorTakeaways.map(function(t, i) {
-            return '<div class="fi-takeaway"><div class="fi-takeaway-num">' + (i+1) + '</div>'
-              + '<p class="fi-takeaway-text">' + esc(t) + '</p></div>';
-          }).join('')
-        + '</div></div>';
-    }
-
-    // Feed
-    if (feed.length) {
-      html += '<div class="fi-section-header"><span class="fi-section-title">Latest Documents</span><div class="fi-section-rule"></div></div>'
-        + '<div class="fi-feed">'
-        + feed.map(function(doc) {
-            var summary = (doc.summary || '');
-            if (summary.length > 160) summary = summary.substring(0,160) + '\u2026';
-            return '<div class="fi-feed-item">'
-              + '<div><div class="fi-feed-date">' + esc(doc.published_date||'') + '</div>'
-              + '<span class="fi-feed-firm">' + esc(FIRM_LABEL[doc.firm_id]||doc.firm_id||'') + '</span><br>'
-              + '<span class="fi-feed-type">' + esc(DOC_TYPE_LABEL[doc.document_type]||doc.document_type||'') + '</span></div>'
-              + '<p class="fi-feed-summary">' + esc(summary) + '</p>'
-              + (doc.source_url ? '<a href="' + esc(doc.source_url) + '" target="_blank" rel="noreferrer" class="fi-feed-link">Read &rarr;</a>' : '<span></span>')
-              + '</div>';
-          }).join('')
-        + '</div>';
-    }
-
-    // Quiet firms
-    if (b.quietFirms && b.quietFirms.length) {
-      html += '<p class="fi-quiet">No activity this week: ' + b.quietFirms.map(esc).join(' &middot; ') + '</p>';
-    }
-
-    document.getElementById('fi-loading').style.display = 'none';
-    var briefingEl = document.getElementById('fi-briefing');
-    briefingEl.innerHTML = html;
-    briefingEl.style.display = '';
-  })
-  .catch(function(err) {
-    document.getElementById('fi-loading').innerHTML =
-      '<div class="fi-error">Could not load briefing: ' + esc(err.message) + '. The worker may be unavailable.</div>';
-  });
-
-// ── Query ──────────────────────────────────────────────────────────────────
+// ── Set query from chip and run ──────────────────────────────────────────────
 window.fiSetQuery = function(q) {
   var input = document.getElementById('fi-query-input');
-  if (input) { input.value = q; fiRunQuery(); }
+  if (input) { input.value = q; window.fiRunQuery(); }
 };
 
+// ── Build HDQ-style SVG bar chart from query results ────────────────────────
+function fiBuildChart(chart, rows) {
+  if (!chart || !rows || rows.length === 0) return '';
+  var xKey = chart.xKey, yKey = chart.yKey;
+  if (!xKey || !yKey) return '';
+
+  // Only bar charts for now — the most useful for fund intel data
+  var chartType = chart.chartType || 'bar';
+  if (chartType !== 'bar' && chartType !== 'number') return '';
+
+  if (chartType === 'number') {
+    var val = chart.value !== undefined ? chart.value : (rows[0] ? Object.values(rows[0])[0] : '');
+    return '<div style="text-align:center;padding:24px 0;">'
+      + '<div style="font-family:Bricolage Grotesque,sans-serif;font-size:56px;font-weight:800;color:#1a3560;line-height:1;">' + fiEsc(String(val)) + '</div>'
+      + (chart.title ? '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:#666;margin-top:8px;">' + fiEsc(chart.title) + '</div>' : '')
+      + '</div>';
+  }
+
+  // Bar chart via inline SVG — HDQ style
+  var labels = rows.map(function(r){ return String(r[xKey] || ''); });
+  var values = rows.map(function(r){ return parseFloat(r[yKey]) || 0; });
+  var maxVal = Math.max.apply(null, values);
+  if (maxVal === 0) return '';
+
+  var W = 620, H = 220;
+  var ML = 50, MR = 20, MT = 16, MB = 56;
+  var PW = W - ML - MR, PH = H - MT - MB;
+  var n = rows.length;
+  var barW = Math.min(48, (PW / n) * 0.6);
+  var gap = PW / n;
+
+  // Colours: most recent / largest = green, others = slate
+  var maxIdx = values.indexOf(maxVal);
+
+  function xPos(i) { return ML + gap * i + gap / 2; }
+  function yPos(v) { return MT + PH - (v / maxVal) * PH; }
+  function yScale(v) { return (v / maxVal) * PH; }
+
+  var svgParts = [];
+
+  // Grid lines (4)
+  for (var g = 0; g <= 4; g++) {
+    var gy = MT + (PH / 4) * g;
+    var gVal = maxVal - (maxVal / 4) * g;
+    svgParts.push('<line x1="' + ML + '" x2="' + (ML+PW) + '" y1="' + gy + '" y2="' + gy + '" stroke="#ececec" stroke-width="0.5"/>');
+    svgParts.push('<text x="' + (ML-5) + '" y="' + (gy+3) + '" text-anchor="end" font-size="8.5" fill="#aaa" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">' + (Number.isInteger(gVal) ? gVal : gVal.toFixed(1)) + '</text>');
+  }
+
+  // Bars
+  for (var i = 0; i < n; i++) {
+    var cx = xPos(i);
+    var bh = yScale(values[i]);
+    var by = MT + PH - bh;
+    var isMax = (i === maxIdx);
+    var fill = isMax ? '#3a7a55' : '#4a5568';
+
+    svgParts.push('<rect x="' + (cx - barW/2) + '" y="' + by + '" width="' + barW + '" height="' + bh + '" fill="' + fill + '" rx="2"/>');
+
+    // X-axis label — truncate long names
+    var lbl = labels[i].length > 12 ? labels[i].substring(0,11) + '\u2026' : labels[i];
+    svgParts.push('<text x="' + cx + '" y="' + (MT+PH+14) + '" text-anchor="middle" font-size="8" fill="#999" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" transform="rotate(-30,' + cx + ',' + (MT+PH+14) + ')">' + fiEsc(lbl) + '</text>');
+  }
+
+  // Gold pill on max bar
+  var px = xPos(maxIdx);
+  var py = yPos(values[maxIdx]);
+  var pillVal = Number.isInteger(values[maxIdx]) ? values[maxIdx] : values[maxIdx].toFixed(2);
+  var pillW = 44, pillH = 16;
+  var pillX = px - pillW - 6;
+  if (pillX < ML) pillX = px + 6;
+  var pillY = py - pillH / 2;
+  svgParts.push('<circle cx="' + px + '" cy="' + py + '" r="3.5" fill="#4a5568"/>');
+  svgParts.push('<rect x="' + pillX + '" y="' + pillY + '" width="' + pillW + '" height="' + pillH + '" rx="3" fill="#e8a825"/>');
+  svgParts.push('<text x="' + (pillX + pillW/2) + '" y="' + (pillY + pillH/2 + 3.5) + '" text-anchor="middle" font-size="9" font-weight="700" fill="#111" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">' + pillVal + '</text>');
+
+  var titleStr = (chart.title || '').toUpperCase();
+  var changeVal = values[maxIdx];
+  var changeStr = (chart.formatY === 'percent') ? (changeVal*100).toFixed(1)+'%' : String(Number.isInteger(changeVal)?changeVal:changeVal.toFixed(2));
+
+  var hdqChart = '<div class="hdq-chart fi-chart-wrap">'
+    + '<div style="background:#fff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">'
+    + '<div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">'
+    + '<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">' + fiEsc(titleStr || 'FUND INTEL QUERY') + '</span>'
+    + '<span style="font-size:20px;font-weight:700;color:#111;">' + fiEsc(changeStr) + '</span>'
+    + '<span style="font-size:13px;color:#2e7d32;">&#9650; peak value</span>'
+    + '<span style="font-size:11px;color:#888;margin-left:auto;">Query results &nbsp;|&nbsp; hdq.ca</span>'
+    + '</div>'
+    + '<div style="padding:12px 14px 8px;">'
+    + '<script>(function(){'
+    + 'var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");'
+    + 'svg.setAttribute("viewBox","0 0 ' + W + ' ' + H + '");'
+    + 'svg.setAttribute("style","width:100%;display:block;");'
+    + 'svg.innerHTML=' + JSON.stringify(svgParts.join('')) + ';'
+    + 'var c=document.currentScript?document.currentScript.parentNode:null;'
+    + 'if(c)c.appendChild(svg);'
+    + '})()</s' + 'cript>'
+    + '</div>'
+    + '<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">'
+    + 'Source: Fund Intel archive, ' + new Date().toLocaleDateString('en-CA',{month:'short',day:'numeric',year:'numeric'}) + '. &nbsp;|&nbsp; hdq.ca'
+    + '</div>'
+    + '</div>'
+    + '</div>';
+
+  return hdqChart;
+}
+
+// ── Run query ────────────────────────────────────────────────────────────────
 window.fiRunQuery = async function() {
   var input = document.getElementById('fi-query-input');
   var resultArea = document.getElementById('fi-result-area');
@@ -491,11 +398,14 @@ window.fiRunQuery = async function() {
   if (!q) return;
 
   resultArea.style.display = 'block';
-  resultArea.innerHTML = '<p style="padding:16px 0;text-align:center;color:var(--n500);font-size:13px;font-family:DM Sans,sans-serif;">Querying the archive&hellip;</p>';
+  resultArea.className = 'fi-result';
+  resultArea.innerHTML = '<div style="padding:20px;text-align:center;color:var(--n500);font-size:13px;font-family:DM Sans,sans-serif;">'
+    + '<div style="width:18px;height:18px;border:2px solid #d0d0d0;border-top-color:#1a3560;border-radius:50%;animation:fi-spin 0.8s linear infinite;margin:0 auto 10px;"></div>'
+    + 'Searching the archive&hellip;</div>';
   resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
   try {
-    var res = await fetch(WORKER + '/query', {
+    var res = await fetch(FI_WORKER + '/query', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query: q }),
@@ -503,13 +413,48 @@ window.fiRunQuery = async function() {
     var data = await res.json();
 
     if (data.error) {
-      resultArea.innerHTML = '<div class="fi-error">' + esc(data.error) + '</div>';
+      resultArea.innerHTML = '<div class="fi-error">' + fiEsc(data.error) + '</div>';
       return;
     }
 
     var rows = data.rows || [];
     var cols = rows.length ? Object.keys(rows[0]) : [];
+    var chart = data.chart || {};
 
+    // ── Scope note — what this query ran against ──
+    var docTypes = [];
+    if (q.toLowerCase().includes('manager')) docTypes.push('manager change notices');
+    else if (q.toLowerCase().includes('fee') || q.toLowerCase().includes('fees')) docTypes.push('fee change announcements');
+    else if (q.toLowerCase().includes('fund launch') || q.toLowerCase().includes('etf')) docTypes.push('fund and ETF launch announcements');
+    else if (q.toLowerCase().includes('merger')) docTypes.push('fund merger notices');
+    else if (q.toLowerCase().includes('commentary') || q.toLowerCase().includes('outlook')) docTypes.push('market commentaries and outlooks');
+    else if (q.toLowerCase().includes('tone') || q.toLowerCase().includes('optimism')) docTypes.push('tone scores across all classified documents');
+    else docTypes.push('press releases, commentaries, fund notices, and announcements');
+
+    var scopeNote = 'Results are drawn from ' + docTypes[0] + ' published by Canadian fund firms and archived by Fund Intel. '
+      + 'This tool tracks what firms publish — not fund prices, MERs, or NAV data.';
+
+    // ── Chart ──
+    var chartHtml = fiBuildChart(chart, rows);
+
+    // ── Insights ──
+    var insightHtml = '';
+    if (data.insights) {
+      if (data.insights.insights && data.insights.insights.length) {
+        insightHtml += '<div class="fi-insight-section">'
+          + '<div class="fi-insight-label">AI Insight</div>'
+          + data.insights.insights.map(function(b){ return '<p class="fi-insight-bullet">' + fiEsc(b) + '</p>'; }).join('')
+          + '</div>';
+      }
+      if (data.insights.predictions && data.insights.predictions.length) {
+        insightHtml += '<div class="fi-insight-section">'
+          + '<div class="fi-insight-label">Forward Signal</div>'
+          + data.insights.predictions.map(function(b){ return '<p class="fi-insight-bullet">' + fiEsc(b) + '</p>'; }).join('')
+          + '</div>';
+      }
+    }
+
+    // ── Table ──
     var tableHtml = '';
     if (rows.length) {
       tableHtml = '<div class="fi-result-table-wrap"><table class="fi-result-table"><thead><tr>'
@@ -519,45 +464,138 @@ window.fiRunQuery = async function() {
             return '<tr>' + cols.map(function(c){
               var v = row[c];
               if (v === null || v === undefined) return '<td>&mdash;</td>';
-              if (c.includes('url') || c.includes('source')) return '<td><a href="'+esc(String(v))+'" target="_blank" rel="noreferrer">Read &rarr;</a></td>';
+              if (c.includes('url') || c.includes('source')) return '<td><a href="' + fiEsc(String(v)) + '" target="_blank" rel="noreferrer">Read &rarr;</a></td>';
               var s = String(v); if (s.length > 120) s = s.substring(0,120) + '\u2026';
-              return '<td>' + esc(s) + '</td>';
+              return '<td>' + fiEsc(s) + '</td>';
             }).join('') + '</tr>';
           }).join('')
         + '</tbody></table></div>';
     } else {
-      tableHtml = '<p style="color:var(--n500);font-size:13px;padding:12px 0;">No results found.</p>';
+      tableHtml = '<p style="color:var(--n500);font-size:13px;padding:12px 0;font-family:DM Sans,sans-serif;">No results found for this query.</p>';
     }
 
-    var insightHtml = '';
-    if (data.insights) {
-      if (data.insights.insights && data.insights.insights.length) {
-        insightHtml += '<div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--n200);">'
-          + '<div style="font-size:10px;font-weight:700;color:var(--n500);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;font-family:DM Sans,sans-serif;">AI Insight</div>'
-          + data.insights.insights.map(function(b){ return '<p style="font-size:13px;color:var(--n700);line-height:1.6;margin-bottom:8px;">'+esc(b)+'</p>'; }).join('')
-          + '</div>';
-      }
-      if (data.insights.predictions && data.insights.predictions.length) {
-        insightHtml += '<div style="margin-top:12px;">'
-          + '<div style="font-size:10px;font-weight:700;color:var(--n500);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;font-family:DM Sans,sans-serif;">Forward Signal</div>'
-          + data.insights.predictions.map(function(b){ return '<p style="font-size:13px;color:var(--n700);line-height:1.6;margin-bottom:8px;">'+esc(b)+'</p>'; }).join('')
-          + '</div>';
-      }
-    }
-
+    // ── Assemble result ──
     resultArea.innerHTML =
-      '<div style="font-size:12px;color:var(--n500);margin-bottom:10px;font-family:DM Sans,sans-serif;">'
-        + rows.length + ' result' + (rows.length!==1?'s':'') + ' &middot; ' + (data.latencyMs||0) + 'ms'
+      '<div class="fi-result-header">'
+        + '<span class="fi-result-title">' + fiEsc(q) + '</span>'
+        + '<span class="fi-result-meta">' + rows.length + ' result' + (rows.length!==1?'s':'') + ' &middot; ' + (data.latencyMs||0) + 'ms</span>'
       + '</div>'
-      + (data.explanation ? '<p style="font-size:14px;color:var(--n700);line-height:1.65;margin-bottom:14px;">' + esc(data.explanation) + '</p>' : '')
-      + tableHtml + insightHtml
-      + '<details style="margin-top:12px;"><summary style="font-size:11px;color:var(--n400);cursor:pointer;font-family:DM Sans,sans-serif;">View SQL</summary>'
-      + '<pre style="font-size:11px;color:var(--n700);background:var(--n50);border:1px solid var(--n200);border-radius:4px;padding:10px 14px;margin-top:8px;overflow-x:auto;white-space:pre-wrap;font-family:Courier New,monospace;">' + esc(data.sql||'') + '</pre></details>';
+      + '<div class="fi-result-body">'
+        + '<p class="fi-result-scope">' + fiEsc(scopeNote) + '</p>'
+        + chartHtml
+        + insightHtml
+        + tableHtml
+        + '<details style="margin-top:16px;"><summary style="font-size:11px;color:var(--n400);cursor:pointer;font-family:DM Sans,sans-serif;">View SQL</summary>'
+        + '<pre style="font-size:11px;color:var(--n700);background:var(--n50);border:1px solid var(--n200);border-radius:4px;padding:10px 14px;margin-top:8px;overflow-x:auto;white-space:pre-wrap;font-family:Courier New,monospace;">' + fiEsc(data.sql||'') + '</pre></details>'
+      + '</div>';
 
   } catch(err) {
-    resultArea.innerHTML = '<div class="fi-error">Query failed: ' + esc(err.message) + '</div>';
+    resultArea.innerHTML = '<div style="padding:20px;"><div class="fi-error">Query failed: ' + fiEsc(err.message) + '</div></div>';
   }
 };
+
+// ── Fetch and render briefing ────────────────────────────────────────────────
+(function loadBriefing() {
+
+  fetch(FI_WORKER + '/briefing')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var b = data.briefing || {};
+      var feed = data.recentFeed || [];
+      var docCount = data.docCount || 0;
+      var generatedAt = data.generatedAt
+        ? new Date(data.generatedAt).toLocaleString('en-CA', {
+            timeZone: 'America/Toronto',
+            month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+          })
+        : null;
+
+      if (generatedAt) {
+        var meta = document.getElementById('fi-header-meta');
+        if (meta) meta.textContent = 'Daily signals from Canadian fund firms \u00b7 12 firms monitored \u00b7 Briefing: ' + generatedAt + ' ET';
+      }
+      if (docCount > 0) {
+        var ca = document.getElementById('fi-doc-count-area');
+        var ce = document.getElementById('fi-doc-count');
+        if (ca) ca.style.display = '';
+        if (ce) ce.textContent = docCount.toLocaleString();
+        var an = document.getElementById('fi-archive-note');
+        if (an) an.textContent = docCount.toLocaleString() + ' documents archived \u00b7 updated daily';
+      }
+
+      var html = '';
+
+      if (b.topStory) {
+        html += '<div class="fi-top-story">'
+          + '<div class="fi-story-label">Top Story</div>'
+          + '<div class="fi-story-headline">' + fiEsc(b.topStory.headline) + '</div>'
+          + '<p class="fi-story-body">' + fiEsc(b.topStory.body) + '</p>'
+          + '</div>';
+      }
+
+      var themesHtml = '', divHtml = '';
+      if (b.emergingThemes && b.emergingThemes.length) {
+        themesHtml = '<div class="fi-panel"><div class="fi-panel-header">Emerging Themes</div><div class="fi-panel-body">'
+          + b.emergingThemes.map(function(t){
+              return '<div class="fi-theme-item"><div class="fi-theme-name">' + fiEsc(t.theme) + '</div>'
+                + '<p class="fi-theme-detail">' + fiEsc(t.detail) + '</p></div>';
+            }).join('')
+          + '</div></div>';
+      }
+      if (b.firmDivergence && b.firmDivergence.items && b.firmDivergence.items.length) {
+        divHtml = '<div class="fi-panel"><div class="fi-panel-header">Where Firms Diverge</div><div class="fi-panel-body">'
+          + (b.firmDivergence.summary ? '<p class="fi-divergence-summary">' + fiEsc(b.firmDivergence.summary) + '</p>' : '')
+          + b.firmDivergence.items.map(function(item,i){
+              return '<div class="fi-div-item"><div class="fi-div-label ' + (i===0?'bull':'bear') + '">' + fiEsc(item.label) + '</div>'
+                + '<div class="fi-div-firms">' + (item.firms||[]).map(function(f){ return '<span class="fi-firm-tag">'+fiEsc(f)+'</span>'; }).join('') + '</div>'
+                + '<p class="fi-div-on">' + fiEsc(item.on) + '</p></div>';
+            }).join('')
+          + '</div></div>';
+      }
+      if (themesHtml || divHtml) {
+        html += '<div class="fi-two-col">' + themesHtml + divHtml + '</div>';
+      }
+
+      if (b.advisorTakeaways && b.advisorTakeaways.length) {
+        html += '<div class="fi-takeaways">'
+          + '<div class="fi-section-header"><span class="fi-section-title">Advisor Talking Points</span><div class="fi-section-rule"></div></div>'
+          + '<div class="fi-takeaway-grid">'
+          + b.advisorTakeaways.map(function(t,i){
+              return '<div class="fi-takeaway"><div class="fi-takeaway-num">'+(i+1)+'</div>'
+                + '<p class="fi-takeaway-text">'+fiEsc(t)+'</p></div>';
+            }).join('')
+          + '</div></div>';
+      }
+
+      if (feed.length) {
+        html += '<div class="fi-section-header"><span class="fi-section-title">Latest Documents</span><div class="fi-section-rule"></div></div>'
+          + '<div class="fi-feed">'
+          + feed.map(function(doc){
+              var s = (doc.summary||''); if(s.length>160) s=s.substring(0,160)+'\u2026';
+              return '<div class="fi-feed-item">'
+                + '<div><div class="fi-feed-date">'+fiEsc(doc.published_date||'')+'</div>'
+                + '<span class="fi-feed-firm">'+fiEsc(FI_FIRM_LABEL[doc.firm_id]||doc.firm_id||'')+'</span><br>'
+                + '<span class="fi-feed-type">'+fiEsc(FI_DOC_LABEL[doc.document_type]||doc.document_type||'')+'</span></div>'
+                + '<p class="fi-feed-summary">'+fiEsc(s)+'</p>'
+                + (doc.source_url?'<a href="'+fiEsc(doc.source_url)+'" target="_blank" rel="noreferrer" class="fi-feed-link">Read &rarr;</a>':'<span></span>')
+                + '</div>';
+            }).join('')
+          + '</div>';
+      }
+
+      if (b.quietFirms && b.quietFirms.length) {
+        html += '<p class="fi-quiet">No activity this week: ' + b.quietFirms.map(fiEsc).join(' &middot; ') + '</p>';
+      }
+
+      document.getElementById('fi-loading').style.display = 'none';
+      var el = document.getElementById('fi-briefing');
+      el.innerHTML = html;
+      el.style.display = '';
+    })
+    .catch(function(err) {
+      document.getElementById('fi-loading').innerHTML =
+        '<div class="fi-error">Could not load briefing: ' + fiEsc(err.message) + '. Try refreshing.</div>';
+    });
 
 })();
 </script>
