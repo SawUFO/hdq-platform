@@ -10,6 +10,7 @@ import { renderArchive } from './pages/archive.js';
 import { renderThread } from './pages/thread.js';
 import { renderWeekend } from './pages/weekend.js';
 import { renderCharts } from './pages/charts.js';
+import { renderFundIntel } from './pages/fund-intel.js';
 
 // ── Auth helpers ────────────────────────────────────────────────────────────
 
@@ -105,6 +106,9 @@ export default {
 
       // Chart gallery
       if (path === '/charts') return renderCharts(env, url.searchParams);
+
+      // Fund Intel
+      if (path === '/fund-intel') return renderFundIntel(env, authed);
 
       const articleMatch = path.match(/^\/(\d{4}\/\d{2}\/\d{2}\/.+)$/);
       if (articleMatch) {

@@ -198,26 +198,27 @@ export async function renderHome(env) {
       <div class="division-desc">Five desks — Market, Geopolitical, Economy, Tax &amp; Wealth, and Behavioural — published by 7 a.m. Eastern every weekday.</div>
       <div class="division-link">Today's briefing &rarr;</div>
     </a>
+    <a href="/fund-intel" class="division-card">
+      <div class="division-number">02 / Intelligence</div>
+      <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <div class="division-name">Fund Intel</div>
+      <div class="division-desc">Daily signals from 12 Canadian fund firms. What changed, what it means, and what advisors should know.</div>
+      <div class="division-link">Today's briefing &rarr;</div>
+    </a>
     <a href="/hdq-prodev.html" class="division-card">
-      <div class="division-number">02 / Learning</div>
+      <div class="division-number">03 / Learning</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
       <div class="division-name">Professional Development</div>
       <div class="division-desc">CE-eligible modules, a curated reading list, decision frameworks, and a glossary. For advisors.</div>
       <div class="division-link">The library &rarr;</div>
     </a>
     <a href="/hdq-whitelabel.html" class="division-card">
-      <div class="division-number">03 / Firms</div>
+      <div class="division-number">04 / Firms</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
       <div class="division-name">For Firms</div>
       <div class="division-desc">HDQ content under a firm's brand. A client-ready daily publication for advisory practices.</div>
       <div class="division-link">For firms &rarr;</div>
     </a>
-    <div class="division-card coming">
-      <div class="division-number">04 / Coming</div>
-      <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-      <div class="division-name">In Practice</div>
-      <div class="division-desc">Video profiles of Canadian advisory firms, on location. A standing series.</div>
-    </div>
   </div>
 </div></section>
 

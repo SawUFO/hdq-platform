@@ -48,6 +48,7 @@ export function pageShell(bodyHtml, opts = {}) {
 
   const navLinks = [
     { href: '/news',                  label: 'News',                    key: 'news' },
+    { href: '/fund-intel',            label: 'Fund Intel',              key: 'fund-intel' },
     { href: '/hdq-prodev.html',       label: 'Professional Development', key: 'prodev' },
     { href: '/hdq-whitelabel.html',   label: 'For Firms',               key: 'whitelabel' },
     { href: '/archive',               label: 'Archive',                 key: 'archive' },
