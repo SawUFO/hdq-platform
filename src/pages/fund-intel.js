@@ -157,9 +157,11 @@ export async function renderFundIntel(env, authed) {
   ];
 
   // Chips use global fiSetQuery — defined outside IIFE below
-  const chipsHtml = SUGGESTED.map(q =>
-    `<button class="fi-chip" onclick="window.fiSetQuery(${JSON.stringify(q)})">${escHtml(q)}</button>`
-  ).join('');
+  const chipsHtml = SUGGESTED.map(q => {
+    // Use single quotes inside the onclick so double quotes in the label don't break the HTML attribute
+    const qEscaped = q.replace(/'/g, "\\'");
+    return `<button class="fi-chip" onclick="window.fiSetQuery('${qEscaped}')">${escHtml(q)}</button>`;
+  }).join('');
 
   const body = `
 <div class="fi-header">
@@ -372,14 +374,9 @@ function fiBuildChart(chart, rows) {
     + '<span style="font-size:11px;color:#888;margin-left:auto;">Query results &nbsp;|&nbsp; hdq.ca</span>'
     + '</div>'
     + '<div style="padding:12px 14px 8px;">'
-    + '<script>(function(){'
-    + 'var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");'
-    + 'svg.setAttribute("viewBox","0 0 ' + W + ' ' + H + '");'
-    + 'svg.setAttribute("style","width:100%;display:block;");'
-    + 'svg.innerHTML=' + JSON.stringify(svgParts.join('')) + ';'
-    + 'var c=document.currentScript?document.currentScript.parentNode:null;'
-    + 'if(c)c.appendChild(svg);'
-    + '})()</s' + 'cript>'
+    + '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">'
+    + svgParts.join('')
+    + '</svg>'
     + '</div>'
     + '<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">'
     + 'Source: Fund Intel archive, ' + new Date().toLocaleDateString('en-CA',{month:'short',day:'numeric',year:'numeric'}) + '. &nbsp;|&nbsp; hdq.ca'
