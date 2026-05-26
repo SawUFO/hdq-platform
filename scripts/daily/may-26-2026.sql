@@ -384,6 +384,131 @@ INSERT OR REPLACE INTO articles
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
+  '2026/05/26/the-hormuz-mou-and-what-it-does-not-resolve',
+  'geo', 'article',
+  'The Hormuz MOU and What It Does Not Resolve',
+  'Trump''s "largely negotiated" deal framework has sent oil prices down more than 10% this week and lifted the TSX. The chain of consequence for Canadian portfolios runs through what the agreement leaves unfinished.',
+  '<ul>
+<li><strong>The US-Iran memorandum of understanding announced Saturday envisions a 60-day ceasefire extension,</strong><span> Hormuz de-mining, Iranian oil sales resuming, and US port blockade lifted -- but the nuclear question, reparations, and Iran''s insistence on retaining management authority over the strait remain unresolved.</span></li>
+<li><strong>Brent crude fell from above $110/bbl at mid-May to approximately $98/bbl Tuesday,</strong><span> a decline of more than 10% in a week driven entirely by deal optimism rather than by confirmed physical reopening of the waterway -- a distinction with direct implications for how durable the oil price retreat will prove.</span></li>
+<li><strong>For Canadian portfolios, the MOU creates a bifurcated risk landscape:</strong><span> energy sector exposure reprices lower on Hormuz optimism, while gold holds near $4,523 USD/oz as residual geopolitical uncertainty and the unresolved nuclear file sustain safe-haven demand.</span></li>
+<li><strong>The base case is a fragile, conditional ceasefire that holds long enough to allow partial Hormuz reopening,</strong><span> not a durable peace settlement -- a distinction the market may not yet be pricing with full precision.</span></li>
+</ul>',
+  '<p>On Saturday, President Trump posted that a peace deal with Iran was "largely negotiated" and would be announced shortly. By Monday morning, Brent crude had fallen more than 6% in a single session and the TSX was trading above 34,800 -- its highest close in weeks. Markets read the announcement as a signal that the Strait of Hormuz disruption that began March 4 was nearing its end.</p>
+
+<p>The analytical work for Canadian advisors is not to assess whether that reading is wrong. It is to assess how much resolution the MOU framework actually delivers, and what the portfolio implications look like across the range of outcomes that remain plausible.</p>
+
+<h2>What the MOU Framework Contains</h2>
+
+<p>According to a senior U.S. administration official whose account was confirmed by Axios reporting on May 24 and Washington Post reporting on May 25, the framework involves a 60-day ceasefire extension during which Iran agrees to de-mine the Strait of Hormuz and allow free passage without tolls. In exchange, the United States would lift its blockade of Iranian ports and issue sanctions waivers permitting Iran to sell oil on global markets. A Pakistani mediator described the framework as providing "grounds for optimism that a positive and durable outcome is within reach."</p>
+
+<p>Within 24 hours of Trump''s Saturday post, the picture became more complicated. Iran''s state news agency Fars reported that the agreement provided for Iran to continue managing the waterway, calling Trump''s assertion that Iran would no longer control access "inconsistent with reality." Iran''s Supreme Leader separately stated that enriched uranium must remain in Iran and would not be sent abroad -- a direct contradiction of one of Washington''s stated nuclear demands. As of Tuesday morning, the Strait remains closed, with approximately 240 ships awaiting passage permission according to Fars.</p>
+
+<h2>The Chain of Consequence for Canadian Energy Exposure</h2>
+
+<p>Canadian energy equities have repriced on the deal optimism in a manner that makes a coherent analytical point: the war premium embedded in names like Suncor, Canadian Natural Resources, and Cenovus was always a function of supply disruption risk, not fundamental earnings improvement. As that disruption risk is perceived to be declining, the premium deflates. The TSX Capped Energy Index fell 3.38% on Monday alone; it is down more than 10% from its mid-May highs.</p>
+
+<p>The question that matters for portfolio construction is whether this repricing reflects the realistic base case or whether it is running ahead of the confirmed facts. The Hormuz has not reopened. The mines have not been cleared. The 240 ships waiting for passage are still waiting. The oil price decline of this week is priced on expectation, not on delivery. If the MOU framework stalls -- as prior ceasefire frameworks have stalled, including the April 8 two-week ceasefire that was subsequently extended amid ongoing disputes -- the war premium would reassert itself and energy equities would recover some portion of this week''s losses.</p>
+
+<p>The chart above shows Brent crude''s weekly trajectory from the March 4 Hormuz closure through Tuesday''s session, with key ceasefire announcement dates marked, illustrating the pattern of price movement around each round of talks.</p>
+
+<h2>Gold''s Different Signal</h2>
+
+<p>Gold''s behaviour this week tells a more nuanced story than the energy market. While crude has fallen sharply on Hormuz optimism, gold has held near $4,523 USD/oz as of Tuesday -- down modestly from its recent range but nowhere near the kind of decline that a genuine, comprehensive peace settlement would likely produce. Gold miners on the TSX were sharply higher Monday, with Agnico Eagle up 4.6%, Barrick up 4.2%, and Wheaton Precious Metals up 5.6%.</p>
+
+<p>This divergence -- oil falling on peace optimism, gold holding -- reflects the market''s implicit assessment that the geopolitical risk premium has been partially, not fully, resolved. The unresolved nuclear file is the most significant remaining uncertainty. Iran''s insistence on retaining enriched uranium on its own soil leaves in place a long-term proliferation risk that the 60-day framework does not address. For gold, which prices on a combination of inflation expectations, real interest rates, and geopolitical uncertainty, the persistence of that nuclear uncertainty provides a floor that is not present in the crude oil market.</p>
+
+<h2>The Tail Risk That Has Not Left the Room</h2>
+
+<p>The Governing Council of the Bank of Canada noted in its April 29 deliberations that its outlook for growth and inflation was "highly conditional on US tariffs remaining unchanged and on lower oil prices, which would depend on developments in the conflict." That conditionality runs both ways. The MOU framework, if it holds, is the scenario the BoC''s April MPR assumed as its baseline -- gradual Brent decline from $90/bbl in Q2 toward $75/bbl by mid-2027. A framework that stalls, or that produces a partial reopening with ongoing friction and Iranian toll demands, is not the baseline. It is the scenario in which the April MPR''s projections require upward revision.</p>
+
+<p>For Canadian portfolios, the tail risk is not symmetric. A full, durable Hormuz reopening is bearish for energy equities and supportive for rate-sensitive sectors. A stalled framework that reasserts the war premium is bullish for energy, bearish for financials and utilities, and complicates the BoC''s June 10 communications even if the rate decision itself remains a hold. Advisors who built client communication around the assumption that the conflict was nearing clean resolution will need to revisit those conversations if the next 60 days produce another round of talks-within-talks rather than a genuine reopening.</p>',
+
+  '<div class="toolkit-section">
+<div class="toolkit-section-label">What They''re Feeling</div>
+<p>Clients are relieved. The peace news has been widely covered, markets are up, and the sense that the worst is over is pervasive. Clients with energy positions are concerned about this week''s losses but may feel that holding is justified if peace is coming. Clients with gold and miner exposure are pleased with Monday''s gains but uncertain whether to take profits. The risk is that clients are treating the MOU announcement as a resolution when it is a framework for a resolution -- a distinction that matters for portfolio decisions made this week.</p>
+</div>
+<div class="toolkit-section">
+<div class="toolkit-section-label">What to Say</div>
+<div class="script-box">Hi [Client Name], the Iran deal news has been genuinely positive and the market reaction makes sense. But I want to give you a more precise read on where things stand, because there is a meaningful difference between a peace framework and a peace settlement. What was announced Saturday is a memorandum of understanding for a 60-day ceasefire extension -- the Hormuz has not reopened yet, the mines have not been cleared, and there are still significant disagreements between the US and Iran about the nuclear question and about who controls the strait going forward. Oil prices have fallen more than 10% this week on the expectation that this gets resolved. That expectation may prove correct. But the pattern since March has been that each ceasefire announcement has been followed by a period of dispute before the next round of talks. I am not suggesting the energy positions should be sold or that the deal will fall apart. I am suggesting that the decisions you make this week should reflect the realistic base case -- a fragile, conditional framework -- rather than the optimistic case of a durable settlement already in hand.</div>
+</div>
+<div class="toolkit-section">
+<div class="toolkit-section-label">Who''s Affected</div>
+<p><strong>High impact:</strong> Clients with concentrated Canadian energy exposure. The sector has fallen more than 10% from mid-May highs on deal optimism alone. If the framework stalls, that move reverses. If the deal delivers, further downside is possible.</p>
+<p><strong>Mixed impact:</strong> Clients with gold and mining exposure. Gold is holding well relative to the oil decline, reflecting the unresolved nuclear uncertainty. These positions are not in the same risk category as energy right now.</p>
+<p><strong>Lower immediate impact:</strong> Clients in diversified balanced portfolios. The TSX financials gain and gold miner rally have partially offset the energy sector decline at the portfolio level.</p>
+</div>
+<div class="toolkit-section">
+<div class="toolkit-section-label">Action Checklist</div>
+<div class="checklist-item">Do not communicate to clients that the Hormuz situation is resolved. It is in a framework phase. Use precise language: "largely negotiated framework" rather than "peace deal."</div>
+<div class="checklist-item">Review energy sector exposure across client portfolios and document the current unrealized gain or loss position relative to pre-conflict levels. This is the reference point for any realization conversation.</div>
+<div class="checklist-item">Monitor the Hormuz reopening timeline actively. The first confirmed physical passage of commercial tankers through a cleared strait is the confirmation event that the market has priced but not yet received.</div>
+<div class="checklist-item">Calendar the 60-day MOU window: approximately July 25. If the nuclear and management authority disputes remain unresolved by mid-July, a second framework expiry is a material scenario worth discussing with clients before it arrives.</div>
+</div>
+<div class="toolkit-section">
+<div class="toolkit-section-label">Follow-Up Email Template</div>
+<div class="email-box" id="respond-email">
+<strong>Subject:</strong> The Iran deal -- what has and has not been resolved<br><br>
+Hi [Client Name],<br><br>
+Following up on this week''s geopolitical developments, I wanted to give you a precise picture of where things stand.<br><br>
+The US and Iran have agreed on a memorandum of understanding framework for a 60-day ceasefire extension. Under the framework, Iran would de-mine the Strait of Hormuz and allow free passage; the US would lift its port blockade and permit Iranian oil sales. Oil prices have fallen more than 10% this week in anticipation of that happening.<br><br>
+What remains unresolved: Iran''s nuclear program and enriched uranium disposition, the question of who retains management authority over the strait, and the reparations Iran is seeking. The Hormuz has not physically reopened as of today. Approximately 240 ships are still waiting for passage permission.<br><br>
+The base case is that this framework holds and leads to a genuine partial reopening. The risk case is that the unresolved issues produce another round of stalled talks. I will keep you updated as the picture clarifies over the next several weeks.<br><br>
+[Your Name]<br><br>
+<em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
+</div>
+<button class="btn-copy" onclick="copyEmail(''respond-email'', this)">Copy email</button>
+</div>',
+
+  '<div class="toolkit-section">
+<div class="toolkit-section-label">Client Profiles to Target</div>
+<p><strong>DIY investors with energy sector concentration:</strong> Self-directed investors who bought into the war premium over the past three months are now navigating a framework announcement with significant unresolved elements. Without a sounding board, the temptation to either panic-sell or anchor to the peak is high.</p>
+<p><strong>Business owners with energy sector exposure or supply chain dependence:</strong> The Hormuz disruption has affected input costs broadly, not just portfolio values. Business owners who have been managing elevated energy costs are watching the deal news closely and may welcome a conversation that distinguishes the framework from a resolution.</p>
+<p><strong>Investors who moved to cash or reduced equity exposure during the March-April volatility:</strong> These clients are watching the TSX rally from the sidelines. The question of when and how to re-enter is directly shaped by how durable the Hormuz resolution proves to be.</p>
+</div>
+<div class="toolkit-section">
+<div class="toolkit-section-label">Opening Line</div>
+<div class="script-box">Hi [Prospect Name], I am calling because the Iran deal news has generated a lot of market movement this week, and I find that the distinction between what has actually been agreed and what is still being negotiated is getting lost in the coverage. I thought it was worth a brief conversation about what it means practically for a portfolio with Canadian energy or gold exposure.</div>
+</div>
+<div class="toolkit-section">
+<div class="toolkit-section-label">Value Proposition</div>
+<p>Geopolitical risk is the category of market risk that DIY investors consistently misprice, because the signal-to-noise ratio in media coverage is lowest precisely when the stakes are highest. The Iran MOU is being covered as a resolution; the analytical read is that it is a framework for a resolution, with significant outstanding disputes and a 60-day window in which any number of outcomes remain possible. The advisor who makes that distinction clearly -- and who frames client decisions in terms of the realistic base case rather than the headline -- is providing a service that has a direct, measurable effect on portfolio outcomes.</p>
+</div>
+<div class="toolkit-section">
+<div class="toolkit-section-label">Discovery Questions</div>
+<p>How have you been following the Iran situation -- have you made any portfolio changes since March in response to the conflict?</p>
+<p>When you saw the deal announcement Saturday, what was your instinct about what it meant for your energy or gold holdings?</p>
+<p>Is there a point at which the geopolitical picture would cause you to make significant changes to your portfolio, and do you have a framework for thinking about when that point has arrived?</p>
+<p>Do you currently have someone you work through those kinds of geopolitical calls with, or are you navigating that largely on your own?</p>
+</div>
+<div class="toolkit-section">
+<div class="toolkit-section-label">Prospecting Email Template</div>
+<div class="email-box" id="prospect-email">
+<strong>Subject:</strong> The Iran deal -- framework vs. resolution, and what it means for your portfolio<br><br>
+Hi [Prospect Name],<br><br>
+Oil prices have fallen more than 10% this week on the Iran MOU announcement. The TSX is up. The coverage has been broadly positive. It is worth knowing, though, that the Hormuz has not physically reopened -- approximately 240 ships are still waiting for passage, the nuclear question remains unresolved, and Iran and the US are publicly disagreeing about who controls the strait going forward.<br><br>
+The base case is that the framework holds and leads to a genuine partial reopening over the next 60 days. The risk case is that the unresolved elements produce another round of extended talks, and the oil price decline of this week partially reverses.<br><br>
+If you are managing energy, gold, or broader Canadian equity exposure and trying to read the geopolitical picture clearly right now, I am happy to walk through the analytical framework in a brief call.<br><br>
+[Your Name]<br><br>
+<em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
+</div>
+<button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
+</div>',
+
+  '[{"value":"-10%","label":"Brent crude, past week"},{"value":"240","label":"Ships awaiting passage"},{"value":"60 days","label":"MOU ceasefire window"},{"value":"$98","label":"Brent crude Tuesday USD"}]',
+  'geo-014.jpg',
+  'Tankers remain anchored near Larak Island in the Strait of Hormuz as US-Iran MOU negotiations advance -- the waterway has not physically reopened despite this week''s sharp oil price decline on deal optimism. Photo: iStock.',
+  6,
+  '2026-05-26T09:51:00',
+  'entity:iran,entity:hormuz,entity:brent,entity:wti,entity:trump-admin,entity:gold,entity:tsx-energy,entity:agnico-eagle,entity:barrick,theme:hormuz-disruption,theme:cdn-energy-rerating,theme:gold-safe-haven,stance:tail-risk-flag',
+  1,
+  'Axios. What''s inside the Iran deal Trump is close to signing. May 24, 2026. Washington Post. US and Iran work toward deal to extend ceasefire and reopen Strait of Hormuz. May 25, 2026. NPR. Trump: Deal with Iran is largely negotiated. May 23, 2026. CNBC. Trump says Iran deal reopening Strait of Hormuz largely negotiated. May 23, 2026. Trading Economics. Brent crude, May 26, 2026. Yahoo Finance Canada. TSX Capped Energy Index, TSX Capped Financial Index, CAD/USD, May 25, 2026. Trading Economics. S&P/TSX Composite Index, May 25, 2026. Bank of Canada. Summary of Governing Council deliberations, April 29, 2026.'
+);
+INSERT OR REPLACE INTO articles
+  (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
+   prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
+   tags, toolkit_gated, sources_text)
+VALUES (
   '2026/05/26/the-tsx-priced-the-mou-alone-wall-street-opens-today',
   'market', 'article',
   'The TSX Priced the MOU Alone. Wall Street Opens Today.',
