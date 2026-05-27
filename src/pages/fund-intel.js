@@ -290,27 +290,42 @@ window.fiSetQuery = function(q) {
 function fiBuildChart(chart) {
   if (!chart || !chart.data || chart.data.length === 0) return '';
   var rows = chart.data;
-  var xKey = chart.xKey, yKey = chart.yKey;
-  if (!xKey || !yKey) return '';
-
+  var xKey = chart.xKey;
   var chartType = chart.chartType || 'bar';
-  var values = rows.map(function(r){ return parseFloat(r[yKey]) || 0; });
+  if (!xKey) return '';
+
+  // Resolve series keys — yKeys for grouped, yKey for single
+  var seriesKeys = chart.yKeys && chart.yKeys.length ? chart.yKeys : (chart.yKey ? [chart.yKey] : null);
+  if (!seriesKeys) return '';
+  var yKey = seriesKeys[0]; // primary key for single-series logic
+
   var labels = rows.map(function(r){ return String(r[xKey] || ''); });
-  var maxVal = Math.max.apply(null, values);
-  var minVal = Math.min.apply(null, values);
+  var n = rows.length;
+
+  // Compute max across all series
+  var allVals = [];
+  rows.forEach(function(r){
+    seriesKeys.forEach(function(k){ allVals.push(parseFloat(r[k]) || 0); });
+  });
+  var maxVal = Math.max.apply(null, allVals);
+  var minVal = chartType === 'bar_grouped' ? 0 : Math.min.apply(null, allVals);
   if (maxVal === 0) return '';
+
+  // HDQ palette for series
+  var SERIES_COLORS = ['#3a7a55','#4a5568','#6b7280','#9ca3af','#2e7d32','#8a3030'];
 
   var W = 620, H = 240;
   var ML = 52, MR = 24, MT = 18, MB = 58;
   var PW = W - ML - MR, PH = H - MT - MB;
-  var n = rows.length;
-  var maxIdx = values.indexOf(maxVal);
 
   function xPosLine(i) { return ML + (PW / (n > 1 ? n - 1 : 1)) * i; }
-  function xPosBar(i)  { return ML + (PW / n) * i + (PW / n) / 2; }
+  function xGroupCenter(i) { return ML + (PW / n) * i + (PW / n) / 2; }
   function yPos(v) {
     var range = maxVal - minVal || 1;
     return MT + PH - ((v - minVal) / range) * PH;
+  }
+  function barHeight(v) {
+    return Math.max(1, ((v - minVal) / (maxVal - minVal || 1)) * PH);
   }
 
   var svgParts = [];
@@ -319,66 +334,120 @@ function fiBuildChart(chart) {
   for (var g = 0; g <= 4; g++) {
     var gy = MT + (PH / 4) * g;
     var gVal = maxVal - ((maxVal - minVal) / 4) * g;
-    svgParts.push('<line x1="' + ML + '" x2="' + (ML+PW) + '" y1="' + gy + '" y2="' + gy + '" stroke="#ececec" stroke-width="0.5"/>');
-    var gLabel = chart.formatY === 'percent' ? (gVal*100).toFixed(0)+'%' : (Number.isInteger(gVal) ? gVal : gVal.toFixed(2));
-    svgParts.push('<text x="' + (ML-5) + '" y="' + (gy+3) + '" text-anchor="end" font-size="8.5" fill="#aaa" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">' + gLabel + '</text>');
+    svgParts.push('<line x1="'+ML+'" x2="'+(ML+PW)+'" y1="'+gy+'" y2="'+gy+'" stroke="#ececec" stroke-width="0.5"/>');
+    var gLabel = chart.formatY === 'percent' ? (gVal*100).toFixed(0)+'%' : (Number.isInteger(gVal) ? gVal : gVal.toFixed(1));
+    svgParts.push('<text x="'+(ML-5)+'" y="'+(gy+3)+'" text-anchor="end" font-size="8.5" fill="#aaa" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">'+gLabel+'</text>');
   }
 
-  if (chartType === 'line') {
+  // ── GROUPED BAR ──
+  if (chartType === 'bar_grouped') {
+    var ns = seriesKeys.length;
+    var groupW = (PW / n) * 0.85;
+    var bw = groupW / ns;
+
+    rows.forEach(function(r, i) {
+      var groupX = ML + (PW / n) * i + (PW / n) * 0.075;
+      seriesKeys.forEach(function(k, si) {
+        var v = parseFloat(r[k]) || 0;
+        var bh = barHeight(v);
+        var bx = groupX + si * bw;
+        var by = MT + PH - bh;
+        svgParts.push('<rect x="'+bx+'" y="'+by+'" width="'+(bw-1)+'" height="'+bh+'" fill="'+SERIES_COLORS[si % SERIES_COLORS.length]+'" rx="1"/>');
+      });
+      // X label
+      var lbl = labels[i].length > 7 ? labels[i].substring(0,7) : labels[i];
+      svgParts.push('<text x="'+xGroupCenter(i)+'" y="'+(MT+PH+13)+'" text-anchor="middle" font-size="7.5" fill="#999" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" transform="rotate(-30,'+xGroupCenter(i)+','+(MT+PH+13)+')">'+fiEsc(lbl)+'</text>');
+    });
+
+    // Legend
+    var legendX = ML;
+    seriesKeys.forEach(function(k, si) {
+      svgParts.push('<rect x="'+legendX+'" y="'+(MT+PH+36)+'" width="8" height="8" fill="'+SERIES_COLORS[si % SERIES_COLORS.length]+'" rx="1"/>');
+      var lbl = k.replace(/_/g,' ');
+      svgParts.push('<text x="'+(legendX+11)+'" y="'+(MT+PH+44)+'" font-size="7.5" fill="#666" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">'+fiEsc(lbl)+'</text>');
+      legendX += Math.max(60, lbl.length * 5 + 18);
+    });
+
+    // Gold pill on overall max
+    var maxRowIdx = 0, maxSeriesIdx = 0, maxSoFar = 0;
+    rows.forEach(function(r,i){
+      seriesKeys.forEach(function(k,si){
+        var v = parseFloat(r[k])||0;
+        if (v > maxSoFar){ maxSoFar=v; maxRowIdx=i; maxSeriesIdx=si; }
+      });
+    });
+    var pillGroupX = ML + (PW/n)*maxRowIdx + (PW/n)*0.075;
+    var pillBx = pillGroupX + maxSeriesIdx * bw + bw/2;
+    var pillBy = yPos(maxSoFar);
+    var pillVal = Number.isInteger(maxSoFar) ? maxSoFar : maxSoFar.toFixed(1);
+    var pillW=40, pillH=15;
+    var pillX = pillBx - pillW/2;
+    if (pillX < ML) pillX = ML;
+    if (pillX + pillW > ML+PW) pillX = ML+PW-pillW;
+    var pillY = pillBy - pillH - 4;
+    if (pillY < MT) pillY = pillBy + 4;
+    svgParts.push('<circle cx="'+pillBx+'" cy="'+pillBy+'" r="3" fill="#4a5568"/>');
+    svgParts.push('<rect x="'+pillX+'" y="'+pillY+'" width="'+pillW+'" height="'+pillH+'" rx="3" fill="#e8a825"/>');
+    svgParts.push('<text x="'+(pillX+pillW/2)+'" y="'+(pillY+pillH/2+3.5)+'" text-anchor="middle" font-size="9" font-weight="700" fill="#111" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">'+pillVal+'</text>');
+
+  // ── LINE ──
+  } else if (chartType === 'line') {
+    var primaryValues = rows.map(function(r){ return parseFloat(r[yKey])||0; });
+    var maxIdx = primaryValues.indexOf(Math.max.apply(null,primaryValues));
     var linePoints = rows.map(function(r,i){ return xPosLine(i)+','+yPos(parseFloat(r[yKey])||0); }).join(' ');
-    // Area fill
-    svgParts.push('<polyline points="' + ML+','+(MT+PH)+' '+linePoints+' '+xPosLine(n-1)+','+(MT+PH) + '" fill="#1a356015" stroke="none"/>');
-    // Line
-    svgParts.push('<polyline points="' + linePoints + '" fill="none" stroke="#3a7a55" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>');
-    // Dots
+    svgParts.push('<polyline points="'+ML+','+(MT+PH)+' '+linePoints+' '+xPosLine(n-1)+','+(MT+PH)+'" fill="#1a356015" stroke="none"/>');
+    svgParts.push('<polyline points="'+linePoints+'" fill="none" stroke="#3a7a55" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>');
     rows.forEach(function(r,i){
       var cx=xPosLine(i), cy=yPos(parseFloat(r[yKey])||0);
       svgParts.push('<circle cx="'+cx+'" cy="'+cy+'" r="'+(i===maxIdx?4:2)+'" fill="'+(i===maxIdx?'#e8a825':'#3a7a55')+'"/>');
     });
-    // X labels — show max 12, always show first and last
-    var step = Math.ceil(n / 10);
+    var step = Math.ceil(n/10);
     rows.forEach(function(r,i){
-      if (i % step !== 0 && i !== n-1) return;
-      var lbl = labels[i].length > 7 ? labels[i].substring(0,7) : labels[i];
+      if (i%step!==0 && i!==n-1) return;
+      var lbl=labels[i].length>7?labels[i].substring(0,7):labels[i];
       svgParts.push('<text x="'+xPosLine(i)+'" y="'+(MT+PH+13)+'" text-anchor="middle" font-size="7.5" fill="#999" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">'+fiEsc(lbl)+'</text>');
     });
+    // Gold pill
+    var pv = primaryValues[maxIdx];
+    var pVal = chart.formatY==='percent'?(pv*100).toFixed(1)+'%':(Number.isInteger(pv)?pv:pv.toFixed(2));
+    var pillW=48,pillH=16,pillAX=xPosLine(maxIdx),pillAY=yPos(pv);
+    var pillX=pillAX-pillW-6; if(pillX<ML) pillX=pillAX+6;
+    svgParts.push('<circle cx="'+pillAX+'" cy="'+pillAY+'" r="3.5" fill="#4a5568"/>');
+    svgParts.push('<rect x="'+pillX+'" y="'+(pillAY-pillH/2)+'" width="'+pillW+'" height="'+pillH+'" rx="3" fill="#e8a825"/>');
+    svgParts.push('<text x="'+(pillX+pillW/2)+'" y="'+(pillAY+pillH/2-4.5)+'" text-anchor="middle" font-size="9" font-weight="700" fill="#111" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">'+fiEsc(String(pVal))+'</text>');
 
+  // ── SIMPLE BAR ──
   } else {
-    // Bar chart
-    var barW = Math.min(44, (PW / n) * 0.65);
+    var primaryValues = rows.map(function(r){ return parseFloat(r[yKey])||0; });
+    var maxIdx = primaryValues.indexOf(Math.max.apply(null,primaryValues));
+    var barW = Math.min(44, (PW/n)*0.65);
     rows.forEach(function(r,i){
-      var cx = xPosBar(i);
-      var v = parseFloat(r[yKey]) || 0;
-      var range = maxVal - minVal || 1;
-      var bh = Math.max(2, ((v - minVal) / range) * PH);
-      var by = MT + PH - bh;
+      var cx=xGroupCenter(i), v=parseFloat(r[yKey])||0;
+      var bh=barHeight(v), by=MT+PH-bh;
       svgParts.push('<rect x="'+(cx-barW/2)+'" y="'+by+'" width="'+barW+'" height="'+bh+'" fill="'+(i===maxIdx?'#3a7a55':'#4a5568')+'" rx="2"/>');
-      var lbl = labels[i].length > 11 ? labels[i].substring(0,10)+'\u2026' : labels[i];
+      var lbl=labels[i].length>11?labels[i].substring(0,10)+'\u2026':labels[i];
       svgParts.push('<text x="'+cx+'" y="'+(MT+PH+13)+'" text-anchor="middle" font-size="7.5" fill="#999" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" transform="rotate(-30,'+cx+','+(MT+PH+13)+')">'+fiEsc(lbl)+'</text>');
     });
+    var pv=primaryValues[maxIdx];
+    var pVal=chart.formatY==='percent'?(pv*100).toFixed(1)+'%':(Number.isInteger(pv)?pv:pv.toFixed(2));
+    var pillW=48,pillH=16,pillAX=xGroupCenter(maxIdx),pillAY=yPos(pv);
+    var pillX=pillAX-pillW-6; if(pillX<ML) pillX=pillAX+6;
+    svgParts.push('<circle cx="'+pillAX+'" cy="'+pillAY+'" r="3.5" fill="#4a5568"/>');
+    svgParts.push('<rect x="'+pillX+'" y="'+(pillAY-pillH/2)+'" width="'+pillW+'" height="'+pillH+'" rx="3" fill="#e8a825"/>');
+    svgParts.push('<text x="'+(pillX+pillW/2)+'" y="'+(pillAY+pillH/2-4.5)+'" text-anchor="middle" font-size="9" font-weight="700" fill="#111" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">'+fiEsc(String(pVal))+'</text>');
   }
 
-  // Gold pill on peak
-  var pillAnchorX = chartType === 'line' ? xPosLine(maxIdx) : xPosBar(maxIdx);
-  var pillAnchorY = yPos(values[maxIdx]);
-  var pillVal = chart.formatY === 'percent' ? (values[maxIdx]*100).toFixed(1)+'%' : (Number.isInteger(values[maxIdx]) ? values[maxIdx] : values[maxIdx].toFixed(2));
-  var pillW = 48, pillH = 16;
-  var pillX = pillAnchorX - pillW - 6;
-  if (pillX < ML) pillX = pillAnchorX + 6;
-  var pillY = pillAnchorY - pillH / 2;
-  svgParts.push('<circle cx="'+pillAnchorX+'" cy="'+pillAnchorY+'" r="3.5" fill="#4a5568"/>');
-  svgParts.push('<rect x="'+pillX+'" y="'+pillY+'" width="'+pillW+'" height="'+pillH+'" rx="3" fill="#e8a825"/>');
-  svgParts.push('<text x="'+(pillX+pillW/2)+'" y="'+(pillY+pillH/2+3.5)+'" text-anchor="middle" font-size="9" font-weight="700" fill="#111" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">'+fiEsc(String(pillVal))+'</text>');
-
   var titleStr = (chart.title || 'FUND INTEL').toUpperCase();
+  var peakDisplay = chart.formatY==='percent' ? (maxVal*100).toFixed(1)+'%' : (Number.isInteger(maxVal)?maxVal:maxVal.toFixed(2));
+  var dataPointCount = n * seriesKeys.length;
 
   var hdqChart = '<div class="hdq-chart fi-chart-wrap">'
     + '<div style="background:#fff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">'
     + '<div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">'
     + '<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">'+fiEsc(titleStr)+'</span>'
-    + '<span style="font-size:20px;font-weight:700;color:#111;">'+fiEsc(String(pillVal))+'</span>'
+    + '<span style="font-size:20px;font-weight:700;color:#111;">'+fiEsc(String(peakDisplay))+'</span>'
     + '<span style="font-size:13px;color:#2e7d32;">&#9650; peak</span>'
-    + '<span style="font-size:11px;color:#888;margin-left:auto;">'+n+' data points &nbsp;|&nbsp; hdq.ca</span>'
+    + '<span style="font-size:11px;color:#888;margin-left:auto;">'+dataPointCount+' data points &nbsp;|&nbsp; hdq.ca</span>'
     + '</div>'
     + '<div style="padding:12px 14px 8px;">'
     + '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">'
