@@ -194,7 +194,7 @@ export async function renderFundIntel(env, authed) {
       <div id="fi-loading" class="fi-loading-state">
         <div class="fi-loading-notice">
           <div class="fi-loading-spinner"></div>
-          <span class="fi-loading-text">Please wait &mdash; preparing your briefing. This takes about 5 seconds.</span>
+          <span class="fi-loading-text">Loading your briefing&hellip;</span>
         </div>
         <div class="fi-skeleton fi-sk-block fi-sk-tall" style="margin-bottom:20px;"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
