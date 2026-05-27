@@ -540,6 +540,8 @@ window.fiRunQuery = async function() {
               var v = row[c];
               if (v === null || v === undefined) return '<td>&mdash;</td>';
               if (c.includes('url') || c.includes('source')) return '<td><a href="' + fiEsc(String(v)) + '" target="_blank" rel="noreferrer">Read &rarr;</a></td>';
+              // Round floats to 2 decimal places
+              if (typeof v === 'number' && !Number.isInteger(v)) v = v.toFixed(2);
               var s = String(v); if (s.length > 120) s = s.substring(0,120) + '\u2026';
               return '<td>' + fiEsc(s) + '</td>';
             }).join('') + '</tr>';
