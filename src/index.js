@@ -107,8 +107,11 @@ export default {
       // Chart gallery
       if (path === '/charts') return renderCharts(env, url.searchParams);
 
-      // Fund Intel
-      if (path === '/fund-intel') return renderFundIntel(env, authed);
+      // Fund Intel — requires auth
+      if (path === '/fund-intel') {
+        if (!authed) return renderNews(env, false);
+        return renderFundIntel(env, authed);
+      }
 
       const articleMatch = path.match(/^\/(\d{4}\/\d{2}\/\d{2}\/.+)$/);
       if (articleMatch) {
