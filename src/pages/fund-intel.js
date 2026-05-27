@@ -286,105 +286,113 @@ window.fiSetQuery = function(q) {
   if (input) { input.value = q; window.fiRunQuery(); }
 };
 
-// ── Build HDQ-style SVG bar chart from query results ────────────────────────
-function fiBuildChart(chart, rows) {
-  if (!chart || !rows || rows.length === 0) return '';
+// ── Build HDQ-style SVG chart from intelligence chart data ───────────────────
+function fiBuildChart(chart) {
+  if (!chart || !chart.data || chart.data.length === 0) return '';
+  var rows = chart.data;
   var xKey = chart.xKey, yKey = chart.yKey;
   if (!xKey || !yKey) return '';
 
-  // Only bar charts for now — the most useful for fund intel data
   var chartType = chart.chartType || 'bar';
-  if (chartType !== 'bar' && chartType !== 'number') return '';
-
-  if (chartType === 'number') {
-    var val = chart.value !== undefined ? chart.value : (rows[0] ? Object.values(rows[0])[0] : '');
-    return '<div style="text-align:center;padding:24px 0;">'
-      + '<div style="font-family:Bricolage Grotesque,sans-serif;font-size:56px;font-weight:800;color:#1a3560;line-height:1;">' + fiEsc(String(val)) + '</div>'
-      + (chart.title ? '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:#666;margin-top:8px;">' + fiEsc(chart.title) + '</div>' : '')
-      + '</div>';
-  }
-
-  // Bar chart via inline SVG — HDQ style
-  var labels = rows.map(function(r){ return String(r[xKey] || ''); });
   var values = rows.map(function(r){ return parseFloat(r[yKey]) || 0; });
+  var labels = rows.map(function(r){ return String(r[xKey] || ''); });
   var maxVal = Math.max.apply(null, values);
+  var minVal = Math.min.apply(null, values);
   if (maxVal === 0) return '';
 
-  var W = 620, H = 220;
-  var ML = 50, MR = 20, MT = 16, MB = 56;
+  var W = 620, H = 240;
+  var ML = 52, MR = 24, MT = 18, MB = 58;
   var PW = W - ML - MR, PH = H - MT - MB;
   var n = rows.length;
-  var barW = Math.min(48, (PW / n) * 0.6);
-  var gap = PW / n;
-
-  // Colours: most recent / largest = green, others = slate
   var maxIdx = values.indexOf(maxVal);
 
-  function xPos(i) { return ML + gap * i + gap / 2; }
-  function yPos(v) { return MT + PH - (v / maxVal) * PH; }
-  function yScale(v) { return (v / maxVal) * PH; }
+  function xPosLine(i) { return ML + (PW / (n > 1 ? n - 1 : 1)) * i; }
+  function xPosBar(i)  { return ML + (PW / n) * i + (PW / n) / 2; }
+  function yPos(v) {
+    var range = maxVal - minVal || 1;
+    return MT + PH - ((v - minVal) / range) * PH;
+  }
 
   var svgParts = [];
 
-  // Grid lines (4)
+  // Grid lines
   for (var g = 0; g <= 4; g++) {
     var gy = MT + (PH / 4) * g;
-    var gVal = maxVal - (maxVal / 4) * g;
+    var gVal = maxVal - ((maxVal - minVal) / 4) * g;
     svgParts.push('<line x1="' + ML + '" x2="' + (ML+PW) + '" y1="' + gy + '" y2="' + gy + '" stroke="#ececec" stroke-width="0.5"/>');
-    svgParts.push('<text x="' + (ML-5) + '" y="' + (gy+3) + '" text-anchor="end" font-size="8.5" fill="#aaa" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">' + (Number.isInteger(gVal) ? gVal : gVal.toFixed(1)) + '</text>');
+    var gLabel = chart.formatY === 'percent' ? (gVal*100).toFixed(0)+'%' : (Number.isInteger(gVal) ? gVal : gVal.toFixed(2));
+    svgParts.push('<text x="' + (ML-5) + '" y="' + (gy+3) + '" text-anchor="end" font-size="8.5" fill="#aaa" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">' + gLabel + '</text>');
   }
 
-  // Bars
-  for (var i = 0; i < n; i++) {
-    var cx = xPos(i);
-    var bh = yScale(values[i]);
-    var by = MT + PH - bh;
-    var isMax = (i === maxIdx);
-    var fill = isMax ? '#3a7a55' : '#4a5568';
+  if (chartType === 'line') {
+    var linePoints = rows.map(function(r,i){ return xPosLine(i)+','+yPos(parseFloat(r[yKey])||0); }).join(' ');
+    // Area fill
+    svgParts.push('<polyline points="' + ML+','+(MT+PH)+' '+linePoints+' '+xPosLine(n-1)+','+(MT+PH) + '" fill="#1a356015" stroke="none"/>');
+    // Line
+    svgParts.push('<polyline points="' + linePoints + '" fill="none" stroke="#3a7a55" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>');
+    // Dots
+    rows.forEach(function(r,i){
+      var cx=xPosLine(i), cy=yPos(parseFloat(r[yKey])||0);
+      svgParts.push('<circle cx="'+cx+'" cy="'+cy+'" r="'+(i===maxIdx?4:2)+'" fill="'+(i===maxIdx?'#e8a825':'#3a7a55')+'"/>');
+    });
+    // X labels — show max 12, always show first and last
+    var step = Math.ceil(n / 10);
+    rows.forEach(function(r,i){
+      if (i % step !== 0 && i !== n-1) return;
+      var lbl = labels[i].length > 7 ? labels[i].substring(0,7) : labels[i];
+      svgParts.push('<text x="'+xPosLine(i)+'" y="'+(MT+PH+13)+'" text-anchor="middle" font-size="7.5" fill="#999" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">'+fiEsc(lbl)+'</text>');
+    });
 
-    svgParts.push('<rect x="' + (cx - barW/2) + '" y="' + by + '" width="' + barW + '" height="' + bh + '" fill="' + fill + '" rx="2"/>');
-
-    // X-axis label — truncate long names
-    var lbl = labels[i].length > 12 ? labels[i].substring(0,11) + '\u2026' : labels[i];
-    svgParts.push('<text x="' + cx + '" y="' + (MT+PH+14) + '" text-anchor="middle" font-size="8" fill="#999" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" transform="rotate(-30,' + cx + ',' + (MT+PH+14) + ')">' + fiEsc(lbl) + '</text>');
+  } else {
+    // Bar chart
+    var barW = Math.min(44, (PW / n) * 0.65);
+    rows.forEach(function(r,i){
+      var cx = xPosBar(i);
+      var v = parseFloat(r[yKey]) || 0;
+      var range = maxVal - minVal || 1;
+      var bh = Math.max(2, ((v - minVal) / range) * PH);
+      var by = MT + PH - bh;
+      svgParts.push('<rect x="'+(cx-barW/2)+'" y="'+by+'" width="'+barW+'" height="'+bh+'" fill="'+(i===maxIdx?'#3a7a55':'#4a5568')+'" rx="2"/>');
+      var lbl = labels[i].length > 11 ? labels[i].substring(0,10)+'\u2026' : labels[i];
+      svgParts.push('<text x="'+cx+'" y="'+(MT+PH+13)+'" text-anchor="middle" font-size="7.5" fill="#999" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" transform="rotate(-30,'+cx+','+(MT+PH+13)+')">'+fiEsc(lbl)+'</text>');
+    });
   }
 
-  // Gold pill on max bar
-  var px = xPos(maxIdx);
-  var py = yPos(values[maxIdx]);
-  var pillVal = Number.isInteger(values[maxIdx]) ? values[maxIdx] : values[maxIdx].toFixed(2);
-  var pillW = 44, pillH = 16;
-  var pillX = px - pillW - 6;
-  if (pillX < ML) pillX = px + 6;
-  var pillY = py - pillH / 2;
-  svgParts.push('<circle cx="' + px + '" cy="' + py + '" r="3.5" fill="#4a5568"/>');
-  svgParts.push('<rect x="' + pillX + '" y="' + pillY + '" width="' + pillW + '" height="' + pillH + '" rx="3" fill="#e8a825"/>');
-  svgParts.push('<text x="' + (pillX + pillW/2) + '" y="' + (pillY + pillH/2 + 3.5) + '" text-anchor="middle" font-size="9" font-weight="700" fill="#111" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">' + pillVal + '</text>');
+  // Gold pill on peak
+  var pillAnchorX = chartType === 'line' ? xPosLine(maxIdx) : xPosBar(maxIdx);
+  var pillAnchorY = yPos(values[maxIdx]);
+  var pillVal = chart.formatY === 'percent' ? (values[maxIdx]*100).toFixed(1)+'%' : (Number.isInteger(values[maxIdx]) ? values[maxIdx] : values[maxIdx].toFixed(2));
+  var pillW = 48, pillH = 16;
+  var pillX = pillAnchorX - pillW - 6;
+  if (pillX < ML) pillX = pillAnchorX + 6;
+  var pillY = pillAnchorY - pillH / 2;
+  svgParts.push('<circle cx="'+pillAnchorX+'" cy="'+pillAnchorY+'" r="3.5" fill="#4a5568"/>');
+  svgParts.push('<rect x="'+pillX+'" y="'+pillY+'" width="'+pillW+'" height="'+pillH+'" rx="3" fill="#e8a825"/>');
+  svgParts.push('<text x="'+(pillX+pillW/2)+'" y="'+(pillY+pillH/2+3.5)+'" text-anchor="middle" font-size="9" font-weight="700" fill="#111" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif">'+fiEsc(String(pillVal))+'</text>');
 
-  var titleStr = (chart.title || '').toUpperCase();
-  var changeVal = values[maxIdx];
-  var changeStr = (chart.formatY === 'percent') ? (changeVal*100).toFixed(1)+'%' : String(Number.isInteger(changeVal)?changeVal:changeVal.toFixed(2));
+  var titleStr = (chart.title || 'FUND INTEL').toUpperCase();
 
   var hdqChart = '<div class="hdq-chart fi-chart-wrap">'
     + '<div style="background:#fff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">'
     + '<div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">'
-    + '<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">' + fiEsc(titleStr || 'FUND INTEL QUERY') + '</span>'
-    + '<span style="font-size:20px;font-weight:700;color:#111;">' + fiEsc(changeStr) + '</span>'
-    + '<span style="font-size:13px;color:#2e7d32;">&#9650; peak value</span>'
-    + '<span style="font-size:11px;color:#888;margin-left:auto;">Query results &nbsp;|&nbsp; hdq.ca</span>'
+    + '<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">'+fiEsc(titleStr)+'</span>'
+    + '<span style="font-size:20px;font-weight:700;color:#111;">'+fiEsc(String(pillVal))+'</span>'
+    + '<span style="font-size:13px;color:#2e7d32;">&#9650; peak</span>'
+    + '<span style="font-size:11px;color:#888;margin-left:auto;">'+n+' data points &nbsp;|&nbsp; hdq.ca</span>'
     + '</div>'
     + '<div style="padding:12px 14px 8px;">'
-    + '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">'
+    + '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">'
     + svgParts.join('')
     + '</svg>'
     + '</div>'
-    + '<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">'
-    + 'Source: Fund Intel archive, ' + new Date().toLocaleDateString('en-CA',{month:'short',day:'numeric',year:'numeric'}) + '. &nbsp;|&nbsp; hdq.ca'
-    + '</div>'
-    + '</div>'
-    + '</div>';
+    + '<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: Fund Intel archive. &nbsp;|&nbsp; hdq.ca</div>'
+    + '</div></div>';
 
-  return hdqChart;
+  var captionHtml = '';
+  if (chart.caption) captionHtml += '<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;line-height:1.5;">'+fiEsc(chart.caption)+'</p>';
+  if (chart.reasoning) captionHtml += '<p style="font-size:11px;color:#999;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:3px;font-style:italic;">Why this chart: '+fiEsc(chart.reasoning)+'</p>';
+
+  return hdqChart + captionHtml;
 }
 
 // ── Run query ────────────────────────────────────────────────────────────────
@@ -432,7 +440,7 @@ window.fiRunQuery = async function() {
       + 'This tool tracks what firms publish — not fund prices, MERs, or NAV data.';
 
     // ── Chart ──
-    var chartHtml = fiBuildChart(chart, rows);
+    var chartHtml = fiBuildChart(chart);
 
     // ── Insights ──
     var insightHtml = '';
