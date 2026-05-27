@@ -34,6 +34,7 @@ const FUND_INTEL_CSS = `
 .fi-doc-label { font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
 .fi-body { padding: 40px 0 64px; }
 .fi-grid { display: grid; grid-template-columns: 1fr 340px; gap: 32px; align-items: start; }
+.fi-grid > * { min-width: 0; overflow: hidden; }
 @media(max-width:960px) { .fi-grid { grid-template-columns: 1fr; } }
 .fi-section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
 .fi-section-title { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; color: var(--n900); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
@@ -311,8 +312,8 @@ function fiBuildChart(chart) {
   var minVal = chartType === 'bar_grouped' ? 0 : Math.min.apply(null, allVals);
   if (maxVal === 0) return '';
 
-  // HDQ palette for series
-  var SERIES_COLORS = ['#3a7a55','#4a5568','#6b7280','#9ca3af','#2e7d32','#8a3030'];
+  // HDQ palette — navy primary, muted secondaries, NO green in data elements
+  var SERIES_COLORS = ['#1a3560','#4a5568','#6b7280','#9ca3af','#8a3030','#2e7d32'];
 
   var W = 620, H = 240;
   var ML = 52, MR = 24, MT = 18, MB = 58;
@@ -395,11 +396,11 @@ function fiBuildChart(chart) {
     var primaryValues = rows.map(function(r){ return parseFloat(r[yKey])||0; });
     var maxIdx = primaryValues.indexOf(Math.max.apply(null,primaryValues));
     var linePoints = rows.map(function(r,i){ return xPosLine(i)+','+yPos(parseFloat(r[yKey])||0); }).join(' ');
-    svgParts.push('<polyline points="'+ML+','+(MT+PH)+' '+linePoints+' '+xPosLine(n-1)+','+(MT+PH)+'" fill="#1a356015" stroke="none"/>');
-    svgParts.push('<polyline points="'+linePoints+'" fill="none" stroke="#3a7a55" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>');
+    svgParts.push('<polyline points="'+ML+','+(MT+PH)+' '+linePoints+' '+xPosLine(n-1)+','+(MT+PH)+'" fill="#1a356010" stroke="none"/>');
+    svgParts.push('<polyline points="'+linePoints+'" fill="none" stroke="#1a3560" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>');
     rows.forEach(function(r,i){
       var cx=xPosLine(i), cy=yPos(parseFloat(r[yKey])||0);
-      svgParts.push('<circle cx="'+cx+'" cy="'+cy+'" r="'+(i===maxIdx?4:2)+'" fill="'+(i===maxIdx?'#e8a825':'#3a7a55')+'"/>');
+      svgParts.push('<circle cx="'+cx+'" cy="'+cy+'" r="'+(i===maxIdx?4:2)+'" fill="'+(i===maxIdx?'#e8a825':'#1a3560')+'"/>');
     });
     var step = Math.ceil(n/10);
     rows.forEach(function(r,i){
@@ -424,7 +425,7 @@ function fiBuildChart(chart) {
     rows.forEach(function(r,i){
       var cx=xGroupCenter(i), v=parseFloat(r[yKey])||0;
       var bh=barHeight(v), by=MT+PH-bh;
-      svgParts.push('<rect x="'+(cx-barW/2)+'" y="'+by+'" width="'+barW+'" height="'+bh+'" fill="'+(i===maxIdx?'#3a7a55':'#4a5568')+'" rx="2"/>');
+      svgParts.push('<rect x="'+(cx-barW/2)+'" y="'+by+'" width="'+barW+'" height="'+bh+'" fill="'+(i===maxIdx?'#1a3560':'#4a5568')+'" rx="2"/>');
       var lbl=labels[i].length>11?labels[i].substring(0,10)+'\u2026':labels[i];
       svgParts.push('<text x="'+cx+'" y="'+(MT+PH+13)+'" text-anchor="middle" font-size="7.5" fill="#999" font-family="-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif" transform="rotate(-30,'+cx+','+(MT+PH+13)+')">'+fiEsc(lbl)+'</text>');
     });
