@@ -17,7 +17,7 @@ import { ARTICLE_CSS } from './article-css.js';
 
 export async function renderWeekend(env, slug, authed = true) {
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
-  if (!article) return new Response('Not found', { status: 404 });
+  if (!article) return new Response(null, { status: 302, headers: { Location: '/news' } });
 
   const isMonth = article.article_type === 'month';
   const label = isMonth ? 'Month at a Glance' : 'Weekend Edition';
@@ -89,6 +89,9 @@ ${membershipFooterBand()}`;
     activePage: 'news',
     activeDesk: deskKey,
     issueNo: await getArticleIssueNo(env, article.published_at),
+    canonical: `https://hdq.ca/${slug}`,
+    metaDescription: article.dek || '',
+    robots: 'index, follow',
     extraStyle: ARTICLE_CSS + LOCKED_OVERLAY_CSS,
     bodyClass: authed ? '' : 'overlay-active',
   }));

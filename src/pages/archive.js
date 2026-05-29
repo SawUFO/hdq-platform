@@ -404,6 +404,9 @@ ${membershipFooterBand()}`;
     activePage: 'news',
     activeDesk: filterDesk !== 'all' ? filterDesk : 'archive',
     issueNo: await getIssueNo(env),
+    canonical: 'https://hdq.ca/archive',
+    metaDescription: 'The full HDQ archive. Browse every edition by desk, topic, or date.',
+    robots: 'index, follow',
     extraStyle: ARCHIVE_CSS,
     extraScript: `<script>
 (function(){

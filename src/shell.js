@@ -44,39 +44,52 @@ export function pageShell(bodyHtml, opts = {}) {
     extraStyle = '',
     extraScript = '',
     bodyClass = '',
+    canonical = '',
+    metaDescription = '',
+    robots = '',
   } = opts;
 
+  // Top masthead nav. Archive lives in the desk strip's "More" group, so it is
+  // not duplicated here.
   const navLinks = [
-    { href: '/news',                  label: 'News',                    key: 'news' },
-    { href: '/fund-intel',            label: 'Fund Intel',              key: 'fund-intel' },
+    { href: '/news',                  label: 'News',                     key: 'news' },
+    { href: '/fund-intel',            label: 'Fund Intel',               key: 'fund-intel' },
     { href: '/hdq-prodev.html',       label: 'Professional Development', key: 'prodev' },
-    { href: '/hdq-whitelabel.html',   label: 'For Firms',               key: 'whitelabel' },
-    { href: '/archive',               label: 'Archive',                 key: 'archive' },
-    { href: '/about',                 label: 'About',                   key: 'about' },
+    { href: '/hdq-whitelabel.html',   label: 'For Firms',                key: 'whitelabel' },
+    { href: '/about',                 label: 'About',                    key: 'about' },
   ];
 
-  const deskLinks = [
-    { href: '/news',              label: 'All',                key: 'all' },
-    { href: '/market',            label: 'Market',             key: 'market' },
-    { href: '/geopolitical',      label: 'Geopolitical',       key: 'geo' },
-    { href: '/economy',           label: 'Economy',            key: 'economy' },
-    { href: '/tax-wealth',        label: 'Tax &amp; Wealth',   key: 'tax' },
-    { href: '/behavioural',       label: 'Behavioural',        key: 'behaviour' },
-    null, // divider
-    { href: '/daily-thread',      label: 'Daily Thread',       key: 'thread' },
-    { href: '/weekend',           label: 'Weekend Edition',    key: 'weekend' },
+  // Desk strip. The five desks plus All and the Daily Thread stay visible —
+  // that visible row is the publication's breadth at a glance. The lower-cadence
+  // and utility items fold into a single "More" menu.
+  const deskVisible = [
+    { href: '/news',              label: 'All',              key: 'all' },
+    { href: '/market',            label: 'Market',           key: 'market' },
+    { href: '/geopolitical',      label: 'Geopolitical',     key: 'geo' },
+    { href: '/economy',           label: 'Economy',          key: 'economy' },
+    { href: '/tax-wealth',        label: 'Tax &amp; Wealth', key: 'tax' },
+    { href: '/behavioural',       label: 'Behavioural',      key: 'behaviour' },
+    { href: '/daily-thread',      label: 'Daily Thread',     key: 'thread' },
+  ];
+  const deskMore = [
+    { href: '/weekend',           label: 'Weekend Edition',   key: 'weekend' },
     { href: '/month-at-a-glance', label: 'Month at a Glance', key: 'month' },
-    { href: '/archive',           label: 'Archive',            key: 'archive' },
+    { href: '/archive',           label: 'Archive',           key: 'archive' },
   ];
 
   const navHtml = navLinks.map(l =>
     `<li><a href="${l.href}" class="nav-link${activePage === l.key ? ' active' : ''}">${l.label}</a></li>`
   ).join('');
 
-  const deskNavHtml = deskLinks.map(l => {
-    if (!l) return '<div class="dnav-div"></div>';
-    return `<a href="${l.href}" class="dnav-link${activeDesk === l.key ? ' active' : ''}">${l.label}</a>`;
-  }).join('');
+  const deskVisibleHtml = deskVisible.map(l =>
+    `<a href="${l.href}" class="dnav-link${activeDesk === l.key ? ' active' : ''}">${l.label}</a>`
+  ).join('');
+  const moreActive = deskMore.some(l => l.key === activeDesk);
+  // Real anchors, hidden by CSS until opened, so search still sees them.
+  const deskMoreLinksHtml = deskMore.map(l =>
+    `<a href="${l.href}" class="dnav-more-link${activeDesk === l.key ? ' active' : ''}" role="menuitem">${l.label}</a>`
+  ).join('');
+  const deskNavHtml = `${deskVisibleHtml}<button type="button" class="dnav-link dnav-more-trigger${moreActive ? ' active' : ''}" id="dnav-more-trigger" aria-haspopup="true" aria-expanded="false" onclick="window.toggleDeskMore()">More <span class="dnav-more-caret">&#9662;</span></button>`;
 
   const mobileNavLinks = navLinks.map(l =>
     `<a href="${l.href}" class="mobile-nav-link" onclick="window.closeMobileNav()">${l.label}</a>`
@@ -97,6 +110,9 @@ export function pageShell(bodyHtml, opts = {}) {
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/hdq-shared.css">
 <link rel="icon" type="image/svg+xml" href="/HDQ_LOGO_Gold_no_outline.svg">
+${metaDescription ? `<meta name="description" content="${escHtml(metaDescription)}">` : ''}
+${robots ? `<meta name="robots" content="${robots}">` : ''}
+${canonical ? `<link rel="canonical" href="${canonical}">` : ''}
 ${extraHead}
 <style>
 @media(max-width:768px){
@@ -125,7 +141,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
   <nav class="mobile-nav-links" aria-label="Mobile navigation">
     ${mobileNavLinks}
     <div class="mobile-nav-divider"></div>
-    <a href="/archive" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
     <a href="/daily-thread" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
     <a href="/weekend" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
     <a href="/month-at-a-glance" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
@@ -163,7 +178,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
 </div></div>
 
 <!-- DESK NAV -->
-<div class="desk-nav"><div class="desk-nav-inner">${deskNavHtml}</div></div>
+<div class="desk-nav"><div class="desk-nav-inner">${deskNavHtml}</div><div class="dnav-more-panel" id="dnav-more-panel" role="menu" aria-label="More sections">${deskMoreLinksHtml}</div></div>
 
 ${bodyHtml}
 
@@ -222,6 +237,25 @@ ${bodyHtml}
   if(!inner)return;
   var active=inner.querySelector('.dnav-link.active');
   if(active)inner.scrollLeft=active.offsetLeft-(inner.offsetWidth/2)+(active.offsetWidth/2);
+})();
+window.toggleDeskMore=function(){
+  var t=document.getElementById('dnav-more-trigger');
+  var p=document.getElementById('dnav-more-panel');
+  if(!t||!p)return;
+  if(p.classList.contains('open')){p.classList.remove('open');t.setAttribute('aria-expanded','false');return;}
+  p.classList.add('open');
+  var r=t.getBoundingClientRect();
+  var pw=p.offsetWidth||190;
+  p.style.top=(r.bottom+2)+'px';
+  var left=Math.min(r.left,window.innerWidth-pw-8);
+  p.style.left=Math.max(8,left)+'px';
+  t.setAttribute('aria-expanded','true');
+};
+(function(){
+  function closeMore(){var t=document.getElementById('dnav-more-trigger');var p=document.getElementById('dnav-more-panel');if(p&&p.classList.contains('open')){p.classList.remove('open');if(t)t.setAttribute('aria-expanded','false');}}
+  document.addEventListener('click',function(e){var t=document.getElementById('dnav-more-trigger');var p=document.getElementById('dnav-more-panel');if(!t||!p||!p.classList.contains('open'))return;if(t.contains(e.target)||p.contains(e.target))return;closeMore();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMore();});
+  window.addEventListener('resize',closeMore);
 })();
 </script>
 ${extraScript}

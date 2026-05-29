@@ -93,9 +93,9 @@ export default {
       // ── Auth check for all other routes ──────────────────────────────────
       const authed = await checkAuth(request, env);
 
-      // Root: always render news page — authed flag controls modal overlay
+      // Root: send everyone to /news (the front door of the publication).
       if (path === '' || path === '/') {
-        return renderNews(env, authed);
+        return Response.redirect(new URL('/news', url.origin).href, 301);
       }
 
       // Always-public dynamic pages (about handled above, subscribe/for-firms/legal are static)

@@ -60,11 +60,15 @@ export async function renderDesk(env, desk) {
 ${subscribeFooterBand()}`;
 
   const deskTitle = DESK_DISPLAY[desk]?.replace('&amp;', '&') || desk;
+  const deskPath = { market:'/market', geo:'/geopolitical', economy:'/economy', tax:'/tax-wealth', behaviour:'/behavioural' }[desk] || '/news';
   return htmlResponse(pageShell(body, {
     title: `HDQ ${deskTitle} Desk`,
     activePage: 'news',
     activeDesk: desk,
     issueNo,
+    canonical: `https://hdq.ca${deskPath}`,
+    metaDescription: `HDQ ${deskTitle} Desk: daily analysis for Canadian financial advisors and the Canadian portfolio implications behind the day's ${deskTitle.toLowerCase()} story.`,
+    robots: 'index, follow',
     extraStyle: PAGE_CSS,
   }));
 }
@@ -159,9 +163,9 @@ function renderSidebarDesk(flash, trendingTags) {
   <div class="flash-list">${flashHtml}</div>
 </div>
 <div class="subscribe-box">
-  <h5>Get HDQ every morning</h5>
-  <p>Five-desk briefing by 7 a.m. Eastern. CIRO-registered advisors only.</p>
-  <button class="subscribe-btn" onclick="window.location.href='/hdq-subscribe.html'">Apply for access</button>
+  <h5>Membership</h5>
+  <p>Permanently capped at 137 seats. Admitted by nomination only.</p>
+  <button class="subscribe-btn" onclick="window.location.href='/hdq-subscribe.html'">Waiting list</button>
 </div>
 <div>
   <div class="sidebar-label">Trending Topics</div>

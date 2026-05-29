@@ -88,6 +88,24 @@ h1,h2,h3,h4,h5,h6 {
 .dnav-link.active { color: var(--navy-800); border-bottom: 3px solid var(--gold-400); background: rgba(232,168,37,0.08); font-weight: 700; }
 .dnav-div { width: 1px; height: 16px; background: var(--n200); margin: 0 4px; flex-shrink: 0; }
 
+/* DESK NAV — "More" dropdown. Panel is position:fixed and placed by JS so the
+   horizontally-scrolling desk strip never clips it. */
+.dnav-more-trigger { background: none; border: none; cursor: pointer; line-height: inherit; }
+.dnav-more-caret { font-size: 9px; margin-left: 2px; }
+.dnav-more-panel {
+  display: none; position: fixed; z-index: 200;
+  background: var(--card); border: 1px solid var(--n200); border-radius: 6px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.10); padding: 6px; min-width: 190px;
+}
+.dnav-more-panel.open { display: block; }
+.dnav-more-link {
+  display: block; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
+  color: var(--n800); text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 9px 12px; border-radius: 4px; white-space: nowrap; transition: background 0.15s, color 0.15s;
+}
+.dnav-more-link:hover { background: var(--navy-50); color: var(--navy-800); }
+.dnav-more-link.active { color: var(--navy-800); background: rgba(232,168,37,0.10); }
+
 /* SECTION HEADERS */
 .block-header { display: flex; align-items: center; gap: 10px; padding-bottom: 16px; border-bottom: 1px solid var(--n200); margin-bottom: 24px; }
 .block-header h6 {
@@ -107,7 +125,6 @@ h1,h2,h3,h4,h5,h6 {
 .cat-thread .dot { width: 5px; height: 5px; background: var(--gold-400); border-radius: 50%; flex-shrink: 0; }
 /* Standard pill — light blue-grey bg, blue outline, dark text */
 .cat-market, .cat-geo, .cat-economy, .cat-tax, .cat-behaviour,
-.cat-market, .cat-geo, .cat-tax, .cat-behaviour,
 .cat-weekend, .cat-month {
   color: var(--navy-800);
   background: #eef1f8;

@@ -212,6 +212,9 @@ ${membershipFooterBand()}
     activePage: 'news',
     activeDesk: 'all',
     issueNo: articleCount,
+    canonical: 'https://hdq.ca/news',
+    metaDescription: 'HDQ is a daily intelligence briefing for licensed Canadian financial advisors. Five editorial desks plus a Daily Thread, published every weekday morning.',
+    robots: 'index, follow',
     extraStyle: PAGE_CSS,
   }));
 }
