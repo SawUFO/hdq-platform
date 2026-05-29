@@ -159,7 +159,7 @@ document.addEventListener('keydown', function(e) {
     <h2 id="overlay-heading" style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;color:var(--navy-900);margin-bottom:12px;line-height:1.2;">Professional Development</h2>
     <p style="font-size:13px;font-weight:700;color:var(--navy-900);margin-bottom:12px;">Member-only access.</p>
     <p style="font-size:13px;color:var(--n600);line-height:1.7;margin-bottom:10px;">The HDQ Professional Development library — module library, reading list, frameworks, and glossary — is restricted to verified members. These are training materials produced for the professional development of CIRO-registered advisors and CFP holders. They are not made available to the public.</p>
-    <a href="hdq-subscribe.html" style="display:block;width:100%;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:14px 24px;background:var(--gold-400);color:var(--navy-900);border:none;border-radius:4px;text-decoration:none;cursor:pointer;transition:background 0.15s;margin-top:24px;box-sizing:border-box;text-align:center;">Waiting list &rarr;</a>
+    <a href="/hdq-subscribe.html" style="display:block;width:100%;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:14px 24px;background:var(--gold-400);color:var(--navy-900);border:none;border-radius:4px;text-decoration:none;cursor:pointer;transition:background 0.15s;margin-top:24px;box-sizing:border-box;text-align:center;">Waiting list &rarr;</a>
     <div style="font-size:11px;color:var(--n400);margin-top:14px;line-height:1.6;">Educational use only. Not investment advice.</div>
   </div>
 </div>
@@ -167,29 +167,30 @@ document.addEventListener('keydown', function(e) {
 <!-- MOBILE NAV OVERLAY -->
 <div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav-header">
-    <a href="hdq-news.html" class="brand" aria-label="HDQ Home" onclick="window.closeMobileNav()">
+    <a href="/about" class="brand" aria-label="HDQ Home" onclick="window.closeMobileNav()">
       <img src="HDQ_LOGO_Gold.svg" width="28" height="28" alt="HDQ Logo" style="display:block;">
       <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
     </a>
     <button class="mobile-nav-close" onclick="window.closeMobileNav()" aria-label="Close menu">×</button>
   </div>
   <nav class="mobile-nav-links" aria-label="Mobile navigation">
-    <a href="hdq-news.html" class="mobile-nav-link" onclick="window.closeMobileNav()">News</a>
-    <a href="hdq-prodev.html" class="mobile-nav-link" onclick="window.closeMobileNav()">Professional Development</a>
-    <a href="hdq-whitelabel.html" class="mobile-nav-link" onclick="window.closeMobileNav()">For Firms</a>
+    <a href="/news" class="mobile-nav-link" onclick="window.closeMobileNav()">News</a>
+    <a href="/fund-intel" class="mobile-nav-link" onclick="window.closeMobileNav()">Fund Intel</a>
+    <a href="/hdq-prodev.html" class="mobile-nav-link" onclick="window.closeMobileNav()">Professional Development</a>
+    <a href="/hdq-whitelabel.html" class="mobile-nav-link" onclick="window.closeMobileNav()">For Firms</a>
     <a href="/about" class="mobile-nav-link" onclick="window.closeMobileNav()">About</a>
     <div class="mobile-nav-divider"></div>
-    <a href="hdq-daily-thread.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
-    <a href="hdq-weekend.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
-    <a href="hdq-month.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
-    <a href="hdq-archive.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
-    <a href="hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
+    <a href="/daily-thread" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
+    <a href="/weekend" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
+    <a href="/month-at-a-glance" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
+    <a href="/archive" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
+    <a href="/hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
   </nav>
   <div class="mobile-nav-footer">
-    <a href="hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Waiting List</a>
+    <a href="/hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Waiting List</a>
   </div>
 </div>
-<header class="masthead"><div class="masthead-inner"><a href="/about" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="hdq-news.html" class="nav-link">News</a></li><li><a href="hdq-prodev.html" class="nav-link  active">Professional Development</a></li><li><a href="hdq-whitelabel.html" class="nav-link">For Firms</a></li><li><a href="/archive" class="nav-link">Archive</a></li><li><a href="/about" class="nav-link">About</a></li></ul></nav><div class="nav-right"><a href="hdq-subscribe.html" class="nav-subscribe">Waiting List</a><button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
+<header class="masthead"><div class="masthead-inner"><a href="/about" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="/news" class="nav-link">News</a></li><li><a href="/fund-intel" class="nav-link">Fund Intel</a></li><li><a href="/hdq-prodev.html" class="nav-link active">Professional Development</a></li><li><a href="/hdq-whitelabel.html" class="nav-link">For Firms</a></li><li><a href="/about" class="nav-link">About</a></li></ul></nav><div class="nav-right"><a href="/hdq-subscribe.html" class="nav-subscribe">Waiting List</a><button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
 <script>
 // Show hamburger only on mobile
 (function(){
@@ -263,7 +264,7 @@ document.addEventListener('keydown', function(e) {
   </div>
 </div></div>
 
-<footer><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><a href="/about" class="brand" style="margin-bottom:10px;"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span></a><p>A daily publication for Canadian financial advisors. Published in Toronto.</p></div><div class="footer-nav"><h6>Publication</h6><ul><li><a href="hdq-news.html">Daily Briefing</a></li><li><a href="hdq-daily-thread.html">Daily Thread</a></li><li><a href="hdq-weekend.html">Weekend Edition</a></li><li><a href="hdq-month.html">Month at a Glance</a></li><li><a href="hdq-archive.html">Archive</a></li></ul></div><div class="footer-nav"><h6>Learning</h6><ul><li><a href="hdq-prodev.html">Module Library</a></li><li><a href="hdq-prodev.html#reading">Reading List</a></li><li><a href="hdq-prodev.html#frameworks">Frameworks</a></li><li><a href="hdq-prodev.html#glossary">Glossary</a></li></ul></div><div class="footer-nav"><h6>Company</h6><ul><li><a href="hdq-whitelabel.html">For Firms</a></li><li><a href="/about">About HDQ</a></li><li><a href="hdq-subscribe.html">Waiting List</a></li><li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li></ul></div><div class="footer-nav"><h6>Legal</h6><ul><li><a href="hdq-legal.html">Disclaimer</a></li><li><a href="hdq-legal.html#terms">Terms of Use</a></li><li><a href="hdq-legal.html#privacy">Privacy Policy</a></li><li><a href="hdq-legal.html#compliance">Compliance</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 HDQ Publishing. All rights reserved. HDQ is an independent publication. Content is published for the professional development of licensed Canadian financial advisors and does not constitute investment advice. <a href="hdq-legal.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span><span class="footer-badge">hdq.ca</span></div></div></footer>
+<footer><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><a href="/about" class="brand" style="margin-bottom:10px;"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span></a><p>A daily publication for Canadian financial advisors. Published in Toronto.</p></div><div class="footer-nav"><h6>Publication</h6><ul><li><a href="/news">Daily Briefing</a></li><li><a href="/daily-thread">Daily Thread</a></li><li><a href="/weekend">Weekend Edition</a></li><li><a href="/month-at-a-glance">Month at a Glance</a></li><li><a href="/archive">Archive</a></li></ul></div><div class="footer-nav"><h6>Learning</h6><ul><li><a href="/hdq-prodev.html">Module Library</a></li><li><a href="/hdq-prodev.html#reading">Reading List</a></li><li><a href="/hdq-prodev.html#frameworks">Frameworks</a></li><li><a href="/hdq-prodev.html#glossary">Glossary</a></li></ul></div><div class="footer-nav"><h6>Company</h6><ul><li><a href="/hdq-whitelabel.html">For Firms</a></li><li><a href="/about">About HDQ</a></li><li><a href="/hdq-subscribe.html">Waiting List</a></li><li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li></ul></div><div class="footer-nav"><h6>Legal</h6><ul><li><a href="/hdq-legal.html">Disclaimer</a></li><li><a href="/hdq-legal.html#terms">Terms of Use</a></li><li><a href="/hdq-legal.html#privacy">Privacy Policy</a></li><li><a href="/hdq-legal.html#compliance">Compliance</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 HDQ Publishing. All rights reserved. HDQ is an independent publication. Content is published for the professional development of licensed Canadian financial advisors and does not constitute investment advice. <a href="/hdq-legal.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span><span class="footer-badge">hdq.ca</span></div></div></footer>
 <script>
 // Tab underline follows clicks
 var _clicked = false;

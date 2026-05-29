@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hdqca.com/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://hdqca.com/hdq-news.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hdqca.com/hdq-article.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hdqca.com/hdq-daily-thread.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hdqca.com/hdq-archive.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://hdqca.com/hdq-prodev.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://hdqca.com/hdq-whitelabel.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://hdqca.com/hdq-weekend.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://hdqca.com/hdq-month.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://hdqca.com/hdq-legal.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://hdqca.com/hdq-market.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hdqca.com/hdq-geopolitical.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hdqca.com/hdq-economy.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hdqca.com/hdq-tax-wealth.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hdqca.com/hdq-behavioural.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hdq.ca/news</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://hdq.ca/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hdq.ca/market</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hdq.ca/geopolitical</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hdq.ca/economy</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hdq.ca/tax-wealth</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hdq.ca/behavioural</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hdq.ca/daily-thread</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hdq.ca/weekend</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hdq.ca/month-at-a-glance</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hdq.ca/fund-intel</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hdq.ca/archive</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hdq.ca/hdq-prodev.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hdq.ca/hdq-whitelabel.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hdq.ca/hdq-subscribe.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hdq.ca/hdq-legal.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
