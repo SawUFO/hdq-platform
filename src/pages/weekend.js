@@ -81,16 +81,54 @@ export async function renderWeekend(env, slug, authed = true) {
   ${article.brief_html}
 </section>` : '';
 
-  // Month-in-Numbers block from the article's key_numbers (month only)
+  // Key numbers — used by both weekend and month
   let keyNums = [];
   try { keyNums = JSON.parse(article.key_numbers || '[]'); } catch (e) { keyNums = []; }
+
+  // Month-in-Numbers block (month only — large navy card)
   const knHtml = (isMonth && keyNums.length) ? `
 <div class="mkn">
   <div class="mkn-label">Month in Numbers</div>
   ${keyNums.map(k => `<div class="mkn-item"><div class="mkn-v">${escHtml(k.value)}</div><div class="mkn-l">${escHtml(k.label)}</div></div>`).join('')}
 </div>` : '';
 
-  // Sidebar: month gets a contents rail + Month-in-Numbers; weekend keeps the legal box only.
+  // Weekend Key Numbers block (article-style navy sidebar card)
+  const weekendKnHtml = (!isMonth && keyNums.length) ? `
+<div class="key-numbers">
+  <div class="key-numbers-label">Week in Numbers</div>
+  ${keyNums.map(k => `
+  <div class="key-number">
+    <div class="key-number-value">${escHtml(k.value)}</div>
+    <div class="key-number-label">${escHtml(k.label)}</div>
+  </div>`).join('')}
+</div>` : '';
+
+  // This Week's Desks — most recent article per desk published within 6 days before the weekend edition
+  const DESK_LABEL = { market:'Market', geo:'Geopolitical', economy:'Economy', tax:'Tax & Wealth', behaviour:'Behavioural' };
+  const DESK_CAT  = { market:'cat-market', geo:'cat-geo', economy:'cat-economy', tax:'cat-tax', behaviour:'cat-behaviour' };
+
+  const pubDate = article.published_at.slice(0, 10);
+  const weekRows = await env.DB.prepare(`
+    SELECT slug, desk, title FROM articles
+    WHERE article_type = 'article'
+      AND desk IN ('market','geo','economy','tax','behaviour')
+      AND date(published_at) >= date(?, '-6 days')
+      AND date(published_at) <= date(?)
+    GROUP BY desk
+    ORDER BY desk ASC, published_at DESC
+  `).bind(pubDate, pubDate).all();
+
+  const weekDesksHtml = (weekRows.results && weekRows.results.length) ? `
+<div class="related-box">
+  <div class="related-label">This Week's Desks</div>
+  ${weekRows.results.map(r => `
+  <a href="/${escHtml(r.slug)}" class="related-item">
+    <div class="related-item-tag ${escHtml(DESK_CAT[r.desk] || '')}">${escHtml(DESK_LABEL[r.desk] || r.desk)}</div>
+    <div class="related-item-title">${escHtml(r.title)}</div>
+  </a>`).join('')}
+</div>` : '';
+
+  // Sidebar: month gets contents rail + Month-in-Numbers; weekend gets Key Numbers + This Week's Desks
   const asideHtml = isMonth ? `
 <aside>
   <div class="sidebar-sticky">
@@ -104,6 +142,8 @@ export async function renderWeekend(env, slug, authed = true) {
 </aside>` : `
 <aside>
   <div class="sidebar-sticky">
+    ${weekendKnHtml}
+    ${weekDesksHtml}
     <div class="sidebar-legal">
       <strong>Educational content only.</strong> HDQ is written for Canadian financial advisors. Not investment advice.
       <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>
