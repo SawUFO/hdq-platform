@@ -1,6 +1,6 @@
 // Shared article page CSS — used by article.js, thread.js, weekend.js
 export const ARTICLE_CSS = `
-.article-wrap { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; padding: 36px 0 60px; }
+.article-wrap { display: grid; grid-template-columns: 1fr 280px; gap: 48px; padding: 36px 0 60px; }
 @media(max-width:1000px){ .article-wrap { grid-template-columns: 1fr; } }
 article { min-width: 0; }
 .article-hero { aspect-ratio: 16/7; overflow: hidden; border-radius: 6px; margin-bottom: 28px; }
