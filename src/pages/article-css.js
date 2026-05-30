@@ -62,12 +62,14 @@ article { min-width: 0; }
 .btn-copy { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; padding:6px 14px; border-radius:4px; border:1px solid var(--n200); background:var(--card); color:var(--n700); cursor:pointer; }
 .btn-copy.copied { background:var(--gold-400); color:var(--navy-900); border-color:var(--gold-400); }
 .sidebar-sticky { position:sticky; top:80px; display:flex; flex-direction:column; gap:24px; }
-.key-numbers-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--n500); margin-bottom:12px; }
-.key-number { padding:12px 0; border-bottom:1px solid var(--n100); }
-.key-number:last-child { border-bottom:none; }
-.key-number-value { font-family:'Bricolage Grotesque',sans-serif; font-size:22px; font-weight:800; color:var(--navy-900); letter-spacing:-0.02em; }
-.key-number-label { font-size:11px; color:var(--n600); line-height:1.4; margin-top:2px; }
-.related-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--n500); margin-bottom:12px; }
+.key-numbers { background:var(--navy-900); border-radius:6px; padding:24px; }
+.key-numbers-label { font-size:11px; font-weight:700; color:var(--gold-400); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; }
+.key-number { border-bottom:1px solid rgba(255,255,255,0.08); padding:14px 0; }
+.key-number:last-child { border-bottom:none; padding-bottom:0; }
+.key-number-value { font-family:'Bricolage Grotesque',sans-serif; font-size:26px; font-weight:800; color:#fff; line-height:1; margin-bottom:4px; }
+.key-number-label { font-size:11px; color:rgba(255,255,255,0.45); }
+.related-box { background:#fff; border:1px solid var(--n200); border-radius:6px; padding:20px; }
+.related-label { font-size:11px; font-weight:700; color:var(--n600); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; }
 .related-item { display:block; padding:12px 0; border-bottom:1px solid var(--n100); text-decoration:none; }
 .related-item:last-child { border-bottom:none; }
 .related-item:hover .related-item-title { color:var(--navy-700); }
