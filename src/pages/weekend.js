@@ -109,14 +109,20 @@ export async function renderWeekend(env, slug, authed = true) {
 
   const pubDate = article.published_at.slice(0, 10);
   const weekRows = await env.DB.prepare(`
-    SELECT slug, desk, title FROM articles
+    SELECT slug, desk, title FROM articles a
     WHERE article_type = 'article'
       AND desk IN ('market','geo','economy','tax','behaviour')
       AND date(published_at) >= date(?, '-6 days')
       AND date(published_at) <= date(?)
-    GROUP BY desk
-    ORDER BY desk ASC, published_at DESC
-  `).bind(pubDate, pubDate).all();
+      AND published_at = (
+        SELECT MAX(b.published_at) FROM articles b
+        WHERE b.desk = a.desk
+          AND b.article_type = 'article'
+          AND date(b.published_at) >= date(?, '-6 days')
+          AND date(b.published_at) <= date(?)
+      )
+    ORDER BY desk ASC
+  `).bind(pubDate, pubDate, pubDate, pubDate).all();
 
   const weekDesksHtml = (weekRows.results && weekRows.results.length) ? `
 <div class="related-box">
