@@ -13,7 +13,58 @@ const LOCKED_OVERLAY_CSS = `
 .hdq-locked-note { font-size:11px;color:var(--n400);margin-top:14px;line-height:1.6; }
 body.overlay-active { overflow:hidden; }
 `;
+
+// Month at a Glance — sidebar table-of-contents, Month-in-Numbers, progress bar.
+const MONTH_CSS = `
+#hdq-progress { position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold-400),var(--gold-600));z-index:9998;transition:width 0.08s linear; }
+.article-body h2[data-toc] { scroll-margin-top:84px; }
+.mtoc { background:#fff;border:1px solid var(--n200);border-radius:6px;padding:18px 8px 12px;margin-bottom:22px; }
+.mtoc-label { font-size:11px;font-weight:700;color:var(--n600);letter-spacing:0.1em;text-transform:uppercase;margin:0 12px 10px; }
+.mtoc a { display:block;text-decoration:none;color:var(--n600);font-size:13px;line-height:1.3;padding:7px 12px;border-left:2px solid var(--n100);transition:all 0.16s; }
+.mtoc a .n { color:var(--n400);font-weight:600;margin-right:8px;font-size:11.5px;font-variant-numeric:tabular-nums; }
+.mtoc a:hover { color:var(--n900);background:var(--n50); }
+.mtoc a.active { color:var(--navy-700);border-left-color:var(--gold-400);font-weight:600;background:var(--gold-50); }
+.mtoc a.active .n { color:var(--gold-600); }
+.mtoc a.sub { padding-left:26px;font-size:12.5px; }
+.mkn { background:var(--navy-900);border-radius:6px;padding:22px;margin-bottom:22px; }
+.mkn-label { font-size:11px;font-weight:700;color:var(--gold-400);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px; }
+.mkn-item { border-bottom:1px solid rgba(255,255,255,0.08);padding:13px 0; }
+.mkn-item:last-child { border-bottom:none;padding-bottom:0; }
+.mkn-v { font-family:'Bricolage Grotesque',sans-serif;font-size:25px;font-weight:800;color:#fff;line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums; }
+.mkn-l { font-size:11px;color:rgba(255,255,255,0.45); }
+@media(max-width:900px){ .mtoc{position:sticky;top:8px;z-index:50;} }
+`;
 import { ARTICLE_CSS } from './article-css.js';
+
+function monthScript() {
+  return `
+<script>
+(function(){
+  var toc=document.getElementById('hdq-toc');
+  if(!toc) return;
+  var bar=document.createElement('div');bar.id='hdq-progress';document.body.appendChild(bar);
+  var heads=[].slice.call(document.querySelectorAll('.article-body h2[data-toc]'));
+  var links=[];
+  heads.forEach(function(h){
+    var a=document.createElement('a');
+    a.href='#'+h.id;
+    if(h.getAttribute('data-toc-sub')) a.className='sub';
+    a.innerHTML='<span class="n">'+(h.getAttribute('data-toc-n')||'')+'</span>'+h.getAttribute('data-toc');
+    toc.appendChild(a);links.push(a);
+  });
+  function onScroll(){
+    var st=window.scrollY||document.documentElement.scrollTop;
+    var dh=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(dh>0?(st/dh*100):0)+'%';
+    var idx=0;
+    for(var i=0;i<heads.length;i++){ if(heads[i].getBoundingClientRect().top<=140) idx=i; }
+    links.forEach(function(a,i){ a.classList.toggle('active',i===idx); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>`;
+}
 
 export async function renderWeekend(env, slug, authed = true) {
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
@@ -29,6 +80,36 @@ export async function renderWeekend(env, slug, authed = true) {
   <div class="brief-label">${isMonth ? 'This Month' : 'This Week'}</div>
   ${article.brief_html}
 </section>` : '';
+
+  // Month-in-Numbers block from the article's key_numbers (month only)
+  let keyNums = [];
+  try { keyNums = JSON.parse(article.key_numbers || '[]'); } catch (e) { keyNums = []; }
+  const knHtml = (isMonth && keyNums.length) ? `
+<div class="mkn">
+  <div class="mkn-label">Month in Numbers</div>
+  ${keyNums.map(k => `<div class="mkn-item"><div class="mkn-v">${escHtml(k.value)}</div><div class="mkn-l">${escHtml(k.label)}</div></div>`).join('')}
+</div>` : '';
+
+  // Sidebar: month gets a contents rail + Month-in-Numbers; weekend keeps the legal box only.
+  const asideHtml = isMonth ? `
+<aside>
+  <div class="sidebar-sticky">
+    <nav class="mtoc" id="hdq-toc"><div class="mtoc-label">In This Report</div></nav>
+    ${knHtml}
+    <div class="sidebar-legal">
+      <strong>Educational content only.</strong> HDQ is written for Canadian financial advisors. Not investment advice.
+      <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>
+    </div>
+  </div>
+</aside>` : `
+<aside>
+  <div class="sidebar-sticky">
+    <div class="sidebar-legal">
+      <strong>Educational content only.</strong> HDQ is written for Canadian financial advisors. Not investment advice.
+      <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>
+    </div>
+  </div>
+</aside>`;
 
   const lockedOverlay = !authed ? `
 <div class="hdq-locked-overlay">
@@ -72,14 +153,7 @@ ${lockedOverlay}
         <a href="mailto:?subject=${encodeURIComponent('HDQ ' + label + ': ' + article.title)}&body=${encodeURIComponent('https://hdq.ca/' + article.slug)}" class="btn-share">Email</a>
       </div>` : ''}
     </article>
-    <aside>
-      <div class="sidebar-sticky">
-        <div class="sidebar-legal">
-          <strong>Educational content only.</strong> HDQ is written for Canadian financial advisors. Not investment advice.
-          <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>
-        </div>
-      </div>
-    </aside>
+    ${asideHtml}
   </div>
 </div></main>
 ${membershipFooterBand()}`;
@@ -92,7 +166,8 @@ ${membershipFooterBand()}`;
     canonical: `https://hdq.ca/${slug}`,
     metaDescription: article.dek || '',
     robots: 'index, follow',
-    extraStyle: ARTICLE_CSS + LOCKED_OVERLAY_CSS,
+    extraStyle: ARTICLE_CSS + LOCKED_OVERLAY_CSS + (isMonth ? MONTH_CSS : ''),
+    extraScript: (authed && isMonth) ? monthScript() : '',
     bodyClass: authed ? '' : 'overlay-active',
   }));
 }
