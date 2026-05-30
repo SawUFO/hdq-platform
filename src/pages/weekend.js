@@ -174,8 +174,8 @@ export async function renderWeekend(env, slug, authed = true) {
 
   const body = `
 ${lockedOverlay}
-<main><div class="container">
-  <div class="article-wrap">
+<main>
+  <div class="article-wrap" style="max-width:1200px;margin:0 auto;padding:48px 24px 80px;">
     <article>
       <div class="article-hero">
         <img src="https://assets.hdq.ca/${escHtml(article.hero_image)}" alt="${escHtml(article.title)}" loading="eager">
@@ -201,7 +201,7 @@ ${lockedOverlay}
     </article>
     ${asideHtml}
   </div>
-</div></main>
+</main>
 ${membershipFooterBand()}`;
 
   return htmlResponse(pageShell(body, {
