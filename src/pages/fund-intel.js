@@ -184,8 +184,8 @@ export async function renderFundIntel(env, authed) {
     </div>
     <span class="hdq-locked-tag">Member Access</span>
     <h2>A publication with a fixed membership.</h2>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals. Membership is restricted to active FCSI and CFA holders, admitted by nomination.</p>
-    <p>Total membership is permanently capped. When seats are filled, HDQ remains closed.</p>
+    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.</p>
+    <p>Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.</p>
     <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
     <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
   </div>

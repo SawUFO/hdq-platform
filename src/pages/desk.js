@@ -164,7 +164,7 @@ function renderSidebarDesk(flash, trendingTags) {
 </div>
 <div class="subscribe-box">
   <h5>Membership</h5>
-  <p>Permanently capped at 137 seats. Admitted by nomination only.</p>
+  <p>Permanently capped. Admitted by nomination only.</p>
   <button class="subscribe-btn" onclick="window.location.href='/hdq-subscribe.html'">Waiting list</button>
 </div>
 <div>
