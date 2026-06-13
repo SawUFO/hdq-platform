@@ -1,0 +1,56 @@
+name: R2 Image Upload
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_url:
+        description: 'Source image URL (Higgsfield CDN link)'
+        required: true
+      dest_filename:
+        description: 'Destination filename in R2, e.g. thread-028.jpg or uk-economy-028.jpg'
+        required: true
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install tools
+        run: |
+          npm install --no-save sharp
+          npm install -g wrangler
+
+      - name: Prepare image (1200x650, under 300KB)
+        env:
+          IMAGE_URL: ${{ github.event.inputs.image_url }}
+          DEST: ${{ github.event.inputs.dest_filename }}
+        run: node scripts/r2-prepare.js
+
+      - name: Upload to R2
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DEST: ${{ github.event.inputs.dest_filename }}
+        run: wrangler r2 object put "hdq-assets/${DEST}" --file="out.jpg" --content-type="image/jpeg" --remote
+
+      - name: Verify it is live
+        env:
+          DEST: ${{ github.event.inputs.dest_filename }}
+        run: |
+          for i in 1 2 3 4 5; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" -I "https://assets.hdq.ca/${DEST}")
+            echo "attempt $i: HTTP $code"
+            if [ "$code" = "200" ]; then
+              echo "VERIFIED live at https://assets.hdq.ca/${DEST}"
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Upload did not verify as live at the public URL."
+          exit 1
