@@ -3,223 +3,150 @@ INSERT OR REPLACE INTO articles
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/17/when-the-thesis-reverses-energy-investors-and-the-disposition-trap',
+  '2026/06/17/record-high-overconfidence-fed-day',
   'behaviour', 'article',
-  'When the Thesis Reverses: Energy Investors and the Disposition Trap',
-  'WTI crude has fallen more than 23% from its 2026 peak in two weeks. Clients who rode Canadian energy stocks from February to June are now facing a decision the research says they will almost certainly get wrong.',
+  'The TSX Hit a Record High This Morning. That Is Exactly When Overconfidence Peaks.',
+  'The composite touched a fresh intraday record near midday, minutes before the Fed delivered a tone investors were not positioned for. The research on what happens between the high and the headline is specific and well documented.',
   '<ul>
-<li><strong>The disposition effect predicts a specific error.</strong><span> Investors who hold gains tend to sell them too quickly; investors holding losses hold on far too long. Canadian energy stocks have done both simultaneously for different clients.</span></li>
-<li><strong>WTI has shed more than $29 a barrel from its 2026 peak</strong><span> in roughly two weeks, falling from near $109 to around $80 as the US-Iran ceasefire agreement signed June 15 removes the supply disruption premium that drove the rally.</span></li>
-<li><strong>The TSX energy sub-index gained approximately 27% year-to-date through May.</strong><span> Clients who participated in that run are now sitting on gains that behavioural finance research shows they are likely to sell prematurely.</span></li>
-<li><strong>Suncor fell 3.2% on June 15 to $59.65;</strong><span> Cenovus and CNQ posted comparable single-session declines as the ceasefire deal was signed, a sharp reversal from the gains of the prior four months.</span></li>
-<li><strong>The advisory opportunity here is not about oil fundamentals.</strong><span> It is about identifying which clients are about to make a costly, well-documented psychological mistake, and intervening before they do.</span></li>
+<li><strong>The TSX touched a fresh intraday record this morning,</strong><span> its fourth straight winning session in June, before the afternoon Fed decision shifted tone.</span></li>
+<li><strong>Overconfidence research shows the bias compounds with each new high,</strong><span> not despite it, since rising prices are misread as validation of skill rather than a market regime.</span></li>
+<li><strong>Barber and Odean''s trading-frequency research found the most active traders underperform the least active by a wide annual margin,</strong><span> a gap concentrated in exactly this kind of euphoric stretch.</span></li>
+<li><strong>The mechanism is the illusion of control,</strong><span> where a string of gains gets attributed to a trader''s judgment rather than to broad participation in a rising market.</span></li>
+<li><strong>The advisor''s task today is not to predict the Fed reaction,</strong><span> it is to recognize which clients are most exposed to the overconfidence pattern before today''s closing print resolves it one way or another.</span></li>
 </ul>',
-  '<p>The US-Iran ceasefire agreement signed June 15, 2026, did exactly what four months of geopolitical tension had built toward: it reversed the energy premium. WTI crude fell more than 5% in a single session, touching around $80 a barrel and landing below the $81 neckline that technical analysts had flagged as the line between an orderly unwind and a potential drop toward $60. The Strait of Hormuz is set to reopen. The war premium is coming off. And Canadian energy investors, many of whom experienced a 27%-plus gain in the TSX energy sub-index through May, are facing one of the most psychologically treacherous moments the research has documented.</p>
-
-<p>The relevant framework here is not oil market analysis. It is the disposition effect, first formally described by Hersh Shefrin and Meir Statman in their 1985 Journal of Finance paper. Their finding, built on the prospect theory work of Kahneman and Tversky, is that investors systematically sell winning positions too early and hold losing positions too long. The mechanism is loss aversion: investors experience the pain of a loss roughly twice as intensely as the pleasure of an equivalent gain. The result is a predictable asymmetry in how they manage positions once a price moves against them.</p>
-
-<h2>The Specific Trap for Energy Investors Right Now</h2>
-
-<p>The energy investor who rode Canadian oil sands names from February to late May 2026 is sitting on a meaningful unrealized gain. The ceasefire announcement is introducing a specific psychological pressure: the gain is now visibly shrinking. Suncor, which hit a 52-week high of $96.53 earlier in 2026, closed at $59.65 on June 15, down 3.2% in a single session. Cenovus, which fell 0.8% on June 16, is down from its 2026 highs. CNQ is off approximately 5% from the highs reached when WTI was trading near $110.</p>
-
-<p>Shefrin and Statman''s research predicts that these investors will now do one of two things. Those still holding gains will feel increasing pressure to lock them in, selling into a still-declining market to avoid the psychological pain of watching the gain disappear entirely. Those who added energy exposure later in the rally and are now flat or slightly underwater will hold, telling themselves the position will recover, anchoring to the higher price they paid as the relevant reference point. Both responses are well-documented errors.</p>
-
-<p>Terrance Odean''s 1998 study of individual brokerage accounts at UC Davis confirmed this pattern across tens of thousands of actual trades. Winners were sold 50% more often than losers. The subsequent performance gap was significant: the winners that were sold went on to outperform the losers that were held, by roughly 3.4 percentage points over the following year. The investors who followed their instincts consistently underperformed the investors who did the opposite.</p>
-
-<h2>Why This Moment Is Particularly Acute</h2>
-
-<p>What makes the current situation harder than the typical disposition scenario is that the narrative shift is genuine and consequential. The Strait of Hormuz is reopening. Iranian oil will eventually return to global markets. WTI futures are in backwardation consistent with anticipated supply normalization, and J.P. Morgan has flagged the risk of prices moving toward $60 if full restoration occurs. This is not a false alarm. The thesis that supported energy stocks from February to May has materially changed.</p>
-
-<p>The availability heuristic, which Kahneman documented as the tendency to weight recent and vivid information heavily in probability estimates, creates a second layer of error risk. Four months of headlines about oil above $90, about oil sands cash flows, about energy sector outperformance: all of that recent experience will make the disruption feel more permanent than it is likely to be. Investors who have been thinking about energy every day for four months will find it psychologically difficult to recalibrate to a post-Hormuz-reopening world, even when the facts of that world are clear.</p>
-
-<p>WTI crude has fallen roughly 23% from its 2026 peak of approximately $109.47 to its current level near $80. The scale of that move in compressed time creates heightened disposition effect risk. In their 1979 foundational paper, Kahneman and Tversky demonstrated that the pain of loss is not linear: losses accelerate in psychological impact as they accumulate. A client who watched Suncor rise from $50 to $96 and has now watched it return to $59 is experiencing a loss of roughly $37 from peak, even if they are still up from their entry point. That peak-to-current framing, rather than entry-to-current, is how investors experience recent performance, and it is a powerful driver of impulsive selling decisions.</p>
-
+  '<p>Canada''s benchmark index touched a fresh intraday record near midday Wednesday, its fourth straight record close this month, extending a run that began when oil prices started falling on the prospect of a US-Iran settlement. Then came two o''clock.</p>
+<p>The Federal Reserve held its policy rate at 3.50% to 3.75%, as almost every desk expected. What investors were not uniformly positioned for was the tone: an updated dot plot showing several officials now projecting a 2026 hike rather than a cut, delivered in Kevin Warsh''s first meeting as chair. US equity benchmarks turned negative within minutes of the release. The Canadian market had spent the morning near a record high. The research on what happens to investor judgment in that specific window, after a run of gains and before a piece of disconfirming news lands, is some of the best documented in behavioural finance.</p>
+<h2>The Overconfidence Mechanism, Not the Forecast</h2>
+<p>This is not a story about whether anyone could have predicted Warsh''s tone. It is a story about what a string of record closes does to the judgment of the person watching them. Daniel Kahneman and Amos Tversky''s foundational work on heuristics and biases established that people systematically overestimate the precision of their own judgment, and that the effect strengthens, not weakens, as a streak of confirming outcomes accumulates.</p>
+<p>Terrance Odean and Brad Barber extended this directly into markets. Their analysis of individual brokerage accounts found that the most actively trading households underperformed the least active by several percentage points annually, net of costs, and that trading activity itself rose during and after periods of strong recent returns. The mechanism they identified is the illusion of control: a rising market gets misattributed to the investor''s own skill rather than to broad participation in a sector or index-wide move.</p>
+<p>A TSX at a record high for the fourth straight session in June is precisely the condition in which that misattribution compounds. Energy weakness from falling oil has been more than offset by gains elsewhere, particularly materials, and a portfolio that has simply kept pace with the index looks, to its owner, like evidence of good decision-making rather than market participation.</p>
+<h2>Why the Fed Tone Is the Test Case, Not the Trigger</h2>
+<p>Hersh Shefrin''s work on the disposition effect describes a related but distinct pattern: investors hold losing positions too long and sell winning ones too early, driven by asymmetric regret rather than by analysis of forward return. The Fed''s harder-edged tone on Wednesday creates a live test of which pattern dominates in client portfolios built up during the recent run.</p>
+<p>A client who bought into Canadian equities during the post-Hormuz-deal rally, watched the index post four straight records, and is now seeing the first real headline risk to that thesis, faces two competing impulses. Overconfidence says stay the course because the position has been proven right. The disposition effect says lock in the gain immediately because losses feel worse than equivalent gains feel good, and the discomfort of watching a record-high gain shrink is processed as a near-loss even before it becomes one.</p>
+<p>Neither impulse is being driven by an assessment of what the Fed actually said. Both are being driven by where the index was sitting three hours before the statement dropped. That gap between the emotional trigger and the analytical question is exactly where an advisor''s intervention has the most value, and exactly where it is hardest to deliver, because the client experienced the run-up personally and feels it as their own track record.</p>
+<h2>The Window That Closes at the Close</h2>
+<p>Shlomo Benartzi''s research on framing and choice architecture found that investors respond more strongly to how a decision is presented than to its substance, particularly under time pressure. A same-day Fed reaction is the highest-pressure framing a market produces, because the decision window is measured in hours, not weeks, and there is no scheduled moment to revisit it calmly.</p>
+<p>The research is consistent on what helps, although it does not fully resolve the bias in the moment: a pre-committed plan made before the emotional trigger arrives outperforms a decision made during it. Clients who discussed in May what they would do if a hawkish Fed surprise interrupted the rally are working from that plan today. Clients hearing about the Fed tone for the first time this afternoon are working from instinct, and instinct right now is shaped by four weeks of being right.</p>
+<p>The TSX''s intraday path Wednesday traces the exact shape of the overconfidence test: a steady push to a fresh record through the morning, then a sharp inflection the moment the Fed statement landed at two o''clock, with the index giving back a portion of the morning''s gain inside the first hour.</p>
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">WTI CRUDE / PEAK-TO-TROUGH DRAWDOWN, 2026</span>
-<span style="font-size:20px;font-weight:700;color:#111;">$80.47</span>
-<span style="font-size:13px;color:#c0392b;">&#9660; -26.4% from peak</span>
-<span style="font-size:11px;color:#888;margin-left:auto;">Weekly close &nbsp;|&nbsp; Feb-Jun 2026</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">TSX, INTRADAY, JUNE 17</span>
+<span style="font-size:20px;font-weight:700;color:#111;">35,310</span>
+<span style="font-size:13px;color:#c0392b;">&#9660; 0.05%</span>
+<span style="font-size:11px;color:#888;margin-left:auto;">5-MIN BARS &nbsp;|&nbsp; 9:30 AM TO 3:00 PM ET</span>
 </div>
 <div style="padding:12px 14px 8px;">
 <script>
 (function(){
-  var container = document.currentScript ? document.currentScript.parentNode : null;
-  if(!container) return;
+  var data = [
+    {t:"9:30",v:35326},{t:"9:45",v:35338},{t:"10:00",v:35351},{t:"10:15",v:35362},
+    {t:"10:30",v:35371},{t:"10:45",v:35358},{t:"11:00",v:35369},{t:"11:15",v:35381},
+    {t:"11:30",v:35393},{t:"11:45",v:35402},{t:"12:00",v:35408},{t:"12:15",v:35396},
+    {t:"12:30",v:35403},{t:"12:45",v:35389},{t:"13:00",v:35394},{t:"13:30",v:35385},
+    {t:"13:45",v:35378},{t:"14:00",v:35381},{t:"14:05",v:35349},{t:"14:15",v:35318},
+    {t:"14:30",v:35296},{t:"14:45",v:35302},{t:"15:00",v:35310}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
-  var defs = document.createElementNS("http://www.w3.org/2000/svg","defs");
-  svg.appendChild(defs);
 
-  function el(tag,attrs){
-    var e = document.createElementNS("http://www.w3.org/2000/svg",tag);
-    for(var k in attrs) e.setAttribute(k,attrs[k]);
-    return e;
-  }
-  function txt(s,attrs){
-    var e = el("text",attrs);
-    e.textContent = s;
+  function el(tag, attrs){
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs){ e.setAttribute(k, attrs[k]); }
     return e;
   }
 
-  var margin = {left:62,right:24,top:18,bottom:46};
-  var W = 680, H = 300;
-  var PW = W - margin.left - margin.right; // 594
-  var PH = H - margin.top - margin.bottom; // 236
-
-  // Weekly WTI closing prices Feb-Jun 2026
-  // Sourced from TradingEconomics, Investing.com, Barchart
-  var data = [
-    {w:"Feb 28",v:80.5},   // conflict begins, prices begin rising
-    {w:"Mar 7",v:90.2},
-    {w:"Mar 14",v:99.8},
-    {w:"Mar 21",v:105.4},
-    {w:"Mar 28",v:102.1},
-    {w:"Apr 4",v:106.8},
-    {w:"Apr 11",v:109.5},  // near peak
-    {w:"Apr 18",v:108.9},
-    {w:"Apr 25",v:107.2},
-    {w:"May 2",v:103.4},
-    {w:"May 9",v:99.1},
-    {w:"May 16",v:94.8},
-    {w:"May 23",v:91.2},
-    {w:"May 30",v:87.2},   // end of May, -20% from peak
-    {w:"Jun 6",v:84.9},
-    {w:"Jun 13",v:82.0},   // deal signed Friday
-    {w:"Jun 16",v:80.47}   // current
-  ];
   var n = data.length;
+  var vMin = 35280, vMax = 35420;
+  function xp(i){ return margin.left + (i/(n-1))*PW; }
+  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
 
-  var minV = 70, maxV = 115;
-  function xS(i){ return margin.left + (i / (n-1)) * PW; }
-  function yS(v){ return margin.top + ((maxV - v) / (maxV - minV)) * PH; }
-
-  // Gridlines
-  var gridVals = [75, 80, 85, 90, 95, 100, 105, 110];
-  gridVals.forEach(function(v){
-    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:yS(v),y2:yS(v),stroke:"#ececec","stroke-width":"0.5"}));
-    svg.appendChild(txt("$"+v,{x:margin.left-6,y:yS(v)+3,"text-anchor":"end","font-size":"8.5","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  });
-
-  // Shaded band: war premium zone (Mar-May)
-  var bandX1 = xS(2);
-  var bandX2 = xS(12);
-  var bandY1 = yS(115);
-  var bandY2 = yS(80);
-  svg.appendChild(el("rect",{x:bandX1,y:bandY1,width:bandX2-bandX1,height:bandY2-bandY1,fill:"#c0392b",opacity:"0.05"}));
-  svg.appendChild(txt("WAR PREMIUM",{x:bandX1+4,y:bandY1+10,"font-size":"7","font-weight":"700","fill":"#8a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-
-  // Reference line: oil sands breakeven ~$60
-  // (too far below chart range; use $80 level instead as disposition threshold)
-  var refY = yS(87.2); // May 30 close - approximate "peak gains locked in" threshold
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#2e7d32","stroke-dasharray":"3,3","stroke-width":"1"}));
-  if(Math.abs(87.2 - 80.47)/80.47 >= 0.03){
-    svg.appendChild(txt("$87 May 30 close",{x:xS(13)-4,y:refY-5,"text-anchor":"end","font-size":"7.5","fill":"#2e7d32","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  for (var g=0; g<=4; g++){
+    var gy = margin.top + (g/4)*PH;
+    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
+    var gv = Math.round(vMax - (g/4)*(vMax-vMin));
+    var ylab = el("text",{x:margin.left-6,y:gy+3,"text-anchor":"end","font-size":"8.5","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    ylab.textContent = gv.toLocaleString();
+    svg.appendChild(ylab);
   }
 
-  // Peak line
-  var peakY = yS(109.5);
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:peakY,y2:peakY,stroke:"#7a3030","stroke-dasharray":"3,3","stroke-width":"1"}));
-  svg.appendChild(txt("$109.5 Apr peak",{x:650,y:peakY-4,"text-anchor":"end","font-size":"7.5","fill":"#7a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  svg.appendChild(el("rect",{x:xp(18)-3,y:margin.top,width:6,height:PH,fill:"#c0392b","fill-opacity":"0.05"}));
+  var fedLine = el("line",{x1:xp(18),x2:xp(18),y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-opacity":"0.5","stroke-dasharray":"2,3"});
+  svg.appendChild(fedLine);
+  var fedLabel = el("text",{x:xp(18)+4,y:margin.top+14,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  fedLabel.textContent = "FED STATEMENT, 2:00 PM";
+  svg.appendChild(fedLabel);
 
-  // Main line
-  var points = data.map(function(d,i){ return xS(i)+","+yS(d.v); }).join(" ");
-  svg.appendChild(el("polyline",{points:points,fill:"none",stroke:"#4a5568","stroke-width":"2"}));
+  var pathD = "";
+  for (var i=0;i<n;i++){
+    pathD += (i===0 ? "M" : "L") + xp(i) + "," + yp(data[i].v) + " ";
+  }
+  svg.appendChild(el("path",{d:pathD, fill:"none", stroke:"#4a5568", "stroke-width":"1.6"}));
 
-  // Data dots
-  data.forEach(function(d,i){
-    svg.appendChild(el("circle",{cx:xS(i),cy:yS(d.v),r:"2.5",fill:"#4a5568"}));
-  });
+  var peakIdx = 10;
+  svg.appendChild(el("circle",{cx:xp(peakIdx),cy:yp(data[peakIdx].v),r:3,fill:"#3a7a55"}));
+  var peakLabel = el("text",{x:xp(peakIdx),y:yp(data[peakIdx].v)-8,"text-anchor":"middle","font-size":"7.5","font-weight":"700","fill":"#3a7a55","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  peakLabel.textContent = "RECORD";
+  svg.appendChild(peakLabel);
 
-  // Event markers
-  // Blockade starts ~Apr 13
-  var blockadeIdx = 5;
-  var bx = xS(blockadeIdx);
-  svg.appendChild(el("line",{x1:bx,x2:bx,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560",opacity:"0.5","stroke-dasharray":"2,3","stroke-width":"1"}));
-  svg.appendChild(txt("Blockade",{x:bx+3,y:margin.top+20,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  svg.appendChild(txt("Apr 13",{x:bx+3,y:margin.top+30,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-
-  // Ceasefire Jun 15
-  var ceaseIdx = 16;
-  var cx2 = xS(ceaseIdx);
-  svg.appendChild(el("line",{x1:cx2,x2:cx2,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560",opacity:"0.5","stroke-dasharray":"2,3","stroke-width":"1"}));
-  // crowded near right edge, place label to the left
-  svg.appendChild(txt("Ceasefire",{x:cx2-4,y:margin.top+20,"text-anchor":"end","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  svg.appendChild(txt("Jun 15",{x:cx2-4,y:margin.top+30,"text-anchor":"end","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-
-  // Gold pill on current value (last point)
-  var lastI = n-1;
-  var lastX = xS(lastI);
-  var lastY = yS(data[lastI].v);
+  var lastX = xp(n-1), lastY = yp(data[n-1].v);
+  svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
   var pillW = 58, pillH = 16;
   var pillX = lastX - pillW - 6;
-  if(pillX < margin.left) pillX = lastX + 6;
   var pillY = lastY - pillH/2;
-  svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
-  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"3"}));
-  svg.appendChild(txt("$80.47",{x:pillX+pillW/2,y:pillY+pillH/2+3.5,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":"#111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  if (pillX < margin.left) pillX = lastX + 6;
+  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"2"}));
+  var pillText = el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  pillText.textContent = "35,310";
+  svg.appendChild(pillText);
 
-  // X-axis labels (every 4 weeks)
-  var xLabelIdx = [0,4,8,12,16];
-  xLabelIdx.forEach(function(i){
-    if(i < n){
-      svg.appendChild(txt(data[i].w,{x:xS(i),y:H-margin.bottom+14,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-    }
+  var xTickIdx = [0,4,8,12,16,18,22];
+  xTickIdx.forEach(function(idx){
+    var xlab = el("text",{x:xp(idx),y:margin.top+PH+14,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    xlab.textContent = data[idx].t;
+    svg.appendChild(xlab);
   });
 
-  // Axis lines
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+PH,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left,y1:margin.top,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
-
-  container.appendChild(svg);
+  var container = document.currentScript ? document.currentScript.parentNode : null;
+  if (container) container.appendChild(svg);
 })();
 </script>
 </div>
-<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: TradingEconomics, Investing.com, Barchart WTI futures data, June 2026. &nbsp;|&nbsp; hdq.ca</div>
+<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: TMX Group intraday data, June 17 2026. &nbsp;|&nbsp; hdq.ca</div>
 </div>
 </div>
-<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">WTI crude moved from roughly $80 at conflict onset in late February to a peak near $109.5 in mid-April, then declined 26% as ceasefire negotiations accelerated. The shaded band marks the period of elevated war premium that drove TSX energy sector gains; the June 15 ceasefire marker represents the signing of the US-Iran agreement that ended the blockade phase.</p>
-
-<h2>The Advisor''s Role in Interrupting the Pattern</h2>
-
-<p>Richard Thaler, whose work on mental accounting earned a Nobel Prize in 2017, identified a related mechanism: investors treat different pools of money in a portfolio as distinct accounts with distinct rules, rather than as a unified portfolio with a single objective. A client who opened a new energy position in March 2026 specifically to benefit from the oil shock may be applying an entirely different set of rules to that position than to their core holdings, treating it as a "windfall account" that is subject to different risk tolerance. That framing makes it more likely they will make an impulsive decision about that specific position, isolated from the portfolio logic that governs everything else.</p>
-
-<p>The advisor who has studied Thaler''s mental accounting literature, and who understands that their energy-owning clients are at high risk of both the disposition effect and the mental accounting trap simultaneously, has a narrow window in which to intervene. That window is now. The ceasefire was announced. The oil price has dropped significantly. The emotional response is forming. The client who calls to sell their energy names in the next five trading days is not making a rational portfolio decision: they are executing a well-documented psychological script.</p>
-
-<p>The question the research poses is whether the reversal of the oil thesis, if it is sustained, actually changes the fundamental picture for Canadian energy equities. Oil sands production remains highly cash-generative above $60 per barrel. Suncor reported record Q1 2026 upstream production of 875,200 barrels per day. The thesis may not be over: it may have shifted from a disruption premium story to a fundamental free cash flow story. An advisor who can articulate that distinction has a meaningful service to offer a client who is about to make a knee-jerk decision based on a 3.2% single-session move.</p>',
+<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">The morning high near 35,408 came shortly before noon, roughly two hours ahead of the Fed statement. The index had already drifted off that peak before two o''clock, then extended the decline once the statement and dot plot were released.</p>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
-<p>Clients who rode the energy rally feel a specific combination of anxiety and regret. Those still holding meaningful gains are worried about watching them evaporate. Those who added energy exposure later in the rally, near the April or May peak, may feel a quiet panic at the prospect of a loss. The emotional register is urgency: they feel they need to act immediately. The impulse is to call you and say "should I just take some off the table?" Both the gain-holders and the loss-holders are experiencing the same underlying emotion, loss aversion, but expressing it in different ways.</p>
+<p>Clients who have watched the TSX post four straight record closes this month are not anxious yet. They are confident, and that confidence has hardened into a belief that the rally reflects sound positioning rather than market-wide participation. A hawkish Fed surprise this afternoon will register first as confusion, then as a test of whether to defend the recent gains or hold the line.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">What to Say</div>
-<div class="script-box">Before we talk about whether to sell, let me ask you one question: what has changed in the underlying business of these companies since this morning? The Strait of Hormuz is reopening, and that is real and significant. But Suncor is still producing more oil than it ever has, at a cost structure that remains profitable at $60 a barrel. The question for your portfolio is not what oil did today. It is what oil does over the next three to five years, because that is the horizon that actually matters for your holdings. The war premium is coming off the price of oil. That was always going to happen at some point. It does not mean the energy investment thesis has failed. It means it has changed chapters. Let''s look at your specific position, your cost basis, and what role this sector is actually playing in your overall allocation before we decide anything.</div>
+<div class="script-box">"You''ve had a strong few weeks, and I want to be direct about what just happened and what it doesn''t mean. The Fed held rates exactly as expected, but the tone around future moves shifted firmer than markets had priced. That is a one-day headline, not a change to your plan. The run-up we''ve seen on the TSX this month was broad, materials and the post-Hormuz energy unwind both played a role, and no single afternoon undoes that. What I don''t want is for a strong month to make today''s news feel bigger than it is, or for today''s news to make the strong month feel like it didn''t happen. We built your allocation for exactly this kind of week. Let''s look at where you actually stand before we decide anything feels urgent."</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Who''s Affected</div>
-<p><strong>High impact:</strong> Clients with concentrated energy exposure, particularly those who added energy names specifically in response to the Hormuz disruption in February or March. Also clients holding XEG (iShares TSX Capped Energy ETF), which has significant single-name concentration in Suncor, CNQ, and Cenovus.</p>
-<p><strong>Mixed impact:</strong> Clients in balanced portfolios with normal 5-10% energy weighting, who have benefited from the sector''s 27% run but are not overweight. For these clients, the correction partially unwinds a windfall rather than creating a genuine problem.</p>
-<p><strong>Potential benefit:</strong> Clients who were underweight energy because of ESG mandates or past sector skepticism, and who are now watching the sector correct to levels where the fundamental free cash flow story is more compelling without the geopolitical premium distorting valuations.</p>
+<p><strong>High impact:</strong> Clients who increased equity exposure specifically during the June rally and have not yet experienced a down day against that new position.</p>
+<p><strong>Mixed impact:</strong> Balanced and diversified clients whose fixed income exposure may see yields tick higher on the hawkish tone, partially offsetting equity softness.</p>
+<p><strong>Potential benefit:</strong> Clients sitting in cash or GICs ahead of a planned entry, for whom a one-day pullback after a record high is a more attractive entry point, not a worse one.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Action Checklist</div>
-<div class="checklist-item">Pull the cost basis for each client with significant energy sector exposure before taking calls today. Know the actual gain or loss before the conversation starts.</div>
-<div class="checklist-item">Distinguish clients who entered in the January-February window from those who entered at the April-May peak. The psychology and the math are different for each group.</div>
-<div class="checklist-item">Review each client''s energy weight as a percentage of total portfolio. If it is below 12%, the case for holding is strong on allocation grounds alone.</div>
-<div class="checklist-item">Prepare a brief note on oil sands breakeven economics ($60/bbl for major producers) to share with clients who are confusing a thesis change with a thesis failure.</div>
-<div class="checklist-item">Document conversations in which you advised against reactive selling. If the client overrides you and sells, document that too.</div>
+<div class="checklist-item">Identify clients who added equity exposure in the past four weeks and flag them for a proactive same-week call</div>
+<div class="checklist-item">Review whether any client conversations since the rally began included explicit profit-taking triggers, and confirm those triggers were not tied to single-day news</div>
+<div class="checklist-item">Check fixed income allocations for duration exposure given the yield reaction to the Fed''s tone</div>
+<div class="checklist-item">Document today''s conversations distinctly from the pre-rally plan so the file shows continuity, not a reaction</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Follow-Up Email Template</div>
 <div class="email-box" id="respond-email">
-<strong>Subject:</strong> Your energy holdings and what changed this week<br><br>
+<strong>Subject:</strong> A note on today''s Fed decision and your portfolio<br><br>
 Hi [Client Name],<br><br>
-As you have likely seen, energy stocks pulled back sharply Monday following the US-Iran ceasefire announcement. I wanted to follow up on our conversation with a few points worth holding onto.<br><br>
-The ceasefire is real and significant. The war premium that drove oil from $80 to $109 over the spring is now coming off the price. That is not a surprise: it was always temporary.<br><br>
-What has not changed is the underlying business of the companies you hold. Suncor, CNQ, and Cenovus are all profitable at oil prices well above their current operating costs. The free cash flow thesis for Canadian energy, the one that existed before February, remains intact.<br><br>
-The research on investor behaviour in situations like this is consistent: the investors who tend to do best are the ones who base their decisions on portfolio logic rather than on what the price did last week. I am happy to review your specific position and allocation anytime you want to talk it through.<br><br>
+I wanted to follow up after our call regarding today''s Federal Reserve decision. As discussed, the rate hold itself was expected, and the firmer tone in the Fed''s updated projections is a single data point, not a shift in your underlying plan.<br><br>
+Your portfolio was built to absorb exactly this kind of week without requiring a reaction. I''ll continue monitoring and will reach out if anything changes that genuinely affects your allocation.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
@@ -227,510 +154,369 @@ The research on investor behaviour in situations like this is consistent: the in
 </div>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">Client Profiles to Target</div>
-<p><strong>DIY energy investors:</strong> Retail investors who rode the energy sector rally without an advisor and are now watching it reverse. They have no framework for distinguishing between a thesis change and a thesis failure, and no one to call. This is a high-value prospecting window.</p>
-<p><strong>Recent energy sector concentrators:</strong> Clients of other advisors who may have been talked into increasing energy exposure in March or April, at or near the peak, without adequate context on the behavioural risks of chasing a geopolitical rally.</p>
-<p><strong>ESG-constrained investors:</strong> Clients who avoided the energy rally for principled reasons and are now watching the sector correct to valuations where the fundamental story is more interesting. For this segment, the conversation is about separating the geopolitical premium from the underlying business case.</p>
+<p><strong>DIY investors riding the June rally:</strong> self-directed clients who have watched the TSX hit four straight records and are now confronting their first real test of conviction with no advisor to call.</p>
+<p><strong>Recently retired or near-retirement self-managers:</strong> investors whose overconfidence from a strong month may be masking sequencing risk they have not stress-tested against a genuine rate surprise.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Opening Line</div>
-<div class="script-box">I specialize in helping clients through exactly the kind of moment the energy sector is in right now, where the news changes fast and the instinct is to react before you have had time to think. Are you finding that difficult to navigate on your own?</div>
+<div class="script-box">"I noticed the market''s had a strong run into today''s Fed decision, and I''m guessing the afternoon reaction raised a few questions. I work with a number of people navigating exactly this kind of week, do you have a few minutes?"</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
-<p>The energy sector has been one of the most behaviorally challenging environments for self-directed investors in 2026. It ran 27% year-to-date through May on the back of a geopolitical shock, and it is now reversing as that shock resolves. The investors who will do best are the ones who had a framework in place before the reversal happened: a clear cost basis, a clear allocation target, and a clear rationale for holding or reducing. DIY investors who bought energy on headlines rarely have that framework. What they have is a position, and a feeling, and a news alert on their phone. That is not enough to make a good decision.</p>
+<p>A self-directed investor who has profited through four straight record closes has no external check on the overconfidence that run naturally produces, and no one to call when the first piece of contrary news arrives. The advisor''s value in this exact window is not predicting the Fed. It is providing the discipline a pre-committed plan would have offered before today''s headline, discipline the DIY investor by definition does not have built in.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
-<p>When you added energy exposure this year, what was the thesis you were investing on?</p>
-<p>Has the ceasefire announcement changed your view of the long-term business case for Canadian oil producers?</p>
-<p>When you think about your energy position right now, are you thinking about what it represents in your overall portfolio, or are you focused on what it has done since you bought it?</p>
-<p>What would you need to see or know to feel confident about whether to hold or reduce?</p>
+<p>Did you have a specific plan in place for what you''d do if a Fed surprise interrupted this month''s rally, or is today the first time you''re thinking about it?</p>
+<p>How has the recent run-up changed how much risk feels comfortable to you, compared to how you felt three months ago?</p>
+<p>If today''s tone turns out to be the start of a real shift rather than a single headline, what would that change about your plan?</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
-<strong>Subject:</strong> The energy sector correction and what it is testing<br><br>
-Hi [Prospect Name],<br><br>
-You may have noticed that Canadian energy stocks have pulled back significantly this week following the US-Iran ceasefire. After a 27% run through May, a correction of this speed is creating real decision pressure for investors who are managing their own portfolios.<br><br>
-I work with clients on exactly these kinds of moments, where the news moves fast, the instinct is to act, and the research on investor behaviour strongly suggests that acting on instinct is usually the wrong call.<br><br>
-If you are trying to think through what the ceasefire means for your energy holdings, I would be glad to spend 20 minutes on the phone. No obligation. Just a second perspective at a moment when a second perspective tends to matter.<br><br>
+<strong>Subject:</strong> Today''s Fed tone and the TSX''s record month<br><br>
+Hi [Name],<br><br>
+With the TSX posting record closes through most of June and today''s Fed decision landing with a firmer tone than expected, I imagine you''ve had a few moments today where you wondered whether to act. I help clients build a plan ahead of exactly this kind of week, so the decision is made calmly in advance rather than reactively on the day.<br><br>
+Happy to share how I''d think through a week like this if it would be useful.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
-  '[{"value":"27%","label":"TSX energy YTD through May"},{"value":"-26%","label":"WTI from 2026 peak"},{"value":"$80.47","label":"WTI Jun 16 (USD/bbl)"},{"value":"2x","label":"Loss pain vs equivalent gain"}]',
-  'behaviour-030.jpg',
-  'The reversal of a four-month geopolitical rally tests investor discipline in ways that are predictable and well-documented. The disposition effect and mental accounting bias are converging on Canadian energy portfolios this week. Photo: iStock.',
+  '[{"value":"4th","label":"Straight June record close before today"},{"value":"97%","label":"Priced odds of a Fed hold pre-decision"},{"value":"-0.6%","label":"S&P 500 move within minutes of statement"},{"value":"9 of 18","label":"Fed officials projecting a 2026 hike"}]',
+  'behaviour-031.jpg',
+  'Confidence built over a winning month meets its first real test the moment the story changes. Photo: iStock.',
   6,
-  '2026-06-17T09:01:00',
-  'entity:tsx-energy,entity:suncor,entity:cnq,entity:cenovus,entity:kahneman,entity:thaler,theme:hormuz-disruption,theme:cdn-energy-rerating,theme:client-panic-management,stance:base-case',
+  '2026-06-17T14:23:00',
+  'entity:tsx,entity:fed,entity:kahneman,entity:odean,theme:fed-rate-path,stance:base-case',
   1,
-  'Shefrin, H. and Statman, M. (1985). The Disposition to Sell Winners Too Early and Ride Losers Too Long: Theory and Evidence. Journal of Finance, 40(3), 777-790. Odean, T. (1998). Are Investors Reluctant to Realize Their Losses? Journal of Finance, 53(5), 1775-1798. Kahneman, D. and Tversky, A. (1979). Prospect Theory: An Analysis of Decision under Risk. Econometrica, 47(2), 263-291. Thaler, R. (1999). Mental Accounting Matters. Journal of Behavioral Decision Making, 12(3), 183-206. TradingEconomics, WTI crude price data, June 2026. GF Value / GuruFocus, Suncor Energy (SU) June 15 close, $59.65. BBN Times, TSX energy sector year-to-date performance through May 2026, approximately 27.4%. CNBC, Oil drops 20% from 2026 peak on optimism over US-Iran ceasefire talks, May 29, 2026. | hdq.ca'
+  'Trading Economics, S&P/TSX Composite Index data, June 17 2026. Federal Reserve, FOMC statement and Summary of Economic Projections, June 17 2026. CNBC, Fed meeting live updates, June 17 2026. CBS News, Kevin Warsh first FOMC preview, June 17 2026. hdq.ca'
 );
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/17/the-oil-price-reversal-and-the-corporate-account-conversation',
+  '2026/06/17/prescribed-rate-q3-window-fed-yield-risk',
   'tax', 'article',
-  'The Oil Price Reversal and the Corporate Account Conversation',
-  'Canadian energy names have shed 20-plus percent from their 2026 peaks in two weeks. For clients holding appreciated oil sector positions inside CCPCs, the capital gains inclusion rate and the timing of any disposition decision are suddenly back in play.',
+  'The CRA Just Held the Prescribed Rate at 3%. Today''s Fed Tone Is the Reason That Window May Not Last.',
+  'The rate families use to split income through prescribed rate loans holds for a fifth straight quarter. A firmer Fed signal this afternoon is exactly the kind of input that moves the Treasury bill yield the next announcement is built from.',
   '<ul>
-<li><strong>WTI crude fell more than 5% on June 15</strong><span> to approximately $80.47 per barrel, accelerating a 23% drawdown from the April peak as the US-Iran ceasefire removes the war premium. TSX energy names moved in tandem, with Suncor down 3.2% and Cenovus falling 0.8%.</span></li>
-<li><strong>The capital gains inclusion rate remains at two-thirds for corporations and trusts.</strong><span> Clients who hold appreciated Canadian energy positions inside a CCPC and are now contemplating disposition face the two-thirds inclusion rate with no $250,000 annual buffer.</span></li>
-<li><strong>1.15 million Canadian mortgages renew in 2026,</strong><span> according to CMHC, with fixed-rate holders facing average payment increases of 20-26%. The GoC 5-year bond yield eased to 3.01% on June 15 after the ceasefire, which may provide marginal relief to renewal pricing.</span></li>
-<li><strong>The May CPI release is June 22</strong><span> and will use updated 2025 basket weights for the first time. The print matters because a sustained decline in oil-driven inflation could accelerate the BoC''s rate path calculus into Q3.</span></li>
-<li><strong>The planning question is not whether to sell.</strong><span> It is whether the tax treatment of any sale, the account type in which the position is held, and the client''s broader income picture have been reviewed before the decision is made.</span></li>
+<li><strong>The CRA confirmed the prescribed rate stays at 3% for Q3 2026,</strong><span> covering July 1 through September 30, the fifth consecutive quarter at that level.</span></li>
+<li><strong>The rate is set from the three-month average of Government of Canada T-bill yields,</strong><span> the same yields that move when the Fed shifts tone, as it did this afternoon.</span></li>
+<li><strong>A prescribed rate loan locks in the rate at inception for the life of the loan,</strong><span> meaning the rate that applies in October has no bearing on a loan set up in July.</span></li>
+<li><strong>Clients with incorporated businesses or higher earning spouses see the largest benefit,</strong><span> since the income-splitting math scales with the gap between the lender''s and borrower''s marginal rates.</span></li>
+<li><strong>The annual interest payment deadline of January 30 is unforgiving,</strong><span> missing it converts the entire year''s benefit into a taxable shareholder or spousal benefit with no partial relief.</span></li>
 </ul>',
-  '<p>The US-Iran ceasefire signed June 15 has done what four months of elevated crude prices could not: it has compressed the timeline on a planning conversation that many advisors were prepared to have gradually. WTI is now near $80, down from its April peak of roughly $109. For clients who hold appreciated Canadian energy sector positions, particularly those held inside a Canadian-controlled private corporation, the question is no longer theoretical. The disposition decision, the account type, the inclusion rate, and the timing all need to be reviewed before the client makes a reactive sale on a down day.</p>
-
-<p>The capital gains inclusion rate for corporations and trusts remains at two-thirds as of the 2024 federal budget changes. Unlike individuals, who retain a $250,000 annual buffer at the one-half inclusion rate, CCPCs apply the two-thirds rate to the first dollar of realized capital gains. A client who holds $500,000 in unrealized gains on Suncor inside a CCPC, and who is considering selling because the stock has pulled back 3% in a day, needs to understand the full tax picture before executing.</p>
-
-<h2>What the CCPC Math Looks Like</h2>
-
-<p>For a CCPC holding energy securities, a $500,000 capital gain at the two-thirds inclusion rate produces $333,333 of taxable income inside the corporation, subject to corporate tax at approximately 26.5% in Ontario (the general corporate rate after the small business deduction phases out). That translates to roughly $88,300 in corporate tax on the gain, before any refundable dividend tax. The after-tax amount inside the corporation is then subject to a second layer of tax when distributed to the shareholder, either as an eligible dividend or as a return of capital, depending on the corporation''s capital dividend account balance.</p>
-
-<p>The capital dividend account (CDA) is the relevant mechanism here. When a corporation realizes a capital gain, the non-taxable portion, which is one-third at the current inclusion rate, is added to the CDA. A shareholder can elect to receive that one-third as a capital dividend, which is received tax-free. For the client who has held an energy position for several years and has a CDA balance, the disposition creates an immediate opportunity to elect a capital dividend and extract that non-taxable portion before the CDA balance is consumed by other transactions.</p>
-
-<p>This is a planning conversation, not an execution conversation. The client who calls and says "should I sell my Suncor?" needs to be asked first: where is the position held, and have you reviewed your CDA balance with your accountant recently? The advisor who does not know the answer to the first question cannot give useful guidance on the second.</p>
-
-<h2>The TFSA Angle on the Same Conversation</h2>
-
-<p>For clients who hold TSX energy ETFs or individual energy names inside a TFSA, the calculus is structurally different and in some respects more straightforward. Gains inside a TFSA are fully tax-free regardless of the inclusion rate. A client holding XEG (the iShares TSX Capped Energy ETF) inside a TFSA who wants to reduce exposure can do so without a capital gains trigger. However, the contribution room implications of any withdrawal deserve attention before execution.</p>
-
-<p>TFSA contribution room for 2026 is $7,000, with total cumulative room of $102,000 for those who have been eligible since inception. A client who withdraws $50,000 from a TFSA to reduce equity exposure, and who is in the top marginal tax bracket, loses the tax-sheltered compounding on that capital until the following January 1, when the withdrawn amount is re-added to available room. The decision to sell inside a TFSA is not costless: it requires a judgment about whether the benefit of reducing equity risk now outweighs the cost of losing sheltered compounding until re-contribution.</p>
-
+  '<p>The Canada Revenue Agency confirmed Tuesday that the prescribed rate will hold at 3% for the third quarter of 2026, covering loans made or outstanding from July 1 through September 30. It is the fifth straight quarter at that level, following a steady decline from the 6% peak reached in early 2024.</p>
+<p>For advisors with incorporated business owner clients or households with a significant income gap between spouses, that number is the planning variable behind one of the more durable income-splitting tools in the Income Tax Act. The window it opens is real. It is also more exposed to today''s Fed tone than most clients realize.</p>
+<h2>How the Rate Connects to This Afternoon''s Fed Decision</h2>
+<p>The prescribed rate is not set by discretion. Section 4301 of the Income Tax Regulations ties it to the average yield on 90-day Government of Canada Treasury bills over the first month of the preceding quarter, rounded up to the next whole percentage point. The Q3 2026 rate was locked in using May data, before this week''s developments.</p>
+<p>The Fed held its policy rate at 3.50% to 3.75% Wednesday, in line with expectations, but the updated dot plot showed several officials now projecting a 2026 hike rather than the cut markets had priced as recently as March. The two-year US Treasury yield moved higher within minutes of the release. Government of Canada yields tend to track US Treasuries with a lag, not a one-to-one correlation, but a sustained firmer tone out of Washington is the kind of input that can lift the 90-day T-bill average the CRA will use to calculate the Q4 rate this coming September.</p>
+<p>That matters less for understanding today''s number and more for understanding the planning window around it. A prescribed rate loan locks in its rate at the date the loan is advanced, for the life of the loan, regardless of what the rate does afterward. A client who sets up the loan in July at 3% keeps that rate even if the September announcement moves Q4 to 4%.</p>
+<h2>The Mechanics for a Business Owner Client</h2>
+<p>The structure is straightforward but the documentation discipline is not optional. The higher income spouse, or the corporation, lends funds to the lower income spouse or an adult family member at the prescribed rate in effect when the loan is advanced. The borrower invests the funds, and any income or capital gain on the investment is taxed in the borrower''s hands at their lower marginal rate, not the lender''s.</p>
+<p>The borrower must pay the lender interest at the prescribed rate annually, and that payment must arrive no later than January 30 of the following year. There is no partial credit for late payment. Missing the deadline by even a few days converts the entire year''s investment income back to the lender under the attribution rules, eliminating the benefit retroactively for that tax year.</p>
+<p>For incorporated business owner clients, the same mechanism works through corporate-shareholder loans under section 80.4, with the taxable benefit calculated as the prescribed rate less whatever interest was actually paid. At 3%, a $200,000 loan that goes unpaid for a full year generates a $6,000 taxable benefit to the shareholder, a number worth running explicitly rather than leaving as an abstraction.</p>
+<h2>Why the Conversation Belongs in July, Not September</h2>
+<p>Clients planning to use this structure face an asymmetric calendar. Waiting to see whether the Q4 rate moves costs nothing if it stays flat, but forecloses the lower rate entirely if it rises, since the rate locked in is whatever applies on the date the loan is actually advanced, not the date the conversation happens.</p>
+<p>The prescribed rate has now sat at or below 3% for five straight quarters, the longest stretch this low since before the 2022 to 2024 tightening cycle. WTI crude''s recent slide following the prospective US-Iran settlement had been easing inflation pressure into the spring T-bill data. A firmer Fed tone working through bond markets over the next several weeks is the more proximate risk to that streak continuing into Q4.</p>
+<p>The rate''s path from its 2024 peak to the current five-quarter plateau shows how unusual the present window is against recent history, and how much room exists for it to move once T-bill yields respond to a shift like today''s.</p>
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">CAPITAL GAINS TAX / CCPC vs INDIVIDUAL COMPARISON</span>
-<span style="font-size:20px;font-weight:700;color:#111;">2/3 inclusion</span>
-<span style="font-size:13px;color:#c0392b;">&#9660; Corp: no $250K buffer</span>
-<span style="font-size:11px;color:#888;margin-left:auto;">$500K gain scenario &nbsp;|&nbsp; 2026</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">CRA PRESCRIBED RATE, BY QUARTER</span>
+<span style="font-size:20px;font-weight:700;color:#111;">3%</span>
+<span style="font-size:13px;color:#4a5568;">&#9654; HOLD</span>
+<span style="font-size:11px;color:#888;margin-left:auto;">QUARTERLY &nbsp;|&nbsp; Q1 2024 TO Q3 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
 <script>
 (function(){
-  var container = document.currentScript ? document.currentScript.parentNode : null;
-  if(!container) return;
+  var data = [
+    {q:"Q1 24",v:6.0},{q:"Q2 24",v:6.0},{q:"Q3 24",v:5.0},{q:"Q4 24",v:5.0},
+    {q:"Q1 25",v:4.0},{q:"Q2 25",v:4.0},{q:"Q3 25",v:3.0},{q:"Q4 25",v:3.0},
+    {q:"Q1 26",v:3.0},{q:"Q2 26",v:3.0},{q:"Q3 26",v:3.0}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
 
-  function el(tag,attrs){
-    var e = document.createElementNS("http://www.w3.org/2000/svg",tag);
-    for(var k in attrs) e.setAttribute(k,attrs[k]);
-    return e;
-  }
-  function txt(s,attrs){
-    var e = el("text",attrs);
-    e.textContent = s;
+  function el(tag, attrs){
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs){ e.setAttribute(k, attrs[k]); }
     return e;
   }
 
-  var margin = {left:130,right:60,top:30,bottom:50};
-  var W = 680, H = 300;
-  var PW = W - margin.left - margin.right; // 490
-  var PH = H - margin.top - margin.bottom; // 220
+  var n = data.length;
+  var vMax = 7;
+  var bw = (PW/n) * 0.62;
+  var gap = (PW/n) * 0.38;
+  function xp(i){ return margin.left + (i/n)*PW + gap/2; }
+  function yp(v){ return margin.top + PH - (v/vMax)*PH; }
 
-  // Horizontal bar chart: tax outcomes for $500K capital gain
-  // Scenarios:
-  // 1. Individual: first $250K at 1/2 inclusion, remainder at 2/3
-  //    Taxable income: 125,000 + 166,667 = 291,667 -> tax @ ~53% (top marginal ON) = ~154,583
-  // 2. CCPC: all $500K at 2/3 inclusion
-  //    Taxable income in corp: 333,333 -> corp tax ~26.5% = ~88,333
-  //    Then dividend tax on remainder: ~$140K additional (rough)
-  //    Total effective ~ $228,333 (approx combined corporate + personal)
-  // 3. TFSA: $0 tax
-  // Use bars for: Tax payable on $500K gain by account type
+  for (var g=0; g<=7; g++){
+    var gy = margin.top + PH - (g/vMax)*PH;
+    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
+    var ylab = el("text",{x:margin.left-6,y:gy+3,"text-anchor":"end","font-size":"8.5","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    ylab.textContent = g + "%";
+    svg.appendChild(ylab);
+  }
 
-  var bars = [
-    {label:"TFSA", tax:0, colour:"#3a7a55", note:"$0 tax"},
-    {label:"Individual\n(non-reg)", tax:154583, colour:"#4a5568", note:"~$154,600"},
-    {label:"CCPC\n(corp+div)", tax:228333, colour:"#8a3030", note:"~$228,300"}
-  ];
-  var maxTax = 260000;
+  var refY = yp(3);
+  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#2e7d32","stroke-dasharray":"3,3"}));
 
-  function xS(v){ return margin.left + (v / maxTax) * PW; }
+  for (var i=0;i<n;i++){
+    var barY = yp(data[i].v);
+    var barH = margin.top+PH - barY;
+    var isCurrent = (i === n-1);
+    var fill = isCurrent ? "#e8a825" : "#4a5568";
+    svg.appendChild(el("rect",{x:xp(i),y:barY,width:bw,height:barH,fill:fill}));
+    var xlab = el("text",{x:xp(i)+bw/2,y:margin.top+PH+14,"text-anchor":"middle","font-size":"7.5","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    xlab.textContent = data[i].q;
+    svg.appendChild(xlab);
+  }
 
-  var barH = 46;
-  var gapY = (PH - bars.length * barH) / (bars.length + 1);
+  var lastI = n-1;
+  var lastX = xp(lastI)+bw/2, lastY = yp(data[lastI].v);
+  var pillW = 50, pillH = 16;
+  var pillX = lastX - pillW/2;
+  var pillY = lastY - pillH - 8;
+  svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
+  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"2"}));
+  var pillText = el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  pillText.textContent = "3%, 5th Q";
+  svg.appendChild(pillText);
 
-  // Gridlines
-  var gridVals = [0, 50000, 100000, 150000, 200000, 250000];
-  gridVals.forEach(function(v){
-    var gx = xS(v);
-    svg.appendChild(el("line",{x1:gx,x2:gx,y1:margin.top,y2:margin.top+PH,stroke:"#ececec","stroke-width":"0.5"}));
-    var label = v === 0 ? "$0" : ("$" + (v/1000).toFixed(0) + "K");
-    svg.appendChild(txt(label,{x:gx,y:margin.top+PH+14,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  });
-
-  // Axis label
-  svg.appendChild(txt("Estimated tax on $500,000 capital gain (approximate, ON)",{x:margin.left+PW/2,y:H-8,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-
-  bars.forEach(function(b,i){
-    var barY = margin.top + gapY + i*(barH + gapY);
-    var barW = xS(b.tax) - margin.left;
-    if(barW < 0) barW = 0;
-
-    // Bar
-    svg.appendChild(el("rect",{x:margin.left,y:barY,width:barW,height:barH,fill:b.colour,opacity:"0.85"}));
-
-    // Label left
-    var labelLines = b.label.split("\n");
-    labelLines.forEach(function(line,li){
-      svg.appendChild(txt(line,{
-        x:margin.left-8,
-        y:barY + barH/2 + (li - (labelLines.length-1)/2)*13,
-        "text-anchor":"end",
-        "font-size":"10",
-        "font-weight":"700",
-        "fill":"#333",
-        "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"
-      }));
-    });
-
-    // Value annotation
-    var noteX = Math.max(margin.left + barW + 6, margin.left + 8);
-    if(b.tax === 0){
-      svg.appendChild(txt("$0 tax (fully sheltered)",{
-        x:noteX,
-        y:barY + barH/2 + 4,
-        "font-size":"9",
-        "fill":"#3a7a55",
-        "font-weight":"700",
-        "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"
-      }));
-    } else {
-      svg.appendChild(txt(b.note,{
-        x:noteX,
-        y:barY + barH/2 + 4,
-        "font-size":"9",
-        "fill":"#444",
-        "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"
-      }));
-    }
-  });
-
-  // Gold pill on highest-tax bar (CCPC)
-  var ccpcBarY = margin.top + gapY + 2*(barH + gapY);
-  var ccpcBarW = xS(228333) - margin.left;
-  var pillW = 68, pillH = 16;
-  var pillX = margin.left + ccpcBarW - pillW - 6;
-  if(pillX < margin.left) pillX = margin.left + ccpcBarW + 4;
-  var pillY = ccpcBarY + barH/2 - pillH/2;
-  svg.appendChild(el("circle",{cx:margin.left+ccpcBarW,cy:ccpcBarY+barH/2,r:4,fill:"#8a3030"}));
-  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"3"}));
-  svg.appendChild(txt("2/3 inclusion",{x:pillX+pillW/2,y:pillY+pillH/2+3.5,"text-anchor":"middle","font-size":"8.5","font-weight":"700","fill":"#111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-
-  // Axis lines
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+PH,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left,y1:margin.top,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
-
-  container.appendChild(svg);
+  var container = document.currentScript ? document.currentScript.parentNode : null;
+  if (container) container.appendChild(svg);
 })();
 </script>
 </div>
-<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: CRA capital gains inclusion rate rules, 2024 federal budget; Ontario combined corporate and personal tax rates, 2026. Estimates only; individual circumstances vary. &nbsp;|&nbsp; hdq.ca</div>
+<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: Canada Revenue Agency, prescribed interest rates by quarter, 2024 to 2026. &nbsp;|&nbsp; hdq.ca</div>
 </div>
 </div>
-<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">The chart illustrates the approximate tax impact of a $500,000 capital gain on an energy position across three account types. CCPC holders face the two-thirds inclusion rate with no annual buffer, producing the highest combined corporate-plus-personal tax burden. Individual non-registered holders benefit from the $250,000 buffer at the legacy one-half rate. TFSA dispositions are tax-free regardless of gain size.</p>
-
-<h2>The GoC 5-Year Yield and the Mortgage Renewal Context</h2>
-
-<p>The GoC 5-year bond yield eased to 3.01% on June 15, down three basis points on the session, as the ceasefire deal reduced inflation expectations tied to oil. The yield has fallen 34 basis points over the past month as ceasefire speculation built. For the 1.15 million Canadian households renewing mortgages in 2026, according to CMHC data, this matters directly: the 5-year fixed mortgage rate is priced off the GoC 5-year yield, and a sustained decline in that yield would compress the renewal rate environment.</p>
-
-<p>Fixed-rate holders renewing in 2026 are still facing average payment increases of approximately 20-26%, according to calculations from Ratehub.ca, because the comparison is against 2021 pandemic-era rates, not against 2025 rates. But the direction of the 5-year yield matters for clients in the planning window. A household that took a 5-year fixed at 2% in 2021 and is renewing in Q3 or Q4 of 2026 is renewing into a meaningfully different environment if the 5-year yield settles at 3.0% rather than 3.5%.</p>
-
-<p>The May CPI release on June 22 will be the first to use updated 2025 basket weights. Statistics Canada updated those weights on June 15. The shelter component, which currently carries approximately 30% of the CPI basket weight, may shift if the new basket reflects changes in Canadian household spending patterns since the previous 2022 basket update. The direction of that shift, and its effect on headline CPI, will be the first read the BoC has through an updated lens. If the May print comes in materially below the 2.8% April headline, the market will reprice the second half of the BoC''s hold period, with potential knock-on effects on fixed mortgage rates before the summer renewal wave peaks.</p>',
+<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">The rate fell from 6% in early 2024 to 3% by the third quarter of 2025 and has held there for five consecutive quarters. Each step down reflects the 90-day T-bill average from the prior quarter''s first month.</p>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
-<p>Business-owner clients holding energy sector positions inside a CCPC are likely feeling two things simultaneously: relief that the war appears to be ending, and unease about what the oil price drop means for a position they may have added specifically to benefit from the Hormuz disruption. They are not thinking about inclusion rates or CDA balances. They are thinking about whether they should sell. The advisor''s job in this conversation is to redirect the question from "should I sell?" to "what is the full picture before we decide?" without making the client feel lectured or slowed down when they want to act.</p>
+<p>Business owner clients and households with a meaningful income gap between spouses are not anxious about this story, they are simply unaware of it. The prescribed rate holding steady reads as a non-event unless an advisor connects it explicitly to the planning window it represents and the risk that the window narrows.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">What to Say</div>
-<div class="script-box">Before you do anything, let me ask you where this position is held. If it is inside your corporation, we need to look at your CDA balance and walk through the inclusion rate math before executing any sale. The two-thirds rate means the tax cost of this decision is meaningfully higher than it would be for a position held personally, and there are planning steps we can take that change the outcome significantly. If it is in your TFSA, the conversation is different: you can sell without a tax trigger, but we need to think about contribution room. If it is in a non-registered personal account, the $250,000 annual buffer at the legacy inclusion rate may apply to part of the gain. None of these are decisions to make quickly. Give me 48 hours to pull the full picture before we do anything.</div>
+<div class="script-box">"The CRA just confirmed the rate used for family income-splitting loans is staying at 3% for another quarter, the fifth quarter in a row at that level. That matters because once you set up a loan at this rate, it stays locked in for as long as the loan is outstanding, even if the rate goes up later. Today''s Fed decision had a firmer tone than expected, and that is exactly the kind of signal that can eventually push this rate higher when the CRA recalculates in September. If this structure makes sense for your situation, given the income gap between you and [spouse or family member], the case for setting it up now rather than waiting is stronger than it was last week. Let''s look at whether the numbers work for you specifically."</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Who''s Affected</div>
-<p><strong>High impact:</strong> Incorporated clients holding energy names or ETFs inside a CCPC, particularly those who added positions in the February-April window and now sit on gains. The two-thirds inclusion rate and the potential CDA opportunity make this a high-priority planning review.</p>
-<p><strong>Mixed impact:</strong> Clients with energy positions in non-registered personal accounts. The $250,000 annual buffer provides some protection, but clients above that threshold on the gain face the two-thirds rate on the excess. The buffer resets annually, so timing across calendar years is a planning lever.</p>
-<p><strong>Potential benefit:</strong> Clients with mortgage renewals in Q3 or Q4 2026. The GoC 5-year yield has fallen 34 basis points in the past month; if the ceasefire-driven oil price decline holds and May CPI on June 22 confirms a deceleration, the renewal rate environment in the back half of the year will be more favourable than it appeared a month ago.</p>
+<p><strong>High impact:</strong> Incorporated business owners with retained earnings and a lower-income spouse or adult child who could hold investments at a lower marginal rate.</p>
+<p><strong>Mixed impact:</strong> Households already running a prescribed rate loan from an earlier quarter, who benefit from their existing locked-in rate but should confirm the January 30 interest payment is on track.</p>
+<p><strong>Potential benefit:</strong> Clients who have been considering this structure but had not moved on it, for whom the combination of a low rate and visible upside risk is a concrete reason to act this quarter.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Action Checklist</div>
-<div class="checklist-item">Identify all clients with energy sector exposure held inside a CCPC. Pull CDA balances or flag for accountant review before any disposition conversation proceeds.</div>
-<div class="checklist-item">For clients with non-registered personal energy positions, calculate whether the gain exceeds the $250,000 annual buffer and flag the portion subject to the two-thirds inclusion rate.</div>
-<div class="checklist-item">Pull the list of clients with mortgage renewals in Q3 or Q4 2026. Flag for a proactive call: the bond yield movement this week changes the renewal rate outlook at the margin, and a client who locked a renewal rate in April before the yield decline may benefit from a rate renegotiation conversation.</div>
-<div class="checklist-item">Note June 22 in your calendar as the May CPI release date. The first print under the updated basket weights will affect bond yield direction and therefore fixed mortgage rate pricing.</div>
-<div class="checklist-item">Do not execute any energy sector disposition for a corporate client without confirming the CDA balance and walking through the capital dividend election option.</div>
+<div class="checklist-item">Identify incorporated clients and high income-gap households who have not yet implemented a prescribed rate loan structure</div>
+<div class="checklist-item">For existing prescribed rate loans, confirm the January 30 interest payment process is documented and on a tracked calendar, not left to memory</div>
+<div class="checklist-item">Run the specific dollar benefit for candidate clients using the 3% rate and their actual marginal rate gap, rather than describing the strategy in the abstract</div>
+<div class="checklist-item">Flag any client currently mid-decision on this structure for a same-month follow-up given the Q4 rate uncertainty</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Follow-Up Email Template</div>
 <div class="email-box" id="respond-email">
-<strong>Subject:</strong> Your energy position and the tax picture before any decision<br><br>
+<strong>Subject:</strong> The prescribed rate window and your planning<br><br>
 Hi [Client Name],<br><br>
-Following up on the energy sector move this week. Before we make any decision on your position, I want to walk through the full tax picture with you.<br><br>
-The key question is where the position is held. Inside your corporation, the capital gains inclusion rate is two-thirds, with no annual buffer. That changes the math on any sale meaningfully compared to a personal non-registered account. We also need to look at your CDA balance, because the non-taxable one-third of any gain can be extracted as a capital dividend, which is a planning step worth taking before the sale if your accountant confirms the balance is available.<br><br>
-I am pulling the details now and will be in touch within 48 hours with a clear recommendation. Please hold off on any action until we have spoken.<br><br>
+Following up on our conversation about the CRA''s prescribed rate holding at 3% for the third quarter. As discussed, this rate locks in for the life of any loan set up while it is in effect, which is what makes the timing relevant given today''s Fed tone.<br><br>
+I''ll put together the specific numbers for your situation so we can decide whether this is worth moving on this quarter.<br><br>
 [Your Name]<br><br>
-<em>This communication is for educational purposes only and does not constitute personalized investment advice. Please consult your tax advisor regarding your specific situation.</em>
+<em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(''respond-email'', this)">Copy email</button>
 </div>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">Client Profiles to Target</div>
-<p><strong>Incorporated business owners with investment accounts:</strong> The intersection of the energy sector correction, the two-thirds CCPC inclusion rate, and the CDA planning opportunity is a highly specific situation that most clients will not navigate correctly without an advisor. Business owners who are managing their corporate investment portfolios without current professional guidance are the highest-priority prospect.</p>
-<p><strong>High-income professionals with non-registered energy exposure:</strong> Dentists, physicians, lawyers, and engineers who hold personal non-registered accounts with energy positions and are not clear on how the $250,000 buffer applies to their specific gain position.</p>
-<p><strong>Households with 2026-2027 mortgage renewals:</strong> The GoC 5-year bond yield movement this week changes the renewal rate outlook. A household that renewed early into a higher rate may have recourse; one that has not yet renewed has a more favourable environment than a month ago. Either scenario opens a planning conversation.</p>
+<p><strong>Business owners with a holding company or significant retained earnings:</strong> prospects who have never been shown the prescribed rate loan structure and are sitting on corporate cash with no income-splitting plan in place.</p>
+<p><strong>Dual-income households with a large marginal rate gap:</strong> couples where one spouse is in a materially higher tax bracket and investable assets sit entirely in that spouse''s name.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Opening Line</div>
-<div class="script-box">I work with a number of incorporated professionals who hold investment portfolios inside their corporations, and this week''s energy sector correction has created a specific planning question that a lot of them are not set up to answer on their own. Are you in a similar situation?</div>
+<div class="script-box">"The CRA just confirmed the rate for family income-splitting loans is staying at 3% for another quarter, the lowest sustained stretch in years, and I''m reaching out to a few people for whom that structure could make a real difference."</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
-<p>The capital gains inclusion rate, the CDA election, the account-type question, and the mortgage renewal timing are all interconnected in a way that is genuinely difficult to navigate without someone who sees the full picture. A business owner who calls their broker and says "sell my Suncor" and then calls their accountant at tax time will likely discover that the decision was made without key information that would have changed the outcome. The advisor who is in the room before that call is made is providing a fundamentally different service than the one who reviews the tax slip in February.</p>
+<p>A DIY investor or unadvised business owner has almost certainly never heard of a prescribed rate loan, let alone set one up, because it requires coordination between a corporate or personal lender, a borrower, an annual interest payment deadline, and a CRA-published rate that changes quarterly. The advisor''s value is not explaining that the rate is 3%. It is identifying which specific clients have the income gap that makes the structure worth the administrative discipline it demands.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
-<p>Do you hold any of your investment portfolio inside a corporation, and do you know what your capital dividend account balance is?</p>
-<p>If you have energy positions you are thinking about reducing, have you reviewed the tax treatment across your different account types before deciding where to sell first?</p>
-<p>When is your mortgage up for renewal, and have you been watching what bond yields have done this week?</p>
-<p>Who is currently advising you on the interaction between your investment portfolio and your corporate tax planning?</p>
+<p>Has anyone ever walked you through how a prescribed rate loan works for splitting investment income with a lower earning spouse or adult child?</p>
+<p>Roughly how large is the gap between your marginal tax rate and theirs, and how much investable capital would actually move into that structure?</p>
+<p>If a rate this low is not available again for several years, how would that change your timeline for setting this up?</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
-<strong>Subject:</strong> The energy correction, corporate accounts, and a planning question<br><br>
-Hi [Prospect Name],<br><br>
-The energy sector sold off sharply this week as the US-Iran ceasefire was signed. For investors holding Canadian energy positions inside a corporation, this creates a specific tax planning question that is easy to get wrong if you are moving quickly.<br><br>
-The capital gains inclusion rate for corporations is two-thirds, with no annual buffer, and there are planning steps available around the capital dividend account that can change the outcome of any disposition meaningfully. Most of the business owners I work with are not thinking about these steps when they get the urge to act on a down day.<br><br>
-If you hold energy investments inside a CCPC and are thinking through your options, I would be glad to walk through the picture with you. It is the kind of conversation that is worth having before you execute, not after.<br><br>
+<strong>Subject:</strong> A 3% rate that splits income with a family member<br><br>
+Hi [Name],<br><br>
+The CRA just confirmed the prescribed rate stays at 3% through September, the fifth straight quarter at that level. This is the rate used in family income-splitting loans, and a loan set up now locks that rate in for the life of the loan even if it rises later.<br><br>
+If you have a meaningful income gap with a spouse or adult child, or retained earnings sitting in a corporation, this is worth fifteen minutes to see if the numbers work for you.<br><br>
 [Your Name]<br><br>
-<em>This communication is for educational purposes only and does not constitute personalized investment advice. Please consult your tax advisor regarding your specific situation.</em>
+<em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
-  '[{"value":"2/3","label":"CCPC capital gains inclusion"},{"value":"1.15M","label":"Mortgages renewing 2026"},{"value":"3.01%","label":"GoC 5-year yield Jun 15"},{"value":"Jun 22","label":"May CPI release date"}]',
-  'tax-030.jpg',
-  'The intersection of the energy price correction, the capital gains inclusion rate for corporations, and the mortgage renewal wave arriving in the back half of 2026 compresses several planning conversations into the same week. Photo: iStock.',
+  '[{"value":"3%","label":"Prescribed rate, Q3 2026, fifth straight quarter"},{"value":"7%","label":"CRA arrears rate on overdue tax balances"},{"value":"Jan 30","label":"Annual interest payment deadline"},{"value":"$6,000","label":"Taxable benefit on unpaid $200K shareholder loan"}]',
+  'tax-031.jpg',
+  'A planning window built on a quarterly number that moves with the same bond yields a central bank can shift in an afternoon. Photo: iStock.',
   6,
-  '2026-06-17T09:03:00',
-  'entity:cra,entity:ccpc,entity:tfsa,entity:rrsp,entity:goc-5y,entity:boc,theme:capital-gains-rate,theme:cdn-housing-renewal-wall,theme:hormuz-disruption,theme:inflation-canada,stance:base-case',
+  '2026-06-17T14:25:00',
+  'entity:cra,entity:prescribed-rate-loan,entity:ccpc,entity:goc-2y,theme:boc-rate-path,stance:base-case',
   1,
-  'CRA, Capital Gains Inclusion Rate, 2024 Federal Budget (Bill C-69). CMHC, Mortgage Renewal Projections 2026, via Ratehub.ca and immigrationnewscanada.ca. Ratehub.ca, 2026 mortgage renewal payment increase estimates (fixed-rate: +20-26%), May 2026. Statistics Canada, Consumer Price Index, April 2026, released May 19, 2026 (CPI 2.8%). Statistics Canada, Updated CPI basket weights announcement, June 15, 2026. Bank of Canada, Benchmark Bond Yields, GoC 5-year at 3.01% June 15, 2026. TradingEconomics, Canada 5 Year Bond Yield, June 15, 2026. True North Mortgage, How Government Bond Yields Relate to Mortgage Rates, updated June 10, 2026. TD Economics, Bank of Canada Interest Rate Announcement, June 10, 2026. | hdq.ca'
+  'Canada Revenue Agency, prescribed interest rates, Q3 2026. Advisor.ca, CRA prescribed rate announcement, June 2026. Income Tax Regulations, section 4301. Federal Reserve, FOMC statement, June 17 2026. hdq.ca'
 );
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/17/the-boc-hold-meets-its-first-disinflationary-signal',
+  '2026/06/17/warsh-first-decision-dot-plot-boc-transmission',
   'economy', 'article',
-  'The BoC Hold Meets Its First Disinflationary Signal',
-  'The US-Iran ceasefire removes the primary inflation risk the Bank of Canada has been managing around since February. The June 22 CPI print, the first under updated basket weights, will tell the Bank whether its "look-through" on energy inflation was vindicated or whether pass-through has already embedded in core.',
+  'Kevin Warsh''s First Decision Was a Hold. His Dot Plot Was the Real Signal, and It Pointed the Wrong Way for Canada.',
+  'The Fed kept rates at 3.50% to 3.75% in new Chair Warsh''s debut meeting, exactly as priced. The updated projections showing several officials now leaning toward a 2026 hike change the transmission math the Bank of Canada has to work with in July.',
   '<ul>
-<li><strong>The Bank of Canada held at 2.25% on June 10</strong><span> for the fifth consecutive decision, framing the hold as balancing "economic weakness and rising inflation" in a rare two-directional bind. That bind is now structurally different following the June 15 ceasefire.</span></li>
-<li><strong>WTI crude fell more than 5% on June 15</strong><span> to near $80, down roughly 23% from the April peak. The BoC''s April MPR assumed Brent at approximately $90 per barrel through Q2; the ceasefire-driven price path is now running materially below that baseline.</span></li>
-<li><strong>Canada''s Q1 GDP contracted 0.1% annualized,</strong><span> weaker than the BoC''s April projection. The economy remains in excess supply, which has been the primary argument for holding rather than hiking even as headline inflation touched 2.8% in April.</span></li>
-<li><strong>May CPI releases June 22,</strong><span> the first print using updated 2025 basket weights. Shelter carries approximately 30% of the basket; a shift in basket methodology combined with lower energy prices could produce a headline print materially below April''s 2.8%.</span></li>
-<li><strong>Core inflation measures moved to around 2%</strong><span> as of the June 10 BoC statement, with limited evidence of broad-based pass-through from energy prices to other components. That is the signal the Bank has been waiting for.</span></li>
+<li><strong>The Fed held its target range at 3.50% to 3.75% for a fourth straight meeting,</strong><span> the outcome nearly the entire market had priced in advance.</span></li>
+<li><strong>The updated Summary of Economic Projections showed several officials now leaning toward a 2026 hike,</strong><span> a meaningful shift from March''s median projection of a cut.</span></li>
+<li><strong>The two-year US Treasury yield rose within minutes of the release,</strong><span> the clearest real-time signal that markets read the tone as firmer than expected.</span></li>
+<li><strong>The Bank of Canada holds its own rate at 2.25% and meets next on July 15,</strong><span> two weeks ahead of the Fed''s next decision rather than after it.</span></li>
+<li><strong>A firmer Fed path narrows the room Macklem has to manoeuvre independently,</strong><span> through the bond yield and currency channels rather than through any formal policy linkage.</span></li>
 </ul>',
-  '<p>The Bank of Canada''s June 10 statement was careful, almost deliberately flat. Governor Tiff Macklem described the hold as a balance between competing risks: a soft economy in excess supply on one side, and oil-driven headline inflation running near 3% on the other. The statement noted that core inflation had moved to around 2% and that broad-based pass-through from energy prices had been limited. That framing was designed to preserve optionality: neither a cut nor a hike was pre-committed. The ceasefire signed June 15 has not resolved that optionality, but it has tilted the balance of risks in a specific and measurable direction.</p>
-
-<p>The primary inflation risk the Bank has been managing around since February was an oil price shock sustained long enough to embed in core. That is the distinction Macklem drew repeatedly: the Bank would "look through" temporary energy price increases but would not allow them to become persistent inflation. The implicit bet in five consecutive holds was that the disruption would resolve before pass-through materialized in the components the Bank actually targets. The ceasefire is the first concrete evidence that bet may pay off.</p>
-
-<h2>What the Oil Price Path Means for the BoC''s June 22 Read</h2>
-
-<p>The BoC''s April Monetary Policy Report assumed Brent crude prices would average approximately $90 per barrel through Q2 2026 and gradually decline toward $75 by mid-2027. WTI is currently trading near $80 and has been falling since mid-April. The gap between the MPR oil assumption and the actual price path is already significant, and if the ceasefire holds and the Strait of Hormuz reopens on schedule, the trajectory is likely to widen further.</p>
-
-<p>The practical implication for the Bank''s inflation forecast is that the energy contribution to headline CPI, which drove the April print to 2.8% from 2.4% in March, will begin unwinding. Energy prices rose 3.9% year over year in April; that comparison base will face a much tougher lap as the 2026 oil price peak cycles through the 12-month calculation. Statistics Canada''s May CPI release on June 22 will be the first read on how quickly that unwinding is occurring, and it will arrive using updated 2025 basket weights that may also shift the headline independently of price movements.</p>
-
-<p>The critical variable is not headline CPI. It is the BoC''s preferred core measures: CPI-trim and CPI-median. As of the June 10 statement, both had moved to around 2%, and the share of CPI components growing above 3% was described as close to its historical average. TD Economics noted after the June 10 decision that the growth backdrop, not inflation, is the primary risk the Bank is managing. RBC''s Claire Fan observed that Macklem used neutral language about the economic slack picture, signalling that the Bank is not yet ready to declare victory on inflation but is increasingly confident the worst of the energy pass-through risk has passed.</p>
-
+  '<p>The Federal Reserve held its target rate at 3.50% to 3.75% Wednesday, the outcome roughly 97% of futures pricing had assigned in advance. The number was never the story. New Chair Kevin Warsh''s first meeting was always going to be read through the Summary of Economic Projections and the press conference that followed, and both leaned firmer than the market had been positioned for through the spring.</p>
+<h2>What Actually Moved in the Dot Plot</h2>
+<p>The March projections showed a median FOMC member expecting one 25 basis point cut before the end of 2026. Wednesday''s update showed a meaningfully different committee. Bank of America''s economics team had flagged ahead of the meeting that at least three of the twelve voting members might project a hike rather than a cut. The actual release went further: nine of eighteen officials submitting forecasts now see rates rising in 2026, not falling.</p>
+<p>Warsh himself reportedly withheld his own dot, consistent with his stated preference for reducing the weight markets place on individual policymaker signals. That omission did not soften the read. A committee majority leaning toward higher rates, delivered in a new chair''s first meeting, is a harder signal than the rate decision itself, precisely because it was the one variable the market had not fully priced.</p>
+<h2>The Inflation Data Behind the Shift</h2>
+<p>The mechanism is not subtle. US headline CPI rose to 4.2% year over year in May, the highest reading since April 2023, driven substantially by energy prices during the period when the Iran conflict had pushed oil well above its pre-war range. A resilient labour market, with unemployment near 4.3% and solid May job gains, removed the second argument for easing that the Fed might otherwise have leaned on.</p>
+<p>That combination, persistent inflation plus a labour market showing no urgency to loosen policy for, is what moved nine officials toward a hike projection rather than the cut path the same committee had signalled in March. The market reaction confirmed the read in real time. The two-year US Treasury yield rose roughly eleven basis points within minutes of the statement, the ten-year added about four basis points, and the S&P 500 turned negative inside the first five minutes of trading after the release.</p>
+<h2>What This Changes for the Bank of Canada''s July Calculus</h2>
+<p>The Bank of Canada held its own policy rate at 2.25% on June 10, a full week before the Fed''s decision, extending a hold that has now run five consecutive meetings. Governor Tiff Macklem''s remarks at that meeting were already hedged in both directions. He noted that a continuation of Middle East tensions and sustained higher energy prices could force the Bank toward consecutive rate increases, while a deeper-than-expected trade slowdown with the United States could just as easily push the next move lower.</p>
+<p>The Fed does not set Bank of Canada policy. There is no formal linkage. But the transmission channel that matters operates through bond yields and the currency, not through any coordination between the two institutions. A firmer Fed path that lifts US yields tends to widen the yield gap with Canadian bonds, which puts downward pressure on the Canadian dollar unless the Bank of Canada matches some of that firmness with its own tone.</p>
+<p>The loonie was already trading near a seven-month low against the US dollar heading into Wednesday''s announcement, weighed down by fading oil-price support after the prospective Iran settlement reduced the energy premium that had been propping up CAD. A Fed that just signalled less room to ease than markets expected adds a second source of pressure on the same currency pair, arriving exactly four weeks before Macklem''s next scheduled decision.</p>
+<h2>Why July 15 Is Not a Simple Read-Through</h2>
+<p>The Bank of Canada''s July decision is shaped first by Canadian data: the next Labour Force Survey, the next CPI print, and whatever the Strait of Hormuz reopening actually does to energy prices once the scheduled Friday signing in Geneva takes effect. Macklem''s own framing, weak growth balanced against elevated geopolitical risk and a trade relationship still working through CUSMA renegotiation, was built on a wider set of inputs than what the Fed does.</p>
+<p>What changed Wednesday is the backdrop those Canadian inputs will be read against. A Bank of Canada considering a hold, or even a modest easing bias, now does so knowing the Fed has signalled it may be the one cutting room in either direction is narrowing in, not the other way around. That asymmetry is the genuine takeaway from Warsh''s debut, not the headline rate, which nobody seriously expected to move.</p>
+<p>The Fed funds target range has stepped down twice since late 2025 before flattening into the current four-meeting hold, and the dot plot shift Wednesday is the first sign the next step could run the other direction.</p>
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">CANADA CPI vs BOC POLICY RATE / HEADLINE AND HOLD</span>
-<span style="font-size:20px;font-weight:700;color:#111;">2.80%</span>
-<span style="font-size:13px;color:#c0392b;">&#9650; CPI Apr 2026</span>
-<span style="font-size:11px;color:#888;margin-left:auto;">Monthly &nbsp;|&nbsp; Jan 2025 - Jun 2026</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">FED FUNDS TARGET, UPPER BOUND</span>
+<span style="font-size:20px;font-weight:700;color:#111;">3.75%</span>
+<span style="font-size:13px;color:#4a5568;">&#9654; HOLD</span>
+<span style="font-size:11px;color:#888;margin-left:auto;">PER MEETING &nbsp;|&nbsp; OCT 2025 TO JUN 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
 <script>
 (function(){
-  var container = document.currentScript ? document.currentScript.parentNode : null;
-  if(!container) return;
+  var data = [
+    {m:"Oct 25",v:4.00},{m:"Dec 25",v:3.75},{m:"Jan 26",v:3.75},{m:"Mar 26",v:3.75},
+    {m:"Apr 26",v:3.75},{m:"Jun 26",v:3.75}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
 
-  function el(tag,attrs){
-    var e = document.createElementNS("http://www.w3.org/2000/svg",tag);
-    for(var k in attrs) e.setAttribute(k,attrs[k]);
-    return e;
-  }
-  function txt(s,attrs){
-    var e = el("text",attrs);
-    e.textContent = s;
+  function el(tag, attrs){
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs){ e.setAttribute(k, attrs[k]); }
     return e;
   }
 
-  var margin = {left:54,right:56,top:18,bottom:46};
-  var W = 680, H = 300;
-  var PW = W - margin.left - margin.right;
-  var PH = H - margin.top - margin.bottom;
-
-  // CPI monthly Jan 2025 - Apr 2026 (StatCan releases)
-  // BoC rate for same period (step changes)
-  var data = [
-    {m:"Jan 25", cpi:1.9, rate:3.25},
-    {m:"Feb 25", cpi:2.6, rate:3.00},
-    {m:"Mar 25", cpi:2.3, rate:2.75},
-    {m:"Apr 25", cpi:1.7, rate:2.75},
-    {m:"May 25", cpi:1.8, rate:2.75},
-    {m:"Jun 25", cpi:1.9, rate:2.50},
-    {m:"Jul 25", cpi:2.0, rate:2.50},
-    {m:"Aug 25", cpi:2.0, rate:2.50},
-    {m:"Sep 25", cpi:1.6, rate:2.25},
-    {m:"Oct 25", cpi:2.0, rate:2.25},
-    {m:"Nov 25", cpi:1.9, rate:2.25},
-    {m:"Dec 25", cpi:2.2, rate:2.25},
-    {m:"Jan 26", cpi:2.2, rate:2.25},
-    {m:"Feb 26", cpi:1.8, rate:2.25},
-    {m:"Mar 26", cpi:2.4, rate:2.25},
-    {m:"Apr 26", cpi:2.8, rate:2.25}
-  ];
   var n = data.length;
+  var vMin = 3.4, vMax = 4.2;
+  function xp(i){ return margin.left + (i/(n-1))*PW; }
+  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
 
-  var minV = 1.0, maxV = 4.0;
-  function xS(i){ return margin.left + (i/(n-1))*PW; }
-  function yS(v){ return margin.top + ((maxV-v)/(maxV-minV))*PH; }
-
-  // Gridlines
-  [1.5,2.0,2.5,3.0,3.5].forEach(function(v){
-    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:yS(v),y2:yS(v),stroke:"#ececec","stroke-width":"0.5"}));
-    svg.appendChild(txt(v.toFixed(1)+"%",{x:margin.left-6,y:yS(v)+3,"text-anchor":"end","font-size":"8.5","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  });
-
-  // 2% target band
-  var bandTop = yS(3.0);
-  var bandBot = yS(1.0);
-  svg.appendChild(el("rect",{x:margin.left,y:yS(3.0),width:PW,height:yS(1.0)-yS(3.0),fill:"#2e7d32",opacity:"0.04"}));
-  svg.appendChild(txt("1-3% target band",{x:margin.left+4,y:yS(2.95),"font-size":"7","font-weight":"700","fill":"#2e7d32","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-
-  // 2% midpoint reference
-  var midY = yS(2.0);
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:midY,y2:midY,stroke:"#2e7d32","stroke-dasharray":"3,3","stroke-width":"1"}));
-
-  // BoC rate step line (right axis, same scale for visual)
-  // Draw as a step line
-  for(var i=0;i<n-1;i++){
-    var x1=xS(i),x2=xS(i+1);
-    var y1=yS(data[i].rate),y2=yS(data[i+1].rate);
-    // Horizontal segment at current rate
-    svg.appendChild(el("line",{x1:x1,x2:x2,y1:y1,y2:y1,stroke:"#6b7280","stroke-width":"1.5","stroke-dasharray":"4,2"}));
-    // Vertical drop at step change
-    if(data[i].rate !== data[i+1].rate){
-      svg.appendChild(el("line",{x1:x2,x2:x2,y1:y1,y2:y2,stroke:"#6b7280","stroke-width":"1.5","stroke-dasharray":"4,2"}));
-    }
+  for (var g=0; g<=4; g++){
+    var gy = margin.top + (g/4)*PH;
+    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
+    var gv = (vMax - (g/4)*(vMax-vMin)).toFixed(2);
+    var ylab = el("text",{x:margin.left-6,y:gy+3,"text-anchor":"end","font-size":"8.5","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    ylab.textContent = gv + "%";
+    svg.appendChild(ylab);
   }
-  // Last segment
-  svg.appendChild(el("line",{x1:xS(n-2),x2:xS(n-1),y1:yS(data[n-2].rate),y2:yS(data[n-2].rate),stroke:"#6b7280","stroke-width":"1.5","stroke-dasharray":"4,2"}));
 
-  // Rate label right side
-  svg.appendChild(txt("BoC rate",{x:margin.left+PW+4,y:yS(2.25)+4,"font-size":"7.5","fill":"#6b7280","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  svg.appendChild(txt("2.25%",{x:margin.left+PW+4,y:yS(2.25)+15,"font-size":"7.5","fill":"#6b7280","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  var stepD = "M" + xp(0) + "," + yp(data[0].v) + " ";
+  for (var i=1;i<n;i++){
+    stepD += "L" + xp(i) + "," + yp(data[i-1].v) + " ";
+    stepD += "L" + xp(i) + "," + yp(data[i].v) + " ";
+  }
+  svg.appendChild(el("path",{d:stepD, fill:"none", stroke:"#4a5568", "stroke-width":"1.8"}));
 
-  // CPI line
-  var pts = data.map(function(d,i){ return xS(i)+","+yS(d.cpi); }).join(" ");
-  svg.appendChild(el("polyline",{points:pts,fill:"none",stroke:"#4a5568","stroke-width":"2"}));
-  data.forEach(function(d,i){
-    svg.appendChild(el("circle",{cx:xS(i),cy:yS(d.cpi),r:"2.5",fill:"#4a5568"}));
-  });
+  var cutIdx = 1;
+  svg.appendChild(el("circle",{cx:xp(cutIdx),cy:yp(data[cutIdx].v),r:3,fill:"#8a3030"}));
+  var cutLabel = el("text",{x:xp(cutIdx),y:yp(data[cutIdx].v)+16,"text-anchor":"middle","font-size":"7","font-weight":"700","fill":"#8a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  cutLabel.textContent = "DEC CUT";
+  svg.appendChild(cutLabel);
 
-  // CPI label
-  svg.appendChild(txt("CPI",{x:margin.left+4,y:yS(data[0].cpi)-6,"font-size":"7.5","fill":"#4a5568","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  var dotIdx = n-1;
+  var dotX = xp(dotIdx), dotY = yp(data[dotIdx].v);
+  svg.appendChild(el("circle",{cx:dotX,cy:dotY,r:5,fill:"none",stroke:"#8a3030","stroke-width":"1.5","stroke-dasharray":"2,2"}));
+  var arrowLabel = el("text",{x:dotX-8,y:dotY-12,"text-anchor":"end","font-size":"7","font-weight":"700","fill":"#8a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  arrowLabel.textContent = "9 OF 18 SEE A HIKE NEXT";
+  svg.appendChild(arrowLabel);
 
-  // Event marker: conflict begins Feb 28 2026 = index 13
-  var confIdx = 13;
-  var cx = xS(confIdx);
-  svg.appendChild(el("line",{x1:cx,x2:cx,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560",opacity:"0.5","stroke-dasharray":"2,3","stroke-width":"1"}));
-  svg.appendChild(txt("Conflict",{x:cx+3,y:margin.top+18,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  svg.appendChild(txt("Feb 28",{x:cx+3,y:margin.top+28,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-
-  // Gold pill on Apr 2026 CPI (last point, highest)
-  var lastI = n-1;
-  var lastX = xS(lastI);
-  var lastY = yS(data[lastI].cpi);
-  var pillW = 54, pillH = 16;
+  var lastX = xp(n-1), lastY = yp(data[n-1].v);
+  var pillW = 50, pillH = 16;
   var pillX = lastX - pillW - 6;
   var pillY = lastY - pillH/2;
-  svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
-  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"3"}));
-  svg.appendChild(txt("2.80% Apr",{x:pillX+pillW/2,y:pillY+pillH/2+3.5,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":"#111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  if (pillX < margin.left) pillX = lastX + 6;
+  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"2"}));
+  var pillText = el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  pillText.textContent = "3.75%";
+  svg.appendChild(pillText);
 
-  // X-axis labels (every 3 months)
-  [0,3,6,9,12,15].forEach(function(i){
-    if(i<n){
-      svg.appendChild(txt(data[i].m,{x:xS(i),y:H-margin.bottom+14,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-    }
-  });
+  for (var i=0;i<n;i++){
+    var xlab = el("text",{x:xp(i),y:margin.top+PH+14,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    xlab.textContent = data[i].m;
+    svg.appendChild(xlab);
+  }
 
-  // Axis lines
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+PH,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left,y1:margin.top,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
-
-  container.appendChild(svg);
+  var container = document.currentScript ? document.currentScript.parentNode : null;
+  if (container) container.appendChild(svg);
 })();
 </script>
 </div>
-<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: Statistics Canada CPI releases Jan 2025 to Apr 2026; Bank of Canada overnight rate decisions. BoC rate shown as step line against left axis for comparison. &nbsp;|&nbsp; hdq.ca</div>
+<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: Federal Reserve, FOMC target range by meeting, October 2025 to June 2026. &nbsp;|&nbsp; hdq.ca</div>
 </div>
 </div>
-<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">Canadian headline CPI tracked near the 2% midpoint through most of 2025 as the BoC cut from 3.25% to 2.25%. The acceleration in March and April 2026 reflects energy pass-through from the Hormuz disruption. The May CPI release on June 22 will be the first read on whether that pass-through is reversing, and the first print under updated 2025 basket weights.</p>
-
-<h2>The Two-Directional Bind and How It Changes</h2>
-
-<p>The BoC''s bind, as Macklem described it at the June 10 press conference, was genuinely two-directional: the economy was too weak to hike but inflation was too high to cut. That framing assumed the oil price would remain elevated, sustaining the inflationary pressure that justified the hold over cutting. The ceasefire does not immediately resolve the bind, but it materially shifts the probability distribution around it.</p>
-
-<p>If WTI settles in the $75-85 range through Q3, the energy contribution to Canadian CPI will move from a tailwind for inflation to a headwind. Gasoline prices at the pump, which StatCan identified as the primary driver of the March and April CPI acceleration, will begin declining on a year-over-year basis. The BoC''s own June 10 statement noted the Bank would "look through the war''s near-term impact on headline inflation" but would not allow higher energy prices to become persistent inflation. A sustained oil price decline removes the need to monitor that line.</p>
-
-<p>What the ceasefire does not resolve is the other side of the bind: the weak domestic economy. Canada''s Q1 GDP contracted 0.1% annualized, weaker than the April MPR projection. Unemployment has been fluctuating between 6.5% and 7%. CUSMA renegotiation between Canada and the US has not yet begun, casting ongoing uncertainty over trade prospects. The Bank''s next scheduled decision is July 15, which will also coincide with the release of the next Monetary Policy Report. That MPR will need to incorporate an oil price path that is materially lower than April''s assumptions, a reversal of the inflation risk that drove the five consecutive holds, and a domestic growth picture that has not improved.</p>
-
-<p>RBC''s economics team expects the Bank to remain on hold through 2026 before hiking modestly in 2027. Scotiabank and CIBC each forecast the policy rate reaching 3.0% by end-2026. The ceasefire is unlikely to change those forecasts immediately: the July 15 meeting is too close for the Bank to incorporate the full economic implications of a Hormuz reopening. But if the May CPI print on June 22 confirms a deceleration, and if core measures hold at or below 2%, the Bank''s language at July 15 will almost certainly soften on the inflation risk side, shifting the balance of risk language in a way that markets will read as a cut signal for late 2026 or early 2027.</p>',
+<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">The range has held at 3.50% to 3.75% across four consecutive meetings since the December cut. The dot plot shift disclosed Wednesday is a projection, not a decision, and applies to the path the committee expects to take later in 2026.</p>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
-<p>Clients are feeling a version of cautious optimism mixed with confusion. The war that drove up gas prices appears to be ending, which feels like good news. But mortgage rates have not come down, the economy still feels soft, and the CPI numbers have been heading in the wrong direction for the past two months. Clients are asking whether the end of the conflict means rates will finally start to fall, and the honest answer is: not immediately, and perhaps not in the direction they expect. The BoC is not about to cut in response to lower oil prices if the growth picture has not improved simultaneously.</p>
+<p>Clients are not alarmed by a rate hold they expected. What unsettles them is hearing that a Fed projection shifted from a cut to a hike under a new chair they have not had time to form a view on yet. The feeling is closer to disorientation than fear, a sense that the rules they had absorbed over the past year just moved without warning.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">What to Say</div>
-<div class="script-box">The good news from the ceasefire is that the inflation risk the Bank of Canada has been watching most closely is now easing. Gas prices should come down over the next few months as oil prices fall. That takes some pressure off headline inflation. But the Bank of Canada is not going to cut rates just because oil prices drop. They are also watching the economy, which has been weaker than expected, and they are watching core inflation measures, which have actually been quite well-behaved throughout this whole period. The next real signal will be the CPI data on June 22, and then the Bank''s July 15 decision. If the inflation picture clears, and the economy does not deteriorate further, the most likely path is that rates stay where they are for the rest of this year, with a possible move in either direction in 2027. For your mortgage renewal or your planning horizon, the current rate environment is probably close to the floor for the near term.</div>
+<div class="script-box">"The Fed held rates exactly as expected today, so nothing changed there. What did change is the Fed''s own outlook for the rest of the year. In March, the median view was one rate cut. Today, a majority of officials are now leaning toward a hike instead. That is a real shift in tone from a new chair''s first meeting, and bond yields moved on it within minutes. For your portfolio, the practical effect runs through bond yields and the Canadian dollar more than through anything direct. It is not a reason to change your plan today, but it is a reason we should watch the Bank of Canada''s July 15 decision more closely than we might have a week ago."</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Who''s Affected</div>
-<p><strong>High impact:</strong> Clients with mortgage renewals in the next 90 days who are trying to decide between fixed and variable. The GoC 5-year yield has fallen 34 basis points in the past month; if the May CPI on June 22 confirms deceleration, that yield may ease further before their renewal closes.</p>
-<p><strong>Mixed impact:</strong> Clients holding GICs or short-term fixed income who locked rates at the peak of the yield cycle. The ceasefire-driven yield decline has reduced the opportunity cost of staying in cash or short-term fixed income, but the path for rates from here is genuinely uncertain in both directions.</p>
-<p><strong>Potential benefit:</strong> Clients in variable-rate mortgages or with HELOC balances. If the inflation picture clears and the BoC shifts its language at the July 15 meeting, market pricing for a cut in late 2026 or early 2027 will strengthen, which would benefit variable-rate borrowers.</p>
+<p><strong>High impact:</strong> Clients with significant fixed income duration exposure, who feel the yield move most directly through bond price changes.</p>
+<p><strong>Mixed impact:</strong> Clients holding US dollar exposure or cross-border assets, where a firmer Fed tone and the recent CAD weakness partially offset each other depending on the position.</p>
+<p><strong>Potential benefit:</strong> Clients with upcoming GIC or fixed income renewals, who may see modestly higher available rates if Canadian yields drift up in sympathy with the US move.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Action Checklist</div>
-<div class="checklist-item">Flag June 22 as the May CPI release date. The first print under updated basket weights is a potential market-moving event for bond yields and therefore fixed mortgage rate pricing.</div>
-<div class="checklist-item">Flag July 15 as the next BoC rate decision and MPR release. The Bank will need to revise its oil price assumptions significantly lower; the language change around inflation risk will be the signal to watch.</div>
-<div class="checklist-item">Review clients with mortgage renewals in Q3 2026. The yield decline since mid-May may provide an opportunity to lock a more favourable fixed rate than was available a month ago.</div>
-<div class="checklist-item">Prepare a brief explanation of the difference between headline CPI and core CPI for clients who will ask why the BoC is not cutting if gas prices are falling.</div>
+<div class="checklist-item">Review fixed income duration across client portfolios for sensitivity to a sustained higher US rate path</div>
+<div class="checklist-item">Flag clients with July 15 BoC-sensitive positions, particularly variable rate mortgage holders, for a pre-decision check-in</div>
+<div class="checklist-item">Note today''s dot plot shift in client files as context for the Bank of Canada''s July decision, distinct from today''s no-action outcome</div>
+<div class="checklist-item">Monitor USD/CAD over the coming weeks given the combined pressure from fading oil support and a firmer Fed signal</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Follow-Up Email Template</div>
 <div class="email-box" id="respond-email">
-<strong>Subject:</strong> The ceasefire, inflation, and what it means for your rate outlook<br><br>
+<strong>Subject:</strong> Today''s Fed decision and what actually changed<br><br>
 Hi [Client Name],<br><br>
-The US-Iran ceasefire signed Monday is the most significant development for the Canadian inflation picture since the conflict began in February. Oil prices have fallen sharply, and that should begin flowing through to lower gas prices over the next several weeks.<br><br>
-What that means for the Bank of Canada is more nuanced than it might appear. The Bank has been on hold at 2.25% because inflation was rising at the same time the economy was weakening. The oil price drop removes one side of that equation, but the weak economy and the uncertainty around trade policy remain. The Bank is unlikely to move at its July 15 decision, but its language on the inflation risk will shift, and that matters for the bond market and therefore for fixed mortgage rates.<br><br>
-The most important near-term data point is the May CPI release on June 22. I will follow up after that with any relevant update for your planning.<br><br>
+The Fed held rates today exactly as expected. The more relevant development was a shift in the Fed''s own outlook for the rest of 2026, from leaning toward a cut to leaning toward a hike under new Chair Warsh.<br><br>
+This does not change your plan today, but it is a meaningful input ahead of the Bank of Canada''s July 15 decision, and I will be watching it closely on your behalf.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
@@ -738,252 +524,198 @@ The most important near-term data point is the May CPI release on June 22. I wil
 </div>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">Client Profiles to Target</div>
-<p><strong>Mortgage renewal households:</strong> Over one million Canadian homeowners are renewing in 2026. Those who have been waiting for rate clarity before locking a term have a slightly improved outlook this week. The GoC 5-year yield at 3.01% is 34 basis points below its recent peak; if June 22 CPI confirms deceleration, the fixed rate window may improve further before the summer peak of the renewal wave.</p>
-<p><strong>Business owners with floating-rate debt:</strong> Companies carrying variable-rate credit facilities have been in a holding pattern. The ceasefire removes the inflation tail risk that could have forced the BoC to hike; the path to eventual rate normalization is now clearer, if not imminent.</p>
-<p><strong>Retirees in drawdown managing sequence risk:</strong> The inflation picture matters directly for the real return on fixed income holdings. A confirmed deceleration in CPI changes the calculus on fixed income allocation for clients managing withdrawal sequencing in a moderate-inflation environment.</p>
+<p><strong>Variable rate mortgage holders watching the BoC closely:</strong> homeowners who track rate decisions on their own and may not have connected today''s Fed shift to their own July 15 exposure.</p>
+<p><strong>DIY fixed income investors:</strong> self-directed clients holding bonds or GICs who have not reassessed duration risk since rates began holding steady, and who have no one flagging today''s dot plot shift to them.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Opening Line</div>
-<div class="script-box">The ceasefire this week changed the inflation picture in a way that will take a few weeks to show up in the data, but the direction is clear. If you have a mortgage renewal coming up or are trying to time a fixed income decision, the next 30 days are probably the most important window you will have had all year.</div>
+<div class="script-box">"Did you catch that the Fed''s own outlook shifted today, from expecting a cut to leaning toward a hike? I work with a number of people thinking through what that means for the Bank of Canada''s decision next month, and wanted to see if it would be useful to talk through your situation."</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
-<p>The connection between an Iranian ceasefire, the Bank of Canada''s July 15 meeting language, the GoC 5-year bond yield, and a client''s mortgage renewal rate is not a connection most households can make on their own. The chain runs through oil prices to CPI to BoC communication to bond market pricing to the fixed rate the client''s lender posts next week. An advisor who can explain that chain and identify where a client sits in it is providing a service with a measurable dollar value: the difference between locking a renewal rate at 5.1% versus 4.8% on a $600,000 mortgage is approximately $1,800 per year.</p>
+<p>A self-directed investor watching headline rate decisions will see today''s hold and conclude nothing happened. The actual signal, a new Fed chair''s committee shifting its own outlook from easing to tightening, requires reading the projections rather than the headline, and connecting it to a Canadian decision three weeks out. That connective work is exactly what an unadvised investor has no structured way to do.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
-<p>When does your mortgage come up for renewal, and have you started the process of comparing rates?</p>
-<p>Have you been following what has been happening with bond yields, and do you understand how they affect the fixed rate you will be offered?</p>
-<p>Are you currently in a variable rate, and if so, what is your view on where rates are headed over the next two years?</p>
-<p>What is your biggest financial concern heading into the second half of 2026?</p>
+<p>How are you currently positioned for a scenario where Canadian rates hold longer than you''d expected, versus one where they move again this year?</p>
+<p>Do you have a sense of how much of your fixed income is sensitive to a move in yields over the next few months?</p>
+<p>If the Bank of Canada''s tone shifts firmer in July, the way the Fed''s just did, would that change anything about your current mortgage or investment positioning?</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
-<strong>Subject:</strong> The rate outlook just shifted: what it means for renewals this summer<br><br>
-Hi [Prospect Name],<br><br>
-The US-Iran ceasefire announced this week is the most significant development for Canadian interest rates since the conflict began. Oil prices have fallen sharply, which should reduce inflation and ease pressure on bond yields over the coming weeks.<br><br>
-For anyone with a mortgage renewal coming up in the next three to six months, this matters directly. The Government of Canada 5-year bond yield, which drives fixed mortgage rates, has already fallen 34 basis points in the past month. If the May CPI data on June 22 confirms that inflation is decelerating, that yield could ease further before the summer renewal wave peaks.<br><br>
-I work with clients specifically on the timing of mortgage renewals and the fixed versus variable decision in an environment like this one. If you are navigating a renewal this year and want a second perspective, I am glad to connect.<br><br>
+<strong>Subject:</strong> The Fed''s outlook just shifted, here is what it means for July<br><br>
+Hi [Name],<br><br>
+The Fed held rates today, but new Chair Kevin Warsh''s first meeting also showed officials shifting from expecting a cut this year to leaning toward a hike. That shift is a real input into the Bank of Canada''s July 15 decision.<br><br>
+If you''d like a clear read on what this means for your mortgage or portfolio specifically, I''m happy to walk through it.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
-  '[{"value":"2.25%","label":"BoC overnight rate (held)"},{"value":"2.80%","label":"Canada CPI April 2026"},{"value":"3.01%","label":"GoC 5-year yield Jun 15"},{"value":"-0.1%","label":"Canada Q1 GDP annualized"}]',
-  'economy-030.jpg',
-  'The Bank of Canada''s inflation management framework has been running on a single premise since February: that elevated oil prices would prove temporary. The ceasefire of June 15 is the first concrete evidence that premise was correct. Photo: iStock.',
+  '[{"value":"3.50% to 3.75%","label":"Fed target range, held fourth straight meeting"},{"value":"9 of 18","label":"FOMC officials projecting a 2026 hike"},{"value":"2.25%","label":"BoC policy rate, held since October 2025"},{"value":"4.2%","label":"US CPI year over year, May 2026"}]',
+  'economy-031.jpg',
+  'A new chair''s first meeting is read as much through the projections as the decision itself, and Wednesday''s projections moved more than the rate did. Photo: iStock.',
   7,
-  '2026-06-17T09:05:00',
-  'entity:boc,entity:macklem,entity:statcan,entity:goc-5y,entity:fed,theme:boc-rate-path,theme:inflation-canada,theme:hormuz-disruption,theme:cdn-housing-renewal-wall,stance:base-case',
+  '2026-06-17T14:27:00',
+  'entity:fed,entity:boc,entity:macklem,entity:goc-2y,entity:ust-10y,entity:cad,theme:fed-rate-path,theme:boc-rate-path,theme:inflation-us,stance:framing-shift',
   1,
-  'Bank of Canada, Monetary Policy Decision Statement, June 10, 2026. Bank of Canada, Monetary Policy Decision Statement, April 29, 2026. Statistics Canada, Consumer Price Index, April 2026, released May 19, 2026 (CPI 2.8%). Statistics Canada, Consumer Price Index, March 2026, released April 20, 2026 (CPI 2.4%). Statistics Canada, CPI basket weight update announcement, June 15, 2026 (May CPI release June 22). TD Economics, Bank of Canada Interest Rate Announcement June 10, 2026. Canadian Mortgage Professional / RBC Economics, All the economist reaction to the Bank of Canada''s latest decision, June 11, 2026. Nesto.ca, Mortgage Rates Forecast Canada 2026-2030, updated June 2026. True North Mortgage, Bank of Canada bond yield commentary, updated June 10, 2026. TradingEconomics, Canada 5 Year Bond Yield, 3.01% on June 15, 2026. CMHC, 1.15 million mortgage renewals projected for 2026. | hdq.ca'
+  'Federal Reserve, FOMC statement and Summary of Economic Projections, June 17 2026. CNBC, Fed meeting live updates, June 17 2026. CBS News, Kevin Warsh first FOMC meeting preview, June 17 2026. Bank of Canada, rate announcement and Macklem remarks, June 10 2026. Reuters, via Investing.com, Bank of Canada rate decision coverage. hdq.ca'
 );
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/17/the-hormuz-deal-and-the-portfolio-implications-of-a-fragile-peace',
+  '2026/06/17/hormuz-price-collapse-ahead-of-physical-reopening',
   'geo', 'article',
-  'The Hormuz Deal and the Portfolio Implications of a Fragile Peace',
-  'The US-Iran agreement signed June 15 ends the blockade phase and begins a 60-day nuclear negotiation window. For Canadian portfolios, the immediate read-through is lower oil, a recovering loonie, and a BoC that can finally look past its inflation constraint. The tail risk is that the deal does not hold.',
+  'Oil Has Already Priced a Reopened Strait of Hormuz. The Strait Itself Will Not Catch Up Until Friday at the Earliest.',
+  'WTI has fallen below $77 and Brent below $79 on the prospect of Friday''s Geneva signing. The gap between that price move and the physical reality of restoring tanker traffic is the risk Canadian energy investors are not pricing.',
   '<ul>
-<li><strong>Trump and Vance signed the US-Iran agreement on June 15,</strong><span> ending the US naval blockade of Iranian ports and committing both sides to a 60-day nuclear negotiation window. Parliament Speaker Ghalibaf signed for Iran. The Strait of Hormuz is expected to reopen as mine-clearing operations proceed.</span></li>
-<li><strong>WTI crude fell more than 5% on the signing day,</strong><span> settling near $80.47 per barrel on June 16. The price is down 23% from the April peak of approximately $109.47 and is approaching the $80 technical support level that analysts have flagged as the neckline of a potential double-top formation.</span></li>
-<li><strong>The agreement is explicitly interim.</strong><span> It defers the hardest issues: sanctions lifting, $24 billion in frozen Iranian assets, and the nuclear program itself are all subject to the 60-day negotiation. Senator Lindsey Graham called himself "skeptical" and flagged congressional review requirements. Israel and Hezbollah continued fighting in southern Lebanon on the same day the deal was signed.</span></li>
-<li><strong>The TSX closed at a fresh record high on June 15,</strong><span> driven by financials and technology as the market priced in lower inflation expectations and an improving rate outlook. Energy names lagged, with Suncor falling 3.2%. The divergence within the TSX is the most important portfolio signal from the session.</span></li>
-<li><strong>The CAD firmed marginally to 0.7136 USD</strong><span> on June 16, though it remains near multi-week lows. A sustained oil price decline removes the commodity support the loonie has relied on; the currency is now navigating competing forces of improved risk sentiment and weakened terms of trade.</span></li>
+<li><strong>Brent has fallen toward $78 and WTI below $77,</strong><span> both at their lowest levels since early March, as markets price a deal that has not yet been formally signed.</span></li>
+<li><strong>The US and Iran are scheduled to sign an interim agreement in Geneva on Friday,</strong><span> with the Strait of Hormuz set to reopen the same day, free of Iranian tolls, according to President Trump.</span></li>
+<li><strong>Tanker operators are signalling a materially slower return to normal traffic than the price move implies,</strong><span> citing crew, insurance, and routing caution that a signing ceremony does not resolve overnight.</span></li>
+<li><strong>The mechanism connecting Geneva to a Canadian portfolio runs through the energy sector''s share of the TSX,</strong><span> not through any direct Canadian exposure to the Strait itself.</span></li>
+<li><strong>The base case is a gradual normalization over weeks, not days,</strong><span> with the tail risk being a slower reopening that leaves oil prices under-supplied relative to what today''s price already assumes.</span></li>
 </ul>',
-  '<p>The agreement signed in Washington and Tehran on June 15, 2026, ended four months of naval blockade and military escalation that had disrupted approximately one-fifth of global crude shipments and pushed WTI crude from $70 to nearly $110. The deal commits the United States to ending its blockade of Iranian ports and both sides to 60 days of nuclear negotiations mediated through a framework that European nations, including the UK and France, have been involved in backing. The Strait of Hormuz is set to reopen as mine-clearing operations proceed, with the US military stating it "knows where all the mines are located."</p>
-
-<p>The immediate market response was unambiguous: oil fell sharply and equities rose broadly. The Dow Jones and TSX both closed at record highs on June 15. But the shape of those records contains the most important analytical signal. The TSX''s record close was driven by financials and technology, not by energy. Suncor fell 3.2%, Cenovus fell 0.8%, and the iShares TSX Capped Energy ETF moved lower on the day. The TSX set a record high while its largest commodity sector declined. That is a structural rotation, not a uniform rally, and it has specific implications for Canadian portfolios that entered June overweight energy.</p>
-
-<h2>What the Agreement Actually Resolved and What It Did Not</h2>
-
-<p>The June 15 agreement is described by US officials as an interim deal. The text commits both sides to ending active military hostilities and to beginning nuclear negotiations, but it explicitly defers the issues that have made previous Iran nuclear agreements contested: the pace and verification of sanctions relief, the disposition of approximately $24 billion in frozen Iranian assets, and the specific constraints on Iran''s nuclear enrichment program. Senator Lindsey Graham, one of the agreement''s early skeptics, stated he was "skeptical" Iran would abandon its nuclear ambitions and flagged that any final agreement would be subject to congressional review under Graham''s own prior legislation.</p>
-
-<p>Israel''s response adds a second layer of uncertainty. Prime Minister Netanyahu said on June 15 that he and Trump "do not always see eye to eye," while Israeli and Hezbollah forces continued strikes in southern Lebanon on the same day the agreement was signed. The US-Iran deal does not address the Israel-Hezbollah dimension of the regional conflict. If that front escalates while nuclear negotiations are proceeding, the market''s assumption of a durable peace resolution will be tested.</p>
-
-<p>International Capital Markets Association senior advisor Bob Parker, speaking to CNBC ahead of the signing, flagged what he described as "inevitable" investor skepticism toward the negotiations and noted that even with the Strait reopened, infrastructure damage to refineries and pipelines across the Gulf, combined with tanker security concerns and depleted inventories, means a full restoration of pre-conflict oil flows is not a near-term outcome. The EIA''s June Short-Term Energy Outlook, published June 9, reduced its global oil demand forecast while noting that "any scenario involving full restoration of inventories, production, and trade flows to pre-conflict levels must account for the partial restructuring of the global oil market that has already occurred."</p>
-
+  '<p>Oil markets have already moved to price a Strait of Hormuz that is functioning normally. The Strait of Hormuz has not yet reopened. That gap, between a price collapse driven by an announcement and a physical shipping lane that takes time to refill with confident tanker traffic, is the geopolitical story Canadian energy investors should be watching more closely than the headline price itself.</p>
+<h2>The Price Move Is Real and It Has Run Ahead of the Facts</h2>
+<p>Brent crude fell toward $78 per barrel Wednesday, its fifth straight losing session and its lowest level since early March. WTI dropped below $77. Both benchmarks are now roughly two-thirds of the way back to where they traded before the conflict began, having given up the bulk of the premium that built through the spring as the Strait''s effective closure removed a route carrying roughly a fifth of global oil flows.</p>
+<p>The proximate cause is a scheduled signing, not a completed fact. The US and Iran are set to formalize an interim agreement in Geneva on Friday. President Trump said at the G7 summit that the peace framework has been agreed and that the Strait will reopen the same day, free of Iranian tolls. People familiar with the matter told the Wall Street Journal that oil sanctions relief for Iran is structured to take effect immediately once the agreement is signed, which is the detail markets are trading on right now, three days before the ceremony has actually occurred.</p>
+<h2>Why the Physical Reopening Will Lag the Price Reaction</h2>
+<p>Hapag-Lloyd, the German container shipping giant, welcomed the prospective peace and said it hoped its four remaining vessels could pass through the Strait this coming weekend. That single sentence carries the entire caveat oil markets are skipping over: a major operator with ships already staged near the chokepoint is hoping for passage this weekend, not promising it, and is talking about four ships, not the full volume the route normally carries.</p>
+<p>Dimitris Ampatzidis, maritime risk and compliance manager at the shipping data firm Kpler, put the caution more directly. Even once the Strait is considered formally reopened, traffic does not automatically normalize. Shipowners, insurers, and vessel crews all need to be independently convinced the route is safe before transit resumes at anything close to pre-war volume. War-risk insurance premiums do not reset the moment a signing ceremony concludes. They reset as actual transits accumulate without incident.</p>
+<p>This is the standard pattern after a chokepoint disruption resolves diplomatically rather than militarily. The political risk can end in an afternoon. The commercial risk premium that built around it during months of disruption takes longer to unwind, because insurers and shipping companies are pricing the probability the agreement holds, not just its existence.</p>
+<h2>The Canadian Mechanism: Energy Weight, Not Hormuz Exposure</h2>
+<p>Canada has no direct exposure to Strait of Hormuz traffic. Canadian crude moves by pipeline and rail to US refiners, and by tanker from the West Coast and East Coast, none of it through the Persian Gulf. The mechanism connecting Geneva to a Canadian advisor''s client portfolio runs entirely through price, specifically through the roughly 12% weight energy carries in the TSX Composite, and through what a falling global benchmark does to the earnings outlook for Suncor, Cenovus, Canadian Natural, and Imperial Oil.</p>
+<p>Canadian energy names already reflected that mechanism Wednesday. Suncor traded down toward $79.89, Cenovus continued a slide that had analysts noting a stock now arguably oversold relative to its underlying assets, and Canadian Natural Resources fell more than 1%. None of those moves were driven by anything specific to those companies. They were driven entirely by a global benchmark price falling on the expectation of a supply increase that has not physically occurred yet.</p>
+<h2>Base Case Versus the Tail Risk Worth Flagging</h2>
+<p>The base case, and the one global oil markets are currently pricing, is that the Geneva signing proceeds Friday as scheduled, the Strait reopens without major incident, and tanker traffic normalizes over the following weeks as insurers gain confidence. Under that path, the price has already done most of its adjusting, and Canadian energy names face a genuine headwind from lower realized prices rather than a one-day scare.</p>
+<p>The tail risk, distinct from the base case and worth naming rather than dismissing, is a slower or partial normalization: insurers holding war-risk premiums elevated for longer than the diplomatic timeline suggests, or a subset of operators choosing to route around the Strait for months out of caution rather than confidence. That scenario would leave actual oil supply running tighter than today''s price implies, which would mean the market has overcorrected to the downside on a headline that has not yet been tested by a single tanker''s safe passage.</p>
+<p>Brent''s decline over the past two weeks has run well ahead of any measurable change in actual tanker transit through the Strait, a gap that narrows only as real shipping volume, not announcements, catches up.</p>
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">TSX COMPOSITE / RECORD CLOSE WITH SECTOR DIVERGENCE</span>
-<span style="font-size:20px;font-weight:700;color:#111;">35,297</span>
-<span style="font-size:13px;color:#3a7a55;">&#9650; Record Jun 15</span>
-<span style="font-size:11px;color:#888;margin-left:auto;">Weekly close &nbsp;|&nbsp; Jan-Jun 2026</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">PRICE MOVE VS TANKER NORMALIZATION</span>
+<span style="font-size:20px;font-weight:700;color:#111;">$78</span>
+<span style="font-size:13px;color:#c0392b;">&#9660; 28% FROM PEAK</span>
+<span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; JUN 3 TO JUN 17</span>
 </div>
 <div style="padding:12px 14px 8px;">
 <script>
 (function(){
-  var container = document.currentScript ? document.currentScript.parentNode : null;
-  if(!container) return;
+  var data = [
+    {d:"Jun 3",brent:97,norm:8},{d:"Jun 5",brent:94,norm:9},{d:"Jun 7",brent:91,norm:10},
+    {d:"Jun 9",brent:89,norm:11},{d:"Jun 10",brent:88,norm:12},{d:"Jun 11",brent:87,norm:14},
+    {d:"Jun 12",brent:91,norm:15},{d:"Jun 13",brent:88,norm:16},{d:"Jun 14",brent:83,norm:17},
+    {d:"Jun 15",brent:79,norm:18},{d:"Jun 16",brent:78,norm:19},{d:"Jun 17",brent:78,norm:20}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
 
-  function el(tag,attrs){
-    var e = document.createElementNS("http://www.w3.org/2000/svg",tag);
-    for(var k in attrs) e.setAttribute(k,attrs[k]);
-    return e;
-  }
-  function txt(s,attrs){
-    var e = el("text",attrs);
-    e.textContent = s;
+  function el(tag, attrs){
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs){ e.setAttribute(k, attrs[k]); }
     return e;
   }
 
-  var margin = {left:62,right:24,top:18,bottom:46};
-  var W = 680, H = 300;
-  var PW = W - margin.left - margin.right;
-  var PH = H - margin.top - margin.bottom;
-
-  // TSX weekly closes Jan-Jun 2026 (sourced from TMX, Investing.com, TradingEconomics)
-  var data = [
-    {w:"Jan 2",  v:32800},
-    {w:"Jan 9",  v:33100},
-    {w:"Jan 16", v:33250},
-    {w:"Jan 23", v:33400},
-    {w:"Jan 30", v:33490},
-    {w:"Feb 6",  v:33590},
-    {w:"Feb 13", v:33257},
-    {w:"Feb 20", v:33900},
-    {w:"Feb 27", v:34502},
-    {w:"Mar 6",  v:33800},
-    {w:"Mar 13", v:31942},
-    {w:"Mar 20", v:32100},
-    {w:"Mar 27", v:32400},
-    {w:"Apr 3",  v:32800},
-    {w:"Apr 10", v:33200},
-    {w:"Apr 17", v:33600},
-    {w:"Apr 24", v:34000},
-    {w:"May 1",  v:33673},
-    {w:"May 8",  v:34200},
-    {w:"May 15", v:34600},
-    {w:"May 22", v:34800},
-    {w:"May 29", v:34937},
-    {w:"Jun 5",  v:35078},
-    {w:"Jun 12", v:35297},
-    {w:"Jun 15", v:35297}
-  ];
   var n = data.length;
-  var minV = 31000, maxV = 36200;
+  function xp(i){ return margin.left + (i/(n-1))*PW; }
 
-  function xS(i){ return margin.left + (i/(n-1))*PW; }
-  function yS(v){ return margin.top + ((maxV-v)/(maxV-minV))*PH; }
+  var brentMin = 70, brentMax = 100;
+  function yBrent(v){ return margin.top + PH - ((v-brentMin)/(brentMax-brentMin))*PH; }
 
-  // Gridlines
-  [32000,33000,34000,35000,36000].forEach(function(v){
-    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:yS(v),y2:yS(v),stroke:"#ececec","stroke-width":"0.5"}));
-    svg.appendChild(txt((v/1000).toFixed(0)+"K",{x:margin.left-6,y:yS(v)+3,"text-anchor":"end","font-size":"8.5","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  });
+  var normMin = 0, normMax = 100;
+  function yNorm(v){ return margin.top + PH - ((v-normMin)/(normMax-normMin))*PH; }
 
-  // Shaded band: conflict/volatility period Mar-Apr
-  svg.appendChild(el("rect",{x:xS(9),y:yS(maxV),width:xS(16)-xS(9),height:yS(minV)-yS(maxV),fill:"#c0392b",opacity:"0.05"}));
-  svg.appendChild(txt("Conflict volatility",{x:xS(9)+4,y:yS(maxV-200),"font-size":"7","font-weight":"700","fill":"#8a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  for (var g=0; g<=4; g++){
+    var gy = margin.top + (g/4)*PH;
+    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
+    var gv = Math.round(brentMax - (g/4)*(brentMax-brentMin));
+    var ylab = el("text",{x:margin.left-6,y:gy+3,"text-anchor":"end","font-size":"8.5","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    ylab.textContent = "$"+gv;
+    svg.appendChild(ylab);
+    var gvR = Math.round(normMax - (g/4)*(normMax-normMin));
+    var ylabR = el("text",{x:margin.left+PW+4,y:gy+3,"text-anchor":"start","font-size":"8.5","fill":"#888","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    ylabR.textContent = gvR+"%";
+    svg.appendChild(ylabR);
+  }
 
-  // Main line
-  var pts = data.map(function(d,i){ return xS(i)+","+yS(d.v); }).join(" ");
-  svg.appendChild(el("polyline",{points:pts,fill:"none",stroke:"#4a5568","stroke-width":"2"}));
-  data.forEach(function(d,i){
-    svg.appendChild(el("circle",{cx:xS(i),cy:yS(d.v),r:"2.5",fill:"#4a5568"}));
-  });
+  var brentD = "";
+  var normD = "";
+  for (var i=0;i<n;i++){
+    brentD += (i===0 ? "M" : "L") + xp(i) + "," + yBrent(data[i].brent) + " ";
+    normD += (i===0 ? "M" : "L") + xp(i) + "," + yNorm(data[i].norm) + " ";
+  }
+  svg.appendChild(el("path",{d:brentD, fill:"none", stroke:"#4a5568", "stroke-width":"1.8"}));
+  svg.appendChild(el("path",{d:normD, fill:"none", stroke:"#8a3030", "stroke-width":"1.6", "stroke-dasharray":"4,3"}));
 
-  // Event marker: conflict begins Feb 28 (index ~8)
-  var confIdx = 8;
-  var cex = xS(confIdx);
-  svg.appendChild(el("line",{x1:cex,x2:cex,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560",opacity:"0.5","stroke-dasharray":"2,3","stroke-width":"1"}));
-  svg.appendChild(txt("Conflict",{x:cex+3,y:margin.top+18,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  svg.appendChild(txt("Feb 28",{x:cex+3,y:margin.top+28,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  var brentLabel = el("text",{x:xp(n-1)-4,y:yBrent(data[n-1].brent)-10,"text-anchor":"end","font-size":"7.5","font-weight":"700","fill":"#4a5568","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  brentLabel.textContent = "Brent ($)";
+  svg.appendChild(brentLabel);
 
-  // Event marker: ceasefire Jun 15 (last index)
-  var ceaseIdx = n-1;
-  var ceaseX = xS(ceaseIdx);
-  svg.appendChild(el("line",{x1:ceaseX,x2:ceaseX,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560",opacity:"0.5","stroke-dasharray":"2,3","stroke-width":"1"}));
-  svg.appendChild(txt("Ceasefire",{x:ceaseX-4,y:margin.top+18,"text-anchor":"end","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  svg.appendChild(txt("Jun 15",{x:ceaseX-4,y:margin.top+28,"text-anchor":"end","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  var normLabel = el("text",{x:xp(n-1)-4,y:yNorm(data[n-1].norm)+14,"text-anchor":"end","font-size":"7.5","font-weight":"700","fill":"#8a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  normLabel.textContent = "Est. tanker normalization (%)";
+  svg.appendChild(normLabel);
 
-  // Gold pill on record close
-  var lastI = n-1;
-  var lastX = xS(lastI);
-  var lastY = yS(data[lastI].v);
-  var pillW = 62, pillH = 16;
+  var lastX = xp(n-1), lastY = yBrent(data[n-1].brent);
+  var pillW = 46, pillH = 16;
   var pillX = lastX - pillW - 6;
-  if(pillX < margin.left) pillX = lastX + 6;
   var pillY = lastY - pillH/2;
+  if (pillX < margin.left) pillX = lastX + 6;
   svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
-  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"3"}));
-  svg.appendChild(txt("35,297 rec.",{x:pillX+pillW/2,y:pillY+pillH/2+3.5,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":"#111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"2"}));
+  var pillText = el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  pillText.textContent = "$78";
+  svg.appendChild(pillText);
 
-  // X-axis labels (every ~5 weeks)
-  [0,4,9,13,18,22,24].forEach(function(i){
-    if(i<n){
-      svg.appendChild(txt(data[i].w,{x:xS(i),y:H-margin.bottom+14,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-    }
+  var xTickIdx = [0,2,4,6,8,10,11];
+  xTickIdx.forEach(function(idx){
+    var xlab = el("text",{x:xp(idx),y:margin.top+PH+14,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    xlab.textContent = data[idx].d;
+    svg.appendChild(xlab);
   });
 
-  // Axis lines
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+PH,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left,y1:margin.top,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
-
-  container.appendChild(svg);
+  var container = document.currentScript ? document.currentScript.parentNode : null;
+  if (container) container.appendChild(svg);
 })();
 </script>
 </div>
-<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: TMX Group, TradingEconomics, Investing.com, TSX Composite weekly close data, 2026. Record close of 35,297 on June 15, 2026. &nbsp;|&nbsp; hdq.ca</div>
+<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: Trading Economics, Brent crude pricing, June 2026. Kpler and HDQ analysis, estimated tanker transit normalization. &nbsp;|&nbsp; hdq.ca</div>
 </div>
 </div>
-<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">The TSX recovered from its March conflict-driven trough at approximately 31,942 to a record close of 35,297 on June 15, the day the US-Iran ceasefire was signed. The shaded band marks the period of peak conflict volatility in March and early April. The record was set with energy names declining on the session, signalling a sector rotation toward financials and technology as the commodity war premium unwound.</p>
-
-<h2>The Canadian Portfolio Read-Through</h2>
-
-<p>Three transmission channels from the ceasefire to Canadian portfolios are operating simultaneously and in different directions, which is what makes the current environment analytically complex rather than uniformly bullish.</p>
-
-<p>The first channel is oil prices and the TSX energy sector. WTI near $80 is still profitable for oil sands producers: Suncor''s breakeven is well below that level, and the company reported record Q1 2026 upstream production of 875,200 barrels per day. But the market has repriced the energy sector to reflect a lower oil price assumption, and the speed of that repricing, more than 23% in roughly two weeks, has created the disposition pressure discussed in detail on the Behavioural Desk today. For balanced portfolios with normal energy weights, the correction is manageable. For portfolios that added energy concentration specifically to benefit from the Hormuz disruption, the planning conversation is more urgent.</p>
-
-<p>The second channel is the Canadian dollar. USD/CAD was at 1.4007 on June 16, with the loonie at approximately 0.7136 USD. The CAD has been under pressure for several months: the combination of a weak domestic economy, elevated US tariff uncertainty ahead of CUSMA renegotiation, and a BoC on hold while the Fed has remained higher has compressed the spread and weighed on the currency. The ceasefire introduces a competing dynamic: improved global risk sentiment generally supports commodity currencies, but lower oil prices specifically remove the commodity support that had partially offset the macro headwinds. The net effect is a CAD that remains near multi-week lows despite a broadly risk-on session.</p>
-
-<p>The third channel is the BoC rate path. As described in detail on the Economy Desk today, the ceasefire removes the primary inflation risk the Bank has been managing around since February. The July 15 MPR will need to revise the oil price assumption materially lower, which changes the inflation forecast and therefore the Bank''s framing of the policy risk balance. Markets are pricing in a hold at July 15 but a cleaner path to an eventual cut in late 2026 or early 2027. Rate-sensitive sectors including financials, real estate, and utilities should benefit from that repricing, and the TSX''s record close on a day when energy lagged suggests the market has already begun making that rotation.</p>
-
-<h2>The Tail Risk That Markets Are Discounting</h2>
-
-<p>The base case, as of June 16, is that the ceasefire holds, nuclear negotiations proceed through the 60-day window, and oil prices stabilize in the $75-85 range as Hormuz reopens and Iranian supply gradually returns to market. That base case justifies record equity prices and the current BoC hold-to-eventual-cut pricing.</p>
-
-<p>The tail risk is specific and non-trivial. The agreement is interim and explicitly defers its hardest questions. Congressional review in the US creates a political variable that could complicate the negotiation timeline. Israel''s continued military activity in Lebanon, and Netanyahu''s public distancing from the agreement, creates a second front that is not part of the deal framework. Iran''s domestic political situation, including the role of the Revolutionary Guard, adds a third layer of implementation uncertainty. The EIA''s own assessment that the global oil market has been "partially restructured" by the conflict suggests that even a fully successful negotiation does not restore the pre-February supply landscape instantaneously.</p>
-
-<p>None of these risks changes the base case probability, which remains weighted toward deal durability. But a portfolio that has fully priced in the base case without retaining any hedge for the tail has made a specific bet that is worth naming explicitly.</p>',
+<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">Tanker normalization is an HDQ estimate built from shipping industry commentary on resumed transits, not a published index. Brent has fallen 28 dollars over two weeks while actual transit volume remains a small fraction of pre-conflict levels.</p>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
-<p>Clients are likely feeling relief mixed with uncertainty. The war appears to be ending, which feels unambiguously positive. But the TSX is at a record high, and they are not sure whether that means they should be buying more, taking some off the table, or doing nothing. Energy-heavy clients are specifically feeling the sting of watching a winning sector reverse sharply. The advisor''s job is to provide the analytical frame that helps clients distinguish between the base case and the tail risk, and between a sector rotation and a market top.</p>
+<p>Clients with concentrated energy exposure are feeling whipsawed. Many bought into Canadian energy names during the conflict on the thesis that elevated oil was the new normal, and are now watching that thesis unwind on a signing ceremony that has not technically happened yet. The dominant emotion is closer to disbelief at the speed of the reversal than panic.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">What to Say</div>
-<div class="script-box">The ceasefire is real and markets have responded rationally. The TSX is at a record high because lower oil prices mean lower inflation, which means the Bank of Canada is less likely to need to raise rates, which is good for the rate-sensitive parts of the market. That is not irrational optimism. It is a legitimate repricing. What it is not is a signal that everything is resolved. The agreement is explicitly interim. The hard questions, the nuclear program, the sanctions, the frozen assets, have been deferred to a 60-day negotiation. Israel is still fighting Hezbollah. Congressional review in the US creates political risk. The base case is that the deal holds and oil stays in the $75-85 range. But holding some defensive exposure as a hedge against the tail risk of a negotiation breakdown is not pessimism. It is portfolio construction.</div>
+<div class="script-box">"What you''re seeing in energy stocks today is the market pricing a peace deal that gets formally signed in Geneva on Friday, three days from now. Oil has already fallen to levels last seen before the conflict escalated, even though not a single tanker has actually moved through the Strait under the new agreement yet. That gap matters. Shipping companies and insurers are saying the actual return to normal traffic will take weeks, not days, because confidence in a route has to be rebuilt one safe passage at a time. That means there''s a real chance the price has moved further and faster than the physical situation justifies. I''m not telling you the energy weakness reverses, I''m telling you the next few weeks matter more than today''s headline, and we shouldn''t treat this as fully resolved either way."</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Who''s Affected</div>
-<p><strong>High impact:</strong> Clients with concentrated energy sector exposure who are now watching a significant gain partially reverse. The planning question is whether the reversal is a thesis change or a valuation correction within an intact thesis, and the answer depends on the 60-day negotiation outcome.</p>
-<p><strong>Mixed impact:</strong> Clients in balanced portfolios. The TSX record is broadly positive, but the sector rotation from energy to financials and technology means the benefit accrues unevenly depending on portfolio composition going into the session.</p>
-<p><strong>Potential benefit:</strong> Clients underweight rate-sensitive sectors. Financials, utilities, and real estate all benefit from the improved rate outlook that the ceasefire enables. Clients who had reduced exposure to those sectors in anticipation of BoC hiking risk may find the current rotation creates a rebalancing opportunity.</p>
+<p><strong>High impact:</strong> Clients with concentrated positions in Canadian energy producers, particularly those who added exposure during the conflict on an elevated-oil thesis.</p>
+<p><strong>Mixed impact:</strong> Broadly diversified TSX-tracking clients, who feel the energy weight but see it partially offset by strength elsewhere in the index, including materials and financials.</p>
+<p><strong>Potential benefit:</strong> Clients with upcoming fuel, transport, or input-cost-sensitive business interests, who benefit directly from a sustained lower oil price regardless of how the geopolitical timeline resolves.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Action Checklist</div>
-<div class="checklist-item">Review portfolio weights in energy versus financials and rate-sensitive sectors. The TSX rotation on June 15 may have widened a drift from target allocation that warrants rebalancing.</div>
-<div class="checklist-item">Identify clients who added energy exposure specifically for the Hormuz disruption thesis. The thesis has changed chapters and those clients need a proactive conversation, not a reactive one after they call.</div>
-<div class="checklist-item">Flag the 60-day negotiation window as the key monitoring timeline. Mark August 14 as the approximate deadline by which a framework agreement needs to be visible for markets to maintain current pricing.</div>
-<div class="checklist-item">Review CAD exposure for clients with US-dollar-denominated assets. The loonie''s next move depends on whether improved risk sentiment or lower oil prices dominates; either outcome is plausible.</div>
+<div class="checklist-item">Review concentration levels in Canadian energy names for clients who added exposure during the conflict</div>
+<div class="checklist-item">Distinguish in client conversations between the diplomatic timeline, Friday''s signing, and the commercial timeline, insurer and shipper confidence rebuilding over subsequent weeks</div>
+<div class="checklist-item">Flag the tail risk explicitly rather than treating Friday''s signing as a clean resolution point</div>
+<div class="checklist-item">Monitor TSX energy sub-index performance against the broader composite over the coming two weeks as a read on how the gap is closing</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Follow-Up Email Template</div>
 <div class="email-box" id="respond-email">
-<strong>Subject:</strong> The ceasefire, the TSX record, and what it means for your portfolio<br><br>
+<strong>Subject:</strong> The gap between Friday''s signing and the oil price move<br><br>
 Hi [Client Name],<br><br>
-The US-Iran ceasefire signed Monday produced exactly the market response you would expect: equities rose, oil fell, and the TSX closed at a record high. I wanted to give you a clear read on what this means for your specific portfolio.<br><br>
-The TSX record was driven by financials and technology, not energy. Energy names actually fell on the day, which reflects the market removing the war premium from oil prices. If you are holding energy positions, that is the context for the decline you are seeing.<br><br>
-The agreement is interim and leaves the hardest questions for a 60-day negotiation. The base case is that it holds and oil stays in the $75-85 range, which is still profitable for Canadian producers. But the situation is not fully resolved, and I would caution against making large portfolio moves in either direction until we have more clarity on the negotiation timeline.<br><br>
-I will be in touch with any material updates. In the meantime, please reach out if you want to walk through your specific allocation.<br><br>
+Following up on our conversation about today''s oil price decline ahead of Friday''s scheduled US-Iran signing in Geneva. As discussed, the price has moved further and faster than the physical reopening of the Strait of Hormuz has actually occurred.<br><br>
+I''ll be watching how quickly tanker traffic genuinely normalizes over the coming weeks, since that is a better signal than the signing ceremony itself.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
@@ -991,281 +723,204 @@ I will be in touch with any material updates. In the meantime, please reach out 
 </div>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">Client Profiles to Target</div>
-<p><strong>DIY investors navigating the rotation:</strong> Self-directed investors who were in energy for the Hormuz trade are now watching the sector reverse while the broader market hits records. Without a framework for understanding the sector rotation, they are likely to make reactive decisions at exactly the wrong moment.</p>
-<p><strong>Investors overweight commodities and underweight rate-sensitive sectors:</strong> The TSX rotation on June 15 is a signal of what the market expects from the BoC path. Investors who positioned for a hiking cycle and are underweight financials, utilities, and real estate are now on the wrong side of the repricing.</p>
-<p><strong>Retirees with significant US-dollar exposure:</strong> The CAD-USD dynamic is complex in the current environment. Clients managing currency exposure across a US vacation property, US-dollar fixed income, or cross-border business interests need current guidance on the competing forces acting on the loonie.</p>
+<p><strong>DIY investors holding concentrated Canadian energy positions:</strong> self-directed investors who built energy exposure during the conflict and are now watching the thesis reverse with no one to call about what the Friday signing actually changes.</p>
+<p><strong>Prospects with general portfolios feeling broad TSX softness:</strong> investors noticing a weaker TSX today who may not realize the move is concentrated in energy and driven by a specific, datable diplomatic event.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Opening Line</div>
-<div class="script-box">The TSX hit a record high on the same day energy stocks fell. That is a specific signal about where the market thinks money should be, and it is worth a conversation about whether your portfolio is positioned to benefit from that rotation or whether you are still weighted toward the trade that just ended.</div>
+<div class="script-box">"I noticed oil and Canadian energy stocks have moved sharply this week ahead of Friday''s scheduled signing in Geneva, and I wanted to check whether that''s affecting your portfolio in a way you''d like a second opinion on."</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
-<p>Record highs feel unambiguously good, but they often mask significant internal rotations that matter more for individual portfolios than the headline number. The TSX at 35,297 with energy down and financials up is a fundamentally different portfolio environment than the TSX at 34,000 with energy leading. Understanding which sectors are driving a record, and whether your portfolio is positioned in them, is a specific analytical service that distinguishes an advisor from a financial news feed.</p>
+<p>A self-directed investor watching oil fall toward pre-conflict levels has to decide, alone, whether the move is fully justified by Friday''s signing or has run ahead of the physical facts on the ground. That requires reading shipping industry commentary, not just headlines, and most DIY investors have neither the time nor the sourcing to do it. The advisor''s value here is distinguishing the diplomatic timeline from the commercial one, and helping the client avoid reacting to a headline that the actual tanker traffic has not yet confirmed.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
-<p>When you look at your portfolio today versus three months ago, which sectors have grown as a percentage of your total and which have shrunk?</p>
-<p>Do you have a specific target allocation to energy, and has the events of the past four months moved you significantly above or below that target?</p>
-<p>How are you thinking about the 60-day nuclear negotiation window and the possibility that the deal does not hold?</p>
-<p>What is your Canadian dollar exposure, and have you thought about how lower oil prices might affect the loonie relative to your US-dollar assets?</p>
+<p>How much of your portfolio currently sits in Canadian energy names, and was that built up specifically during the conflict?</p>
+<p>Are you watching Friday''s Geneva signing as the moment this story resolves, or do you have a sense of how long the physical reopening actually takes?</p>
+<p>If oil stays lower for the next few months rather than rebounding, how would that change your current allocation?</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
-<strong>Subject:</strong> TSX record high, energy down: the rotation that matters for your portfolio<br><br>
-Hi [Prospect Name],<br><br>
-The TSX set a record close on Monday following the US-Iran ceasefire. What is worth paying attention to is not the headline number but what drove it: financials and technology led, while energy stocks declined. That is a significant internal rotation that changes the portfolio picture depending on how you are positioned.<br><br>
-If you have been overweight energy this year to benefit from the Hormuz disruption, the thesis has now changed. If you have been underweight rate-sensitive sectors in anticipation of the Bank of Canada hiking, the ceasefire has shifted that probability. Either way, the next few weeks are a meaningful window to review your allocation before the market moves further in the direction it is signalling.<br><br>
-I specialize in helping clients navigate exactly these kinds of transition moments. If you want a current read on your positioning, I am glad to connect.<br><br>
+<strong>Subject:</strong> Oil has priced Friday''s Geneva signing, has your portfolio?<br><br>
+Hi [Name],<br><br>
+Oil prices have fallen to levels not seen since early March, ahead of Friday''s scheduled US-Iran signing that is set to reopen the Strait of Hormuz. Shipping industry sources are saying the actual return to normal tanker traffic will take weeks, not days, which leaves a real question about whether the price move has run ahead of the facts.<br><br>
+If you hold Canadian energy exposure, I''d welcome the chance to walk through what this means for your specific positioning.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
-  '[{"value":"35,297","label":"TSX record close Jun 15"},{"value":"$80.47","label":"WTI Jun 16 (USD/bbl)"},{"value":"60 days","label":"Nuclear negotiation window"},{"value":"1.4007","label":"USD/CAD Jun 16"}]',
-  'geo-030.jpg',
-  'A ceasefire signed in Washington and Tehran produces a record on Bay Street, but the shape of that record, energy lagging while financials lead, tells the more important story about where the market is repositioning. Photo: iStock.',
+  '[{"value":"$78","label":"Brent crude, lowest since early March"},{"value":"<$77","label":"WTI crude, fifth straight losing session"},{"value":"Friday","label":"Scheduled Geneva signing and Strait reopening"},{"value":"~20%","label":"Share of global oil flows through Hormuz"}]',
+  'geo-031.jpg',
+  'A price has already moved on a peace deal that has not yet been signed, and a shipping route that has not yet reopened. Photo: iStock.',
   7,
-  '2026-06-17T09:07:00',
-  'entity:iran,entity:hormuz,entity:wti,entity:tsx,entity:cad,entity:trump-admin,entity:boc,theme:hormuz-disruption,theme:cdn-energy-rerating,theme:boc-rate-path,theme:cad-weakness,stance:base-case',
+  '2026-06-17T14:29:00',
+  'entity:iran,entity:hormuz,entity:wti,entity:brent,entity:tsx-energy,entity:suncor,entity:cenovus,theme:hormuz-disruption,theme:cdn-energy-rerating,stance:tail-risk-flag',
   1,
-  'CNN, June 15 2026: Trump and Vance virtually sign US-Iran agreement. NPR, US and Iran reach initial deal to end war, reopen Strait of Hormuz, June 15, 2026. TradingEconomics, Crude Oil WTI at $80.47 on June 16, 2026. TMX Money, TSX record close 35,297 on June 15, 2026 (previous close 34,937.85). GF Value / GuruFocus, Suncor Energy SU falls 3.2% to $59.65 on June 15, 2026. CNBC, Oil drops 20% from 2026 peak on optimism over US-Iran ceasefire talks, May 29, 2026. CNBC, From panic to pricing in: Are markets past peak fear and sell-off, April 13, 2026. EIA, June Short-Term Energy Outlook, published June 9, 2026. TradingEconomics, USD/CAD 1.4007 on June 16, 2026. Wise.com, USD to CAD historical exchange rates, highest rate June 13, 2026 at 1.3990. BBN Times, Toronto Stock Exchange trades around 34,093 on 9 June 2026, June 9, 2026. | hdq.ca'
+  'FXStreet, WTI oil price coverage, June 2026. Trading Economics, Brent crude oil price and news, June 17 2026. CNBC, oil prices and Strait of Hormuz tanker transit coverage, June 16 2026. NBC News, oil prices and Iran deal doubts, June 2026. Yahoo Finance and Google Finance, Suncor and Cenovus equity pricing, June 17 2026. hdq.ca'
 );
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/17/tsx-record-energy-selloff-and-the-rotation-that-rewrites-the-year',
+  '2026/06/17/tsx-record-high-erased-by-fed-tone',
   'market', 'article',
-  'TSX Record, Energy Selloff, and the Rotation That Rewrites the Year',
-  'The TSX closed at 35,297 on June 15, a fresh all-time high, while Suncor fell 3.2% and WTI dropped more than 5%. A record set on a day when the index''s largest commodity sector declines is not a uniform rally. It is a structural rotation, and it changes what the second half of 2026 looks like for Canadian portfolios.',
+  'The TSX Hit a Record High at Noon. By 2:15, the Fed Had Taken Most of It Back.',
+  'The composite touched roughly 35,408 in the late morning, its fourth straight June record, before a firmer-than-expected Fed signal pulled the index down through the early afternoon. Materials held the gains. Energy gave back ground it had already lost this week.',
   '<ul>
-<li><strong>TSX closed at 35,297 on June 15, a fresh record high,</strong><span> led by financials and technology as the US-Iran ceasefire deal removed the inflation premium and shifted the BoC rate path toward an eventual cut rather than a hike.</span></li>
-<li><strong>WTI crude settled near $80.47 on June 16,</strong><span> down more than 5% on the session following the ceasefire signing, and down 23% from the April peak of approximately $109.47. The price is testing the $80 support level identified by technicians as the neckline of a potential double-top formation.</span></li>
-<li><strong>Suncor fell 3.2% to $59.65 on June 15.</strong><span> Cenovus fell 0.8%. CNQ declined approximately 0.19% on June 16. The TSX energy sub-index, which gained approximately 27.4% year-to-date through May, is now in a sharp corrective phase.</span></li>
-<li><strong>The S&P 500 and Dow Jones also closed at record highs on June 15,</strong><span> with the Dow gaining 0.70% to 51,202 and the S&P 500 adding 0.50% to 7,431. The VIX fell 9% to 17.68, confirming the reduction in perceived market risk.</span></li>
-<li><strong>CAD/USD sits at 1.4007,</strong><span> with the loonie at 0.7136 USD. The ceasefire''s competing effects on the currency, improved risk sentiment versus lower oil prices, have produced a flat-to-marginally-weaker result rather than the commodity-currency rally one might expect from a geopolitical resolution.</span></li>
+<li><strong>The TSX touched an intraday record near 35,408 shortly before noon,</strong><span> its fourth straight record close so far in June, before retreating through the afternoon.</span></li>
+<li><strong>The Fed''s 2 PM statement and updated dot plot triggered an immediate reversal,</strong><span> with the index falling roughly 100 points in the first 20 minutes after release.</span></li>
+<li><strong>Materials led the morning advance and held up best into the close,</strong><span> supported by gold trading above $4,350 an ounce.</span></li>
+<li><strong>Energy names extended a week-long slide as Brent fell toward $78,</strong><span> with Suncor, Cenovus, and Canadian Natural Resources all lower.</span></li>
+<li><strong>The loonie weakened to its softest level against the US dollar in roughly seven months,</strong><span> caught between fading oil support and a Fed signal that widened the yield gap with US Treasuries.</span></li>
 </ul>',
-  '<p>The TSX set a record close on June 15, 2026, but the session''s internal composition matters more than the headline number. Financials and technology led the advance. Energy, the sector that had been the TSX''s primary driver through the first five months of 2026, declined on the day. Suncor fell 3.2%, Cenovus fell 0.8%, and the broader energy sector gave back a portion of a 27%-plus year-to-date gain accumulated while WTI crude ran from $70 to $109. WTI is now at $80.47, down more than 23% from its April peak in roughly two weeks, and the market''s message on June 15 was clear: the second half of 2026 belongs to different sectors than the first half did.</p>
-
-<p>The mechanism is direct. The US-Iran ceasefire removes the energy supply disruption that had been the primary driver of both elevated oil prices and elevated inflation. Lower oil means lower inflation expectations. Lower inflation expectations reduce the probability of a BoC rate hike. Lower hike probability is positive for the rate-sensitive sectors that had been suppressed by the inflation narrative: financials, real estate investment trusts, and utilities. The TSX''s record was priced around that chain of inference in a single session.</p>
-
-<h2>WTI at the Technical Decision Point</h2>
-
-<p>WTI crude''s trajectory from its April peak has been steep and compressed. The price ran from roughly $70 at conflict onset in late February to approximately $109.47 at its April peak, a gain of more than $39 per barrel in approximately seven weeks, driven by the Hormuz disruption, the US naval blockade, and the accumulation of a significant war premium. The unwind has been proportionally rapid. The price has shed roughly $29 from peak to the current $80.47 level in approximately two weeks.</p>
-
-<p>The technical structure is significant for the portfolio read-through. Analysts at FX Daily Report identified a double-top formation with the neckline at approximately $80-81 as of June 16. A confirmed break below that neckline would project a measured move toward $60, which coincides with the level where the 100 and 200-period simple moving averages were converging before the February conflict onset. That $60 level is also, critically, still above the oil sands breakeven cost for major Canadian producers. Suncor, CNQ, and Cenovus are all profitable at $60 WTI. The question for the equity market is not whether Canadian energy companies survive $60 oil. It is whether their valuations, which were priced for a sustained $90-plus environment, have reset to a level that reflects $75-80 oil.</p>
-
-<p>The answer from June 15''s session appears to be: not yet. Suncor at $59.65 is still well below its 52-week high of $96.53 but also well above its 52-week low of $37.23. The stock is repricing toward a normalized oil environment but has not reached a level that would suggest the market is pricing in the worst-case $60 scenario. Goldman Sachs analyst Neil Mehta downgraded Suncor to Neutral from Buy in a June note, citing valuation after the "successful operational turnaround" had been priced in. That framing, a fundamentally strong company at a fair rather than compelling valuation, is the likely resting point for the energy sector as the war premium fully exits.</p>
-
+  '<p>The S&P/TSX Composite touched an intraday record near 35,408 shortly before noon Wednesday, extending a run that has now produced four straight record closes in June. By 2:15 PM, a chunk of that gain was gone. The reversal traces a single cause: the Federal Reserve''s 2:00 PM statement and an updated dot plot that leaned firmer than markets had positioned for heading into new Chair Kevin Warsh''s first meeting.</p>
+<h2>The Morning Belonged to Materials</h2>
+<p>Gold traded above $4,350 an ounce Wednesday, up roughly half a percent on the day and extending a third straight session of gains tied to continued safe-haven flows even as the broader geopolitical premium in oil unwound. That strength carried the materials sector to the top of the TSX leaderboard through the morning session, with gold producers among the standout names as the index pushed to its fresh high.</p>
+<p>The move fits a pattern that has held for most of June: a TSX setting records with materials and financials doing the heavy lifting while energy lags. Wednesday was the fourth straight session in that pattern, and the morning high reflected the same mix that has driven each of the prior three.</p>
+<h2>Energy Could Not Catch a Bid Even Before the Fed</h2>
+<p>Canadian energy names were already lower well before the afternoon reversal. Suncor traded down toward $79.89, off close to 2% on the day. Cenovus extended a slide sharp enough that some analysts have begun describing the stock as oversold relative to its underlying asset base. Canadian Natural Resources fell more than 1%. The driver in every case was the same: Brent crude sliding toward $78 and WTI below $77, both benchmarks at their lowest levels since early March, as markets priced Friday''s scheduled Geneva signing between the US and Iran ahead of the event itself.</p>
+<p>That energy weakness was a known headwind heading into Wednesday''s session, distinct from anything the Fed did. It explains why the TSX''s record was driven entirely by strength elsewhere in the index rather than broad-based participation.</p>
+<h2>The Fed Statement Changed the Afternoon</h2>
+<p>The Federal Reserve held its target rate at 3.50% to 3.75%, the outcome nearly the entire market had priced. The reaction was not to the rate. It was to the updated Summary of Economic Projections, which showed nine of eighteen officials now projecting a 2026 rate hike rather than the cut the median forecast had shown as recently as March.</p>
+<p>US equity benchmarks turned negative within minutes of the 2:00 PM release. The S&P 500 was down roughly 0.6% by 2:05 PM, the Nasdaq Composite down about 0.7%, and the Dow off roughly 160 points. The two-year US Treasury yield rose nearly 11 basis points to 4.153%, and the 10-year added about 4 basis points to 4.469%. The TSX, already trading off its noon high, extended that decline through the same window, falling from a level near 35,381 just before the announcement to roughly 35,296 by 2:30 PM before stabilizing modestly into the close.</p>
+<h2>Why the CAD Reaction Matters as Much as the Index Move</h2>
+<p>USD/CAD weakened the loonie to its softest intraday level in roughly seven months, touching 1.4036 before settling near 1.4030, a 0.3% move on the day. The mechanism is straightforward and compounding rather than singular. Oil''s slide has been removing a structural support for CAD for more than a week, as the prospective Iran settlement reduced the energy premium baked into the currency. A Fed that just signalled a firmer rate path adds a second, simultaneous source of pressure, since it widens the yield advantage US assets carry over Canadian ones at the exact moment Canadian energy revenues are also softening.</p>
+<p>Neither pressure on its own would be unusual. Both arriving on the same trading day, with the TSX simultaneously sitting at a fresh record before the Fed news landed, is the specific combination that makes Wednesday a session worth holding onto for context rather than filing away as a single bad afternoon.</p>
+<p>The composite and its energy sub-index tracked closely through the morning before diverging sharply once the Fed statement landed, with energy extending its existing slide while the broader index found a partial floor on materials strength.</p>
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">WTI CRUDE / WEEKLY OHLC WITH VOLUME</span>
-<span style="font-size:20px;font-weight:700;color:#111;">$80.47</span>
-<span style="font-size:13px;color:#c0392b;">&#9660; -$2.82 / -3.4%</span>
-<span style="font-size:11px;color:#888;margin-left:auto;">Weekly &nbsp;|&nbsp; Jan-Jun 2026</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">TSX COMPOSITE VS ENERGY SUB-INDEX</span>
+<span style="font-size:20px;font-weight:700;color:#111;">35,296</span>
+<span style="font-size:13px;color:#c0392b;">&#9660; 0.30%</span>
+<span style="font-size:11px;color:#888;margin-left:auto;">INDEXED TO 100 &nbsp;|&nbsp; 9:30 AM TO 3:00 PM ET</span>
 </div>
 <div style="padding:12px 14px 8px;">
 <script>
 (function(){
-  var container = document.currentScript ? document.currentScript.parentNode : null;
-  if(!container) return;
+  var data = [
+    {t:"9:30",tsx:100.00,nrg:100.00},{t:"9:45",tsx:100.03,nrg:99.6},{t:"10:00",tsx:100.07,nrg:99.1},
+    {t:"10:15",tsx:100.10,nrg:98.7},{t:"10:30",tsx:100.13,nrg:98.3},{t:"10:45",tsx:100.09,nrg:97.9},
+    {t:"11:00",tsx:100.12,nrg:97.6},{t:"11:15",tsx:100.16,nrg:97.2},{t:"11:30",tsx:100.19,nrg:96.9},
+    {t:"11:45",tsx:100.22,nrg:96.6},{t:"12:00",tsx:100.23,nrg:96.4},{t:"12:15",tsx:100.20,nrg:96.2},
+    {t:"12:30",tsx:100.22,nrg:96.0},{t:"13:00",tsx:100.19,nrg:95.7},{t:"13:30",tsx:100.17,nrg:95.4},
+    {t:"14:00",tsx:100.16,nrg:95.2},{t:"14:05",tsx:100.07,nrg:94.9},{t:"14:15",tsx:99.97,nrg:94.5},
+    {t:"14:30",tsx:99.91,nrg:94.1},{t:"14:45",tsx:99.93,nrg:94.0},{t:"15:00",tsx:99.91,nrg:93.8}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
-  svg.setAttribute("viewBox","0 0 680 340");
+  svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
 
-  function el(tag,attrs){
-    var e = document.createElementNS("http://www.w3.org/2000/svg",tag);
-    for(var k in attrs) e.setAttribute(k,attrs[k]);
-    return e;
-  }
-  function txt(s,attrs){
-    var e = el("text",attrs);
-    e.textContent = s;
+  function el(tag, attrs){
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs){ e.setAttribute(k, attrs[k]); }
     return e;
   }
 
-  var margin = {left:54,right:28,top:18,bottom:46};
-  var W = 680, H = 340;
-  var mainH = 210;
-  var volH = 52;
-  var gap = 12;
-  var PW = W - margin.left - margin.right;
+  var n = data.length;
+  var vMin = 93, vMax = 101;
+  function xp(i){ return margin.left + (i/(n-1))*PW; }
+  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
 
-  // Weekly WTI OHLC data Jan-Jun 2026
-  // open, high, low, close, vol (relative units)
-  var candles = [
-    {w:"Jan 2",  o:68.2, h:70.1, l:67.5, c:69.8,  vol:55},
-    {w:"Jan 9",  o:69.8, h:72.3, l:69.0, c:71.5,  vol:60},
-    {w:"Jan 16", o:71.5, h:73.8, l:70.8, c:72.9,  vol:58},
-    {w:"Jan 23", o:72.9, h:74.5, l:71.9, c:73.4,  vol:52},
-    {w:"Jan 30", o:73.4, h:75.2, l:72.8, c:74.1,  vol:54},
-    {w:"Feb 6",  o:74.1, h:76.0, l:73.5, c:75.3,  vol:56},
-    {w:"Feb 13", o:75.3, h:77.2, l:74.8, c:76.5,  vol:59},
-    {w:"Feb 20", o:76.5, h:78.8, l:75.9, c:78.1,  vol:62},
-    {w:"Feb 27", o:78.1, h:82.5, l:77.8, c:80.5,  vol:88},  // conflict starts
-    {w:"Mar 6",  o:80.5, h:93.2, l:79.8, c:90.2,  vol:145},
-    {w:"Mar 13", o:90.2, h:102.5,l:87.5, c:99.8,  vol:168},
-    {w:"Mar 20", o:99.8, h:106.8,l:98.2, c:105.4, vol:142},
-    {w:"Mar 27", o:105.4,h:108.0,l:100.5,c:102.1, vol:125},
-    {w:"Apr 3",  o:102.1,h:109.2,l:101.0,c:106.8, vol:130},
-    {w:"Apr 10", o:106.8,h:109.47,l:105.2,c:109.5,vol:148}, // near peak
-    {w:"Apr 17", o:109.5,h:110.2,l:106.5,c:108.9, vol:135},
-    {w:"Apr 24", o:108.9,h:109.1,l:104.8,c:107.2, vol:118},
-    {w:"May 1",  o:107.2,h:107.8,l:101.5,c:103.4, vol:122},
-    {w:"May 8",  o:103.4,h:104.2,l:97.8, c:99.1,  vol:128},
-    {w:"May 15", o:99.1, h:99.8, l:93.5, c:94.8,  vol:130},
-    {w:"May 22", o:94.8, h:95.5, l:89.2, c:91.2,  vol:118},
-    {w:"May 29", o:91.2, h:92.0, l:85.8, c:87.2,  vol:125},
-    {w:"Jun 5",  o:87.2, h:87.8, l:82.5, c:84.9,  vol:115},
-    {w:"Jun 12", o:84.9, h:85.5, l:78.8, c:82.0,  vol:138},
-    {w:"Jun 16", o:82.0, h:82.8, l:79.7, c:80.47, vol:142}
-  ];
-  var n = candles.length;
-  var minP = 65, maxP = 115;
-  var maxVol = 175;
-
-  function xS(i){ return margin.left + (i+0.5)*(PW/n); }
-  function yP(v){ return margin.top + ((maxP-v)/(maxP-minP))*mainH; }
-  function yV(v){ return margin.top+mainH+gap+volH - (v/maxVol)*volH; }
-
-  var cw = Math.max(4, PW/n - 3);
-
-  // Price gridlines
-  [70,75,80,85,90,95,100,105,110].forEach(function(v){
-    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:yP(v),y2:yP(v),stroke:"#ececec","stroke-width":"0.5"}));
-    svg.appendChild(txt("$"+v,{x:margin.left-5,y:yP(v)+3,"text-anchor":"end","font-size":"8","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  });
-
-  // $80 support reference line
-  var refY = yP(80);
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#7a3030","stroke-dasharray":"3,3","stroke-width":"1"}));
-  svg.appendChild(txt("$80 support",{x:650,y:refY-4,"text-anchor":"end","font-size":"7.5","fill":"#7a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-
-  // $109 peak reference
-  var peakY = yP(109.47);
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:peakY,y2:peakY,stroke:"#7a3030","stroke-dasharray":"3,3","stroke-width":"0.75"}));
-  if(Math.abs(109.47-80.47)/80.47 >= 0.03){
-    svg.appendChild(txt("$109.5 peak",{x:xS(14)-2,y:peakY-4,"text-anchor":"end","font-size":"7.5","fill":"#7a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  for (var g=0; g<=4; g++){
+    var gy = margin.top + (g/4)*PH;
+    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
+    var gv = (vMax - (g/4)*(vMax-vMin)).toFixed(0);
+    var ylab = el("text",{x:margin.left-6,y:gy+3,"text-anchor":"end","font-size":"8.5","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    ylab.textContent = gv;
+    svg.appendChild(ylab);
   }
 
-  // Candlesticks
-  candles.forEach(function(d,i){
-    var x = xS(i);
-    var bull = d.c >= d.o;
-    var fill = bull ? "#3a7a55" : "#8a3030";
-    var oY = yP(d.o), cY = yP(d.c), hY = yP(d.h), lY = yP(d.l);
-    var bodyTop = Math.min(oY,cY), bodyBot = Math.max(oY,cY);
-    var bodyH = Math.max(bodyBot-bodyTop, 1);
-    // Wick
-    svg.appendChild(el("line",{x1:x,x2:x,y1:hY,y2:lY,stroke:fill,"stroke-width":"1"}));
-    // Body
-    svg.appendChild(el("rect",{x:x-cw/2,y:bodyTop,width:cw,height:bodyH,fill:fill}));
-  });
+  var fedIdx = 16;
+  svg.appendChild(el("rect",{x:xp(fedIdx)-3,y:margin.top,width:6,height:PH,fill:"#c0392b","fill-opacity":"0.05"}));
+  svg.appendChild(el("line",{x1:xp(fedIdx),x2:xp(fedIdx),y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-opacity":"0.5","stroke-dasharray":"2,3"}));
+  var fedLabel = el("text",{x:xp(fedIdx)+4,y:margin.top+14,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  fedLabel.textContent = "FED STATEMENT, 2:00 PM";
+  svg.appendChild(fedLabel);
 
-  // Volume bars
-  candles.forEach(function(d,i){
-    var x = xS(i);
-    var bull = d.c >= d.o;
-    var fill = bull ? "#3a7a55" : "#8a3030";
-    var barH = (d.vol/maxVol)*volH;
-    var barY = margin.top+mainH+gap+volH - barH;
-    svg.appendChild(el("rect",{x:x-cw/2,y:barY,width:cw,height:barH,fill:fill,opacity:"0.7"}));
-  });
+  var tsxD = "", nrgD = "";
+  for (var i=0;i<n;i++){
+    tsxD += (i===0 ? "M" : "L") + xp(i) + "," + yp(data[i].tsx) + " ";
+    nrgD += (i===0 ? "M" : "L") + xp(i) + "," + yp(data[i].nrg) + " ";
+  }
+  svg.appendChild(el("path",{d:tsxD, fill:"none", stroke:"#4a5568", "stroke-width":"1.8"}));
+  svg.appendChild(el("path",{d:nrgD, fill:"none", stroke:"#8a3030", "stroke-width":"1.6"}));
 
-  // Volume label
-  svg.appendChild(txt("VOL",{x:margin.left+4,y:margin.top+mainH+gap+10,"font-size":"7.5","font-weight":"700","fill":"#bbb","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  var tsxLabel = el("text",{x:xp(n-1)-4,y:yp(data[n-1].tsx)-8,"text-anchor":"end","font-size":"7.5","font-weight":"700","fill":"#4a5568","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  tsxLabel.textContent = "TSX Composite";
+  svg.appendChild(tsxLabel);
 
-  // Event markers
-  // Conflict start Feb 27 = index 8
-  var confX = xS(8);
-  svg.appendChild(el("line",{x1:confX,x2:confX,y1:margin.top,y2:margin.top+mainH,stroke:"#1a3560",opacity:"0.5","stroke-dasharray":"2,3","stroke-width":"1"}));
-  svg.appendChild(txt("Conflict",{x:confX+3,y:margin.top+14,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  var nrgLabel = el("text",{x:xp(n-1)-4,y:yp(data[n-1].nrg)+12,"text-anchor":"end","font-size":"7.5","font-weight":"700","fill":"#8a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  nrgLabel.textContent = "TSX Energy";
+  svg.appendChild(nrgLabel);
 
-  // Ceasefire Jun 15 = index 24
-  var ceaseX = xS(24);
-  svg.appendChild(el("line",{x1:ceaseX,x2:ceaseX,y1:margin.top,y2:margin.top+mainH,stroke:"#1a3560",opacity:"0.5","stroke-dasharray":"2,3","stroke-width":"1"}));
-  svg.appendChild(txt("Ceasefire",{x:ceaseX-3,y:margin.top+14,"text-anchor":"end","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  var peakIdx = 10;
+  svg.appendChild(el("circle",{cx:xp(peakIdx),cy:yp(data[peakIdx].tsx),r:3,fill:"#3a7a55"}));
+  var peakLabel = el("text",{x:xp(peakIdx),y:yp(data[peakIdx].tsx)-10,"text-anchor":"middle","font-size":"7","font-weight":"700","fill":"#3a7a55","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  peakLabel.textContent = "RECORD, 35,408";
+  svg.appendChild(peakLabel);
 
-  // Gold pill on current (last candle close)
-  var lastI = n-1;
-  var lastX = xS(lastI);
-  var lastY = yP(candles[lastI].c);
-  var pillW = 58, pillH = 16;
+  var lastX = xp(n-1), lastY = yp(data[n-1].tsx);
+  var pillW = 50, pillH = 16;
   var pillX = lastX - pillW - 6;
-  if(pillX < margin.left) pillX = lastX + 6;
   var pillY = lastY - pillH/2;
+  if (pillX < margin.left) pillX = lastX + 6;
   svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
-  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"3"}));
-  svg.appendChild(txt("$80.47",{x:pillX+pillW/2,y:pillY+pillH/2+3.5,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":"#111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:"2"}));
+  var pillText = el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+  pillText.textContent = "35,296";
+  svg.appendChild(pillText);
 
-  // X-axis labels every 5 weeks
-  [0,4,8,12,16,20,24].forEach(function(i){
-    if(i<n){
-      svg.appendChild(txt(candles[i].w,{x:xS(i),y:H-margin.bottom+14,"text-anchor":"middle","font-size":"7.5","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-    }
+  var xTickIdx = [0,4,8,12,16,20];
+  xTickIdx.forEach(function(idx){
+    var xlab = el("text",{x:xp(idx),y:margin.top+PH+14,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"});
+    xlab.textContent = data[idx].t;
+    svg.appendChild(xlab);
   });
 
-  // Axis lines
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+mainH,y2:margin.top+mainH,stroke:"#d8d8d8","stroke-width":"1"}));
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+mainH+gap+volH,y2:margin.top+mainH+gap+volH,stroke:"#d8d8d8","stroke-width":"1"}));
-  svg.appendChild(el("line",{x1:margin.left,x2:margin.left,y1:margin.top,y2:margin.top+mainH+gap+volH,stroke:"#d8d8d8","stroke-width":"1"}));
-
-  container.appendChild(svg);
+  var container = document.currentScript ? document.currentScript.parentNode : null;
+  if (container) container.appendChild(svg);
 })();
 </script>
 </div>
-<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: TradingEconomics, Investing.com, Barchart WTI crude weekly OHLC data, January to June 16, 2026. Volume shown as relative units. &nbsp;|&nbsp; hdq.ca</div>
+<div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: TMX Group intraday data, June 17 2026. Both series indexed to 100 at the 9:30 AM open. &nbsp;|&nbsp; hdq.ca</div>
 </div>
 </div>
-<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">WTI crude''s weekly candlestick chart from January through June 16 shows the conflict-onset surge from $70 to a peak near $109.47 in mid-April, followed by a steady corrective decline as ceasefire negotiations progressed. The $80 support level and the elevated volume accompanying both the surge and the correction are the key technical features of the current setup.</p>
-
-<h2>Financials and the Rate-Path Repricing</h2>
-
-<p>The TSX financials sector, which carries the largest index weight of any sector at approximately 33%, was the primary driver of the June 15 record. Royal Bank, TD, and BMO each posted gains on the day. The mechanism is the rate path repricing: lower oil removes the inflation risk that had kept the BoC pinned at 2.25% with hawks arguing for a hike. A Bank of Canada that is no longer facing an inflation argument for hiking is a Bank of Canada that is more likely to eventually cut, and rate cuts are directly positive for bank earnings through improved loan demand and reduced credit cost pressure.</p>
-
-<p>The GoC 5-year bond yield eased to 3.01% on June 15, a three basis point decline on the day and a 34-basis-point decline over the past month. The 5-year yield is the benchmark that drives fixed mortgage rate pricing in Canada. Its decline has two direct portfolio effects: it widens the spread between fixed income yields and the dividend yields of the major Canadian banks, making bank stocks relatively more attractive, and it reduces the renewal rate pressure on the 1.15 million Canadian households renewing mortgages in 2026, which reduces the credit risk the banks are carrying into the second half of the year.</p>
-
-<p>Gold was among the session''s other notable movers. Agnico Eagle and Barrick each posted gains as the gold price held above key support levels despite the broadly risk-on session. Gold''s resilience in a risk-on environment where geopolitical tension is specifically declining is worth noting. The precious metals bid has been sustained partly by central bank buying globally, a structural bid that is not ceasefire-sensitive, and partly by continued uncertainty about the nuclear negotiation outcome over the 60-day window.</p>
-
-<h2>The CAD Signal and What It Is Telling Portfolios</h2>
-
-<p>The Canadian dollar at 1.4007 USD/CAD on June 16 is roughly flat to the prior session despite a broad risk-on environment in which commodity currencies would typically rally. The competing forces are explicit: the ceasefire improves global risk sentiment, which is positive for commodity currencies, but lower oil prices reduce the terms-of-trade support that has been the loonie''s primary prop through the conflict period. The CAD reached its weakest level of 2026 at 1.3990 USD/CAD on June 13, just before the deal was signed, and has not meaningfully recovered.</p>
-
-<p>The CAD''s failure to rally on the ceasefire is a signal that the currency market is weighing the oil price decline more heavily than the risk sentiment improvement. That makes sense given Canada''s commodity-export structure: a barrel of oil at $80 generates meaningfully less Canadian export revenue than a barrel at $109, and that terms-of-trade deterioration flows through to the currency over time. The BoC hold and the ongoing CUSMA uncertainty add to the headwinds. For portfolios with significant US-dollar-denominated assets, the current CAD level near 71 cents US is not an obvious signal to repatriate.</p>',
+<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">The energy sub-index was already declining through the morning on falling oil prices, independent of the Fed. Both series accelerated lower after the 2 PM statement, with energy losing ground faster than the broader composite.</p>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
-<p>Clients are confused by a record high that feels flat for them personally. If they were overweight energy this year, they have watched a significant portion of their gains erode in two weeks while the headline index set a record without them. If they were in balanced portfolios, they may have participated partially but feel like they missed the energy run and are now being told the rotation is moving past it. The advisor''s framing task is to help clients understand that a record set through sector rotation is a different kind of record than a broad-based advance, and that their personal experience of the session depends entirely on their specific positioning.</p>
+<p>Clients checking their portfolios late in the day are likely to see a number that looks worse than the session actually was, a record high erased by an afternoon reversal. The feeling is less panic than a kind of whiplash, confusion about how a record morning turned into a flat-to-negative close inside a few hours.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">What to Say</div>
-<div class="script-box">The TSX record on Monday is real, but the way it was built matters for your portfolio specifically. The index set a new high while its energy sector declined. That means the record was driven by financials, banks, and technology, not by the commodity names that led the market through April and May. If your portfolio is weighted toward energy, you did not fully participate in Monday''s record and you felt the energy correction instead. If your portfolio is weighted toward the Canadian banks or rate-sensitive names, Monday was a good session. The question we need to look at together is whether your current weights still reflect your actual investment thesis, or whether the events of the past four months have drifted you away from where you want to be.</div>
+<div class="script-box">"The TSX actually hit a fresh record this morning, its fourth in a row this month, before giving some of that back after the Fed''s afternoon announcement. The Fed held rates exactly as expected, but officials shifted their own outlook toward a possible hike later this year instead of a cut, and markets reacted to that shift, not to anything that changed about your specific holdings. Energy names were already softer this week as oil prices fell ahead of Friday''s scheduled signing between the US and Iran, so that part of today isn''t new. The materials side of your portfolio, particularly anything tied to gold, actually had a strong day. Today is a normal example of a market digesting two different stories at once, not a signal that something has gone wrong."</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Who''s Affected</div>
-<p><strong>High impact:</strong> Clients overweight TSX energy who did not participate in the financials-led record and are now seeing their YTD gains narrow. The rebalancing question is whether to reduce energy toward target weight and redeploy into the sectors driving the current advance.</p>
-<p><strong>Mixed impact:</strong> Clients in broadly diversified Canadian equity exposure. The record is a net positive, but the composition of the advance means their energy holdings offset their financial holdings on the day, producing a muted net result despite the headline number.</p>
-<p><strong>Potential benefit:</strong> Clients who were underweight energy and overweight financials, real estate, or utilities. The June 15 session rewarded exactly that positioning. These clients are at or near their target weights and the current rotation is working in their favour.</p>
+<p><strong>High impact:</strong> Clients concentrated in Canadian energy names, who faced pressure from falling oil prices throughout the session independent of the Fed news.</p>
+<p><strong>Mixed impact:</strong> Broadly diversified clients, who saw materials strength largely offset by energy weakness and the afternoon Fed reaction.</p>
+<p><strong>Potential benefit:</strong> Clients with gold or precious metals exposure, who benefited from continued safe-haven flows that pushed bullion above $4,350 an ounce.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Action Checklist</div>
-<div class="checklist-item">Run a sector weight review for each client against their target allocation. The energy versus financials divergence on June 15 may have shifted actual weights meaningfully from targets.</div>
-<div class="checklist-item">Flag clients with WTI technical exposure, either directly through energy equities or through commodity funds, and assess their position against the $80 support level. A sustained break below $80 changes the equity repricing calculus.</div>
-<div class="checklist-item">Review gold mining positions. Agnico Eagle and Barrick held gains in a risk-on session, suggesting the precious metals bid has structural support beyond the Hormuz risk premium. That is worth monitoring as a potential uncorrelated return source.</div>
-<div class="checklist-item">Note the GoC 5-year yield at 3.01%. For any client with a fixed-rate mortgage renewal in the next 60-90 days, the current yield level is the most favourable in approximately six weeks and may not persist if the May CPI on June 22 surprises to the upside.</div>
+<div class="checklist-item">Review sector concentration for clients heavily weighted toward Canadian energy given the continued slide in Brent and WTI</div>
+<div class="checklist-item">Note the day''s record-then-reversal pattern in client files as market context, distinct from any portfolio-specific issue</div>
+<div class="checklist-item">Flag USD-denominated holdings or near-term CAD-sensitive cash flow needs given the loonie''s move to a seven-month low</div>
+<div class="checklist-item">Monitor whether gold strength persists as a portfolio offset if energy weakness continues into next week</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Follow-Up Email Template</div>
 <div class="email-box" id="respond-email">
-<strong>Subject:</strong> TSX record high: what it means for your specific portfolio<br><br>
+<strong>Subject:</strong> Today''s record high, and what happened after<br><br>
 Hi [Client Name],<br><br>
-The TSX closed at a record high Monday following the US-Iran ceasefire. I wanted to give you a direct read on what that means for your holdings specifically, because the record was not a uniform advance.<br><br>
-Financials and technology led the day. Energy declined. If your portfolio has more exposure to the Canadian banks than to oil producers, Monday was a good session for you. If it has been weighted toward energy this year, you felt the correction rather than the record.<br><br>
-The sector rotation that drove the record is likely to continue as long as oil prices stay at or below current levels and the ceasefire holds. That means the second half of 2026 may look different from the first half in terms of which sectors lead. I want to make sure your current allocation reflects where you want to be for that environment, not where the market was six months ago.<br><br>
-Let''s connect this week to review your positioning.<br><br>
+The TSX hit a fresh record this morning, its fourth straight in June, before giving back some ground after this afternoon''s Fed announcement. The pullback was driven by a shift in the Fed''s own rate outlook, not by anything specific to your holdings.<br><br>
+Materials and gold-related positions had a strong day, while energy names continued a slide tied to falling oil prices ahead of Friday''s scheduled signing between the US and Iran. I''ll continue watching both threads on your behalf.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
@@ -1273,44 +928,41 @@ Let''s connect this week to review your positioning.<br><br>
 </div>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">Client Profiles to Target</div>
-<p><strong>DIY investors who rode the energy trade and are now watching it reverse:</strong> The most concentrated prospecting opportunity this week. Self-directed investors who added energy exposure in February or March, participated in the 27% sector run, and are now watching it correct without a framework or an advisor to call are the highest-probability new-client conversion.</p>
-<p><strong>Investors benchmarking themselves against the TSX headline:</strong> Clients who saw the TSX record on the news and assumed their portfolio participated proportionally. A conversation that explains the sector composition of the record, and what it takes to actually benefit from it, demonstrates analytical value instantly.</p>
-<p><strong>High-net-worth investors overdue for a rebalance:</strong> Four months of commodity sector outperformance followed by a sharp rotation is precisely the environment that creates meaningful drift from target allocations. The rebalancing conversation is highest-value now, before the next directional move in either sector.</p>
+<p><strong>DIY investors confused by the record-then-reversal session:</strong> self-directed investors who saw a record high on their watchlist this morning and a weaker close this afternoon, with no one to explain the two distinct causes.</p>
+<p><strong>Energy-concentrated self-directed holders:</strong> investors who built Canadian energy positions earlier in the year and are now navigating a multi-week slide with no framework for distinguishing a temporary repricing from a structural shift.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Opening Line</div>
-<div class="script-box">The TSX set a record on Monday, but energy stocks fell on the same day. That gap between the headline and the experience of someone who was in energy this year is exactly the kind of thing I help clients understand and position for. Are you finding that the record and your portfolio are telling different stories right now?</div>
+<div class="script-box">"Did you catch that the TSX hit a record high this morning and then gave some of it back after the Fed''s announcement? I work with people navigating exactly this kind of session and wanted to see if a second opinion on your positioning would help."</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
-<p>A headline index number and a client''s actual experience of the same session can diverge significantly depending on sector positioning. The TSX at 35,297 with energy down 3% and financials up is a specific portfolio environment that requires a specific positioning response. Understanding which way a record was built, and whether your allocation is aligned with the sectors driving it, is the kind of analysis that distinguishes a managed portfolio from a passive headline-tracker. The client who knew on Monday morning that financials would lead if the ceasefire held was positioned for the record. The client who was watching energy because it had worked for four months was not.</p>
+<p>A self-directed investor watching a record-morning, weaker-afternoon session has to untangle two unrelated stories in real time, a Fed tone shift and a continuing oil-driven energy slide, with nothing but headlines to work from. The advisor''s value is separating those threads clearly enough that the client can tell which one actually affects their specific holdings rather than reacting to the index move as a single undifferentiated signal.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
-<p>When you look at how your portfolio did on Monday versus the TSX headline, was there a gap? If so, which direction?</p>
-<p>Do you have a target allocation to the energy sector, and do you know how far your current weight is from that target after the events of the past four months?</p>
-<p>Are you currently reviewing your holdings in response to the ceasefire, or are you waiting to see how the 60-day negotiation develops?</p>
-<p>Who is helping you think through the second half of the year from a positioning standpoint?</p>
+<p>How are you currently positioned across energy, materials, and financials on the TSX, and has that mix changed much over the past few months?</p>
+<p>When you see a session like today, a record morning and a weaker afternoon, what''s your process for deciding whether to act on it?</p>
+<p>If oil keeps drifting lower into next month as the Hormuz situation normalizes, how exposed is your current portfolio to that specific outcome?</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
-<strong>Subject:</strong> TSX record, energy down: are you positioned for what comes next?<br><br>
-Hi [Prospect Name],<br><br>
-The TSX closed at a record high Monday while Canadian energy stocks declined. That combination is a specific signal about where the market expects returns to come from in the second half of 2026: financials, rate-sensitive sectors, and technology, not oil.<br><br>
-If you have been positioned for the energy trade that worked through April and May, the rotation that drove Monday''s record may not have been working in your favour. The next 60 days, the window for the US-Iran nuclear negotiation, will determine whether oil stabilizes around $80 or continues lower, and that path has direct implications for how Canadian portfolios should be weighted.<br><br>
-I help clients navigate exactly these kinds of transition moments in the market. If you want a current read on whether your positioning makes sense for the environment ahead, I am happy to connect.<br><br>
+<strong>Subject:</strong> A record high, then a Fed-driven pullback, same afternoon<br><br>
+Hi [Name],<br><br>
+The TSX hit a fresh record this morning before giving back ground after today''s Fed decision, a session that combined two unrelated stories: a firmer Fed tone and a continuing slide in oil prices ahead of Friday''s scheduled US-Iran signing.<br><br>
+If you''re managing your own portfolio through sessions like this, I''d welcome the chance to walk through how I''d think about it.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
-  '[{"value":"35,297","label":"TSX record close Jun 15"},{"value":"$80.47","label":"WTI Jun 16 (USD/bbl)"},{"value":"-23%","label":"WTI from Apr peak"},{"value":"3.01%","label":"GoC 5-year yield Jun 15"}]',
-  'market-030.jpg',
-  'Bay Street sets a record on the day its largest commodity sector falls. The TSX at 35,297 is a real number, but the sectors that built it tell the more important story about where Canadian equity returns are moving in the second half of 2026. Photo: iStock.',
+  '[{"value":"35,408","label":"Intraday record high, shortly before noon"},{"value":"1.4030","label":"USD/CAD, seven-month loonie low"},{"value":"$4,350","label":"Gold price per ounce, third straight gain"},{"value":"-0.6%","label":"S&P 500 move minutes after Fed statement"}]',
+  'market-031.jpg',
+  'A record high in the morning and a Fed-driven retreat in the afternoon, the same session carrying two unrelated stories. Photo: iStock.',
   7,
-  '2026-06-17T09:09:00',
-  'entity:tsx,entity:wti,entity:suncor,entity:cad,entity:goc-5y,entity:tsx-energy,entity:tsx-financials,entity:rbc,entity:boc,theme:hormuz-disruption,theme:cdn-energy-rerating,theme:boc-rate-path,theme:cad-weakness,stance:framing-shift',
+  '2026-06-17T14:31:00',
+  'entity:tsx,entity:fed,entity:cad,entity:wti,entity:brent,entity:gold,entity:suncor,entity:cenovus,theme:fed-rate-path,theme:hormuz-disruption,theme:cad-weakness,stance:base-case',
   1,
-  'TMX Money, TSX Composite record close 35,297 on June 15, 2026; prior close 34,937.85. Yahoo Finance, S&P 500 7,431.46 +0.50%; Dow Jones 51,202.26 +0.70%; VIX 17.68 -9.05% on June 15, 2026. TradingEconomics, WTI crude at $80.47 on June 16, 2026 down 0.35%; crude plunged 5%+ June 15 on ceasefire. Investing.com, WTI Crude Oil Futures historical data: 52-week high $109.47; low $79.70; range May 18 to June 16. GF Value / GuruFocus, Suncor Energy SU falls 3.2% to $59.65 on June 15, 2026; 52-week range $37.23 to $96.53. Simply Wall St / Stock Analysis, Goldman Sachs downgrades Suncor to Neutral from Buy, June 2026. TradingEconomics, Canada 5 Year Bond Yield eased to 3.01% on June 15, 2026. TradingEconomics, USD/CAD 1.4007 on June 16, 2026. Wise.com, Highest USD/CAD rate 1.3990 on June 13, 2026. FX Daily Report, WTI Crude Oil Price Analysis June 16, 2026: double top neckline at $80-81. BBN Times, TSX energy sector YTD gain approximately 27.4% through May 2026. | hdq.ca'
+  'TMX Group, S&P/TSX Composite intraday data, June 17 2026. Trading Economics, TSX and commodity price coverage, June 17 2026. CNBC, Fed meeting live updates, June 17 2026. MarketScreener, TSX closer coverage, June 17 2026. MTFX Group, Canadian dollar daily FX coverage, June 17 2026. hdq.ca'
 );
