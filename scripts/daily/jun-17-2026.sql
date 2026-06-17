@@ -3,7 +3,7 @@ INSERT OR REPLACE INTO articles
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/16/when-the-thesis-reverses-energy-investors-and-the-disposition-trap',
+  '2026/06/17/when-the-thesis-reverses-energy-investors-and-the-disposition-trap',
   'behaviour', 'article',
   'When the Thesis Reverses: Energy Investors and the Disposition Trap',
   'WTI crude has fallen more than 23% from its 2026 peak in two weeks. Clients who rode Canadian energy stocks from February to June are now facing a decision the research says they will almost certainly get wrong.',
@@ -263,7 +263,7 @@ If you are trying to think through what the ceasefire means for your energy hold
   'behaviour-030.jpg',
   'The reversal of a four-month geopolitical rally tests investor discipline in ways that are predictable and well-documented. The disposition effect and mental accounting bias are converging on Canadian energy portfolios this week. Photo: iStock.',
   6,
-  '2026-06-16T09:01:00',
+  '2026-06-17T09:01:00',
   'entity:tsx-energy,entity:suncor,entity:cnq,entity:cenovus,entity:kahneman,entity:thaler,theme:hormuz-disruption,theme:cdn-energy-rerating,theme:client-panic-management,stance:base-case',
   1,
   'Shefrin, H. and Statman, M. (1985). The Disposition to Sell Winners Too Early and Ride Losers Too Long: Theory and Evidence. Journal of Finance, 40(3), 777-790. Odean, T. (1998). Are Investors Reluctant to Realize Their Losses? Journal of Finance, 53(5), 1775-1798. Kahneman, D. and Tversky, A. (1979). Prospect Theory: An Analysis of Decision under Risk. Econometrica, 47(2), 263-291. Thaler, R. (1999). Mental Accounting Matters. Journal of Behavioral Decision Making, 12(3), 183-206. TradingEconomics, WTI crude price data, June 2026. GF Value / GuruFocus, Suncor Energy (SU) June 15 close, $59.65. BBN Times, TSX energy sector year-to-date performance through May 2026, approximately 27.4%. CNBC, Oil drops 20% from 2026 peak on optimism over US-Iran ceasefire talks, May 29, 2026. | hdq.ca'
@@ -273,7 +273,7 @@ INSERT OR REPLACE INTO articles
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/16/the-oil-price-reversal-and-the-corporate-account-conversation',
+  '2026/06/17/the-oil-price-reversal-and-the-corporate-account-conversation',
   'tax', 'article',
   'The Oil Price Reversal and the Corporate Account Conversation',
   'Canadian energy names have shed 20-plus percent from their 2026 peaks in two weeks. For clients holding appreciated oil sector positions inside CCPCs, the capital gains inclusion rate and the timing of any disposition decision are suddenly back in play.',
@@ -518,7 +518,7 @@ If you hold energy investments inside a CCPC and are thinking through your optio
   'tax-030.jpg',
   'The intersection of the energy price correction, the capital gains inclusion rate for corporations, and the mortgage renewal wave arriving in the back half of 2026 compresses several planning conversations into the same week. Photo: iStock.',
   6,
-  '2026-06-16T09:03:00',
+  '2026-06-17T09:03:00',
   'entity:cra,entity:ccpc,entity:tfsa,entity:rrsp,entity:goc-5y,entity:boc,theme:capital-gains-rate,theme:cdn-housing-renewal-wall,theme:hormuz-disruption,theme:inflation-canada,stance:base-case',
   1,
   'CRA, Capital Gains Inclusion Rate, 2024 Federal Budget (Bill C-69). CMHC, Mortgage Renewal Projections 2026, via Ratehub.ca and immigrationnewscanada.ca. Ratehub.ca, 2026 mortgage renewal payment increase estimates (fixed-rate: +20-26%), May 2026. Statistics Canada, Consumer Price Index, April 2026, released May 19, 2026 (CPI 2.8%). Statistics Canada, Updated CPI basket weights announcement, June 15, 2026. Bank of Canada, Benchmark Bond Yields, GoC 5-year at 3.01% June 15, 2026. TradingEconomics, Canada 5 Year Bond Yield, June 15, 2026. True North Mortgage, How Government Bond Yields Relate to Mortgage Rates, updated June 10, 2026. TD Economics, Bank of Canada Interest Rate Announcement, June 10, 2026. | hdq.ca'
@@ -528,7 +528,7 @@ INSERT OR REPLACE INTO articles
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/16/the-boc-hold-meets-its-first-disinflationary-signal',
+  '2026/06/17/the-boc-hold-meets-its-first-disinflationary-signal',
   'economy', 'article',
   'The BoC Hold Meets Its First Disinflationary Signal',
   'The US-Iran ceasefire removes the primary inflation risk the Bank of Canada has been managing around since February. The June 22 CPI print, the first under updated basket weights, will tell the Bank whether its "look-through" on energy inflation was vindicated or whether pass-through has already embedded in core.',
@@ -774,7 +774,7 @@ I work with clients specifically on the timing of mortgage renewals and the fixe
   'economy-030.jpg',
   'The Bank of Canada''s inflation management framework has been running on a single premise since February: that elevated oil prices would prove temporary. The ceasefire of June 15 is the first concrete evidence that premise was correct. Photo: iStock.',
   7,
-  '2026-06-16T09:05:00',
+  '2026-06-17T09:05:00',
   'entity:boc,entity:macklem,entity:statcan,entity:goc-5y,entity:fed,theme:boc-rate-path,theme:inflation-canada,theme:hormuz-disruption,theme:cdn-housing-renewal-wall,stance:base-case',
   1,
   'Bank of Canada, Monetary Policy Decision Statement, June 10, 2026. Bank of Canada, Monetary Policy Decision Statement, April 29, 2026. Statistics Canada, Consumer Price Index, April 2026, released May 19, 2026 (CPI 2.8%). Statistics Canada, Consumer Price Index, March 2026, released April 20, 2026 (CPI 2.4%). Statistics Canada, CPI basket weight update announcement, June 15, 2026 (May CPI release June 22). TD Economics, Bank of Canada Interest Rate Announcement June 10, 2026. Canadian Mortgage Professional / RBC Economics, All the economist reaction to the Bank of Canada''s latest decision, June 11, 2026. Nesto.ca, Mortgage Rates Forecast Canada 2026-2030, updated June 2026. True North Mortgage, Bank of Canada bond yield commentary, updated June 10, 2026. TradingEconomics, Canada 5 Year Bond Yield, 3.01% on June 15, 2026. CMHC, 1.15 million mortgage renewals projected for 2026. | hdq.ca'
@@ -784,7 +784,7 @@ INSERT OR REPLACE INTO articles
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/16/the-hormuz-deal-and-the-portfolio-implications-of-a-fragile-peace',
+  '2026/06/17/the-hormuz-deal-and-the-portfolio-implications-of-a-fragile-peace',
   'geo', 'article',
   'The Hormuz Deal and the Portfolio Implications of a Fragile Peace',
   'The US-Iran agreement signed June 15 ends the blockade phase and begins a 60-day nuclear negotiation window. For Canadian portfolios, the immediate read-through is lower oil, a recovering loonie, and a BoC that can finally look past its inflation constraint. The tail risk is that the deal does not hold.',
@@ -1027,7 +1027,7 @@ I specialize in helping clients navigate exactly these kinds of transition momen
   'geo-030.jpg',
   'A ceasefire signed in Washington and Tehran produces a record on Bay Street, but the shape of that record, energy lagging while financials lead, tells the more important story about where the market is repositioning. Photo: iStock.',
   7,
-  '2026-06-16T09:07:00',
+  '2026-06-17T09:07:00',
   'entity:iran,entity:hormuz,entity:wti,entity:tsx,entity:cad,entity:trump-admin,entity:boc,theme:hormuz-disruption,theme:cdn-energy-rerating,theme:boc-rate-path,theme:cad-weakness,stance:base-case',
   1,
   'CNN, June 15 2026: Trump and Vance virtually sign US-Iran agreement. NPR, US and Iran reach initial deal to end war, reopen Strait of Hormuz, June 15, 2026. TradingEconomics, Crude Oil WTI at $80.47 on June 16, 2026. TMX Money, TSX record close 35,297 on June 15, 2026 (previous close 34,937.85). GF Value / GuruFocus, Suncor Energy SU falls 3.2% to $59.65 on June 15, 2026. CNBC, Oil drops 20% from 2026 peak on optimism over US-Iran ceasefire talks, May 29, 2026. CNBC, From panic to pricing in: Are markets past peak fear and sell-off, April 13, 2026. EIA, June Short-Term Energy Outlook, published June 9, 2026. TradingEconomics, USD/CAD 1.4007 on June 16, 2026. Wise.com, USD to CAD historical exchange rates, highest rate June 13, 2026 at 1.3990. BBN Times, Toronto Stock Exchange trades around 34,093 on 9 June 2026, June 9, 2026. | hdq.ca'
@@ -1037,7 +1037,7 @@ INSERT OR REPLACE INTO articles
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/06/16/tsx-record-energy-selloff-and-the-rotation-that-rewrites-the-year',
+  '2026/06/17/tsx-record-energy-selloff-and-the-rotation-that-rewrites-the-year',
   'market', 'article',
   'TSX Record, Energy Selloff, and the Rotation That Rewrites the Year',
   'The TSX closed at 35,297 on June 15, a fresh all-time high, while Suncor fell 3.2% and WTI dropped more than 5%. A record set on a day when the index''s largest commodity sector declines is not a uniform rally. It is a structural rotation, and it changes what the second half of 2026 looks like for Canadian portfolios.',
@@ -1309,7 +1309,7 @@ I help clients navigate exactly these kinds of transition moments in the market.
   'market-030.jpg',
   'Bay Street sets a record on the day its largest commodity sector falls. The TSX at 35,297 is a real number, but the sectors that built it tell the more important story about where Canadian equity returns are moving in the second half of 2026. Photo: iStock.',
   7,
-  '2026-06-16T09:09:00',
+  '2026-06-17T09:09:00',
   'entity:tsx,entity:wti,entity:suncor,entity:cad,entity:goc-5y,entity:tsx-energy,entity:tsx-financials,entity:rbc,entity:boc,theme:hormuz-disruption,theme:cdn-energy-rerating,theme:boc-rate-path,theme:cad-weakness,stance:framing-shift',
   1,
   'TMX Money, TSX Composite record close 35,297 on June 15, 2026; prior close 34,937.85. Yahoo Finance, S&P 500 7,431.46 +0.50%; Dow Jones 51,202.26 +0.70%; VIX 17.68 -9.05% on June 15, 2026. TradingEconomics, WTI crude at $80.47 on June 16, 2026 down 0.35%; crude plunged 5%+ June 15 on ceasefire. Investing.com, WTI Crude Oil Futures historical data: 52-week high $109.47; low $79.70; range May 18 to June 16. GF Value / GuruFocus, Suncor Energy SU falls 3.2% to $59.65 on June 15, 2026; 52-week range $37.23 to $96.53. Simply Wall St / Stock Analysis, Goldman Sachs downgrades Suncor to Neutral from Buy, June 2026. TradingEconomics, Canada 5 Year Bond Yield eased to 3.01% on June 15, 2026. TradingEconomics, USD/CAD 1.4007 on June 16, 2026. Wise.com, Highest USD/CAD rate 1.3990 on June 13, 2026. FX Daily Report, WTI Crude Oil Price Analysis June 16, 2026: double top neckline at $80-81. BBN Times, TSX energy sector YTD gain approximately 27.4% through May 2026. | hdq.ca'
