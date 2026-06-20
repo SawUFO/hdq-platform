@@ -28,7 +28,7 @@ VALUES (
 <span style="font-size:13px;color:#2e7d32;">&#9650; +6.3% off session low</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; FEB 25 TO JUN 19, 2026</span>
 </div>
-<div style="padding:12px 14px 8px;">
+<div id="hdq-chart-2026-06-19-thread-wti" style="padding:12px 14px 8px;">
 <script>
 (function(){
   var data = [
@@ -112,7 +112,7 @@ VALUES (
   svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:2}));
   svg.appendChild(txt("$77.10",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}));
 
-  var container = document.currentScript ? document.currentScript.parentNode : null;
+  var container = document.getElementById("hdq-chart-2026-06-19-thread-wti");
   if (container) container.appendChild(svg);
 })();
 </script>
@@ -134,7 +134,7 @@ VALUES (
 <span style="font-size:13px;color:#c0392b;">&#9660; -0.19%</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; MAY 11 TO JUN 9, 2026</span>
 </div>
-<div style="padding:12px 14px 8px;">
+<div id="hdq-chart-2026-06-19-thread-tsx" style="padding:12px 14px 8px;">
 <script>
 (function(){
   var data = [
@@ -231,7 +231,7 @@ VALUES (
   svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:2}));
   svg.appendChild(txt("34,411.69",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}));
 
-  var container = document.currentScript ? document.currentScript.parentNode : null;
+  var container = document.getElementById("hdq-chart-2026-06-19-thread-tsx");
   if (container) container.appendChild(svg);
 })();
 </script>
