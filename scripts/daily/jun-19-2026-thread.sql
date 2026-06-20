@@ -28,92 +28,85 @@ VALUES (
 <span style="font-size:13px;color:#2e7d32;">&#9650; +6.3% off session low</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; FEB 25 TO JUN 19, 2026</span>
 </div>
-<div id="hdq-chart-2026-06-19-thread-wti" style="padding:12px 14px 8px;">
+<div style="padding:12px 14px 8px;">
 <script>
 (function(){
-  var data = [
-    {t:"2026-02-25T00:00:00",v:66.15,l:"Feb 25"},
-    {t:"2026-03-05T00:00:00",v:78.40,l:"Mar 5"},
-    {t:"2026-03-27T00:00:00",v:99.64,l:null},
-    {t:"2026-03-30T00:00:00",v:101.70,l:null},
-    {t:"2026-04-02T00:00:00",v:112.00,l:null},
-    {t:"2026-04-06T00:00:00",v:114.00,l:"Apr 6"},
-    {t:"2026-04-08T00:00:00",v:83.85,l:null},
-    {t:"2026-04-09T00:00:00",v:98.00,l:null},
-    {t:"2026-04-17T00:00:00",v:95.42,l:null},
-    {t:"2026-04-22T00:00:00",v:92.96,l:null},
-    {t:"2026-04-30T00:00:00",v:106.00,l:null},
-    {t:"2026-05-18T00:00:00",v:99.85,l:"May 18"},
-    {t:"2026-06-09T00:00:00",v:88.20,l:"Jun 9"},
-    {t:"2026-06-19T06:00:00",v:72.53,l:null},
-    {t:"2026-06-19T16:00:00",v:77.10,l:"Jun 19"}
-  ];
-  var parsed = data.map(function(d){ return {t: new Date(d.t).getTime(), v:d.v, l:d.l}; });
-  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  var _cs = document.currentScript;
+  function el(tag,attrs,txt){
+    var e=document.createElementNS("http://www.w3.org/2000/svg",tag);
+    for(var k in attrs) e.setAttribute(k,attrs[k]);
+    if(txt!==undefined) e.textContent=txt;
+    return e;
+  }
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
-  var M = {left:62,right:24,top:18,bottom:46};
-  var W = 680, H = 300;
-  var PW = W - M.left - M.right;
-  var PH = H - M.top - M.bottom;
-  var t0 = parsed[0].t, t1 = parsed[parsed.length-1].t;
-  function xT(t){ return M.left + (t - t0) / (t1 - t0) * PW; }
-  var yMin = 65, yMax = 120;
-  function yP(v){ return M.top + (yMax - v) / (yMax - yMin) * PH; }
+  svg.setAttribute("width","100%");
 
-  var yticks = [70,85,100,115];
+  var data=[{t:"2026-02-25T00:00:00",v:66.15,l:"Feb 25"},{t:"2026-03-05T00:00:00",v:78.40,l:"Mar 5"},{t:"2026-03-27T00:00:00",v:99.64,l:null},{t:"2026-03-30T00:00:00",v:101.70,l:null},{t:"2026-04-02T00:00:00",v:112.00,l:null},{t:"2026-04-06T00:00:00",v:114.00,l:"Apr 6"},{t:"2026-04-08T00:00:00",v:83.85,l:null},{t:"2026-04-09T00:00:00",v:98.00,l:null},{t:"2026-04-17T00:00:00",v:95.42,l:null},{t:"2026-04-22T00:00:00",v:92.96,l:null},{t:"2026-04-30T00:00:00",v:106.00,l:null},{t:"2026-05-18T00:00:00",v:99.85,l:"May 18"},{t:"2026-06-09T00:00:00",v:88.20,l:"Jun 9"},{t:"2026-06-19T06:00:00",v:72.53,l:null},{t:"2026-06-19T16:00:00",v:77.10,l:"Jun 19"}];
+
+  var parsed=data.map(function(d){ return {t:new Date(d.t).getTime(), v:d.v, l:d.l}; });
+  var M={left:62,right:24,top:18,bottom:46};
+  var W=680,H=300;
+  var PW=W-M.left-M.right;
+  var PH=H-M.top-M.bottom;
+  var t0=parsed[0].t, t1=parsed[parsed.length-1].t;
+  function xT(t){ return M.left+(t-t0)/(t1-t0)*PW; }
+  var yMin=65,yMax=120;
+  function yP(v){ return M.top+(yMax-v)/(yMax-yMin)*PH; }
+
+  var yticks=[70,85,100,115];
   yticks.forEach(function(v){
     svg.appendChild(el("line",{x1:M.left,x2:M.left+PW,y1:yP(v),y2:yP(v),stroke:"#ececec","stroke-width":0.5}));
-    svg.appendChild(txt("$"+v,{x:M.left-6,y:yP(v)+3,"text-anchor":"end","font-size":"8.5px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#aaaaaa"}));
+    svg.appendChild(el("text",{x:M.left-6,y:yP(v)+3,"text-anchor":"end","font-size":8.5,fill:"#aaaaaa"},"$"+v));
   });
 
   parsed.forEach(function(p,idx){
-    if (p.l){
-      var anchor = idx === parsed.length-1 ? "end" : "middle";
-      var lx = idx === parsed.length-1 ? Math.min(xT(p.t), 650) : xT(p.t);
-      svg.appendChild(txt(p.l,{x:lx,y:M.top+PH+14,"text-anchor":anchor,"font-size":"8px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#999999"}));
+    if(p.l){
+      var anchor = idx===parsed.length-1 ? "end" : "middle";
+      var lx = idx===parsed.length-1 ? Math.min(xT(p.t),650) : xT(p.t);
+      svg.appendChild(el("text",{x:lx,y:M.top+PH+14,"text-anchor":anchor,"font-size":8,fill:"#999999"},p.l));
     }
   });
 
-  var preWar = parsed[0].v;
-  var refY = yP(preWar);
+  var preWar=parsed[0].v;
+  var refY=yP(preWar);
   svg.appendChild(el("line",{x1:M.left,x2:M.left+PW,y1:refY,y2:refY,stroke:"#7a3030","stroke-dasharray":"3,3"}));
-  svg.appendChild(txt("Pre-war level, Feb 25",{x:M.left+10,y:refY-5,"text-anchor":"start","font-size":"8px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#7a3030"}));
+  svg.appendChild(el("text",{x:M.left+10,y:refY-5,"text-anchor":"start","font-size":8,fill:"#7a3030"},"Pre-war level, Feb 25"));
 
-  var warX = xT(new Date("2026-02-28T00:00:00").getTime());
+  var warX=xT(new Date("2026-02-28T00:00:00").getTime());
   svg.appendChild(el("line",{x1:warX,x2:warX,y1:M.top,y2:M.top+PH,stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
-  svg.appendChild(txt("War begins, Feb 28",{x:warX+4,y:M.top+18,"text-anchor":"start","font-size":"7px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}));
+  svg.appendChild(el("text",{x:warX+4,y:M.top+18,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560"},"War begins, Feb 28"));
 
-  var mouX = xT(new Date("2026-06-17T14:00:00").getTime());
+  var mouX=xT(new Date("2026-06-17T14:00:00").getTime());
   svg.appendChild(el("line",{x1:mouX,x2:mouX,y1:M.top,y2:M.top+PH,stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
-  svg.appendChild(txt("MOU signed, Versailles",{x:mouX-4,y:M.top+18,"text-anchor":"end","font-size":"7px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}));
+  svg.appendChild(el("text",{x:mouX-4,y:M.top+18,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560"},"MOU signed, Versailles"));
 
-  var lowPt = parsed[parsed.length-2];
-  var swissX = xT(lowPt.t);
+  var lowPt=parsed[parsed.length-2];
+  var swissX=xT(lowPt.t);
   svg.appendChild(el("line",{x1:swissX,x2:swissX,y1:M.top,y2:M.top+PH,stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
-  svg.appendChild(txt("Switzerland talks cancelled",{x:Math.min(swissX,646)-4,y:M.top+50,"text-anchor":"end","font-size":"7px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}));
+  svg.appendChild(el("text",{x:Math.min(swissX,646)-4,y:M.top+50,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560"},"Switzerland talks cancelled"));
 
-  var path = "";
+  var path="";
   parsed.forEach(function(p,idx){
-    var cmd = idx === 0 ? "M" : "L";
-    path += cmd + xT(p.t) + "," + yP(p.v) + " ";
+    var cmd = idx===0 ? "M" : "L";
+    path += cmd+xT(p.t)+","+yP(p.v)+" ";
   });
   svg.appendChild(el("path",{d:path,fill:"none",stroke:"#4a5568","stroke-width":2}));
   parsed.forEach(function(p){
     svg.appendChild(el("circle",{cx:xT(p.t),cy:yP(p.v),r:2.5,fill:"#4a5568"}));
   });
 
-  var lastPt = parsed[parsed.length-1];
-  var pillW = 50, pillH = 16;
-  var lastX = xT(lastPt.t), lastY = yP(lastPt.v);
-  var pillX = lastX - pillW - 6;
-  var pillY = lastY - pillH/2;
-  if (pillX < M.left) { pillX = lastX + 6; }
+  var lastPt=parsed[parsed.length-1];
+  var pillW=50,pillH=16;
+  var lastX=xT(lastPt.t), lastY=yP(lastPt.v);
+  var pillX=lastX-pillW-6;
+  var pillY=lastY-pillH/2;
+  if(pillX<M.left){ pillX=lastX+6; }
   svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
   svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:2}));
-  svg.appendChild(txt("$77.10",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}));
+  svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":9,"font-weight":700,fill:"#111111"},"$77.10"));
 
-  var container = document.getElementById("hdq-chart-2026-06-19-thread-wti");
-  if (container) container.appendChild(svg);
+  _cs.parentNode.appendChild(svg);
 })();
 </script>
 </div>
@@ -134,105 +127,92 @@ VALUES (
 <span style="font-size:13px;color:#c0392b;">&#9660; -0.19%</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; MAY 11 TO JUN 9, 2026</span>
 </div>
-<div id="hdq-chart-2026-06-19-thread-tsx" style="padding:12px 14px 8px;">
+<div style="padding:12px 14px 8px;">
 <script>
 (function(){
-  var data = [
-    {d:"May 11",o:34052.67,h:34331.84,l:34052.67,c:34138.88,v:288.04},
-    {d:"May 12",o:34113.67,h:34303.68,l:33907.32,c:34290.73,v:283.50},
-    {d:"May 13",o:34236.39,h:34267.37,l:33962.98,c:34041.43,v:256.07},
-    {d:"May 14",o:34083.41,h:34323.75,l:33997.73,c:34268.27,v:250.13},
-    {d:"May 15",o:34065.74,h:34065.74,l:33673.76,c:33833.35,v:314.26},
-    {d:"May 19",o:33878.62,h:34013.87,l:33721.04,c:33741.24,v:322.64},
-    {d:"May 20",o:33786.84,h:34234.50,l:33786.84,c:34161.82,v:271.21},
-    {d:"May 21",o:34071.26,h:34522.01,l:34025.77,c:34409.49,v:282.33},
-    {d:"May 22",o:34482.12,h:34574.87,l:34401.94,c:34471.36,v:228.96},
-    {d:"May 25",o:34635.81,h:34846.50,l:34635.81,c:34830.89,v:102.53},
-    {d:"May 26",o:34718.73,h:34762.03,l:34551.87,c:34653.87,v:257.28},
-    {d:"May 27",o:34559.97,h:34613.43,l:34392.74,c:34412.05,v:279.77},
-    {d:"May 28",o:34383.19,h:34602.58,l:34231.99,c:34517.70,v:265.39},
-    {d:"May 29",o:34557.46,h:34769.14,l:34423.30,c:34769.14,v:661.36},
-    {d:"Jun 1",o:34754.77,h:34815.29,l:34494.17,c:34734.89,v:289.42},
-    {d:"Jun 2",o:34711.79,h:35176.77,l:34711.79,c:35169.46,v:287.64},
-    {d:"Jun 3",o:35030.55,h:35111.48,l:34799.86,c:34801.54,v:278.69},
-    {d:"Jun 4",o:34886.38,h:35291.13,l:34886.38,c:35217.06,v:314.58},
-    {d:"Jun 5",o:35071.82,h:35071.82,l:34379.72,c:34413.45,v:321.99},
-    {d:"Jun 8",o:34511.23,h:34734.90,l:34436.72,c:34478.74,v:304.14},
-    {d:"Jun 9",o:34533.76,h:34739.03,l:33990.51,c:34411.69,v:292.15}
-  ];
-  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  var _cs = document.currentScript;
+  function el(tag,attrs,txt){
+    var e=document.createElementNS("http://www.w3.org/2000/svg",tag);
+    for(var k in attrs) e.setAttribute(k,attrs[k]);
+    if(txt!==undefined) e.textContent=txt;
+    return e;
+  }
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 340");
-  var M = {left:62,right:24,top:18,bottom:46};
-  var W = 680, H = 340;
-  var PW = W - M.left - M.right;
-  var gapVol = 12, volH = 52;
-  var priceH = (H - M.top - M.bottom) - (gapVol + volH);
-  var n = data.length;
-  var step = PW / n;
-  var cw = step * 0.6;
-  function xC(i){ return M.left + step*i + step/2; }
-  var yMax = 35350, yMin = 33600;
-  function yP(price){ return M.top + (yMax - price) / (yMax - yMin) * priceH; }
-  var volTop = M.top + priceH + gapVol;
-  var maxVol = 700;
-  function yV(vol){ return volTop + (1 - vol/maxVol) * volH; }
+  svg.setAttribute("width","100%");
 
-  var ticks = [33700,34200,34700,35200];
+  var data=[{d:"May 11",o:34052.67,h:34331.84,l:34052.67,c:34138.88,v:288.04},{d:"May 12",o:34113.67,h:34303.68,l:33907.32,c:34290.73,v:283.50},{d:"May 13",o:34236.39,h:34267.37,l:33962.98,c:34041.43,v:256.07},{d:"May 14",o:34083.41,h:34323.75,l:33997.73,c:34268.27,v:250.13},{d:"May 15",o:34065.74,h:34065.74,l:33673.76,c:33833.35,v:314.26},{d:"May 19",o:33878.62,h:34013.87,l:33721.04,c:33741.24,v:322.64},{d:"May 20",o:33786.84,h:34234.50,l:33786.84,c:34161.82,v:271.21},{d:"May 21",o:34071.26,h:34522.01,l:34025.77,c:34409.49,v:282.33},{d:"May 22",o:34482.12,h:34574.87,l:34401.94,c:34471.36,v:228.96},{d:"May 25",o:34635.81,h:34846.50,l:34635.81,c:34830.89,v:102.53},{d:"May 26",o:34718.73,h:34762.03,l:34551.87,c:34653.87,v:257.28},{d:"May 27",o:34559.97,h:34613.43,l:34392.74,c:34412.05,v:279.77},{d:"May 28",o:34383.19,h:34602.58,l:34231.99,c:34517.70,v:265.39},{d:"May 29",o:34557.46,h:34769.14,l:34423.30,c:34769.14,v:661.36},{d:"Jun 1",o:34754.77,h:34815.29,l:34494.17,c:34734.89,v:289.42},{d:"Jun 2",o:34711.79,h:35176.77,l:34711.79,c:35169.46,v:287.64},{d:"Jun 3",o:35030.55,h:35111.48,l:34799.86,c:34801.54,v:278.69},{d:"Jun 4",o:34886.38,h:35291.13,l:34886.38,c:35217.06,v:314.58},{d:"Jun 5",o:35071.82,h:35071.82,l:34379.72,c:34413.45,v:321.99},{d:"Jun 8",o:34511.23,h:34734.90,l:34436.72,c:34478.74,v:304.14},{d:"Jun 9",o:34533.76,h:34739.03,l:33990.51,c:34411.69,v:292.15}];
+
+  var M={left:62,right:24,top:18,bottom:46};
+  var W=680,H=340;
+  var PW=W-M.left-M.right;
+  var gapVol=12, volH=52;
+  var priceH=(H-M.top-M.bottom)-(gapVol+volH);
+  var n=data.length;
+  var step=PW/n;
+  var cw=step*0.6;
+  function xC(i){ return M.left+step*i+step/2; }
+  var yMax=35350, yMin=33600;
+  function yP(price){ return M.top+(yMax-price)/(yMax-yMin)*priceH; }
+  var volTop=M.top+priceH+gapVol;
+  var maxVol=700;
+  function yV(vol){ return volTop+(1-vol/maxVol)*volH; }
+
+  var ticks=[33700,34200,34700,35200];
   ticks.forEach(function(t){
     svg.appendChild(el("line",{x1:M.left,x2:M.left+PW,y1:yP(t),y2:yP(t),stroke:"#ececec","stroke-width":0.5}));
-    svg.appendChild(txt(String(t).replace(/\B(?=(\d{3})+(?!\d))/g,","),{x:M.left-6,y:yP(t)+3,"text-anchor":"end","font-size":"8.5px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#aaaaaa"}));
+    svg.appendChild(el("text",{x:M.left-6,y:yP(t)+3,"text-anchor":"end","font-size":8.5,fill:"#aaaaaa"},String(t).replace(/\B(?=(\d{3})+(?!\d))/g,",")));
   });
 
-  var closes = data.map(function(d){ return d.c; });
-  var maPts = [];
-  for (var i = 4; i < closes.length; i++){
-    var sum = 0;
-    for (var k = i-4; k <= i; k++){ sum += closes[k]; }
-    maPts.push({i:i, v: sum/5});
+  var closes=data.map(function(d){ return d.c; });
+  var maPts=[];
+  for(var i=4;i<closes.length;i++){
+    var sum=0;
+    for(var k=i-4;k<=i;k++){ sum+=closes[k]; }
+    maPts.push({i:i, v:sum/5});
   }
-  var maPath = "";
+  var maPath="";
   maPts.forEach(function(p,idx){
-    var cmd = idx === 0 ? "M" : "L";
-    maPath += cmd + xC(p.i) + "," + yP(p.v) + " ";
+    var cmd = idx===0 ? "M" : "L";
+    maPath += cmd+xC(p.i)+","+yP(p.v)+" ";
   });
   svg.appendChild(el("path",{d:maPath,fill:"none",stroke:"#888888","stroke-width":1.2,"stroke-dasharray":"4,3"}));
-  var lastMA = maPts[maPts.length-1];
-  svg.appendChild(txt("MA5",{x:xC(lastMA.i)-cw/2-26,y:yP(lastMA.v)-6,"text-anchor":"start","font-size":"7.5px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#888888"}));
+  var lastMA=maPts[maPts.length-1];
+  svg.appendChild(el("text",{x:xC(lastMA.i)-cw/2-26,y:yP(lastMA.v)-6,"text-anchor":"start","font-size":7.5,fill:"#888888"},"MA5"));
 
-  var ei = 17;
-  var ex = xC(ei);
+  var ei=17;
+  var ex=xC(ei);
   svg.appendChild(el("line",{x1:ex,x2:ex,y1:M.top,y2:volTop+volH,stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
-  svg.appendChild(txt("Record close, Jun 4",{x:ex+4,y:M.top+10,"text-anchor":"start","font-size":"7px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}));
+  svg.appendChild(el("text",{x:ex+4,y:M.top+10,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560"},"Record close, Jun 4"));
 
   data.forEach(function(d,i){
-    var bull = d.c >= d.o;
+    var bull = d.c>=d.o;
     var color = bull ? "#3a7a55" : "#8a3030";
-    var x = xC(i);
+    var x=xC(i);
     svg.appendChild(el("line",{x1:x,x2:x,y1:yP(d.h),y2:yP(d.l),stroke:color,"stroke-width":1}));
-    var bodyTop = yP(Math.max(d.o,d.c));
-    var bodyH = Math.max(1, Math.abs(yP(d.o)-yP(d.c)));
+    var bodyTop=yP(Math.max(d.o,d.c));
+    var bodyH=Math.max(1,Math.abs(yP(d.o)-yP(d.c)));
     svg.appendChild(el("rect",{x:x-cw/2,y:bodyTop,width:cw,height:bodyH,fill:color}));
-    var vBarH = (volTop+volH) - yV(d.v);
+    var vBarH=(volTop+volH)-yV(d.v);
     svg.appendChild(el("rect",{x:x-cw/2,y:yV(d.v),width:cw,height:vBarH,fill:color,opacity:0.55}));
-    if (i % 5 === 0 || i === n-1){
-      svg.appendChild(txt(d.d,{x:x,y:volTop+volH+12,"text-anchor":"middle","font-size":"8px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#999999"}));
+    if(i%5===0 || i===n-1){
+      svg.appendChild(el("text",{x:x,y:volTop+volH+12,"text-anchor":"middle","font-size":8,fill:"#999999"},d.d));
     }
   });
 
-  svg.appendChild(txt("VOL",{x:M.left+4,y:volTop+10,"text-anchor":"start","font-size":"7.5px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#bbbbbb"}));
+  svg.appendChild(el("text",{x:M.left+4,y:volTop+10,"text-anchor":"start","font-size":7.5,"font-weight":700,fill:"#bbbbbb"},"VOL"));
 
-  var last = data[n-1];
-  var lastX = xC(n-1), lastY = yP(last.c);
-  var pillW = 64, pillH = 16;
-  var pillX = lastX - pillW - 6;
-  var pillY = lastY - pillH/2;
-  if (pillX < M.left) { pillX = lastX + 6; }
+  var last=data[n-1];
+  var lastX=xC(n-1), lastY=yP(last.c);
+  var pillW=64, pillH=16;
+  var pillX=lastX-pillW-6;
+  var pillY=lastY-pillH/2;
+  if(pillX<M.left){ pillX=lastX+6; }
   svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
   svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:2}));
-  svg.appendChild(txt("34,411.69",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}));
+  svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":9,"font-weight":700,fill:"#111111"},"34,411.69"));
 
-  var container = document.getElementById("hdq-chart-2026-06-19-thread-tsx");
-  if (container) container.appendChild(svg);
+  _cs.parentNode.appendChild(svg);
 })();
 </script>
 </div>
