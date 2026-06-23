@@ -114,6 +114,22 @@ const FUND_INTEL_CSS = `
 .fi-feed-link { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; color: var(--navy-600); white-space: nowrap; text-decoration: none; border-bottom: 1px dashed var(--navy-300); flex-shrink: 0; }
 .fi-feed-link:hover { color: var(--navy-900); }
 .fi-quiet { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--n400); margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--n200); }
+.fi-feed-empty { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--n400); padding: 12px 0; margin: 0; }
+
+/* Commentary dropdown (main column featured panel) */
+.fi-commentary-select { margin-left: auto; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; color: var(--navy-700); background: var(--n50); border: 1px solid var(--n300); border-radius: 4px; padding: 4px 28px 4px 10px; cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%231a3560' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
+.fi-commentary-select:focus { border-color: var(--navy-500); }
+
+/* Compact mini-feed (sidebar Latest Documents) */
+.fi-mini-item { padding: 11px 0; border-bottom: 1px solid var(--n100); }
+.fi-mini-item:last-child { border-bottom: none; padding-bottom: 0; }
+.fi-mini-item:first-child { padding-top: 0; }
+.fi-mini-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 5px; }
+.fi-mini-firm { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; color: var(--navy-700); background: var(--navy-50); border: 1px solid var(--navy-100); border-radius: 3px; padding: 1px 6px; }
+.fi-mini-date { font-family: 'DM Sans', sans-serif; font-size: 10px; color: var(--n400); white-space: nowrap; }
+.fi-mini-summary { font-size: 12px; color: var(--n600); line-height: 1.5; margin: 0 0 5px; }
+.fi-mini-link { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; color: var(--navy-600); text-decoration: none; border-bottom: 1px dashed var(--navy-300); }
+.fi-mini-link:hover { color: var(--navy-900); }
 
 /* Sidebar */
 .fi-sidebar-panel { background: var(--card); border: 1px solid var(--n200); border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
@@ -244,7 +260,7 @@ ${lockedOverlay}
         <div class="fi-sidebar-header">Search the Archive</div>
         <div class="fi-sidebar-body">
           <p style="font-size:12px;color:var(--n600);line-height:1.6;margin-bottom:4px;font-family:'DM Sans',sans-serif;">
-            Search 900+ documents across 12 firms. Queries run against actual published materials:
+            Search <span id="fi-archive-total">900+</span> documents across 12 firms. Queries run against actual published materials:
           </p>
           <ul style="font-size:11px;color:var(--n500);line-height:1.8;margin:0 0 12px 16px;padding:0;font-family:'DM Sans',sans-serif;">
             <li>Press releases &amp; announcements</li>
@@ -259,6 +275,12 @@ ${lockedOverlay}
             onkeydown="if(event.key==='Enter')window.fiRunQuery()">
           <button class="fi-query-btn" onclick="window.fiRunQuery()">Run Query &rarr;</button>
           <div style="margin-top:12px;">${chipsHtml}</div>
+        </div>
+      </div>
+      <div class="fi-sidebar-panel">
+        <div class="fi-sidebar-header">Latest Documents</div>
+        <div class="fi-sidebar-body" id="fi-sidebar-feed">
+          <p class="fi-feed-empty">Loading&hellip;</p>
         </div>
       </div>
       <div class="fi-sidebar-panel">
@@ -313,6 +335,37 @@ function fiEsc(s) {
 window.fiSetQuery = function(q) {
   var input = document.getElementById('fi-query-input');
   if (input) { input.value = q; window.fiRunQuery(); }
+};
+
+// ── Firm Commentary panel (main column, firm-filtered) ───────────────────────
+window.FI_COMMENTARY = [];
+window.fiRenderCommentary = function(firmId) {
+  var list = document.getElementById('fi-commentary-list');
+  if (!list) return;
+  var items = window.FI_COMMENTARY;
+  if (firmId && firmId !== '__all') {
+    items = items.filter(function(d){ return d.firm_id === firmId; });
+  }
+  items = items.slice(0, 12);
+  if (!items.length) {
+    list.innerHTML = '<p class="fi-feed-empty">No commentary on file for this firm yet.</p>';
+    return;
+  }
+  list.innerHTML = items.map(function(doc){
+    var s = (doc.summary||''); if(s.length>160) s=s.substring(0,160)+'\u2026';
+    var d = doc.published_date || doc.scraped_date || '';
+    return '<div class="fi-feed-item">'
+      + '<div><div class="fi-feed-date">'+fiEsc(d)+'</div>'
+      + '<span class="fi-feed-firm">'+fiEsc(FI_FIRM_LABEL[doc.firm_id]||doc.firm_id||'')+'</span><br>'
+      + '<span class="fi-feed-type">'+fiEsc(FI_DOC_LABEL[doc.document_type]||doc.document_type||'')+'</span></div>'
+      + '<p class="fi-feed-summary">'+fiEsc(s)+'</p>'
+      + (doc.source_url?'<a href="'+fiEsc(doc.source_url)+'" target="_blank" rel="noreferrer" class="fi-feed-link">Read &rarr;</a>':'<span></span>')
+      + '</div>';
+  }).join('');
+};
+window.fiFilterCommentary = function() {
+  var sel = document.getElementById('fi-commentary-firm');
+  window.fiRenderCommentary(sel ? sel.value : '__all');
 };
 
 // ── Build HDQ-style SVG chart from intelligence chart data ───────────────────
@@ -624,8 +677,15 @@ window.fiRunQuery = async function() {
         var ce = document.getElementById('fi-doc-count');
         if (ca) ca.style.display = '';
         if (ce) ce.textContent = docCount.toLocaleString();
+      }
+
+      // True archive total — live count of ALL documents, refreshed every load
+      var totalDocs = data.totalDocs || 0;
+      if (totalDocs > 0) {
+        var at = document.getElementById('fi-archive-total');
+        if (at) at.textContent = totalDocs.toLocaleString();
         var an = document.getElementById('fi-archive-note');
-        if (an) an.textContent = docCount.toLocaleString() + ' documents archived \u00b7 updated daily';
+        if (an) an.textContent = totalDocs.toLocaleString() + ' documents archived \u00b7 updated daily';
       }
 
       var html = '';
@@ -672,20 +732,17 @@ window.fiRunQuery = async function() {
           + '</div></div>';
       }
 
-      if (feed.length) {
-        html += '<div class="fi-section-header"><span class="fi-section-title">Latest Documents</span><div class="fi-section-rule"></div></div>'
-          + '<div class="fi-feed">'
-          + feed.map(function(doc){
-              var s = (doc.summary||''); if(s.length>160) s=s.substring(0,160)+'\u2026';
-              return '<div class="fi-feed-item">'
-                + '<div><div class="fi-feed-date">'+fiEsc(doc.published_date||'')+'</div>'
-                + '<span class="fi-feed-firm">'+fiEsc(FI_FIRM_LABEL[doc.firm_id]||doc.firm_id||'')+'</span><br>'
-                + '<span class="fi-feed-type">'+fiEsc(FI_DOC_LABEL[doc.document_type]||doc.document_type||'')+'</span></div>'
-                + '<p class="fi-feed-summary">'+fiEsc(s)+'</p>'
-                + (doc.source_url?'<a href="'+fiEsc(doc.source_url)+'" target="_blank" rel="noreferrer" class="fi-feed-link">Read &rarr;</a>':'<span></span>')
-                + '</div>';
-            }).join('')
-          + '</div>';
+      var commentary = data.commentaryFeed || [];
+      if (commentary.length) {
+        window.FI_COMMENTARY = commentary;
+        var firmsSeen = [];
+        commentary.forEach(function(d){ if(d.firm_id && firmsSeen.indexOf(d.firm_id)<0) firmsSeen.push(d.firm_id); });
+        var options = '<option value="__all">All firms</option>' + firmsSeen.map(function(fid){
+          return '<option value="'+fiEsc(fid)+'">'+fiEsc(FI_FIRM_LABEL[fid]||fid)+'</option>';
+        }).join('');
+        html += '<div class="fi-section-header"><span class="fi-section-title">Firm Commentary</span><div class="fi-section-rule"></div>'
+          + '<select id="fi-commentary-firm" class="fi-commentary-select" onchange="window.fiFilterCommentary()">'+options+'</select></div>'
+          + '<div class="fi-feed" id="fi-commentary-list"></div>';
       }
 
       if (b.quietFirms && b.quietFirms.length) {
@@ -696,6 +753,28 @@ window.fiRunQuery = async function() {
       var el = document.getElementById('fi-briefing');
       el.innerHTML = html;
       el.style.display = '';
+
+      // Render firm commentary into the panel we just inserted
+      if (commentary.length) window.fiRenderCommentary('__all');
+
+      // Populate the sidebar Latest Documents (compact list of everything recent)
+      var sfEl = document.getElementById('fi-sidebar-feed');
+      if (sfEl) {
+        if (!feed.length) {
+          sfEl.innerHTML = '<p class="fi-feed-empty">No recent documents.</p>';
+        } else {
+          sfEl.innerHTML = feed.slice(0, 8).map(function(doc){
+            var s = (doc.summary||''); if(s.length>90) s=s.substring(0,90)+'\u2026';
+            var d = doc.published_date || doc.scraped_date || '';
+            return '<div class="fi-mini-item">'
+              + '<div class="fi-mini-top"><span class="fi-mini-firm">'+fiEsc(FI_FIRM_LABEL[doc.firm_id]||doc.firm_id||'')+'</span>'
+              + '<span class="fi-mini-date">'+fiEsc(d)+'</span></div>'
+              + '<p class="fi-mini-summary">'+fiEsc(s)+'</p>'
+              + (doc.source_url?'<a href="'+fiEsc(doc.source_url)+'" target="_blank" rel="noreferrer" class="fi-mini-link">Read &rarr;</a>':'')
+              + '</div>';
+          }).join('');
+        }
+      }
     })
     .catch(function(err) {
       document.getElementById('fi-loading').innerHTML =
