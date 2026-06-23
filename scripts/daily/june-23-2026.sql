@@ -1,3 +1,4 @@
+
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
@@ -24,7 +25,7 @@ VALUES (
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">GOLD SPOT (XAU/USD)</span>
 <span style="font-size:20px;font-weight:700;color:#111;">$4,167</span>
-<span style="font-size:13px;color:#2e7d32;">▲ +0.05%</span>
+<span style="font-size:13px;color:#2e7d32;">&#9650; +0.05%</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; JAN 29 TO JUN 22, 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -167,6 +168,7 @@ If you built a position during the early 2026 run, I would welcome a short conve
   1,
   'Gold price history: Investing.com, JM Bullion, USAGOLD daily gold price history, exchange-rates.org, LiteFinance. Federal Reserve policy context: Federal Reserve, CME FedWatch Tool. Central bank demand: World Gold Council, J.P. Morgan Global Research. Investor sentiment: Bank of America Global Research June 2026 fund manager survey.'
 );
+
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
@@ -187,13 +189,13 @@ VALUES (
 <h2>The Hedging Decision Looks Different Than It Did in May</h2>
 <p>Currency-hedged and unhedged versions of the same US equity exposure produced nearly identical returns through most of the first half of the year. The Canadian dollar averaged $1.3787 per US dollar in January and was still averaging $1.3718 in May, a range of less than one cent. The move since then has been sharper and more one directional: the dollar climbed from $1.3944 on June 10 to $1.4167 on June 22, a gain of more than 1.5% in two weeks, almost all of it arriving after the Fed''s June 17 dot plot.</p>
 <p>An unhedged US equity holding has picked up that currency move on top of whatever the underlying stocks did. A hedged version of the identical fund has not. Neither choice is wrong on its own terms. The point worth raising in a planning conversation is that the gap between the two has only recently become large enough to matter, and the direction of the next move depends heavily on what the Bank of Canada does at its July 15 decision.</p>
-<p>The path below tracks the US dollar's climb against the Canadian dollar from a fourteen-month low in early 2026 to this week's high, with the steepest portion of the move concentrated in the two weeks since the Fed's dot plot.</p>
+<p>The path below tracks the US dollar''s climb against the Canadian dollar from a fourteen-month low in early 2026 to this week''s high, with the steepest portion of the move concentrated in the two weeks since the Fed''s dot plot.</p>
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">USD/CAD EXCHANGE RATE</span>
 <span style="font-size:20px;font-weight:700;color:#111;">$1.4167</span>
-<span style="font-size:13px;color:#2e7d32;">▲ +0.12%</span>
+<span style="font-size:13px;color:#2e7d32;">&#9650; +0.12%</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; JAN 1 TO JUN 22, 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -256,9 +258,9 @@ if(_cs&&_cs.parentNode){_cs.parentNode.appendChild(svg);}
 <h2>TFSA: No Treaty Protection, and No Credit to Recover It</h2>
 <p>The treaty exemption does not extend to the TFSA. US-source dividends paid into a TFSA are subject to the standard 15% non-resident withholding tax, deducted by the custodian before the dividend is credited to the account. Because TFSA income is not reported on a Canadian tax return, there is no foreign tax credit mechanism available to recover that 15%, and the loss is permanent. A US dividend-paying ETF held inside a TFSA gives up a flat 15% of its dividend yield every year for the life of the holding, a cost that does not show up anywhere on a statement and rarely comes up unless an advisor raises it directly.</p>
 <h2>Non-Registered Accounts: The Same 15%, Recoverable This Time</h2>
-<p>A non-registered account faces the identical 15% US withholding tax on the same dividend, but the outcome is different because the income is reported on the investor's Canadian tax return. The foreign tax credit allows that 15% to be claimed against Canadian tax otherwise owing on the same income, up to the limit of that Canadian tax liability, which converts a cost that is permanent inside a TFSA into one that is largely recoverable inside a non-registered account.</p>
+<p>A non-registered account faces the identical 15% US withholding tax on the same dividend, but the outcome is different because the income is reported on the investor''s Canadian tax return. The foreign tax credit allows that 15% to be claimed against Canadian tax otherwise owing on the same income, up to the limit of that Canadian tax liability, which converts a cost that is permanent inside a TFSA into one that is largely recoverable inside a non-registered account.</p>
 <p>The practical conclusion follows directly from the account mechanics rather than from any forecast of where the Canadian dollar goes next. A household holding US dividend-paying equities across RRSP, TFSA, and non-registered accounts should generally fill the RRSP first, the non-registered account second, and the TFSA last, reserving the TFSA for Canadian holdings or non-dividend-paying growth positions where the withholding tax does not apply.</p>
-<p>The Bank of Canada's July 15 decision is the next point at which this calculus could shift again. A second consecutive hold against a Fed that has already moved would extend the policy gap behind this year's currency move. A reason to revisit the hedging decision, on either side, would be a change in either bank's path, not a change in the account rules that determine where the tax drag actually falls.</p>',
+<p>The Bank of Canada''s July 15 decision is the next point at which this calculus could shift again. A second consecutive hold against a Fed that has already moved would extend the policy gap behind this year''s currency move. A reason to revisit the hedging decision, on either side, would be a change in either bank''s path, not a change in the account rules that determine where the tax drag actually falls.</p>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
 <p>Clients are not usually tracking the Canadian dollar day to day, so the reaction here is more often surprise than anxiety, a sense that returns on their US holdings have quietly moved for reasons unrelated to the stocks themselves. Clients who chose a TFSA for US dividend-paying ETFs on convenience rather than analysis may feel mildly frustrated once the permanent withholding cost is explained.</p>
@@ -285,7 +287,7 @@ if(_cs&&_cs.parentNode){_cs.parentNode.appendChild(svg);}
 <div class="email-box" id="respond-email">
 <strong>Subject:</strong> A quick note on your US holdings and account placement<br><br>
 Hi [Client Name],<br><br>
-Following up on our conversation about the Canadian dollar's recent move. As discussed, the dollar has weakened to about $1.4167 per US dollar, its softest level in over a year, which has added a modest tailwind to any unhedged US equity exposure you hold.<br><br>
+Following up on our conversation about the Canadian dollar''s recent move. As discussed, the dollar has weakened to about $1.4167 per US dollar, its softest level in over a year, which has added a modest tailwind to any unhedged US equity exposure you hold.<br><br>
 Separately, I want to flag the account placement question we touched on. US dividend-paying positions are more tax-efficient inside an RRSP or RRIF, where they are exempt from US withholding tax, than inside a TFSA, where a 15% withholding tax applies and cannot be recovered. I would like to review where your US dividend payers currently sit and whether moving any of them makes sense.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
@@ -333,6 +335,7 @@ If you are managing your own accounts, it might be worth a quick second look at 
   1,
   'Exchange rate data: MTFX, X-Rates monthly averages, exchange-rates.org, Trading Economics, Wise. Policy context: Bank of Canada, Federal Reserve. Tax treatment: Canada-US Tax Treaty, Canada Revenue Agency.'
 );
+
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
@@ -351,15 +354,15 @@ VALUES (
 </ul>',
   '<p>Canada''s headline inflation rate rose to 3.2% year over year in May, up from 2.8% in April and above the 3.0% consensus, the fastest pace since late 2023. Nearly all of the acceleration traces to one line item: gasoline prices, up 33.2% year over year as the Strait of Hormuz disruption enters its third month. The number that actually matters for the Bank of Canada''s July 15 decision is a different one, and it has been moving in the opposite direction.</p>
 <h2>The Core Measures Are Not Confirming the Headline</h2>
-<p>The Bank of Canada's preferred gauges of underlying inflation, CPI-trim and CPI-median, are built specifically to filter out the kind of narrow, externally driven price shock now running through gasoline. In May, those two measures held at 2.0% and 2.1%, their lowest level in five years and barely above the Bank's 2% target. April's reading was identical, also described at the time as below market expectations.</p>
-<p>The gap between the two numbers is the story. CPI excluding gasoline rose just 2.2% year over year in May, essentially in line with the core measures and far below the 3.2% headline. Where headline inflation has climbed in four of the last five months, core inflation has been flat or falling over the same stretch. That divergence is exactly what the Bank's framework is designed to separate, and on the May data, the separation is holding.</p>
-<p>Plotted against the Bank's one to three percent control range, the path of headline CPI since December shows an acceleration that core measures have not followed, with the gap between the two widest in the most recent print.</p>
+<p>The Bank of Canada''s preferred gauges of underlying inflation, CPI-trim and CPI-median, are built specifically to filter out the kind of narrow, externally driven price shock now running through gasoline. In May, those two measures held at 2.0% and 2.1%, their lowest level in five years and barely above the Bank''s 2% target. April''s reading was identical, also described at the time as below market expectations.</p>
+<p>The gap between the two numbers is the story. CPI excluding gasoline rose just 2.2% year over year in May, essentially in line with the core measures and far below the 3.2% headline. Where headline inflation has climbed in four of the last five months, core inflation has been flat or falling over the same stretch. That divergence is exactly what the Bank''s framework is designed to separate, and on the May data, the separation is holding.</p>
+<p>Plotted against the Bank''s one to three percent control range, the path of headline CPI since December shows an acceleration that core measures have not followed, with the gap between the two widest in the most recent print.</p>
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">CANADA CPI, YEAR OVER YEAR</span>
 <span style="font-size:20px;font-weight:700;color:#111;">3.2%</span>
-<span style="font-size:13px;color:#c0392b;">▲ +0.4 PTS</span>
+<span style="font-size:13px;color:#c0392b;">&#9650; +0.4 PTS</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">MONTHLY &nbsp;|&nbsp; DEC 2025 TO MAY 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -416,18 +419,18 @@ if(_cs&&_cs.parentNode){_cs.parentNode.appendChild(svg);}
 </div>
 <p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">Core figures shown are CPI-trim and CPI-median as reported for April and May; comparable monthly core figures for December through March were not separately available at time of publication. Source: Statistics Canada.</p>
 <h2>A Technical Recession Argues for the Opposite Response</h2>
-<p>Canada's real GDP edged down 0.1% in the first quarter of 2026, following a 1.0% annualized contraction in the fourth quarter of 2025, meeting the common informal definition of a technical recession. Weak growth paired with contained core inflation is normally the textbook case for holding rates steady or cutting them. An energy-driven headline number paired with a war still affecting global oil supply is normally the case for sounding cautious about cutting too quickly. The Bank of Canada is navigating both arguments at once, which is why its public language has been about looking through the near-term effect of energy prices on headline CPI rather than treating the May print as a reason to tighten.</p>
+<p>Canada''s real GDP edged down 0.1% in the first quarter of 2026, following a 1.0% annualized contraction in the fourth quarter of 2025, meeting the common informal definition of a technical recession. Weak growth paired with contained core inflation is normally the textbook case for holding rates steady or cutting them. An energy-driven headline number paired with a war still affecting global oil supply is normally the case for sounding cautious about cutting too quickly. The Bank of Canada is navigating both arguments at once, which is why its public language has been about looking through the near-term effect of energy prices on headline CPI rather than treating the May print as a reason to tighten.</p>
 <h2>The Fed Complicates the Picture From Outside Canada</h2>
-<p>The Federal Reserve's hawkish June dot plot under new Chair Kevin Warsh has already pushed North American bond yields higher and weakened the Canadian dollar to $1.4167, its softest level in fourteen months, without the Bank of Canada moving at all. Canada's 10-year government bond yield has risen toward 3.4% largely in sympathy with US Treasury yields. A weaker Canadian dollar raises the domestic cost of imported energy, a transmission channel that could eventually feed into the same core measures the Bank currently trusts. Swap markets have begun pricing a Bank of Canada hike later in 2026 for the first time since last fall, a shift driven as much by what is happening in Washington as by anything in the Canadian data itself.</p>
+<p>The Federal Reserve''s hawkish June dot plot under new Chair Kevin Warsh has already pushed North American bond yields higher and weakened the Canadian dollar to $1.4167, its softest level in fourteen months, without the Bank of Canada moving at all. Canada''s 10-year government bond yield has risen toward 3.4% largely in sympathy with US Treasury yields. A weaker Canadian dollar raises the domestic cost of imported energy, a transmission channel that could eventually feed into the same core measures the Bank currently trusts. Swap markets have begun pricing a Bank of Canada hike later in 2026 for the first time since last fall, a shift driven as much by what is happening in Washington as by anything in the Canadian data itself.</p>
 <h2>What July 15 Actually Has to Resolve</h2>
-<p>Bank forecasts are split heading into the decision. Scotiabank and CIBC see the policy rate rising to 3.0% by year end, while TD Economics and National Bank expect a hold at 2.25% well into next year. A hold on July 15 would keep faith with the core measures and the technical recession. A hike would be a statement that the Bank is responding to the cross-border and currency channels rather than to its own preferred gauge of underlying inflation. The more consequential number to watch over the next three weeks may not be the next data release but the next move in the Canadian dollar and in US Treasury yields, since either could shift the Bank's calculus without a single domestic figure changing.</p>',
+<p>Bank forecasts are split heading into the decision. Scotiabank and CIBC see the policy rate rising to 3.0% by year end, while TD Economics and National Bank expect a hold at 2.25% well into next year. A hold on July 15 would keep faith with the core measures and the technical recession. A hike would be a statement that the Bank is responding to the cross-border and currency channels rather than to its own preferred gauge of underlying inflation. The more consequential number to watch over the next three weeks may not be the next data release but the next move in the Canadian dollar and in US Treasury yields, since either could shift the Bank''s calculus without a single domestic figure changing.</p>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
 <p>Clients seeing headlines about inflation at 3.2% are likely to feel renewed anxiety about the cost of living and may assume rate cuts are off the table, or worse, that a hike is imminent. That reaction misses the more relevant number for monetary policy, the core measures sitting at a five-year low.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">What to Say</div>
-<div class="script-box">You may have seen that Canada's inflation rate jumped to 3.2% in May. Almost all of that increase came from one place: gasoline prices, which are up over 33% because of the ongoing disruption in the Middle East. The number the Bank of Canada actually watches most closely, its core inflation measures, sits at about 2%, its lowest level in five years. That is a meaningfully different signal than the headline suggests, and it is part of why I am not expecting a rate hike at the July decision, though I will be watching it closely along with you.</div>
+<div class="script-box">You may have seen that Canada''s inflation rate jumped to 3.2% in May. Almost all of that increase came from one place: gasoline prices, which are up over 33% because of the ongoing disruption in the Middle East. The number the Bank of Canada actually watches most closely, its core inflation measures, sits at about 2%, its lowest level in five years. That is a meaningfully different signal than the headline suggests, and it is part of why I am not expecting a rate hike at the July decision, though I will be watching it closely along with you.</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Who''s Affected</div>
@@ -447,8 +450,8 @@ if(_cs&&_cs.parentNode){_cs.parentNode.appendChild(svg);}
 <div class="email-box" id="respond-email">
 <strong>Subject:</strong> What the 3.2% inflation number does and does not mean<br><br>
 Hi [Client Name],<br><br>
-Following up on our conversation about this week's inflation data. Headline CPI rose to 3.2% in May, almost entirely because of gasoline prices tied to the ongoing disruption in the Middle East. The Bank of Canada's own preferred measure of underlying inflation sits at about 2%, its lowest level in five years.<br><br>
-That gap is a meaningful part of why I am not currently expecting a rate hike at the Bank's July 15 decision, though I am watching it closely. I will follow up as soon as there is anything concrete to act on.<br><br>
+Following up on our conversation about this week''s inflation data. Headline CPI rose to 3.2% in May, almost entirely because of gasoline prices tied to the ongoing disruption in the Middle East. The Bank of Canada''s own preferred measure of underlying inflation sits at about 2%, its lowest level in five years.<br><br>
+That gap is a meaningful part of why I am not currently expecting a rate hike at the Bank''s July 15 decision, though I am watching it closely. I will follow up as soon as there is anything concrete to act on.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
@@ -465,12 +468,12 @@ That gap is a meaningful part of why I am not currently expecting a rate hike at
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
-<p>A self-directed investor or borrower reacting to the headline 3.2% inflation print, without separating it from the Bank of Canada''s core measures, is likely making decisions on a noisier signal than necessary. An advisor's value here is interpretive: explaining which number the central bank actually responds to, and why a recession-adjacent economy with contained core inflation argues for a different policy path than the headline alone would suggest.</p>
+<p>A self-directed investor or borrower reacting to the headline 3.2% inflation print, without separating it from the Bank of Canada''s core measures, is likely making decisions on a noisier signal than necessary. An advisor''s value here is interpretive: explaining which number the central bank actually responds to, and why a recession-adjacent economy with contained core inflation argues for a different policy path than the headline alone would suggest.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
 <p>Have you seen the recent inflation headlines, and how have they affected your thinking about your mortgage or investments?</p>
-<p>Do you know the difference between headline inflation and the Bank of Canada's core inflation measures?</p>
+<p>Do you know the difference between headline inflation and the Bank of Canada''s core inflation measures?</p>
 <p>How are you currently positioned for the possibility of a rate hold versus a hike at the July decision?</p>
 <p>Who is currently helping you interpret economic data like this as it relates to your specific situation?</p>
 </div>
@@ -479,7 +482,7 @@ That gap is a meaningful part of why I am not currently expecting a rate hike at
 <div class="email-box" id="prospect-email">
 <strong>Subject:</strong> The inflation number that matters more than 3.2%<br><br>
 Hi [Name],<br><br>
-You may have seen that Canadian inflation hit 3.2% in May. What gets less coverage is that the Bank of Canada's own preferred measure of underlying inflation sits at about 2%, its lowest level in five years, almost entirely because the headline number is being driven by one thing: gasoline prices.<br><br>
+You may have seen that Canadian inflation hit 3.2% in May. What gets less coverage is that the Bank of Canada''s own preferred measure of underlying inflation sits at about 2%, its lowest level in five years, almost entirely because the headline number is being driven by one thing: gasoline prices.<br><br>
 If you are managing your own mortgage or fixed-income decisions around this kind of data, I would be glad to walk through how I am reading it ahead of the July 15 rate decision. No obligation.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
@@ -495,6 +498,7 @@ If you are managing your own mortgage or fixed-income decisions around this kind
   1,
   'Inflation data: Statistics Canada (The Daily, Consumer Price Index releases), Trading Economics, RBC Economics, BMO Economics. Policy context: Bank of Canada, Federal Reserve. Bond yields: Trading Economics.'
 );
+
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
@@ -515,7 +519,7 @@ VALUES (
 <h2>The Canadian Energy Trade This Unwinds</h2>
 <p>Suncor, Canadian Natural Resources, Cenovus, Imperial Oil and the broader TSX energy sub-index have traded higher since military action began on February 28, re-rated on the assumption that elevated oil prices, and the risk premium behind them, would persist. That re-rating was never really a bet on Canadian production growth or refining margins. It was a bet on a closed shipping lane half a world away. The 60-day license and the Geneva framework do not need to resolve the underlying conflict to test that bet. They only need to put barrels back on the water, and barrels are already moving.</p>
 <h2>Why a License Moves Oil Faster Than a Peace Deal Would</h2>
-<p>Iran has increased visible shipments through Hormuz to the highest level since the conflict began, cutting prices on cargoes sold to China to move volume. Kuwait has lifted its force majeure notices and the UAE's ADNOC has resumed supply operations. A full reopening of Hormuz could in theory release about 80 million barrels into the market. At the same time, several forecasters, including the US Energy Information Administration, have cut their 2026 global oil demand growth forecasts, citing the conflict's drag on trade flows. Supply returning and demand expectations falling at the same time explains the sharpness of the price decline better than the diplomatic headline alone.</p>
+<p>Iran has increased visible shipments through Hormuz to the highest level since the conflict began, cutting prices on cargoes sold to China to move volume. Kuwait has lifted its force majeure notices and the UAE''s ADNOC has resumed supply operations. A full reopening of Hormuz could in theory release about 80 million barrels into the market. At the same time, several forecasters, including the US Energy Information Administration, have cut their 2026 global oil demand growth forecasts, citing the conflict''s drag on trade flows. Supply returning and demand expectations falling at the same time explains the sharpness of the price decline better than the diplomatic headline alone.</p>
 <p>The mechanism also explains why Brent and WTI have not moved together. The Brent-WTI spread widened to an average of $12 a barrel in March, peaking near $25 a barrel on March 31, the highest in over five years, because Brent carries more direct exposure to the shipping routes and regional flows around Hormuz while WTI was cushioned by strong US inventories. As the Hormuz premium drains out of the market, that spread should continue to compress.</p>
 <p>The path below tracks Brent crude from before the conflict began through this week, showing both the scale of the run-up and the pace of the recent unwind.</p>
 <div class="hdq-chart">
@@ -523,7 +527,7 @@ VALUES (
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">BRENT CRUDE OIL</span>
 <span style="font-size:20px;font-weight:700;color:#111;">$77.20</span>
-<span style="font-size:13px;color:#c0392b;">▼ -0.4%</span>
+<span style="font-size:13px;color:#c0392b;">&#9660; -0.4%</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">SELECTED DATES &nbsp;|&nbsp; JAN 1 TO JUN 23, 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -586,7 +590,7 @@ if(_cs&&_cs.parentNode){_cs.parentNode.appendChild(svg);}
 </div>
 <p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">April and May figures are EIA monthly averages rather than single-day prints; the two June points are daily spot prices. Source: US Energy Information Administration Short-Term Energy Outlook.</p>
 <h2>Tail Risk: The Lebanon Condition Iran Keeps Attaching</h2>
-<p>The market is currently pricing continued de-escalation as the dominant scenario, evidenced by oil extending its decline through this week despite a weekend wrinkle. Iran briefly announced over the weekend that it had again halted Strait traffic, explicitly tying further negotiation progress to an end to the conflict in Lebanon, even as tanker tracking data showed millions of barrels continuing to move through the chokepoint regardless. Iran's nuclear program is a second, separate flashpoint: Vice President JD Vance said Tehran had agreed to admit nuclear inspectors, a claim Iranian officials have denied outright. Either thread, Lebanon or the inspector question, looks like a more plausible trigger for the framework unraveling than a reversal of the oil license itself.</p>
+<p>The market is currently pricing continued de-escalation as the dominant scenario, evidenced by oil extending its decline through this week despite a weekend wrinkle. Iran briefly announced over the weekend that it had again halted Strait traffic, explicitly tying further negotiation progress to an end to the conflict in Lebanon, even as tanker tracking data showed millions of barrels continuing to move through the chokepoint regardless. Iran''s nuclear program is a second, separate flashpoint: Vice President JD Vance said Tehran had agreed to admit nuclear inspectors, a claim Iranian officials have denied outright. Either thread, Lebanon or the inspector question, looks like a more plausible trigger for the framework unraveling than a reversal of the oil license itself.</p>
 <h2>What Determines Whether the Window Holds</h2>
 <p>The clearest real-time signal here is not the diplomatic language but the tanker data. Continued Gulf producer ramp-up from Kuwait and the UAE, alongside continued Iranian shipments at a discount to Chinese buyers, suggests market participants are pricing the framework as durable enough to act on rather than waiting for a final signature. The most relevant marker for Canadian portfolios over the rest of the 60-day window is not a specific date so much as a pattern: any verified interruption to Hormuz traffic that holds for more than a news cycle would be the signal that the de-escalation case is breaking down, and it would matter more to Canadian energy valuations than anything said in Geneva.</p>',
   '<div class="toolkit-section">
@@ -606,7 +610,7 @@ if(_cs&&_cs.parentNode){_cs.parentNode.appendChild(svg);}
 <div class="toolkit-section">
 <div class="toolkit-section-label">Action Checklist</div>
 <div class="checklist-item">Identify clients who added to Canadian energy names specifically since February 28 and flag them for review.</div>
-<div class="checklist-item">Check current energy sector weight against each client's long-term target allocation, not against recent performance alone.</div>
+<div class="checklist-item">Check current energy sector weight against each client''s long-term target allocation, not against recent performance alone.</div>
 <div class="checklist-item">Note the Lebanon and nuclear-inspector flashpoints as the two specific risks that could reverse the current de-escalation.</div>
 <div class="checklist-item">Avoid framing this as a binary sell or hold decision in client conversations; frame it as a position-sizing review.</div>
 </div>
@@ -633,7 +637,7 @@ As discussed, the run-up in Canadian energy names this year was tied closely to 
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
-<p>A self-directed investor who added Canadian energy exposure during the Hormuz disruption is now facing the unwind of that trade without necessarily having a framework for position sizing or rebalancing. An advisor's value here is structural: separating a sector bet that was really a geopolitical bet from the long-term plan, and building a position-sizing approach that survives the next headline either way.</p>
+<p>A self-directed investor who added Canadian energy exposure during the Hormuz disruption is now facing the unwind of that trade without necessarily having a framework for position sizing or rebalancing. An advisor''s value here is structural: separating a sector bet that was really a geopolitical bet from the long-term plan, and building a position-sizing approach that survives the next headline either way.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
@@ -663,6 +667,7 @@ I would be glad to walk through how I am thinking about position sizing here, wi
   1,
   'Oil price and Hormuz data: Trading Economics, US Energy Information Administration Short-Term Energy Outlook, Capital.com, CNBC. Diplomatic developments: wire reporting via Trading Economics.'
 );
+
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
@@ -680,17 +685,17 @@ VALUES (
 <li><strong>The net index move of 0.42% conceals a wide dispersion between sectors</strong><span> that is the more useful read for Canadian portfolios today.</span></li>
 </ul>',
   '<p>The S&P/TSX Composite closed at 35,002.18 on Monday, up 0.42% on the day, even as WTI crude settled more than 3% lower to a three-month low. The index-level move undersells what actually happened underneath it: banks and gold miners did the lifting, energy did the dragging, and the net result was a fresh high for the composite on a day when its largest sector by weight was falling hard.</p>
-<h2>Why OSFI's Capital Move Outweighed the Inflation Headline</h2>
-<p>Canada's annual inflation rate accelerated to 3.2% in May, above forecast, the same morning. In isolation, that is a headline that could pressure rate-sensitive sectors. Bank shares rallied anyway. The reason was structural rather than macro: Canada's banking regulator lowered capital requirements for the country's largest lenders for the first time in three years, freeing up balance sheet capacity for additional lending and shareholder returns. Royal Bank of Canada rose 1.0% and Bank of Montreal gained 1.2% on the news, a sector-specific catalyst that had nothing to do with the inflation print and overwhelmed it for bank shares specifically.</p>
+<h2>Why OSFI''s Capital Move Outweighed the Inflation Headline</h2>
+<p>Canada''s annual inflation rate accelerated to 3.2% in May, above forecast, the same morning. In isolation, that is a headline that could pressure rate-sensitive sectors. Bank shares rallied anyway. The reason was structural rather than macro: Canada''s banking regulator lowered capital requirements for the country''s largest lenders for the first time in three years, freeing up balance sheet capacity for additional lending and shareholder returns. Royal Bank of Canada rose 1.0% and Bank of Montreal gained 1.2% on the news, a sector-specific catalyst that had nothing to do with the inflation print and overwhelmed it for bank shares specifically.</p>
 <h2>Gold Miners Moved More Than Gold Did</h2>
-<p>Gold spot itself was little changed, trading near $4,167 an ounce. The miners moved several multiples more: Wheaton Precious Metals rose 4.7%, Agnico Eagle Mines 2.2%, and Barrick Gold 1.2%. That gap is the normal operating leverage of a gold producer. With extraction costs largely fixed, a small move in the metal price flows disproportionately to the margin, and the equity tends to amplify the underlying commodity's move in either direction. The read for Canadian portfolios is that a miner's share move on a single day says more about its leverage to the gold price than about a new view on gold itself.</p>
-<p>Set side by side, today's named movers show how differently each catalyst landed: a regulatory tailwind for banks, a leveraged tailwind for miners, and a geopolitical headwind for energy, all on the same tape.</p>
+<p>Gold spot itself was little changed, trading near $4,167 an ounce. The miners moved several multiples more: Wheaton Precious Metals rose 4.7%, Agnico Eagle Mines 2.2%, and Barrick Gold 1.2%. That gap is the normal operating leverage of a gold producer. With extraction costs largely fixed, a small move in the metal price flows disproportionately to the margin, and the equity tends to amplify the underlying commodity''s move in either direction. The read for Canadian portfolios is that a miner''s share move on a single day says more about its leverage to the gold price than about a new view on gold itself.</p>
+<p>Set side by side, today''s named movers show how differently each catalyst landed: a regulatory tailwind for banks, a leveraged tailwind for miners, and a geopolitical headwind for energy, all on the same tape.</p>
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">TSX NAMED MOVERS</span>
 <span style="font-size:20px;font-weight:700;color:#111;">+0.42%</span>
-<span style="font-size:13px;color:#2e7d32;">▲ COMPOSITE</span>
+<span style="font-size:13px;color:#2e7d32;">&#9650; COMPOSITE</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; JUNE 22, 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -737,9 +742,9 @@ if(_cs&&_cs.parentNode){_cs.parentNode.appendChild(svg);}
 <div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: Trading Economics, June 22, 2026 close. &nbsp;|&nbsp; hdq.ca</div>
 </div>
 </div>
-<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">WTI figure reflects Monday's settlement move as reported by Reuters; all other figures are single-day share price changes. Source: Trading Economics.</p>
+<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">WTI figure reflects Monday''s settlement move as reported by Reuters; all other figures are single-day share price changes. Source: Trading Economics.</p>
 <h2>Energy Was the One Sector Trading the Geopolitical Story Straight</h2>
-<p>While banks traded on regulation and miners traded on leverage to bullion, energy names traded on the same US-Iran developments covered elsewhere in today's edition: easing supply concerns following the Geneva framework and a 60-day US license for Iranian oil sales pulled WTI crude down more than 3% on the day, the most direct single-sector hit in the index. The composite's net gain came despite that drag, not because the drag did not matter.</p>
+<p>While banks traded on regulation and miners traded on leverage to bullion, energy names traded on the same US-Iran developments covered elsewhere in today''s edition: easing supply concerns following the Geneva framework and a 60-day US license for Iranian oil sales pulled WTI crude down more than 3% on the day, the most direct single-sector hit in the index. The composite''s net gain came despite that drag, not because the drag did not matter.</p>
 <p>The 0.42% net move is the number that will appear in most headlines tonight. The more useful number for a Canadian portfolio today is the dispersion underneath it: a regulatory tailwind lifting banks, a leveraged tailwind lifting miners, and a geopolitical headwind pulling energy lower, three different stories arriving on the same tape on the same day.</p>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">What They''re Feeling</div>
@@ -753,19 +758,19 @@ if(_cs&&_cs.parentNode){_cs.parentNode.appendChild(svg);}
 <div class="toolkit-section-label">Who''s Affected</div>
 <p><strong>High impact:</strong> Clients with concentrated energy holdings who may be confused seeing losses on a day the index headline was positive.</p>
 <p><strong>Mixed impact:</strong> Clients with balanced exposure across banks, materials, and energy who saw offsetting moves cancel out.</p>
-<p><strong>Potential benefit:</strong> Clients overweight Canadian bank or gold mining shares who benefited from today's specific catalysts.</p>
+<p><strong>Potential benefit:</strong> Clients overweight Canadian bank or gold mining shares who benefited from today''s specific catalysts.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Action Checklist</div>
-<div class="checklist-item">Identify clients with concentrated energy exposure who may call in confused by today's index headline.</div>
+<div class="checklist-item">Identify clients with concentrated energy exposure who may call in confused by today''s index headline.</div>
 <div class="checklist-item">Prepare a short explanation of the OSFI capital change for clients asking why bank stocks moved.</div>
 <div class="checklist-item">Note that gold miner moves today were a leverage effect, not a signal of a new view on gold itself.</div>
-<div class="checklist-item">Review sector weightings against client targets rather than reacting to a single day's dispersion.</div>
+<div class="checklist-item">Review sector weightings against client targets rather than reacting to a single day''s dispersion.</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Follow-Up Email Template</div>
 <div class="email-box" id="respond-email">
-<strong>Subject:</strong> What today's TSX headline is not telling you<br><br>
+<strong>Subject:</strong> What today''s TSX headline is not telling you<br><br>
 Hi [Client Name],<br><br>
 You may have seen that the TSX closed at a fresh high today. Underneath that headline, the moves were uneven: Canadian banks rose after the banking regulator lowered capital requirements, gold mining stocks rose more than gold itself on normal sector leverage, and energy stocks fell as oil prices dropped on positive Middle East news.<br><br>
 Depending on your specific holdings, your account may not look like the index headline today, and that is expected given the sector dispersion. Let me know if you would like to review your current sector weightings.<br><br>
@@ -776,8 +781,8 @@ Depending on your specific holdings, your account may not look like the index he
 </div>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">Client Profiles to Target</div>
-<p><strong>DIY index watchers:</strong> Self-directed investors who track the TSX headline number without understanding the sector dispersion driving their own portfolio's actual performance.</p>
-<p><strong>Concentrated bank or energy stock pickers:</strong> Investors holding outsized single-sector positions who may not have a framework for today's kind of cross-currents.</p>
+<p><strong>DIY index watchers:</strong> Self-directed investors who track the TSX headline number without understanding the sector dispersion driving their own portfolio''s actual performance.</p>
+<p><strong>Concentrated bank or energy stock pickers:</strong> Investors holding outsized single-sector positions who may not have a framework for today''s kind of cross-currents.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Opening Line</div>
@@ -785,11 +790,11 @@ Depending on your specific holdings, your account may not look like the index he
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
-<p>A self-directed investor watching only the index headline is missing the sector-level story that actually determines their own portfolio's performance on a day like today. An advisor's value here is explanatory and structural: separating a regulatory catalyst, a leverage effect, and a geopolitical headwind so the client understands their own statement rather than just the evening news.</p>
+<p>A self-directed investor watching only the index headline is missing the sector-level story that actually determines their own portfolio''s performance on a day like today. An advisor''s value here is explanatory and structural: separating a regulatory catalyst, a leverage effect, and a geopolitical headwind so the client understands their own statement rather than just the evening news.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
-<p>Did today's TSX headline match what you saw in your own account?</p>
+<p>Did today''s TSX headline match what you saw in your own account?</p>
 <p>Do you know how concentrated your portfolio currently is in any single sector, like energy or financials?</p>
 <p>How do you currently make sense of days when different sectors move in opposite directions?</p>
 <p>Who is helping you separate index-level headlines from what is actually happening in your specific holdings?</p>
@@ -797,7 +802,7 @@ Depending on your specific holdings, your account may not look like the index he
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
-<strong>Subject:</strong> Today's TSX headline hides three different stories<br><br>
+<strong>Subject:</strong> Today''s TSX headline hides three different stories<br><br>
 Hi [Name],<br><br>
 The TSX closed at a fresh high today, but the gain was uneven: bank stocks rose on a regulatory capital change, gold miners rose more than gold itself on normal sector leverage, and energy stocks fell as oil dropped on Middle East news.<br><br>
 If you manage your own portfolio, days like this are a good test of whether you understand what is actually driving your specific holdings rather than just the index headline. Happy to walk through how I read days like this, no obligation.<br><br>
