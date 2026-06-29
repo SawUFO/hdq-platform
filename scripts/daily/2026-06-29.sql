@@ -708,7 +708,7 @@ If you hold energy exposure or are simply trying to make sense of the noise, I''
 ',
   '[{"value":"Substantial","label":"UKMTO Hormuz threat level"},{"value":"$70.53","label":"WTI crude Monday morning"},{"value":"Jun 30","label":"Doha talks resume"},{"value":"3rd","label":"Repeat of strike-and-stand-down pattern"}]',
   'geo-040.jpg',
-  'A single vessel sits low in calm water under a wide pale sky, the fragile normalcy of a shipping lane still being repriced by the week. Photo: iStock.',
+  'Shipping lanes through the Gulf remain a live pricing question for global energy markets this week, with the underlying calculus shifting day to day. Photo: iStock.',
   6,
   '2026-06-29T08:37:00',
   'entity:iran,entity:hormuz,entity:wti,theme:hormuz-disruption,stance:tail-risk-flag',
