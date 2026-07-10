@@ -119,7 +119,7 @@ svg.appendChild(txt("recession, per BoC survey", {x: annoX, y: annoY+9, "text-an
 
 // consensus miss annotation on June (index 10)
 var juneX = xp(10), juneY = yp(6.5);
-svg.appendChild(txt("Street forecast: 6.6%", {x: juneX - 6, y: juneY - 22, "text-anchor": "end", "font-size": "7.5", fill: "#444", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("Street forecast: 6.6%", {x: juneX + 4, y: juneY - 32, "text-anchor": "end", "font-size": "7.5", fill: "#444", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // gold pill on June (latest value)
 var pillW = 46, pillH = 16;
@@ -248,8 +248,8 @@ svg.appendChild(txt("declared over", {x: ex8 - 3, y: margin.top + 29, "text-anch
 var i10 = 8;
 var ex10 = xp(i10);
 svg.appendChild(el("line", {x1: ex10, x2: ex10, y1: margin.top, y2: margin.top+PH, stroke: "#1a3560", opacity: "0.5", "stroke-dasharray": "2,3"}));
-svg.appendChild(txt("Strikes reach Qatar,", {x: ex10 - 40, y: margin.top + 50, "text-anchor": "end", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-svg.appendChild(txt("Jordan; jobs beat", {x: ex10 - 40, y: margin.top + 59, "text-anchor": "end", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("Strikes reach Qatar,", {x: ex10 - 40, y: margin.top + 23, "text-anchor": "end", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("Jordan; jobs beat", {x: ex10 - 40, y: margin.top + 32, "text-anchor": "end", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // x-axis labels
 data.forEach(function(d, i){
