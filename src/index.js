@@ -102,10 +102,10 @@ export default {
       if (path === '/about') return renderHome(env);
 
       // Archive and article pages — render for all visitors, authed flag controls modal
-      if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams);
+      if (path === '/archive' || path === '/hdq-archive') return renderArchive(env, url.searchParams, authed);
 
       // Chart gallery
-      if (path === '/charts') return renderCharts(env, url.searchParams);
+      if (path === '/charts') return renderCharts(env, url.searchParams, authed);
 
       // Fund Intel
       if (path === '/fund-intel') return renderFundIntel(env, authed);

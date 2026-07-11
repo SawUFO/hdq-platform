@@ -108,6 +108,45 @@ const ARCHIVE_CSS = `
 .sidebar-tag-count { font-size:11px; color:var(--n500); background:var(--n100); padding:2px 7px; border-radius:10px; }
 `;
 
+const lockedOverlayCSS = `
+.hdq-locked-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(11,26,48,0.72);
+  backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+}
+.hdq-locked-card {
+  background: #fff; border-radius: 10px; padding: 44px 40px 36px;
+  max-width: 460px; width: 90%; text-align: center;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+}
+.hdq-locked-logo {
+  width: 52px; height: 52px; background: var(--gold-50); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+}
+.hdq-locked-tag {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  color: var(--navy-700); background: var(--navy-50); border: 1px solid var(--navy-100);
+  border-radius: 3px; padding: 4px 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.hdq-locked-card h2 {
+  font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;
+  color: var(--navy-900); margin-bottom: 12px; line-height: 1.2;
+}
+.hdq-locked-card p { font-size: 13px; color: var(--n600); line-height: 1.7; margin-bottom: 10px; }
+.hdq-locked-btn {
+  display: block; width: 100%; font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 700; padding: 14px 24px;
+  background: var(--gold-400); color: var(--navy-900);
+  border: none; border-radius: 4px; text-decoration: none;
+  cursor: pointer; transition: background 0.15s; margin-top: 24px; box-sizing: border-box;
+}
+.hdq-locked-btn:hover { background: var(--gold-600); color: #fff; }
+.hdq-locked-note { font-size: 11px; color: var(--n400); margin-top: 14px; line-height: 1.6; }
+body.overlay-active { overflow: hidden; }
+`;
+
 const DESKS = [
   { key: 'market', label: 'Market' },
   { key: 'geo', label: 'Geopolitical' },
@@ -120,7 +159,7 @@ const DESKS = [
 
 const PER_PAGE = 16;
 
-export async function renderArchive(env, params) {
+export async function renderArchive(env, params, authed = true) {
   const filterDesk = params?.get('desk') || 'all';
   const filterTag  = params?.get('tag') || '';
   const search     = params?.get('q') || '';
@@ -374,7 +413,24 @@ export async function renderArchive(env, params) {
   ${tagSidebar}
 </div>`;
 
+  // Locked overlay for guests — shown over the archive frame
+  const lockedOverlay = !authed ? `
+<div class="hdq-locked-overlay">
+  <div class="hdq-locked-card">
+    <div class="hdq-locked-logo">
+      <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
+    </div>
+    <span class="hdq-locked-tag">Member Access</span>
+    <h2>A publication with a fixed membership.</h2>
+    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.</p>
+    <p>Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.</p>
+    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
+    <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
+  </div>
+</div>` : '';
+
   const body = `
+${lockedOverlay}
 <div class="archive-wrap"><div class="container">
   <div class="archive-header">
     <div class="block-header" style="margin-bottom:0;"><h6>Archive</h6></div>
@@ -407,7 +463,8 @@ ${membershipFooterBand()}`;
     canonical: 'https://hdq.ca/archive',
     metaDescription: 'The full HDQ archive. Browse every edition by desk, topic, or date.',
     robots: 'index, follow',
-    extraStyle: ARCHIVE_CSS,
+    extraStyle: ARCHIVE_CSS + lockedOverlayCSS,
+    bodyClass: authed ? '' : 'overlay-active',
     extraScript: `<script>
 (function(){
   var input = document.getElementById('archive-search-input');
