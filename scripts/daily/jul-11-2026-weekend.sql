@@ -122,13 +122,13 @@ events.forEach(function(ev){
   var topY = margin.top;
   var lineBottom = margin.top + 72;
   svg.appendChild(el("line", {x1: ex, x2: ex, y1: topY, y2: lineBottom, stroke: "#1a3560", "stroke-opacity": "0.5", "stroke-dasharray": "2,3"}));
-  svg.appendChild(txt(ev.label1, {x: ex, y: topY + 30, "text-anchor": "middle", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-  svg.appendChild(txt(ev.label2, {x: ex, y: topY + 40, "text-anchor": "middle", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  svg.appendChild(txt(ev.label1, {x: ex, y: topY + 20, "text-anchor": "middle", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  svg.appendChild(txt(ev.label2, {x: ex, y: topY + 30, "text-anchor": "middle", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 });
 
 // annotation text box near the April 2 peak
 var peakIdx = 4;
-svg.appendChild(txt("Near-term high, before the slow unwind", {x: xp(peakIdx) + 8, y: yp(data[peakIdx].v) + 14, "text-anchor": "start", "font-size": "8", fill: "#444444", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("Near-term high, before the slow unwind", {x: xp(peakIdx) + 8, y: yp(data[peakIdx].v) + 4, "text-anchor": "start", "font-size": "8", fill: "#444444", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // gold pill on the most recent value, placed left of the endpoint
 var lastX = xp(n - 1), lastY = yp(data[n-1].v);
