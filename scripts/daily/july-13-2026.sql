@@ -68,7 +68,7 @@ for (var g=0; g<=4; g++){
 for (var u=0; u<=4; u++){
   var uv = ustMin + u*(ustMax-ustMin)/4;
   var uy = ypUst(uv);
-  svg.appendChild(el("text",{x:margin.left+PW+4,y:uy+3,"text-anchor":"start","font-size":"8.5","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#aaaaaa"}, uv.toFixed(2)+"%"));
+  svg.appendChild(el("text",{x:margin.left+PW-4,y:uy+3,"text-anchor":"start","font-size":"8.5","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#aaaaaa"}, uv.toFixed(2)+"%"));
 }
 
 // Axis lines
@@ -99,7 +99,7 @@ for (var i3=1;i3<n;i3++){ ustPath += " L" + xp(i3) + "," + ypUst(ust10[i3]); }
 svg.appendChild(el("path",{d:ustPath, fill:"none", stroke:"#888888", "stroke-width":"1.5", "stroke-dasharray":"4,3"}));
 
 // End of series labels
-svg.appendChild(el("text",{x:xp(n-1)-4,y:ypGold(gold[n-1])-8,"text-anchor":"end","font-size":"7.5","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#4a5568"}, "GOLD"));
+svg.appendChild(el("text",{x:xp(n-1)-2,y:ypGold(gold[n-1])-8,"text-anchor":"start","font-size":"7.5","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#4a5568"}, "GOLD"));
 svg.appendChild(el("text",{x:xp(n-1)-4,y:ypUst(ust10[n-1])-8,"text-anchor":"end","font-size":"7.5","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#888888"}, "UST 10Y"));
 
 // Gold pill callout on final gold value (left of endpoint, dot decoupled)
@@ -286,7 +286,7 @@ svg.appendChild(el("line",{x1:margin.left,x2:margin.left,y1:margin.top,y2:margin
 
 // Gold pill callout on the most significant value (Steel, the ceiling rate)
 // Placed left of the bar endpoint per pill placement convention, dot decoupled at true endpoint
-var pillW = 74, pillH = 16;
+var pillW = 102, pillH = 16;
 var steelBarEndX = xp(rates[0]);
 var steelY = yBar(0) + barH/2;
 var pillX = steelBarEndX - pillW - 8;
@@ -477,7 +477,7 @@ svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+14,y2:
 svg.appendChild(el("text",{x:margin.left+6,y:margin.top+11,"text-anchor":"start","font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, "BOC: SIXTH CONSECUTIVE HOLD EXPECTED, NO TILT EITHER WAY"));
 
 // Gold pill on the dominant reading (two hikes column, most significant)
-var pillW = 70, pillH = 16;
+var pillW = 100, pillH = 16;
 var domX = xCol(2);
 var domTopY = margin.top+PH - dotR - (counts[2]-1)*(dotR*2+dotGap) - dotR - 26;
 var pillX = domX - pillW/2;
@@ -672,7 +672,7 @@ for (var i3=0;i3<n;i3++){
 }
 
 // End of series label
-svg.appendChild(el("text",{x:xp(n-1)-4,y:yp(brent[n-1])-22,"text-anchor":"end","font-size":"7.5","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#4a5568"}, "BRENT"));
+svg.appendChild(el("text",{x:xp(n-1)-4,y:yp(brent[n-1])-14,"text-anchor":"end","font-size":"7.5","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#4a5568"}, "BRENT"));
 
 // Gold pill callout on final value, left of endpoint, dot decoupled
 var lastX = xp(n-1), lastY = yp(brent[n-1]);
