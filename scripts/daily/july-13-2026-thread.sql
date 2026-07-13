@@ -101,7 +101,7 @@ svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,rx:"3",fill:
 svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif","font-size":"9","font-weight":"700","fill":"#111111"}, "$77.61"));
 
 // annotation text box near pill: toll announcement, max 12 words
-svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY-6,"text-anchor":"middle","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif","font-size":"7","font-weight":"400","fill":"#444444"}, "20% Hormuz toll and blockade announced Monday afternoon"));
+svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY-16,"text-anchor":"middle","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif","font-size":"7","font-weight":"400","fill":"#444444"}, "20% Hormuz toll and blockade announced Monday afternoon"));
 
 var container = _cs ? _cs.parentNode : null;
 if (container) container.appendChild(svg);
