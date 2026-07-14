@@ -229,7 +229,9 @@ data.forEach(function(pt, i){
 
   var labelY = pt.v >= 0 ? y - 5 : y + h + 12;
   var sign = pt.v >= 0 ? "+" : "";
-  svg.appendChild(el("text", {x:x+barW/2, y:labelY, "text-anchor":"middle", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"8", "font-weight":"700", fill:color}, sign+pt.v.toFixed(2)+"%"));
+  var labelFill = color;
+  if (pt.k === "Gold") { labelY = y + 12; labelFill = "#ffffff"; }
+  svg.appendChild(el("text", {x:x+barW/2, y:labelY, "text-anchor":"middle", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"8", "font-weight":"700", fill:labelFill}, sign+pt.v.toFixed(2)+"%"));
 
   svg.appendChild(el("text", {x:x+barW/2, y:margin.top+PH+16, "text-anchor":"middle", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"8", fill:"#999"}, pt.k));
 });
