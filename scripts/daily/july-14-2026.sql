@@ -102,7 +102,7 @@ VALUES (
     svg.appendChild(el("text",{x:labelX, y:yMid+3, "text-anchor":anchor,"font-size":"8","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#444444","font-weight":"700"}, valTxt));
   });
 
-  var pillW = 74, pillH = 16;
+  var pillW = 86, pillH = 16;
   var brentY = margin.top + rowH * 0 + rowH/2;
   var brentX = xScale(4.56);
   var pillX = brentX + 10;
@@ -304,7 +304,7 @@ VALUES (
   });
 
   var lastX = xS(n-1), lastY = yp(3);
-  var pillW = 68, pillH = 16;
+  var pillW = 84, pillH = 16;
   var pillX = lastX - pillW - 6;
   var pillY = lastY - pillH/2 - 14;
   svg.appendChild(el("circle",{cx:lastX, cy:lastY, r:4, fill:"#e8a825"}));
@@ -493,7 +493,7 @@ VALUES (
     if (v !== null){ svg.appendChild(el("circle",{cx:xS(i), cy:yp(v), r:2.5, fill:"#888888"})); }
   });
 
-  svg.appendChild(el("text",{x:xS(2)+6, y:yp(headline[2])-8, "text-anchor":"start","font-size":"7","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#888888","font-weight":"700"}, "CORE (DASHED)"));
+  svg.appendChild(el("text",{x:xS(2)+16, y:yp(headline[2])-8, "text-anchor":"start","font-size":"7","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#888888","font-weight":"700"}, "CORE (DASHED)"));
 
   var lastX = xS(n-1), lastY = yp(headline[n-1]);
   var pillW = 60, pillH = 16;
@@ -690,8 +690,8 @@ VALUES (
 
   var lastI = n - 1;
   var pillW = 62, pillH = 16;
-  var pillX = xC(lastI) - pillW - 4;
-  var pillY = yp(data[lastI].v) - pillH - 6;
+  var pillX = xC(lastI) - pillW/2;
+  var pillY = yp(data[lastI].v) - pillH - 16;
   svg.appendChild(el("circle",{cx:xC(lastI), cy:yp(data[lastI].v), r:4, fill:"#e8a825"}));
   svg.appendChild(el("rect",{x:pillX, y:pillY, width:pillW, height:pillH, rx:3, fill:"#e8a825"}));
   svg.appendChild(el("text",{x:pillX+pillW/2, y:pillY+pillH/2+4, "text-anchor":"middle","font-size":"9","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}, "TODAY"));
@@ -880,7 +880,7 @@ VALUES (
   var pillW = 76, pillH = 16;
   var kospiY = margin.top + rowH * 9 + rowH/2;
   var kospiX = xScale(-3.2);
-  var pillX = kospiX - pillW - 6;
+  var pillX = kospiX - pillW + 46;
   var pillY = kospiY - pillH/2 - rowH*0.9;
   svg.appendChild(el("circle",{cx:kospiX, cy:kospiY, r:4, fill:"#e8a825"}));
   svg.appendChild(el("rect",{x:pillX, y:pillY, width:pillW, height:pillH, rx:3, fill:"#e8a825"}));
