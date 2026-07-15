@@ -273,7 +273,7 @@ for (var j = 0; j < n; j++){
 svg.appendChild(el("path", {d:pathD, fill:"none", stroke:"#8a3030", "stroke-width":"1.8"}));
 var idx50 = 0;
 svg.appendChild(el("line", {x1:xp(idx50), x2:xp(idx50), y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", opacity:"0.5", "stroke-dasharray":"2,3"}));
-svg.appendChild(el("text", {x:xp(idx50)+33, y:margin.top+14, "text-anchor":"start", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Grind begins"));
+svg.appendChild(el("text", {x:xp(idx50)+40, y:margin.top+14, "text-anchor":"start", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Grind begins"));
 var idx150 = n-1;
 svg.appendChild(el("line", {x1:xp(idx150), x2:xp(idx150), y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", opacity:"0.5", "stroke-dasharray":"2,3"}));
 svg.appendChild(el("text", {x:xp(idx150)-3, y:margin.top+28, "text-anchor":"end", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "SBD fully gone"));
