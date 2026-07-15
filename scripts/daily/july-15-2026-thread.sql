@@ -95,6 +95,7 @@ events.forEach(function(ev, idx){
   var yStart = crowded ? margin.top + 50 : margin.top + 20;
   var offset = crowded ? -40 : 3;
   var anchor = crowded ? "end" : "start";
+  if (ev.label === "4TH STRIKE WAVE, +9.4%") { yStart = yp(data[n-1]) + 20; }
   svg.appendChild(el("line",{x1:ex,x2:ex,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-opacity":"0.5","stroke-dasharray":"2,3"}));
   svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, ev.label));
 });
@@ -202,7 +203,9 @@ items.forEach(function(it, i){
 var vixIndex = 7;
 var vixY = margin.top + vixIndex*(PH/n) + 4;
 var pillW = 74, pillH = 15;
-var pillX = margin.left + PW - pillW;
+var vixX1 = xForVal(items[vixIndex].v);
+var pillX = vixX1 - pillW/2;
+if (pillX < margin.left) pillX = margin.left;
 var pillY = vixY - pillH/2 - 12;
 svg.appendChild(el("rect",{x:pillX, y:pillY, width:pillW, height:pillH, fill:"#e8a825", rx:2}));
 svg.appendChild(el("text",{x:pillX+pillW/2, y:pillY+pillH/2+3.5, "text-anchor":"middle","font-size":"8","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}, "LARGEST MOVE"));
