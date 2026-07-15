@@ -93,7 +93,7 @@ svg.appendChild(el("line", {x1:xp(eventIdx23), x2:xp(eventIdx23), y1:margin.top,
 svg.appendChild(el("text", {x:xp(eventIdx23)+3, y:margin.top+28, "text-anchor":"start", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Iran re-closes strait"));
 var eventIdxLast = n-1;
 svg.appendChild(el("line", {x1:xp(eventIdxLast), x2:xp(eventIdxLast), y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", opacity:"0.5", "stroke-dasharray":"2,3"}));
-svg.appendChild(el("text", {x:xp(eventIdxLast)-3, y:margin.top+14, "text-anchor":"end", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Blockade resumes"));
+svg.appendChild(el("text", {x:xp(eventIdxLast)-3, y:refY+14, "text-anchor":"end", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Blockade resumes"));
 var lastX = xp(n-1), lastY = yp(data[n-1].v);
 var pillW = 54, pillH = 16;
 var pillX = lastX - pillW - 6;
@@ -273,7 +273,7 @@ for (var j = 0; j < n; j++){
 svg.appendChild(el("path", {d:pathD, fill:"none", stroke:"#8a3030", "stroke-width":"1.8"}));
 var idx50 = 0;
 svg.appendChild(el("line", {x1:xp(idx50), x2:xp(idx50), y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", opacity:"0.5", "stroke-dasharray":"2,3"}));
-svg.appendChild(el("text", {x:xp(idx50)+3, y:margin.top+14, "text-anchor":"start", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Grind begins"));
+svg.appendChild(el("text", {x:xp(idx50)+13, y:margin.top+14, "text-anchor":"start", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Grind begins"));
 var idx150 = n-1;
 svg.appendChild(el("line", {x1:xp(idx150), x2:xp(idx150), y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", opacity:"0.5", "stroke-dasharray":"2,3"}));
 svg.appendChild(el("text", {x:xp(idx150)-3, y:margin.top+28, "text-anchor":"end", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "SBD fully gone"));
@@ -457,7 +457,7 @@ svg.appendChild(el("line", {x1:xp(idxLow), x2:xp(idxLow), y1:margin.top, y2:marg
 svg.appendChild(el("text", {x:xp(idxLow)-3, y:margin.top+PH-8, "text-anchor":"end", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Diplomatic low point"));
 var idxBlockade = 20;
 svg.appendChild(el("line", {x1:xp(idxBlockade), x2:xp(idxBlockade), y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", opacity:"0.5", "stroke-dasharray":"2,3"}));
-svg.appendChild(el("text", {x:xp(idxBlockade)+3, y:margin.top+14, "text-anchor":"start", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Blockade resumes"));
+svg.appendChild(el("text", {x:xp(idxBlockade)+3, y:margin.top+8, "text-anchor":"start", "font-size":"7", "font-family":fontStack, "font-weight":"700", fill:"#1a3560"}, "Blockade resumes"));
 var lastX = xp(n-1), lastY = yp(data[n-1].v);
 var pillW = 50, pillH = 16;
 var pillX = lastX - pillW - 6;
@@ -633,7 +633,7 @@ svg.appendChild(el("line", {x1:margin.left, x2:margin.left+PW, y1:zeroY, y2:zero
 var fnIdx = 11;
 var fnX = xp(fnIdx);
 var fnBarBottom = yp(data[fnIdx].v);
-var pillW = 46, pillH = 15;
+var pillW = 74, pillH = 15;
 var pillX = fnX - pillW/2;
 var pillY = fnBarBottom - pillH - 16;
 svg.appendChild(el("circle", {cx:fnX, cy:fnBarBottom, r:3.5, fill:"#8a3030"}));
