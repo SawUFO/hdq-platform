@@ -95,7 +95,7 @@ events.forEach(function(ev, idx){
   var yStart = crowded ? margin.top + 50 : margin.top + 20;
   var offset = crowded ? -40 : 3;
   var anchor = crowded ? "end" : "start";
-  if (ev.label === "4TH STRIKE WAVE, +9.4%") { yStart = yp(data[n-1]) + 20; }
+  if (ev.label === "4TH STRIKE WAVE, +9.4%") { yStart = yp(data[n-1]) + 40; }
   svg.appendChild(el("line",{x1:ex,x2:ex,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-opacity":"0.5","stroke-dasharray":"2,3"}));
   svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, ev.label));
 });
