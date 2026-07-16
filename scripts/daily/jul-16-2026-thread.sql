@@ -124,7 +124,7 @@ data.forEach(function(pt,i){
 });
 svg.appendChild(el("path",{d:gPath, fill:"none", stroke:"#6b7280", "stroke-width":"1.75", "stroke-dasharray":"4,2"}));
 
-svg.appendChild(txt("WTI", {x:xS(n-1)-4, y:yW(data[n-1].w)-8, "text-anchor":"end", "font-size":"7", "font-weight":"700", "font-family":FONT, fill:"#4a5568"}));
+svg.appendChild(txt("WTI", {x:xS(n-1)+6, y:yW(data[n-1].w)+2, "text-anchor":"start", "font-size":"7", "font-weight":"700", "font-family":FONT, fill:"#4a5568"}));
 svg.appendChild(txt("Gold", {x:xS(n-1)-4, y:yG(data[n-1].g)+14, "text-anchor":"end", "font-size":"7", "font-weight":"700", "font-family":FONT, fill:"#6b7280"}));
 
 var lastX = xS(n-1), lastYw = yW(data[n-1].w);
