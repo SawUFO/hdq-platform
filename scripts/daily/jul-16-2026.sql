@@ -126,13 +126,13 @@ VALUES (
 
   svg.appendChild(el("circle", {cx:goldLastX, cy:goldLastY, r:4, fill:"#6b7280"}));
   var goldPillW = 58, goldPillH = 16;
-  var goldPillX = goldLastX + 6;
+  var goldPillX = goldLastX - goldPillW - 6;
   var goldPillY = goldLastY - goldPillH/2 - 20;
   svg.appendChild(el("rect", {x:goldPillX, y:goldPillY, width:goldPillW, height:goldPillH, rx:3, fill:"#f0f0f0", stroke:"#aaaaaa"}));
   svg.appendChild(el("text", {x:goldPillX+goldPillW/2, y:goldPillY+goldPillH/2+4, "text-anchor":"middle", "font-size":"9", "font-weight":"700", fill:"#444444"}, "$4,036"));
 
   svg.appendChild(el("text", {x:xp(lastI-3)-4, y:yWti(data[lastI-3].wti)-8, "text-anchor":"end", "font-size":"7.5", fill:"#4a5568", "font-weight":"700"}, "WTI"));
-  svg.appendChild(el("text", {x:xp(lastI-3)-4, y:yGold(data[lastI-3].gold)-8, "text-anchor":"end", "font-size":"7.5", fill:"#6b7280", "font-weight":"700"}, "GOLD"));
+  svg.appendChild(el("text", {x:xp(lastI-3)-18, y:yGold(data[lastI-3].gold)+2, "text-anchor":"end", "font-size":"7.5", fill:"#6b7280", "font-weight":"700"}, "GOLD"));
 
   if (_cs && _cs.parentNode) { _cs.parentNode.appendChild(svg); }
 })();
@@ -322,7 +322,7 @@ VALUES (
   svg.appendChild(el("line", {x1:margin.left, x2:margin.left+PW, y1:refY, y2:refY, stroke:"#888888", "stroke-dasharray":"3,3", "stroke-width":1}));
   var currentVal = data[n-1].y;
   if (Math.abs(prescribed - currentVal) / currentVal >= 0.03) {
-    svg.appendChild(el("text", {x:margin.left+10, y:refY-4, "text-anchor":"start", "font-size":"7.5", fill:"#888888", "font-weight":"700"}, "CRA PRESCRIBED RATE: 3.00%"));
+    svg.appendChild(el("text", {x:margin.left+10, y:refY-14, "text-anchor":"start", "font-size":"7.5", fill:"#888888", "font-weight":"700"}, "CRA PRESCRIBED RATE: 3.00%"));
   }
 
   var linePath = "M " + xp(0) + " " + yv(data[0].y);
