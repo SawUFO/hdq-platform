@@ -320,7 +320,7 @@ VALUES (
   // Reference line at 3.00% rounding threshold
   var threshY = yp(3.00);
   svg.appendChild(el("line", {x1:margin.left, x2:margin.left+PW, y1:threshY, y2:threshY, stroke:"#7a3030", "stroke-dasharray":"3,3"}));
-  svg.appendChild(txt("4% THRESHOLD", {x:650, y:threshY-5, "text-anchor":"end", "font-size":"7", fill:"#7a3030", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  svg.appendChild(txt("4% THRESHOLD", {x:650, y:threshY+9, "text-anchor":"end", "font-size":"7", fill:"#7a3030", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
   function drawSeries(data, color, width){
     var d = "";
