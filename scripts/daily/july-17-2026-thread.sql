@@ -72,7 +72,7 @@ VALUES (
   });
   var goldTicks = [3900,4175,4450];
   goldTicks.forEach(function(v){
-    svg.appendChild(txt("$"+v, {x:margin.left+PW+4, y:ypGold(v)+3, "text-anchor":"start", "font-size":"8.5", fill:"#888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+    svg.appendChild(txt("$"+v, {x:margin.left+PW-10, y:ypGold(v)+3, "text-anchor":"start", "font-size":"8.5", fill:"#888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
   });
 
   [0,4,9,14,19,24].forEach(function(i){
