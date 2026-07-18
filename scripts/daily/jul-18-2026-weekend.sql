@@ -124,8 +124,8 @@ svg.appendChild(txt("$81.78", {x:pillX+pillW/2, y:pillY+pillH/2+4, "text-anchor"
 // secondary (gold spot) pill, offset per two-pill stacking rule
 var lastYg = ypGold(gold[n-1]);
 var pill2W = 62, pill2H = 15;
-var pill2X = lastX + 6;
-var pill2Y = lastYg - pill2H/2;
+var pill2X = lastX - pill2W - 6;
+var pill2Y = lastYg - pill2H/2 - 10;
 svg.appendChild(el("circle",{cx:lastX, cy:lastYg, r:3.5, fill:"#6b7280"}));
 svg.appendChild(el("rect",{x:pill2X, y:pill2Y, width:pill2W, height:pill2H, rx:3, fill:"#ffffff", stroke:"#6b7280", "stroke-width":1}));
 svg.appendChild(txt("$4,010.60", {x:pill2X+pill2W/2, y:pill2Y+pill2H/2+3.5, "text-anchor":"middle", "font-size":"8", "font-weight":"700", "font-family":FONT, fill:"#444444"}));
@@ -215,7 +215,7 @@ names.forEach(function(nm,i){
   var labelX = v >= 0 ? xp(v)+4 : xp(v)-4;
   var anchor = v >= 0 ? "start" : "end";
   var vFill = Math.abs(v) > 2 ? (v>=0 ? "#2e7d32" : "#8a3030") : "#444444";
-  svg.appendChild(txt((v>0?"+":"")+v.toFixed(1)+"%", {x:labelX, y:y+barH/2+3, "text-anchor":anchor, "font-size":"8", "font-weight":"700", "font-family":FONT, fill:vFill}));
+  if (i !== 2) svg.appendChild(txt((v>0?"+":"")+v.toFixed(1)+"%", {x:labelX, y:y+barH/2+3, "text-anchor":anchor, "font-size":"8", "font-weight":"700", "font-family":FONT, fill:vFill}));
 });
 
 // gold pill on the single most significant value (Wheaton, -4.0%, largest move)
