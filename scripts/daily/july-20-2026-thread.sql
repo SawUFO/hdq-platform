@@ -85,9 +85,11 @@ drawLine(common, "#9ca3af", 1.5);
 drawLine(median, "#6b7280", 1.75);
 drawLine(trim, "#4a5568", 2);
 
-svg.appendChild(txt("COMMON",{x:xp(n-1)-4,y:yp(common[n-1])-6,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#9ca3af","font-family":FS}));
-svg.appendChild(txt("MEDIAN",{x:xp(n-1)-4,y:yp(median[n-1])+11,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#6b7280","font-family":FS}));
-svg.appendChild(txt("TRIM",{x:xp(n-1)-4,y:yp(trim[n-1])+20,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#4a5568","font-family":FS}));
+svg.appendChild(txt("COMMON",{x:xp(n-1)-8,y:yp(common[n-1])-6,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#9ca3af","font-family":FS}));
+svg.appendChild(txt("MEDIAN",{x:xp(n-1)-8,y:yp(median[n-1])+4,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#6b7280","font-family":FS}));
+svg.appendChild(txt("TRIM",{x:xp(n-1)-8,y:yp(trim[n-1])+20,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#4a5568","font-family":FS}));
+svg.appendChild(el("circle",{cx:xp(n-1),cy:yp(common[n-1]),r:4,fill:"#9ca3af"}));
+svg.appendChild(el("circle",{cx:xp(n-1),cy:yp(median[n-1]),r:4,fill:"#6b7280"}));
 
 var lastX = xp(n-1), lastY = yp(trim[n-1]);
 var pillW = 46, pillH = 16;
