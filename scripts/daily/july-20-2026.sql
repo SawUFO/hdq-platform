@@ -94,7 +94,7 @@ VALUES (
   var goldTicks = [3900,3990,4080,4170,4250];
   goldTicks.forEach(function(v){
     var y = ypGold(v);
-    svg.appendChild(txt("$"+v, {x:margin.left+PW+4, y:y+3, "text-anchor":"start", "font-size":"8.5", "font-family":font, fill:"#aaaaaa"}));
+    svg.appendChild(txt("$"+v, {x:vb.w-2, y:y+3, "text-anchor":"end", "font-size":"8.5", "font-family":font, fill:"#aaaaaa"}));
   });
 
   // X axis labels (every third point to avoid crowding)
@@ -154,7 +154,7 @@ VALUES (
   // Secondary pill (Gold) - right of endpoint, offset per two-pill stacking rule
   var lastYg = ypGold(gold[n-1]);
   var pillW2 = 58, pillH2 = 16;
-  var pillX2 = lastX + 6;
+  var pillX2 = lastX - pillW2 - 6;
   var pillY2 = lastYg - pillH2/2;
   svg.appendChild(el("circle", {cx:lastX, cy:lastYg, r:4, fill:"#6b7280"}));
   svg.appendChild(el("rect", {x:pillX2, y:pillY2, width:pillW2, height:pillH2, rx:3, fill:"#f0f0f0", stroke:"#6b7280", "stroke-width":"1"}));
@@ -1071,7 +1071,7 @@ VALUES (
   svg.appendChild(el("path", {d:spPath, fill:"none", stroke:"#6b7280", "stroke-width":"2", "stroke-dasharray":"none"}));
 
   // End of series labels
-  svg.appendChild(txt("TSX", {x:xp(n-1)-4, y:yp(tsx[n-1])+14, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#4a5568", "font-family":font}));
+  svg.appendChild(txt("TSX", {x:xp(n-1)-34, y:yp(tsx[n-1])+34, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#4a5568", "font-family":font}));
   svg.appendChild(txt("S&P 500", {x:xp(n-1)-4, y:yp(sp500[n-1])-8, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#6b7280", "font-family":font}));
 
   // Gold pill on TSX (primary)
@@ -1087,8 +1087,8 @@ VALUES (
   // Secondary pill on S&P 500
   var lastYs = yp(sp500[n-1]);
   var pillW2 = 52, pillH2 = 16;
-  var pillX2 = lastX + 6;
-  var pillY2 = lastYs - pillH2/2 - 10;
+  var pillX2 = lastX - pillW2 - 6;
+  var pillY2 = lastYs - pillH2/2 - 26;
   svg.appendChild(el("circle", {cx:lastX, cy:lastYs, r:4, fill:"#6b7280"}));
   svg.appendChild(el("rect", {x:pillX2, y:pillY2, width:pillW2, height:pillH2, rx:3, fill:"#f0f0f0", stroke:"#6b7280", "stroke-width":"1"}));
   svg.appendChild(txt("100.29", {x:pillX2+pillW2/2, y:pillY2+pillH2/2+4, "text-anchor":"middle", "font-size":"9", "font-weight":"700", fill:"#444444", "font-family":font}));
