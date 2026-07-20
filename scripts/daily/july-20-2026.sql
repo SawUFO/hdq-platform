@@ -115,7 +115,7 @@ VALUES (
   var idxUsCasualty = 17;
   var exUsCasualty = xp(idxUsCasualty);
   svg.appendChild(el("line", {x1:exUsCasualty, x2:exUsCasualty, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", "stroke-dasharray":"2,3", opacity:"0.5"}));
-  svg.appendChild(txt("U.S. TOLL REACHES 17", {x:exUsCasualty-40, y:margin.top+62, "text-anchor":"end", "font-size":"7", "font-weight":"700", "font-family":font, fill:"#1a3560"}));
+  svg.appendChild(txt("U.S. TOLL REACHES 17", {x:exUsCasualty-40, y:margin.top+57, "text-anchor":"end", "font-size":"7", "font-weight":"700", "font-family":font, fill:"#1a3560"}));
 
   // Gold reference line at psychological $4,000 (no label: within 3% of current gold value, suppressed per anti-duplication rule)
   var refGoldY = ypGold(4000);
