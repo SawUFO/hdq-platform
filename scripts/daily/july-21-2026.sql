@@ -771,8 +771,8 @@ data.forEach(function(d, i){
 
 // event callout near the ceasefire collapse bar
 var evX = xp(2);
-svg.appendChild(txt("HOUTHI EMBARGO", {x: evX, y: margin.top + 12, "text-anchor": "middle", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-svg.appendChild(txt("DECLARED JUL 20", {x: evX, y: margin.top + 22, "text-anchor": "middle", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("HOUTHI EMBARGO", {x: evX, y: margin.top + 2, "text-anchor": "middle", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("DECLARED JUL 20", {x: evX, y: margin.top + 12, "text-anchor": "middle", "font-size": "7", "font-weight": "700", fill: "#1a3560", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // gold pill on todays reading, the most current data point
 var todayX = xp(0);
