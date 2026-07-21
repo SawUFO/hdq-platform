@@ -130,7 +130,7 @@ var pillX = xp(cibcIdx) - pillW/2;
 var pillY = yp(data[cibcIdx].v) - pillH - 8;
 svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,rx:3,fill:"#e8a825"}));
 svg.appendChild(txt("-2.60%",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle",style:"font-family:"+FONT+";font-size:9px;font-weight:700;fill:#111;"}));
-svg.appendChild(txt("Banks did nearly all the damage",{x:xp(0)+40,y:margin.top+18,"text-anchor":"start",style:"font-family:"+FONT+";font-size:8px;fill:#444;"}));
+svg.appendChild(txt("Banks did nearly all the damage",{x:margin.left+8,y:margin.top-6,"text-anchor":"start",style:"font-family:"+FONT+";font-size:8px;fill:#444;"}));
 var container = _cs ? _cs.parentNode : null;
 if(container) container.appendChild(svg);
 })();
