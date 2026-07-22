@@ -239,10 +239,10 @@ data.forEach(function(d, i){
 });
 
 // legend
-svg.appendChild(el("rect", {x: margin.left, y: 4, width: 8, height: 8, fill: "#6b7280"}));
-svg.appendChild(txt("Tuesday", {x: margin.left + 12, y: 12, "font-size": 8, fill: "#666666", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-svg.appendChild(el("rect", {x: margin.left + 70, y: 4, width: 8, height: 8, fill: "#3a7a55"}));
-svg.appendChild(txt("Wednesday", {x: margin.left + 82, y: 12, "font-size": 8, fill: "#666666", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(el("rect", {x: margin.left + PW - 122, y: 4, width: 8, height: 8, fill: "#6b7280"}));
+svg.appendChild(txt("Tuesday", {x: margin.left + PW - 110, y: 12, "font-size": 8, fill: "#666666", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(el("rect", {x: margin.left + PW - 52, y: 4, width: 8, height: 8, fill: "#3a7a55"}));
+svg.appendChild(txt("Wednesday", {x: margin.left + PW - 40, y: 12, "font-size": 8, fill: "#666666", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // gold pill on Gold''s Wednesday value, the only series that accelerated
 var goldCx = xBandCenter(0);
