@@ -134,8 +134,8 @@ VALUES (
   eventIdx.forEach(function(idx, k){
     var ex = xp(idx);
     var crowded = k > 0 && Math.abs(xp(eventIdx[k]) - xp(eventIdx[k-1])) < 50;
-    var offset = crowded ? -40 : 3;
-    var yStart = crowded ? margin.top + 50 : margin.top + 20;
+    var offset = crowded ? -30 : 3;
+    var yStart = crowded ? margin.top + 58 : margin.top + 12;
     var anchor = crowded ? "end" : "start";
     svg.appendChild(el("line", {x1: ex, x2: ex, y1: margin.top, y2: margin.top+PH, stroke:"#1a3560", "stroke-opacity":"0.5", "stroke-dasharray":"2,3"}));
     svg.appendChild(txt(eventLabels[k], {x: ex+offset, y: yStart, "text-anchor":anchor, "font-family":FONT, "font-size":"7", "font-weight":"700", fill:"#1a3560"}));
