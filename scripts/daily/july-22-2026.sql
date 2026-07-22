@@ -68,13 +68,17 @@ VALUES (
     {d:"Jul 21", v:35369.08}
   ];
   var n = data.length;
+
   var margin = {left:62, right:24, top:18, bottom:46};
   var W = 680, H = 300;
   var PW = W - margin.left - margin.right;
   var PH = H - margin.top - margin.bottom;
+
   var yMin = 33500, yMax = 35600;
+
   function xp(i){ return margin.left + i * (PW/(n-1)); }
   function yp(v){ return margin.top + PH * (1 - (v - yMin)/(yMax - yMin)); }
+
   function el(tag, attrs){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
     for (var k in attrs){ e.setAttribute(k, attrs[k]); }
@@ -85,31 +89,46 @@ VALUES (
     t.textContent = content;
     return t;
   }
+
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox", "0 0 " + W + " " + H);
   svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+
   var FONT = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
+
+  // Gridlines (horizontal, 4 bands)
   var gridVals = [33500, 34200, 34900, 35600];
   gridVals.forEach(function(gv){
     var gy = yp(gv);
     svg.appendChild(el("line", {x1: margin.left, x2: margin.left+PW, y1: gy, y2: gy, stroke:"#ececec", "stroke-width":"0.5"}));
     svg.appendChild(txt(gv.toLocaleString(), {x: margin.left-6, y: gy+3, "text-anchor":"end", "font-family":FONT, "font-size":"8.5", fill:"#aaaaaa"}));
   });
+
+  // Axis line
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left, y1: margin.top, y2: margin.top+PH, stroke:"#d8d8d8", "stroke-width":"1"}));
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left+PW, y1: margin.top+PH, y2: margin.top+PH, stroke:"#d8d8d8", "stroke-width":"1"}));
+
+  // X-axis labels (every 3rd point to avoid crowding)
   data.forEach(function(pt, i){
     if (i % 3 === 0 || i === n-1){
       svg.appendChild(txt(pt.d, {x: xp(i), y: margin.top+PH+16, "text-anchor":"middle", "font-family":FONT, "font-size":"8", fill:"#999999"}));
     }
   });
+
+  // Reference line: 35,000 psychological level (first close below it in 8 sessions on Jul 20)
+  // Anti-duplication rule: |35000-35369.08|/35369.08 = 1.04%, under 3% of current pill value, so label is suppressed; line still draws.
   var refY = yp(35000);
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left+PW, y1: refY, y2: refY, stroke:"#7a3030", "stroke-dasharray":"3,3"}));
+
+  // Line path
   var pathD = "";
   data.forEach(function(pt, i){
     var x = xp(i), y = yp(pt.v);
     pathD += (i===0 ? "M" : "L") + x.toFixed(1) + "," + y.toFixed(1) + " ";
   });
   svg.appendChild(el("path", {d: pathD.trim(), fill:"none", stroke:"#4a5568", "stroke-width":"1.75"}));
+
+  // Event markers: Jul 20 (i=18) selloff, Jul 21 (i=19) rebound - adjacent, apply collision offset
   var eventIdx = [18, 19];
   var eventLabels = ["Monday: -0.9%", "Tuesday: +1.2%"];
   eventIdx.forEach(function(idx, k){
@@ -121,6 +140,8 @@ VALUES (
     svg.appendChild(el("line", {x1: ex, x2: ex, y1: margin.top, y2: margin.top+PH, stroke:"#1a3560", "stroke-opacity":"0.5", "stroke-dasharray":"2,3"}));
     svg.appendChild(txt(eventLabels[k], {x: ex+offset, y: yStart, "text-anchor":anchor, "font-family":FONT, "font-size":"7", "font-weight":"700", fill:"#1a3560"}));
   });
+
+  // Gold pill on final value (left of endpoint, dot decoupled)
   var lastX = xp(n-1), lastY = yp(data[n-1].v);
   var pillW = 66, pillH = 16;
   var pillX = lastX - pillW - 6;
@@ -129,9 +150,11 @@ VALUES (
   svg.appendChild(el("circle", {cx: lastX, cy: lastY, r: 4, fill:"#4a5568"}));
   svg.appendChild(el("rect", {x: pillX, y: pillY, width: pillW, height: pillH, rx:"3", fill:"#e8a825"}));
   svg.appendChild(txt("35,369.08", {x: pillX+pillW/2, y: pillY+pillH/2+3.5, "text-anchor":"middle", "font-family":FONT, "font-size":"9", "font-weight":"700", fill:"#111111"}));
+
   var container = _cs ? _cs.parentNode : null;
   if (container) container.appendChild(svg);
 })();
+
 </script>
 </div>
 <div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: TMX Group, Investing.com daily close data, May 11 to Jul 21 2026. &nbsp;|&nbsp; hdq.ca</div>
@@ -270,16 +293,20 @@ VALUES (
     {label:"Forecast 5-year fixed, year-end", v:4.70, note:"forecast"}
   ];
   var n = data.length;
+
   var margin = {left:184, right:56, top:18, bottom:14};
   var W = 680, H = 300;
   var PW = W - margin.left - margin.right;
   var PH = H - margin.top - margin.bottom;
+
   var xMax = 5.5;
   function xp(v){ return margin.left + (v/xMax) * PW; }
+
   var rowH = PH / n;
   var barH = rowH * 0.52;
   function yTop(i){ return margin.top + i*rowH + (rowH-barH)/2; }
   function yMid(i){ return margin.top + i*rowH + rowH/2; }
+
   function el(tag, attrs){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
     for (var k in attrs){ e.setAttribute(k, attrs[k]); }
@@ -290,29 +317,42 @@ VALUES (
     t.textContent = content;
     return t;
   }
+
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox", "0 0 " + W + " " + H);
   svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+
   var FONT = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
+
+  // Vertical gridlines at 1% intervals
   for (var g = 0; g <= 5; g++){
     var gx = xp(g);
     svg.appendChild(el("line", {x1: gx, x2: gx, y1: margin.top, y2: margin.top+PH, stroke:"#ececec", "stroke-width":"0.5"}));
     svg.appendChild(txt(g + "%", {x: gx, y: margin.top+PH+11, "text-anchor":"middle", "font-family":FONT, "font-size":"8", fill:"#999999"}));
   }
+  // Zero baseline
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left, y1: margin.top, y2: margin.top+PH, stroke:"#d8d8d8", "stroke-width":"1"}));
+
   data.forEach(function(row, i){
     var bx = margin.left, by = yTop(i), bw = xp(row.v)-margin.left;
     var isCurrent = row.note === "current";
     var isForecast = row.note === "forecast";
     var fill = isCurrent ? "#e8a825" : (isForecast ? "#9ca3af" : "#4a5568");
+
+    // Row label (right-aligned, left of plot)
     svg.appendChild(txt(row.label, {x: margin.left-10, y: yMid(i)+3, "text-anchor":"end", "font-family":FONT, "font-size":"9", fill:"#444444"}));
+
+    // Bar
     if (isForecast){
       svg.appendChild(el("rect", {x:bx, y:by, width:bw, height:barH, fill:fill, "fill-opacity":"0.55", stroke:fill, "stroke-width":"1", "stroke-dasharray":"3,2"}));
     } else {
       svg.appendChild(el("rect", {x:bx, y:by, width:bw, height:barH, fill:fill}));
     }
+
+    // Value label at bar end
     var valTxt = row.v.toFixed(2) + "%";
     if (isCurrent){
+      // Gold pill callout on the current actionable rate
       var pillW = 44, pillH = 15;
       var pillX = bx + bw + 6;
       var pillY = yMid(i) - pillH/2;
@@ -321,13 +361,17 @@ VALUES (
     } else {
       svg.appendChild(txt(valTxt, {x: bx+bw+6, y: yMid(i)+3, "text-anchor":"start", "font-family":FONT, "font-size":"8.5", "font-weight":"700", fill:"#444444"}));
     }
+
+    // Annotation text box on the forecast bar (max 12 words)
     if (isForecast){
       svg.appendChild(txt("Range 4.5% to 4.9% across major bank forecasts", {x: bx+4, y: by-4, "text-anchor":"start", "font-family":FONT, "font-size":"7.5", fill:"#444444"}));
     }
   });
+
   var container = _cs ? _cs.parentNode : null;
   if (container) container.appendChild(svg);
 })();
+
 </script>
 </div>
 <div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: Bank of Canada, Trading Economics, Ratehub.ca, Jul 15 to Jul 21 2026. &nbsp;|&nbsp; hdq.ca</div>
@@ -458,28 +502,32 @@ VALUES (
 (function(){
   var _cs = document.currentScript;
   var data = [
-    {d:"Jan 29 '25", v:3.00},
-    {d:"Mar 12 '25", v:2.75},
-    {d:"Apr 16 '25", v:2.75},
-    {d:"Jun 4 '25", v:2.75},
-    {d:"Jul 30 '25", v:2.75},
-    {d:"Sep 17 '25", v:2.50},
-    {d:"Oct 29 '25", v:2.25},
-    {d:"Dec 10 '25", v:2.25},
-    {d:"Jan 28 '26", v:2.25},
-    {d:"Mar 18 '26", v:2.25},
-    {d:"Apr 29 '26", v:2.25},
-    {d:"Jun 10 '26", v:2.25},
-    {d:"Jul 15 '26", v:2.25}
+    {d:"Jan 29 ''25", v:3.00},
+    {d:"Mar 12 ''25", v:2.75},
+    {d:"Apr 16 ''25", v:2.75},
+    {d:"Jun 4 ''25", v:2.75},
+    {d:"Jul 30 ''25", v:2.75},
+    {d:"Sep 17 ''25", v:2.50},
+    {d:"Oct 29 ''25", v:2.25},
+    {d:"Dec 10 ''25", v:2.25},
+    {d:"Jan 28 ''26", v:2.25},
+    {d:"Mar 18 ''26", v:2.25},
+    {d:"Apr 29 ''26", v:2.25},
+    {d:"Jun 10 ''26", v:2.25},
+    {d:"Jul 15 ''26", v:2.25}
   ];
   var n = data.length;
+
   var margin = {left:62, right:24, top:18, bottom:46};
   var W = 680, H = 300;
   var PW = W - margin.left - margin.right;
   var PH = H - margin.top - margin.bottom;
+
   var yMin = 2.0, yMax = 3.25;
+
   function xp(i){ return margin.left + i * (PW/(n-1)); }
   function yp(v){ return margin.top + PH * (1 - (v - yMin)/(yMax - yMin)); }
+
   function el(tag, attrs){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
     for (var k in attrs){ e.setAttribute(k, attrs[k]); }
@@ -490,23 +538,32 @@ VALUES (
     t.textContent = content;
     return t;
   }
+
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox", "0 0 " + W + " " + H);
   svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+
   var FONT = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
+
+  // Gridlines
   var gridVals = [2.00, 2.25, 2.50, 2.75, 3.00, 3.25];
   gridVals.forEach(function(gv){
     var gy = yp(gv);
     svg.appendChild(el("line", {x1: margin.left, x2: margin.left+PW, y1: gy, y2: gy, stroke:"#ececec", "stroke-width":"0.5"}));
     svg.appendChild(txt(gv.toFixed(2)+"%", {x: margin.left-6, y: gy+3, "text-anchor":"end", "font-family":FONT, "font-size":"8.5", fill:"#aaaaaa"}));
   });
+
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left, y1: margin.top, y2: margin.top+PH, stroke:"#d8d8d8", "stroke-width":"1"}));
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left+PW, y1: margin.top+PH, y2: margin.top+PH, stroke:"#d8d8d8", "stroke-width":"1"}));
+
+  // X-axis labels: show every other point to avoid crowding, plus first and last
   data.forEach(function(pt, i){
     if (i % 2 === 0 || i === n-1){
       svg.appendChild(txt(pt.d, {x: xp(i), y: margin.top+PH+16, "text-anchor":"middle", "font-family":FONT, "font-size":"7", fill:"#999999"}));
     }
   });
+
+  // Step-after path: hold horizontal at current value until next x, then jump vertical
   var pathD = "M" + xp(0).toFixed(1) + "," + yp(data[0].v).toFixed(1) + " ";
   for (var i = 1; i < n; i++){
     var xPrev = xp(i-1), xCur = xp(i);
@@ -517,15 +574,23 @@ VALUES (
     }
   }
   svg.appendChild(el("path", {d: pathD.trim(), fill:"none", stroke:"#4a5568", "stroke-width":"1.75"}));
+
+  // Dots at each decision point
   data.forEach(function(pt, i){
     svg.appendChild(el("circle", {cx: xp(i), cy: yp(pt.v), r: 2.2, fill:"#4a5568"}));
   });
+
+  // Event marker: Oct 29 2025, the last cut before the current hold streak began (index 6)
   var evIdx = 6;
   var evX = xp(evIdx);
   svg.appendChild(el("line", {x1: evX, x2: evX, y1: margin.top, y2: margin.top+PH, stroke:"#1a3560", "stroke-opacity":"0.5", "stroke-dasharray":"2,3"}));
   svg.appendChild(txt("Last cut", {x: evX+4, y: margin.top+14, "text-anchor":"start", "font-family":FONT, "font-size":"7", "font-weight":"700", fill:"#1a3560"}));
+
+  // Annotation text box over the flat hold segment (max 12 words)
   var midHoldX = (xp(7) + xp(11)) / 2;
   svg.appendChild(txt("Six consecutive holds since October 2025", {x: midHoldX, y: yp(2.25)-10, "text-anchor":"middle", "font-family":FONT, "font-size":"7.5", fill:"#444444"}));
+
+  // Gold pill on final value (left of endpoint, dot decoupled)
   var lastX = xp(n-1), lastY = yp(data[n-1].v);
   var pillW = 46, pillH = 16;
   var pillX = lastX - pillW - 6;
@@ -534,9 +599,11 @@ VALUES (
   svg.appendChild(el("circle", {cx: lastX, cy: lastY, r: 4, fill:"#4a5568"}));
   svg.appendChild(el("rect", {x: pillX, y: pillY, width: pillW, height: pillH, rx:"3", fill:"#e8a825"}));
   svg.appendChild(txt("2.25%", {x: pillX+pillW/2, y: pillY+pillH/2+3.5, "text-anchor":"middle", "font-family":FONT, "font-size":"9", "font-weight":"700", fill:"#111111"}));
+
   var container = _cs ? _cs.parentNode : null;
   if (container) container.appendChild(svg);
 })();
+
 </script>
 </div>
 <div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: Bank of Canada rate decisions, Jan 2025 to Jul 2026. &nbsp;|&nbsp; hdq.ca</div>
@@ -554,7 +621,7 @@ VALUES (
 <div class="script-box">Inflation did cool in June, but the Bank of Canada is watching a specific risk: that elevated energy costs from the Middle East conflict could stick around long enough to spread into other prices. That is why it held rather than easing off. The U.S. Federal Reserve is in its own, separate situation, with a new chair who has chosen not to signal his next move in advance, which is unusual and is part of why market expectations there feel less settled than normal. Neither of these is a reason to change your plan today, but they are both worth watching over the next few months.</div>
 </div>
 <div class="toolkit-section">
-<div class="toolkit-section-label">Who's Affected</div>
+<div class="toolkit-section-label">Who''s Affected</div>
 <p><strong>High impact:</strong> Clients with GICs or fixed income maturing soon who are deciding whether to lock in current rates or wait.</p>
 <p><strong>Mixed impact:</strong> Clients holding meaningful U.S. dollar exposure or cross-border fixed income, given the widened policy rate gap between the two central banks.</p>
 <p><strong>Potential benefit:</strong> Savers holding high-interest savings accounts or short-term GICs, who continue to benefit from rates staying higher for longer.</p>
@@ -666,16 +733,20 @@ VALUES (
     {label:"Aluminum", v:50, note:""}
   ];
   var n = data.length;
+
   var margin = {left:210, right:50, top:18, bottom:14};
   var W = 680, H = 300;
   var PW = W - margin.left - margin.right;
   var PH = H - margin.top - margin.bottom;
+
   var xMax = 55;
   function xp(v){ return margin.left + (v/xMax) * PW; }
+
   var rowH = PH / n;
   var barH = rowH * 0.52;
   function yTop(i){ return margin.top + i*rowH + (rowH-barH)/2; }
   function yMid(i){ return margin.top + i*rowH + rowH/2; }
+
   function el(tag, attrs){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
     for (var k in attrs){ e.setAttribute(k, attrs[k]); }
@@ -686,22 +757,30 @@ VALUES (
     t.textContent = content;
     return t;
   }
+
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox", "0 0 " + W + " " + H);
   svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+
   var FONT = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
+
+  // Vertical gridlines at 10-point intervals
   for (var g = 0; g <= 50; g += 10){
     var gx = xp(g);
     svg.appendChild(el("line", {x1: gx, x2: gx, y1: margin.top, y2: margin.top+PH, stroke:"#ececec", "stroke-width":"0.5"}));
     svg.appendChild(txt(g + "%", {x: gx, y: margin.top+PH+11, "text-anchor":"middle", "font-family":FONT, "font-size":"8", fill:"#999999"}));
   }
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left, y1: margin.top, y2: margin.top+PH, stroke:"#d8d8d8", "stroke-width":"1"}));
+
   data.forEach(function(row, i){
     var bx = margin.left, by = yTop(i);
     var isCurrent = row.note === "current";
     var isExempt = row.note === "exempt";
+
     svg.appendChild(txt(row.label, {x: margin.left-10, y: yMid(i)+3, "text-anchor":"end", "font-family":FONT, "font-size":"8.7", fill:"#444444"}));
+
     if (isExempt){
+      // No bar for a 0% rate; mark the exemption explicitly instead of drawing nothing
       svg.appendChild(txt("EXEMPT", {x: bx+6, y: yMid(i)+3, "text-anchor":"start", "font-family":FONT, "font-size":"8.5", "font-weight":"700", fill:"#2e7d32"}));
     } else {
       var bw = xp(row.v) - margin.left;
@@ -719,9 +798,11 @@ VALUES (
       }
     }
   });
+
   var container = _cs ? _cs.parentNode : null;
   if (container) container.appendChild(svg);
 })();
+
 </script>
 </div>
 <div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: White House fact sheet, Bank of Canada MPR, Tradecommissioner.gc.ca, Jul 2026. &nbsp;|&nbsp; hdq.ca</div>
@@ -820,7 +901,7 @@ VALUES (
 <li><strong>The TSX closed at 35,369.08 Tuesday,</strong><span> up 408.76 points or 1.17%, its strongest session in weeks.</span></li>
 <li><strong>Gold miners led the advance,</strong><span> with Wheaton Precious Metals up 6.7% and Barrick Gold up 4.6%.</span></li>
 <li><strong>Energy names gained on elevated oil,</strong><span> but by smaller margins than the gold-linked names.</span></li>
-<li><strong>Celestica jumped 11.1%,</strong><span> the session's single best mover, on a U.S. technology sector rally.</span></li>
+<li><strong>Celestica jumped 11.1%,</strong><span> the session''s single best mover, on a U.S. technology sector rally.</span></li>
 <li><strong>The Canadian dollar moved only modestly,</strong><span> held back by a wide policy rate gap with the U.S.</span></li>
 </ul>',
   '<p>The TSX Composite closed at 35,369.08 Tuesday, up 408.76 points or 1.17 percent, its strongest single session in several weeks. Gold miners did the heavy lifting: Wheaton Precious Metals climbed 6.7 percent, Barrick Gold gained 4.6 percent, Agnico Eagle Mines added 4.3 percent, and Franco-Nevada rose 4.1 percent, as gold itself climbed 1.75 percent to $4,082.73 an ounce on hopes of a diplomatic breakthrough between the United States and Iran.</p>
@@ -829,15 +910,15 @@ VALUES (
 
 <h2>Why Gold Outran Oil on the Same Headline</h2>
 
-<p>Both moves traced back to the same catalyst: mediators floating a 10-day ceasefire proposal between the U.S. and Iran. Gold and oil responded to it differently because the mechanism running through each is different. A lower risk of prolonged conflict eases the safe-haven bid that has been supporting gold, but it also eases the inflation and rate-hike pressure the conflict has been feeding into central bank expectations, and that second effect pushed gold higher rather than lower. Oil, by contrast, faces a more direct supply-side calculation: a real ceasefire would ease the same conflict-driven premium that has kept crude elevated, so energy names gained on the day's broader risk-on tone without fully participating in the safe-haven unwind driving the miners.</p>
+<p>Both moves traced back to the same catalyst: mediators floating a 10-day ceasefire proposal between the U.S. and Iran. Gold and oil responded to it differently because the mechanism running through each is different. A lower risk of prolonged conflict eases the safe-haven bid that has been supporting gold, but it also eases the inflation and rate-hike pressure the conflict has been feeding into central bank expectations, and that second effect pushed gold higher rather than lower. Oil, by contrast, faces a more direct supply-side calculation: a real ceasefire would ease the same conflict-driven premium that has kept crude elevated, so energy names gained on the day''s broader risk-on tone without fully participating in the safe-haven unwind driving the miners.</p>
 
-<p>Celestica was the session's single best mover, up 11.1 percent, riding a broader U.S. technology and semiconductor rally rather than anything conflict-related. The Dow Jones Industrial Average added 385 points, or 0.74 percent, to close at 52,225, snapping a three-session losing streak as Micron Technology surged 12 percent and Advanced Micro Devices added 8 percent. The S&P 500 rose 0.89 percent to 7,509 and the Nasdaq Composite gained 1.29 percent to 25,837.</p>
+<p>Celestica was the session''s single best mover, up 11.1 percent, riding a broader U.S. technology and semiconductor rally rather than anything conflict-related. The Dow Jones Industrial Average added 385 points, or 0.74 percent, to close at 52,225, snapping a three-session losing streak as Micron Technology surged 12 percent and Advanced Micro Devices added 8 percent. The S&amp;P 500 rose 0.89 percent to 7,509 and the Nasdaq Composite gained 1.29 percent to 25,837.</p>
 
-<h2>The Currency Move That Didn't Match the Rally</h2>
+<h2>The Currency Move That Didn''t Match the Rally</h2>
 
-<p>A broad commodity and equity rally like Tuesday's would typically put more strength behind the Canadian dollar than it actually showed. USD/CAD moved only modestly, easing 0.15 percent, with the loonie holding near 1.4086 per U.S. dollar. The Government of Canada 10-year yield climbed to 3.57 percent, a two-month high, but that move sits well below the U.S. 10-year at 4.63 percent, and the wide gap between the two policy rates continues to cap how much a single strong session can move the currency.</p>
+<p>A broad commodity and equity rally like Tuesday''s would typically put more strength behind the Canadian dollar than it actually showed. USD/CAD moved only modestly, easing 0.15 percent, with the loonie holding near 1.4086 per U.S. dollar. The Government of Canada 10-year yield climbed to 3.57 percent, a two-month high, but that move sits well below the U.S. 10-year at 4.63 percent, and the wide gap between the two policy rates continues to cap how much a single strong session can move the currency.</p>
 
-<p>Tuesday's session data, from gold's safe-haven unwind to the muted currency response, tells a coherent story about where risk appetite actually improved and where it did not.</p>
+<p>Tuesday''s session data, from gold''s safe-haven unwind to the muted currency response, tells a coherent story about where risk appetite actually improved and where it did not.</p>
 
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
@@ -863,16 +944,20 @@ VALUES (
     {t:"IMO", v:1.8, note:""}
   ];
   var n = data.length;
+
   var margin = {left:50, right:24, top:30, bottom:34};
   var W = 680, H = 300;
   var PW = W - margin.left - margin.right;
   var PH = H - margin.top - margin.bottom;
+
   var yMax = 12.5;
   function yp(v){ return margin.top + PH * (1 - v/yMax); }
+
   var slotW = PW / n;
   var barW = slotW * 0.56;
   function xLeft(i){ return margin.left + i*slotW + (slotW-barW)/2; }
   function xMid(i){ return margin.left + i*slotW + slotW/2; }
+
   function el(tag, attrs){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
     for (var k in attrs){ e.setAttribute(k, attrs[k]); }
@@ -883,24 +968,32 @@ VALUES (
     t.textContent = content;
     return t;
   }
+
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox", "0 0 " + W + " " + H);
   svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+
   var FONT = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
+
+  // Horizontal gridlines
   var gridVals = [0, 2.5, 5, 7.5, 10, 12.5];
   gridVals.forEach(function(gv){
     var gy = yp(gv);
     svg.appendChild(el("line", {x1: margin.left, x2: margin.left+PW, y1: gy, y2: gy, stroke:"#ececec", "stroke-width":"0.5"}));
     svg.appendChild(txt("+"+gv+"%", {x: margin.left-6, y: gy+3, "text-anchor":"end", "font-family":FONT, "font-size":"8", fill:"#aaaaaa"}));
   });
+
   var baseY = yp(0);
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left+PW, y1: baseY, y2: baseY, stroke:"#d8d8d8", "stroke-width":"1"}));
+
   data.forEach(function(row, i){
     var isCurrent = row.note === "current";
     var bx = xLeft(i), by = yp(row.v), bh = baseY - by;
     var fill = isCurrent ? "#e8a825" : "#3a7a55";
     svg.appendChild(el("rect", {x:bx, y:by, width:barW, height:bh, fill:fill}));
+
     svg.appendChild(txt(row.t, {x: xMid(i), y: baseY+14, "text-anchor":"middle", "font-family":FONT, "font-size":"8.5", "font-weight":"700", fill:"#444444"}));
+
     if (isCurrent){
       var pillW = 40, pillH = 15;
       var pillX = xMid(i) - pillW/2;
@@ -911,66 +1004,68 @@ VALUES (
       svg.appendChild(txt("+"+row.v.toFixed(1)+"%", {x: xMid(i), y: by-6, "text-anchor":"middle", "font-family":FONT, "font-size":"7.5", "font-weight":"700", fill:"#3a7a55"}));
     }
   });
+
   var container = _cs ? _cs.parentNode : null;
   if (container) container.appendChild(svg);
 })();
+
 </script>
 </div>
 <div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: BNN Bloomberg, Trading Economics Canada Stock Market, Jul 21 2026. &nbsp;|&nbsp; hdq.ca</div>
 </div>
 </div>
-<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">Celestica's move was tied to a U.S. semiconductor rally rather than the Iran ceasefire headlines driving the mining names.</p>
+<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">Celestica''s move was tied to a U.S. semiconductor rally rather than the Iran ceasefire headlines driving the mining names.</p>
 
-<p>None of Tuesday's individual moves change the broader picture on their own. Together, they show a market pricing de-escalation and a tech rally at the same time, with the currency market the one corner that has not yet caught up.</p>',
+<p>None of Tuesday''s individual moves change the broader picture on their own. Together, they show a market pricing de-escalation and a tech rally at the same time, with the currency market the one corner that has not yet caught up.</p>',
   '<div class="toolkit-section">
-<div class="toolkit-section-label">What They're Feeling</div>
-<p>Clients who watched Tuesday's rally feel relief, and some feel a pull to chase whatever led the session, gold miners in particular. Clients without materials exposure may feel they missed something significant.</p>
+<div class="toolkit-section-label">What They''re Feeling</div>
+<p>Clients who watched Tuesday''s rally feel relief, and some feel a pull to chase whatever led the session, gold miners in particular. Clients without materials exposure may feel they missed something significant.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">What to Say</div>
-<div class="script-box">Tuesday's session was strong across the board, but the leadership was concentrated: gold miners moved most on ceasefire hopes, energy gained on the same headline but by less, and Celestica's move was actually about U.S. semiconductors, not the conflict at all. A single strong session in one sector is not a signal to rebalance around it. Your portfolio's mix is built for the range of days like Monday and Tuesday both, not for chasing whichever one happened most recently.</div>
+<div class="script-box">Tuesday''s session was strong across the board, but the leadership was concentrated: gold miners moved most on ceasefire hopes, energy gained on the same headline but by less, and Celestica''s move was actually about U.S. semiconductors, not the conflict at all. A single strong session in one sector is not a signal to rebalance around it. Your portfolio''s mix is built for the range of days like Monday and Tuesday both, not for chasing whichever one happened most recently.</div>
 </div>
 <div class="toolkit-section">
-<div class="toolkit-section-label">Who's Affected</div>
+<div class="toolkit-section-label">Who''s Affected</div>
 <p><strong>High impact:</strong> Clients with concentrated gold or precious metals mining exposure, who saw the largest gains of the session.</p>
-<p><strong>Mixed impact:</strong> Broadly diversified clients, who participated in Tuesday's gain but by a smaller margin than the headline number suggests.</p>
+<p><strong>Mixed impact:</strong> Broadly diversified clients, who participated in Tuesday''s gain but by a smaller margin than the headline number suggests.</p>
 <p><strong>Potential benefit:</strong> Clients underweight materials who may want a conversation about allocation, without treating one session as the basis for a decision.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Action Checklist</div>
-<div class="checklist-item">Review portfolio-level materials and energy sector weighting against Tuesday's session leaders.</div>
+<div class="checklist-item">Review portfolio-level materials and energy sector weighting against Tuesday''s session leaders.</div>
 <div class="checklist-item">Flag any client inquiries about chasing gold mining names for a full conversation, not a quick trade.</div>
 <div class="checklist-item">Note the muted CAD response as context for any currency-related client questions.</div>
-<div class="checklist-item">Document today's session drivers for consistency across client conversations this week.</div>
+<div class="checklist-item">Document today''s session drivers for consistency across client conversations this week.</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Follow-Up Email Template</div>
 <div class="email-box" id="respond-email">
-<strong>Subject:</strong> What actually drove Tuesday's rally<br><br>
+<strong>Subject:</strong> What actually drove Tuesday''s rally<br><br>
 Hi [Client Name],<br><br>
-Tuesday was a strong session for the TSX, up 1.17% to 35,369.08, but the gains were concentrated. Gold-linked miners led on hopes of an Iran ceasefire, energy gained by a smaller margin on the same news, and Celestica's 11.1% move was actually tied to a U.S. semiconductor rally, unrelated to the conflict.<br><br>
+Tuesday was a strong session for the TSX, up 1.17% to 35,369.08, but the gains were concentrated. Gold-linked miners led on hopes of an Iran ceasefire, energy gained by a smaller margin on the same news, and Celestica''s 11.1% move was actually tied to a U.S. semiconductor rally, unrelated to the conflict.<br><br>
 None of this changes your plan. I wanted you to have the full picture behind the headline number.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
-<button class="btn-copy" onclick="copyEmail('respond-email', this)">Copy email</button>
+<button class="btn-copy" onclick="copyEmail(''respond-email'', this)">Copy email</button>
 </div>',
   '<div class="toolkit-section">
 <div class="toolkit-section-label">Client Profiles to Target</div>
-<p>DIY investors who sold into Monday's drop and missed Tuesday's rebound entirely. Self-directed investors overweight in a single sector, such as gold miners after a strong session, without a broader diversification plan behind it.</p>
+<p>DIY investors who sold into Monday''s drop and missed Tuesday''s rebound entirely. Self-directed investors overweight in a single sector, such as gold miners after a strong session, without a broader diversification plan behind it.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Opening Line</div>
-<div class="script-box">I noticed the TSX had a big rebound Tuesday, led almost entirely by gold miners, and I'd guess a lot of self-directed investors are now deciding whether to chase that move without really understanding what drove it.</div>
+<div class="script-box">I noticed the TSX had a big rebound Tuesday, led almost entirely by gold miners, and I''d guess a lot of self-directed investors are now deciding whether to chase that move without really understanding what drove it.</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
 <p>A self-directed investor sees a headline number, the TSX up 1.17 percent, and assumes broad participation. The reality was concentrated in a handful of names for very specific reasons, some tied to the conflict, one entirely unrelated to it.</p>
-<p>An advisor's value is reading that distinction in real time, rather than reacting to the headline after the fact.</p>
+<p>An advisor''s value is reading that distinction in real time, rather than reacting to the headline after the fact.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
-<p>Did you make any changes to your portfolio around Monday's drop or Tuesday's rebound?</p>
+<p>Did you make any changes to your portfolio around Monday''s drop or Tuesday''s rebound?</p>
 <p>How concentrated is your portfolio in any single sector right now?</p>
 <p>How do you typically decide whether a strong session is a signal to act on?</p>
 <p>Who normally helps you separate a real trend from a single strong day?</p>
@@ -978,14 +1073,14 @@ None of this changes your plan. I wanted you to have the full picture behind the
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
-<strong>Subject:</strong> What was actually behind Tuesday's TSX rally<br><br>
+<strong>Subject:</strong> What was actually behind Tuesday''s TSX rally<br><br>
 Hi [Name],<br><br>
-The TSX jumped 1.17% Tuesday, but the gain was concentrated in gold miners and one semiconductor-linked stock, not a broad market move. If you're managing your own portfolio through sessions like this, I'd be glad to walk through what actually happened and what it does or doesn't mean for your holdings.<br><br>
+The TSX jumped 1.17% Tuesday, but the gain was concentrated in gold miners and one semiconductor-linked stock, not a broad market move. If you''re managing your own portfolio through sessions like this, I''d be glad to walk through what actually happened and what it does or doesn''t mean for your holdings.<br><br>
 Happy to set up a short call if useful.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
-<button class="btn-copy" onclick="copyEmail('prospect-email', this)">Copy email</button>
+<button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
   '[{"value": "+1.17%", "label": "TSX Tuesday session gain"}, {"value": "+11.1%", "label": "Celestica best TSX mover"}, {"value": "$4,082.73", "label": "Gold close per ounce"}, {"value": "52,225", "label": "Dow Jones close Tuesday"}]',
   'market-060.jpg',
