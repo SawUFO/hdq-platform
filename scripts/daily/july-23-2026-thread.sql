@@ -87,7 +87,7 @@ var refValue = 98.17;
 var currentVal = data[n-1].v;
 var refY = yp(refValue > maxV ? maxV : refValue);
 if (Math.abs(refValue - currentVal) / currentVal >= 0.03) {
-  svg.appendChild(txt("PRE-CEASEFIRE HIGH: $98.17", {x:650, y:refY-3, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+  svg.appendChild(txt("PRE-CEASEFIRE HIGH: $98.17", {x:margin.left+6, y:refY-3, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 }
 svg.appendChild(el("line", {x1:margin.left, x2:margin.left+PW, y1:refY, y2:refY, stroke:"#2e7d32", "stroke-width":"1", "stroke-dasharray":"3,3"}));
 
@@ -107,13 +107,13 @@ data.forEach(function(p, i){
 var idx1 = 18;
 var ex1 = xp(idx1);
 svg.appendChild(el("line", {x1:ex1, x2:ex1, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", "stroke-dasharray":"2,3", opacity:"0.5"}));
-svg.appendChild(txt("Blockade declared", {x:ex1+3, y:margin.top+16, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("Blockade declared", {x:ex1-4, y:margin.top+120, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // event marker 2: tankers struck (Jul 23, today, last point)
 var idx2 = n-1;
 var ex2 = xp(idx2);
 svg.appendChild(el("line", {x1:ex2, x2:ex2, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", "stroke-dasharray":"2,3", opacity:"0.5"}));
-svg.appendChild(txt("Tankers struck", {x:ex2-4, y:margin.top+50, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("Tankers struck", {x:ex2-4, y:margin.top+120, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // gold pill at final value
 var lastX = xp(n-1), lastY = yp(data[n-1].v);
@@ -231,11 +231,11 @@ svg.appendChild(el("path", {d:pathGold.trim(), fill:"none", stroke:"#6b7280", "s
 // event marker: tankers struck (today, last point)
 var exToday = xp(n-1);
 svg.appendChild(el("line", {x1:exToday, x2:exToday, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-width":"1", "stroke-dasharray":"2,3", opacity:"0.5"}));
-svg.appendChild(txt("Tankers struck", {x:exToday-4, y:margin.top+16, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("Tankers struck", {x:exToday-4, y:margin.top+PH-6, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // end-of-series labels
-svg.appendChild(txt("WTI", {x:xp(n-1)-4, y:ypWti(data[n-1].wti)-8, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#4a5568", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
-svg.appendChild(txt("GOLD", {x:xp(n-1)-4, y:ypGold(data[n-1].gold)+12, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#6b7280", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("WTI", {x:xp(n-1)+4, y:ypWti(data[n-1].wti)-8, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#4a5568", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
+svg.appendChild(txt("GOLD", {x:xp(n-1)-4, y:ypGold(data[n-1].gold)+26, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#6b7280", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // gold pill on WTI final value (primary series)
 var lastXw = xp(n-1), lastYw = ypWti(data[n-1].wti);
