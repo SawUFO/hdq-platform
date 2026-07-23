@@ -126,7 +126,7 @@ data.forEach(function(p, i){
 
 // annotation text box near the final three-session swing
 var annoX = xp(12);
-var annoY = yp(data[12].v) - 26;
+var annoY = yp(data[12].v) - 52;
 svg.appendChild(txt("Gains concentrated in energy, gold miners", {x: annoX, y: annoY, "text-anchor": "middle", "font-size": "8", fill: "#444444", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
 // gold pill callout at the final data point (left of endpoint, dot decoupled)
@@ -989,7 +989,7 @@ var tsxCx = margin.left + bandW * (tsxIdx + 0.5);
 var tsxY = yp(data[tsxIdx].v);
 var pillW = 68, pillH = 16;
 var pillX = tsxCx - pillW / 2;
-var pillY = tsxY - pillH - 8;
+var pillY = tsxY - pillH - 18;
 svg.appendChild(el("rect", {x: pillX, y: pillY, width: pillW, height: pillH, rx: 3, fill: "#e8a825"}));
 svg.appendChild(txt("35,578.04", {x: pillX + pillW / 2, y: pillY + pillH / 2 + 4, "text-anchor": "middle", "font-size": "8.5", "font-weight": "700", fill: "#111111", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}));
 
