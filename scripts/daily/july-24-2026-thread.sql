@@ -100,15 +100,18 @@ VALUES (
     var crowded = events.some(function(other){
       return other.i < ev.i && Math.abs(xS(other.i) - ex) < 50;
     });
-    var offset = crowded ? -40 : 3;
-    var yStart = crowded ? margin.top + 50 : margin.top + 20;
-    var anchor = crowded ? "end" : "start";
+    var offset = ev.i===24 ? -3 : ev.i===25 ? -70 : (crowded ? -40 : 3);
+    var yStart = ev.i===24 ? 205 : ev.i===25 ? 228 : (crowded ? margin.top + 50 : margin.top + 20);
+    var anchor = ev.i===24 ? "end" : ev.i===25 ? "end" : (crowded ? "end" : "start");
     svg.appendChild(el("line",{x1:ex,x2:ex,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
     var words = ev.label.split(" ");
     var line1 = words.slice(0, Math.ceil(words.length/2)).join(" ");
     var line2 = words.slice(Math.ceil(words.length/2)).join(" ");
+    var line3 = null;
+    if (ev.i === 24) { line1 = "HOUTHIS"; line2 = "HIT SAUDI"; line3 = "TANKERS"; }
     svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":7,"font-weight":700,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, line1));
     svg.appendChild(el("text",{x:ex+offset,y:yStart+9,"text-anchor":anchor,"font-size":7,"font-weight":700,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, line2));
+    if (line3) { svg.appendChild(el("text",{x:ex+offset,y:yStart+18,"text-anchor":anchor,"font-size":7,"font-weight":700,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, line3)); }
   });
 
   // endpoint dot (decoupled) and gold pill to the left of it
