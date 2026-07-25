@@ -95,8 +95,8 @@ svg.appendChild(el("text",{x:evX-4,y:margin.top+12,"text-anchor":"end","font-siz
 svg.appendChild(el("text",{x:evX-4,y:margin.top+22,"text-anchor":"end","font-size":7,"font-weight":700,"font-family":FONT,fill:"#1a3560"}, "ON SAUDI TANKERS"));
 
 // annotation text box: Pakistan-China mediation reports, near last point
-svg.appendChild(el("text",{x:xp(5)-6,y:margin.top+34,"text-anchor":"end","font-size":8,"font-family":FONT,fill:"#444444"}, "Pakistan-China mediation"));
-svg.appendChild(el("text",{x:xp(5)-6,y:margin.top+44,"text-anchor":"end","font-size":8,"font-family":FONT,fill:"#444444"}, "reports Friday"));
+svg.appendChild(el("text",{x:xp(5)-6,y:margin.top+74,"text-anchor":"end","font-size":8,"font-family":FONT,fill:"#444444"}, "Pakistan-China mediation"));
+svg.appendChild(el("text",{x:xp(5)-6,y:margin.top+84,"text-anchor":"end","font-size":8,"font-family":FONT,fill:"#444444"}, "reports Friday"));
 
 // gold pill on last point, decoupled anchor dot
 var lastX = xp(n-1), lastY = yp(data[n-1].v);
@@ -205,7 +205,7 @@ data.forEach(function(row,i){
     svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,rx:3,fill:"#e8a825"}));
     svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY+pillH/2+3,"text-anchor":"middle","font-size":9,"font-weight":700,"font-family":FONT,fill:"#111111"}, "+9.2%"));
   } else {
-    var lx = isPos ? barX1 + 6 : barX1 - 6;
+    var lx = isPos ? barX1 + 6 : barX0 - 6;
     var anchor = isPos ? "start" : "end";
     svg.appendChild(el("text",{x:lx,y:rowY+rowH/2+3,"text-anchor":anchor,"font-size":8,"font-family":FONT,fill:"#444444"}, labelText));
   }
