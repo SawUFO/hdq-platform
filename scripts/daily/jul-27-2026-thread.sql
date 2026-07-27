@@ -69,7 +69,7 @@ VALUES (
   // 2. reference line: Feb 27 pre-war baseline
   var baseline = data[0];
   svg.appendChild(el("line", {x1:margin.left, x2:margin.left+PW, y1:yS(baseline), y2:yS(baseline), stroke:"#7a3030", "stroke-dasharray":"3,3"}));
-  svg.appendChild(el("text", {x:margin.left+10, y:yS(baseline)-10, "text-anchor":"start", "font-size":7, "font-weight":700, fill:"#7a3030", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "PRE WAR $73"));
+  svg.appendChild(el("text", {x:margin.left+PW-6, y:yS(baseline)-10, "text-anchor":"end", "font-size":7, "font-weight":700, fill:"#7a3030", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "PRE WAR $73"));
 
   // 3. series path
   var pathD = "";
@@ -100,7 +100,7 @@ VALUES (
     var crowded = events.some(function(other){ return other.i !== ev.i && Math.abs(xS(other.i) - ex) < 85; });
     var nearRight = (ex + 60) > (margin.left + PW);
     var offset = (crowded || nearRight) ? -40 : 3;
-    var yStart = crowded ? margin.top + 50 : margin.top + 20;
+    var yStart = crowded ? margin.top + 50 : (ev.i === 12 ? margin.top + 38 : margin.top + 20);
     var anchor = (crowded || nearRight) ? "end" : "start";
     svg.appendChild(el("line", {x1:ex, x2:ex, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-opacity":0.5, "stroke-dasharray":"2,3"}));
     ev.label.forEach(function(line, li){
