@@ -95,7 +95,7 @@ VALUES (
     var crowded = events.some(function(other){ return other.i !== ev.i && Math.abs(xp(other.i) - ex) < 85; });
     var nearRight = (ex + 90) > (margin.left + PW);
     var offset = (crowded || nearRight) ? -40 : 3;
-    var yStart = crowded ? (ev.i === 13 ? MT + 70 : MT + 55) : MT + 20;
+    var yStart = crowded ? (ev.i === 11 ? MT + 70 : MT + 55) : MT + 20;
     var anchor = (crowded || nearRight) ? "end" : "start";
     svg.appendChild(el("line",{x1:ex,x2:ex,y1:MT,y2:MT+PH,stroke:"#1a3560","stroke-width":"1","stroke-dasharray":"2,3",opacity:"0.5"}));
     svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"},ev.label));
