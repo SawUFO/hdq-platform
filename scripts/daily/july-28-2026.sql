@@ -67,7 +67,7 @@ VALUES (
 
   // 2. Reference line at 0% baseline
   svg.appendChild(el("line", {x1:margin.left, x2:margin.left+PW, y1:yp(0), y2:yp(0), stroke:"#888888", "stroke-width":"1", "stroke-dasharray":"3,3"}));
-  svg.appendChild(el("text", {x:margin.left+10, y:yp(0)-6, "text-anchor":"start", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", fill:"#888888"}, "JUL 8 BASELINE"));
+  svg.appendChild(el("text", {x:margin.left+PW/2, y:yp(0)-6, "text-anchor":"middle", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", fill:"#888888"}, "JUL 8 BASELINE"));
 
   // Event bands / markers (paint before series so lines sit on top)
   var eventIdx = [11, 13];
@@ -563,7 +563,7 @@ VALUES (
 
   // 7. End-of-series labels, per-series offsets (S16.11)
   svg.appendChild(el("text", {x:xp(n-1)-44, y:ypOdds(fedOdds[n-1])-10, "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#4a5568"}, "JULY HIKE ODDS"));
-  svg.appendChild(el("text", {x:xp(n-1)-14, y:ypWti(wti[n-1])+8, "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#6b7280"}, "WTI"));
+  svg.appendChild(el("text", {x:xp(n-1)-24, y:ypWti(wti[n-1])+8, "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#6b7280"}, "WTI"));
 
   _cs.parentNode.appendChild(svg);
 })();
