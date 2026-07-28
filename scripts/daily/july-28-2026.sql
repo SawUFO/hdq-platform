@@ -103,7 +103,7 @@ VALUES (
     var nearRight = (ex + 60 + 3) > (margin.left + PW);
     var anchor = nearRight ? "end" : "start";
     var xOff = nearRight ? -4 : 4;
-    svg.appendChild(el("text", {x:ex+xOff, y:margin.top+14, "text-anchor":anchor, "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#1a3560"}, eventLabels[k]));
+    svg.appendChild(el("text", {x:ex+xOff, y:margin.top+14+(k===1?12:0), "text-anchor":anchor, "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#1a3560"}, eventLabels[k]));
   });
 
   // 6. Pills: both left of endpoint, separated vertically (S16.4)
@@ -135,9 +135,9 @@ VALUES (
   svg.appendChild(el("text", {x:goldPillX+goldPillW/2, y:goldPillY+goldPillH/2+4, "text-anchor":"middle", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"9", "font-weight":"700", fill:"#444444"}, goldPillText));
 
   // 7. End-of-series labels, per-series offsets (S16.11)
-  var labelOffsets = [-6, 8];
+  var labelOffsets = [-14, -8];
   svg.appendChild(el("text", {x:xp(n-1)-4, y:yp(wtiPct[n-1])+labelOffsets[0], "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#4a5568"}, "WTI"));
-  svg.appendChild(el("text", {x:xp(n-1)-4, y:yp(goldPct[n-1])+labelOffsets[1]+24, "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#6b7280"}, "GOLD"));
+  svg.appendChild(el("text", {x:xp(n-1)-4, y:yp(goldPct[n-1])+labelOffsets[1], "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#6b7280"}, "GOLD"));
 
   _cs.parentNode.appendChild(svg);
 })();
@@ -562,8 +562,8 @@ VALUES (
   svg.appendChild(el("text", {x:wtiPillX+wtiPillW/2, y:wtiPillY+wtiPillH/2+4, "text-anchor":"middle", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"9", "font-weight":"700", fill:"#444444"}, wtiPillText));
 
   // 7. End-of-series labels, per-series offsets (S16.11)
-  svg.appendChild(el("text", {x:xp(n-1)-4, y:ypOdds(fedOdds[n-1])-10, "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#4a5568"}, "JULY HIKE ODDS"));
-  svg.appendChild(el("text", {x:xp(n-1)-4, y:ypWti(wti[n-1])+20, "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#6b7280"}, "WTI"));
+  svg.appendChild(el("text", {x:xp(n-1)-44, y:ypOdds(fedOdds[n-1])-10, "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#4a5568"}, "JULY HIKE ODDS"));
+  svg.appendChild(el("text", {x:xp(n-1)-14, y:ypWti(wti[n-1])+8, "text-anchor":"end", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", "font-size":"7", "font-weight":"700", fill:"#6b7280"}, "WTI"));
 
   _cs.parentNode.appendChild(svg);
 })();
@@ -744,7 +744,7 @@ VALUES (
     var labelWidth = 90;
     var nearRight = (ex + labelWidth + 3) > (margin.left + PW);
     var offset = (crowded || nearRight) ? -40 : 4;
-    var yStart = crowded ? margin.top + 44 : margin.top + 14;
+    var yStart = (ev.i === 14) ? margin.top + 64 : (crowded ? margin.top + 44 : margin.top + 14);
     var anchor = (crowded || nearRight) ? "end" : "start";
     svg.appendChild(el("line", {x1:ex, y1:margin.top, x2:ex, y2:margin.top+PH, stroke:"#1a3560", "stroke-opacity":"0.5", "stroke-width":"1", "stroke-dasharray":"2,3"}));
     ev.label.forEach(function(line, li){
@@ -954,7 +954,7 @@ VALUES (
   var pillIndex = 6; // WTI, the most significant mover
   assets.forEach(function(a, i){
     var cx = xs(i);
-    var barX0 = cx - barW/2;
+    var barX0 = cx - barW/2 + (i === 0 ? 10 : 0);
     var isPos = a.value >= 0;
     var barTipY = yp(a.value);
     var rectY = isPos ? barTipY : zeroY;
