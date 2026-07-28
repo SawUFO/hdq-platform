@@ -70,7 +70,7 @@ VALUES (
   var refY = yp(refVal);
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#7a3030","stroke-width":"1","stroke-dasharray":"3,3"}));
   if (Math.abs(refVal - currentVal) / currentVal >= 0.03) {
-    svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"text-anchor":"start","font-size":"7","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#7a3030"},"PRE-ESCALATION TROUGH $69.23"));
+    svg.appendChild(el("text",{x:margin.left+PW/2,y:refY-10,"text-anchor":"middle","font-size":"7","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#7a3030"},"PRE-ESCALATION TROUGH $69.23"));
   }
 
   // 3. Series path
@@ -95,7 +95,7 @@ VALUES (
     var crowded = events.some(function(other){ return other.i !== ev.i && Math.abs(xp(other.i) - ex) < 85; });
     var nearRight = (ex + 90) > (margin.left + PW);
     var offset = (crowded || nearRight) ? -40 : 3;
-    var yStart = crowded ? MT + 50 : MT + 20;
+    var yStart = crowded ? (ev.i === 13 ? MT + 70 : MT + 55) : MT + 20;
     var anchor = (crowded || nearRight) ? "end" : "start";
     svg.appendChild(el("line",{x1:ex,x2:ex,y1:MT,y2:MT+PH,stroke:"#1a3560","stroke-width":"1","stroke-dasharray":"2,3",opacity:"0.5"}));
     svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"},ev.label));
