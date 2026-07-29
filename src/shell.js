@@ -34,9 +34,59 @@ export async function getArticleIssueNo(env, publishedAt) {
   }
 }
 
+/**
+ * Site-wide publisher identity, emitted on every page.
+ *
+ * This is how search engines and AI systems resolve "HDQ" into a specific
+ * Canadian financial publisher rather than an ambiguous three-letter acronym.
+ * The exact string "HDQ Publishing Canada" must stay byte-identical everywhere
+ * it appears: title tags, og:site_name, the RSS channel and here. Variants
+ * split the entity instead of reinforcing it.
+ *
+ * No legalName is claimed, because no legal entity is registered. No personal
+ * names appear. publishingPrinciples points at the editorial standards page,
+ * which is what carries publisher accountability in place of author bylines.
+ */
+const ORG_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "@id": "https://hdq.ca/#organization",
+  "name": "HDQ Publishing Canada",
+  "alternateName": ["HDQ", "HDQ Publishing", "hdq.ca"],
+  "url": "https://hdq.ca/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://assets.hdq.ca/HDQ_LOGO_Gold.svg"
+  },
+  "description": "HDQ Publishing Canada is an independent daily financial intelligence publication for licensed Canadian financial advisors, covering markets, geopolitics, the Canadian economy, tax and wealth planning, and investor behaviour.",
+  "foundingDate": "2026-05-07",
+  "email": "support@hdq.ca",
+  "knowsLanguage": "en-CA",
+  "publishingPrinciples": "https://hdq.ca/editorial-standards",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Toronto",
+    "addressRegion": "ON",
+    "addressCountry": "CA"
+  },
+  "areaServed": { "@type": "Country", "name": "Canada" },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Canadian financial advisors, CIRO-registered representatives, CFP holders and CFA charterholders"
+  },
+  "knowsAbout": [
+    "Canadian financial markets",
+    "Bank of Canada monetary policy",
+    "TSX Composite",
+    "Canadian tax and wealth planning",
+    "Behavioural finance",
+    "Geopolitical risk and commodity markets"
+  ]
+};
+
 export function pageShell(bodyHtml, opts = {}) {
   const {
-    title = 'HDQ — A daily publication for Canadian advisors',
+    title = 'HDQ Publishing Canada | Daily intelligence for Canadian advisors',
     activePage = 'news',
     activeDesk = 'all',
     issueNo = 0,
@@ -47,6 +97,10 @@ export function pageShell(bodyHtml, opts = {}) {
     canonical = '',
     metaDescription = '',
     robots = '',
+    ogType = 'website',
+    ogImage = '',
+    publishedTime = '',
+    section = '',
   } = opts;
 
   // Top masthead nav. Archive lives in the desk strip's "More" group, so it is
@@ -113,6 +167,21 @@ export function pageShell(bodyHtml, opts = {}) {
 ${metaDescription ? `<meta name="description" content="${escHtml(metaDescription)}">` : ''}
 ${robots ? `<meta name="robots" content="${robots}">` : ''}
 ${canonical ? `<link rel="canonical" href="${canonical}">` : ''}
+<meta property="og:site_name" content="HDQ Publishing Canada">
+<meta property="og:type" content="${ogType}">
+<meta property="og:title" content="${escHtml(title)}">
+<meta property="og:locale" content="en_CA">
+${canonical ? `<meta property="og:url" content="${canonical}">` : ''}
+${metaDescription ? `<meta property="og:description" content="${escHtml(metaDescription)}">` : ''}
+${ogImage ? `<meta property="og:image" content="${escHtml(ogImage)}">` : ''}
+${publishedTime ? `<meta property="article:published_time" content="${escHtml(publishedTime)}">` : ''}
+${section ? `<meta property="article:section" content="${escHtml(section)}">` : ''}
+<meta name="twitter:card" content="${ogImage ? 'summary_large_image' : 'summary'}">
+<meta name="twitter:title" content="${escHtml(title)}">
+${metaDescription ? `<meta name="twitter:description" content="${escHtml(metaDescription)}">` : ''}
+${ogImage ? `<meta name="twitter:image" content="${escHtml(ogImage)}">` : ''}
+<link rel="alternate" type="application/rss+xml" title="HDQ Publishing Canada" href="https://hdq.ca/feed.xml">
+<script type="application/ld+json">${JSON.stringify(ORG_SCHEMA)}</script>
 ${extraHead}
 <style>
 @media(max-width:768px){
@@ -190,7 +259,7 @@ ${bodyHtml}
         <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
         <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
       </a>
-      <p>A daily publication for Canadian financial advisors. Published in Toronto.</p>
+      <p>HDQ Publishing Canada. A daily financial intelligence briefing for licensed Canadian financial advisors. Published in Toronto.</p>
     </div>
     <div class="footer-nav"><h6>Publication</h6><ul>
       <li><a href="/news">Daily Briefing</a></li>
@@ -208,6 +277,7 @@ ${bodyHtml}
     <div class="footer-nav"><h6>Company</h6><ul>
       <li><a href="/hdq-whitelabel.html">For Firms</a></li>
       <li><a href="/about">About HDQ</a></li>
+      <li><a href="/editorial-standards">Editorial Standards</a></li>
       <li><a href="/hdq-subscribe.html">Waiting List</a></li>
       <li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li>
     </ul></div>
@@ -219,7 +289,7 @@ ${bodyHtml}
     </ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 HDQ Publishing. All rights reserved. HDQ is an independent publication. Content is published for the professional development of licensed Canadian financial advisors and does not constitute investment advice. <a href="/hdq-legal.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span>
+    <span>© 2026 HDQ Publishing Canada. All rights reserved. HDQ is an independent publication. Content is published for the professional development of licensed Canadian financial advisors and does not constitute investment advice. <a href="/hdq-legal.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span>
     <span class="footer-badge">hdq.ca</span>
   </div>
 </div></footer>

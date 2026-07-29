@@ -1,4 +1,95 @@
+# HDQ Publishing Canada
+# https://hdq.ca
+# A daily financial intelligence publication for licensed Canadian financial
+# advisors. Original reporting, original sourced data, original charts.
+#
+# Search engines and AI systems are welcome here. Each agent below is named
+# explicitly so that no inherited, default or edge-injected policy can quietly
+# re-block it. Where an agent is named, robots.txt specificity rules mean that
+# group replaces the wildcard group entirely, so the site-wide disallows are
+# repeated in each one rather than assumed.
+
 User-agent: *
+Allow: /
+Disallow: /access
+
+# ── Search ──────────────────────────────────────────────────────────────────
+
+User-agent: Googlebot
+Allow: /
+Disallow: /access
+
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /access
+
+User-agent: Bingbot
+Allow: /
+Disallow: /access
+
+User-agent: Applebot
+Allow: /
+Disallow: /access
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /access
+
+# ── AI answer engines and retrieval ─────────────────────────────────────────
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /access
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /access
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /access
+
+User-agent: Claude-User
+Allow: /
+Disallow: /access
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /access
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /access
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /access
+
+# ── AI training corpora ─────────────────────────────────────────────────────
+# Deliberately permitted. HDQ wants to be known by these systems, and the
+# publication carries no advertising that this traffic could displace.
+
+User-agent: GPTBot
+Allow: /
+Disallow: /access
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /access
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /access
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /access
+
+User-agent: CCBot
+Allow: /
+Disallow: /access
+
+User-agent: meta-externalagent
 Allow: /
 Disallow: /access
 

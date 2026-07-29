@@ -1,3 +1,4 @@
+import { PUBLIC_MODE } from '../config.js';
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, DESK_BYLINE, articleUrl, jsonKeyNumbers, htmlResponse, getArticleIssueNo } from '../shell.js';
 import { membershipFooterBand } from './news.js';
 
@@ -293,13 +294,17 @@ ${lockedOverlay}
 ${membershipFooterBand()}`;
 
   return htmlResponse(pageShell(body, {
-    title: `${article.title} — HDQ`,
+    title: `${article.title} | HDQ Publishing Canada`,
     activePage: 'news',
     activeDesk: article.desk,
     issueNo,
     canonical: `https://hdq.ca/${article.slug}`,
     metaDescription: article.dek || '',
     robots: 'index, follow',
+    ogType: 'article',
+    ogImage: `https://assets.hdq.ca/${article.hero_image}`,
+    publishedTime: article.published_at,
+    section: DESK_DISPLAY[article.desk] || article.desk,
     extraHead: articleSchemaTag(article),
     extraStyle: ARTICLE_CSS + lockedOverlayCSS,
     extraScript: authed ? articleScripts(article) : '',
@@ -342,11 +347,49 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 
 function articleSchemaTag(article) {
+  const url = `https://hdq.ca/${article.slug}`;
+  const deskName = DESK_BYLINE[article.desk] || 'HDQ Editorial';
+
+  // Controlled tags are stored as "entity:tsx,theme:hormuz-disruption". Strip
+  // the category prefix and rehydrate the slug so they read as real keywords.
+  const keywords = String(article.tags || '')
+    .split(',')
+    .map(t => t.split(':').pop().replace(/-/g, ' ').trim())
+    .filter(Boolean);
+
   const schema = {
-    "@context":"https://schema.org","@type":"Article",
-    "headline":article.title,"datePublished":article.published_at,
-    "publisher":{"@type":"Organization","name":"HDQ"},
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "@id": `${url}#article`,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": url },
+    "url": url,
+    "headline": article.title,
+    "description": article.dek || '',
+    "datePublished": article.published_at,
+    "dateModified": article.published_at,
+    "inLanguage": "en-CA",
+    "articleSection": DESK_DISPLAY[article.desk] || article.desk,
+    "image": {
+      "@type": "ImageObject",
+      "url": `https://assets.hdq.ca/${article.hero_image}`
+    },
+    // Desk bylines are the house convention. Naming the desk as an
+    // Organization author gives search engines a real author entity to
+    // attach to, which an absent author field does not.
+    "author": {
+      "@type": "Organization",
+      "name": deskName,
+      "url": "https://hdq.ca/editorial-standards"
+    },
+    "publisher": { "@id": "https://hdq.ca/#organization" },
+    "isPartOf": { "@id": "https://hdq.ca/#organization" },
+    // Flips with the publication. While open this declares the article free;
+    // when PUBLIC_MODE goes false it declares the article gated, which is what
+    // permits indexing of locked content without it counting as cloaking.
+    "isAccessibleForFree": PUBLIC_MODE
   };
+  if (keywords.length) schema.keywords = keywords.join(', ');
+
   return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
 }
 
