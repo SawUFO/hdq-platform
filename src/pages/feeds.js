@@ -9,6 +9,8 @@
  * which meant search engines had no direct route to any editorial content.
  */
 
+import { CONTENT_OPENED } from '../config.js';
+
 const ORIGIN = 'https://hdq.ca';
 
 /** Section and utility pages that are not articles. */
@@ -45,9 +47,17 @@ function escXml(str) {
     .replace(/'/g, '&apos;');
 }
 
-/** published_at is 'YYYY-MM-DDTHH:mm:ss'. Sitemaps take the date alone. */
+/**
+ * published_at is 'YYYY-MM-DDTHH:mm:ss'. Sitemaps take the date alone.
+ *
+ * Anything published on or before the open date reports the open date, because
+ * that is when the page last actually changed. Anything published after reports
+ * its own date. ISO dates compare correctly as strings, so no Date parsing is
+ * needed and no timezone can shift the result.
+ */
 function lastmodFrom(publishedAt) {
-  return String(publishedAt || '').slice(0, 10);
+  const d = String(publishedAt || '').slice(0, 10);
+  return d > CONTENT_OPENED ? d : CONTENT_OPENED;
 }
 
 /** RSS requires RFC 822. Timestamps carry no zone, so they are read as UTC. */

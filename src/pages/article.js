@@ -1,4 +1,4 @@
-import { PUBLIC_MODE } from '../config.js';
+import { PUBLIC_MODE, CONTENT_OPENED } from '../config.js';
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, DESK_BYLINE, articleUrl, jsonKeyNumbers, htmlResponse, getArticleIssueNo } from '../shell.js';
 import { membershipFooterBand } from './news.js';
 
@@ -366,7 +366,12 @@ function articleSchemaTag(article) {
     "headline": article.title,
     "description": article.dek || '',
     "datePublished": article.published_at,
-    "dateModified": article.published_at,
+    // The page genuinely changed on the open date: the body went from withheld
+    // to served and the markup gained structured data. Kept in step with the
+    // sitemap lastmod through the same constant so the two can never disagree.
+    "dateModified": (String(article.published_at || '').slice(0, 10) > CONTENT_OPENED)
+      ? article.published_at
+      : CONTENT_OPENED,
     "inLanguage": "en-CA",
     "articleSection": DESK_DISPLAY[article.desk] || article.desk,
     "image": {
