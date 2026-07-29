@@ -320,7 +320,7 @@ VALUES (
   });
 
   var legX = margin.left;
-  var legY = 10;
+  var legY = 2;
   svg.appendChild(el("rect",{x:legX,y:legY,width:8,height:8,fill:"#4a5568"}));
   svg.appendChild(el("text",{x:legX+12,y:legY+7,"text-anchor":"start","font-size":"7.5","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#444444"}, "Frozen this quarter"));
   svg.appendChild(el("rect",{x:legX+130,y:legY,width:8,height:8,fill:"#8a3030"}));
@@ -839,7 +839,7 @@ VALUES (
 (function(){
   var _cs = document.currentScript;
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
-  svg.setAttribute("viewBox","0 0 680 440");
+  svg.setAttribute("viewBox","0 0 680 462");
   svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
@@ -851,7 +851,7 @@ VALUES (
 
   var margin = {left:110, top:18, right:24, bottom:46};
   var PW = 680 - margin.left - margin.right;
-  var PH = 440 - margin.top - margin.bottom;
+  var PH = 462 - margin.top - margin.bottom;
 
   var data = [
     {"label":"Celestica","v":9.5,"pill":true},
