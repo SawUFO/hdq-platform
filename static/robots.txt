@@ -13,7 +13,7 @@ User-agent: *
 Allow: /
 Disallow: /access
 
-# ── Search ──────────────────────────────────────────────────────────────────
+# -- Search ------------------------------------------------------------------
 
 User-agent: Googlebot
 Allow: /
@@ -35,7 +35,7 @@ User-agent: DuckDuckBot
 Allow: /
 Disallow: /access
 
-# ── AI answer engines and retrieval ─────────────────────────────────────────
+# -- AI answer engines and retrieval -----------------------------------------
 
 User-agent: OAI-SearchBot
 Allow: /
@@ -65,7 +65,7 @@ User-agent: DuckAssistBot
 Allow: /
 Disallow: /access
 
-# ── AI training corpora ─────────────────────────────────────────────────────
+# -- AI training corpora -----------------------------------------------------
 # Deliberately permitted. HDQ wants to be known by these systems, and the
 # publication carries no advertising that this traffic could displace.
 
