@@ -239,7 +239,7 @@ VALUES (
 (function(){
   var _cs = document.currentScript;
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
-  svg.setAttribute("viewBox","0 0 680 440");
+  svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
@@ -251,7 +251,7 @@ VALUES (
 
   var margin = {left:110, top:18, right:24, bottom:46};
   var PW = 680 - margin.left - margin.right;
-  var PH = 440 - margin.top - margin.bottom;
+  var PH = 300 - margin.top - margin.bottom;
 
   var data = [
     {"label":"BoC overnight rate","v":2.25,"moving":false},
@@ -267,7 +267,7 @@ VALUES (
     {"label":"CRA overdue tax rate","v":7.00,"moving":false}
   ];
   var n = data.length;
-  var barH = 24, gap = 10;
+  var barH = 16, gap = 5;
   var xDomainMax = 8;
 
   var xp = function(v){ return margin.left + (v/xDomainMax) * PW; };
@@ -839,7 +839,7 @@ VALUES (
 (function(){
   var _cs = document.currentScript;
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
-  svg.setAttribute("viewBox","0 0 680 462");
+  svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
@@ -851,7 +851,7 @@ VALUES (
 
   var margin = {left:110, top:18, right:24, bottom:46};
   var PW = 680 - margin.left - margin.right;
-  var PH = 462 - margin.top - margin.bottom;
+  var PH = 300 - margin.top - margin.bottom;
 
   var data = [
     {"label":"Celestica","v":9.5,"pill":true},
@@ -868,7 +868,7 @@ VALUES (
     {"label":"Wheaton Precious Metals","v":-2.3}
   ];
   var n = data.length;
-  var barH = 24, gap = 10;
+  var barH = 15, gap = 4;
   var xDomainMin = -4, xDomainMax = 10;
 
   var xp = function(v){ return margin.left + ((v - xDomainMin)/(xDomainMax - xDomainMin)) * PW; };
