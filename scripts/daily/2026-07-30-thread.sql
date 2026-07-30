@@ -182,6 +182,7 @@ VALUES (
 
   for (var i = 0; i < n; i++){
     var rowY = margin.top + i*(barH+gap);
+    svg.appendChild(el("line",{x1:4,x2:margin.left+PW,y1:rowY+barH/2,y2:rowY+barH/2,stroke:"#ececec","stroke-width":0.5}));
     var v = rows[i].value;
     var barX0 = v >= 0 ? zeroX : xScale(v);
     var barW = Math.abs(xScale(v) - zeroX);
@@ -201,7 +202,7 @@ VALUES (
     } else {
       // 2. annotation layer: the unchanged Fed hike-odds row gets a marker dot and bold callout, not a bar
       svg.appendChild(el("circle",{cx:zeroX,cy:rowY+barH/2,r:4,fill:"#e8a825"}));
-      svg.appendChild(el("text",{x:zeroX+10,y:rowY+barH/2+3,"text-anchor":"start","font-size":8,"font-weight":700,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}, "UNCHANGED, ~80% BOTH READINGS"));
+      svg.appendChild(el("text",{x:zeroX-10,y:rowY+barH/2+3,"text-anchor":"end","font-size":8,"font-weight":700,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}, "UNCHANGED, ~80% BOTH READINGS"));
     }
   }
 
