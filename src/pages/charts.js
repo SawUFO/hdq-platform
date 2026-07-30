@@ -10,9 +10,9 @@ const CHARTS_CSS = `
 .filter-pill { font-size:12px; font-weight:500; padding:5px 14px; border-radius:20px; border:1px solid var(--n200); color:var(--n700); background:var(--card); text-decoration:none; transition:all 0.15s; white-space:nowrap; }
 .filter-pill:hover { border-color:var(--navy-400); color:var(--navy-800); }
 .filter-pill.active { background:var(--navy-900); color:#fff; border-color:var(--navy-900); }
-.charts-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; align-items:start; }
-@media(max-width:700px){ .charts-grid { grid-template-columns:1fr; } }
-.chart-card { background:var(--card); border:1px solid var(--n200); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; min-width:0; }
+.charts-grid { columns:2; column-gap:24px; }
+@media(max-width:700px){ .charts-grid { columns:1; } }
+.chart-card { background:var(--card); border:1px solid var(--n200); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; min-width:0; break-inside:avoid; margin-bottom:24px; }
 .chart-card-chart { padding:0; min-width:0; overflow:hidden; }
 .chart-card-chart > p { padding:8px 14px; margin:0; font-size:11px; color:#666; line-height:1.5; }
 .chart-card-chart .hdq-chart { margin:0; min-width:0; }
