@@ -103,7 +103,7 @@ var pillW = pillText.length * 9 * 0.58 + 10;
 var pillH = 16;
 var pillX = lastX - pillW/2;
 var pillY = lastY + Math.abs(yp(lastV)-zeroY) + 20; // below the bearish bar, clear of its value label
-if (pillY + pillH > MT + PH + 30) pillY = MT + PH + 14;
+if (pillY + pillH > MT + PH + 30) pillY = MT + PH - pillH - 4;
 svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,fill:"#e8a825",rx:2}));
 svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":9,"font-weight":700,fill:"#111111"}, pillText));
 
@@ -701,7 +701,7 @@ events.forEach(function(ev){
   var anchor = nearRight ? "end" : "start";
   var offset = nearRight ? -4 : 4;
   ev.lines.forEach(function(l, li){
-    svg.appendChild(el("text",{x:ex+offset,y:MT+16+li*9,"text-anchor":anchor,"font-size":7,"font-weight":700,fill:"#1a3560"}, l));
+    svg.appendChild(el("text",{x:ex+offset,y:MT+PH-24+li*9,"text-anchor":anchor,"font-size":7,"font-weight":700,fill:"#1a3560"}, l));
   });
 });
 
@@ -893,7 +893,7 @@ function xp(i){ return margin.left + (i/(n-1)) * PW; }
 // 2. shaded event band: record close into the Fed decision + Iran strikes session
 var bandX0 = xp(10), bandX1 = xp(11);
 svg.appendChild(el("rect",{x:bandX0,y:MT,width:bandX1-bandX0,height:PH,fill:"#c0392b",opacity:0.05}));
-svg.appendChild(el("text",{x:(bandX0+bandX1)/2,y:MT+10,"text-anchor":"middle","font-size":7,"font-weight":700,fill:"#c0392b"}, "FED + IRAN"));
+svg.appendChild(el("text",{x:(bandX0+bandX1)/2,y:MT+PH-6,"text-anchor":"middle","font-size":7,"font-weight":700,fill:"#c0392b"}, "FED + IRAN"));
 
 // 3. series path
 var pathD = "";
