@@ -199,7 +199,7 @@ VALUES (
   var refY = yp(refVal);
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#7a3030","stroke-width":"1","stroke-dasharray":"3,3"}));
   if (Math.abs(refVal - currentVal) / currentVal >= 0.03) {
-    svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"text-anchor":"start","font-size":"7","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#7a3030"},"PRE-ESCALATION TROUGH $69.23"));
+    svg.appendChild(el("text",{x:margin.left+PW/2,y:refY-10,"text-anchor":"middle","font-size":"7","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#7a3030"},"PRE-ESCALATION TROUGH $69.23"));
   }
 
   // shaded event band: renewed escalation, last two sessions
