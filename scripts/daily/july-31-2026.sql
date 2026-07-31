@@ -110,8 +110,8 @@ events.forEach(function(ev){
   var ex = xp(ev.i);
   var crowded = events.some(function(other){ return other.i !== ev.i && Math.abs(xp(other.i)-ex) < 85; });
   var nearRight = (ex + 40) > (margin.left+PW);
-  var offset = (crowded || nearRight) ? -40 : 3;
-  var yStart = crowded ? MT + 50 : MT + 20;
+  var offset = (ev.i===20) ? -20 : (ev.i===22) ? -60 : (crowded || nearRight) ? -40 : 3;
+  var yStart = (ev.i===22) ? MT + 20 : (crowded ? MT + 50 : MT + 20);
   var anchor = (crowded || nearRight) ? "end" : "start";
   svg.appendChild(el("line",{x1:ex,x2:ex,y1:MT,y2:MT+PH,stroke:"#1a3560","stroke-opacity":"0.5","stroke-dasharray":"2,3","stroke-width":"1"}));
   svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, ev.label1));
@@ -547,7 +547,7 @@ gridVals.forEach(function(gv){
 // Fed target band 3.50-3.75, shaded reference band across the whole window
 var bandTop = yp(3.75), bandBot = yp(3.50);
 svg.appendChild(el("rect",{x:margin.left,y:bandTop,width:PW,height:(bandBot-bandTop),fill:"#c0392b","fill-opacity":"0.05"}));
-svg.appendChild(el("text",{x:margin.left+PW-6,y:bandTop-4,"text-anchor":"end","font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#8a3030"}, "FED TARGET 3.50-3.75%"));
+svg.appendChild(el("text",{x:margin.left+PW-6,y:bandTop+16,"text-anchor":"end","font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#8a3030"}, "FED TARGET 3.50-3.75%"));
 
 svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:MT+PH,y2:MT+PH,stroke:"#d8d8d8","stroke-width":"1"}));
 
@@ -804,7 +804,7 @@ events.forEach(function(ev, idx){
   var nearRight = (ex + 42) > (margin.left+PW);
   var anchor = nearRight ? "end" : "start";
   var offset = nearRight ? -6 : 4;
-  var yStart = MT + 20 + idx * 18;
+  var yStart = 195 + idx * 20;
   svg.appendChild(el("line",{x1:ex,x2:ex,y1:MT,y2:MT+PH,stroke:"#1a3560","stroke-opacity":"0.5","stroke-dasharray":"2,3","stroke-width":"1"}));
   svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, ev.label1));
   svg.appendChild(el("text",{x:ex+offset,y:yStart+9,"text-anchor":anchor,"font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, ev.label2));
