@@ -164,8 +164,8 @@ VALUES (
   var evI = 20;
   var evX = xp(evI);
   svg.appendChild(el("line", {x1: evX, x2: evX, y1: MT, y2: MT+PH, stroke:"#1a3560", "stroke-width":"1", "stroke-dasharray":"2,3", opacity:"0.5"}));
-  var evLine1 = el("text", {x: evX-6, y: MT+20, "text-anchor":"end", "font-size":"7", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#1a3560"}, "IRAN REJECTS OMAN PLAN,");
-  var evLine2 = el("text", {x: evX-6, y: MT+30, "text-anchor":"end", "font-size":"7", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#1a3560"}, "US AND SAUDI STRIKE IRAQ");
+  var evLine1 = el("text", {x: evX-6, y: MT+PH-28, "text-anchor":"end", "font-size":"7", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#1a3560"}, "IRAN REJECTS OMAN PLAN,");
+  var evLine2 = el("text", {x: evX-6, y: MT+PH-16, "text-anchor":"end", "font-size":"7", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#1a3560"}, "US AND SAUDI STRIKE IRAQ");
   svg.appendChild(evLine1);
   svg.appendChild(evLine2);
 
