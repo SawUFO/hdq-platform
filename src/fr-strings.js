@@ -205,7 +205,7 @@ export const FR_UI = {
   // Meta line
   readTime:     (n) => `${n} min de lecture`,
   issuePrefix:  'Vol. 1',
-  issueNo:      (n) => `No ${NB}${n}`,
+  issueNo:      (n) => `N°${NB}${n}`,   // DRAFT
 
   // Educational disclaimer — appears on every article
   disclaimer:   'À des fins éducatives seulement. Ne constitue pas un conseil en placement.',
@@ -213,6 +213,41 @@ export const FR_UI = {
   // Language toggle
   toggleToFR:   'FRANÇAIS',
   toggleToEN:   'ENGLISH',
+};
+
+// ── Static pages ────────────────────────────────────────────────────────────
+// These four are static HTML and have no French version until build step 7.
+// French pages link to the English files meanwhile. When the French pages are
+// written, changing these five strings redirects every French link at once.
+export const FR_STATIC = {
+  waitingList: '/hdq-subscribe.html',
+  legal:       '/hdq-legal.html',
+  prodev:      '/hdq-prodev.html',
+  forFirms:    '/hdq-whitelabel.html',
+  standards:   '/editorial-standards',
+};
+
+// ── Membership band and news-page chrome ────────────────────────────────────
+// DRAFT.
+
+export const FR_MEMBERSHIP = {
+  heading:     'Adhésion',
+  capped:      'Le nombre de membres est plafonné de façon permanente. Admission par mise en candidature seulement.',
+  waitingList: 'Liste d’attente',
+};
+
+export const FR_NEWS = {
+  todaysBriefing:  'Le sommaire du jour',
+  recentNews:      'Actualités récentes',
+  viewArchive:     'Voir les archives',
+  flashNews:       'Fil d’actualité',
+  topics:          'Sujets',
+  pastEditions:    'Éditions précédentes',
+  consultArchive:  'Consulter les archives',
+  editionsOnFile:  (n) => `${n} éditions archivées. Recherche par section, sujet ou date.`,
+  read:            'Lire',
+  min:             'min',
+  pageTitle:       'HDQ — Édition du jour',
 };
 
 // ── Footer ──────────────────────────────────────────────────────────────────

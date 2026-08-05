@@ -1,7 +1,17 @@
 /**
  * HDQ shared page shell — masthead, desk nav, footer, scripts.
  * All dynamic pages call pageShell(content, opts) to wrap their body.
+ *
+ * FRENCH EDITION. Language reaches this file two ways. Page templates pass
+ * `lang` in the pageShell opts object; the small exported helpers below take
+ * `lang` as a trailing argument. Both default to 'en', so every English call
+ * site is unchanged and every English byte of output is identical to what it
+ * was before the French edition existed.
  */
+import {
+  FR_DESK_PATH, FR_DESK_DISPLAY, FR_DESK_BYLINE, FR_ROUTES, FR_UI,
+  FR_FOOTER, FR_SITE, FR_STATIC, FR_DATE_ARRAYS, fmtDateFR, fmtDateShortFR,
+} from './fr-strings.js';
 
 /**
  * Helper that pages call to get the current issue number from D1.
@@ -12,7 +22,12 @@
  */
 export async function getIssueNo(env) {
   try {
-    const row = await env.DB.prepare(`SELECT COUNT(*) as total FROM articles`).first();
+    // env.DB_EN is present only on French requests and points at the English
+    // database. The French edition carries English issue numbers deliberately:
+    // it is the same publication, and an edition that restarts its own count at
+    // No. 1 announces itself as an add-on rather than an edition.
+    const db = env.DB_EN || env.DB;
+    const row = await db.prepare(`SELECT COUNT(*) as total FROM articles`).first();
     return row?.total || 0;
   } catch {
     return 0;
@@ -25,7 +40,11 @@ export async function getIssueNo(env) {
  */
 export async function getArticleIssueNo(env, publishedAt) {
   try {
-    const row = await env.DB.prepare(
+    // English database when one is offered — see getIssueNo. A French article
+    // shares its source's published_at exactly, so this returns the very same
+    // number the English article carries.
+    const db = env.DB_EN || env.DB;
+    const row = await db.prepare(
       `SELECT COUNT(*) as n FROM articles WHERE published_at <= ?`
     ).bind(publishedAt).first();
     return row?.n || 0;
@@ -86,7 +105,8 @@ const ORG_SCHEMA = {
 
 export function pageShell(bodyHtml, opts = {}) {
   const {
-    title = 'HDQ Publishing Canada | Daily intelligence for Canadian advisors',
+    title = opts.lang === 'fr' ? FR_SITE.defaultTitle
+                               : 'HDQ Publishing Canada | Daily intelligence for Canadian advisors',
     activePage = 'news',
     activeDesk = 'all',
     issueNo = 0,
@@ -101,11 +121,24 @@ export function pageShell(bodyHtml, opts = {}) {
     ogImage = '',
     publishedTime = '',
     section = '',
+    lang = 'en',
   } = opts;
+
+  const fr = lang === 'fr';
+  const home = fr ? '/fr' : '/news';
+  const aboutHref = fr ? `/fr/${FR_ROUTES.about}` : '/about';
 
   // Top masthead nav. Archive lives in the desk strip's "More" group, so it is
   // not duplicated here.
-  const navLinks = [
+  // Fund Intel carries no French route — it is out of scope per the French
+  // build brief §14 — so it is absent from the French masthead rather than
+  // present and pointing at an English page.
+  const navLinks = fr ? [
+    { href: '/fr',                   label: FR_UI.news,     key: 'news' },
+    { href: FR_STATIC.prodev,        label: FR_UI.prodev,   key: 'prodev' },
+    { href: FR_STATIC.forFirms,      label: FR_UI.forFirms, key: 'whitelabel' },
+    { href: aboutHref,               label: FR_UI.about,    key: 'about' },
+  ] : [
     { href: '/news',                  label: 'News',                     key: 'news' },
     { href: '/fund-intel',            label: 'Fund Intel',               key: 'fund-intel' },
     { href: '/hdq-prodev.html',       label: 'Professional Development', key: 'prodev' },
@@ -116,7 +149,15 @@ export function pageShell(bodyHtml, opts = {}) {
   // Desk strip. The five desks plus All and the Daily Thread stay visible —
   // that visible row is the publication's breadth at a glance. The lower-cadence
   // and utility items fold into a single "More" menu.
-  const deskVisible = [
+  const deskVisible = fr ? [
+    { href: '/fr',                                label: FR_UI.all,                 key: 'all' },
+    { href: `/fr/${FR_DESK_PATH.market}`,         label: FR_DESK_DISPLAY.market,    key: 'market' },
+    { href: `/fr/${FR_DESK_PATH.geo}`,            label: FR_DESK_DISPLAY.geo,       key: 'geo' },
+    { href: `/fr/${FR_DESK_PATH.economy}`,        label: FR_DESK_DISPLAY.economy,   key: 'economy' },
+    { href: `/fr/${FR_DESK_PATH.tax}`,            label: FR_DESK_DISPLAY.tax,       key: 'tax' },
+    { href: `/fr/${FR_DESK_PATH.behaviour}`,      label: FR_DESK_DISPLAY.behaviour, key: 'behaviour' },
+    { href: `/fr/${FR_DESK_PATH.thread}`,         label: FR_DESK_DISPLAY.thread,    key: 'thread' },
+  ] : [
     { href: '/news',              label: 'All',              key: 'all' },
     { href: '/market',            label: 'Market',           key: 'market' },
     { href: '/geopolitical',      label: 'Geopolitical',     key: 'geo' },
@@ -125,7 +166,11 @@ export function pageShell(bodyHtml, opts = {}) {
     { href: '/behavioural',       label: 'Behavioural',      key: 'behaviour' },
     { href: '/daily-thread',      label: 'Daily Thread',     key: 'thread' },
   ];
-  const deskMore = [
+  const deskMore = fr ? [
+    { href: `/fr/${FR_DESK_PATH.weekend}`, label: FR_DESK_DISPLAY.weekend, key: 'weekend' },
+    { href: `/fr/${FR_DESK_PATH.month}`,   label: FR_DESK_DISPLAY.month,   key: 'month' },
+    { href: `/fr/${FR_ROUTES.archive}`,    label: FR_UI.archive,           key: 'archive' },
+  ] : [
     { href: '/weekend',           label: 'Weekend Edition',   key: 'weekend' },
     { href: '/month-at-a-glance', label: 'Month at a Glance', key: 'month' },
     { href: '/archive',           label: 'Archive',           key: 'archive' },
@@ -143,7 +188,7 @@ export function pageShell(bodyHtml, opts = {}) {
   const deskMoreLinksHtml = deskMore.map(l =>
     `<a href="${l.href}" class="dnav-more-link${activeDesk === l.key ? ' active' : ''}" role="menuitem">${l.label}</a>`
   ).join('');
-  const deskNavHtml = `${deskVisibleHtml}<button type="button" class="dnav-link dnav-more-trigger${moreActive ? ' active' : ''}" id="dnav-more-trigger" aria-haspopup="true" aria-expanded="false" onclick="window.toggleDeskMore()">More <span class="dnav-more-caret">&#9662;</span></button>`;
+  const deskNavHtml = `${deskVisibleHtml}<button type="button" class="dnav-link dnav-more-trigger${moreActive ? ' active' : ''}" id="dnav-more-trigger" aria-haspopup="true" aria-expanded="false" onclick="window.toggleDeskMore()">${fr ? FR_UI.more : 'More'} <span class="dnav-more-caret">&#9662;</span></button>`;
 
   const mobileNavLinks = navLinks.map(l =>
     `<a href="${l.href}" class="mobile-nav-link" onclick="window.closeMobileNav()">${l.label}</a>`
@@ -152,11 +197,11 @@ export function pageShell(bodyHtml, opts = {}) {
   // Vol/No displayed on the right side of the date strip.
   // Vol. 1 covers May 7 2026 through May 6 2027.
   const volNoHtml = issueNo > 0
-    ? `<span class="date-volno">Vol. 1 &nbsp;·&nbsp; No. ${issueNo}</span>`
+    ? `<span class="date-volno">Vol. 1 &nbsp;·&nbsp; ${fr ? FR_UI.issueNo(issueNo) : `No. ${issueNo}`}</span>`
     : '';
 
   return `<!DOCTYPE html>
-<html lang="en"><head>
+<html lang="${fr ? FR_SITE.htmlLang : 'en'}"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>${escHtml(title)}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -170,7 +215,7 @@ ${canonical ? `<link rel="canonical" href="${canonical}">` : ''}
 <meta property="og:site_name" content="HDQ Publishing Canada">
 <meta property="og:type" content="${ogType}">
 <meta property="og:title" content="${escHtml(title)}">
-<meta property="og:locale" content="en_CA">
+<meta property="og:locale" content="${fr ? FR_SITE.ogLocale : 'en_CA'}">
 ${canonical ? `<meta property="og:url" content="${canonical}">` : ''}
 ${metaDescription ? `<meta property="og:description" content="${escHtml(metaDescription)}">` : ''}
 ${ogImage ? `<meta property="og:image" content="${escHtml(ogImage)}">` : ''}
@@ -180,8 +225,8 @@ ${section ? `<meta property="article:section" content="${escHtml(section)}">` : 
 <meta name="twitter:title" content="${escHtml(title)}">
 ${metaDescription ? `<meta name="twitter:description" content="${escHtml(metaDescription)}">` : ''}
 ${ogImage ? `<meta name="twitter:image" content="${escHtml(ogImage)}">` : ''}
-<link rel="alternate" type="application/rss+xml" title="HDQ Publishing Canada" href="https://hdq.ca/feed.xml">
-<script type="application/ld+json">${JSON.stringify(ORG_SCHEMA)}</script>
+${fr ? '' : '<link rel="alternate" type="application/rss+xml" title="HDQ Publishing Canada" href="https://hdq.ca/feed.xml">'}
+<script type="application/ld+json">${JSON.stringify(fr ? { ...ORG_SCHEMA, knowsLanguage: 'fr-CA', description: FR_SITE.description } : ORG_SCHEMA)}</script>
 ${extraHead}
 <style>
 @media(max-width:768px){
@@ -201,7 +246,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
 <!-- MOBILE NAV -->
 <div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav-header">
-    <a href="/about" class="brand" aria-label="HDQ Home" onclick="window.closeMobileNav()">
+    <a href="${aboutHref}" class="brand" aria-label="${fr ? 'Accueil HDQ' : 'HDQ Home'}" onclick="window.closeMobileNav()">
       <img src="/HDQ_LOGO_Gold.svg" width="28" height="28" alt="HDQ Logo" style="display:block;">
       <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
     </a>
@@ -210,26 +255,30 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
   <nav class="mobile-nav-links" aria-label="Mobile navigation">
     ${mobileNavLinks}
     <div class="mobile-nav-divider"></div>
-    <a href="/daily-thread" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
+${fr ? `    <a href="/fr/${FR_DESK_PATH.thread}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_DESK_DISPLAY.thread}</a>
+    <a href="/fr/${FR_DESK_PATH.weekend}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_DESK_DISPLAY.weekend}</a>
+    <a href="/fr/${FR_DESK_PATH.month}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_DESK_DISPLAY.month}</a>
+    <a href="/fr/${FR_ROUTES.archive}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_UI.archive}</a>
+    <a href="${FR_STATIC.legal}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_FOOTER.legal.combined}</a>` : `    <a href="/daily-thread" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
     <a href="/weekend" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
     <a href="/month-at-a-glance" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
     <a href="/archive" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
-    <a href="/hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
+    <a href="/hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>`}
   </nav>
   <div class="mobile-nav-footer">
-    <a href="/hdq-subscribe.html" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Waiting List</a>
+    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">${fr ? FR_UI.waitingList : 'Waiting List'}</a>
   </div>
 </div>
 
 <!-- MASTHEAD -->
 <header class="masthead"><div class="masthead-inner">
-  <a href="/about" class="brand">
+  <a href="${aboutHref}" class="brand">
     <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
     <span class="wordmark">HD<span class="wq">Q</span></span>
   </a>
   <nav><ul class="nav-links">${navHtml}</ul></nav>
   <div class="nav-right">
-    <a href="/hdq-subscribe.html" class="nav-subscribe">Waiting List</a>
+    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="nav-subscribe">${fr ? FR_UI.waitingList : 'Waiting List'}</a>
     <button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu"
       style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger">
       <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
@@ -252,7 +301,47 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
 ${bodyHtml}
 
 <!-- FOOTER -->
-<footer><div class="footer-inner">
+${fr ? `<footer><div class="footer-inner">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="${aboutHref}" class="brand" style="margin-bottom:10px;">
+        <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
+        <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
+      </a>
+      <p>${FR_FOOTER.blurb}</p>
+    </div>
+    <div class="footer-nav"><h6>${FR_FOOTER.headings.publication}</h6><ul>
+      <li><a href="/fr">${FR_FOOTER.publication.daily}</a></li>
+      <li><a href="/fr/${FR_DESK_PATH.thread}">${FR_FOOTER.publication.thread}</a></li>
+      <li><a href="/fr/${FR_DESK_PATH.weekend}">${FR_FOOTER.publication.weekend}</a></li>
+      <li><a href="/fr/${FR_DESK_PATH.month}">${FR_FOOTER.publication.month}</a></li>
+      <li><a href="/fr/${FR_ROUTES.archive}">${FR_FOOTER.publication.archive}</a></li>
+    </ul></div>
+    <div class="footer-nav"><h6>${FR_FOOTER.headings.learning}</h6><ul>
+      <li><a href="${FR_STATIC.prodev}">${FR_FOOTER.learning.modules}</a></li>
+      <li><a href="${FR_STATIC.prodev}#reading">${FR_FOOTER.learning.reading}</a></li>
+      <li><a href="${FR_STATIC.prodev}#frameworks">${FR_FOOTER.learning.frameworks}</a></li>
+      <li><a href="${FR_STATIC.prodev}#glossary">${FR_FOOTER.learning.glossary}</a></li>
+    </ul></div>
+    <div class="footer-nav"><h6>${FR_FOOTER.headings.company}</h6><ul>
+      <li><a href="${FR_STATIC.forFirms}">${FR_FOOTER.company.forFirms}</a></li>
+      <li><a href="${aboutHref}">${FR_FOOTER.company.about}</a></li>
+      <li><a href="${FR_STATIC.standards}">${FR_FOOTER.company.standards}</a></li>
+      <li><a href="${FR_STATIC.waitingList}">${FR_FOOTER.company.waiting}</a></li>
+      <li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li>
+    </ul></div>
+    <div class="footer-nav"><h6>${FR_FOOTER.headings.legal}</h6><ul>
+      <li><a href="${FR_STATIC.legal}">${FR_FOOTER.legal.disclaimer}</a></li>
+      <li><a href="${FR_STATIC.legal}#terms">${FR_FOOTER.legal.terms}</a></li>
+      <li><a href="${FR_STATIC.legal}#privacy">${FR_FOOTER.legal.privacy}</a></li>
+      <li><a href="${FR_STATIC.legal}#compliance">${FR_FOOTER.legal.compliance}</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>${FR_FOOTER.copyright} <a href="${FR_STATIC.legal}" style="color:rgba(255,255,255,0.45);text-decoration:underline;">${FR_FOOTER.legal.combined}</a></span>
+    <span class="footer-badge">hdq.ca</span>
+  </div>
+</div></footer>` : `<footer><div class="footer-inner">
   <div class="footer-top">
     <div class="footer-brand">
       <a href="/about" class="brand" style="margin-bottom:10px;">
@@ -292,16 +381,23 @@ ${bodyHtml}
     <span>© 2026 HDQ Publishing Canada. All rights reserved. HDQ is an independent publication. Content is published for the professional development of licensed Canadian financial advisors and does not constitute investment advice. <a href="/hdq-legal.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span>
     <span class="footer-badge">hdq.ca</span>
   </div>
-</div></footer>
+</div></footer>`}
 
 <script>
-(function(){
+${fr ? `(function(){
+  var d=new Date();
+  var days=${JSON.stringify(FR_DATE_ARRAYS.days)};
+  var months=${JSON.stringify(FR_DATE_ARRAYS.months)};
+  var n=d.getDate();
+  var str=days[d.getDay()]+' '+(n===1?'1er':n)+' '+months[d.getMonth()]+' '+d.getFullYear();
+  document.querySelectorAll('.date-left').forEach(function(el){el.textContent=str;});
+})();` : `(function(){
   var d=new Date();
   var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
   var str=days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
   document.querySelectorAll('.date-left').forEach(function(el){el.textContent=str;});
-})();
+})();`}
 (function(){
   var inner=document.querySelector('.desk-nav-inner');
   if(!inner)return;
@@ -341,14 +437,16 @@ export function escHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-export function fmtDate(isoDate) {
+export function fmtDate(isoDate, lang = 'en') {
+  if (lang === 'fr') return fmtDateFR(isoDate);
   if (!isoDate) return '';
   const [y, m, d] = isoDate.split('-');
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   return `${months[parseInt(m,10)-1]} ${parseInt(d,10)}, ${y}`;
 }
 
-export function fmtDateShort(isoDate) {
+export function fmtDateShort(isoDate, lang = 'en') {
+  if (lang === 'fr') return fmtDateShortFR(isoDate);
   if (!isoDate) return '';
   const [, m, d] = isoDate.split('-');
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -392,8 +490,47 @@ export const DESK_BYLINE = {
   month:     'The Editorial Desk',
 };
 
-export function articleUrl(article) {
-  return `/${article.slug}`;
+export function articleUrl(article, lang = 'en') {
+  return lang === 'fr' ? `/fr/${article.slug}` : `/${article.slug}`;
+}
+
+// ── Language-aware lookups ──────────────────────────────────────────────────
+// Every one of these defaults to English, so an existing call site that passes
+// no language argument behaves exactly as it did before.
+
+/** Desk display label: 'Market' or 'Marchés'. */
+export function deskDisplay(desk, lang = 'en') {
+  return (lang === 'fr' ? FR_DESK_DISPLAY[desk] : DESK_DISPLAY[desk]) || desk;
+}
+
+/** Desk byline: 'The Market Desk' or 'La rédaction Marchés'. */
+export function deskByline(desk, lang = 'en') {
+  return (lang === 'fr' ? FR_DESK_BYLINE[desk] : DESK_BYLINE[desk]) || '';
+}
+
+/** Desk landing page: '/market' or '/fr/marches'. */
+export function deskHref(desk, lang = 'en') {
+  if (lang === 'fr') {
+    const seg = FR_DESK_PATH[desk];
+    return seg ? `/fr/${seg}` : '/fr';
+  }
+  const map = {
+    market:    '/market',
+    geo:       '/geopolitical',
+    economy:   '/economy',
+    tax:       '/tax-wealth',
+    behaviour: '/behavioural',
+    thread:    '/daily-thread',
+    weekend:   '/weekend',
+    month:     '/month-at-a-glance',
+  };
+  return map[desk] || '/news';
+}
+
+/** Archive URL, optionally filtered: '/archive?tag=x' or '/fr/archives?tag=x'. */
+export function archiveUrl(query = '', lang = 'en') {
+  const base = lang === 'fr' ? `/fr/${FR_ROUTES.archive}` : '/archive';
+  return query ? `${base}?${query}` : base;
 }
 
 export function jsonKeyNumbers(raw) {

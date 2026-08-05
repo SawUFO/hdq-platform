@@ -142,7 +142,12 @@ async function handleFrench(request, env, url, path) {
   // from inside a page handler.
   if (!env.DB_FR) return notFound();
 
-  const frEnv = { ...env, DB: env.DB_FR };
+  // The French env. DB is swapped so page handlers reading env.DB receive
+  // French rows without being modified. LANG tells templates which strings and
+  // URL prefix to render. DB_EN keeps the English database reachable for the
+  // one thing that must not switch: issue numbers, which are shared across both
+  // editions because both editions are the same publication.
+  const frEnv = { ...env, DB: env.DB_FR, DB_EN: env.DB, LANG: 'fr' };
 
   // Access state, resolved against the English database.
   const authed = PUBLIC_MODE || await checkAuth(request, env);

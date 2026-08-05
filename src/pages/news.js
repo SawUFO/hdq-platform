@@ -1,18 +1,10 @@
-import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, jsonKeyNumbers, htmlResponse, getIssueNo } from '../shell.js';
+import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_CAT_CLASS, articleUrl,
+         jsonKeyNumbers, htmlResponse, getIssueNo, deskDisplay, deskHref,
+         archiveUrl } from '../shell.js';
+import { FR_NEWS, FR_MEMBERSHIP, FR_SITE, FR_STATIC } from '../fr-strings.js';
 
-function deskHref(desk) {
-  const map = {
-    market:    '/market',
-    geo:       '/geopolitical',
-    economy:   '/economy',
-    tax:       '/tax-wealth',
-    behaviour: '/behavioural',
-    thread:    '/daily-thread',
-    weekend:   '/weekend',
-    month:     '/month-at-a-glance',
-  };
-  return map[desk] || '/news';
-}
+// deskHref used to live here as an English-only map. It now comes from shell.js
+// so both editions resolve desk links through one place.
 
 export const PAGE_CSS = `
 .content-area { padding: 36px 0 60px; }
@@ -136,6 +128,11 @@ body.overlay-active { overflow: hidden; }
 `;
 
 export async function renderNews(env, authed = true) {
+  // env.LANG is set only on French requests. Absent means English, so every
+  // English render takes the same path it always has.
+  const lang = env.LANG || 'en';
+  const fr = lang === 'fr';
+
   const heroRow = await env.DB.prepare(`
     SELECT * FROM articles
     ORDER BY published_at DESC
@@ -170,20 +167,24 @@ export async function renderNews(env, authed = true) {
   const countRow = await env.DB.prepare(`SELECT COUNT(*) as total FROM articles`).first();
   const articleCount = countRow?.total || 0;
 
+  // Vol/No comes from the English database on both editions — see getIssueNo.
+  // articleCount stays local: the sidebar is describing this archive's contents.
+  const issueNo = await getIssueNo(env);
+
   const hero = heroRow;
   const subs = subRows.results || [];
   const recent = recentRows.results || [];
   const flash = flashRows.results || [];
 
-  const heroHtml = hero ? renderHeroCard(hero, true) : '';
-  const subHtml = subs.length ? `<div class="sub-grid">${subs.map(a => renderSubCard(a, true)).join('')}</div>` : '';
+  const heroHtml = hero ? renderHeroCard(hero, true, lang) : '';
+  const subHtml = subs.length ? `<div class="sub-grid">${subs.map(a => renderSubCard(a, true, lang)).join('')}</div>` : '';
   const recentHtml = recent.length ? `
-    <div class="block-header"><h6>Recent News</h6></div>
-    <div class="news-list">${recent.map(a => renderNewsItem(a, true)).join('')}</div>
-    <div style="padding:20px 0 0;"><a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">View archive →</a></div>
+    <div class="block-header"><h6>${fr ? FR_NEWS.recentNews : 'Recent News'}</h6></div>
+    <div class="news-list">${recent.map(a => renderNewsItem(a, true, lang)).join('')}</div>
+    <div style="padding:20px 0 0;"><a href="${archiveUrl('', lang)}" style="font-size:13px;color:var(--navy-700);font-weight:600;">${fr ? FR_NEWS.viewArchive : 'View archive'} →</a></div>
   ` : '';
 
-  const sidebarHtml = renderSidebar(flash, trendingTags, articleCount);
+  const sidebarHtml = renderSidebar(flash, trendingTags, articleCount, lang);
 
   // News page is always fully visible — the wall hits at the article level
   const lockedOverlay = '';
@@ -193,7 +194,7 @@ ${lockedOverlay}
 <div class="content-area"><div class="container">
   <div class="content-grid">
     <div style="min-width:0;">
-      <div class="block-header"><h6>Today's Briefing</h6></div>
+      <div class="block-header"><h6>${fr ? FR_NEWS.todaysBriefing : "Today's Briefing"}</h6></div>
       ${heroHtml}
       ${subHtml}
       ${recentHtml}
@@ -204,27 +205,31 @@ ${lockedOverlay}
   </div>
 </div></div>
 
-${membershipFooterBand()}
+${membershipFooterBand(lang)}
 `;
 
   return htmlResponse(pageShell(body, {
-    title: 'HDQ — Today\'s Edition',
+    title: fr ? FR_NEWS.pageTitle : 'HDQ — Today\'s Edition',
     activePage: 'news',
     activeDesk: 'all',
-    issueNo: articleCount,
-    canonical: 'https://hdq.ca/news',
-    metaDescription: 'HDQ is a daily intelligence briefing for licensed Canadian financial advisors. Five editorial desks plus a Daily Thread, published every weekday morning.',
+    issueNo,
+    // Self-canonical. A French page pointing its canonical at the English URL
+    // is dropped from the index entirely — French build brief §8.
+    canonical: fr ? 'https://hdq.ca/fr' : 'https://hdq.ca/news',
+    metaDescription: fr ? FR_SITE.description
+      : 'HDQ is a daily intelligence briefing for licensed Canadian financial advisors. Five editorial desks plus a Daily Thread, published every weekday morning.',
     robots: 'index, follow',
     extraStyle: PAGE_CSS,
+    lang,
   }));
 }
 
 // Renders hero card — links disabled for guests
-function renderHeroCard(a, authed) {
-  const href = authed ? articleUrl(a) : '#';
+function renderHeroCard(a, authed, lang = 'en') {
+  const href = authed ? articleUrl(a, lang) : '#';
   const tags = (a.tags || '').split(',').slice(0, 5).filter(Boolean);
   const tagHtml = tags.map(t =>
-    `<a href="${authed ? `/archive?tag=${encodeURIComponent(t.trim())}` : '#'}" class="tag" ${authed ? '' : 'tabindex="-1"'}>${escHtml(t.trim())}</a>`
+    `<a href="${authed ? archiveUrl(`tag=${encodeURIComponent(t.trim())}`, lang) : '#'}" class="tag" ${authed ? '' : 'tabindex="-1"'}>${escHtml(t.trim())}</a>`
   ).join('');
 
   return `
@@ -236,15 +241,15 @@ function renderHeroCard(a, authed) {
       </div>
       <div class="feat-body">
         <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || 'cat-market')}">
-          ${a.desk === 'thread' ? '<span class="dot"></span>' : ''}${escHtml(DESK_DISPLAY[a.desk] || a.desk)}
+          ${a.desk === 'thread' ? '<span class="dot"></span>' : ''}${escHtml(deskDisplay(a.desk, lang))}
         </span>
         <div class="feat-title">${escHtml(a.title)}</div>
         <div class="feat-desc">${escHtml(a.dek || '')}</div>
         <div class="feat-meta">
-          <span>${fmtDate(a.published_at)}</span>
+          <span>${fmtDate(a.published_at, lang)}</span>
           <span class="meta-dot"></span>
-          <span>${a.read_time} min</span>
-          <span class="read-more">Read &rarr;</span>
+          <span>${a.read_time} ${lang === 'fr' ? FR_NEWS.min : 'min'}</span>
+          <span class="read-more">${lang === 'fr' ? FR_NEWS.read : 'Read'} &rarr;</span>
         </div>
       </div>
     </div>
@@ -253,81 +258,82 @@ function renderHeroCard(a, authed) {
 </div>`;
 }
 
-function renderSubCard(a, authed) {
-  const href = authed ? articleUrl(a) : '#';
+function renderSubCard(a, authed, lang = 'en') {
+  const href = authed ? articleUrl(a, lang) : '#';
   return `
 <a href="${href}" class="sub-card" ${authed ? '' : 'style="pointer-events:none;cursor:default;"'}>
   <div class="sub-img photo-wrap">
     <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
   </div>
   <div class="sub-body">
-    <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</span>
+    <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(deskDisplay(a.desk, lang))}</span>
     <div class="sub-title">${escHtml(a.title)}</div>
     <div class="sub-desc">${escHtml(a.dek || '')}</div>
     <div class="sub-meta">
-      <span>${fmtDateShort(a.published_at)}</span>
+      <span>${fmtDateShort(a.published_at, lang)}</span>
       <span class="meta-dot"></span>
-      <span>${a.read_time} min</span>
-      <span class="read-more">Read &rarr;</span>
+      <span>${a.read_time} ${lang === 'fr' ? FR_NEWS.min : 'min'}</span>
+      <span class="read-more">${lang === 'fr' ? FR_NEWS.read : 'Read'} &rarr;</span>
     </div>
   </div>
 </a>`;
 }
 
-function renderNewsItem(a, authed) {
-  const href = authed ? articleUrl(a) : '#';
+function renderNewsItem(a, authed, lang = 'en') {
+  const href = authed ? articleUrl(a, lang) : '#';
   return `
 <div class="news-item">
   <a href="${href}" class="news-thumb photo-wrap thumb-treat" ${authed ? '' : 'style="pointer-events:none;"'}>
     <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="" loading="lazy">
   </a>
   <div>
-    <a href="${authed ? deskHref(a.desk) : '#'}" class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}" ${authed ? '' : 'style="pointer-events:none;"'}>${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</a>
+    <a href="${authed ? deskHref(a.desk, lang) : '#'}" class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}" ${authed ? '' : 'style="pointer-events:none;"'}>${escHtml(deskDisplay(a.desk, lang))}</a>
     <a href="${href}" class="news-title" ${authed ? '' : 'style="pointer-events:none;"'}>${escHtml(a.title)}</a>
     <div class="news-desc">${escHtml(a.dek || '')}</div>
     <div class="news-meta">
-      <span>${fmtDateShort(a.published_at)}</span>
+      <span>${fmtDateShort(a.published_at, lang)}</span>
       <span class="meta-dot"></span>
-      <span>${a.read_time} min</span>
+      <span>${a.read_time} ${lang === 'fr' ? FR_NEWS.min : 'min'}</span>
     </div>
   </div>
 </div>`;
 }
 
-function renderSidebar(flash, trendingTags, articleCount) {
+function renderSidebar(flash, trendingTags, articleCount, lang = 'en') {
+  const fr = lang === 'fr';
   const flashHtml = flash.map(a => `
 <div class="flash-item">
-  <a href="${articleUrl(a)}" class="flash-thumb photo-wrap thumb-treat">
+  <a href="${articleUrl(a, lang)}" class="flash-thumb photo-wrap thumb-treat">
     <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="" loading="lazy">
   </a>
   <div>
-    <a href="${articleUrl(a)}" class="flash-title">${escHtml(a.title)}</a>
-    <div class="flash-date">${fmtDateShort(a.published_at)} &middot; ${a.read_time} min</div>
+    <a href="${articleUrl(a, lang)}" class="flash-title">${escHtml(a.title)}</a>
+    <div class="flash-date">${fmtDateShort(a.published_at, lang)} &middot; ${a.read_time} ${fr ? FR_NEWS.min : 'min'}</div>
   </div>
 </div>`).join('');
 
   const trendHtml = trendingTags.map(t =>
-    `<a href="/archive?tag=${encodeURIComponent(t)}" class="trending-tag">${escHtml(t)}</a>`
+    `<a href="${archiveUrl(`tag=${encodeURIComponent(t)}`, lang)}" class="trending-tag">${escHtml(t)}</a>`
   ).join('');
 
   return `
 <div>
-  <div class="sidebar-label">Flash News</div>
+  <div class="sidebar-label">${fr ? FR_NEWS.flashNews : 'Flash News'}</div>
   <div class="flash-list">${flashHtml}</div>
 </div>
 <div style="background:var(--navy-50);border:1px solid var(--navy-100);border-radius:6px;padding:20px;">
-  <div style="font-size:10px;font-weight:700;color:var(--navy-600);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">Membership</div>
-  <p style="font-size:13px;color:var(--navy-800);line-height:1.6;margin:0 0 12px;">Membership is permanently capped. Admitted by nomination only.</p>
-  <a href="/hdq-subscribe.html" style="font-size:13px;color:var(--navy-700);font-weight:600;text-decoration:none;border-bottom:1px solid var(--navy-200);padding-bottom:1px;">Waiting list &rarr;</a>
+  <div style="font-size:10px;font-weight:700;color:var(--navy-600);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">${fr ? FR_MEMBERSHIP.heading : 'Membership'}</div>
+  <p style="font-size:13px;color:var(--navy-800);line-height:1.6;margin:0 0 12px;">${fr ? FR_MEMBERSHIP.capped : 'Membership is permanently capped. Admitted by nomination only.'}</p>
+  <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" style="font-size:13px;color:var(--navy-700);font-weight:600;text-decoration:none;border-bottom:1px solid var(--navy-200);padding-bottom:1px;">${fr ? FR_MEMBERSHIP.waitingList : 'Waiting list'} &rarr;</a>
 </div>
 <div>
-  <div class="sidebar-label">Topics</div>
+  <div class="sidebar-label">${fr ? FR_NEWS.topics : 'Topics'}</div>
   <div class="trending-tags">${trendHtml}</div>
 </div>
 <div>
-  <div class="sidebar-label">Past Editions</div>
-  <a href="/archive" style="font-size:13px;color:var(--navy-700);font-weight:600;">View the archive</a>
-  <p style="font-size:12px;color:var(--n600);line-height:1.5;margin-top:6px;">${articleCount} editions on file. Search by desk, topic, or date.</p>
+  <div class="sidebar-label">${fr ? FR_NEWS.pastEditions : 'Past Editions'}</div>
+  <a href="${archiveUrl('', lang)}" style="font-size:13px;color:var(--navy-700);font-weight:600;">${fr ? FR_NEWS.consultArchive : 'View the archive'}</a>
+  <p style="font-size:12px;color:var(--n600);line-height:1.5;margin-top:6px;">${fr ? FR_NEWS.editionsOnFile(articleCount) : `${articleCount} editions on file. Search by desk, topic, or date.`}</p>
 </div>`;
 }
 
@@ -345,10 +351,11 @@ function extractTopTags(rows) {
     .map(([tag]) => tag);
 }
 
-export function membershipFooterBand() {
+export function membershipFooterBand(lang = 'en') {
+  const fr = lang === 'fr';
   return `
 <div class="nl-band"><div class="nl-inner">
-  <p style="font-size:15px;color:var(--n600);margin:0;">Membership is permanently capped. Admitted by nomination only. <a href="/hdq-subscribe.html" style="color:var(--navy-700);font-weight:600;">Waiting list &rarr;</a></p>
+  <p style="font-size:15px;color:var(--n600);margin:0;">${fr ? FR_MEMBERSHIP.capped : 'Membership is permanently capped. Admitted by nomination only.'} <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" style="color:var(--navy-700);font-weight:600;">${fr ? FR_MEMBERSHIP.waitingList : 'Waiting list'} &rarr;</a></p>
 </div></div>`;
 }
 
