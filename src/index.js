@@ -202,7 +202,7 @@ export default {
       // below, which is unchanged from the version that has been serving
       // hdq.ca since Day 1.
       if (path === '/fr' || path.startsWith('/fr/')) {
-        return handleFrench(request, env, url, path);
+        return await handleFrench(request, env, url, path);
       }
 
       // ── Machine-readable endpoints ────────────────────────────────────────
