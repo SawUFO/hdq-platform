@@ -19,3 +19,16 @@ database_id = "026e3b25-32fc-4a5f-bdea-44eebb8470e1"
 [assets]
 directory = "./static"
 binding = "ASSETS"
+
+# ── Workers Logs ──────────────────────────────────────────────────────────────
+# Declared here rather than set in the dashboard, because every deploy runs
+# through GitHub Actions from this file. A dashboard-only setting would be
+# reset on the next push.
+# head_sampling_rate = 1 logs 100% of requests, which is correct at HDQ's
+# traffic volume. Lower it only if request counts ever make cost a factor.
+[observability]
+enabled = true
+
+[observability.logs]
+invocation_logs = true
+head_sampling_rate = 1
