@@ -307,6 +307,36 @@ export const FR_LOCK = {
   note:     '\u00c0 des fins \u00e9ducatives seulement. Ne constitue pas un conseil en placement.',
 };
 
+// ── Article, thread and weekend templates ───────────────────────────────────
+// The section headings above in FR_UI are settled. Everything here is DRAFT.
+
+export const FR_ARTICLE = {
+  copyLink:      'Copier le lien',
+  linkCopied:    'Lien copi\u00e9.',
+  email:         'Courriel',
+  fullDisclaimer: 'Avis complet',
+  editorial:     'La r\u00e9daction HDQ',
+  respond:       'R\u00e9pondre',
+  prospect:      'Prospecter',
+
+  // Educational disclaimer under the article body
+  eduStrong:     '\u00c0 des fins \u00e9ducatives seulement.',
+  eduBody:       'Cet article est publi\u00e9 \u00e0 des fins d\u2019information et de perfectionnement professionnel. Il ne constitue pas un conseil en placement ni une recommandation d\u2019achat ou de vente d\u2019un titre.',
+
+  // Sidebar legal box
+  sidebarStrong: '\u00c0 des fins \u00e9ducatives seulement.',
+  sidebarBody:   'Contenu \u00e9ditorial publi\u00e9 aux fins du perfectionnement professionnel des conseillers canadiens. Ne constitue pas un conseil en placement.',
+  sidebarBodyAlt: 'HDQ s\u2019adresse aux conseillers canadiens. Ne constitue pas un conseil en placement.',
+
+  // Weekend Edition and Month at a Glance
+  thisWeek:      'Cette semaine',
+  thisMonth:     'Ce mois-ci',
+  weekInNumbers: 'La semaine en chiffres',
+  monthInNumbers: 'Le mois en chiffres',
+  weekDesks:     'Les sections cette semaine',
+  inThisReport:  'Dans ce rapport',
+};
+
 // ── Footer ──────────────────────────────────────────────────────────────────
 // DRAFT below this line, except the four legal link labels.
 

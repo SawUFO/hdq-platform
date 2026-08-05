@@ -1,4 +1,6 @@
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, DESK_BYLINE, articleUrl, jsonKeyNumbers, htmlResponse, getArticleIssueNo } from '../shell.js';
+import { FR_UI, FR_ARTICLE, FR_LOCK, FR_STATIC, FR_DESK_DISPLAY } from '../fr-strings.js';
+import { deskDisplay, deskByline } from '../shell.js';
 import { membershipFooterBand } from './news.js';
 
 const LOCKED_OVERLAY_CSS = `
@@ -88,8 +90,10 @@ article { min-width:0; }
 `;
 
 export async function renderThread(env, slug, authed = true) {
+  const lang = env.LANG || 'en';
+  const fr = lang === 'fr';
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
-  if (!article) return new Response(null, { status: 302, headers: { Location: '/news' } });
+  if (!article) return new Response(null, { status: 302, headers: { Location: fr ? '/fr' : '/news' } });
 
   // This thread's permanent issue number — its position in publish order.
   const issueNo = await getArticleIssueNo(env, article.published_at);
@@ -109,7 +113,7 @@ export async function renderThread(env, slug, authed = true) {
 
   const keyNumbersHtml = keyNumbers.length ? `
 <div class="key-numbers">
-  <div class="key-numbers-label">Key Numbers</div>
+  <div class="key-numbers-label">${fr ? FR_UI.keyNumbers : 'Key Numbers'}</div>
   ${keyNumbers.map(kn => `
   <div class="key-number">
     <div class="key-number-value">${escHtml(kn.value)}</div>
@@ -119,17 +123,17 @@ export async function renderThread(env, slug, authed = true) {
 
   const relatedHtml = (related.results || []).length ? `
 <div class="related-box">
-  <div class="related-label">Also Today</div>
+  <div class="related-label">${fr ? FR_UI.alsoToday : 'Also Today'}</div>
   ${(related.results || []).map(r => `
-  <a href="${articleUrl(r)}" class="related-item">
-    <div class="related-item-tag" style="color:var(--navy-300);">${escHtml(DESK_DISPLAY[r.desk] || r.desk)}</div>
+  <a href="${articleUrl(r, lang)}" class="related-item">
+    <div class="related-item-tag" style="color:var(--navy-300);">${escHtml(deskDisplay(r.desk, lang))}</div>
     <div class="related-item-title">${escHtml(r.title)}</div>
   </a>`).join('')}
 </div>` : '';
 
   const briefHtml = article.brief_html ? `
 <section class="brief-box">
-  <div class="brief-label">The Brief</div>
+  <div class="brief-label">${fr ? FR_UI.brief : 'The Brief'}</div>
   ${article.brief_html}
 </section>` : '';
 
@@ -139,12 +143,12 @@ export async function renderThread(env, slug, authed = true) {
     <div class="hdq-locked-logo">
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
-    <span class="hdq-locked-tag">Member Access</span>
-    <h2>A publication with a fixed membership.</h2>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.</p>
-    <p>Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.</p>
-    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
-    <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
+    <span class="hdq-locked-tag">${fr ? FR_UI.memberAccess : 'Member Access'}</span>
+    <h2>${fr ? FR_LOCK.heading : 'A publication with a fixed membership.'}</h2>
+    <p>${fr ? FR_LOCK.body1 : 'HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.'}</p>
+    <p>${fr ? FR_LOCK.body2 : 'Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.'}</p>
+    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="hdq-locked-btn">${fr ? FR_LOCK.cta : 'Waiting list'} &rarr;</a>
+    <div class="hdq-locked-note">${fr ? FR_LOCK.note : 'Educational use only. Not investment advice.'}</div>
   </div>
 </div>` : '';
 
@@ -158,30 +162,30 @@ ${lockedOverlay}
       </div>
       <div class="article-hero-caption">${escHtml(article.hero_caption || 'Photo: iStock.')}</div>
       <div class="article-kicker">
-        <span class="cat-tag cat-thread"><span class="dot"></span>Daily Thread</span>
+        <span class="cat-tag cat-thread"><span class="dot"></span>${fr ? FR_DESK_DISPLAY.thread : 'Daily Thread'}</span>
       </div>
       <h1 class="article-headline">${escHtml(article.title)}</h1>
       <div class="article-byline">
-        <span>${fmtDate(article.published_at)}</span>
+        <span>${fmtDate(article.published_at, lang)}</span>
         <span class="meta-dot"></span>
-        <span>${article.read_time} min</span>
+        <span>${fr ? FR_UI.readTime(article.read_time) : `${article.read_time} min`}</span>
         <span class="meta-dot"></span>
-        <span>${escHtml(DESK_BYLINE.thread)}</span>
+        <span>${escHtml(deskByline('thread', lang))}</span>
       </div>
       ${authed ? briefHtml : ''}
       <div class="article-body">${authed ? (article.body_html || '') : ''}</div>
       ${authed && article.sources_text ? `
       <div class="sources-box">
-        <div class="sources-label">Sources</div>
+        <div class="sources-label">${fr ? FR_UI.sources : 'Sources'}</div>
         <p class="sources-text">${escHtml(article.sources_text)}</p>
       </div>` : ''}
       ${authed ? `
       <div class="edu-disclaimer">
-        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice or a recommendation to buy or sell any security. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer</a>.
+        <strong>${fr ? FR_ARTICLE.eduStrong : 'Educational content only.'}</strong> ${fr ? FR_ARTICLE.eduBody : 'This article is published for informational and professional development purposes. It does not constitute investment advice or a recommendation to buy or sell any security.'} <a href="${fr ? FR_STATIC.legal : '/hdq-legal.html'}" style="color:var(--navy-700);text-decoration:underline;">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>.
       </div>
       <div class="share-row">
-        <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied.'))">Copy link</button>
-        <a href="mailto:?subject=${encodeURIComponent('HDQ Daily Thread: ' + article.title)}&body=${encodeURIComponent('https://hdq.ca/' + article.slug)}" class="btn-share">Email</a>
+        <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('${fr ? FR_ARTICLE.linkCopied : 'Link copied.'}'))">${fr ? FR_ARTICLE.copyLink : 'Copy link'}</button>
+        <a href="mailto:?subject=${encodeURIComponent(`HDQ ${fr ? FR_DESK_DISPLAY.thread : 'Daily Thread'}: ${article.title}`)}&body=${encodeURIComponent(`https://hdq.ca/${fr ? 'fr/' : ''}${article.slug}`)}" class="btn-share">${fr ? FR_ARTICLE.email : 'Email'}</a>
       </div>` : ''}
     </article>
     <aside>
@@ -189,24 +193,26 @@ ${lockedOverlay}
         ${keyNumbersHtml}
         ${relatedHtml}
         <div class="sidebar-legal">
-          <strong>Educational content only.</strong> Editorial published for the professional development of Canadian financial advisors. Not investment advice.
-          <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>.
+          <strong>${fr ? FR_ARTICLE.eduStrong : 'Educational content only.'}</strong> ${fr ? FR_ARTICLE.sidebarBody : 'Editorial published for the professional development of Canadian financial advisors. Not investment advice.'}
+          <a href="${fr ? FR_STATIC.legal : '/hdq-legal.html'}" style="color:var(--navy-700);">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>.
         </div>
       </div>
     </aside>
   </div>
 </main>
-${membershipFooterBand()}`;
+${membershipFooterBand(lang)}`;
 
   return htmlResponse(pageShell(body, {
-    title: `${article.title} — HDQ Daily Thread`,
+    title: `${article.title} — HDQ ${fr ? FR_DESK_DISPLAY.thread : 'Daily Thread'}`,
     activePage: 'news',
     activeDesk: 'thread',
     issueNo,
-    canonical: `https://hdq.ca/${slug}`,
+    // Self-canonical — French build brief §8.
+    canonical: `https://hdq.ca/${fr ? 'fr/' : ''}${slug}`,
     metaDescription: article.dek || '',
     robots: 'index, follow',
     extraStyle: ARTICLE_CSS + LOCKED_OVERLAY_CSS,
     bodyClass: authed ? '' : 'overlay-active',
+    lang,
   }));
 }

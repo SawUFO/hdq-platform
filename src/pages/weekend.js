@@ -1,4 +1,6 @@
 import { pageShell, escHtml, fmtDate, articleUrl, htmlResponse, getArticleIssueNo } from '../shell.js';
+import { FR_UI, FR_ARTICLE, FR_LOCK, FR_STATIC, FR_DESK_DISPLAY } from '../fr-strings.js';
+import { deskDisplay } from '../shell.js';
 import { membershipFooterBand } from './news.js';
 
 const LOCKED_OVERLAY_CSS = `
@@ -67,17 +69,20 @@ function monthScript() {
 }
 
 export async function renderWeekend(env, slug, authed = true) {
+  const lang = env.LANG || 'en';
+  const fr = lang === 'fr';
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
-  if (!article) return new Response(null, { status: 302, headers: { Location: '/news' } });
+  if (!article) return new Response(null, { status: 302, headers: { Location: fr ? '/fr' : '/news' } });
 
   const isMonth = article.article_type === 'month';
-  const label = isMonth ? 'Month at a Glance' : 'Weekend Edition';
+  const label = fr ? (isMonth ? FR_DESK_DISPLAY.month : FR_DESK_DISPLAY.weekend)
+                   : (isMonth ? 'Month at a Glance' : 'Weekend Edition');
   const catClass = isMonth ? 'cat-month' : 'cat-weekend';
   const deskKey = isMonth ? 'month' : 'weekend';
 
   const briefHtml = article.brief_html ? `
 <section class="brief-box">
-  <div class="brief-label">${isMonth ? 'This Month' : 'This Week'}</div>
+  <div class="brief-label">${fr ? (isMonth ? FR_ARTICLE.thisMonth : FR_ARTICLE.thisWeek) : (isMonth ? 'This Month' : 'This Week')}</div>
   ${article.brief_html}
 </section>` : '';
 
@@ -88,14 +93,14 @@ export async function renderWeekend(env, slug, authed = true) {
   // Month-in-Numbers block (month only — large navy card)
   const knHtml = (isMonth && keyNums.length) ? `
 <div class="mkn">
-  <div class="mkn-label">Month in Numbers</div>
+  <div class="mkn-label">${fr ? FR_ARTICLE.monthInNumbers : 'Month in Numbers'}</div>
   ${keyNums.map(k => `<div class="mkn-item"><div class="mkn-v">${escHtml(k.value)}</div><div class="mkn-l">${escHtml(k.label)}</div></div>`).join('')}
 </div>` : '';
 
   // Weekend Key Numbers block (article-style navy sidebar card)
   const weekendKnHtml = (!isMonth && keyNums.length) ? `
 <div class="key-numbers">
-  <div class="key-numbers-label">Week in Numbers</div>
+  <div class="key-numbers-label">${fr ? FR_ARTICLE.weekInNumbers : 'Week in Numbers'}</div>
   ${keyNums.map(k => `
   <div class="key-number">
     <div class="key-number-value">${escHtml(k.value)}</div>
@@ -104,7 +109,6 @@ export async function renderWeekend(env, slug, authed = true) {
 </div>` : '';
 
   // This Week's Desks — most recent article per desk published within 6 days before the weekend edition
-  const DESK_LABEL = { market:'Market', geo:'Geopolitical', economy:'Economy', tax:'Tax & Wealth', behaviour:'Behavioural' };
   const DESK_CAT  = { market:'cat-market', geo:'cat-geo', economy:'cat-economy', tax:'cat-tax', behaviour:'cat-behaviour' };
 
   const pubDate = article.published_at.slice(0, 10);
@@ -126,10 +130,10 @@ export async function renderWeekend(env, slug, authed = true) {
 
   const weekDesksHtml = (weekRows.results && weekRows.results.length) ? `
 <div class="related-box">
-  <div class="related-label">This Week's Desks</div>
+  <div class="related-label">${fr ? FR_ARTICLE.weekDesks : "This Week's Desks"}</div>
   ${weekRows.results.map(r => `
-  <a href="/${escHtml(r.slug)}" class="related-item">
-    <div class="related-item-tag ${escHtml(DESK_CAT[r.desk] || '')}">${escHtml(DESK_LABEL[r.desk] || r.desk)}</div>
+  <a href="${fr ? '/fr' : ''}/${escHtml(r.slug)}" class="related-item">
+    <div class="related-item-tag ${escHtml(DESK_CAT[r.desk] || '')}">${escHtml(deskDisplay(r.desk, lang))}</div>
     <div class="related-item-title">${escHtml(r.title)}</div>
   </a>`).join('')}
 </div>` : '';
@@ -138,11 +142,11 @@ export async function renderWeekend(env, slug, authed = true) {
   const asideHtml = isMonth ? `
 <aside>
   <div class="sidebar-sticky">
-    <nav class="mtoc" id="hdq-toc"><div class="mtoc-label">In This Report</div></nav>
+    <nav class="mtoc" id="hdq-toc"><div class="mtoc-label">${fr ? FR_ARTICLE.inThisReport : 'In This Report'}</div></nav>
     ${knHtml}
     <div class="sidebar-legal">
-      <strong>Educational content only.</strong> HDQ is written for Canadian financial advisors. Not investment advice.
-      <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>
+      <strong>${fr ? FR_ARTICLE.eduStrong : 'Educational content only.'}</strong> ${fr ? FR_ARTICLE.sidebarBodyAlt : 'HDQ is written for Canadian financial advisors. Not investment advice.'}
+      <a href="${fr ? FR_STATIC.legal : '/hdq-legal.html'}" style="color:var(--navy-700);">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>
     </div>
   </div>
 </aside>` : `
@@ -151,8 +155,8 @@ export async function renderWeekend(env, slug, authed = true) {
     ${weekendKnHtml}
     ${weekDesksHtml}
     <div class="sidebar-legal">
-      <strong>Educational content only.</strong> HDQ is written for Canadian financial advisors. Not investment advice.
-      <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>
+      <strong>${fr ? FR_ARTICLE.eduStrong : 'Educational content only.'}</strong> ${fr ? FR_ARTICLE.sidebarBodyAlt : 'HDQ is written for Canadian financial advisors. Not investment advice.'}
+      <a href="${fr ? FR_STATIC.legal : '/hdq-legal.html'}" style="color:var(--navy-700);">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>
     </div>
   </div>
 </aside>`;
@@ -163,12 +167,12 @@ export async function renderWeekend(env, slug, authed = true) {
     <div class="hdq-locked-logo">
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
-    <span class="hdq-locked-tag">Member Access</span>
-    <h2>A publication with a fixed membership.</h2>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.</p>
-    <p>Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.</p>
-    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
-    <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
+    <span class="hdq-locked-tag">${fr ? FR_UI.memberAccess : 'Member Access'}</span>
+    <h2>${fr ? FR_LOCK.heading : 'A publication with a fixed membership.'}</h2>
+    <p>${fr ? FR_LOCK.body1 : 'HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.'}</p>
+    <p>${fr ? FR_LOCK.body2 : 'Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.'}</p>
+    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="hdq-locked-btn">${fr ? FR_LOCK.cta : 'Waiting list'} &rarr;</a>
+    <div class="hdq-locked-note">${fr ? FR_LOCK.note : 'Educational use only. Not investment advice.'}</div>
   </div>
 </div>` : '';
 
@@ -185,35 +189,37 @@ ${lockedOverlay}
       </div>
       <h1 class="article-headline">${escHtml(article.title)}</h1>
       <div class="article-byline">
-        <span>${fmtDate(article.published_at)}</span>
+        <span>${fmtDate(article.published_at, lang)}</span>
         <span class="meta-dot"></span>
-        <span>${article.read_time} min read</span>
+        <span>${fr ? FR_UI.readTime(article.read_time) : `${article.read_time} min read`}</span>
         <span class="meta-dot"></span>
-        <span>HDQ Editorial</span>
+        <span>${fr ? FR_ARTICLE.editorial : 'HDQ Editorial'}</span>
       </div>
       ${authed ? briefHtml : ''}
       <div class="article-body">${authed ? (article.body_html || '') : ''}</div>
       ${authed ? `
       <div class="share-row">
-        <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied.'))">Copy Link</button>
-        <a href="mailto:?subject=${encodeURIComponent('HDQ ' + label + ': ' + article.title)}&body=${encodeURIComponent('https://hdq.ca/' + article.slug)}" class="btn-share">Email</a>
+        <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('${fr ? FR_ARTICLE.linkCopied : 'Link copied.'}'))">${fr ? FR_ARTICLE.copyLink : 'Copy Link'}</button>
+        <a href="mailto:?subject=${encodeURIComponent('HDQ ' + label + ': ' + article.title)}&body=${encodeURIComponent(`https://hdq.ca/${fr ? 'fr/' : ''}${article.slug}`)}" class="btn-share">${fr ? FR_ARTICLE.email : 'Email'}</a>
       </div>` : ''}
     </article>
     ${asideHtml}
   </div>
 </main>
-${membershipFooterBand()}`;
+${membershipFooterBand(lang)}`;
 
   return htmlResponse(pageShell(body, {
     title: `${article.title} — HDQ ${label}`,
     activePage: 'news',
     activeDesk: deskKey,
     issueNo: await getArticleIssueNo(env, article.published_at),
-    canonical: `https://hdq.ca/${slug}`,
+    // Self-canonical — French build brief §8.
+    canonical: `https://hdq.ca/${fr ? 'fr/' : ''}${slug}`,
     metaDescription: article.dek || '',
     robots: 'index, follow',
     extraStyle: ARTICLE_CSS + LOCKED_OVERLAY_CSS + (isMonth ? MONTH_CSS : ''),
     extraScript: (authed && isMonth) ? monthScript() : '',
     bodyClass: authed ? '' : 'overlay-active',
+    lang,
   }));
 }

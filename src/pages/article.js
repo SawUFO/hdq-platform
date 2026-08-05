@@ -1,4 +1,6 @@
 import { PUBLIC_MODE, CONTENT_OPENED } from '../config.js';
+import { FR_UI, FR_ARTICLE, FR_LOCK, FR_STATIC, FR_SITE, FR_ROUTES } from '../fr-strings.js';
+import { deskDisplay, deskByline, deskHref as deskNavPath } from '../shell.js';
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, DESK_BYLINE, articleUrl, jsonKeyNumbers, htmlResponse, getArticleIssueNo } from '../shell.js';
 import { membershipFooterBand } from './news.js';
 
@@ -152,8 +154,10 @@ body.overlay-active { overflow: hidden; }
 `;
 
 export async function renderArticle(env, slug, authed = true) {
+  const lang = env.LANG || 'en';
+  const fr = lang === 'fr';
   const article = await env.DB.prepare(`SELECT * FROM articles WHERE slug=?`).bind(slug).first();
-  if (!article) return new Response(null, { status: 302, headers: { Location: '/news' } });
+  if (!article) return new Response(null, { status: 302, headers: { Location: fr ? '/fr' : '/news' } });
 
   const issueNo = await getArticleIssueNo(env, article.published_at);
 
@@ -176,7 +180,7 @@ export async function renderArticle(env, slug, authed = true) {
 
   const briefHtml = article.brief_html ? `
 <section class="brief-box" aria-label="Article summary">
-  <div class="brief-label">The Brief</div>
+  <div class="brief-label">${fr ? FR_UI.brief : 'The Brief'}</div>
   ${article.brief_html}
 </section>` : '';
 
@@ -184,14 +188,14 @@ export async function renderArticle(env, slug, authed = true) {
   const toolkitHtml = (article.respond_html || article.prospect_html) ? `
 <section class="toolkit-gate">
   <div class="toolkit-header-row">
-    <div class="toolkit-title">Advisor Toolkits — ${fmtDate(article.published_at)}</div>
+    <div class="toolkit-title">Advisor Toolkits — ${fmtDate(article.published_at, lang)}</div>
   </div>
   <div class="toolkit-panels">
     ${article.respond_html ? `
     <div class="toolkit-panel">
       <div class="toolkit-panel-header" onclick="togglePanel(this)">
         <span class="toolkit-panel-icon">🛡️</span>
-        <span class="toolkit-panel-label">Respond</span>
+        <span class="toolkit-panel-label">${fr ? FR_ARTICLE.respond : 'Respond'}</span>
         <span class="toolkit-panel-chevron">▼</span>
       </div>
       <div class="toolkit-panel-body">${article.respond_html}</div>
@@ -200,7 +204,7 @@ export async function renderArticle(env, slug, authed = true) {
     <div class="toolkit-panel">
       <div class="toolkit-panel-header" onclick="togglePanel(this)">
         <span class="toolkit-panel-icon">🎯</span>
-        <span class="toolkit-panel-label">Prospect</span>
+        <span class="toolkit-panel-label">${fr ? FR_ARTICLE.prospect : 'Prospect'}</span>
         <span class="toolkit-panel-chevron">▼</span>
       </div>
       <div class="toolkit-panel-body">${article.prospect_html}</div>
@@ -210,7 +214,7 @@ export async function renderArticle(env, slug, authed = true) {
 
   const keyNumbersHtml = keyNumbers.length ? `
 <div class="key-numbers">
-  <div class="key-numbers-label">Key Numbers</div>
+  <div class="key-numbers-label">${fr ? FR_UI.keyNumbers : 'Key Numbers'}</div>
   ${keyNumbers.map(kn => `
   <div class="key-number">
     <div class="key-number-value">${escHtml(kn.value)}</div>
@@ -220,15 +224,15 @@ export async function renderArticle(env, slug, authed = true) {
 
   const relatedHtml = (related.results || []).length ? `
 <div class="related-box">
-  <div class="related-label">Also Today</div>
+  <div class="related-label">${fr ? FR_UI.alsoToday : 'Also Today'}</div>
   ${(related.results || []).map(r => `
-  <a href="${articleUrl(r)}" class="related-item">
-    <div class="related-item-tag" style="color:${deskColour(r.desk)};">${escHtml(DESK_DISPLAY[r.desk] || r.desk)}</div>
+  <a href="${articleUrl(r, lang)}" class="related-item">
+    <div class="related-item-tag" style="color:${deskColour(r.desk)};">${escHtml(deskDisplay(r.desk, lang))}</div>
     <div class="related-item-title">${escHtml(r.title)}</div>
   </a>`).join('')}
 </div>` : '';
 
-  const deskHref = deskNavHref(article.desk);
+  const deskHref = deskNavPath(article.desk, lang);
 
   // Locked overlay for guests — shown over the article frame
   const lockedOverlay = !authed ? `
@@ -237,12 +241,12 @@ export async function renderArticle(env, slug, authed = true) {
     <div class="hdq-locked-logo">
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
-    <span class="hdq-locked-tag">Member Access</span>
-    <h2>A publication with a fixed membership.</h2>
+    <span class="hdq-locked-tag">${fr ? FR_UI.memberAccess : 'Member Access'}</span>
+    <h2>${fr ? FR_LOCK.heading : 'A publication with a fixed membership.'}</h2>
     <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.</p>
     <p>Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.</p>
-    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
-    <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
+    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="hdq-locked-btn">${fr ? FR_LOCK.cta : 'Waiting list'} &rarr;</a>
+    <div class="hdq-locked-note">${fr ? FR_LOCK.note : 'Educational use only. Not investment advice.'}</div>
   </div>
 </div>` : '';
 
@@ -253,30 +257,30 @@ ${lockedOverlay}
     <article aria-labelledby="article-headline">
       ${heroHtml}
       <div class="article-kicker">
-        <a href="${deskHref}" class="cat-tag ${escHtml(DESK_CAT_CLASS[article.desk] || '')}" style="display:inline-flex;">${escHtml(DESK_DISPLAY[article.desk] || article.desk)}</a>
+        <a href="${deskHref}" class="cat-tag ${escHtml(DESK_CAT_CLASS[article.desk] || '')}" style="display:inline-flex;">${escHtml(deskDisplay(article.desk, lang))}</a>
       </div>
       <h1 class="article-headline" id="article-headline">${escHtml(article.title)}</h1>
       <div class="article-byline">
-        <span>${fmtDate(article.published_at)}</span>
+        <span>${fmtDate(article.published_at, lang)}</span>
         <span class="meta-dot"></span>
-        <span>${article.read_time} min</span>
+        <span>${fr ? FR_UI.readTime(article.read_time) : `${article.read_time} min`}</span>
         <span class="meta-dot"></span>
-        <span>${escHtml(DESK_BYLINE[article.desk] || 'HDQ Editorial')}</span>
+        <span>${escHtml(deskByline(article.desk, lang) || (fr ? FR_ARTICLE.editorial : 'HDQ Editorial'))}</span>
       </div>
       ${authed ? briefHtml : ''}
       <div class="article-body">${authed ? (article.body_html || '') : ''}</div>
       ${authed && article.sources_text ? `
       <div class="sources-box">
-        <div class="sources-label">Sources</div>
+        <div class="sources-label">${fr ? FR_UI.sources : 'Sources'}</div>
         <p class="sources-text">${escHtml(article.sources_text)}</p>
       </div>` : ''}
       ${authed ? `
       <div class="edu-disclaimer">
-        <strong>Educational content only.</strong> This article is published for informational and professional development purposes. It does not constitute investment advice, financial planning advice, or a recommendation to buy or sell any security. Canadian advisors should apply their own professional judgment. <a href="/hdq-legal.html" style="color:var(--navy-700);text-decoration:underline;">Full disclaimer</a>.
+        <strong>${fr ? FR_ARTICLE.sidebarStrong : 'Educational content only.'}</strong> ${fr ? FR_ARTICLE.eduBody : 'This article is published for informational and professional development purposes. It does not constitute investment advice, financial planning advice, or a recommendation to buy or sell any security. Canadian advisors should apply their own professional judgment.'} <a href="${fr ? FR_STATIC.legal : '/hdq-legal.html'}" style="color:var(--navy-700);text-decoration:underline;">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>.
       </div>
       <div class="share-row">
-        <button class="btn-share" onclick="copyLink()">Copy link</button>
-        <a href="mailto:?subject=${encodeURIComponent('HDQ: ' + article.title)}&body=${encodeURIComponent('Thought you\'d find this useful: https://hdq.ca/' + article.slug)}" class="btn-share">Email</a>
+        <button class="btn-share" onclick="copyLink()">${fr ? FR_ARTICLE.copyLink : 'Copy link'}</button>
+        <a href="mailto:?subject=${encodeURIComponent('HDQ: ' + article.title)}&body=${encodeURIComponent('Thought you\'d find this useful: https://hdq.ca/' + article.slug)}" class="btn-share">${fr ? FR_ARTICLE.email : 'Email'}</a>
       </div>
       ${toolkitHtml}` : ''}
     </article>
@@ -285,7 +289,7 @@ ${lockedOverlay}
         ${keyNumbersHtml}
         ${relatedHtml}
         <div class="sidebar-legal">
-          <strong>Educational content only.</strong> Editorial published for the professional development of Canadian financial advisors. Not investment advice. <a href="/hdq-legal.html" style="color:var(--navy-700);">Full disclaimer</a>.
+          <strong>${fr ? FR_ARTICLE.sidebarStrong : 'Educational content only.'}</strong> ${fr ? FR_ARTICLE.sidebarBody : 'Editorial published for the professional development of Canadian financial advisors. Not investment advice.'} <a href="${fr ? FR_STATIC.legal : '/hdq-legal.html'}" style="color:var(--navy-700);">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>.
         </div>
       </div>
     </aside>
@@ -298,22 +302,26 @@ ${membershipFooterBand()}`;
     activePage: 'news',
     activeDesk: article.desk,
     issueNo,
-    canonical: `https://hdq.ca/${article.slug}`,
+    // Self-canonical — a French page canonicalising to English is dropped from
+    // the index entirely. French build brief §8.
+    canonical: `https://hdq.ca/${fr ? 'fr/' : ''}${article.slug}`,
     metaDescription: article.dek || '',
     robots: 'index, follow',
     ogType: 'article',
     ogImage: `https://assets.hdq.ca/${article.hero_image}`,
     publishedTime: article.published_at,
-    section: DESK_DISPLAY[article.desk] || article.desk,
-    extraHead: articleSchemaTag(article),
+    section: deskDisplay(article.desk, lang),
+    extraHead: articleSchemaTag(article, lang),
     extraStyle: ARTICLE_CSS + lockedOverlayCSS,
-    extraScript: authed ? articleScripts(article) : '',
+    extraScript: authed ? articleScripts(article, lang) : '',
     bodyClass: authed ? '' : 'overlay-active',
+    lang,
   }));
 }
 
-function articleScripts(article) {
-  const articleUrl_ = `https://hdq.ca/${article.slug}`;
+function articleScripts(article, lang = 'en') {
+  const fr = lang === 'fr';
+  const articleUrl_ = `https://hdq.ca/${fr ? 'fr/' : ''}${article.slug}`;
   return `
 <script>
 function togglePanel(header){
@@ -333,7 +341,7 @@ function copyEmail(id,btn){
   });
 }
 function copyLink(){
-  navigator.clipboard.writeText(window.location.href).then(function(){alert('Link copied to clipboard.');});
+  navigator.clipboard.writeText(window.location.href).then(function(){alert('${fr ? FR_ARTICLE.linkCopied : 'Link copied to clipboard.'}');});
 }
 // Open all toolkit panels by default for authenticated members
 document.addEventListener('DOMContentLoaded',function(){
@@ -346,9 +354,10 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>`;
 }
 
-function articleSchemaTag(article) {
-  const url = `https://hdq.ca/${article.slug}`;
-  const deskName = DESK_BYLINE[article.desk] || 'HDQ Editorial';
+function articleSchemaTag(article, lang = 'en') {
+  const fr = lang === 'fr';
+  const url = `https://hdq.ca/${fr ? 'fr/' : ''}${article.slug}`;
+  const deskName = deskByline(article.desk, lang) || (fr ? FR_ARTICLE.editorial : 'HDQ Editorial');
 
   // Controlled tags are stored as "entity:tsx,theme:hormuz-disruption". Strip
   // the category prefix and rehydrate the slug so they read as real keywords.
@@ -372,8 +381,8 @@ function articleSchemaTag(article) {
     "dateModified": (String(article.published_at || '').slice(0, 10) > CONTENT_OPENED)
       ? article.published_at
       : CONTENT_OPENED,
-    "inLanguage": "en-CA",
-    "articleSection": DESK_DISPLAY[article.desk] || article.desk,
+    "inLanguage": fr ? FR_SITE.htmlLang : "en-CA",
+    "articleSection": deskDisplay(article.desk, lang),
     "image": {
       "@type": "ImageObject",
       "url": `https://assets.hdq.ca/${article.hero_image}`
@@ -403,11 +412,3 @@ function deskColour(desk) {
   return map[desk] || 'var(--navy-300)';
 }
 
-function deskNavHref(desk) {
-  const map = {
-    market:'/market', economy:'/economy', geo:'/geopolitical',
-    tax:'/tax-wealth', behaviour:'/behavioural',
-    thread:'/daily-thread', weekend:'/weekend', month:'/month-at-a-glance',
-  };
-  return map[desk] || '/news';
-}
