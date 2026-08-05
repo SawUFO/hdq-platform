@@ -9,6 +9,12 @@ binding = "DB"
 database_name = "hdq-articles"
 database_id = "ca05159d-cb5a-406b-b1a9-4ca984df4d9c"
 
+# ── D1 Database (French edition) ──────────────────────────────────────────────
+[[d1_databases]]
+binding = "DB_FR"
+database_name = "hdq-articles-fr"
+database_id = "026e3b25-32fc-4a5f-bdea-44eebb8470e1"
+
 # ── Static assets ─────────────────────────────────────────────────────────────
 [assets]
 directory = "./static"
