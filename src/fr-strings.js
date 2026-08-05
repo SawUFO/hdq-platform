@@ -221,6 +221,7 @@ export const FR_UI = {
 // written, changing these five strings redirects every French link at once.
 export const FR_STATIC = {
   waitingList: '/hdq-subscribe.html',
+  fundIntel:   '/fund-intel',
   legal:       '/hdq-legal.html',
   prodev:      '/hdq-prodev.html',
   forFirms:    '/hdq-whitelabel.html',

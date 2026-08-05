@@ -1,4 +1,18 @@
-import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse, getIssueNo } from '../shell.js';
+import { pageShell, escHtml, fmtDate, DESK_CAT_CLASS, articleUrl, htmlResponse,
+         getIssueNo, deskDisplay, deskHref as deskPath } from '../shell.js';
+import { FR_ROUTES, FR_SITE, FR_STATIC } from '../fr-strings.js';
+
+/*
+ * NOTE ON THE FRENCH ABOUT PAGE.
+ * The body copy below is still English. French build brief §7 lists About among
+ * four pages written in French by hand rather than generated, and that copy
+ * arrives at build step 7.
+ *
+ * What is fixed here is the language plumbing: French chrome, and every
+ * internal link resolving inside /fr. The masthead logo links to About from
+ * every page on the site, so an English shell here was the one place a reader
+ * could fall out of the French edition in a single click.
+ */
 import { membershipFooterBand } from './news.js';
 
 const HOME_CSS = `
@@ -123,6 +137,9 @@ const HOME_CSS = `
 const DESK_ORDER = ['market', 'geo', 'economy', 'tax', 'behaviour'];
 
 export async function renderHome(env) {
+  const lang = env.LANG || 'en';
+  const fr = lang === 'fr';
+  const home = fr ? '/fr' : '/news';
   // Fetch most recent article of any type for hero slot
   const featured = await env.DB.prepare(`
     SELECT * FROM articles ORDER BY published_at DESC LIMIT 1
@@ -142,31 +159,27 @@ export async function renderHome(env) {
   // Build featured section
   const featuredHtml = featured ? `
     <div>
-      <div class="edition-label-pill">${escHtml(DESK_DISPLAY[featured.desk] || featured.desk)}</div>
-      <a href="${articleUrl(featured)}" class="edition-headline">${escHtml(featured.title)}</a>
+      <div class="edition-label-pill">${escHtml(deskDisplay(featured.desk, lang))}</div>
+      <a href="${articleUrl(featured, lang)}" class="edition-headline">${escHtml(featured.title)}</a>
       <div class="edition-meta">
-        <span>${fmtDate(featured.published_at)}</span>
+        <span>${fmtDate(featured.published_at, lang)}</span>
         <span>·</span>
         <span>${featured.read_time} min read</span>
       </div>
       <p class="edition-teaser">${escHtml(featured.dek || '')}</p>
-      <a href="${articleUrl(featured)}" class="btn-primary" style="font-size:13px;">Read the article</a>
+      <a href="${articleUrl(featured, lang)}" class="btn-primary" style="font-size:13px;">Read the article</a>
     </div>` : `
     <div>
       <p style="color:var(--n600);font-size:14px;padding-top:12px;">Today's edition will be published shortly.</p>
-      <a href="/news" class="btn-primary" style="font-size:13px;margin-top:16px;display:inline-block;">View all editions</a>
+      <a href="${home}" class="btn-primary" style="font-size:13px;margin-top:16px;display:inline-block;">View all editions</a>
     </div>`;
 
   // Build desk list (always shows the 5 morning desk articles regardless of hero)
   const deskListHtml = deskArticles.filter(Boolean).map(a => {
-    const deskHref = {
-      market: '/market', geo: '/geopolitical', economy: '/economy',
-      tax: '/tax-wealth', behaviour: '/behavioural'
-    }[a.desk] || '/news';
     return `
 <li class="desk-item">
-  <a href="${deskHref}" class="desk-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</a>
-  <a href="${articleUrl(a)}" class="desk-title-link">${escHtml(a.title)}</a>
+  <a href="${deskPath(a.desk, lang)}" class="desk-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}">${escHtml(deskDisplay(a.desk, lang))}</a>
+  <a href="${articleUrl(a, lang)}" class="desk-title-link">${escHtml(a.title)}</a>
 </li>`;
   }).join('');
 
@@ -181,8 +194,8 @@ export async function renderHome(env) {
       <h1>A members-only daily publication for senior Canadian financial advisors.</h1>
       <p class="hero-sub">Five editorial desks. One Daily Thread. Published every weekday by 7 a.m. Eastern, for CIRO-registered advisors and CFP professionals.</p>
       <div class="hero-actions">
-        <a href="/news" class="btn-primary">Read today's edition</a>
-        <a href="/hdq-subscribe.html" class="btn-ghost">Waiting list</a>
+        <a href="${home}" class="btn-primary">Read today's edition</a>
+        <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="btn-ghost">Waiting list</a>
       </div>
     </div>
   </div>
@@ -191,28 +204,28 @@ export async function renderHome(env) {
 <section class="divisions"><div class="container">
   <div class="section-header"><span class="section-title">The publication</span><div class="section-rule"></div></div>
   <div class="division-grid">
-    <a href="/news" class="division-card">
+    <a href="${home}" class="division-card">
       <div class="division-number">01 / News</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg></div>
       <div class="division-name">The Daily Briefing</div>
       <div class="division-desc">Five desks — Market, Geopolitical, Economy, Tax &amp; Wealth, and Behavioural — published by 7 a.m. Eastern every weekday.</div>
       <div class="division-link">Today's briefing &rarr;</div>
     </a>
-    <a href="/fund-intel" class="division-card">
+    <a href="${fr ? FR_STATIC.fundIntel : '/fund-intel'}" class="division-card">
       <div class="division-number">02 / Intelligence</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
       <div class="division-name">Fund Intel</div>
       <div class="division-desc">Daily signals from 12 Canadian fund firms. What changed, what it means, and what advisors should know.</div>
       <div class="division-link">Today's briefing &rarr;</div>
     </a>
-    <a href="/hdq-prodev.html" class="division-card">
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}" class="division-card">
       <div class="division-number">03 / Learning</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
       <div class="division-name">Professional Development</div>
       <div class="division-desc">CE-eligible modules, a curated reading list, decision frameworks, and a glossary. For advisors.</div>
       <div class="division-link">The library &rarr;</div>
     </a>
-    <a href="/hdq-whitelabel.html" class="division-card">
+    <a href="${fr ? FR_STATIC.forFirms : '/hdq-whitelabel.html'}" class="division-card">
       <div class="division-number">04 / Firms</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
       <div class="division-name">For Firms</div>
@@ -248,13 +261,13 @@ export async function renderHome(env) {
     <div class="prodev-tag">Professional Development</div>
     <h2 style="font-size:22px;margin-bottom:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;">Professional Development.</h2>
     <p style="font-size:13px;color:var(--n600);line-height:1.6;margin-bottom:20px;">CE-eligible modules, curated reading, and frameworks for CIRO-registered advisors and CFP professionals.</p>
-    <a href="/hdq-prodev.html" style="font-size:13px;font-weight:600;color:var(--navy-700);display:inline-flex;align-items:center;gap:6px;">Browse the library</a>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}" style="font-size:13px;font-weight:600;color:var(--navy-700);display:inline-flex;align-items:center;gap:6px;">Browse the library</a>
   </div>
   <div class="prodev-modules">
-    <a href="/hdq-prodev.html" class="module-card"><div class="module-label">Module Library</div><div class="module-title">Structured learning paths for key advisory competencies</div></a>
-    <a href="/hdq-prodev.html#reading" class="module-card"><div class="module-label">Reading List</div><div class="module-title">Curated books and papers selected for practice relevance</div></a>
-    <a href="/hdq-prodev.html#frameworks" class="module-card"><div class="module-label">Frameworks</div><div class="module-title">Analytical frameworks behind HDQ editorial</div></a>
-    <a href="/hdq-prodev.html#glossary" class="module-card"><div class="module-label">Glossary</div><div class="module-title">Plain-language definitions of the terms that matter</div></a>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}" class="module-card"><div class="module-label">Module Library</div><div class="module-title">Structured learning paths for key advisory competencies</div></a>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}#reading" class="module-card"><div class="module-label">Reading List</div><div class="module-title">Curated books and papers selected for practice relevance</div></a>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}#frameworks" class="module-card"><div class="module-label">Frameworks</div><div class="module-title">Analytical frameworks behind HDQ editorial</div></a>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}#glossary" class="module-card"><div class="module-label">Glossary</div><div class="module-title">Plain-language definitions of the terms that matter</div></a>
   </div>
 </div></div></section>
 
@@ -265,8 +278,8 @@ export async function renderHome(env) {
       <p>A branded daily publication for client distribution. Written, researched, and delivered by HDQ Editorial.</p>
     </div>
     <div class="whitelabel-actions">
-      <a href="/hdq-whitelabel.html" class="btn-primary">Enquire about firm licensing</a>
-      <a href="/hdq-whitelabel.html" class="btn-ghost">See a sample issue</a>
+      <a href="${fr ? FR_STATIC.forFirms : '/hdq-whitelabel.html'}" class="btn-primary">Enquire about firm licensing</a>
+      <a href="${fr ? FR_STATIC.forFirms : '/hdq-whitelabel.html'}" class="btn-ghost">See a sample issue</a>
     </div>
   </div>
 </div></section>
@@ -274,14 +287,16 @@ export async function renderHome(env) {
 ${membershipFooterBand()}`;
 
   return htmlResponse(pageShell(body, {
-    title: 'HDQ — A daily publication for Canadian advisors',
+    title: fr ? FR_SITE.defaultTitle : 'HDQ — A daily publication for Canadian advisors',
     activePage: 'about',
     activeDesk: 'all',
     issueNo,
     extraStyle: HOME_CSS,
+    // Self-canonical in both editions — French build brief §8.
     extraHead: `
-<meta name="description" content="HDQ is a daily publication for licensed Canadian financial advisors. Five editorial desks plus a Daily Thread, published every weekday by 7 a.m. Eastern.">
+<meta name="description" content="${fr ? FR_SITE.description : 'HDQ is a daily publication for licensed Canadian financial advisors. Five editorial desks plus a Daily Thread, published every weekday by 7 a.m. Eastern.'}">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://hdq.ca/about">`,
+<link rel="canonical" href="${fr ? `https://hdq.ca/fr/${FR_ROUTES.about}` : 'https://hdq.ca/about'}">`,
+    lang,
   }));
 }
