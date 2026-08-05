@@ -1,4 +1,6 @@
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse, getIssueNo } from '../shell.js';
+import { FR_ARCHIVE, FR_NEWS, FR_LOCK, FR_STATIC, FR_UI } from '../fr-strings.js';
+import { deskDisplay, deskHref, archiveUrl } from '../shell.js';
 import { membershipFooterBand } from './news.js';
 
 const ARCHIVE_CSS = `
@@ -160,6 +162,11 @@ const DESKS = [
 const PER_PAGE = 16;
 
 export async function renderArchive(env, params, authed = true) {
+  const lang = env.LANG || 'en';
+  const fr = lang === 'fr';
+  const A = FR_ARCHIVE;
+  // Base path for this page in the active language, used by every filter link.
+  const base = archiveUrl('', lang);
   const filterDesk = params?.get('desk') || 'all';
   const filterTag  = params?.get('tag') || '';
   const search     = params?.get('q') || '';
@@ -243,16 +250,16 @@ export async function renderArchive(env, params, authed = true) {
       const deskMap = {};
       tagArts.forEach(a => { deskMap[a.desk] = (deskMap[a.desk] || 0) + 1; });
       const deskBadges = Object.entries(deskMap).map(([d, c]) =>
-        `<span class="cat-tag ${escHtml(DESK_CAT_CLASS[d] || '')}" style="font-size:11px;">${escHtml(DESK_DISPLAY[d] || d)} (${c})</span>`
+        `<span class="cat-tag ${escHtml(DESK_CAT_CLASS[d] || '')}" style="font-size:11px;">${escHtml(deskDisplay(d, lang))} (${c})</span>`
       ).join('');
       const tagLabel = filterTag.replace('entity:', '').replace('theme:', '').replace(/-/g, ' ');
       themeContext = `
 <div class="theme-context">
-  <div class="theme-context-title">Coverage: ${escHtml(tagLabel)}</div>
+  <div class="theme-context-title">${fr ? A.coverage : 'Coverage:'} ${escHtml(tagLabel)}</div>
   <div class="theme-context-stats">
-    <div class="theme-stat"><span class="theme-stat-value">${tagArts.length}</span><span class="theme-stat-label">articles</span></div>
-    <div class="theme-stat"><span class="theme-stat-value">${firstDate}</span><span class="theme-stat-label">first coverage</span></div>
-    <div class="theme-stat"><span class="theme-stat-value">${lastDate}</span><span class="theme-stat-label">most recent</span></div>
+    <div class="theme-stat"><span class="theme-stat-value">${tagArts.length}</span><span class="theme-stat-label">${fr ? A.statArticles : 'articles'}</span></div>
+    <div class="theme-stat"><span class="theme-stat-value">${firstDate}</span><span class="theme-stat-label">${fr ? A.statFirst : 'first coverage'}</span></div>
+    <div class="theme-stat"><span class="theme-stat-value">${lastDate}</span><span class="theme-stat-label">${fr ? A.statLatest : 'most recent'}</span></div>
   </div>
   <div class="theme-context-desks">${deskBadges}</div>
 </div>`;
@@ -268,7 +275,7 @@ export async function renderArchive(env, params, authed = true) {
     if (dateFilter) u.set('date', dateFilter);
     if (p > 1) u.set('page', String(p));
     const qs = u.toString();
-    return `/archive${qs ? '?' + qs : ''}`;
+    return `${base}${qs ? '?' + qs : ''}`;
   }
 
   // Coverage summary strip
@@ -278,16 +285,16 @@ export async function renderArchive(env, params, authed = true) {
 
   const coverageStrip = `
 <div class="coverage-strip">
-  <a href="/archive" class="coverage-pill${filterDesk === 'all' && !filterTag && !search && !dateFilter ? ' active' : ''}">
-    <span class="coverage-desk">All</span>
+  <a href="${base}" class="coverage-pill${filterDesk === 'all' && !filterTag && !search && !dateFilter ? ' active' : ''}">
+    <span class="coverage-desk">${fr ? A.all : 'All'}</span>
     <span class="coverage-count">${totalAll}</span>
   </a>
   ${DESKS.map(d => {
     const cnt = deskCountMap[d.key] || 0;
     if (!cnt) return '';
     const isActive = filterDesk === d.key && !filterTag && !search && !dateFilter;
-    return `<a href="/archive?desk=${d.key}" class="coverage-pill${isActive ? ' active' : ''}">
-      <span class="coverage-desk">${escHtml(d.label)}</span>
+    return `<a href="${archiveUrl(`desk=${d.key}`, lang)}" class="coverage-pill${isActive ? ' active' : ''}">
+      <span class="coverage-desk">${escHtml(deskDisplay(d.key, lang))}</span>
       <span class="coverage-count">${cnt}</span>
     </a>`;
   }).join('')}
@@ -296,15 +303,15 @@ export async function renderArchive(env, params, authed = true) {
   // Filter row
   const tagOptions = allTags.map(t => {
     const label = t.replace('entity:', '').replace('theme:', '').replace(/-/g, ' ');
-    const prefix = t.startsWith('entity:') ? 'Entity: ' : 'Theme: ';
+    const prefix = t.startsWith('entity:') ? (fr ? A.entityPrefix : 'Entity: ') : (fr ? A.themePrefix : 'Theme: ');
     return `<option value="${escHtml(t)}"${filterTag === t ? ' selected' : ''}>${escHtml(prefix + label)}</option>`;
   }).join('');
 
   const filterRow = `
 <div class="archive-tag-wrap">
-  <span class="filter-label">Tag:</span>
+  <span class="filter-label">${fr ? A.tagLabel : 'Tag:'}</span>
   <select class="archive-tag-select" id="archive-tag-select" onchange="applyArchiveTag(this.value)">
-    <option value="">All tags</option>
+    <option value="">${fr ? A.allTags : 'All tags'}</option>
     ${tagOptions}
   </select>
 </div>`;
@@ -312,17 +319,17 @@ export async function renderArchive(env, params, authed = true) {
   // Active filter banners
   const tagBanner = filterTag ? `
 <div style="background:var(--navy-50);border:1px solid var(--n200);border-radius:6px;padding:10px 16px;margin-bottom:16px;font-size:13px;color:var(--n700);">
-  Tagged: <strong>${escHtml(filterTag)}</strong> &nbsp; <a href="/archive" style="color:var(--navy-700);">Clear</a>
+  ${fr ? A.tagged : 'Tagged:'} <strong>${escHtml(filterTag)}</strong> &nbsp; <a href="${base}" style="color:var(--navy-700);">${fr ? A.clear : 'Clear'}</a>
 </div>` : '';
 
   const searchBanner = search ? `
 <div style="background:var(--navy-50);border:1px solid var(--n200);border-radius:6px;padding:10px 16px;margin-bottom:16px;font-size:13px;color:var(--n700);">
-  Results for: <strong>${escHtml(search)}</strong> &nbsp; <a href="/archive" style="color:var(--navy-700);">Clear</a>
+  ${fr ? A.resultsFor : 'Results for:'} <strong>${escHtml(search)}</strong> &nbsp; <a href="${base}" style="color:var(--navy-700);">${fr ? A.clear : 'Clear'}</a>
 </div>` : '';
 
   const dateBanner = dateFilter ? `
 <div style="background:var(--navy-50);border:1px solid var(--n200);border-radius:6px;padding:10px 16px;margin-bottom:16px;font-size:13px;color:var(--n700);">
-  Date: <strong>${escHtml(dateFilter)}</strong> &nbsp; <a href="/archive" style="color:var(--navy-700);">Clear</a>
+  ${fr ? A.dateIs : 'Date:'} <strong>${escHtml(dateFilter)}</strong> &nbsp; <a href="${base}" style="color:var(--navy-700);">${fr ? A.clear : 'Clear'}</a>
 </div>` : '';
 
   // Article grid
@@ -341,19 +348,19 @@ export async function renderArchive(env, params, authed = true) {
       <span>${a.read_time} min</span>
     </div>
   </div>
-</a>`).join('') : `<div class="archive-empty">No articles found.</div>`;
+</a>`).join('') : `<div class="archive-empty">${fr ? A.noArticles : 'No articles found.'}</div>`;
 
   // Pagination
   const prevBtn = page > 1
-    ? `<a href="${pageUrl(page-1)}" class="pagination-btn">← Previous</a>`
-    : `<span class="pagination-btn disabled">← Previous</span>`;
+    ? `<a href="${pageUrl(page-1)}" class="pagination-btn">← ${fr ? A.prev : 'Previous'}</a>`
+    : `<span class="pagination-btn disabled">← ${fr ? A.prev : 'Previous'}</span>`;
   const nextBtn = page < totalPages
-    ? `<a href="${pageUrl(page+1)}" class="pagination-btn">Next →</a>`
-    : `<span class="pagination-btn disabled">Next →</span>`;
+    ? `<a href="${pageUrl(page+1)}" class="pagination-btn">${fr ? A.next : 'Next'} →</a>`
+    : `<span class="pagination-btn disabled">${fr ? A.next : 'Next'} →</span>`;
 
   const paginationHtml = total > PER_PAGE ? `
 <div class="archive-pagination">
-  <span class="archive-pagination-info">Showing ${startNum}–${endNum} of ${total} articles</span>
+  <span class="archive-pagination-info">${fr ? A.showing(startNum, endNum, total) : `Showing ${startNum}–${endNum} of ${total} articles`}</span>
   <div class="archive-pagination-btns">${prevBtn}${nextBtn}</div>
 </div>` : '';
 
@@ -379,7 +386,9 @@ export async function renderArchive(env, params, authed = true) {
 </a>`;
   }).join('');
 
-  const chartSidebar = `
+  // No French charts exist and /charts carries no French route, so the block is
+  // absent in French rather than rendering empty with links out of the edition.
+  const chartSidebar = fr ? '' : `
 <div class="sidebar-block">
   <div class="sidebar-block-header">
     <a href="/charts" class="sidebar-block-title-link">Recent Charts</a>
@@ -393,7 +402,7 @@ export async function renderArchive(env, params, authed = true) {
     const label = t.replace('entity:', '').replace('theme:', '').replace(/-/g, ' ');
     const prefix = t.startsWith('entity:') ? 'Entity' : 'Theme';
     return `
-<a href="/archive?tag=${encodeURIComponent(t)}" class="sidebar-tag">
+<a href="${archiveUrl(`tag=${encodeURIComponent(t)}`, lang)}" class="sidebar-tag">
   <span class="sidebar-tag-name">${escHtml(label)}</span>
   <span class="sidebar-tag-count">${cnt}</span>
 </a>`;
@@ -402,7 +411,7 @@ export async function renderArchive(env, params, authed = true) {
   const tagSidebar = `
 <div class="sidebar-block">
   <div class="sidebar-block-header">
-    <span class="sidebar-block-title">Most Covered</span>
+    <span class="sidebar-block-title">${fr ? A.mostCovered : 'Most Covered'}</span>
   </div>
   ${tagItems}
 </div>`;
@@ -420,12 +429,12 @@ export async function renderArchive(env, params, authed = true) {
     <div class="hdq-locked-logo">
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
-    <span class="hdq-locked-tag">Member Access</span>
+    <span class="hdq-locked-tag">${fr ? FR_UI.memberAccess : 'Member Access'}</span>
     <h2>A publication with a fixed membership.</h2>
     <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.</p>
-    <p>Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.</p>
-    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
-    <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
+    <p>${fr ? FR_LOCK.body2 : 'Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.'}</p>
+    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="hdq-locked-btn">${fr ? FR_LOCK.cta : 'Waiting list'} &rarr;</a>
+    <div class="hdq-locked-note">${fr ? FR_LOCK.note : 'Educational use only. Not investment advice.'}</div>
   </div>
 </div>` : '';
 
@@ -433,10 +442,10 @@ export async function renderArchive(env, params, authed = true) {
 ${lockedOverlay}
 <div class="archive-wrap"><div class="container">
   <div class="archive-header">
-    <div class="block-header" style="margin-bottom:0;"><h6>Archive</h6></div>
+    <div class="block-header" style="margin-bottom:0;"><h6>${fr ? A.heading : 'Archive'}</h6></div>
     <div class="archive-search-wrap">
       <svg class="archive-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" class="archive-search" id="archive-search-input" placeholder="Search articles... (press Enter)" value="${escHtml(search)}" aria-label="Search archive">
+      <input type="text" class="archive-search" id="archive-search-input" placeholder="${fr ? A.searchPlaceholder : 'Search articles... (press Enter)'}" value="${escHtml(search)}" aria-label="${fr ? A.searchAria : 'Search archive'}">
     </div>
     <input type="date" class="archive-date" id="archive-date-input" value="${escHtml(dateFilter)}" aria-label="Filter by date">
     <span class="archive-count">${total} article${total !== 1 ? 's' : ''}</span>
@@ -456,12 +465,13 @@ ${lockedOverlay}
 ${membershipFooterBand()}`;
 
   return htmlResponse(pageShell(body, {
-    title: 'HDQ Archive',
+    title: fr ? FR_ARCHIVE.pageTitle : 'HDQ Archive',
     activePage: 'news',
     activeDesk: filterDesk !== 'all' ? filterDesk : 'archive',
     issueNo: await getIssueNo(env),
-    canonical: 'https://hdq.ca/archive',
-    metaDescription: 'The full HDQ archive. Browse every edition by desk, topic, or date.',
+    // Self-canonical — French build brief §8.
+    canonical: fr ? 'https://hdq.ca/fr/archives' : 'https://hdq.ca/archive',
+    metaDescription: fr ? FR_ARCHIVE.metaDescription : 'The full HDQ archive. Browse every edition by desk, topic, or date.',
     robots: 'index, follow',
     extraStyle: ARCHIVE_CSS + lockedOverlayCSS,
     bodyClass: authed ? '' : 'overlay-active',
@@ -472,7 +482,7 @@ ${membershipFooterBand()}`;
     input.addEventListener('keydown', function(e){
       if(e.key === 'Enter'){
         var q = input.value.trim();
-        window.location.href = q ? '/archive?q=' + encodeURIComponent(q) : '/archive';
+        window.location.href = q ? '${base}?q=' + encodeURIComponent(q) : '${base}';
       }
     });
   }
@@ -480,16 +490,17 @@ ${membershipFooterBand()}`;
   if(dateInput){
     dateInput.addEventListener('change', function(){
       var val = dateInput.value;
-      window.location.href = val ? '/archive?date=' + encodeURIComponent(val) : '/archive';
+      window.location.href = val ? '${base}?date=' + encodeURIComponent(val) : '${base}';
     });
   }
   window.applyArchiveTag = function(val) {
     var u = new URLSearchParams(window.location.search);
     if(val) { u.set('tag', val); } else { u.delete('tag'); }
     u.delete('page');
-    window.location.href = '/archive?' + u.toString();
+    window.location.href = '${base}?' + u.toString();
   };
 })();
 </script>`,
+    lang,
   }));
 }

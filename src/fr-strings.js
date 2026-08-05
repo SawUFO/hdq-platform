@@ -250,6 +250,62 @@ export const FR_NEWS = {
   pageTitle:       'HDQ — Édition du jour',
 };
 
+// ── Desk pages ──────────────────────────────────────────────────────────────
+// DRAFT.
+
+export const FR_DESK_PAGE = {
+  noArticles:    'Aucun article pour cette section pour le moment.',
+  recent:        'R\u00e9cents',
+  fullArchive:   (d) => `Voir toutes les archives \u2014 ${d}`,
+  latestFromDesk: 'Derniers articles de cette section',
+  trending:      'Sujets en vedette',
+  allDesks:      'Toutes les sections',
+  browseArchive: 'Parcourir les archives',
+  pageTitle:     (d) => `HDQ \u2014 ${d}`,
+  metaDescription: (d) => `${d} \u2014 analyse quotidienne pour les conseillers canadiens et les incidences sur les portefeuilles canadiens.`,
+};
+
+// ── Archive page ────────────────────────────────────────────────────────────
+// DRAFT.
+
+export const FR_ARCHIVE = {
+  heading:       'Archives',
+  searchPlaceholder: 'Rechercher des articles\u2026 (appuyez sur Entr\u00e9e)',
+  searchAria:    'Rechercher dans les archives',
+  all:           'Tout',
+  tagLabel:      `\u00c9tiquette${NB}:`,
+  allTags:       'Toutes les \u00e9tiquettes',
+  entityPrefix:  `Entit\u00e9${NB}: `,
+  themePrefix:   `Th\u00e8me${NB}: `,
+  tagged:        `\u00c9tiquette${NB}:`,
+  resultsFor:    `R\u00e9sultats pour${NB}:`,
+  dateIs:        `Date${NB}:`,
+  clear:         'Effacer',
+  noArticles:    'Aucun article trouv\u00e9.',
+  prev:          'Pr\u00e9c\u00e9dent',
+  next:          'Suivant',
+  showing:       (a, b, n) => `Affichage de ${a} \u00e0 ${b} sur ${n} articles`,
+  coverage:      `Couverture${NB}:`,
+  statArticles:  'articles',
+  statFirst:     'premi\u00e8re couverture',
+  statLatest:    'plus r\u00e9cent',
+  mostCovered:   'Les plus couverts',
+  pageTitle:     'HDQ \u2014 Archives',
+  metaDescription: 'Les archives compl\u00e8tes de HDQ. Recherche par section, sujet ou date.',
+};
+
+// ── Lock UI ─────────────────────────────────────────────────────────────────
+// DRAFT. Never rendered while PUBLIC_MODE is true.
+
+export const FR_LOCK = {
+  tag:      'Acc\u00e8s r\u00e9serv\u00e9 aux membres',
+  heading:  'Une publication au nombre de membres fixe.',
+  body1:    'HDQ est une publication quotidienne de renseignements financiers destin\u00e9e aux conseillers canadiens autoris\u00e9s et aux planificateurs financiers, admis par mise en candidature.',
+  body2:    'Le nombre de membres est plafonn\u00e9 de fa\u00e7on permanente. Lorsque la publication est ferm\u00e9e aux nouveaux membres, l\u2019acc\u00e8s est r\u00e9serv\u00e9 \u00e0 la liste d\u2019attente.',
+  cta:      'Liste d\u2019attente',
+  note:     '\u00c0 des fins \u00e9ducatives seulement. Ne constitue pas un conseil en placement.',
+};
+
 // ── Footer ──────────────────────────────────────────────────────────────────
 // DRAFT below this line, except the four legal link labels.
 
