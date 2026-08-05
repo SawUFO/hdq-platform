@@ -15,6 +15,7 @@ import { renderSitemap, renderFeed } from './pages/feeds.js';
 import { renderStandards } from './pages/standards.js';
 import { pageShell } from './shell.js';
 import { PUBLIC_MODE } from './config.js';
+import { FR_ROUTES, FR_PATH_DESK, FR_SLUG_PREFIX } from './fr-strings.js';
 
 // ── PUBLIC ACCESS MODE ──────────────────────────────────────────────────────
 //
@@ -121,6 +122,71 @@ function notFound() {
   });
 }
 
+// ── French edition ──────────────────────────────────────────────────────────
+//
+// Everything under /fr is served from hdq-articles-fr through the same page
+// templates the English edition uses. There are no French templates and no
+// second Worker.
+//
+// How the database swap works. Every page handler reads env.DB. Rather than
+// editing seven templates to accept a database argument, this function hands
+// them an env whose DB *is* the French database. article.js runs
+// env.DB.prepare(...), receives French rows, and is never modified.
+//
+// Auth is deliberately NOT swapped. The access_tokens table exists only in the
+// English database, and the membership cookie is language-agnostic by design —
+// one membership, both editions. checkAuth therefore keeps the real env.
+//
+async function handleFrench(request, env, url, path) {
+  // If the DB_FR binding is missing, fail as a clean 404 rather than throwing
+  // from inside a page handler.
+  if (!env.DB_FR) return notFound();
+
+  const frEnv = { ...env, DB: env.DB_FR };
+
+  // Access state, resolved against the English database.
+  const authed = PUBLIC_MODE || await checkAuth(request, env);
+
+  // Strip the prefix. '/fr' → '', '/fr/marches' → 'marches'
+  const sub = path === '/fr' ? '' : path.slice(4);
+
+  // ── The publication front page ────────────────────────────────────────────
+  // /fr and /fr/nouvelles both render the news index, mirroring the way / and
+  // /news both do on the English side.
+  if (sub === '' || sub === FR_ROUTES.news) {
+    return renderNews(frEnv, authed);
+  }
+
+  // ── Institutional pages ───────────────────────────────────────────────────
+  if (sub === FR_ROUTES.about) return renderHome(frEnv);
+
+  // ── Archive ───────────────────────────────────────────────────────────────
+  if (sub === FR_ROUTES.archive) return renderArchive(frEnv, url.searchParams, authed);
+
+  // ── Articles ──────────────────────────────────────────────────────────────
+  // Template is chosen from the slug prefix, per French Production Guide §3.9.
+  // The English markers are accepted as a fallback so a French row that kept
+  // its English prefix still reaches the right template instead of failing
+  // silently through the desk-article path.
+  const articleMatch = sub.match(/^(\d{4}\/\d{2}\/\d{2})\/(.+)$/);
+  if (articleMatch) {
+    const slug = `${articleMatch[1]}/${articleMatch[2]}`;
+    const tail = articleMatch[2];
+    if (tail.startsWith(FR_SLUG_PREFIX.thread)  || tail.startsWith('hdq-thread-')) return renderThread(frEnv, slug, authed);
+    if (tail.startsWith(FR_SLUG_PREFIX.weekend) || tail.startsWith('weekend-'))    return renderWeekend(frEnv, slug, authed);
+    if (tail.startsWith(FR_SLUG_PREFIX.month)   || tail.startsWith('hdq-month-'))  return renderWeekend(frEnv, slug, authed);
+    return renderArticle(frEnv, slug, authed);
+  }
+
+  // ── Desk pages ────────────────────────────────────────────────────────────
+  const desk = FR_PATH_DESK[sub];
+  if (desk) return renderDesk(frEnv, desk);
+
+  // ── Unknown path under /fr ────────────────────────────────────────────────
+  // A real 404, consistent with the English side.
+  return notFound();
+}
+
 // ── Main handler ────────────────────────────────────────────────────────────
 
 export default {
@@ -129,6 +195,15 @@ export default {
     const path = url.pathname.replace(/\/$/, '') || '/';
 
     try {
+
+      // ── Language branch ───────────────────────────────────────────────────
+      // The only structural addition to this router. Paths beginning /fr are
+      // handled above; every other path falls through to the English router
+      // below, which is unchanged from the version that has been serving
+      // hdq.ca since Day 1.
+      if (path === '/fr' || path.startsWith('/fr/')) {
+        return handleFrench(request, env, url, path);
+      }
 
       // ── Machine-readable endpoints ────────────────────────────────────────
       // Declared first so nothing downstream can shadow them.
