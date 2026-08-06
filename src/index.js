@@ -15,6 +15,7 @@ import { renderSitemap, renderFeed } from './pages/feeds.js';
 import { renderStandards } from './pages/standards.js';
 import { pageShell } from './shell.js';
 import { PUBLIC_MODE } from './config.js';
+import { renderSitemapFR } from './pages/feeds-fr.js';
 import { FR_ROUTES, FR_PATH_DESK, FR_SLUG_PREFIX } from './fr-strings.js';
 
 // ── PUBLIC ACCESS MODE ──────────────────────────────────────────────────────
@@ -154,6 +155,11 @@ async function handleFrench(request, env, url, path) {
 
   // Strip the prefix. '/fr' → '', '/fr/marches' → 'marches'
   const sub = path === '/fr' ? '' : path.slice(4);
+
+  // ── Machine-readable endpoints ────────────────────────────────────────────
+  // Declared first so nothing downstream can shadow them, mirroring the
+  // English router. There is no French RSS feed — see feeds-fr.js.
+  if (sub === 'sitemap.xml') return renderSitemapFR(frEnv);
 
   // ── The publication front page ────────────────────────────────────────────
   // /fr and /fr/nouvelles both render the news index, mirroring the way / and

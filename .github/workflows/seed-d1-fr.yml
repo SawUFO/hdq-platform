@@ -1,0 +1,43 @@
+# Seeds the French edition database from scripts/daily-fr/.
+#
+# A copy of seed-d1.yml pointed at hdq-articles-fr, with one deliberate
+# difference: the `extract` job is absent.
+#
+# That job runs scripts/extract-charts.js, which populates the `charts` table
+# and reads a D1_DATABASE_ID secret pointing at the English database. French
+# charts are out of scope (French build brief §14), /charts carries no French
+# route, and the French archive renders no chart sidebar. The French `charts`
+# table exists only so archive.js can query it, and is meant to stay empty.
+#
+# seed-d1.yml is not modified. Two workflows, two folders, two databases, no
+# shared state.
+
+name: Seed D1 Articles (French)
+
+on:
+  workflow_dispatch:
+    inputs:
+      sql_file:
+        description: 'SQL file to run (in scripts/daily-fr/)'
+        required: true
+        default: 'week-of-aug-03-fr.sql'
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Execute SQL against D1
+        run: wrangler d1 execute hdq-articles-fr --file=scripts/daily-fr/${{ github.event.inputs.sql_file }} --remote
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
