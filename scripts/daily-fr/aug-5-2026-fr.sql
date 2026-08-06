@@ -1,4 +1,4 @@
-INSERT OR REPLACE INTO articles 
+INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html,
    prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at,
    tags, toolkit_gated, sources_text, en_slug)
