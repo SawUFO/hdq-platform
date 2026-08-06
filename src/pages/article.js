@@ -1,6 +1,6 @@
 import { PUBLIC_MODE, CONTENT_OPENED } from '../config.js';
 import { FR_UI, FR_ARTICLE, FR_LOCK, FR_STATIC, FR_SITE, FR_ROUTES } from '../fr-strings.js';
-import { deskDisplay, deskByline, deskHref as deskNavPath } from '../shell.js';
+import { deskDisplay, deskByline, deskHref as deskNavPath, articleToggleHref } from '../shell.js';
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, DESK_BYLINE, articleUrl, jsonKeyNumbers, htmlResponse, getArticleIssueNo } from '../shell.js';
 import { membershipFooterBand } from './news.js';
 
@@ -316,6 +316,8 @@ ${membershipFooterBand()}`;
     extraScript: authed ? articleScripts(article, lang) : '',
     bodyClass: authed ? '' : 'overlay-active',
     lang,
+    // Renders only when a counterpart row exists — French build brief §6.
+    toggleHref: await articleToggleHref(env, article, lang),
   }));
 }
 

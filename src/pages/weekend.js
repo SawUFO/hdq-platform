@@ -1,6 +1,6 @@
 import { pageShell, escHtml, fmtDate, articleUrl, htmlResponse, getArticleIssueNo } from '../shell.js';
 import { FR_UI, FR_ARTICLE, FR_LOCK, FR_STATIC, FR_DESK_DISPLAY } from '../fr-strings.js';
-import { deskDisplay } from '../shell.js';
+import { deskDisplay, articleToggleHref } from '../shell.js';
 import { membershipFooterBand } from './news.js';
 
 const LOCKED_OVERLAY_CSS = `
@@ -221,5 +221,7 @@ ${membershipFooterBand(lang)}`;
     extraScript: (authed && isMonth) ? monthScript() : '',
     bodyClass: authed ? '' : 'overlay-active',
     lang,
+    // Renders only when a counterpart row exists — French build brief §6.
+    toggleHref: await articleToggleHref(env, article, lang),
   }));
 }

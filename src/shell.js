@@ -122,6 +122,11 @@ export function pageShell(bodyHtml, opts = {}) {
     publishedTime = '',
     section = '',
     lang = 'en',
+    // Destination for the language toggle. Empty or absent means the page has
+    // no counterpart in the other edition, and the control does not render at
+    // all — French build brief §6. A toggle that dumps the reader on the wrong
+    // homepage reads as broken; an absent one reads as normal.
+    toggleHref = '',
   } = opts;
 
   const fr = lang === 'fr';
@@ -233,7 +238,10 @@ ${extraHead}
   .desk-nav-inner{display:flex!important;flex-wrap:nowrap!important;overflow-x:scroll!important;-webkit-overflow-scrolling:touch!important;white-space:nowrap!important;}
   .dnav-link{flex-shrink:0!important;white-space:nowrap!important;}
 }
-.date-volno { color: var(--gold-400); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+${toggleHref ? `.lang-toggle { font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.55); text-decoration:none; white-space:nowrap; margin-right:20px; padding-bottom:3px; border-bottom:1px solid transparent; transition:color 0.15s, border-color 0.15s; }
+.lang-toggle:hover { color:#fff; border-bottom-color:var(--gold-400); }
+@media(max-width:768px){ .lang-toggle { display:none; } }
+` : ''}.date-volno { color: var(--gold-400); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
 ${extraStyle}
 </style>
 <script>
@@ -266,7 +274,8 @@ ${fr ? `    <a href="/fr/${FR_DESK_PATH.thread}" class="mobile-nav-sub-link" onc
     <a href="/hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>`}
   </nav>
   <div class="mobile-nav-footer">
-    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">${fr ? FR_UI.waitingList : 'Waiting List'}</a>
+${toggleHref ? `    <a href="${toggleHref}" class="mobile-nav-sub-link" style="display:block;margin-bottom:14px;" hreflang="${fr ? 'en-CA' : 'fr-CA'}">${fr ? FR_UI.toggleToEN : FR_UI.toggleToFR}</a>
+` : ''}    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">${fr ? FR_UI.waitingList : 'Waiting List'}</a>
   </div>
 </div>
 
@@ -278,7 +287,8 @@ ${fr ? `    <a href="/fr/${FR_DESK_PATH.thread}" class="mobile-nav-sub-link" onc
   </a>
   <nav><ul class="nav-links">${navHtml}</ul></nav>
   <div class="nav-right">
-    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="nav-subscribe">${fr ? FR_UI.waitingList : 'Waiting List'}</a>
+${toggleHref ? `    <a href="${toggleHref}" class="lang-toggle" hreflang="${fr ? 'en-CA' : 'fr-CA'}">${fr ? FR_UI.toggleToEN : FR_UI.toggleToFR}</a>
+` : ''}    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="nav-subscribe">${fr ? FR_UI.waitingList : 'Waiting List'}</a>
     <button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu"
       style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger">
       <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
@@ -525,6 +535,31 @@ export function deskHref(desk, lang = 'en') {
     month:     '/month-at-a-glance',
   };
   return map[desk] || '/news';
+}
+
+/**
+ * Where the language toggle points from an article page.
+ *
+ * From French: the row already carries its English source slug, so no query.
+ * From English: ask the French database whether a translation exists.
+ *
+ * Returns null when there is no counterpart — the signal to render no toggle.
+ * Wrapped in try/catch on purpose: a fault on the French side must never be
+ * able to break an English article page.
+ */
+export async function articleToggleHref(env, article, lang = 'en') {
+  try {
+    if (lang === 'fr') {
+      return article?.en_slug ? `/${article.en_slug}` : null;
+    }
+    if (!env.DB_FR || !article?.slug) return null;
+    const row = await env.DB_FR.prepare(
+      'SELECT slug FROM articles WHERE en_slug = ?'
+    ).bind(article.slug).first();
+    return row?.slug ? `/fr/${row.slug}` : null;
+  } catch (e) {
+    return null;
+  }
 }
 
 /** Archive URL, optionally filtered: '/archive?tag=x' or '/fr/archives?tag=x'. */

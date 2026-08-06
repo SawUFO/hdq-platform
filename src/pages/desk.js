@@ -77,6 +77,8 @@ ${subscribeFooterBand(lang)}`;
     robots: 'index, follow',
     extraStyle: PAGE_CSS,
     lang,
+    // The same desk in the other edition: deskHref with the opposite language.
+    toggleHref: deskHref(desk, fr ? 'en' : 'fr'),
   }));
 }
 

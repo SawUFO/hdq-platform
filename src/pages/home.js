@@ -298,5 +298,6 @@ ${membershipFooterBand()}`;
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="${fr ? `https://hdq.ca/fr/${FR_ROUTES.about}` : 'https://hdq.ca/about'}">`,
     lang,
+    toggleHref: fr ? '/about' : `/fr/${FR_ROUTES.about}`,
   }));
 }

@@ -502,5 +502,6 @@ ${membershipFooterBand()}`;
 })();
 </script>`,
     lang,
+    toggleHref: fr ? '/archive' : '/fr/archives',
   }));
 }

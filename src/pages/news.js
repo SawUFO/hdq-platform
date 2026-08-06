@@ -221,6 +221,8 @@ ${membershipFooterBand(lang)}
     robots: 'index, follow',
     extraStyle: PAGE_CSS,
     lang,
+    // /news ↔ /fr — French build brief §6.
+    toggleHref: fr ? '/news' : '/fr',
   }));
 }
 
