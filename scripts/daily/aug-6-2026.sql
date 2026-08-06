@@ -480,8 +480,11 @@ for (var i = 0; i < n; i++){
   // value label at bar tip
   var lx = isPos ? barX1 + 6 : barX0 - 6;
   var anchor = isPos ? "start" : "end";
+  var vfill = "#111";
+  if (isPos && lx > margin.left + PW - 30) { lx = barX1 - 4; anchor = "end"; vfill = "#ffffff"; }
+  if (!isPos && lx < margin.left + 30) { lx = barX0 + 4; anchor = "start"; vfill = "#ffffff"; }
   var vtext = (v > 0 ? "+" : "") + v.toFixed(1) + "%";
-  svg.appendChild(el("text", {x: lx, y: y0 + barH/2 + 3, "text-anchor": anchor, "font-size": "8.5", "font-weight": "700", fill: "#111", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, vtext));
+  svg.appendChild(el("text", {x: lx, y: y0 + barH/2 + 3, "text-anchor": anchor, "font-size": "8.5", "font-weight": "700", fill: vfill, "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, vtext));
 }
 
 // 4. Axis line at bottom
