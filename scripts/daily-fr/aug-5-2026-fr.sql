@@ -39,8 +39,8 @@ VALUES (
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">WTI MOIS RAPPROCHÉ&nbsp;: VARIATION QUOTIDIENNE DE LA SÉANCE</span>
-<span style="font-size:20px;font-weight:700;color:#111;">-6.36%</span>
-<span style="font-size:13px;color:#c0392b;">&#9660; 11.2% OVER TWO SESSIONS</span>
+<span style="font-size:20px;font-weight:700;color:#111;">-6,36&nbsp;%</span>
+<span style="font-size:13px;color:#c0392b;">&#9660; 11,2&nbsp;% SUR DEUX SÉANCES</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">QUOTIDIEN &nbsp;|&nbsp; 6 JUIL. AU 4 AOÛT 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -220,8 +220,8 @@ VALUES (
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">CAD/USD&nbsp;: VALEUR MOYENNE MENSUELLE DU HUARD</span>
-<span style="font-size:20px;font-weight:700;color:#111;">70.89&#162;</span>
-<span style="font-size:13px;color:#c0392b;">&#9660; 0.48% FROM JUNE</span>
+<span style="font-size:20px;font-weight:700;color:#111;">70,89&nbsp;&#162;</span>
+<span style="font-size:13px;color:#c0392b;">&#9660; 0,48&nbsp;% PAR RAPPORT À JUIN</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">MENSUEL &nbsp;|&nbsp; AOÛT 2025 À JUIL. 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -409,8 +409,8 @@ VALUES (
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">PIB RÉEL DE MAI 2026 PAR INDUSTRIE, VARIATION MENSUELLE</span>
-<span style="font-size:20px;font-weight:700;color:#111;">+0.3%</span>
-<span style="font-size:13px;color:#2e7d32;">&#9650; 13 OF 20 INDUSTRIES</span>
+<span style="font-size:20px;font-weight:700;color:#111;">+0,3&nbsp;%</span>
+<span style="font-size:13px;color:#2e7d32;">&#9650; 13 INDUSTRIES SUR 20</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">MENSUEL &nbsp;|&nbsp; PUBLIÉ LE 31 JUILLET 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -585,8 +585,8 @@ VALUES (
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">WTI, CONTRAT DU MOIS RAPPROCHÉ&nbsp;: NIVEAU DE PRIX</span>
-<span style="font-size:20px;font-weight:700;color:#111;">$75.20</span>
-<span style="font-size:13px;color:#c0392b;">&#9660; 13.6% FROM JULY 23 PEAK</span>
+<span style="font-size:20px;font-weight:700;color:#111;">75,20&nbsp;$&nbsp;US</span>
+<span style="font-size:13px;color:#c0392b;">&#9660; 13,6&nbsp;% SOUS LE SOMMET DU 23 JUILLET</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">QUOTIDIEN &nbsp;|&nbsp; 6 JUIL. AU 5 AOÛT 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -765,8 +765,8 @@ VALUES (
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">INDICE COMPOSÉ TSX&nbsp;: LES PLUS FORTS MOUVEMENTS DE MARDI</span>
-<span style="font-size:20px;font-weight:700;color:#111;">35,801.59</span>
-<span style="font-size:13px;color:#2e7d32;">&#9650; 1.63%</span>
+<span style="font-size:20px;font-weight:700;color:#111;">35&nbsp;801,59</span>
+<span style="font-size:13px;color:#2e7d32;">&#9650; 1,63&nbsp;%</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">QUOTIDIEN &nbsp;|&nbsp; 4 AOÛT 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -929,8 +929,8 @@ VALUES (
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">TABLEAU DE CLÔTURE MULTI-ACTIFS DE LA SÉANCE</span>
-<span style="font-size:20px;font-weight:700;color:#111;">+3.52%</span>
-<span style="font-size:13px;color:#2e7d32;">&#9650; GOLD LEADS</span>
+<span style="font-size:20px;font-weight:700;color:#111;">+3,52&nbsp;%</span>
+<span style="font-size:13px;color:#2e7d32;">&#9650; L’OR EN TÊTE</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">QUOTIDIEN &nbsp;|&nbsp; CLÔTURE DU 5 AOÛT 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
@@ -1009,8 +1009,8 @@ VALUES (
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
 <span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">INDICE COMPOSÉ TSX&nbsp;: MARCHE RECORD DE TROIS SÉANCES</span>
-<span style="font-size:20px;font-weight:700;color:#111;">36,282.03</span>
-<span style="font-size:13px;color:#2e7d32;">&#9650; +1.34%</span>
+<span style="font-size:20px;font-weight:700;color:#111;">36&nbsp;282,03</span>
+<span style="font-size:13px;color:#2e7d32;">&#9650; +1,34&nbsp;%</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">CLÔTURE QUOTIDIENNE &nbsp;|&nbsp; 3 AU 5 AOÛT 2026</span>
 </div>
 <div style="padding:12px 14px 8px;">
