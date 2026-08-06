@@ -50,7 +50,7 @@ var _cs = document.currentScript;
 function el(tag, attrs, txt){ var e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (txt !== undefined) e.textContent = txt; return e; }
 function txt(s, attrs){ return el("text", attrs, s); }
 var FS = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
-var data = [["Jul 6",-0.33],["Jul 7",2.76],["Jul 8",4.37],["Jul 9",-1.96],["Jul 10",-0.93],["Jul 13",9.14],["Jul 14",0.95],["Jul 15",0.56],["Jul 16",-1.06],["Jul 17",4.47],["Jul 20",0.86],["Jul 21",2.26],["Jul 22",-0.83],["Jul 23",4.03],["Jul 24",-2.14],["Jul 27",-2.98],["Jul 28",-4.06],["Jul 29",6.56],["Jul 30",-1.03],["Jul 31",1.29],["Aug 3",-5.11],["Aug 4",-6.36]];
+var data = [["6 juill.",-0.33],["7 juill.",2.76],["8 juill.",4.37],["9 juill.",-1.96],["10 juill.",-0.93],["13 juill.",9.14],["14 juill.",0.95],["15 juill.",0.56],["16 juill.",-1.06],["17 juill.",4.47],["20 juill.",0.86],["21 juill.",2.26],["22 juill.",-0.83],["23 juill.",4.03],["24 juill.",-2.14],["27 juill.",-2.98],["28 juill.",-4.06],["29 juill.",6.56],["30 juill.",-1.03],["31 juill.",1.29],["3 août",-5.11],["4 août",-6.36]];
 var n = data.length;
 var margin = {left:62, right:24, top:18, bottom:46};
 var PW = 680 - margin.left - margin.right;
@@ -72,8 +72,8 @@ ticks.forEach(function(t){ svg.appendChild(el("line", {x1: margin.left, x2: marg
 var refs = [2, -2];
 var curr = data[n-1][1];
 refs.forEach(function(r){ svg.appendChild(el("line", {x1: margin.left, x2: margin.left + PW, y1: yp(r), y2: yp(r), stroke: r > 0 ? "#2e7d32" : "#7a3030", "stroke-dasharray": "3,3", "stroke-width": 1})); });
-if (Math.abs(2 - curr) / Math.abs(curr) >= 0.03) svg.appendChild(txt("PLUS 2%", {x: margin.left + PW - 6, y: yp(2) - 10, "text-anchor": "end", "font-size": 7, "font-weight": 700, fill: "#2e7d32", "font-family": FS}));
-if (Math.abs(-2 - curr) / Math.abs(curr) >= 0.03) svg.appendChild(txt("MINUS 2%", {x: margin.left + 10, y: yp(-2) + 12, "text-anchor": "start", "font-size": 7, "font-weight": 700, fill: "#7a3030", "font-family": FS}));
+if (Math.abs(2 - curr) / Math.abs(curr) >= 0.03) svg.appendChild(txt("PLUS DE 2 %", {x: margin.left + PW - 6, y: yp(2) - 10, "text-anchor": "end", "font-size": 7, "font-weight": 700, fill: "#2e7d32", "font-family": FS}));
+if (Math.abs(-2 - curr) / Math.abs(curr) >= 0.03) svg.appendChild(txt("MOINS DE 2 %", {x: margin.left + 10, y: yp(-2) + 12, "text-anchor": "start", "font-size": 7, "font-weight": 700, fill: "#7a3030", "font-family": FS}));
 data.forEach(function(d, i){ var v = d[1]; var y0 = yp(0); var y1 = yp(v); var top = Math.min(y0, y1); var h = Math.abs(y1 - y0); svg.appendChild(el("rect", {x: xS(i) - barW/2, y: top, width: barW, height: h, fill: v >= 0 ? "#3a7a55" : "#8a3030"})); });
 svg.appendChild(el("line", {x1: margin.left, x2: margin.left + PW, y1: yp(0), y2: yp(0), stroke: "#d8d8d8", "stroke-width": 1}));
 svg.appendChild(el("line", {x1: margin.left, x2: margin.left, y1: MT, y2: MT + PH, stroke: "#d8d8d8", "stroke-width": 1}));
@@ -81,7 +81,7 @@ var lastV = data[n-1][1];
 var lastCx = xS(n-1), lastTip = yp(lastV);
 svg.appendChild(el("circle", {cx: lastCx, cy: lastTip, r: 3.5, fill: "#4a5568"}));
 function computePillWidth(s, fs){ var upper = /^[^0-9]*$/.test(s); var w = s.length * fs * (upper ? 0.68 : 0.58); return Math.ceil(w) + 10; }
-var pillText = "-6.4%";
+var pillText = "-6,4 %";
 var pillW = computePillWidth(pillText, 9);
 var pillH = 16;
 var pillX = lastCx - barW/2 - pillW - 6;
@@ -93,14 +93,14 @@ var pillY = Math.max(lastTip - pillH/2, clearY + 10);
 if (pillY + pillH > MT + PH) pillY = MT + PH - pillH;
 svg.appendChild(el("rect", {x: pillX, y: pillY, width: pillW, height: pillH, rx: 2, fill: "#e8a825"}));
 svg.appendChild(txt(pillText, {x: pillX + pillW/2, y: pillY + pillH/2 + 4, "text-anchor": "middle", "font-size": 9, "font-weight": 700, fill: "#111111", "font-family": FS}));
-ticks.forEach(function(t){ svg.appendChild(txt((t > 0 ? "+" : "") + t + "%", {x: margin.left - 6, y: yp(t) + 3, "text-anchor": "end", "font-size": 8.5, fill: "#aaaaaa", "font-family": FS})); });
+ticks.forEach(function(t){ svg.appendChild(txt((t > 0 ? "+" : "") + t + " %", {x: margin.left - 6, y: yp(t) + 3, "text-anchor": "end", "font-size": 8.5, fill: "#aaaaaa", "font-family": FS})); });
 data.forEach(function(d, i){ if (i % 3 !== 0) return; svg.appendChild(txt(d[0], {x: xS(i), y: MT + PH + 16, "text-anchor": "middle", "font-size": 8, fill: "#999999", "font-family": FS})); });
 var peakY = yp(9.14);
-svg.appendChild(txt("LARGEST SESSION", {x: xS(5) + 14, y: peakY + 4, "text-anchor": "start", "font-size": 8, fill: "#444444", "font-family": FS}));
-svg.appendChild(txt("OF THE CONFLICT", {x: xS(5) + 14, y: peakY + 14, "text-anchor": "start", "font-size": 8, fill: "#444444", "font-family": FS}));
-svg.appendChild(txt("TWO SESSIONS", {x: xS(20) - 4, y: MT + 34, "text-anchor": "end", "font-size": 8, fill: "#444444", "font-family": FS}));
-svg.appendChild(txt("MINUS 11.2%", {x: xS(20) - 4, y: MT + 44, "text-anchor": "end", "font-size": 8, fill: "#444444", "font-family": FS}));
-svg.appendChild(txt("12 OF 22 SESSIONS BEYOND PLUS OR MINUS 2%", {x: margin.left, y: MT + PH + 36, "text-anchor": "start", "font-size": 7.5, fill: "#888888", "font-family": FS}));
+svg.appendChild(txt("PLUS FORTE SÉANCE", {x: xS(5) + 14, y: peakY + 4, "text-anchor": "start", "font-size": 8, fill: "#444444", "font-family": FS}));
+svg.appendChild(txt("DU CONFLIT", {x: xS(5) + 14, y: peakY + 14, "text-anchor": "start", "font-size": 8, fill: "#444444", "font-family": FS}));
+svg.appendChild(txt("DEUX SÉANCES", {x: xS(20) - 4, y: MT + 34, "text-anchor": "end", "font-size": 8, fill: "#444444", "font-family": FS}));
+svg.appendChild(txt("MOINS 11,2 %", {x: xS(20) - 4, y: MT + 44, "text-anchor": "end", "font-size": 8, fill: "#444444", "font-family": FS}));
+svg.appendChild(txt("12 SÉANCES SUR 22 AU-DELÀ DE ±2 %", {x: margin.left, y: MT + PH + 36, "text-anchor": "start", "font-size": 7.5, fill: "#888888", "font-family": FS}));
 _cs.parentNode.appendChild(svg);
 })();
 </script>
@@ -231,7 +231,7 @@ var _cs = document.currentScript;
 function el(tag, attrs, txt){ var e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (txt !== undefined) e.textContent = txt; return e; }
 function txt(s, attrs){ return el("text", attrs, s); }
 var FS = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
-var data = [["Aug 25",72.45],["Sep 25",72.29],["Oct 25",71.47],["Nov 25",71.15],["Dec 25",72.45],["Jan 26",72.58],["Feb 26",73.25],["Mar 26",72.90],["Apr 26",72.72],["May 26",72.87],["Jun 26",71.23],["Jul 26",70.89]];
+var data = [["août 25",72.45],["sept. 25",72.29],["oct. 25",71.47],["nov. 25",71.15],["déc. 25",72.45],["janv. 26",72.58],["févr. 26",73.25],["mars 26",72.90],["avr. 26",72.72],["mai 26",72.87],["juin 26",71.23],["juill. 26",70.89]];
 var n = data.length;
 var margin = {left:62, right:24, top:18, bottom:46};
 var PW = 680 - margin.left - margin.right;
@@ -252,7 +252,7 @@ var avg = 72.19;
 svg.appendChild(el("line", {x1: margin.left, x2: margin.left + PW, y1: yp(avg), y2: yp(avg), stroke: "#7a3030", "stroke-dasharray": "3,3", "stroke-width": 1}));
 var lastV = data[n-1][1];
 if (Math.abs(avg - lastV) / lastV >= 0.03) {
-  svg.appendChild(txt("12-MONTH AVG 72.19" + String.fromCharCode(162), {x: margin.left + 10, y: yp(avg) - 10, "text-anchor": "start", "font-size": 7, "font-weight": 700, fill: "#7a3030", "font-family": FS}));
+  svg.appendChild(txt("MOY. 12 MOIS 72,19 " + String.fromCharCode(162), {x: margin.left + 10, y: yp(avg) - 10, "text-anchor": "start", "font-size": 7, "font-weight": 700, fill: "#7a3030", "font-family": FS}));
 }
 var jun = xp(10), jul = xp(11);
 var crowded = Math.abs(jul - jun) < 85;
@@ -260,8 +260,8 @@ var nearRight = (jun + 60) > (margin.left + PW);
 var anchor = (crowded || nearRight) ? "end" : "start";
 var offset = (crowded || nearRight) ? -8 : 3;
 svg.appendChild(el("line", {x1: jun, x2: jun, y1: MT, y2: MT + PH, stroke: "#1a3560", "stroke-opacity": 0.5, "stroke-dasharray": "2,3"}));
-svg.appendChild(txt("LARGEST MONTHLY MOVE", {x: jun + offset, y: MT + 14, "text-anchor": anchor, "font-size": 7, "font-weight": 700, fill: "#1a3560", "font-family": FS}));
-svg.appendChild(txt("SINCE OCTOBER 2022", {x: jun + offset, y: MT + 24, "text-anchor": anchor, "font-size": 7, "font-weight": 700, fill: "#1a3560", "font-family": FS}));
+svg.appendChild(txt("PLUS FORT MOUVEMENT", {x: jun + offset, y: MT + 14, "text-anchor": anchor, "font-size": 7, "font-weight": 700, fill: "#1a3560", "font-family": FS}));
+svg.appendChild(txt("MENSUEL DEPUIS OCT. 2022", {x: jun + offset, y: MT + 24, "text-anchor": anchor, "font-size": 7, "font-weight": 700, fill: "#1a3560", "font-family": FS}));
 var pathD = data.map(function(d, i){ return (i === 0 ? "M" : "L") + xp(i).toFixed(1) + "," + yp(d[1]).toFixed(1); }).join(" ");
 svg.appendChild(el("path", {d: pathD, fill: "none", stroke: "#4a5568", "stroke-width": 1.8}));
 svg.appendChild(el("line", {x1: margin.left, x2: margin.left + PW, y1: MT + PH, y2: MT + PH, stroke: "#d8d8d8", "stroke-width": 1}));
@@ -270,7 +270,7 @@ data.forEach(function(d, i){ if (i !== n-1) svg.appendChild(el("circle", {cx: xp
 var lastX = xp(n-1), lastY = yp(lastV);
 svg.appendChild(el("circle", {cx: lastX, cy: lastY, r: 3.5, fill: "#4a5568"}));
 function computePillWidth(s, fs){ var upper = /^[^0-9]*$/.test(s.replace(String.fromCharCode(162), "")); var w = s.length * fs * (upper ? 0.68 : 0.58); return Math.ceil(w) + 10; }
-var pillText = "70.89" + String.fromCharCode(162);
+var pillText = "70,89 " + String.fromCharCode(162);
 var pillW = computePillWidth(pillText, 9);
 var pillH = 16;
 var pillX = lastX - pillW - 8;
@@ -280,7 +280,7 @@ if (pillY < MT) pillY = MT;
 if (pillY + pillH > MT + PH) pillY = MT + PH - pillH;
 svg.appendChild(el("rect", {x: pillX, y: pillY, width: pillW, height: pillH, rx: 2, fill: "#e8a825"}));
 svg.appendChild(txt(pillText, {x: pillX + pillW/2, y: pillY + pillH/2 + 4, "text-anchor": "middle", "font-size": 9, "font-weight": 700, fill: "#111111", "font-family": FS}));
-ticks.forEach(function(t){ svg.appendChild(txt(t.toFixed(1) + String.fromCharCode(162), {x: margin.left - 6, y: yp(t) + 3, "text-anchor": "end", "font-size": 8.5, fill: "#aaaaaa", "font-family": FS})); });
+ticks.forEach(function(t){ svg.appendChild(txt(t.toFixed(1).replace(".", ",") + " " + String.fromCharCode(162), {x: margin.left - 6, y: yp(t) + 3, "text-anchor": "end", "font-size": 8.5, fill: "#aaaaaa", "font-family": FS})); });
 data.forEach(function(d, i){ if (i % 2 !== 0) return; svg.appendChild(txt(d[0], {x: xp(i), y: MT + PH + 16, "text-anchor": "middle", "font-size": 8, fill: "#999999", "font-family": FS})); });
 _cs.parentNode.appendChild(svg);
 })();
@@ -420,7 +420,7 @@ var _cs = document.currentScript;
 function el(tag, attrs, txt){ var e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (txt !== undefined) e.textContent = txt; return e; }
 function txt(s, attrs){ return el("text", attrs, s); }
 var FS = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
-var data = [["Mining, oil and gas",1.0],["Construction",0.8],["Utilities",0.7],["Real estate",0.4],["Transportation|and warehousing",0.3],["Public administration",0.3],["Agriculture",-0.9]];
+var data = [["Mines, pétrole et gaz",1.0],["Construction",0.8],["Services publics",0.7],["Immobilier",0.4],["Transport|et entreposage",0.3],["Administration publique",0.3],["Agriculture",-0.9]];
 var n = data.length;
 var margin = {left:110, right:24, top:18, bottom:46};
 var PW = 680 - margin.left - margin.right;
@@ -457,10 +457,10 @@ data.forEach(function(d, i){
   var barX0v = isPos ? barX1 : barX0, barX1v = isPos ? barX0 : barX1;
   var lx = isPos ? barX1v + 6 : barX0v - 6;
   var anchor = isPos ? "start" : "end";
-  svg.appendChild(txt((v > 0 ? "+" : "") + v.toFixed(1) + "%", {x: lx, y: y0 + barH/2 + 3, "text-anchor": anchor, "font-size": 8, "font-weight": 700, fill: v >= 0 ? "#2e7d32" : "#8a3030", "font-family": FS}));
+  svg.appendChild(txt((v > 0 ? "+" : "") + v.toFixed(1).replace(".", ",") + " %", {x: lx, y: y0 + barH/2 + 3, "text-anchor": anchor, "font-size": 8, "font-weight": 700, fill: v >= 0 ? "#2e7d32" : "#8a3030", "font-family": FS}));
 });
 svg.appendChild(el("line", {x1: zeroX, x2: zeroX, y1: MT, y2: MT + PH, stroke: "#d8d8d8", "stroke-width": 1}));
-ticks.forEach(function(t){ svg.appendChild(txt((t > 0 ? "+" : "") + t.toFixed(1) + "%", {x: xs(t), y: MT + PH + 16, "text-anchor": "middle", "font-size": 8, fill: "#999999", "font-family": FS})); });
+ticks.forEach(function(t){ svg.appendChild(txt((t > 0 ? "+" : "") + t.toFixed(1).replace(".", ",") + " %", {x: xs(t), y: MT + PH + 16, "text-anchor": "middle", "font-size": 8, fill: "#999999", "font-family": FS})); });
 _cs.parentNode.appendChild(svg);
 })();
 </script>
@@ -596,7 +596,7 @@ var _cs = document.currentScript;
 function el(tag, attrs, txt){ var e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (txt !== undefined) e.textContent = txt; return e; }
 function txt(s, attrs){ return el("text", attrs, s); }
 var FS = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
-var data = [["Jul 6",68.55],["Jul 7",70.44],["Jul 8",73.52],["Jul 9",72.08],["Jul 10",71.41],["Jul 13",77.94],["Jul 14",78.68],["Jul 15",79.12],["Jul 16",78.28],["Jul 17",81.78],["Jul 20",82.48],["Jul 21",84.34],["Jul 22",83.64],["Jul 23",87.01],["Jul 24",85.15],["Jul 27",82.61],["Jul 28",79.26],["Jul 29",84.46],["Jul 30",83.59],["Jul 31",84.67],["Aug 3",80.34],["Aug 4",75.23],["Aug 5",75.20]];
+var data = [["6 juill.",68.55],["7 juill.",70.44],["8 juill.",73.52],["9 juill.",72.08],["10 juill.",71.41],["13 juill.",77.94],["14 juill.",78.68],["15 juill.",79.12],["16 juill.",78.28],["17 juill.",81.78],["20 juill.",82.48],["21 juill.",84.34],["22 juill.",83.64],["23 juill.",87.01],["24 juill.",85.15],["27 juill.",82.61],["28 juill.",79.26],["29 juill.",84.46],["30 juill.",83.59],["31 juill.",84.67],["3 août",80.34],["4 août",75.23],["5 août",75.20]];
 var n = data.length;
 var margin = {left:62, right:24, top:18, bottom:46};
 var PW = 680 - margin.left - margin.right;
@@ -615,15 +615,15 @@ var ticks = [70, 75, 80, 85];
 ticks.forEach(function(t){ svg.appendChild(el("line", {x1: margin.left, x2: margin.left + PW, y1: yp(t), y2: yp(t), stroke: "#ececec", "stroke-width": 0.5})); });
 var band1x0 = xp(1), band1x1 = xp(3);
 svg.appendChild(el("rect", {x: band1x0, y: MT, width: band1x1 - band1x0, height: PH, fill: "#c0392b", "fill-opacity": 0.05}));
-svg.appendChild(txt("MOU DECLARED OVER", {x: (band1x0 + band1x1) / 2, y: MT + 10, "text-anchor": "middle", "font-size": 7, "font-weight": 700, fill: "#8a3030", "font-family": FS}));
+svg.appendChild(txt("PROTOCOLE CADUC", {x: (band1x0 + band1x1) / 2, y: MT + 10, "text-anchor": "middle", "font-size": 7, "font-weight": 700, fill: "#8a3030", "font-family": FS}));
 var band2x0 = xp(20), band2x1 = xp(n-1);
 svg.appendChild(el("rect", {x: band2x0, y: MT, width: band2x1 - band2x0, height: PH, fill: "#2e7d32", "fill-opacity": 0.07}));
-svg.appendChild(txt("CORRIDOR TALKS", {x: (band2x0 + band2x1) / 2, y: MT + 10, "text-anchor": "middle", "font-size": 7, "font-weight": 700, fill: "#2e7d32", "font-family": FS}));
+svg.appendChild(txt("POURPARLERS", {x: (band2x0 + band2x1) / 2, y: MT + 10, "text-anchor": "middle", "font-size": 7, "font-weight": 700, fill: "#2e7d32", "font-family": FS}));
 var peakI = 13;
 svg.appendChild(el("line", {x1: margin.left, x2: margin.left + PW, y1: yp(87.01), y2: yp(87.01), stroke: "#2e7d32", "stroke-dasharray": "3,3", "stroke-width": 1}));
 var lastVforRef = data[n-1][1];
 if (Math.abs(87.01 - lastVforRef) / lastVforRef >= 0.03) {
-  svg.appendChild(txt("JUL 23 PEAK $87.01", {x: margin.left + 10, y: yp(87.01) + 12, "text-anchor": "start", "font-size": 7, "font-weight": 700, fill: "#2e7d32", "font-family": FS}));
+  svg.appendChild(txt("SOMMET 23 JUILL. 87,01 $", {x: margin.left + 10, y: yp(87.01) + 12, "text-anchor": "start", "font-size": 7, "font-weight": 700, fill: "#2e7d32", "font-family": FS}));
 }
 var pathD = data.map(function(d, i){ return (i === 0 ? "M" : "L") + xp(i).toFixed(1) + "," + yp(d[1]).toFixed(1); }).join(" ");
 svg.appendChild(el("path", {d: pathD, fill: "none", stroke: "#4a5568", "stroke-width": 1.8}));
@@ -634,7 +634,7 @@ svg.appendChild(el("circle", {cx: xp(peakI), cy: yp(data[peakI][1]), r: 3, fill:
 var lastX = xp(n-1), lastY = yp(data[n-1][1]);
 svg.appendChild(el("circle", {cx: lastX, cy: lastY, r: 3.5, fill: "#4a5568"}));
 function computePillWidth(s, fs){ var upper = /^[^0-9]*$/.test(s.replace("$", "")); var w = s.length * fs * (upper ? 0.68 : 0.58); return Math.ceil(w) + 10; }
-var pillText = "$75.20";
+var pillText = "75,20 $";
 var pillW = computePillWidth(pillText, 9);
 var pillH = 16;
 var pillX = lastX - pillW - 8;
@@ -643,7 +643,7 @@ var pillY = lastY + pillH/2 + 8;
 if (pillY + pillH/2 > MT + PH) pillY = MT + PH - pillH/2;
 svg.appendChild(el("rect", {x: pillX, y: pillY - pillH/2, width: pillW, height: pillH, rx: 2, fill: "#e8a825"}));
 svg.appendChild(txt(pillText, {x: pillX + pillW/2, y: pillY + 4, "text-anchor": "middle", "font-size": 9, "font-weight": 700, fill: "#111111", "font-family": FS}));
-ticks.forEach(function(t){ svg.appendChild(txt("$" + t, {x: margin.left - 6, y: yp(t) + 3, "text-anchor": "end", "font-size": 8.5, fill: "#aaaaaa", "font-family": FS})); });
+ticks.forEach(function(t){ svg.appendChild(txt(t + " $", {x: margin.left - 6, y: yp(t) + 3, "text-anchor": "end", "font-size": 8.5, fill: "#aaaaaa", "font-family": FS})); });
 data.forEach(function(d, i){ if (i % 3 !== 0) return; svg.appendChild(txt(d[0], {x: xp(i), y: MT + PH + 16, "text-anchor": "middle", "font-size": 8, fill: "#999999", "font-family": FS})); });
 _cs.parentNode.appendChild(svg);
 })();
@@ -812,10 +812,10 @@ data.forEach(function(d, i){
   var isPos = v >= 0;
   var lx = isPos ? barX1 + 6 : barX1 - 6;
   var anchor = isPos ? "start" : "end";
-  svg.appendChild(txt((v > 0 ? "+" : "") + v.toFixed(1) + "%", {x: lx, y: y0 + barH/2 + 3, "text-anchor": anchor, "font-size": 8, "font-weight": 700, fill: v >= 0 ? "#2e7d32" : "#8a3030", "font-family": FS}));
+  svg.appendChild(txt((v > 0 ? "+" : "") + v.toFixed(1).replace(".", ",") + " %", {x: lx, y: y0 + barH/2 + 3, "text-anchor": anchor, "font-size": 8, "font-weight": 700, fill: v >= 0 ? "#2e7d32" : "#8a3030", "font-family": FS}));
 });
 svg.appendChild(el("line", {x1: zeroX, x2: zeroX, y1: MT, y2: MT + PH, stroke: "#d8d8d8", "stroke-width": 1}));
-ticks.forEach(function(t){ svg.appendChild(txt((t > 0 ? "+" : "") + t + "%", {x: xs(t), y: MT + PH + 16, "text-anchor": "middle", "font-size": 8, fill: "#999999", "font-family": FS})); });
+ticks.forEach(function(t){ svg.appendChild(txt((t > 0 ? "+" : "") + t + " %", {x: xs(t), y: MT + PH + 16, "text-anchor": "middle", "font-size": 8, fill: "#999999", "font-family": FS})); });
 _cs.parentNode.appendChild(svg);
 })();
 </script>
@@ -952,7 +952,7 @@ VALUES (
   var PW = 546;
   var PH = 300 - margin.top - margin.bottom;
 
-  var data = [{n:"GOLD",v:3.52},{n:"TSX",v:1.34},{n:"DOW",v:1.10},{n:"S&P 500",v:0.42},{n:"NASDAQ",v:0.15},{n:"CAD/USD",v:0.35},{n:"WTI CRUDE",v:-0.81}];
+  var data = [{n:"OR",v:3.52},{n:"TSX",v:1.34},{n:"DOW",v:1.10},{n:"S&P 500",v:0.42},{n:"NASDAQ",v:0.15},{n:"CAD/USD",v:0.35},{n:"BRUT WTI",v:-0.81}];
   var n = data.length;
 
   var maxAbs = 0;
@@ -975,16 +975,16 @@ VALUES (
     var x0 = xScale(0), x1 = xScale(v);
     var barX = Math.min(x0,x1), barW = Math.abs(x1-x0);
     var isPos = v >= 0;
-    var fill = data[i].n === "GOLD" ? "#e8a825" : (isPos ? "#3a7a55" : "#8a3030");
+    var fill = data[i].n === "OR" ? "#e8a825" : (isPos ? "#3a7a55" : "#8a3030");
     svg.appendChild(el("rect",{x:barX,y:y0,width:barW,height:barH,fill:fill}));
     svg.appendChild(el("text",{x:margin.left-8,y:y0+barH/2+3,"text-anchor":"end","font-size":"8px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#999"}, data[i].n));
     var lx = isPos ? x1 + 6 : x1 - 6;
     var la = isPos ? "start" : "end";
-    var vt = (isPos?"+":"") + v.toFixed(2) + "%";
+    var vt = (isPos?"+":"") + v.toFixed(2).replace(".", ",") + " %";
     svg.appendChild(el("text",{x:lx,y:y0+barH/2+3,"text-anchor":la,"font-size":"8.5px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#444444"}, vt));
   }
 
-  var pillText = "GOLD +3.52%";
+  var pillText = "OR +3,52 %";
   var pillW = Math.ceil(pillText.length*9*0.58) + 10;
   var pillH = 16;
   var goldY = margin.top + 0*(barH+gap);
@@ -1032,7 +1032,7 @@ VALUES (
   var PW = 594;
   var PH = 300 - margin.top - margin.bottom;
 
-  var data = [{d:"Aug 3",v:35226.14,g:0},{d:"Aug 4",v:35801.59,g:575.45},{d:"Aug 5",v:36282.03,g:480.44}];
+  var data = [{d:"3 août",v:35226.14,g:0},{d:"4 août",v:35801.59,g:575.45},{d:"5 août",v:36282.03,g:480.44}];
   var n = data.length;
 
   var minV = 34800, maxV = 36500;
@@ -1045,7 +1045,7 @@ VALUES (
   for (var t=0;t<yTicks.length;t++){
     var ty = yp(yTicks[t]);
     svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:ty,y2:ty,stroke:"#ececec","stroke-width":0.5}));
-    svg.appendChild(el("text",{x:margin.left-6,y:ty+3,"text-anchor":"end","font-size":"8.5px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#aaaaaa"}, yTicks[t].toLocaleString()));
+    svg.appendChild(el("text",{x:margin.left-6,y:ty+3,"text-anchor":"end","font-size":"8.5px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#aaaaaa"}, yTicks[t].toLocaleString("fr-CA").replace(/\u202f|\u00a0/g, "\u00a0")));
   }
 
   for (var i=0;i<n;i++){
@@ -1057,12 +1057,12 @@ VALUES (
     svg.appendChild(el("rect",{x:barX0,y:top,width:barW,height:bottom-top,fill:isLast?"#e8a825":"#4a5568"}));
     svg.appendChild(el("text",{x:cx,y:margin.top+PH+18,"text-anchor":"middle","font-size":"8px","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#999999"}, data[i].d));
     if (i>0){
-      var gt = "+" + data[i].g.toFixed(2);
+      var gt = "+" + data[i].g.toFixed(2).replace(".", ",");
       svg.appendChild(el("text",{x:cx,y:top-8,"text-anchor":"middle","font-size":"8px","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#2e7d32"}, gt));
     }
   }
 
-  var pillText = "36,282.03";
+  var pillText = "36 282,03";
   var pillW = Math.ceil(pillText.length*9*0.58) + 10;
   var pillH = 16;
   var lastTop = yp(data[n-1].v);
