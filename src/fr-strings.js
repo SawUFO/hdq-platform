@@ -345,7 +345,7 @@ export const FR_ARTICLE = {
 
 export const FR_ABOUT = {
   publishedIn:   'Publié à Toronto',
-  heroTitle:     'Une publication quotidienne réservée aux membres, destinée aux conseillers canadiens chevronnés.',
+  heroTitle:     'Un quotidien réservé aux membres, pour conseillers canadiens chevronnés.',
   heroSub:       'Cinq sections éditoriales. Un Fil quotidien. Publiés chaque jour de semaine avant 7\u00a0h, heure de l’Est, à l’intention des conseillers inscrits auprès de l’OCRI et des titulaires du titre CFP.',
   readToday:     'Lire l’édition du jour',
   waitingList:   'Liste d’attente',
