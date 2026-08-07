@@ -150,6 +150,15 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') window.closeMobileNav();
 });
 </script>
+<style>
+/* French edition masthead: keep the wordmark on one line. */
+.brand { flex-shrink: 0 !important; white-space: nowrap !important; }
+.brand .wordmark, .wordmark { white-space: nowrap !important; }
+.nav-links { flex-wrap: nowrap !important; }
+.nav-links a { white-space: nowrap !important; }
+.nav-right { flex-shrink: 0 !important; }
+@media (max-width: 1100px) { .nav-links { gap: 18px !important; } }
+</style>
 </head>
 <body>
 
@@ -157,7 +166,7 @@ document.addEventListener('keydown', function(e) {
 <!-- MOBILE NAV OVERLAY -->
 <div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
   <div class="mobile-nav-header">
-    <a href="/fr/a-propos" class="bret aux" aria-label="Accueil HDQ" onclick="window.closeMobileNav()">
+    <a href="/fr/a-propos" class="brand" aria-label="Accueil HDQ" onclick="window.closeMobileNav()">
       <img src="HDQ_LOGO_Gold.svg" width="28" height="28" alt="Logo HDQ" style="display:block;">
       <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
     </a>
@@ -181,7 +190,7 @@ document.addEventListener('keydown', function(e) {
 </div>
 <header class="masthead" role="banner">
   <div class="masthead-inner">
-    <a href="/fr/a-propos" class="bret aux" aria-label="Accueil HDQ">
+    <a href="/fr/a-propos" class="brand" aria-label="Accueil HDQ">
       <img src="HDQ_LOGO_Gold.svg" width="32" height="32" alt="Logo HDQ" style="display:block;flex-shrink:0;">
       <span class="wordmark">HD<span class="wq">Q</span></span>
     </a>
@@ -209,9 +218,9 @@ document.addEventListener('keydown', function(e) {
 <!-- HERO -->
 <section class="sub-hero" aria-labelledby="subscribe-heading">
   <div class="sub-hero-inner">
-    <div class="sub-eyebrow">Liste d’attente &middot; Par mise en cet auxidature</div>
+    <div class="sub-eyebrow">Liste d’attente &middot; Par mise en candidature</div>
     <h1 id="subscribe-heading">HDQ est une publication réservée à ses membres.</h1>
-    <p>L’adhésion est ouverte aux conseillers inscrits auprès de l’OCRI et aux planificateurs financiers agréés (CFP) exerçant au Canada, admis par mise en cet auxidature. Le nombre de membres est plafonné de façon permanente ; l’accès se libère par la liste d’attente.</p>
+    <p>L’adhésion est ouverte aux conseillers inscrits auprès de l’OCRI et aux planificateurs financiers agréés (CFP) exerçant au Canada, admis par mise en candidature. Le nombre de membres est plafonné de façon permanente ; l’accès se libère par la liste d’attente.</p>
     <p style="font-size:14px;color:rgba(255,255,255,0.62);line-height:1.7;max-width:540px;margin:8px auto 0;">L’abonnement annuel est de 3 137 $ CA. De cette somme, 1 137 $ est versé chaque année à un organisme de bienfaisance désigné par le membre. HDQ figure comme donateur.</p>
   </div>
 </section>
@@ -318,7 +327,7 @@ document.addEventListener('keydown', function(e) {
         <svg class="offering-icon" viewBox="0 0 20 20" fill="none" stroke="var(--gold-400)" stroke-width="1.75" aria-hidden="true"><path d="M10 2l2.4 4.8 5.3.8-3.8 3.7.9 5.3L10 14l-4.8 2.6.9-5.3L2.3 7.6l5.3-.8z"/></svg>
         <div class="offering-item-text">
           <div class="offering-item-title">Sources nommées · Optique canadienne · Aucune spéculation</div>
-          <div class="offering-item-desc">Chaque affirmation est sourcée et attribuée. Chaque article traite du dollar canadien, de la politique de la Banque du Canada et de l’exposition au TSX. Aucune source anonyme. Aucun cours cible. Aucune recommet auxation.</div>
+          <div class="offering-item-desc">Chaque affirmation est sourcée et attribuée. Chaque article traite du dollar canadien, de la politique de la Banque du Canada et de l’exposition au TSX. Aucune source anonyme. Aucun cours cible. Aucune recommandation.</div>
         </div>
       </div>
     </div>
@@ -330,15 +339,13 @@ document.addEventListener('keydown', function(e) {
 
   <!-- APPLICATION FORM -->
   <div class="sub-form-col">
-    <div class="sub-form-card" role="complementary" aria-label="Formulaire de cet auxidature">
+    <div class="sub-form-card" role="complementary" aria-label="Formulaire de candidature">
       <div class="sub-form-header">
         <h3>Liste d’attente</h3>
-        <p>L’adhésion se fait par mise en cet auxidature. Transmettez vos coordonnées pour être considéré lorsqu’une place se libère.</p>
+        <p>L’adhésion se fait par mise en candidature. Transmettez vos coordonnées pour être considéré lorsqu’une place se libère.</p>
       </div>
       <div class="sub-form-body" id="form-body">
         <form id="application-form" novalidate>
-<input type="hidden" name="hdq_lang" value="fr-CA">
-<input type="hidden" name="hdq_source" value="liste-attente-fr">
 
           <div class="form-group">
             <label class="form-label" for="full-name">Nom complet <span>*</span></label>
@@ -378,13 +385,13 @@ document.addEventListener('keydown', function(e) {
 
           <div class="form-group">
             <label class="form-label" for="note">Comment avez-vous connu HDQ ? <span style="color:var(--n500);font-weight:400;">(facultatif)</span></label>
-            <textarea class="form-input form-textarea" id="note" name="note" placeholder="HDQ ne fait pas de publicité. La plupart des membres arrivent par le bouche-à-oreille ou par recommet auxation professionnelle."></textarea>
+            <textarea class="form-input form-textarea" id="note" name="note" placeholder="HDQ ne fait pas de publicité. La plupart des membres arrivent par le bouche-à-oreille ou par recommandation professionnelle."></textarea>
           </div>
 
           <div class="form-group">
             <div class="form-checkbox-row">
               <input class="form-checkbox" type="checkbox" id="confirm-licensed" name="confirm_licensed" required>
-              <label class="form-checkbox-label" for="confirm-licensed">Je confirme détenir un permis canadien valide en valeurs mobilières ou le titre CFP, et que le numéro d’inscription indiqué ci-dessus est à jour et exact. Je comprends que HDQ vérifie chaque cet auxidature au moyen de l’outil AdvisorReport de l’OCRI et de la Recherche nationale de renseignements sur l’inscription des ACVM.</label>
+              <label class="form-checkbox-label" for="confirm-licensed">Je confirme détenir un permis canadien valide en valeurs mobilières ou le titre CFP, et que le numéro d’inscription indiqué ci-dessus est à jour et exact. Je comprends que HDQ vérifie chaque candidature au moyen de l’outil AdvisorReport de l’OCRI et de la Recherche nationale de renseignements sur l’inscription des ACVM.</label>
             </div>
           </div>
 
@@ -397,7 +404,7 @@ document.addEventListener('keydown', function(e) {
 
           <button type="submit" class="form-submit">Envoyer</button>
 
-          <p class="form-disclaimer">Vos coordonnées seront conservées au dossier. HDQ communiquera avec vous si une place se libère. Chaque cet auxidature est vérifiée au moyen de l’outil AdvisorReport de l’OCRI et de la Recherche nationale de renseignements sur l’inscription des ACVM. Des questions ? <a href="mailto:support@hdq.ca" style="color:var(--navy-700);">support@hdq.ca</a></p>
+          <p class="form-disclaimer">Vos coordonnées seront conservées au dossier. HDQ communiquera avec vous si une place se libère. Chaque candidature est vérifiée au moyen de l’outil AdvisorReport de l’OCRI et de la Recherche nationale de renseignements sur l’inscription des ACVM. Des questions ? <a href="mailto:support@hdq.ca" style="color:var(--navy-700);">support@hdq.ca</a></p>
         </form>
 
         <div class="form-success" id="form-success" aria-live="polite">
@@ -435,9 +442,9 @@ document.addEventListener('keydown', function(e) {
 <section class="eligibility-section" aria-labelledby="eligibility-heading">
   <div class="eligibility-inner">
     <h3 id="eligibility-heading">Admissibilité</h3>
-    <p>HDQ s’adresse aux <strong>conseillers en placement et représentants inscrits auprès de l’OCRI</strong> et aux <strong>planificateurs financiers agréés (CFP)</strong> exerçant au Canada. Les cet auxidatures d’investisseurs individuels, d’étudiants ou de personnes non autorisées ne sont pas retenues.</p>
-    <p>Chaque cet auxidature est examinée manuellement. Le statut d’inscription est vérifié au moyen de l’outil <strong>AdvisorReport de l’OCRI</strong> et de la <strong>Recherche nationale de renseignements sur l’inscription des ACVM</strong>. Les cet auxidatures qui ne peuvent être vérifiées ne sont pas retenues.</p>
-    <p>HDQ se réserve le droit de refuser toute cet auxidature sans explication et de révoquer l’accès si le statut d’inscription d’un membre change ou si les conditions d’utilisation sont enfreintes.</p>
+    <p>HDQ s’adresse aux <strong>conseillers en placement et représentants inscrits auprès de l’OCRI</strong> et aux <strong>planificateurs financiers agréés (CFP)</strong> exerçant au Canada. Les candidatures d’investisseurs individuels, d’étudiants ou de personnes non autorisées ne sont pas retenues.</p>
+    <p>Chaque candidature est examinée manuellement. Le statut d’inscription est vérifié au moyen de l’outil <strong>AdvisorReport de l’OCRI</strong> et de la <strong>Recherche nationale de renseignements sur l’inscription des ACVM</strong>. Les candidatures qui ne peuvent être vérifiées ne sont pas retenues.</p>
+    <p>HDQ se réserve le droit de refuser toute candidature sans explication et de révoquer l’accès si le statut d’inscription d’un membre change ou si les conditions d’utilisation sont enfreintes.</p>
     <p style="font-size:12px;color:var(--n500);margin-top:8px;">Des questions : <a href="mailto:support@hdq.ca" style="color:var(--navy-700);">support@hdq.ca</a></p>
   </div>
 </section>
@@ -446,8 +453,8 @@ document.addEventListener('keydown', function(e) {
 <footer role="contentinfo">
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-bret aux">
-        <a href="/fr/a-propos" class="bret aux" style="margin-bottom:10px;" aria-label="Accueil HDQ">
+      <div class="footer-brand">
+        <a href="/fr/a-propos" class="brand" style="margin-bottom:10px;" aria-label="Accueil HDQ">
           <img src="HDQ_LOGO_Gold.svg" width="32" height="32" alt="Logo HDQ" style="display:block;flex-shrink:0;">
           <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
         </a>

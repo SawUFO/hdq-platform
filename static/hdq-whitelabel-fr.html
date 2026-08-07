@@ -85,6 +85,15 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') window.closeMobileNav();
 });
 </script>
+<style>
+/* French edition masthead: keep the wordmark on one line. */
+.brand { flex-shrink: 0 !important; white-space: nowrap !important; }
+.brand .wordmark, .wordmark { white-space: nowrap !important; }
+.nav-links { flex-wrap: nowrap !important; }
+.nav-links a { white-space: nowrap !important; }
+.nav-right { flex-shrink: 0 !important; }
+@media (max-width: 1100px) { .nav-links { gap: 18px !important; } }
+</style>
 </head><body>
 
 <!-- MOBILE NAV OVERLAY -->
@@ -172,8 +181,6 @@ document.addEventListener('keydown', function(e) {
     <h2>Nous joindre</h2>
     <p>Remplissez le formulaire ci-dessous. HDQ répondra dans un délai d’un jour ouvrable en vous transmettant les tarifs, un exemple d’édition et le formulaire de départ.</p>
     <form class="intake-form" id="wl-form" novalidate>
-<input type="hidden" name="hdq_lang" value="fr-CA">
-<input type="hidden" name="hdq_source" value="pour-les-firmes-fr">
       <div class="form-row">
         <div class="form-group"><div class="form-label">Nom de la firme *</div><input class="form-input" type="text" name="firm_name" placeholder="Gestion de patrimoine Meridian" required></div>
         <div class="form-group"><div class="form-label">Votre nom *</div><input class="form-input" type="text" name="contact_name" placeholder="Marie Tremblay" required></div>
