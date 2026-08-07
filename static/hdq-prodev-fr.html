@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr-CA"><head>
+<meta name="robots" content="noindex, follow">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Perfectionnement professionnel — HDQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hdq-shared.css">
+<style>
+.prodev-hero{background:var(--navy-50);border-bottom:1px solid var(--navy-100);padding:48px 0;}
+.prodev-hero h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,4vw,42px);font-weight:800;color:var(--navy-900);line-height:1.12;letter-spacing:-0.02em;margin-bottom:12px;max-width:600px;}
+.prodev-hero p{font-size:15px;color:var(--n600);max-width:520px;line-height:1.65;}
+.section-tabs{background:var(--card);border-bottom:1px solid var(--n200);position:sticky;top:60px;z-index:50;}
+.section-tabs-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.tab-link{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--n600);padding:14px 20px;border-bottom:2px solid transparent;transition:color 0.15s,border-color 0.15s;white-space:nowrap;cursor:pointer;}
+.tab-link:hover{color:var(--n900);}
+.tab-link.active{color:var(--navy-700);border-bottom-color:var(--gold-400);}
+.prodev-section{padding:52px 0;border-bottom:1px solid var(--n200);}
+.prodev-section:last-child{border-bottom:none;}
+.section-intro{max-width:480px;margin-bottom:36px;}
+.section-intro h2{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;color:var(--n900);margin-bottom:10px;}
+.section-intro p{font-size:14px;color:var(--n600);line-height:1.65;}
+.module-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:900px){.module-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.module-grid{grid-template-columns:1fr;}}
+.module-tile{background:var(--card);border:1px solid var(--n200);border-radius:6px;padding:24px;display:block;transition:border-color 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;}
+.module-tile::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold-400);transform:scaleY(0);transform-origin:top;transition:transform 0.2s;}
+.module-tile:hover{border-color:var(--n400);box-shadow:0 4px 16px rgba(0,0,0,0.05);}
+.module-tile:hover::after{transform:scaleY(1);}
+.module-tile-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;color:var(--n600);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;}
+.module-tile-title{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:var(--n900);line-height:1.3;margin-bottom:8px;}
+.module-tile:hover .module-tile-title{color:var(--navy-700);}
+.module-tile-desc{font-size:12px;color:var(--n600);line-height:1.55;}
+.module-tile-meta{font-size:11px;color:var(--n600);margin-top:14px;display:flex;gap:8px;align-items:center;}
+.ce-badge{font-size:10px;font-weight:700;color:var(--gold-800);background:var(--gold-50);border:1px solid var(--gold-100);padding:2px 7px;border-radius:3px;}
+.reading-list{display:flex;flex-direction:column;}
+.reading-item{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--n100);align-items:flex-start;}
+.reading-item:last-child{border-bottom:none;}
+.book-cover{width:52px;height:72px;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.book-title{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:var(--n900);line-height:1.3;margin-bottom:4px;}
+.book-author{font-size:12px;color:var(--n600);margin-bottom:6px;}
+.book-note{font-size:13px;color:var(--n800);line-height:1.6;font-family:'DM Sans',sans-serif;}
+.frameworks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+@media(max-width:680px){.frameworks-grid{grid-template-columns:1fr;}}
+.framework-card{background:var(--navy-50);border:1px solid var(--navy-100);border-radius:6px;padding:24px;display:block;transition:background 0.15s;}
+.framework-card:hover{background:var(--navy-100);}
+.framework-title{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:var(--navy-900);margin-bottom:8px;}
+.framework-desc{font-size:13px;color:var(--navy-700);line-height:1.6;font-family:'DM Sans',sans-serif;}
+.glossary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:768px){.glossary-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.glossary-grid{grid-template-columns:1fr;}}
+.glossary-item{background:var(--card);border:1px solid var(--n200);border-radius:5px;padding:16px;display:block;transition:border-color 0.15s;}
+.glossary-item:hover{border-color:var(--navy-300);}
+.glossary-term{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;color:var(--n900);margin-bottom:4px;}
+.glossary-def{font-size:12px;color:var(--n600);line-height:1.5;font-family:'DM Sans',sans-serif;}
+</style>
+<link rel="icon" type="image/svg+xml" href="HDQ_LOGO_Gold_no_outline.svg">
+
+<style>
+/* ── PRODEV OVERLAY ──────────────────────────────────────────── */
+.prodev-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  background: rgba(11, 26, 48, 0.72);
+}
+.prodev-overlay-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 48px 44px;
+  position: relative;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+  position: relative;
+}
+.prodev-overlay-icon {
+  width: 52px; height: 52px;
+  background: var(--gold-50);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+.prodev-overlay-card h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 24px; font-weight: 800;
+  color: var(--navy-900); margin-bottom: 10px; line-height: 1.2;
+}
+.prodev-overlay-card p {
+  font-size: 13px; color: var(--n600);
+  line-height: 1.7; margin-bottom: 10px;
+}
+.prodev-unlock-input {
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  padding: 8px 12px; border: 1px solid var(--n200);
+  border-radius: 4px; width: 160px; letter-spacing: 0.04em;
+}
+.prodev-unlock-input:focus { outline: none; border-color: var(--navy-700); }
+.prodev-unlock-btn {
+  font-size: 12px; font-weight: 600; padding: 8px 14px;
+  background: var(--n100); border: 1px solid var(--n200);
+  border-radius: 4px; cursor: pointer; color: var(--n700);
+  transition: all 0.15s;
+}
+.prodev-unlock-btn:hover { background: var(--navy-700); color: #fff; border-color: var(--navy-700); }
+.prodev-unlock-error { font-size: 11px; color: #ef4444; margin-top: 6px; display: none; }
+/* Prevent interaction with content behind overlay */
+body.overlay-active { overflow: hidden; }
+</style>
+<style>
+/* CRITICAL MOBILE — inline, cannot be overridden */
+@media(max-width:768px){
+  .desk-nav-inner{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:scroll!important;
+    -webkit-overflow-scrolling:touch!important;
+    white-space:nowrap!important;
+  }
+  .dnav-link{
+    flex-shrink:0!important;
+    white-space:nowrap!important;
+  }
+}
+</style>
+<script>
+// Global nav functions - defined immediately so onclick attrs work
+window.openMobileNav = function() {
+  var nav = document.getElementById('mobile-nav');
+  if (!nav) return;
+  nav.style.cssText = 'display:flex!important;position:fixed;inset:0;z-index:10000;background:#0b1a30;flex-direction:column;overflow-y:auto;';
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+};
+window.closeMobileNav = function() {
+  var nav = document.getElementById('mobile-nav');
+  if (!nav) return;
+  nav.style.cssText = 'display:none!important;';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+};
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') window.closeMobileNav();
+});
+</script>
+</head><body>
+<!-- PRODEV OVERLAY -->
+<div class="prodev-overlay" id="prodev-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-heading">
+  <div class="prodev-overlay-card">
+    <div style="width:52px;height:52px;background:var(--gold-50);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <img src="HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28" style="display:block;">
+    </div>
+    <span style="display:inline-block;font-size:11px;font-weight:700;color:var(--navy-700);background:var(--navy-50);border:1px solid var(--navy-100);border-radius:3px;padding:4px 10px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;">Accès réservé aux membres</span>
+    <h2 id="overlay-heading" style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;color:var(--navy-900);margin-bottom:12px;line-height:1.2;">Perfectionnement professionnel</h2>
+    <p style="font-size:13px;font-weight:700;color:var(--navy-900);margin-bottom:12px;">Accès réservé aux membres.</p>
+    <p style="font-size:13px;color:var(--n600);line-height:1.7;margin-bottom:10px;">La bibliothèque de perfectionnement professionnel de HDQ — bibliothèque de modules, liste de lecture, cadres d’analyse et glossaire — est réservée aux membres vérifiés. Il s’agit de matériel de formation produit aux fins du perfectionnement professionnel des conseillers inscrits auprès de l’OCRI et des titulaires du titre CFP. Ce matériel n’est pas offert au public.</p>
+    <a href="/fr/liste-attente" style="display:block;width:100%;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:14px 24px;background:var(--gold-400);color:var(--navy-900);border:none;border-radius:4px;text-decoration:none;cursor:pointer;transition:background 0.15s;margin-top:24px;box-sizing:border-box;text-align:center;">Liste d’attente &rarr;</a>
+    <div style="font-size:11px;color:var(--n400);margin-top:14px;line-height:1.6;">À des fins éducatives seulement. Ne constitue pas un conseil en placement.</div>
+  </div>
+</div>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+  <div class="mobile-nav-header">
+    <a href="/fr/a-propos" class="brand" aria-label="Accueil HDQ" onclick="window.closeMobileNav()">
+      <img src="HDQ_LOGO_Gold.svg" width="28" height="28" alt="Logo HDQ" style="display:block;">
+      <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
+    </a>
+    <button class="mobile-nav-close" onclick="window.closeMobileNav()" aria-label="Fermer le menu">×</button>
+  </div>
+  <nav class="mobile-nav-links" aria-label="Navigation mobile">
+    <a href="/fr" class="mobile-nav-link" onclick="window.closeMobileNav()">Nouvelles</a>
+    <a href="/fund-intel" class="mobile-nav-link" onclick="window.closeMobileNav()">Fund Intel</a>
+    <a href="/fr/perfectionnement" class="mobile-nav-link" onclick="window.closeMobileNav()">Perfectionnement professionnel</a>
+    <a href="/fr/pour-les-firmes" class="mobile-nav-link" onclick="window.closeMobileNav()">Pour les firmes</a>
+    <a href="/fr/a-propos" class="mobile-nav-link" onclick="window.closeMobileNav()">À propos</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="/fr/fil-quotidien" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Fil quotidien</a>
+    <a href="/fr/edition-fin-de-semaine" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Édition de fin de semaine</a>
+    <a href="/fr/mois-en-bref" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Le mois en bref</a>
+    <a href="/fr/archives" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archives</a>
+    <a href="/fr/juridique" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Mentions juridiques</a>
+  </nav>
+  <div class="mobile-nav-footer">
+    <a href="/fr/liste-attente" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Liste d’attente</a>
+  </div>
+</div>
+<header class="masthead"><div class="masthead-inner"><a href="/fr/a-propos" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="/fr" class="nav-link">Nouvelles</a></li><li><a href="/fund-intel" class="nav-link">Fund Intel</a></li><li><a href="/fr/perfectionnement" class="nav-link active">Perfectionnement professionnel</a></li><li><a href="/fr/pour-les-firmes" class="nav-link">Pour les firmes</a></li><li><a href="/fr/a-propos" class="nav-link">À propos</a></li></ul></nav><div class="nav-right"><a href="/fr/liste-attente" class="nav-subscribe">Liste d’attente</a><button type="button" onclick="window.openMobileNav()" aria-label="Ouvrir le menu de navigation" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
+<script>
+// Show hamburger only on mobile
+(function(){
+  var btn = document.getElementById('hdq-hamburger');
+  if(btn && window.innerWidth <= 768){
+    btn.style.display = 'flex';
+  }
+  window.addEventListener('resize', function(){
+    if(btn){ btn.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; }
+  });
+})();
+</script></div></div></header><div class="date-strip"><div class="date-strip-inner"><span class="date-left"></span></div></div>
+  </div>
+</header>
+
+<div class="prodev-hero"><div class="container">
+  <h1>Perfectionnement professionnel.</h1>
+  <p>Modules admissibles aux UFC, lectures sélectionnées, cadres décisionnels et glossaire, destinés aux conseillers inscrits auprès de l’OCRI et aux titulaires du titre CFP.</p>
+</div></div>
+
+<div class="section-tabs"><div class="section-tabs-inner">
+  <a href="#modules" class="tab-link active" data-tab="modules">Bibliothèque de modules</a>
+  <a href="#reading" class="tab-link" data-tab="reading">Liste de lecture</a>
+  <a href="#frameworks" class="tab-link" data-tab="frameworks">Cadres d’analyse</a>
+  <a href="#glossary" class="tab-link" data-tab="glossary">Glossaire</a>
+</div></div>
+
+<div id="modules" class="prodev-section"><div class="container">
+  <div class="section-intro"><h2>Bibliothèque de modules</h2><p>Des parcours d’apprentissage structurés sur les sujets qui comptent le plus dans la pratique. Rédigés pour les conseillers, non pour les universitaires. Les détails relatifs aux UFC seront ajoutés dès la confirmation de l’agrément de FP Canada.</p></div>
+  <div class="module-grid">
+    <a href="#" class="module-tile"><div class="module-tile-label">Géopolitique</div><div class="module-tile-title">Comprendre la courbe des taux canadienne pour en parler avec les clients</div><div class="module-tile-desc">Ce qu’est la courbe des taux, ce que signifie son inversion, et comment expliquer les deux clairement sans perdre son client.</div><div class="module-tile-meta"><span>~45 min</span><span class="ce-badge">UFC en attente</span></div></a>
+    <a href="#" class="module-tile"><div class="module-tile-label">Gestion de la pratique</div><div class="module-tile-title">La documentation de convenance de l’OCRI — le guide complet du conseiller</div><div class="module-tile-desc">Ce qu’exigent les règles, ce que les autorités recherchent lors d’un contrôle, et comment bâtir un système de documentation qui vous protège.</div><div class="module-tile-meta"><span>~60 min</span><span class="ce-badge">UFC en attente</span></div></a>
+    <a href="#" class="module-tile"><div class="module-tile-label">Fiscalité et patrimoine</div><div class="module-tile-title">Crédit privé et fonds de dette immobilière — l’essentiel en langage clair</div><div class="module-tile-desc">Le fonctionnement de ces structures, la façon dont elles génèrent du rendement, les risques, et comment en discuter avec les clients.</div><div class="module-tile-meta"><span>~50 min</span><span class="ce-badge">UFC en attente</span></div></a>
+    <a href="#" class="module-tile"><div class="module-tile-label">Finance comportementale</div><div class="module-tile-title">Pourquoi les clients prennent de mauvaises décisions et comment le conseiller peut les aider</div><div class="module-tile-desc">Les principaux biais qui dictent le comportement des clients en marché volatil, avec des scripts pratiques pour composer avec chacun.</div><div class="module-tile-meta"><span>~40 min</span><span class="ce-badge">UFC en attente</span></div></a>
+    <a href="#" class="module-tile"><div class="module-tile-label">Marchés</div><div class="module-tile-title">Lire les résultats trimestriels d’une banque — ce que le conseiller doit savoir</div><div class="module-tile-desc">Provisions pour pertes de crédit, marge nette d’intérêts, ratio CET1 : ce qu’ils signifient, pourquoi ils comptent et comment les expliquer aux clients.</div><div class="module-tile-meta"><span>~35 min</span><span class="ce-badge">UFC en attente</span></div></a>
+    <a href="#" class="module-tile"><div class="module-tile-label">Planification successorale</div><div class="module-tile-title">Les fiducies testamentaires et la succession canadienne d’aujourd’hui</div><div class="module-tile-desc">Le fonctionnement des fiducies testamentaires depuis la réforme fiscale de 2016, les cas où elles conservent leur utilité, et le profil de client visé.</div><div class="module-tile-meta"><span>~55 min</span><span class="ce-badge">UFC en attente</span></div></a>
+  </div>
+</div></div>
+
+<div id="reading" class="prodev-section" style="background:var(--n50);"><div class="container">
+  <div class="section-intro"><h2>Liste de lecture</h2><p>Des livres et des articles qui valent votre temps. Sélectionnés pour les conseillers. Annotés pour expliquer l’intérêt de chacun dans la pratique.</p></div>
+  <div class="reading-list">
+    <div class="reading-item"><div class="book-cover photo-wrap thumb-treat" style="width:52px;height:72px;border-radius:3px;"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=104&h=144&fit=crop&q=80&auto=format" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div><div><div class="book-title">The Psychology of Money</div><div class="book-author">Morgan Housel</div><div class="book-note">Le meilleur ouvrage pour comprendre le rapport des clients à l’argent. Chaque page trouve une application concrète dans les échanges avec la clientèle. Lecture essentielle avant tout module de finance comportementale.</div></div></div>
+    <div class="reading-item"><div class="book-cover photo-wrap thumb-treat" style="width:52px;height:72px;border-radius:3px;"><img src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=104&h=144&fit=crop&q=80&auto=format" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div><div><div class="book-title">Against the Gods: The Remarkable Story of Risk</div><div class="book-author">Peter Bernstein</div><div class="book-note">L’histoire intellectuelle de la façon dont l’humain a appris à quantifier et à gérer le risque. Donne au conseiller un vocabulaire pour expliquer l’incertitude au client au-delà de l’écart type.</div></div></div>
+    <div class="reading-item"><div class="book-cover photo-wrap thumb-treat" style="width:52px;height:72px;border-radius:3px;"><img src="img-charts.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div><div><div class="book-title">The Little Book of Common Sense Investing</div><div class="book-author">John Bogle</div><div class="book-note">À lire ne serait-ce que pour la qualité de la vulgarisation : personne n’explique mieux la capitalisation que Bogle. Maîtrisez l’argument avant de recommander un fonds à gestion active.</div></div></div>
+  </div>
+</div></div>
+
+<div id="frameworks" class="prodev-section"><div class="container">
+  <div class="section-intro"><h2>Cadres d’analyse</h2><p>Des outils décisionnels conçus pour les échanges entre le conseiller et son client. Chaque cadre offre une façon structurée d’aborder une situation courante sans repartir de zéro chaque fois.</p></div>
+  <div class="frameworks-grid">
+    <a href="#" class="framework-card"><div class="framework-title">Le cadre d’échange sur les taux</div><div class="framework-desc">Quatre questions à se poser avant d’expliquer une décision de banque centrale à un client. Valable pour tout contexte de taux et tout niveau de connaissance.</div></a>
+    <a href="#" class="framework-card"><div class="framework-title">Évaluation de la convenance — la liste de vérification HDQ</div><div class="framework-desc">Une liste de vérification structurée pour documenter la convenance, conforme aux exigences de l’OCRI et applicable en moins de 10 minutes par dossier.</div></a>
+    <a href="#" class="framework-card"><div class="framework-title">L’échange sur les placements alternatifs</div><div class="framework-desc">Comment présenter le crédit privé ou la dette immobilière à un client qui n’a jamais détenu de placements alternatifs. Trois portes d’entrée selon la tolérance au risque.</div></a>
+    <a href="#" class="framework-card"><div class="framework-title">Simulation de crise du portefeuille — en langage client</div><div class="framework-desc">Comment accompagner un client dans un scénario de repli hypothétique sans créer de panique. Guide d’entretien séquencé, calibré selon le type de client.</div></a>
+  </div>
+</div></div>
+
+<div id="glossary" class="prodev-section" style="background:var(--n50);"><div class="container">
+  <div class="section-intro"><h2>Glossaire</h2><p>Des définitions en langage clair des termes les plus courants dans la pratique. Rédigées pour les conseillers, non pour les universitaires.</p></div>
+  <div class="glossary-grid">
+    <a href="#" class="glossary-item"><div class="glossary-term">Provision pour pertes de crédit</div><div class="glossary-def">Somme qu’une banque met de côté pour couvrir les prêts qu’elle prévoit ne pas recouvrer. Une provision plus élevée signale généralement que la direction anticipe davantage de défauts.</div></a>
+    <a href="#" class="glossary-item"><div class="glossary-term">Marge nette d’intérêts</div><div class="glossary-def">L’écart entre ce qu’une banque tire de ses prêts et ce qu’elle verse sur les dépôts. Une mesure clé de la rentabilité bancaire.</div></a>
+    <a href="#" class="glossary-item"><div class="glossary-term">Taux du financement à un jour</div><div class="glossary-def">Le taux auquel les grandes institutions financières empruntent et prêtent des fonds à un jour. Le principal outil de politique monétaire de la Banque du Canada.</div></a>
+    <a href="#" class="glossary-item"><div class="glossary-term">Courbe des taux</div><div class="glossary-def">Un graphique illustrant les taux obligataires selon les échéances. Sa pente est normalement ascendante ; son inversion précède souvent une récession.</div></a>
+    <a href="#" class="glossary-item"><div class="glossary-term">Ratio CET1</div><div class="glossary-def">Fonds propres de catégorie 1 sous forme d’actions ordinaires — une mesure du capital de base d’une banque par rapport à ses actifs pondérés en fonction du risque. Un ratio plus élevé indique une banque financièrement plus solide.</div></a>
+    <a href="#" class="glossary-item"><div class="glossary-term">Durée (duration)</div><div class="glossary-def">Une mesure de la sensibilité d’une obligation aux variations de taux. Plus la durée est longue, plus l’effet sur le prix est marqué, à la hausse comme à la baisse.</div></a>
+    <a href="#" class="glossary-item"><div class="glossary-term">Convenance</div><div class="glossary-def">L’obligation réglementaire de veiller à ce que les recommandations de placement conviennent à la situation financière, à la tolérance au risque et aux objectifs du client.</div></a>
+    <a href="#" class="glossary-item"><div class="glossary-term">Point de base</div><div class="glossary-def">Un centième de point de pourcentage (0,01 %). Sert à décrire de faibles variations de taux ou d’écarts. 25 points de base = 0,25 %.</div></a>
+    <a href="#" class="glossary-item"><div class="glossary-term">Provision (prêts productifs)</div><div class="glossary-def">Provisions constituées à l’égard de prêts actuellement productifs, mais dont les modèles économiques prévoient statistiquement des pertes futures.</div></a>
+  </div>
+</div></div>
+
+<footer><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><a href="/fr/a-propos" class="brand" style="margin-bottom:10px;"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span></a><p>Une publication quotidienne destinée aux conseillers canadiens. Publiée à Toronto.</p></div><div class="footer-nav"><h6>Publication</h6><ul><li><a href="/fr">Sommaire quotidien</a></li><li><a href="/fr/fil-quotidien">Fil quotidien</a></li><li><a href="/fr/edition-fin-de-semaine">Édition de fin de semaine</a></li><li><a href="/fr/mois-en-bref">Le mois en bref</a></li><li><a href="/fr/archives">Archives</a></li></ul></div><div class="footer-nav"><h6>Formation</h6><ul><li><a href="/fr/perfectionnement">Bibliothèque de modules</a></li><li><a href="/hdq-prodev.html#reading">Liste de lecture</a></li><li><a href="/hdq-prodev.html#frameworks">Cadres d’analyse</a></li><li><a href="/hdq-prodev.html#glossary">Glossaire</a></li></ul></div><div class="footer-nav"><h6>Société</h6><ul><li><a href="/fr/pour-les-firmes">Pour les firmes</a></li><li><a href="/fr/a-propos">À propos de HDQ</a></li><li><a href="/fr/liste-attente">Liste d’attente</a></li><li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li></ul></div><div class="footer-nav"><h6>Juridique</h6><ul><li><a href="/fr/juridique">Avis de non-responsabilité</a></li><li><a href="/hdq-legal.html#terms">Conditions d’utilisation</a></li><li><a href="/hdq-legal.html#privacy">Politique de confidentialité</a></li><li><a href="/hdq-legal.html#compliance">Conformité</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 HDQ Publishing. Tous droits réservés. HDQ est une publication indépendante. Son contenu est publié aux fins du perfectionnement professionnel des conseillers canadiens autorisés et ne constitue pas un conseil en placement. <a href="/fr/juridique" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Mentions juridiques</a></span><span class="footer-badge">hdq.ca</span></div></div></footer>
+<script>
+// Tab underline follows clicks
+var _clicked = false;
+document.querySelectorAll('.tab-link').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    document.querySelectorAll('.tab-link').forEach(function(l) { l.classList.remove('active'); });
+    this.classList.add('active');
+    _clicked = true;
+    setTimeout(function(){ _clicked = false; }, 1000);
+  });
+});
+var sections = ['modules','reading','frameworks','glossary'];
+window.addEventListener('scroll', function() {
+  if (_clicked) return;
+  var scrollY = window.scrollY + 140;
+  var current = null;
+  sections.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollY) current = id;
+  });
+  if (current) {
+    document.querySelectorAll('.tab-link').forEach(function(l) { l.classList.remove('active'); });
+    var activeTab = document.querySelector('.tab-link[data-tab="' + current + '"]');
+    if (activeTab) activeTab.classList.add('active');
+  }
+});
+</script>
+<script>
+(function(){
+  var d = new Date();
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var str = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  var els = document.querySelectorAll('.date-left');
+  els.forEach(function(el){ el.textContent = str; });
+})();
+</script>
+
+<script>
+// Add overlay-active class to body
+document.body.classList.add('overlay-active');
+document.addEventListener('DOMContentLoaded',function(){ var f=document.getElementById('prodev-pw'); if(f) f.value=''; });
+
+
+function checkProdevPw() {
+  var pw = document.getElementById('prodev-pw').value;
+  var err = document.getElementById('prodev-pw-error');
+  if (pw === 'HDQ1963') {
+    dismissOverlay();
+  } else {
+    err.style.display = 'block';
+    document.getElementById('prodev-pw').focus();
+  }
+}
+document.getElementById('prodev-pw').addEventListener('keydown', function(e){
+  if (e.key === 'Enter') checkProdevPw();
+});
+
+function dismissOverlay() {
+  document.getElementById('prodev-overlay').style.display = 'none';
+  document.body.classList.remove('overlay-active');
+}
+
+// Also allow Escape key for demo dismissal (after correct pw)
+// Secret: shift+click the HDQ logo to dismiss (for live demos)
+document.querySelector('.brand').addEventListener('click', function(e){
+  if (e.shiftKey) { e.preventDefault(); dismissOverlay(); }
+});
+</script>
+
+
+<script>
+// Center active desk nav tab on page load
+(function() {
+  function initDeskNav() {
+    var inner = document.querySelector('.desk-nav-inner');
+    if (!inner) return;
+    var active = inner.querySelector('.dnav-link.active');
+    if (active) {
+      inner.scrollLeft = active.offsetLeft - (inner.offsetWidth / 2) + (active.offsetWidth / 2);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDeskNav);
+  } else {
+    initDeskNav();
+  }
+})();
+</script>
+</body></html>

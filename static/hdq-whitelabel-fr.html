@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr-CA"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pour les firmes — HDQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hdq-shared.css">
+<style>
+.wl-hero{background:var(--navy-900);position:relative;overflow:hidden;min-height:400px;}
+.wl-hero-content{width:100%;max-width:1200px;margin:0 auto;padding:72px 24px;position:relative;z-index:2;}
+.wl-hero-inner{max-width:540px;}
+.wl-hero-img{position:absolute;top:0;right:0;bottom:0;width:60%;overflow:hidden;}
+.wl-hero-img img{width:100%;height:100%;object-fit:cover;display:block;}
+
+@media(max-width:860px){.wl-hero-img{display:none;}}
+.wl-eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:var(--gold-400);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.wl-eyebrow::before{content:'';width:24px;height:2px;background:var(--gold-400);}
+.wl-hero h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,4vw,46px);font-weight:800;color:#fff;line-height:1.12;letter-spacing:-0.02em;margin-bottom:18px;}
+.wl-hero p{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:30px;max-width:480px;}
+.wl-hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.how-it-works{padding:64px 0;}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+@media(max-width:768px){.how-grid{grid-template-columns:1fr;}}
+.how-num{font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;color:var(--navy-100);margin-bottom:14px;line-height:1;}
+.how-title{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;color:var(--n900);margin-bottom:10px;}
+.how-desc{font-size:13px;color:var(--n600);line-height:1.65;font-family:'DM Sans',sans-serif;}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:680px){.what-grid{grid-template-columns:1fr;}}
+.what-item{background:var(--card);border:1px solid var(--navy-100);border-radius:6px;padding:24px;}
+.what-item-icon{width:32px;height:32px;background:var(--navy-700);border-radius:5px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.what-item-icon svg{width:16px;height:16px;color:#fff;}
+.what-item h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:var(--n900);margin-bottom:6px;}
+.what-item p{font-size:12px;color:var(--n600);line-height:1.6;font-family:'DM Sans',sans-serif;}
+.intake-cta{background:var(--navy-800);padding:64px 0;}
+.intake-inner{max-width:680px;margin:0 auto;text-align:center;padding:0 24px;}
+.intake-inner h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;margin-bottom:14px;}
+.intake-inner p{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:32px;line-height:1.65;font-family:'DM Sans',sans-serif;}
+.intake-form{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:32px;text-align:left;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+.form-group{display:flex;flex-direction:column;gap:5px;}
+.form-label{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.07em;}
+.form-input{padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:4px;font-size:13px;font-family:'DM Sans',sans-serif;color:#fff;}
+.form-input::placeholder{color:rgba(255,255,255,0.3);}
+.form-submit{width:100%;padding:12px;background:var(--gold-400);color:var(--navy-900);font-size:13px;font-weight:700;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;transition:background 0.15s;}
+.form-submit:hover{background:var(--gold-600);color:#fff;}
+
+
+</style>
+<link rel="icon" type="image/svg+xml" href="HDQ_LOGO_Gold_no_outline.svg">
+<style>
+/* CRITICAL MOBILE — inline, cannot be overridden */
+@media(max-width:768px){
+  .desk-nav-inner{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:scroll!important;
+    -webkit-overflow-scrolling:touch!important;
+    white-space:nowrap!important;
+  }
+  .dnav-link{
+    flex-shrink:0!important;
+    white-space:nowrap!important;
+  }
+}
+</style>
+<script>
+// Global nav functions - defined immediately so onclick attrs work
+window.openMobileNav = function() {
+  var nav = document.getElementById('mobile-nav');
+  if (!nav) return;
+  nav.style.cssText = 'display:flex!important;position:fixed;inset:0;z-index:10000;background:#0b1a30;flex-direction:column;overflow-y:auto;';
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+};
+window.closeMobileNav = function() {
+  var nav = document.getElementById('mobile-nav');
+  if (!nav) return;
+  nav.style.cssText = 'display:none!important;';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+};
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') window.closeMobileNav();
+});
+</script>
+</head><body>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+  <div class="mobile-nav-header">
+    <a href="/fr/a-propos" class="brand" aria-label="Accueil HDQ" onclick="window.closeMobileNav()">
+      <img src="HDQ_LOGO_Gold.svg" width="28" height="28" alt="Logo HDQ" style="display:block;">
+      <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
+    </a>
+    <button class="mobile-nav-close" onclick="window.closeMobileNav()" aria-label="Fermer le menu">×</button>
+  </div>
+  <nav class="mobile-nav-links" aria-label="Navigation mobile">
+    <a href="/fr" class="mobile-nav-link" onclick="window.closeMobileNav()">Nouvelles</a>
+    <a href="/fund-intel" class="mobile-nav-link" onclick="window.closeMobileNav()">Fund Intel</a>
+    <a href="/fr/perfectionnement" class="mobile-nav-link" onclick="window.closeMobileNav()">Perfectionnement professionnel</a>
+    <a href="/fr/pour-les-firmes" class="mobile-nav-link" onclick="window.closeMobileNav()">Pour les firmes</a>
+    <a href="/fr/a-propos" class="mobile-nav-link" onclick="window.closeMobileNav()">À propos</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="/fr/fil-quotidien" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Fil quotidien</a>
+    <a href="/fr/edition-fin-de-semaine" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Édition de fin de semaine</a>
+    <a href="/fr/mois-en-bref" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Le mois en bref</a>
+    <a href="/fr/archives" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archives</a>
+    <a href="/fr/juridique" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Mentions juridiques</a>
+  </nav>
+  <div class="mobile-nav-footer">
+    <a href="/fr/liste-attente" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Liste d’attente</a>
+  </div>
+</div>
+<header class="masthead"><div class="masthead-inner"><a href="/fr/a-propos" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="/fr" class="nav-link">Nouvelles</a></li><li><a href="/fund-intel" class="nav-link">Fund Intel</a></li><li><a href="/fr/perfectionnement" class="nav-link">Perfectionnement professionnel</a></li><li><a href="/fr/pour-les-firmes" class="nav-link active">Pour les firmes</a></li><li><a href="/fr/a-propos" class="nav-link">À propos</a></li></ul></nav><div class="nav-right"><a href="/fr/liste-attente" class="nav-subscribe">Liste d’attente</a><button type="button" onclick="window.openMobileNav()" aria-label="Ouvrir le menu de navigation" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
+<script>
+// Show hamburger only on mobile
+(function(){
+  var btn = document.getElementById('hdq-hamburger');
+  if(btn && window.innerWidth <= 768){
+    btn.style.display = 'flex';
+  }
+  window.addEventListener('resize', function(){
+    if(btn){ btn.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; }
+  });
+})();
+</script></div></div></header><div class="date-strip"><div class="date-strip-inner"><span class="date-left"></span></div></div>
+  </div>
+</header>
+
+<section class="wl-hero">
+  <div class="wl-hero-img">
+    <img src="hero-whitelabel.jpg" alt="" loading="lazy">
+  </div>
+  <div class="wl-hero-content">
+    <div class="wl-hero-inner">
+    <div class="wl-eyebrow">Licence d’entreprise</div>
+    <h1>HDQ pour les firmes.</h1>
+    <p>Une publication quotidienne à votre marque, destinée à vos clients. Rédigée, documentée et livrée par la rédaction de HDQ chaque matin de semaine.</p>
+    <div class="wl-hero-actions">
+      <a href="#intake" class="btn-primary">Nous joindre</a>
+      <a href="#sample" class="btn-ghost">Voir un exemple</a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works"><div class="container">
+  <div style="margin-bottom:44px;">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:800;margin-bottom:10px;">Déroulement</h2>
+    <p style="font-size:14px;color:var(--n600);max-width:500px;line-height:1.65;font-family:'DM Sans',sans-serif;">Trois étapes, de la demande initiale à la première édition à votre marque.</p>
+  </div>
+  <div class="how-grid">
+    <div><div class="how-num">01</div><div class="how-title">Le formulaire de départ</div><div class="how-desc">Un formulaire d’une page : nom de la firme, couleurs de la marque, logo, heure de livraison souhaitée et segments de clientèle. Environ quinze minutes.</div></div>
+    <div><div class="how-num">02</div><div class="how-title">Le gabarit à votre marque</div><div class="how-desc">HDQ applique la marque de la firme au gabarit de la publication. Vous révisez et approuvez. Délai de trois jours ouvrables à compter de la réception du formulaire.</div></div>
+    <div><div class="how-num">03</div><div class="how-title">L’édition quotidienne</div><div class="how-desc">Dès le lancement, vos clients reçoivent une édition HDQ à votre marque chaque jour de semaine avant 7 h, heure de l’Est. HDQ rédige, révise et livre chaque numéro.</div></div>
+  </div>
+</div></section>
+
+<section style="background:var(--navy-50);border-top:1px solid var(--navy-100);border-bottom:1px solid var(--navy-100);padding:64px 0;" id="sample"><div class="container">
+  <div style="margin-bottom:40px;"><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:800;margin-bottom:10px;">La publication</h2></div>
+  <div class="what-grid">
+    <div class="what-item"><div class="what-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg></div><h4>Le sommaire quotidien</h4><p>Cinq sections éditoriales : Marchés, Géopolitique, Économie, Fiscalité et patrimoine, et Comportement. Chaque jour de semaine, à la marque de la firme.</p></div>
+    <div class="what-item"><div class="what-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><h4>Fil quotidien</h4><p>Le fait marquant de la journée, analysé en profondeur à la clôture des marchés.</p></div>
+    <div class="what-item"><div class="what-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h4>Édition de fin de semaine</h4><p>Le samedi. Les thèmes de la semaine et leurs incidences sur les portefeuilles pour la semaine à venir.</p></div>
+    <div class="what-item"><div class="what-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><h4>Perfectionnement professionnel</h4><p>Accès à la bibliothèque de modules, à la liste de lecture, aux cadres d’analyse et au glossaire de HDQ.</p></div>
+  </div>
+</div></section>
+
+<section class="intake-cta" id="intake"><div class="container">
+  <div class="intake-inner">
+    <h2>Nous joindre</h2>
+    <p>Remplissez le formulaire ci-dessous. HDQ répondra dans un délai d’un jour ouvrable en vous transmettant les tarifs, un exemple d’édition et le formulaire de départ.</p>
+    <form class="intake-form" id="wl-form" novalidate>
+<input type="hidden" name="hdq_lang" value="fr-CA">
+<input type="hidden" name="hdq_source" value="pour-les-firmes-fr">
+      <div class="form-row">
+        <div class="form-group"><div class="form-label">Nom de la firme *</div><input class="form-input" type="text" name="firm_name" placeholder="Gestion de patrimoine Meridian" required></div>
+        <div class="form-group"><div class="form-label">Votre nom *</div><input class="form-input" type="text" name="contact_name" placeholder="Marie Tremblay" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><div class="form-label">Courriel *</div><input class="form-input" type="email" name="email" placeholder="marie@meridianpatrimoine.ca" required></div>
+        <div class="form-group"><div class="form-label">Nombre approximatif de clients</div><input class="form-input" type="text" name="client_count" placeholder="e.g. 150"></div>
+      </div>
+      <button type="submit" class="form-submit" id="wl-submit-btn">Envoyer la demande</button>
+      <div id="wl-error" style="display:none;color:#f87171;font-size:12px;margin-top:8px;text-align:center;">Veuillez remplir tous les champs obligatoires.</div>
+    </form>
+    <div id="wl-success" style="display:none;text-align:center;padding:32px 0;">
+      <div style="font-size:32px;margin-bottom:12px;color:var(--gold-400);font-weight:300;">✓</div>
+      <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px;">Demande reçue.</h4>
+      <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">HDQ répondra dans un délai d’un jour ouvrable en vous transmettant les tarifs, un exemple d’édition et le formulaire de départ.<br>Des questions ? <a href="mailto:submissions@hdq.ca" style="color:var(--gold-400);">submissions@hdq.ca</a></p>
+    </div>
+  </div>
+</div></section>
+<footer><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><a href="/fr/a-propos" class="brand" style="margin-bottom:10px;"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span></a><p>Une publication quotidienne destinée aux conseillers canadiens. Publiée à Toronto.</p></div><div class="footer-nav"><h6>Publication</h6><ul><li><a href="/fr">Sommaire quotidien</a></li><li><a href="/fr/fil-quotidien">Fil quotidien</a></li><li><a href="/fr/edition-fin-de-semaine">Édition de fin de semaine</a></li><li><a href="/fr/mois-en-bref">Le mois en bref</a></li><li><a href="/fr/archives">Archives</a></li></ul></div><div class="footer-nav"><h6>Formation</h6><ul><li><a href="/fr/perfectionnement">Bibliothèque de modules</a></li><li><a href="/hdq-prodev.html#reading">Liste de lecture</a></li><li><a href="/hdq-prodev.html#frameworks">Cadres d’analyse</a></li><li><a href="/hdq-prodev.html#glossary">Glossaire</a></li></ul></div><div class="footer-nav"><h6>Société</h6><ul><li><a href="/fr/pour-les-firmes">Pour les firmes</a></li><li><a href="/fr/a-propos">À propos de HDQ</a></li><li><a href="/fr/liste-attente">Liste d’attente</a></li><li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li></ul></div><div class="footer-nav"><h6>Juridique</h6><ul><li><a href="/fr/juridique">Avis de non-responsabilité</a></li><li><a href="/hdq-legal.html#terms">Conditions d’utilisation</a></li><li><a href="/hdq-legal.html#privacy">Politique de confidentialité</a></li><li><a href="/hdq-legal.html#compliance">Conformité</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 HDQ Publishing. Tous droits réservés. HDQ est une publication indépendante. Son contenu est publié aux fins du perfectionnement professionnel des conseillers canadiens autorisés et ne constitue pas un conseil en placement. <a href="/fr/juridique" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Mentions juridiques</a></span><span class="footer-badge">hdq.ca</span></div></div></footer>
+<script>
+(function(){
+  var d = new Date();
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var str = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  var els = document.querySelectorAll('.date-left');
+  els.forEach(function(el){ el.textContent = str; });
+})();
+</script>
+
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.getElementById('wl-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Validate required fields
+    var valid = true;
+    form.querySelectorAll('[required]').forEach(function(el) {
+      if (!el.value.trim()) {
+        el.style.borderColor = '#f87171';
+        valid = false;
+      } else {
+        el.style.borderColor = '';
+      }
+    });
+    if (!valid) {
+      document.getElementById('wl-error').style.display = 'block';
+      return;
+    }
+    document.getElementById('wl-error').style.display = 'none';
+    var btn = document.getElementById('wl-submit-btn');
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+    fetch('https://formspree.io/f/xzdogdkv', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(r) {
+      if (r.ok) {
+        form.style.display = 'none';
+        document.getElementById('wl-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Submit enquiry';
+        btn.disabled = false;
+        alert('Submission error. Please email submissions@hdq.ca directly.');
+      }
+    }).catch(function() {
+      btn.textContent = 'Submit enquiry';
+      btn.disabled = false;
+      alert('Network error. Please email submissions@hdq.ca directly.');
+    });
+  });
+});
+</script>
+<script>
+// Center active desk nav tab on page load
+(function() {
+  function initDeskNav() {
+    var inner = document.querySelector('.desk-nav-inner');
+    if (!inner) return;
+    var active = inner.querySelector('.dnav-link.active');
+    if (active) {
+      inner.scrollLeft = active.offsetLeft - (inner.offsetWidth / 2) + (active.offsetWidth / 2);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDeskNav);
+  } else {
+    initDeskNav();
+  }
+})();
+</script>
+</body></html>

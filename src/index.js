@@ -156,6 +156,19 @@ async function handleFrench(request, env, url, path) {
   // Strip the prefix. '/fr' → '', '/fr/marches' → 'marches'
   const sub = path === '/fr' ? '' : path.slice(4);
 
+  // ── Institutional static pages ────────────────────────────────────────────
+  // Same shape as REDIRECT_MAP on the English side: a clean French path 301s to
+  // the static file, which the ASSETS binding serves.
+  const FR_STATIC_REDIRECT = {
+    'juridique':        '/hdq-legal-fr.html',
+    'liste-attente':    '/hdq-subscribe-fr.html',
+    'perfectionnement': '/hdq-prodev-fr.html',
+    'pour-les-firmes':  '/hdq-whitelabel-fr.html',
+  };
+  if (FR_STATIC_REDIRECT[sub]) {
+    return Response.redirect(new URL(FR_STATIC_REDIRECT[sub], url.origin).href, 301);
+  }
+
   // ── Machine-readable endpoints ────────────────────────────────────────────
   // Declared first so nothing downstream can shadow them, mirroring the
   // English router. There is no French RSS feed — see feeds-fr.js.

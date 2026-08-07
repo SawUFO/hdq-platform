@@ -32,9 +32,9 @@ const ORIGIN = 'https://hdq.ca';
  *                         English prose. It is still reachable by link, so this
  *                         does not block indexing — it just declines to ask for
  *                         it. Add the entry when the French copy lands.
- *
- *   French legal and      No French versions exist until step 7. Add
- *   for-firms pages       /fr equivalents here at the same time.
+ * *
+ *   /fr/perfectionnement  Member-only, no public content — mirrors the English
+ *   /fr/liste-attente     side, where neither is listed.
  *
  *   /fund-intel, /charts, No French route exists. Fund Intel is out of scope
  *   /editorial-standards  per §14; the other two carry no French counterpart.
@@ -50,6 +50,8 @@ const FR_STATIC_PAGES = [
   { loc: `/fr/${FR_DESK_PATH.thread}`,       priority: '0.8', changefreq: 'daily'   },
   { loc: `/fr/${FR_DESK_PATH.weekend}`,      priority: '0.6', changefreq: 'weekly'  },
   { loc: `/fr/${FR_DESK_PATH.month}`,        priority: '0.6', changefreq: 'monthly' },
+  { loc: '/fr/pour-les-firmes',              priority: '0.5', changefreq: 'monthly' },
+  { loc: '/fr/juridique',                    priority: '0.3', changefreq: 'yearly'  },
 ];
 
 function escXml(str) {

@@ -216,15 +216,16 @@ export const FR_UI = {
 };
 
 // ── Static pages ────────────────────────────────────────────────────────────
-// These four are static HTML and have no French version until build step 7.
-// French pages link to the English files meanwhile. When the French pages are
-// written, changing these five strings redirects every French link at once.
+// Clean French paths. The router redirects each to its static file, mirroring
+// the way /legal redirects to /hdq-legal.html on the English side.
+// Fund Intel and Editorial Standards have no French version: Fund Intel is out
+// of scope per build brief §14, and Editorial Standards is not in §7's list.
 export const FR_STATIC = {
-  waitingList: '/hdq-subscribe.html',
+  waitingList: '/fr/liste-attente',
+  legal:       '/fr/juridique',
+  prodev:      '/fr/perfectionnement',
+  forFirms:    '/fr/pour-les-firmes',
   fundIntel:   '/fund-intel',
-  legal:       '/hdq-legal.html',
-  prodev:      '/hdq-prodev.html',
-  forFirms:    '/hdq-whitelabel.html',
   standards:   '/editorial-standards',
 };
 
