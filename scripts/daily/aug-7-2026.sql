@@ -63,7 +63,7 @@ var refValue = 75;
 var refY = yp(refValue);
 var currentVal = data[n-1];
 if (Math.abs(refValue - currentVal) / currentVal >= 0.03) {
-  svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"text-anchor":"start","font-size":"7","fill":"#7a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "PRE-DEAL BASELINE ~$75"));
+  svg.appendChild(el("text",{x:margin.left+140,y:refY-10,"text-anchor":"start","font-size":"7","fill":"#7a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "PRE-DEAL BASELINE ~$75"));
 }
 svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#7a3030","stroke-dasharray":"3,3"}));
 
@@ -91,7 +91,7 @@ events.forEach(function(ev){
   var labelWidth = ev.label.length * 7 * 0.68;
   var crowded = events.some(function(other){ return other.i !== ev.i && Math.abs(xp(other.i) - ex) < 85; });
   var nearRight = (ex + labelWidth + 3) > (margin.left + PW);
-  var offset = (crowded || nearRight) ? -40 : 3;
+  var offset = (crowded || nearRight) ? -6 : 3;
   var yStart = crowded ? margin.top + 50 : margin.top + 20;
   var anchor = (crowded || nearRight) ? "end" : "start";
   svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, ev.label));
@@ -670,7 +670,7 @@ events.forEach(function(ev){
   var crowded = events.some(function(other){ return other.i !== ev.i && Math.abs(xp(other.i) - ex) < 85; });
   var nearRight = (ex + labelWidth + 3) > (margin.left + PW);
   var offset = (crowded || nearRight) ? -40 : 3;
-  var yStart = crowded ? margin.top + 50 : margin.top + 20;
+  var yStart = crowded ? margin.top + 35 : margin.top + 20;
   var anchor = (crowded || nearRight) ? "end" : "start";
   svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, ev.label));
 });
