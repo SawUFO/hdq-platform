@@ -1,17 +1,11 @@
 import { pageShell, escHtml, fmtDate, DESK_CAT_CLASS, articleUrl, htmlResponse,
          getIssueNo, deskDisplay, deskHref as deskPath } from '../shell.js';
-import { FR_ROUTES, FR_SITE, FR_STATIC } from '../fr-strings.js';
+import { FR_ROUTES, FR_SITE, FR_STATIC, FR_ABOUT } from '../fr-strings.js';
 
 /*
- * NOTE ON THE FRENCH ABOUT PAGE.
- * The body copy below is still English. French build brief §7 lists About among
- * four pages written in French by hand rather than generated, and that copy
- * arrives at build step 7.
- *
- * What is fixed here is the language plumbing: French chrome, and every
- * internal link resolving inside /fr. The masthead logo links to About from
- * every page on the site, so an English shell here was the one place a reader
- * could fall out of the French edition in a single click.
+ * The French body copy lives in FR_ABOUT in fr-strings.js, written by hand
+ * rather than generated — French build brief §7. Editing it there changes this
+ * page and nothing else.
  */
 import { membershipFooterBand } from './news.js';
 
@@ -167,11 +161,11 @@ export async function renderHome(env) {
         <span>${featured.read_time} min read</span>
       </div>
       <p class="edition-teaser">${escHtml(featured.dek || '')}</p>
-      <a href="${articleUrl(featured, lang)}" class="btn-primary" style="font-size:13px;">Read the article</a>
+      <a href="${articleUrl(featured, lang)}" class="btn-primary" style="font-size:13px;">${fr ? FR_ABOUT.readArticle : 'Read the article'}</a>
     </div>` : `
     <div>
-      <p style="color:var(--n600);font-size:14px;padding-top:12px;">Today's edition will be published shortly.</p>
-      <a href="${home}" class="btn-primary" style="font-size:13px;margin-top:16px;display:inline-block;">View all editions</a>
+      <p style="color:var(--n600);font-size:14px;padding-top:12px;">${fr ? FR_ABOUT.noEdition : "Today's edition will be published shortly."}</p>
+      <a href="${home}" class="btn-primary" style="font-size:13px;margin-top:16px;display:inline-block;">${fr ? FR_ABOUT.viewAll : 'View all editions'}</a>
     </div>`;
 
   // Build desk list (always shows the 5 morning desk articles regardless of hero)
@@ -190,47 +184,47 @@ export async function renderHome(env) {
   </div>
   <div class="hero-content">
     <div style="max-width:580px;">
-      <div class="hero-eyebrow">Published in Toronto</div>
-      <h1>A members-only daily publication for senior Canadian financial advisors.</h1>
-      <p class="hero-sub">Five editorial desks. One Daily Thread. Published every weekday by 7 a.m. Eastern, for CIRO-registered advisors and CFP professionals.</p>
+      <div class="hero-eyebrow">${fr ? FR_ABOUT.publishedIn : 'Published in Toronto'}</div>
+      <h1>${fr ? FR_ABOUT.heroTitle : 'A members-only daily publication for senior Canadian financial advisors.'}</h1>
+      <p class="hero-sub">${fr ? FR_ABOUT.heroSub : 'Five editorial desks. One Daily Thread. Published every weekday by 7 a.m. Eastern, for CIRO-registered advisors and CFP professionals.'}</p>
       <div class="hero-actions">
-        <a href="${home}" class="btn-primary">Read today's edition</a>
-        <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="btn-ghost">Waiting list</a>
+        <a href="${home}" class="btn-primary">${fr ? FR_ABOUT.readToday : "Read today's edition"}</a>
+        <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="btn-ghost">${fr ? FR_ABOUT.waitingList : 'Waiting list'}</a>
       </div>
     </div>
   </div>
 </section>
 
 <section class="divisions"><div class="container">
-  <div class="section-header"><span class="section-title">The publication</span><div class="section-rule"></div></div>
+  <div class="section-header"><span class="section-title">${fr ? FR_ABOUT.sectionPublication : 'The publication'}</span><div class="section-rule"></div></div>
   <div class="division-grid">
     <a href="${home}" class="division-card">
-      <div class="division-number">01 / News</div>
+      <div class="division-number">${fr ? FR_ABOUT.cardNews.num : '01 / News'}</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg></div>
-      <div class="division-name">The Daily Briefing</div>
-      <div class="division-desc">Five desks — Market, Geopolitical, Economy, Tax &amp; Wealth, and Behavioural — published by 7 a.m. Eastern every weekday.</div>
-      <div class="division-link">Today's briefing &rarr;</div>
+      <div class="division-name">${fr ? FR_ABOUT.cardNews.name : 'The Daily Briefing'}</div>
+      <div class="division-desc">${fr ? FR_ABOUT.cardNews.desc : `Five desks — Market, Geopolitical, Economy, Tax &amp; Wealth, and Behavioural — published by 7 a.m. Eastern every weekday.`}</div>
+      <div class="division-link">${fr ? FR_ABOUT.cardNews.link : "Today's briefing"} &rarr;</div>
     </a>
-    <a href="${fr ? FR_STATIC.fundIntel : '/fund-intel'}" class="division-card">
+${fr ? '' : `    <a href="${fr ? FR_STATIC.fundIntel : '/fund-intel'}" class="division-card">
       <div class="division-number">02 / Intelligence</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
       <div class="division-name">Fund Intel</div>
       <div class="division-desc">Daily signals from 12 Canadian fund firms. What changed, what it means, and what advisors should know.</div>
-      <div class="division-link">Today's briefing &rarr;</div>
-    </a>
+      <div class="division-link">${fr ? FR_ABOUT.cardNews.link : "Today's briefing"} &rarr;</div>
+    </a>`}
     <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}" class="division-card">
-      <div class="division-number">03 / Learning</div>
+      <div class="division-number">${fr ? FR_ABOUT.cardLearning.num : '03 / Learning'}</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-      <div class="division-name">Professional Development</div>
-      <div class="division-desc">CE-eligible modules, a curated reading list, decision frameworks, and a glossary. For advisors.</div>
-      <div class="division-link">The library &rarr;</div>
+      <div class="division-name">${fr ? FR_ABOUT.cardLearning.name : 'Professional Development'}</div>
+      <div class="division-desc">${fr ? FR_ABOUT.cardLearning.desc : `CE-eligible modules, a curated reading list, decision frameworks, and a glossary. For advisors.`}</div>
+      <div class="division-link">${fr ? FR_ABOUT.cardLearning.link : `The library`} &rarr;</div>
     </a>
     <a href="${fr ? FR_STATIC.forFirms : '/hdq-whitelabel.html'}" class="division-card">
-      <div class="division-number">04 / Firms</div>
+      <div class="division-number">${fr ? FR_ABOUT.cardFirms.num : '04 / Firms'}</div>
       <div class="division-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-      <div class="division-name">For Firms</div>
-      <div class="division-desc">HDQ content under a firm's brand. A client-ready daily publication for advisory practices.</div>
-      <div class="division-link">For firms &rarr;</div>
+      <div class="division-name">${fr ? FR_ABOUT.cardFirms.name : 'For Firms'}</div>
+      <div class="division-desc">${fr ? FR_ABOUT.cardFirms.desc : `HDQ content under a firm's brand. A client-ready daily publication for advisory practices.`}</div>
+      <div class="division-link">${fr ? FR_ABOUT.cardFirms.link : `For firms`} &rarr;</div>
     </a>
   </div>
 </div></section>
@@ -238,16 +232,16 @@ export async function renderHome(env) {
 <section style="background:var(--navy-50);border-top:1px solid var(--navy-100);border-bottom:1px solid var(--navy-100);padding:40px 0;">
   <div class="container">
     <div style="max-width:720px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy-600);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;">Editorial Methodology</div>
-      <p style="font-size:14px;color:var(--navy-800);line-height:1.7;margin-bottom:14px;">This publication is produced using HDQ's proprietary AI-assisted editorial framework, developed for the HDQ membership program.</p>
-      <p style="font-size:14px;color:var(--navy-800);line-height:1.7;margin-bottom:14px;">Unlike general-purpose consumer AI systems, the HDQ framework is configured specifically for financial narrative analysis, macroeconomic signal detection, market pattern recognition, and strategic synthesis across Canadian and global markets. Editorial direction, desk structure, and house standards are set and maintained by HDQ Editorial. Each edition is reviewed through HDQ editorial processes prior to publication.</p>
-      <p style="font-size:12px;color:var(--n500);line-height:1.6;margin:0;">Educational use only. Not investment advice.</p>
+      <div style="font-size:10px;font-weight:700;color:var(--navy-600);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;">${fr ? FR_ABOUT.methodologyLabel : 'Editorial Methodology'}</div>
+      <p style="font-size:14px;color:var(--navy-800);line-height:1.7;margin-bottom:14px;">${fr ? FR_ABOUT.methodology1 : "This publication is produced using HDQ's proprietary AI-assisted editorial framework, developed for the HDQ membership program."}</p>
+      <p style="font-size:14px;color:var(--navy-800);line-height:1.7;margin-bottom:14px;">${fr ? FR_ABOUT.methodology2 : `Unlike general-purpose consumer AI systems, the HDQ framework is configured specifically for financial narrative analysis, macroeconomic signal detection, market pattern recognition, and strategic synthesis across Canadian and global markets. Editorial direction, desk structure, and house standards are set and maintained by HDQ Editorial. Each edition is reviewed through HDQ editorial processes prior to publication.`}</p>
+      <p style="font-size:12px;color:var(--n500);line-height:1.6;margin:0;">${fr ? FR_ABOUT.disclaimer : 'Educational use only. Not investment advice.'}</p>
     </div>
   </div>
 </section>
 
 <section class="todays-edition"><div class="container">
-  <div class="section-header"><span class="section-title">Today's Edition</span><div class="section-rule"></div></div>
+  <div class="section-header"><span class="section-title">${fr ? FR_ABOUT.todaysEdition : "Today's Edition"}</span><div class="section-rule"></div></div>
   <div class="edition-grid">
     ${featuredHtml}
     <ul class="desk-list">
@@ -259,27 +253,27 @@ export async function renderHome(env) {
 <section class="prodev-strip"><div class="container"><div class="prodev-inner">
   <div class="prodev-intro">
     <div class="prodev-tag">Professional Development</div>
-    <h2 style="font-size:22px;margin-bottom:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;">Professional Development.</h2>
-    <p style="font-size:13px;color:var(--n600);line-height:1.6;margin-bottom:20px;">CE-eligible modules, curated reading, and frameworks for CIRO-registered advisors and CFP professionals.</p>
-    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}" style="font-size:13px;font-weight:600;color:var(--navy-700);display:inline-flex;align-items:center;gap:6px;">Browse the library</a>
+    <h2 style="font-size:22px;margin-bottom:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;">${fr ? FR_ABOUT.prodevTitle : 'Professional Development.'}</h2>
+    <p style="font-size:13px;color:var(--n600);line-height:1.6;margin-bottom:20px;">${fr ? FR_ABOUT.prodevSub : 'CE-eligible modules, curated reading, and frameworks for CIRO-registered advisors and CFP professionals.'}</p>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}" style="font-size:13px;font-weight:600;color:var(--navy-700);display:inline-flex;align-items:center;gap:6px;">${fr ? FR_ABOUT.browseLibrary : 'Browse the library'}</a>
   </div>
   <div class="prodev-modules">
-    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}" class="module-card"><div class="module-label">Module Library</div><div class="module-title">Structured learning paths for key advisory competencies</div></a>
-    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}#reading" class="module-card"><div class="module-label">Reading List</div><div class="module-title">Curated books and papers selected for practice relevance</div></a>
-    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}#frameworks" class="module-card"><div class="module-label">Frameworks</div><div class="module-title">Analytical frameworks behind HDQ editorial</div></a>
-    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}#glossary" class="module-card"><div class="module-label">Glossary</div><div class="module-title">Plain-language definitions of the terms that matter</div></a>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}" class="module-card"><div class="module-label">${fr ? FR_ABOUT.modules.name : 'Module Library'}</div><div class="module-title">${fr ? FR_ABOUT.modules.desc : 'Structured learning paths for key advisory competencies'}</div></a>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}#reading" class="module-card"><div class="module-label">${fr ? FR_ABOUT.reading.name : 'Reading List'}</div><div class="module-title">${fr ? FR_ABOUT.reading.desc : 'Curated books and papers selected for practice relevance'}</div></a>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}#frameworks" class="module-card"><div class="module-label">${fr ? FR_ABOUT.frameworks.name : 'Frameworks'}</div><div class="module-title">${fr ? FR_ABOUT.frameworks.desc : 'Analytical frameworks behind HDQ editorial'}</div></a>
+    <a href="${fr ? FR_STATIC.prodev : '/hdq-prodev.html'}#glossary" class="module-card"><div class="module-label">${fr ? FR_ABOUT.glossary.name : 'Glossary'}</div><div class="module-title">${fr ? FR_ABOUT.glossary.desc : 'Plain-language definitions of the terms that matter'}</div></a>
   </div>
 </div></div></section>
 
 <section class="whitelabel-strip"><div class="container">
   <div class="whitelabel-inner">
     <div class="whitelabel-copy">
-      <h2>HDQ for firms.</h2>
-      <p>A branded daily publication for client distribution. Written, researched, and delivered by HDQ Editorial.</p>
+      <h2>${fr ? FR_ABOUT.firmsTitle : 'HDQ for firms.'}</h2>
+      <p>${fr ? FR_ABOUT.firmsSub : `A branded daily publication for client distribution. Written, researched, and delivered by HDQ Editorial.`}</p>
     </div>
     <div class="whitelabel-actions">
-      <a href="${fr ? FR_STATIC.forFirms : '/hdq-whitelabel.html'}" class="btn-primary">Enquire about firm licensing</a>
-      <a href="${fr ? FR_STATIC.forFirms : '/hdq-whitelabel.html'}" class="btn-ghost">See a sample issue</a>
+      <a href="${fr ? FR_STATIC.forFirms : '/hdq-whitelabel.html'}" class="btn-primary">${fr ? FR_ABOUT.firmsEnquire : 'Enquire about firm licensing'}</a>
+      <a href="${fr ? FR_STATIC.forFirms : '/hdq-whitelabel.html'}" class="btn-ghost">${fr ? FR_ABOUT.firmsSample : 'See a sample issue'}</a>
     </div>
   </div>
 </div></section>
@@ -291,7 +285,7 @@ ${membershipFooterBand()}`;
     activePage: 'about',
     activeDesk: 'all',
     issueNo,
-    extraStyle: HOME_CSS,
+    extraStyle: HOME_CSS + (fr ? '\n.division-grid { grid-template-columns: repeat(3,1fr); }\n@media(max-width:900px){ .division-grid { grid-template-columns: repeat(2,1fr); } }\n@media(max-width:600px){ .division-grid { grid-template-columns: 1fr; } }' : ''),
     // Self-canonical in both editions — French build brief §8.
     extraHead: `
 <meta name="description" content="${fr ? FR_SITE.description : 'HDQ is a daily publication for licensed Canadian financial advisors. Five editorial desks plus a Daily Thread, published every weekday by 7 a.m. Eastern.'}">

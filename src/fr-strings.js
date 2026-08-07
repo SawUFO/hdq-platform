@@ -338,6 +338,53 @@ export const FR_ARTICLE = {
   inThisReport:  'Dans ce rapport',
 };
 
+// ── About page (/fr/a-propos) ───────────────────────────────────────────────
+// Institutional copy, written in French rather than generated — build brief §7.
+// The methodology disclosure mirrors the verbatim English block in
+// HDQ_Build_Brief §4.4.
+
+export const FR_ABOUT = {
+  publishedIn:   'Publié à Toronto',
+  heroTitle:     'Une publication quotidienne réservée aux membres, destinée aux conseillers canadiens chevronnés.',
+  heroSub:       'Cinq sections éditoriales. Un Fil quotidien. Publiés chaque jour de semaine avant 7\u00a0h, heure de l’Est, à l’intention des conseillers inscrits auprès de l’OCRI et des titulaires du titre CFP.',
+  readToday:     'Lire l’édition du jour',
+  waitingList:   'Liste d’attente',
+
+  sectionPublication: 'La publication',
+  cardNews:      { num: '01 / Nouvelles', name: 'Le sommaire quotidien',
+    desc: 'Cinq sections — Marchés, Géopolitique, Économie, Fiscalité et patrimoine, et Comportement — publiées avant 7\u00a0h, heure de l’Est, chaque jour de semaine.',
+    link: 'Le sommaire du jour' },
+  cardLearning:  { num: '02 / Formation', name: 'Perfectionnement professionnel',
+    desc: 'Des modules admissibles aux UFC, une liste de lecture sélectionnée, des cadres décisionnels et un glossaire. Pour les conseillers.',
+    link: 'La bibliothèque' },
+  cardFirms:     { num: '03 / Firmes', name: 'Pour les firmes',
+    desc: 'Le contenu de HDQ sous la marque d’une firme. Une publication quotidienne prête à remettre aux clients.',
+    link: 'Pour les firmes' },
+
+  todaysEdition: 'L’édition du jour',
+  readArticle:   'Lire l’article',
+  noEdition:     'L’édition du jour paraîtra sous peu.',
+  viewAll:       'Voir toutes les éditions',
+
+  methodologyLabel: 'Méthodologie éditoriale',
+  methodology1:  'Cette publication est produite au moyen du cadre éditorial exclusif de HDQ, assisté par intelligence artificielle et conçu pour le programme d’adhésion de HDQ.',
+  methodology2:  'Contrairement aux systèmes d’intelligence artificielle grand public, le cadre de HDQ est configuré spécifiquement pour l’analyse des récits financiers, la détection des signaux macroéconomiques, la reconnaissance des tendances de marché et la synthèse stratégique des marchés canadiens et mondiaux. L’orientation éditoriale, la structure des sections et les normes internes sont établies et maintenues par la rédaction de HDQ. Chaque édition est révisée selon les processus éditoriaux de HDQ avant publication.',
+  disclaimer:    'À des fins éducatives seulement. Ne constitue pas un conseil en placement.',
+
+  prodevTitle:   'Perfectionnement professionnel.',
+  prodevSub:     'Des modules admissibles aux UFC, des lectures sélectionnées et des cadres d’analyse, à l’intention des conseillers inscrits auprès de l’OCRI et des titulaires du titre CFP.',
+  browseLibrary: 'Parcourir la bibliothèque',
+  modules:       { name: 'Bibliothèque de modules', desc: 'Des parcours d’apprentissage structurés sur les compétences clés du conseiller' },
+  reading:       { name: 'Liste de lecture',        desc: 'Des livres et articles sélectionnés pour leur pertinence dans la pratique' },
+  frameworks:    { name: 'Cadres d’analyse',        desc: 'Les cadres analytiques qui sous-tendent la rédaction de HDQ' },
+  glossary:      { name: 'Glossaire',               desc: 'Des définitions en langage clair des termes qui comptent' },
+
+  firmsTitle:    'HDQ pour les firmes.',
+  firmsSub:      'Une publication quotidienne à votre marque, destinée à vos clients. Rédigée, documentée et livrée par la rédaction de HDQ.',
+  firmsEnquire:  'Renseignements sur la licence d’entreprise',
+  firmsSample:   'Voir un exemple d’édition',
+};
+
 // ── Footer ──────────────────────────────────────────────────────────────────
 // DRAFT below this line, except the four legal link labels.
 
