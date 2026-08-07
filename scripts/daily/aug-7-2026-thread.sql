@@ -54,6 +54,11 @@ Canada''s jobs beat and the US miss are compared directly below, sized to their 
 
   svg.appendChild(el("line",{x1:zeroX,x2:zeroX,y1:margin.top,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
 
+  for (var hi=0; hi<n-1; hi++){
+    var hy = margin.top + (hi+1)*barH + hi*gap + gap/2;
+    svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:hy,y2:hy,stroke:"#ececec","stroke-width":"0.5"}));
+  }
+
   var pillIndex = 0;
 
   for (var i=0;i<n;i++){
@@ -137,7 +142,7 @@ Canada''s jobs beat and the US miss are compared directly below, sized to their 
   var maxAbs = Math.max.apply(null, vals.map(Math.abs));
   var scaleMax = Math.ceil(maxAbs * 1.25 * 10) / 10;
 
-  var xScale = function(v){ return margin.left + (v / scaleMax) * (PW/2); };
+  var xScale = function(v){ return zeroX + (v / scaleMax) * (PW/2); };
   var zeroX = margin.left + PW/2;
 
   var gap = 6;
