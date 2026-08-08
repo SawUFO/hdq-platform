@@ -188,7 +188,7 @@ VALUES (
   // 2. Reference line at 100 (indexed start, resistance/anchor level)
   var refY = yp(100);
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#2e7d32","stroke-dasharray":"3,3"}));
-  svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"text-anchor":"start","font-size":7,fill:"#2e7d32","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "JUL 15 BASELINE = 100"));
+  svg.appendChild(el("text",{x:650,y:refY-10,"text-anchor":"end","font-size":7,fill:"#2e7d32","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "JUL 15 BASELINE = 100"));
 
   // 3. Series paths
   function buildPath(series){
@@ -227,7 +227,7 @@ VALUES (
     var nearRight = (ex + labelWidth + 3) > (margin.left + PW);
     var crowded = events.some(function(other){ return other.i !== ev.i && Math.abs(xp(other.i)-ex) < 85; });
     var anchor = (crowded || nearRight) ? "end" : "start";
-    var offset = (crowded || nearRight) ? -40 : 3;
+    var offset = (crowded || nearRight) ? -3 : 3;
     var yStart = crowded ? margin.top+50 : margin.top+20;
     svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, ev.label));
   });
@@ -264,7 +264,7 @@ VALUES (
 
   // 7. End-of-series labels (per-series y-offsets, suppressed value duplication since pills already state current price)
   svg.appendChild(el("text",{x:xp(n-1)-4,y:yp(gold[n-1])-14,"text-anchor":"end","font-size":7.5,fill:"#4a5568","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "GOLD (INDEXED)"));
-  svg.appendChild(el("text",{x:xp(n-1)-4,y:yp(brent[n-1])+18,"text-anchor":"end","font-size":7.5,fill:"#6b7280","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "BRENT (INDEXED)"));
+  svg.appendChild(el("text",{x:xp(n-1)-4,y:yp(brent[n-1])+30,"text-anchor":"end","font-size":7.5,fill:"#6b7280","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "BRENT (INDEXED)"));
 
   _cs.parentNode.appendChild(svg);
 })();
