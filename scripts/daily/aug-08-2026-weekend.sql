@@ -264,7 +264,7 @@ VALUES (
 
   // 7. End-of-series labels (per-series y-offsets, suppressed value duplication since pills already state current price)
   svg.appendChild(el("text",{x:xp(n-1)-4,y:yp(gold[n-1])-14,"text-anchor":"end","font-size":7.5,fill:"#4a5568","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "GOLD (INDEXED)"));
-  svg.appendChild(el("text",{x:xp(n-1)-4,y:yp(brent[n-1])+30,"text-anchor":"end","font-size":7.5,fill:"#6b7280","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "BRENT (INDEXED)"));
+  svg.appendChild(el("text",{x:xp(n-1)-4,y:yp(92),"text-anchor":"end","font-size":7.5,fill:"#6b7280","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "BRENT (INDEXED)"));
 
   _cs.parentNode.appendChild(svg);
 })();
