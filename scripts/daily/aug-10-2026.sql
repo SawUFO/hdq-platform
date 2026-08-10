@@ -116,8 +116,9 @@ VALUES (
     var nearRight = (ex + labelWidth + 3) > (margin.left + PW);
     var anchor = nearRight ? "end" : "start";
     var offset = nearRight ? -4 : 4;
+    var yStart = (ev.i === 19) ? margin.top+34 : margin.top+16;
     ev.label.forEach(function(line, li){
-      svg.appendChild(el("text",{x:ex+offset, y:margin.top+16+(li*9), "text-anchor":anchor, "font-size":"7", "font-weight":"700", fill:"#1a3560"}, line));
+      svg.appendChild(el("text",{x:ex+offset, y:yStart+(li*9), "text-anchor":anchor, "font-size":"7", "font-weight":"700", fill:"#1a3560"}, line));
     });
   });
 
@@ -135,11 +136,11 @@ VALUES (
   var pillH = 16;
 
   var goldPillX = lastX - goldPillW - 6;
-  var goldPillY = goldLastY - pillH/2;
+  var goldPillY = goldLastY - pillH/2 + 24;
   if (goldPillX < margin.left) goldPillX = margin.left;
 
-  var brentPillX = lastX - brentPillW - 6;
-  var brentPillY = brentLastY - pillH/2 + 24;
+  var brentPillX = lastX - brentPillW - 36;
+  var brentPillY = brentLastY - pillH/2 - 16;
   if (brentPillX < margin.left) brentPillX = margin.left;
   if (Math.abs(goldLastY - brentLastY) > 22) brentPillY = brentLastY - pillH/2;
   if (brentPillX < margin.left) brentPillX = margin.left;
@@ -151,7 +152,7 @@ VALUES (
   svg.appendChild(el("text",{x:brentPillX+brentPillW/2, y:brentPillY+pillH/2+3, "text-anchor":"middle", "font-size":"9", "font-weight":"700", fill:"#ffffff"}, brentValText));
 
   // 7. Series end labels (per-series offsets, not shared expression)
-  var labelYOffsets = [-14, 14];
+  var labelYOffsets = [14, -14];
   svg.appendChild(el("text",{x:lastX-4, y:goldLastY+3+labelYOffsets[0], "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#e8a825"}, "GOLD"));
   svg.appendChild(el("text",{x:lastX-4, y:brentLastY+3+labelYOffsets[1], "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#6b7280"}, "BRENT"));
 
@@ -497,9 +498,9 @@ VALUES (
   var holdProb = [33, 38.1, 45, 60];
   var n = dates.length;
 
-  var xS = function(i){ return margin.left + 15 + (i/(n-1)) * (PW - 30); };
+  var xS = function(i){ return margin.left + 30 + (i/(n-1)) * (PW - 60); };
   var yp = function(v){ return margin.top + PH - (v/100) * PH; };
-  var barW = 70;
+  var barW = 50;
 
   // 1. Gridlines
   [0,25,50,75,100].forEach(function(gv){
@@ -754,8 +755,9 @@ VALUES (
     var nearRight = (ex + labelWidth + 3) > (margin.left + PW);
     var anchor = nearRight ? "end" : "start";
     var offset = nearRight ? -4 : 4;
+    var yStart = (ev.i === 19) ? margin.top+74 : margin.top+56;
     ev.label.forEach(function(line, li){
-      svg.appendChild(el("text",{x:ex+offset, y:margin.top+56+(li*9), "text-anchor":anchor, "font-size":"7", "font-weight":"700", fill:"#1a3560"}, line));
+      svg.appendChild(el("text",{x:ex+offset, y:yStart+(li*9), "text-anchor":anchor, "font-size":"7", "font-weight":"700", fill:"#1a3560"}, line));
     });
   });
 
@@ -1012,7 +1014,7 @@ VALUES (
   var evI = n-1;
   var evX = xS(evI);
   svg.appendChild(el("line",{x1:evX, x2:evX, y1:priceTop, y2:priceBottom, stroke:"#1a3560", "stroke-opacity":"0.5", "stroke-dasharray":"2,3"}));
-  svg.appendChild(el("text",{x:evX-4, y:priceTop+10, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560"}, "CA/US JOBS"));
+  svg.appendChild(el("text",{x:evX-4, y:priceTop+2, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560"}, "CA/US JOBS"));
 
   // 6. Gold pill on the record close
   function textWidth(str, fontSize){
