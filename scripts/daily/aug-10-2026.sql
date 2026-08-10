@@ -152,7 +152,7 @@ VALUES (
   svg.appendChild(el("text",{x:brentPillX+brentPillW/2, y:brentPillY+pillH/2+3, "text-anchor":"middle", "font-size":"9", "font-weight":"700", fill:"#ffffff"}, brentValText));
 
   // 7. Series end labels (per-series offsets, not shared expression)
-  var labelYOffsets = [6, -14];
+  var labelYOffsets = [38, -14];
   svg.appendChild(el("text",{x:lastX+4, y:goldLastY+3+labelYOffsets[0], "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#e8a825"}, "GOLD"));
   svg.appendChild(el("text",{x:lastX-4, y:brentLastY+3+labelYOffsets[1], "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#6b7280"}, "BRENT"));
 
