@@ -116,7 +116,7 @@ VALUES (
     var nearRight = (ex + labelWidth + 3) > (margin.left + PW);
     var anchor = nearRight ? "end" : "start";
     var offset = nearRight ? -4 : 4;
-    var yStart = (ev.i === 19) ? margin.top+34 : margin.top+16;
+    var yStart = (ev.i === 19) ? margin.top+44 : margin.top+16;
     ev.label.forEach(function(line, li){
       svg.appendChild(el("text",{x:ex+offset, y:yStart+(li*9), "text-anchor":anchor, "font-size":"7", "font-weight":"700", fill:"#1a3560"}, line));
     });
@@ -152,8 +152,8 @@ VALUES (
   svg.appendChild(el("text",{x:brentPillX+brentPillW/2, y:brentPillY+pillH/2+3, "text-anchor":"middle", "font-size":"9", "font-weight":"700", fill:"#ffffff"}, brentValText));
 
   // 7. Series end labels (per-series offsets, not shared expression)
-  var labelYOffsets = [14, -14];
-  svg.appendChild(el("text",{x:lastX-4, y:goldLastY+3+labelYOffsets[0], "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#e8a825"}, "GOLD"));
+  var labelYOffsets = [6, -14];
+  svg.appendChild(el("text",{x:lastX+4, y:goldLastY+3+labelYOffsets[0], "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#e8a825"}, "GOLD"));
   svg.appendChild(el("text",{x:lastX-4, y:brentLastY+3+labelYOffsets[1], "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#6b7280"}, "BRENT"));
 
   _cs.parentNode.appendChild(svg);
