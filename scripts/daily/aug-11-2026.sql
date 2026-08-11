@@ -469,7 +469,7 @@ VALUES (
   // event marker: US jobs report, Aug 7 (idx 23)
   var jobsX = xp(23);
   svg.appendChild(el("line",{x1:jobsX,x2:jobsX,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-width":"1","stroke-dasharray":"2,3",opacity:"0.5"}));
-  svg.appendChild(el("text",{x:jobsX-4,y:yp(data[n-1].v)+18,"text-anchor":"end","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "US JOBS MISS"));
+  svg.appendChild(el("text",{x:jobsX-4,y:margin.top+PH-6,"text-anchor":"end","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "US JOBS MISS"));
 
   // 5. endpoint dot
   var lastX = xp(n-1), lastY = yp(data[n-1].v);
