@@ -29,39 +29,39 @@ VALUES (
 </div>
 <div style="padding:12px 14px 8px;">
 <script>(function(){
-  var _cs = document.currentScript&nbsp;;
+  var _cs = document.currentScript;
   var data = [
-    {label&nbsp;:"Réaction du cours, 10 août", v&nbsp;:-6.45},
-    {label&nbsp;:"Rallye avant résultats, 30 j.", v&nbsp;:30.0},
-    {label&nbsp;:"Flux de trésorerie, sur un an", v&nbsp;:28.0},
-    {label&nbsp;:"Production d’or, sommet prévu", v&nbsp;:3.4},
-    {label&nbsp;:"Revenus, sur un an", v&nbsp;:44.0},
-    {label&nbsp;:"Bénéfice net, sur un an", v&nbsp;:50.0}
-  ]&nbsp;;
-  var margin = {left&nbsp;:155, right&nbsp;:24, top&nbsp;:18, bottom&nbsp;:46}&nbsp;;
-  var PW = 501, PH = 236&nbsp;;
-  var n = data.length&nbsp;;
+    {label:"Réaction du cours, 10 août", v:-6.45},
+    {label:"Rallye avant résultats, 30 j.", v:30.0},
+    {label:"Flux de trésorerie, sur un an", v:28.0},
+    {label:"Production d’or, sommet prévu", v:3.4},
+    {label:"Revenus, sur un an", v:44.0},
+    {label:"Bénéfice net, sur un an", v:50.0}
+  ];
+  var margin = {left:155, right:24, top:18, bottom:46};
+  var PW = 501, PH = 236;
+  var n = data.length;
 
-  var svg = document.createElementNS("http&nbsp;://www.w3.org/2000/svg","svg")&nbsp;;
-  svg.setAttribute("viewBox","0 0 680 300")&nbsp;;
-  svg.setAttribute("width","100%")&nbsp;;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 680 300");
+  svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
-    var e = document.createElementNS("http&nbsp;://www.w3.org/2000/svg", tag)&nbsp;;
-    for (var k in attrs) e.setAttribute(k, attrs[k])&nbsp;;
-    if (txt&nbsp;!== undefined) e.textContent = txt&nbsp;;
-    return e&nbsp;;
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (txt !== undefined) e.textContent = txt;
+    return e;
   }
 
-  var vMin = -15, vMax = 60&nbsp;;
-  function xS(v){ return margin.left + ((v - vMin)/(vMax - vMin)) * PW&nbsp;; }
-  var xZero = xS(0)&nbsp;;
+  var vMin = -15, vMax = 60;
+  function xS(v){ return margin.left + ((v - vMin)/(vMax - vMin)) * PW; }
+  var xZero = xS(0);
 
-  var gap = 10&nbsp;;
-  var barH = Math.floor((PH - (n-1)*gap) / n)&nbsp;;
+  var gap = 10;
+  var barH = Math.floor((PH - (n-1)*gap) / n);
 
   // 1. gridlines
-  for (var g=0&nbsp;; g<=4; g++){
+  for (var g=0; g<=4; g++){
     var gv = vMin + (g/4)*(vMax-vMin);
     var gx = xS(gv);
     svg.appendChild(el("line",{x1:gx,x2:gx,y1:margin.top,y2:margin.top+PH,stroke:"#ececec","stroke-width":"0.5"}));
@@ -76,26 +76,26 @@ VALUES (
   for (var i=0;i<n;i++){
     var d = data[i];
     var y0 = margin.top + i*(barH+gap);
-    var isPos = d.v >= 0&nbsp;;
-    var barX0 = isPos&nbsp;? xZero&nbsp;: xS(d.v)&nbsp;;
-    var barX1 = isPos&nbsp;? xS(d.v)&nbsp;: xZero&nbsp;;
-    var fill = isPos&nbsp;? "#3a7a55"&nbsp;: "#8a3030"&nbsp;;
-    svg.appendChild(el("rect",{x&nbsp;:barX0,y&nbsp;:y0,width&nbsp;:Math.max(barX1-barX0,1),height&nbsp;:barH,fill&nbsp;:fill}))&nbsp;;
+    var isPos = d.v >= 0;
+    var barX0 = isPos ? xZero : xS(d.v);
+    var barX1 = isPos ? xS(d.v) : xZero;
+    var fill = isPos ? "#3a7a55" : "#8a3030";
+    svg.appendChild(el("rect",{x:barX0,y:y0,width:Math.max(barX1-barX0,1),height:barH,fill:fill}));
 
-    var rowLab = el("text",{x&nbsp;:margin.left-10,y&nbsp;:y0+barH/2+3,"text-anchor"&nbsp;:"end","font-size"&nbsp;:"8.5","fill"&nbsp;:"#444","font-family"&nbsp;:"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, d.label)&nbsp;;
-    svg.appendChild(rowLab)&nbsp;;
+    var rowLab = el("text",{x:margin.left-10,y:y0+barH/2+3,"text-anchor":"end","font-size":"8.5","fill":"#444","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, d.label);
+    svg.appendChild(rowLab);
 
-    var lx = isPos&nbsp;? barX1 + 6&nbsp;: barX0 - 6&nbsp;;
-    var lanchor = isPos&nbsp;? "start"&nbsp;: "end"&nbsp;;
-    var lval = (d.v>0&nbsp;?"+"&nbsp;:"") + d.v.toFixed(1).replace(".", ",") + " %"&nbsp;;
-    var lcol = isPos&nbsp;? "#3a7a55"&nbsp;: "#8a3030"&nbsp;;
-    svg.appendChild(el("text",{x&nbsp;:lx,y&nbsp;:y0+barH/2+3,"text-anchor"&nbsp;:lanchor,"font-size"&nbsp;:"9","font-weight"&nbsp;:"700","fill"&nbsp;:lcol,"font-family"&nbsp;:"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, lval))&nbsp;;
+    var lx = isPos ? barX1 + 6 : barX0 - 6;
+    var lanchor = isPos ? "start" : "end";
+    var lval = (d.v>0?"+":"") + d.v.toFixed(1).replace(".", ",") + " %";
+    var lcol = isPos ? "#3a7a55" : "#8a3030";
+    svg.appendChild(el("text",{x:lx,y:y0+barH/2+3,"text-anchor":lanchor,"font-size":"9","font-weight":"700","fill":lcol,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, lval));
   }
 
-  svg.appendChild(el("line",{x1&nbsp;:margin.left,x2&nbsp;:margin.left+PW,y1&nbsp;:margin.top+PH,y2&nbsp;:margin.top+PH,stroke&nbsp;:"#d8d8d8","stroke-width"&nbsp;:"1"}))&nbsp;;
+  svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+PH,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
 
-  _cs.parentNode.appendChild(svg)&nbsp;;
-})()&nbsp;;
+  _cs.parentNode.appendChild(svg);
+})();
 </script>
 </div>
 <div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source&nbsp;: Barrick Mining Corporation, résultats du T2 2026, données de clôture du TSX d’Investing.com, 10 août 2026. &nbsp;|&nbsp; hdq.ca</div>
@@ -219,35 +219,35 @@ VALUES (
 </div>
 <div style="padding:12px 14px 8px;">
 <script>(function(){
-  var _cs = document.currentScript&nbsp;;
+  var _cs = document.currentScript;
   var data = [
-    {q&nbsp;:"2022 T1",v&nbsp;:1},{q&nbsp;:"2022 T2",v&nbsp;:1},{q&nbsp;:"2022 T3",v&nbsp;:2},{q&nbsp;:"2022 T4",v&nbsp;:3},
-    {q&nbsp;:"2023 T1",v&nbsp;:4},{q&nbsp;:"2023 T2",v&nbsp;:5},{q&nbsp;:"2023 T3",v&nbsp;:5},{q&nbsp;:"2023 T4",v&nbsp;:5},
-    {q&nbsp;:"2024 T1",v&nbsp;:6},{q&nbsp;:"2024 T2",v&nbsp;:6},{q&nbsp;:"2024 T3",v&nbsp;:5},{q&nbsp;:"2024 T4",v&nbsp;:5},
-    {q&nbsp;:"2025 T1",v&nbsp;:4},{q&nbsp;:"2025 T2",v&nbsp;:4},{q&nbsp;:"2025 T3",v&nbsp;:3},{q&nbsp;:"2025 T4",v&nbsp;:3},
-    {q&nbsp;:"2026 T1",v&nbsp;:3},{q&nbsp;:"2026 T2",v&nbsp;:3},{q&nbsp;:"2026 T3",v&nbsp;:3}
-  ]&nbsp;;
-  var margin = {left&nbsp;:62, right&nbsp;:24, top&nbsp;:18, bottom&nbsp;:46}&nbsp;;
-  var PW = 594, PH = 236&nbsp;;
-  var n = data.length&nbsp;;
+    {q:"2022 T1",v:1},{q:"2022 T2",v:1},{q:"2022 T3",v:2},{q:"2022 T4",v:3},
+    {q:"2023 T1",v:4},{q:"2023 T2",v:5},{q:"2023 T3",v:5},{q:"2023 T4",v:5},
+    {q:"2024 T1",v:6},{q:"2024 T2",v:6},{q:"2024 T3",v:5},{q:"2024 T4",v:5},
+    {q:"2025 T1",v:4},{q:"2025 T2",v:4},{q:"2025 T3",v:3},{q:"2025 T4",v:3},
+    {q:"2026 T1",v:3},{q:"2026 T2",v:3},{q:"2026 T3",v:3}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
+  var n = data.length;
 
-  var svg = document.createElementNS("http&nbsp;://www.w3.org/2000/svg","svg")&nbsp;;
-  svg.setAttribute("viewBox","0 0 680 300")&nbsp;;
-  svg.setAttribute("width","100%")&nbsp;;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 680 300");
+  svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
-    var e = document.createElementNS("http&nbsp;://www.w3.org/2000/svg", tag)&nbsp;;
-    for (var k in attrs) e.setAttribute(k, attrs[k])&nbsp;;
-    if (txt&nbsp;!== undefined) e.textContent = txt&nbsp;;
-    return e&nbsp;;
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (txt !== undefined) e.textContent = txt;
+    return e;
   }
 
-  function xp(i){ return margin.left + (i/(n-1))*PW&nbsp;; }
-  var vMin = 0, vMax = 7&nbsp;;
-  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH&nbsp;; }
+  function xp(i){ return margin.left + (i/(n-1))*PW; }
+  var vMin = 0, vMax = 7;
+  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
 
   // 1. gridlines
-  for (var g=0&nbsp;; g<=7; g++){
+  for (var g=0; g<=7; g++){
     var gy = yp(g);
     svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
     svg.appendChild(el("text",{x:margin.left-6,y:gy+3,"text-anchor":"end","font-size":"8.5","fill":"#aaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, g+" %"));
@@ -414,37 +414,37 @@ VALUES (
 </div>
 <div style="padding:12px 14px 8px;">
 <script>(function(){
-  var _cs = document.currentScript&nbsp;;
+  var _cs = document.currentScript;
   var data = [
-    {d&nbsp;:"8 juin",v&nbsp;:3.530},{d&nbsp;:"9 juin",v&nbsp;:3.488},{d&nbsp;:"10 juin",v&nbsp;:3.497},{d&nbsp;:"11 juin",v&nbsp;:3.409},
-    {d&nbsp;:"12 juin",v&nbsp;:3.402},{d&nbsp;:"15 juin",v&nbsp;:3.413},{d&nbsp;:"16 juin",v&nbsp;:3.391},{d&nbsp;:"17 juin",v&nbsp;:3.420},
-    {d&nbsp;:"18 juin",v&nbsp;:3.374},{d&nbsp;:"19 juin",v&nbsp;:3.397},{d&nbsp;:"22 juin",v&nbsp;:3.434},{d&nbsp;:"23 juin",v&nbsp;:3.439},
-    {d&nbsp;:"24 juin",v&nbsp;:3.360},{d&nbsp;:"25 juin",v&nbsp;:3.382},{d&nbsp;:"26 juin",v&nbsp;:3.386},{d&nbsp;:"29 juin",v&nbsp;:3.374},
-    {d&nbsp;:"30 juin",v&nbsp;:3.382},{d&nbsp;:"2 juill.",v&nbsp;:3.445},{d&nbsp;:"3 juill.",v&nbsp;:3.444},{d&nbsp;:"6 juill.",v&nbsp;:3.419},
-    {d&nbsp;:"7 juill.",v&nbsp;:3.494},{d&nbsp;:"8 juill.",v&nbsp;:3.578},{d&nbsp;:"31 juill.",v&nbsp;:3.660},{d&nbsp;:"7 août",v&nbsp;:3.650},
-    {d&nbsp;:"10 août",v&nbsp;:3.670}
-  ]&nbsp;;
-  var margin = {left&nbsp;:62, right&nbsp;:24, top&nbsp;:18, bottom&nbsp;:46}&nbsp;;
-  var PW = 594, PH = 236&nbsp;;
-  var n = data.length&nbsp;;
+    {d:"8 juin",v:3.530},{d:"9 juin",v:3.488},{d:"10 juin",v:3.497},{d:"11 juin",v:3.409},
+    {d:"12 juin",v:3.402},{d:"15 juin",v:3.413},{d:"16 juin",v:3.391},{d:"17 juin",v:3.420},
+    {d:"18 juin",v:3.374},{d:"19 juin",v:3.397},{d:"22 juin",v:3.434},{d:"23 juin",v:3.439},
+    {d:"24 juin",v:3.360},{d:"25 juin",v:3.382},{d:"26 juin",v:3.386},{d:"29 juin",v:3.374},
+    {d:"30 juin",v:3.382},{d:"2 juill.",v:3.445},{d:"3 juill.",v:3.444},{d:"6 juill.",v:3.419},
+    {d:"7 juill.",v:3.494},{d:"8 juill.",v:3.578},{d:"31 juill.",v:3.660},{d:"7 août",v:3.650},
+    {d:"10 août",v:3.670}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
+  var n = data.length;
 
-  var svg = document.createElementNS("http&nbsp;://www.w3.org/2000/svg","svg")&nbsp;;
-  svg.setAttribute("viewBox","0 0 680 300")&nbsp;;
-  svg.setAttribute("width","100%")&nbsp;;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 680 300");
+  svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
-    var e = document.createElementNS("http&nbsp;://www.w3.org/2000/svg", tag)&nbsp;;
-    for (var k in attrs) e.setAttribute(k, attrs[k])&nbsp;;
-    if (txt&nbsp;!== undefined) e.textContent = txt&nbsp;;
-    return e&nbsp;;
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (txt !== undefined) e.textContent = txt;
+    return e;
   }
 
-  function xp(i){ return margin.left + (i/(n-1))*PW&nbsp;; }
-  var vMin = 3.30, vMax = 3.75&nbsp;;
-  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH&nbsp;; }
+  function xp(i){ return margin.left + (i/(n-1))*PW; }
+  var vMin = 3.30, vMax = 3.75;
+  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
 
   // 1. gridlines
-  for (var g=0&nbsp;; g<=4; g++){
+  for (var g=0; g<=4; g++){
     var gv = vMin + (g/4)*(vMax-vMin);
     var gy = yp(gv);
     svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
@@ -615,36 +615,36 @@ VALUES (
 </div>
 <div style="padding:12px 14px 8px;">
 <script>(function(){
-  var _cs = document.currentScript&nbsp;;
+  var _cs = document.currentScript;
   var data = [
-    {d&nbsp;:"13 juill.",v&nbsp;:83.30},{d&nbsp;:"14 juill.",v&nbsp;:84.73},{d&nbsp;:"15 juill.",v&nbsp;:84.95},{d&nbsp;:"16 juill.",v&nbsp;:84.23},
-    {d&nbsp;:"17 juill.",v&nbsp;:88.10},{d&nbsp;:"20 juill.",v&nbsp;:87.14},{d&nbsp;:"21 juill.",v&nbsp;:88.52},{d&nbsp;:"22 juill.",v&nbsp;:90.18},
-    {d&nbsp;:"23 juill.",v&nbsp;:94.26},{d&nbsp;:"24 juill.",v&nbsp;:91.68},{d&nbsp;:"27 juill.",v&nbsp;:88.36},{d&nbsp;:"28 juill.",v&nbsp;:84.09},
-    {d&nbsp;:"29 juill.",v&nbsp;:90.74},{d&nbsp;:"30 juill.",v&nbsp;:89.03},{d&nbsp;:"31 juill.",v&nbsp;:90.12},{d&nbsp;:"3 août",v&nbsp;:83.77},
-    {d&nbsp;:"4 août",v&nbsp;:79.36},{d&nbsp;:"5 août",v&nbsp;:79.45},{d&nbsp;:"6 août",v&nbsp;:82.49},{d&nbsp;:"7 août",v&nbsp;:83.55},
-    {d&nbsp;:"9 août",v&nbsp;:84.42},{d&nbsp;:"10 août",v&nbsp;:87.72},{d&nbsp;:"11 août",v&nbsp;:89.76}
-  ]&nbsp;;
-  var margin = {left&nbsp;:62, right&nbsp;:24, top&nbsp;:18, bottom&nbsp;:46}&nbsp;;
-  var PW = 594, PH = 236&nbsp;;
-  var n = data.length&nbsp;;
+    {d:"13 juill.",v:83.30},{d:"14 juill.",v:84.73},{d:"15 juill.",v:84.95},{d:"16 juill.",v:84.23},
+    {d:"17 juill.",v:88.10},{d:"20 juill.",v:87.14},{d:"21 juill.",v:88.52},{d:"22 juill.",v:90.18},
+    {d:"23 juill.",v:94.26},{d:"24 juill.",v:91.68},{d:"27 juill.",v:88.36},{d:"28 juill.",v:84.09},
+    {d:"29 juill.",v:90.74},{d:"30 juill.",v:89.03},{d:"31 juill.",v:90.12},{d:"3 août",v:83.77},
+    {d:"4 août",v:79.36},{d:"5 août",v:79.45},{d:"6 août",v:82.49},{d:"7 août",v:83.55},
+    {d:"9 août",v:84.42},{d:"10 août",v:87.72},{d:"11 août",v:89.76}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
+  var n = data.length;
 
-  var svg = document.createElementNS("http&nbsp;://www.w3.org/2000/svg","svg")&nbsp;;
-  svg.setAttribute("viewBox","0 0 680 300")&nbsp;;
-  svg.setAttribute("width","100%")&nbsp;;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 680 300");
+  svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
-    var e = document.createElementNS("http&nbsp;://www.w3.org/2000/svg", tag)&nbsp;;
-    for (var k in attrs) e.setAttribute(k, attrs[k])&nbsp;;
-    if (txt&nbsp;!== undefined) e.textContent = txt&nbsp;;
-    return e&nbsp;;
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (txt !== undefined) e.textContent = txt;
+    return e;
   }
 
-  function xp(i){ return margin.left + (i/(n-1))*PW&nbsp;; }
-  var vMin = 76, vMax = 96&nbsp;;
-  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH&nbsp;; }
+  function xp(i){ return margin.left + (i/(n-1))*PW; }
+  var vMin = 76, vMax = 96;
+  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
 
   // 1. gridlines
-  for (var g=0&nbsp;; g<=4; g++){
+  for (var g=0; g<=4; g++){
     var gv = vMin + (g/4)*(vMax-vMin);
     var gy = yp(gv);
     svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
@@ -813,39 +813,39 @@ VALUES (
 </div>
 <div style="padding:12px 14px 8px;">
 <script>(function(){
-  var _cs = document.currentScript&nbsp;;
+  var _cs = document.currentScript;
   var data = [
-    {t&nbsp;:"SCR", v&nbsp;:8.74},
-    {t&nbsp;:"IPCO", v&nbsp;:8.24},
-    {t&nbsp;:"EDR", v&nbsp;:7.30},
-    {t&nbsp;:"ABX", v&nbsp;:-6.45},
-    {t&nbsp;:"ATS", v&nbsp;:-6.81},
-    {t&nbsp;:"SPB", v&nbsp;:-9.02}
-  ]&nbsp;;
-  var margin = {left&nbsp;:62, right&nbsp;:24, top&nbsp;:18, bottom&nbsp;:46}&nbsp;;
-  var PW = 594, PH = 236&nbsp;;
-  var n = data.length&nbsp;;
+    {t:"SCR", v:8.74},
+    {t:"IPCO", v:8.24},
+    {t:"EDR", v:7.30},
+    {t:"ABX", v:-6.45},
+    {t:"ATS", v:-6.81},
+    {t:"SPB", v:-9.02}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
+  var n = data.length;
 
-  var svg = document.createElementNS("http&nbsp;://www.w3.org/2000/svg","svg")&nbsp;;
-  svg.setAttribute("viewBox","0 0 680 300")&nbsp;;
-  svg.setAttribute("width","100%")&nbsp;;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 680 300");
+  svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
-    var e = document.createElementNS("http&nbsp;://www.w3.org/2000/svg", tag)&nbsp;;
-    for (var k in attrs) e.setAttribute(k, attrs[k])&nbsp;;
-    if (txt&nbsp;!== undefined) e.textContent = txt&nbsp;;
-    return e&nbsp;;
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (txt !== undefined) e.textContent = txt;
+    return e;
   }
 
-  var xS = function(i){ return margin.left + 29 + (i/(n-1)) * (PW - 58)&nbsp;; }&nbsp;;
-  var barW = 46&nbsp;;
+  var xS = function(i){ return margin.left + 29 + (i/(n-1)) * (PW - 58); };
+  var barW = 46;
 
-  var vMin = -12, vMax = 12&nbsp;;
-  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH&nbsp;; }
-  var yZero = yp(0)&nbsp;;
+  var vMin = -12, vMax = 12;
+  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
+  var yZero = yp(0);
 
   // 1. gridlines
-  for (var g=0&nbsp;; g<=4; g++){
+  for (var g=0; g<=4; g++){
     var gv = vMin + (g/4)*(vMax-vMin);
     var gy = yp(gv);
     svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
@@ -859,22 +859,22 @@ VALUES (
   for (var i=0;i<n;i++){
     var d = data[i];
     var cx = xS(i);
-    var isPos = d.v >= 0&nbsp;;
-    var barY0 = isPos&nbsp;? yp(d.v)&nbsp;: yZero&nbsp;;
-    var barY1 = isPos&nbsp;? yZero&nbsp;: yp(d.v)&nbsp;;
-    var fill = isPos&nbsp;? "#3a7a55"&nbsp;: "#8a3030"&nbsp;;
-    svg.appendChild(el("rect",{x&nbsp;:cx-barW/2,y&nbsp;:barY0,width&nbsp;:barW,height&nbsp;:Math.max(barY1-barY0,1),fill&nbsp;:fill}))&nbsp;;
+    var isPos = d.v >= 0;
+    var barY0 = isPos ? yp(d.v) : yZero;
+    var barY1 = isPos ? yZero : yp(d.v);
+    var fill = isPos ? "#3a7a55" : "#8a3030";
+    svg.appendChild(el("rect",{x:cx-barW/2,y:barY0,width:barW,height:Math.max(barY1-barY0,1),fill:fill}));
 
-    var lblY = isPos&nbsp;? barY0 - 6&nbsp;: barY1 + 12&nbsp;;
-    var lval = (d.v>0&nbsp;?"+"&nbsp;:"") + d.v.toFixed(2).replace(".", ",") + " %"&nbsp;;
-    var lcol = isPos&nbsp;? "#3a7a55"&nbsp;: "#8a3030"&nbsp;;
-    svg.appendChild(el("text",{x&nbsp;:cx,y&nbsp;:lblY,"text-anchor"&nbsp;:"middle","font-size"&nbsp;:"9","font-weight"&nbsp;:"700","fill"&nbsp;:lcol,"font-family"&nbsp;:"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, lval))&nbsp;;
+    var lblY = isPos ? barY0 - 6 : barY1 + 12;
+    var lval = (d.v>0?"+":"") + d.v.toFixed(2).replace(".", ",") + " %";
+    var lcol = isPos ? "#3a7a55" : "#8a3030";
+    svg.appendChild(el("text",{x:cx,y:lblY,"text-anchor":"middle","font-size":"9","font-weight":"700","fill":lcol,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, lval));
 
-    svg.appendChild(el("text",{x&nbsp;:cx,y&nbsp;:margin.top+PH+14,"text-anchor"&nbsp;:"middle","font-size"&nbsp;:"8","fill"&nbsp;:"#999","font-family"&nbsp;:"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, d.t))&nbsp;;
+    svg.appendChild(el("text",{x:cx,y:margin.top+PH+14,"text-anchor":"middle","font-size":"8","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, d.t));
   }
 
-  _cs.parentNode.appendChild(svg)&nbsp;;
-})()&nbsp;;
+  _cs.parentNode.appendChild(svg);
+})();
 </script>
 </div>
 <div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source&nbsp;: Investing.com, données de clôture de séance de l’indice composé TSX, 10 août 2026. &nbsp;|&nbsp; hdq.ca</div>
@@ -987,55 +987,55 @@ VALUES (
 </div>
 <div style="padding:12px 14px 8px;">
 <script>(function(){
-  var _cs = document.currentScript&nbsp;;
-  // Indexed to 100 at Jul 28 close. Real levels&nbsp;: TSX composite (Investing.com),
+  var _cs = document.currentScript;
+  // Indexed to 100 at Jul 28 close. Real levels: TSX composite (Investing.com),
   // Brent crude (Investing.com), GoC 10-year yield (Trading Economics).
   var raw = [
-    {d&nbsp;:"28 juill.", tsx&nbsp;:35749.70, brent&nbsp;:84.09, y&nbsp;:3.55},
-    {d&nbsp;:"29 juill.", tsx&nbsp;:35333.78, brent&nbsp;:90.74, y&nbsp;:3.58},
-    {d&nbsp;:"30 juill.", tsx&nbsp;:35505.84, brent&nbsp;:89.03, y&nbsp;:3.60},
-    {d&nbsp;:"31 juill.", tsx&nbsp;:35226.14, brent&nbsp;:90.12, y&nbsp;:3.66},
-    {d&nbsp;:"4 août",  tsx&nbsp;:35801.59, brent&nbsp;:79.36, y&nbsp;:3.62},
-    {d&nbsp;:"5 août",  tsx&nbsp;:36146.42, brent&nbsp;:79.45, y&nbsp;:3.63},
-    {d&nbsp;:"6 août",  tsx&nbsp;:36136.31, brent&nbsp;:82.49, y&nbsp;:3.63},
-    {d&nbsp;:"7 août",  tsx&nbsp;:36381.23, brent&nbsp;:83.55, y&nbsp;:3.65},
-    {d&nbsp;:"10 août", tsx&nbsp;:36458.33, brent&nbsp;:87.69, y&nbsp;:3.67},
-    {d&nbsp;:"11 août", tsx&nbsp;:36520.00, brent&nbsp;:88.23, y&nbsp;:3.70}
-  ]&nbsp;;
-  var base = raw[0]&nbsp;;
+    {d:"28 juill.", tsx:35749.70, brent:84.09, y:3.55},
+    {d:"29 juill.", tsx:35333.78, brent:90.74, y:3.58},
+    {d:"30 juill.", tsx:35505.84, brent:89.03, y:3.60},
+    {d:"31 juill.", tsx:35226.14, brent:90.12, y:3.66},
+    {d:"4 août",  tsx:35801.59, brent:79.36, y:3.62},
+    {d:"5 août",  tsx:36146.42, brent:79.45, y:3.63},
+    {d:"6 août",  tsx:36136.31, brent:82.49, y:3.63},
+    {d:"7 août",  tsx:36381.23, brent:83.55, y:3.65},
+    {d:"10 août", tsx:36458.33, brent:87.69, y:3.67},
+    {d:"11 août", tsx:36520.00, brent:88.23, y:3.70}
+  ];
+  var base = raw[0];
   var data = raw.map(function(r){
     return {
-      d&nbsp;: r.d,
-      tsx&nbsp;: (r.tsx/base.tsx)*100,
-      brent&nbsp;: (r.brent/base.brent)*100,
-      y&nbsp;: (r.y/base.y)*100
-    }&nbsp;;
-  })&nbsp;;
-  var margin = {left&nbsp;:62, right&nbsp;:24, top&nbsp;:18, bottom&nbsp;:46}&nbsp;;
-  var PW = 594, PH = 236&nbsp;;
-  var n = data.length&nbsp;;
+      d: r.d,
+      tsx: (r.tsx/base.tsx)*100,
+      brent: (r.brent/base.brent)*100,
+      y: (r.y/base.y)*100
+    };
+  });
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
+  var n = data.length;
 
-  var svg = document.createElementNS("http&nbsp;://www.w3.org/2000/svg","svg")&nbsp;;
-  svg.setAttribute("viewBox","0 0 680 300")&nbsp;;
-  svg.setAttribute("width","100%")&nbsp;;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 680 300");
+  svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
-    var e = document.createElementNS("http&nbsp;://www.w3.org/2000/svg", tag)&nbsp;;
-    for (var k in attrs) e.setAttribute(k, attrs[k])&nbsp;;
-    if (txt&nbsp;!== undefined) e.textContent = txt&nbsp;;
-    return e&nbsp;;
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (txt !== undefined) e.textContent = txt;
+    return e;
   }
 
-  function xp(i){ return margin.left + (i/(n-1))*PW&nbsp;; }
-  var allVals = []&nbsp;;
-  data.forEach(function(r){ allVals.push(r.tsx, r.brent, r.y)&nbsp;; })&nbsp;;
-  var vMin = Math.min.apply(null, allVals), vMax = Math.max.apply(null, allVals)&nbsp;;
-  var vPad = (vMax - vMin) * 0.08&nbsp;;
-  vMin -= vPad&nbsp;; vMax += vPad&nbsp;;
-  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH&nbsp;; }
+  function xp(i){ return margin.left + (i/(n-1))*PW; }
+  var allVals = [];
+  data.forEach(function(r){ allVals.push(r.tsx, r.brent, r.y); });
+  var vMin = Math.min.apply(null, allVals), vMax = Math.max.apply(null, allVals);
+  var vPad = (vMax - vMin) * 0.08;
+  vMin -= vPad; vMax += vPad;
+  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
 
   // 1. gridlines
-  for (var g=0&nbsp;; g<=5; g++){
+  for (var g=0; g<=5; g++){
     var gv = vMin + (g/5)*(vMax-vMin);
     var gy = yp(gv);
     svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
@@ -1120,38 +1120,38 @@ VALUES (
 </div>
 <div style="padding:12px 14px 8px;">
 <script>(function(){
-  var _cs = document.currentScript&nbsp;;
+  var _cs = document.currentScript;
   var data = [
-    {t&nbsp;:"CARGOJET", v&nbsp;:4.6},
-    {t&nbsp;:"BROOKFIELD", v&nbsp;:2.1},
-    {t&nbsp;:"BANQUE TD", v&nbsp;:1.0},
-    {t&nbsp;:"BMO", v&nbsp;:0.9},
-    {t&nbsp;:"CIBC", v&nbsp;:0.8},
-    {t&nbsp;:"SECTEUR ÉNERGIE TSX", v&nbsp;:0.3}
-  ]&nbsp;;
-  var margin = {left&nbsp;:62, right&nbsp;:24, top&nbsp;:18, bottom&nbsp;:46}&nbsp;;
-  var PW = 594, PH = 236&nbsp;;
-  var n = data.length&nbsp;;
+    {t:"CARGOJET", v:4.6},
+    {t:"BROOKFIELD", v:2.1},
+    {t:"BANQUE TD", v:1.0},
+    {t:"BMO", v:0.9},
+    {t:"CIBC", v:0.8},
+    {t:"SECTEUR ÉNERGIE TSX", v:0.3}
+  ];
+  var margin = {left:62, right:24, top:18, bottom:46};
+  var PW = 594, PH = 236;
+  var n = data.length;
 
-  var svg = document.createElementNS("http&nbsp;://www.w3.org/2000/svg","svg")&nbsp;;
-  svg.setAttribute("viewBox","0 0 680 300")&nbsp;;
-  svg.setAttribute("width","100%")&nbsp;;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 680 300");
+  svg.setAttribute("width","100%");
 
   function el(tag, attrs, txt){
-    var e = document.createElementNS("http&nbsp;://www.w3.org/2000/svg", tag)&nbsp;;
-    for (var k in attrs) e.setAttribute(k, attrs[k])&nbsp;;
-    if (txt&nbsp;!== undefined) e.textContent = txt&nbsp;;
-    return e&nbsp;;
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (txt !== undefined) e.textContent = txt;
+    return e;
   }
 
-  var xS = function(i){ return margin.left + 15 + (i/(n-1)) * (PW - 30)&nbsp;; }&nbsp;;
-  var barW = 60&nbsp;;
+  var xS = function(i){ return margin.left + 15 + (i/(n-1)) * (PW - 30); };
+  var barW = 60;
 
-  var vMin = 0, vMax = 5.5&nbsp;;
-  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH&nbsp;; }
-  var yZero = yp(0)&nbsp;;
+  var vMin = 0, vMax = 5.5;
+  function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
+  var yZero = yp(0);
 
-  for (var g=0&nbsp;; g<=5; g++){
+  for (var g=0; g<=5; g++){
     var gv = vMin + (g/5)*(vMax-vMin);
     var gy = yp(gv);
     svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:gy,y2:gy,stroke:"#ececec","stroke-width":"0.5"}));
