@@ -62,7 +62,11 @@ VALUES (
   }
 
   function xp(i){ return margin.left + (i/(n-1))*PW; }
-  var vMin = 96, vMax = 106;
+  var allVals = [];
+  data.forEach(function(r){ allVals.push(r.tsx, r.brent, r.y); });
+  var vMin = Math.min.apply(null, allVals), vMax = Math.max.apply(null, allVals);
+  var vPad = (vMax - vMin) * 0.08;
+  vMin -= vPad; vMax += vPad;
   function yp(v){ return margin.top + PH - ((v-vMin)/(vMax-vMin))*PH; }
 
   // 1. gridlines
