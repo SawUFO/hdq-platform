@@ -110,11 +110,13 @@ VALUES (
     svg.appendChild(el("text",{x:xp(i),y:margin.top+PH+14,"text-anchor":"middle","font-size":"7","fill":"#999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, data[i].d));
   });
 
-  // 7. end-of-series labels, per-series y-offset, left of endpoint, end-anchored
-  seriesDefs.forEach(function(sd){
-    var lastX = xp(n-1), lastY = yp(data[n-1][sd.key]);
-    var lblY = lastY + 3 + labelYOffsets[sd.key];
-    svg.appendChild(el("text",{x:lastX-4,y:lblY,"text-anchor":"end","font-size":"7","font-weight":"700",fill:sd.color,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, sd.label));
+  // 7. legend, bottom right, color box + label per series
+  var legendBoxX = 546, legendTextX = 555, legendBoxSize = 6;
+  var legendYStart = 274, legendRowH = 9;
+  seriesDefs.forEach(function(sd, li){
+    var rowY = legendYStart + li*legendRowH;
+    svg.appendChild(el("rect",{x:legendBoxX,y:rowY,width:legendBoxSize,height:legendBoxSize,fill:sd.color}));
+    svg.appendChild(el("text",{x:legendTextX,y:rowY+5,"text-anchor":"start","font-size":"7","font-weight":"700",fill:sd.color,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, sd.label));
   });
 
   // 8. gold pill on the divergence point (yield, most significant reading today), left of endpoint
