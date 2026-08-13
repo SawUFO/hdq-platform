@@ -485,7 +485,7 @@ VALUES (
   var yMax = 4;
   var yBase = margin.top + PH;
   var yScale = function(v){ return yBase - (v/yMax) * PH; };
-  var xS = function(i){ return margin.left + 15 + (i/(n-1)) * (PW - 30); };
+  var xS = function(i){ return margin.left + 25 + (i/(n-1)) * (PW - 50); };
   var barW = 46;
 
   function computePillWidth(text, fontSize){
@@ -699,7 +699,7 @@ VALUES (
   var lo = -9, hi = 1.5;
   var yScale = function(v){ return margin.top + PH * (hi - v) / (hi - lo); };
   var y0 = yScale(0);
-  var xS = function(i){ return margin.left + 15 + (i/(n-1)) * (PW - 30); };
+  var xS = function(i){ return margin.left + 25 + (i/(n-1)) * (PW - 50); };
   var barW = 46;
 
   function computePillWidth(text, fontSize){
@@ -1014,7 +1014,7 @@ VALUES (
       svg.appendChild(el("text", {x:xS(i), y:volTop+volH+16, "text-anchor":"middle", "font-size":"8", fill:"#999999", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, d.d));
     }
   });
-  svg.appendChild(el("text", {x:xS(lastMA.i)-4, y:yP(lastMA.v)-8, "text-anchor":"end", "font-size":"7.5", fill:"#888888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "5D MA"));
+  svg.appendChild(el("text", {x:xS(lastMA.i)-4, y:yP(lastMA.v)+12, "text-anchor":"end", "font-size":"7.5", fill:"#888888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "5D MA"));
   svg.appendChild(el("text", {x:margin.left+PW-6, y:margin.top-6, "text-anchor":"end", "font-size":"8", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "Wed close 36,662, fourth record in five"));
 
   _cs.parentNode.appendChild(svg);
