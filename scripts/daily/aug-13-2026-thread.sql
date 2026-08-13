@@ -74,7 +74,7 @@ for (var i=0;i<n;i++){
 }
 svg.appendChild(el("path",{d:maPath, fill:"none", stroke:"#888888","stroke-width":1.2,"stroke-dasharray":"3,3"}));
 var lastMaIdx = n-1;
-svg.appendChild(el("text",{x:xp(lastMaIdx)-4, y:yp(ma[lastMaIdx])+10, "text-anchor":"end","font-size":7.5,"font-weight":400, fill:"#888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "5-DAY MA"));
+svg.appendChild(el("text",{x:xp(lastMaIdx)-4, y:yp(ma[lastMaIdx])+20, "text-anchor":"end","font-size":7.5,"font-weight":400, fill:"#888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "5-DAY MA"));
 
 // 3. Series: candles + volume bars
 for (var i=0;i<n;i++){
