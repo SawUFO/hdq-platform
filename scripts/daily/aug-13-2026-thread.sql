@@ -74,7 +74,7 @@ for (var i=0;i<n;i++){
 }
 svg.appendChild(el("path",{d:maPath, fill:"none", stroke:"#888888","stroke-width":1.2,"stroke-dasharray":"3,3"}));
 var lastMaIdx = n-1;
-svg.appendChild(el("text",{x:xp(lastMaIdx)-4, y:yp(ma[lastMaIdx])-8, "text-anchor":"end","font-size":7.5,"font-weight":400, fill:"#888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "5-DAY MA"));
+svg.appendChild(el("text",{x:xp(lastMaIdx)-4, y:yp(ma[lastMaIdx])+10, "text-anchor":"end","font-size":7.5,"font-weight":400, fill:"#888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "5-DAY MA"));
 
 // 3. Series: candles + volume bars
 for (var i=0;i<n;i++){
@@ -111,8 +111,8 @@ for (var i=0;i<n;i++){
 var lastX = xp(n-1), lastY = yp(data[n-1].c);
 svg.appendChild(el("circle",{cx:lastX, cy:lastY, r:4, fill:"#4a5568"}));
 svg.appendChild(el("line",{x1:lastX, x2:lastX, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560","stroke-width":1,"stroke-dasharray":"2,3", opacity:0.5}));
-svg.appendChild(el("text",{x:lastX-4, y:margin.top+12, "text-anchor":"end","font-size":7,"font-weight":700, fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "PPI COOLER"));
-svg.appendChild(el("text",{x:lastX-4, y:margin.top+21, "text-anchor":"end","font-size":7,"font-weight":700, fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "THAN EXPECTED"));
+svg.appendChild(el("text",{x:lastX-4, y:margin.top-9, "text-anchor":"end","font-size":7,"font-weight":700, fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "PPI COOLER"));
+svg.appendChild(el("text",{x:lastX-4, y:margin.top, "text-anchor":"end","font-size":7,"font-weight":700, fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "THAN EXPECTED"));
 
 // 6. Gold pill (current value callout)
 function textWidthEstimate(str, fontSize){
