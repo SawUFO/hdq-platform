@@ -448,7 +448,7 @@ VALUES (
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
 
-  var data = [{lbl:"Jul ''23",t:0,v:5.00},{lbl:"Jun ''24",t:329,v:4.75},{lbl:"Oct ''24",t:469,v:3.75},{lbl:"Dec ''24",t:518,v:3.25},{lbl:"Sep ''25",t:798,v:2.50},{lbl:"Dec ''25",t:882,v:2.25},{lbl:"Jan ''26",t:931,v:2.25},{lbl:"Mar ''26",t:980,v:2.25},{lbl:"Apr ''26",t:1022,v:2.25},{lbl:"Jun ''26",t:1064,v:2.25},{lbl:"Jul ''26",t:1099,v:2.25}];
+  var data = [{lbl:"Jul ''23",t:0,v:5.00},{lbl:"Jun ''24",t:329,v:4.75},{lbl:"Oct ''24",t:469,v:3.75},{lbl:"Dec ''24",t:518,v:3.25},{lbl:"Sep ''25",t:798,v:2.50},{lbl:"Oct ''25",t:840,v:2.25},{lbl:"Dec ''25",t:882,v:2.25},{lbl:"Jan ''26",t:931,v:2.25},{lbl:"Mar ''26",t:980,v:2.25},{lbl:"Apr ''26",t:1022,v:2.25},{lbl:"Jun ''26",t:1064,v:2.25},{lbl:"Jul ''26",t:1099,v:2.25}];
 
   var margin = {left:62, top:18, right:24, bottom:46};
   var canvasW = 680, canvasH = 300;
