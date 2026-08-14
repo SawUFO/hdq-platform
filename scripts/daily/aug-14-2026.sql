@@ -911,7 +911,7 @@ VALUES (
   }
   svg.appendChild(el("path", {d:dMa, fill:"none", stroke:"#888888", "stroke-width":"1.3", "stroke-dasharray":"3,2"}));
   var lastMa = maPts[maPts.length-1];
-  svg.appendChild(el("text", {x:xS(lastMa.i)-candleW/2-4, y:yp(lastMa.v)-6, "text-anchor":"end", "font-size":"7.5", fill:"#888888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "5D MA"));
+  svg.appendChild(el("text", {x:xS(lastMa.i)-candleW/2-4, y:yp(lastMa.v)-1, "text-anchor":"end", "font-size":"7.5", fill:"#888888", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "5D MA"));
 
   // 4. axis lines
   svg.appendChild(el("line", {x1:margin.left, x2:margin.left, y1:margin.top, y2:margin.top+pricePH, stroke:"#d8d8d8", "stroke-width":"1"}));
