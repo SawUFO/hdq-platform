@@ -703,7 +703,7 @@ VALUES (
 
   // 7. axis labels
   for (var t=0;t<yTicks.length;t++){
-    svg.appendChild(el("text", {x:margin.left-6, y:yp(yTicks[t])+3, "text-anchor":"end", "font-size":"8.5", fill:"#aaaaaa", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "$"+yTicks[t]));
+    svg.appendChild(el("text", {x:margin.left-6, y:yp(yTicks[t])+22, "text-anchor":"end", "font-size":"8.5", fill:"#aaaaaa", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "$"+yTicks[t]));
   }
   for (var xi=0; xi<n; xi++){
     if (xi % 2 === 0){
