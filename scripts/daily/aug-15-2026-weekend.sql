@@ -129,7 +129,7 @@ VALUES (
   });
 
   // reference line label ($85 psychological level), far from current-value pill so no duplication
-  svg.appendChild(el("text", {x: margin.left + 10, y: refY - 10, "text-anchor":"start", "font-size":"7", fill:"#7a3030", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "$85 PSYCHOLOGICAL LEVEL"));
+  svg.appendChild(el("text", {x: xp(events[0].i) - 6, y: refY + 11, "text-anchor":"end", "font-size":"7", fill:"#7a3030", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "$85 PSYCHOLOGICAL LEVEL"));
 
   _cs.parentNode.appendChild(svg);
 })();
