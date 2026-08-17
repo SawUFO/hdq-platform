@@ -103,7 +103,7 @@ VALUES (
 
   var curVal = data[n-1];
   if (Math.abs(refVal - curVal)/curVal >= 0.03){
-    svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"text-anchor":"start","font-size":"7","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#2e7d32","font-weight":"700"}, "JUL 14 LEVEL"));
+    svg.appendChild(el("text",{x:margin.left+PW-10,y:refY-10,"text-anchor":"end","font-size":"7","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#2e7d32","font-weight":"700"}, "JUL 14 LEVEL"));
   }
 
   svg.appendChild(el("text",{x:margin.left+10, y:margin.top+16, "text-anchor":"start", "font-size":"8", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#444"}, "FOUR HORMUZ HEADLINE DIPS, FOUR FULL RECOVERIES SINCE JUL 14"));
@@ -430,7 +430,7 @@ VALUES (
   var margin = {left:62, top:18, right:24, bottom:46};
   var PW = 594, PH = 300 - margin.top - margin.bottom;
 
-  var dates = ["Apr 10 24","Jun 5 24","Jul 24 24","Sep 4 24","Oct 23 24","Dec 11 24","Jan 29 25","Mar 12 25","Apr 16 25","Jun 4 25","Jul 30 25","Sep 17 25","Oct 29 25","Dec 10 25","Jan 28 26","Mar 18 26","Apr 29 26","Jun 10 26","Jul 15 26"];
+  var dates = ["Apr 10/24","Jun 5/24","Jul 24/24","Sep 4/24","Oct 23/24","Dec 11/24","Jan 29/25","Mar 12/25","Apr 16/25","Jun 4/25","Jul 30/25","Sep 17/25","Oct 29/25","Dec 10/25","Jan 28/26","Mar 18/26","Apr 29/26","Jun 10/26","Jul 15/26"];
   var data = [5.00,4.75,4.50,4.25,3.75,3.25,3.00,2.75,2.75,2.75,2.75,2.50,2.25,2.25,2.25,2.25,2.25,2.25,2.25];
   var n = data.length;
 
@@ -473,7 +473,7 @@ VALUES (
   svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,rx:"3",fill:"#e8a825"}));
   svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}, pillText));
 
-  for (var xi=0; xi<n; xi+=3){
+  for (var xi=0; xi<n-1; xi+=3){
     svg.appendChild(el("text",{x:xp(xi), y:margin.top+PH+16, "text-anchor":"middle", "font-size":"8", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#999"}, dates[xi]));
   }
   svg.appendChild(el("text",{x:xp(n-1), y:margin.top+PH+16, "text-anchor":"end", "font-size":"8", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#999"}, dates[n-1]));
