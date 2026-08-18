@@ -452,7 +452,7 @@ VALUES (
 
   // 2. reference line - BoC 2% target midpoint, labeled (not within 3% of pill value of 3.0)
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left + PW, y1: yS(2), y2: yS(2), stroke: "#2e7d32", "stroke-dasharray": "3,3", "stroke-width": "1"}));
-  svg.appendChild(el("text", {x: margin.left + 10, y: yS(2) - 5, "text-anchor": "start", "font-size": "7", "font-weight": "700", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill: "#2e7d32"}, "BOC 2% TARGET"));
+  svg.appendChild(el("text", {x: margin.left + PW - 4, y: yS(2) + 10, "text-anchor": "end", "font-size": "7", "font-weight": "700", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill: "#2e7d32"}, "BOC 2% TARGET"));
 
   // 3. series paths
   var pathHeadline = "", pathExgas = "";
@@ -478,8 +478,8 @@ VALUES (
 
   // end-of-series labels, per-series offsets (S16.11), both anchor end at xS(n-1)-4
   var labelYOffsets = [-16, 14];
-  svg.appendChild(el("text", {x: lastX - 4, y: lastYh + 3 + labelYOffsets[0], "text-anchor": "end", "font-size": "7.5", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill: "#4a5568"}, "HEADLINE"));
-  svg.appendChild(el("text", {x: lastX - 4, y: lastYe + 3 + labelYOffsets[1], "text-anchor": "end", "font-size": "7.5", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill: "#6b7280"}, "EX-GASOLINE"));
+  svg.appendChild(el("text", {x: lastX - 4, y: lastYh - 30, "text-anchor": "end", "font-size": "7.5", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill: "#4a5568"}, "HEADLINE"));
+  svg.appendChild(el("text", {x: lastX - 4, y: lastYe - 6, "text-anchor": "end", "font-size": "7.5", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill: "#6b7280"}, "EX-GASOLINE"));
 
   // 6. gold pill (headline current value)
   var pillText = "3.0%";
@@ -637,7 +637,7 @@ VALUES (
 
   // 2. reference line - pre-war baseline, labeled (far from current pill value)
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left + PW, y1: yS(65.21), y2: yS(65.21), stroke: "#7a3030", "stroke-dasharray": "3,3", "stroke-width": "1"}));
-  svg.appendChild(el("text", {x: margin.left + 10, y: yS(65.21) + 11, "text-anchor": "start", "font-size": "7", "font-weight": "700", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill: "#7a3030"}, "PRE-WAR LEVEL"));
+  svg.appendChild(el("text", {x: xS(10) - 4, y: yS(65.21) + 11, "text-anchor": "end", "font-size": "7", "font-weight": "700", "font-family": "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill: "#7a3030"}, "PRE-WAR LEVEL"));
 
   // 3. series path
   var pathD = "";
