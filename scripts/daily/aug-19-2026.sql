@@ -494,7 +494,7 @@ VALUES (
   // 2. Reference line: BoC policy rate, held at 2.25% throughout the period
   var refY = yp(boc);
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left + PW, y1: refY, y2: refY, stroke: "#2e7d32", "stroke-width": "1", "stroke-dasharray": "3,3"}));
-  svg.appendChild(el("text", {x: margin.left + 10, y: refY - 10, "text-anchor": "start", "font-size": "7", fill: "#2e7d32", "font-family": FONT}, "BOC RATE HELD AT 2.25%"));
+  svg.appendChild(el("text", {x: margin.left + PW - 10, y: refY - 10, "text-anchor": "end", "font-size": "7", fill: "#2e7d32", "font-family": FONT}, "BOC RATE HELD AT 2.25%"));
 
   // 3. Series path
   var d = "";
