@@ -445,7 +445,7 @@ VALUES (
     if (idx === pillIndex) return;
     var tipY = yp(b.v);
     var label = b.v.toFixed(1) + "%";
-    svg.appendChild(el("text", {x: b.x+barW/2, y: tipY-6, "text-anchor":"middle", "font-size":"8", "font-weight":"700", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, label));
+    svg.appendChild(el("text", {x: b.x+barW/2, y: (b.v===1.9 ? tipY-14 : tipY-6), "text-anchor":"middle", "font-size":"8", "font-weight":"700", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, label));
   });
 
   // 8. y-axis labels
@@ -807,8 +807,8 @@ VALUES (
 
   // 8. annotation text box, anchored to the Nasdaq bar tip (S16.14)
   var nasdaqTipY = yp(vals[2]);
-  svg.appendChild(el("text", {x: xC(2), y: nasdaqTipY+26, "text-anchor":"middle", "font-size":"8", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "AI and chip"));
-  svg.appendChild(el("text", {x: xC(2), y: nasdaqTipY+36, "text-anchor":"middle", "font-size":"8", "font-weight":"700", fill:"#8a3030", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "stock selloff"));
+  svg.appendChild(el("text", {x: xC(2), y: zeroY-30, "text-anchor":"middle", "font-size":"8", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "AI and chip"));
+  svg.appendChild(el("text", {x: xC(2), y: zeroY-20, "text-anchor":"middle", "font-size":"8", "font-weight":"700", fill:"#8a3030", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "stock selloff"));
 
   // 9. x-axis category labels
   for (var k=0;k<n;k++){
