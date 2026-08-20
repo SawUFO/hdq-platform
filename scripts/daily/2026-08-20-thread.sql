@@ -98,13 +98,13 @@ VALUES (
     svg.appendChild(el("text", {x: margin.left-6, y: ypGoc(g)+3, "text-anchor":"end", "font-size":"8.5", fill:"#aaaaaa", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, g.toFixed(2)));
   });
   // right axis labels (secondary, end-anchored inside plot per 16.2)
-  [4.40,4.55,4.70,4.85].forEach(function(g){
+  [4.40,4.55,4.85].forEach(function(g){
     svg.appendChild(el("text", {x: margin.left+PW-4, y: ypUst(g)+3, "text-anchor":"end", "font-size":"8.5", fill:"#aaaaaa", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, g.toFixed(2)));
   });
 
   // 8. series end labels (left of endpoint, per 16.1 / 16.11)
   svg.appendChild(el("text", {x: lastX-4, y: lastYGoc-10, "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#4a5568", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "GoC 10Y"));
-  svg.appendChild(el("text", {x: lastX-4, y: lastYUst+30, "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#6b7280", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "UST 10Y"));
+  svg.appendChild(el("text", {x: lastX-4, y: lastYUst+42, "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#6b7280", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "UST 10Y"));
 
   // 9. x-axis category labels, every other tick to avoid crowding
   for (var k=0;k<n;k++){
@@ -187,8 +187,8 @@ VALUES (
   var ev2Anchor = ev2NearRight ? "end" : "start";
   var ev2Offset = ev2NearRight ? -40 : 3;
   svg.appendChild(el("line", {x1:ev2X, x2:ev2X, y1:margin.top, y2:baseY, stroke:"#1a3560", "stroke-width":"1", "stroke-dasharray":"2,3", opacity:"0.5"}));
-  svg.appendChild(el("text", {x:ev2X+ev2Offset, y:margin.top+50, "text-anchor":ev2Anchor, "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "TRUMP VS IRAN"));
-  svg.appendChild(el("text", {x:ev2X+ev2Offset, y:margin.top+60, "text-anchor":ev2Anchor, "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "''ECONOMIC OPERATION''"));
+  svg.appendChild(el("text", {x:ev2X+ev2Offset, y:margin.top+PH-30, "text-anchor":ev2Anchor, "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "TRUMP VS IRAN"));
+  svg.appendChild(el("text", {x:ev2X+ev2Offset, y:margin.top+PH-20, "text-anchor":ev2Anchor, "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "''ECONOMIC OPERATION''"));
 
   // 6. gold pill on current value
   var pillText = "$4,481";
