@@ -71,7 +71,7 @@ VALUES (
   svg.appendChild(el("line",{x1:margin.left, x2:margin.left+PW, y1:refY, y2:refY, stroke:"#2e7d32", "stroke-dasharray":"3,3", "stroke-width":"1"}));
   var lastVal = data[n-1];
   if (Math.abs(refVal - lastVal) / lastVal >= 0.03) {
-    svg.appendChild(el("text",{x:margin.left+10, y:refY-10, "text-anchor":"start", "font-size":"7", fill:"#2e7d32", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "MONTH OPEN $4,043"));
+    svg.appendChild(el("text",{x:margin.left+PW-10, y:refY-10, "text-anchor":"end", "font-size":"7", fill:"#2e7d32", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "MONTH OPEN $4,043"));
   }
   var d = "";
   for (var i=0;i<n;i++){
