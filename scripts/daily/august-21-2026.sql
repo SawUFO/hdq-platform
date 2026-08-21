@@ -490,7 +490,7 @@ VALUES (
   });
 
   // end-of-series labels, per-series y offsets (S16.11), suppressed for GoC since pill already shows it (S16.5)
-  var labelYOffsets = {goc:-14, boc:0};
+  var labelYOffsets = {goc:-14, boc:-10};
   svg.appendChild(el("text",{x:lastBocX-4,y:yp(data[n-1].boc)+3+labelYOffsets.boc,"text-anchor":"end","font-size":"7.5","font-weight":"400",fill:"#888888","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "BoC overnight rate"));
 
   events.forEach(function(ev){
@@ -696,7 +696,8 @@ VALUES (
     var nearRight = (ex + labelWidth + 3) > (margin.left + PW);
     var anchor = nearRight ? "end" : "start";
     var offset = nearRight ? -3 : 3;
-    svg.appendChild(el("text",{x:ex+offset,y:margin.top+PH-8,"text-anchor":anchor,"font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, ev.label));
+    var evY = margin.top+PH-8 - (ev.i === 10 ? 10 : 0);
+    svg.appendChild(el("text",{x:ex+offset,y:evY,"text-anchor":anchor,"font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, ev.label));
   });
 
   _cs.parentNode.appendChild(svg);
