@@ -99,8 +99,9 @@ VALUES (
     var nearRight = (ex + labelWidth + 3) > (margin.left + PW);
     var anchor = nearRight ? "end" : "start";
     var offset = nearRight ? -6 : 6;
-    svg.appendChild(el("text", {x: ex+offset, y: margin.top+12, "text-anchor":anchor, "font-size":"7", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#1a3560"}, ev.label1));
-    svg.appendChild(el("text", {x: ex+offset, y: margin.top+22, "text-anchor":anchor, "font-size":"7", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#1a3560"}, ev.label2));
+    var yStart = (ev.i === 21) ? margin.top+PH-14 : margin.top+12;
+    svg.appendChild(el("text", {x: ex+offset, y: yStart, "text-anchor":anchor, "font-size":"7", "font-weight":"700", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#1a3560"}, ev.label1));
+    svg.appendChild(el("text", {x: ex+offset, y: yStart+10, "text-anchor":anchor, "font-size":"7", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif", fill:"#1a3560"}, ev.label2));
   });
 
   // 6. gold pill on the most recent value
