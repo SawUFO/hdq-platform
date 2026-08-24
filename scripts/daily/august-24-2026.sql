@@ -74,7 +74,7 @@ VALUES (
   // 2. reference line: pre-rally baseline (Aug 3 level), suppressed label per anti-duplication (not near current value)
   var baseY = yp(4010);
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:baseY,y2:baseY,stroke:"#7a3030","stroke-dasharray":"3,3"}));
-  svg.appendChild(el("text",{x:margin.left+10,y:baseY-10,"text-anchor":"start","font-size":"7","fill":"#7a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"AUG 3 BASELINE"));
+  svg.appendChild(el("text",{x:margin.left+PW-10,y:baseY-10,"text-anchor":"end","font-size":"7","fill":"#7a3030","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"AUG 3 BASELINE"));
 
   // 3. series path
   var path = "M";
@@ -90,7 +90,7 @@ VALUES (
   svg.appendChild(el("line",{x1:xp(buybackI),x2:xp(buybackI),y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-width":"1","stroke-dasharray":"2,3",opacity:"0.5"}));
   svg.appendChild(el("text",{x:xp(buybackI)-4,y:margin.top+12,"text-anchor":"end","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"BUYBACK"));
   svg.appendChild(el("line",{x1:xp(reversalI),x2:xp(reversalI),y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-width":"1","stroke-dasharray":"2,3",opacity:"0.5"}));
-  svg.appendChild(el("text",{x:xp(reversalI)+4,y:margin.top+24,"text-anchor":"start","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"YIELDS REVERSE"));
+  svg.appendChild(el("text",{x:xp(reversalI)+4,y:margin.top+12,"text-anchor":"start","font-size":"7","font-weight":"700","fill":"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"YIELDS REVERSE"));
   svg.appendChild(el("circle",{cx:xp(n-1),cy:yp(data[n-1].v),r:4,fill:"#4a5568"}));
 
   // 6. gold pill on current value, left of endpoint
