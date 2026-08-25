@@ -64,7 +64,7 @@ VALUES (
   svg.appendChild(el("line",{x1:margin.left, x2:margin.left+PW, y1:refY, y2:refY, stroke:"#2e7d32", "stroke-dasharray":"3,3"}));
   var curVal = data[n-1];
   if (Math.abs(refVal-curVal)/curVal >= 0.03){
-    svg.appendChild(el("text",{x:margin.left+10, y:refY-10, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "JUL 27 LEVEL 18.67"));
+    svg.appendChild(el("text",{x:margin.left+PW-10, y:refY-10, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "JUL 27 LEVEL 18.67"));
   }
 
   // 3. Series path
@@ -679,8 +679,8 @@ VALUES (
 
   var evX = xp(21);
   svg.appendChild(el("line",{x1:evX, x2:evX, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-opacity":"0.5", "stroke-dasharray":"2,3"}));
-  svg.appendChild(el("text",{x:evX-6, y:margin.top+20, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "BESSENT IRAN"));
-  svg.appendChild(el("text",{x:evX-6, y:margin.top+30, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "SANCTIONS"));
+  svg.appendChild(el("text",{x:evX-6, y:margin.top+12, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "BESSENT IRAN"));
+  svg.appendChild(el("text",{x:evX-6, y:margin.top+22, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "SANCTIONS"));
 
   // 6. Gold pill
   var pillText = "$85.46";
@@ -884,8 +884,8 @@ VALUES (
   svg.appendChild(el("text",{x:pillX+pillW/2, y:pillY+pillH/2+4, "text-anchor":"middle", "font-size":"9", "font-weight":"700", fill:"#111111", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, pillText));
 
   // 6. Annotation text
-  svg.appendChild(el("text",{x:margin.left+PW-4, y:margin.top+PH-30, "text-anchor":"end", "font-size":"8", "font-weight":"400", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "Auto parts led the"));
-  svg.appendChild(el("text",{x:margin.left+PW-4, y:margin.top+PH-20, "text-anchor":"end", "font-size":"8", "font-weight":"400", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "session''s decliners"));
+  svg.appendChild(el("text",{x:margin.left+PW-4, y:margin.top+12, "text-anchor":"end", "font-size":"8", "font-weight":"400", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "Auto parts led the"));
+  svg.appendChild(el("text",{x:margin.left+PW-4, y:margin.top+22, "text-anchor":"end", "font-size":"8", "font-weight":"400", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "session''s decliners"));
 
   _cs.parentNode.appendChild(svg);
 })();
