@@ -259,18 +259,44 @@ var rowY = function(i){ return margin.top + i*(barH+gap); };
 var maxIdx = 0;
 for (var i=1;i<n;i++){ if (rows[i].v > rows[maxIdx].v) maxIdx = i; }
 
+var lblMeasureSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+lblMeasureSvg.style.position = "absolute";
+lblMeasureSvg.style.visibility = "hidden";
+document.body.appendChild(lblMeasureSvg);
 for (var i=0;i<n;i++){
   var y = rowY(i);
   var w = xVal(rows[i].v) - margin.left;
   var color = (i === maxIdx) ? "#4a5568" : "#6b7280";
   svg.appendChild(el("rect",{x:margin.left, y:y, width:w, height:barH, fill:color}));
-  // row label, left gutter, end-anchored
-  svg.appendChild(el("text",{x:margin.left-4, y:y+barH/2+3, "text-anchor":"end","font-size":"8.5",fill:"#aaaaaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, rows[i].label));
+  // row label, left gutter, end-anchored, wrapped to two lines if it would overflow the left edge
+  var lblFont = {x:margin.left-4, y:0, "text-anchor":"end","font-size":"8.5",fill:"#aaaaaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"};
+  var lblWords = rows[i].label.split(" ");
+  var lblLine1 = "", lblLine2 = "";
+  var lblTest = el("text", lblFont, "");
+  lblMeasureSvg.appendChild(lblTest);
+  for (var wi=0; wi<lblWords.length; wi++){
+    var lblCandidate = (lblLine1 ? lblLine1+" " : "") + lblWords[wi];
+    lblTest.textContent = lblCandidate;
+    if (lblTest.getComputedTextLength() <= margin.left-8 || !lblLine1){
+      lblLine1 = lblCandidate;
+    } else {
+      lblLine2 = lblWords.slice(wi).join(" ");
+      break;
+    }
+  }
+  lblMeasureSvg.removeChild(lblTest);
+  if (lblLine2){
+    svg.appendChild(el("text",{x:margin.left-4, y:y+barH/2-2, "text-anchor":"end","font-size":"8.5",fill:"#aaaaaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, lblLine1));
+    svg.appendChild(el("text",{x:margin.left-4, y:y+barH/2+8, "text-anchor":"end","font-size":"8.5",fill:"#aaaaaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, lblLine2));
+  } else {
+    svg.appendChild(el("text",{x:margin.left-4, y:y+barH/2+3, "text-anchor":"end","font-size":"8.5",fill:"#aaaaaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, lblLine1));
+  }
   // bar-end value label, suppressed on the pill row (16.5)
   if (i !== maxIdx){
     svg.appendChild(el("text",{x:xVal(rows[i].v)+6, y:y+barH/2+3, "text-anchor":"start","font-size":"8",fill:"#444444","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "$" + rows[i].v.toFixed(1) + "B"));
   }
 }
+document.body.removeChild(lblMeasureSvg);
 
 // axis line
 svg.appendChild(el("line",{x1:margin.left, x2:margin.left+PW, y1:margin.top+PH, y2:margin.top+PH, stroke:"#d8d8d8","stroke-width":"1"}));
