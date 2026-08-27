@@ -69,7 +69,7 @@ var labelWidth=ev.label.length*7*0.68;
 var nearRight=(ex+labelWidth+3)>(margin.left+PW);
 var isLater=ev.i===Math.max(events[0].i,events[1].i);
 var offset=(isLater&&(crowded||nearRight))?-40:3;
-var yStart=(isLater&&(crowded||nearRight))?margin.top+50:margin.top+20;
+var yStart=(isLater&&(crowded||nearRight))?margin.top+99:margin.top+20;
 var anchor=(isLater&&(crowded||nearRight))?"end":"start";
 svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"},ev.label));
 });
