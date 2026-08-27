@@ -93,7 +93,11 @@ VALUES (
       svg.appendChild(el("text",{x:rx+barW/2,y:rLabelY,"font-size":8,fill:"#444","text-anchor":"middle","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},(d.react>0?"+":"")+d.react+"%"));
     }
     // x labels
-    svg.appendChild(el("text",{x:gx+barW+gap/2,y:margin.top+PH+16,"font-size":8,fill:"#999","text-anchor":"middle","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},d.bank));
+    if (i===2){
+      svg.appendChild(el("text",{x:margin.left+PW-2,y:margin.top+PH+16,"font-size":8,fill:"#999","text-anchor":"end","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},d.bank));
+    } else {
+      svg.appendChild(el("text",{x:gx+barW+gap/2,y:margin.top+PH+16,"font-size":8,fill:"#999","text-anchor":"middle","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},d.bank));
+    }
   }
   // 4. axis lines (after bars, before dots/pills per paint order)
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+PH,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":1}));
@@ -510,7 +514,7 @@ VALUES (
   var refY = yp(refV);
   var lastVal = data[n-1].v;
   if (Math.abs(refV - lastVal) / lastVal >= 0.03) {
-    svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"font-size":7,fill:"#7a3030","text-anchor":"start","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"EARLY-AUG BASE ~3.55%"));
+    svg.appendChild(el("text",{x:650,y:refY-10,"font-size":7,fill:"#7a3030","text-anchor":"end","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"EARLY-AUG BASE ~3.55%"));
   }
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#7a3030","stroke-dasharray":"3,3"}));
 
@@ -747,7 +751,7 @@ VALUES (
   svg.appendChild(el("text",{x:exPeak-40,y:margin.top+20,"font-size":7,"font-weight":700,fill:"#1a3560","text-anchor":"start","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"WAR-RISK PEAK"));
   var exPivot = xp(iPivot);
   svg.appendChild(el("line",{x1:exPivot,x2:exPivot,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-width":1,"stroke-dasharray":"2,3",opacity:0.5}));
-  svg.appendChild(el("text",{x:exPivot-3,y:margin.top+50,"font-size":7,"font-weight":700,fill:"#1a3560","text-anchor":"end","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"SANCTIONS PIVOT"));
+  svg.appendChild(el("text",{x:exPivot-3,y:margin.top+PH-8,"font-size":7,"font-weight":700,fill:"#1a3560","text-anchor":"end","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"SANCTIONS PIVOT"));
 
   // 4. axis line
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+PH,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":1}));
@@ -937,7 +941,7 @@ VALUES (
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:zeroY,y2:zeroY,stroke:"#d8d8d8","stroke-width":1}));
 
   // 3. bars
-  var barW = 44;
+  var barW = 30;
   var pillIndex = 0; // Scotiabank carries the pill
   for (var i=0;i<n;i++){
     var d = data[i];
