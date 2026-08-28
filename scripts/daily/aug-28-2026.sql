@@ -401,7 +401,7 @@ VALUES (
   });
   var targetY = yp(2.0);
   svg.appendChild(el("line", {x1:margin.left, x2:margin.left+PW, y1:targetY, y2:targetY, stroke:"#2e7d32", "stroke-width":1, "stroke-dasharray":"3,3"}));
-  svg.appendChild(el("text", {x:margin.left+10, y:targetY-8, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "2% BOC TARGET"));
+  svg.appendChild(el("text", {x:260, y:targetY-8, "text-anchor":"middle", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "2% BOC TARGET"));
   svg.appendChild(el("line", {x1:margin.left, x2:margin.left, y1:margin.top, y2:margin.top+PH, stroke:"#d8d8d8", "stroke-width":1}));
   svg.appendChild(el("line", {x1:margin.left, x2:margin.left+PW, y1:margin.top+PH, y2:margin.top+PH, stroke:"#d8d8d8", "stroke-width":1}));
   data.forEach(function(d){
