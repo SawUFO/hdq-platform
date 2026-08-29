@@ -177,7 +177,7 @@ VALUES (
   svg.appendChild(el("text", {x:pillX+pillW/2, y:pillY+pillH/2+4, "text-anchor":"middle", "font-size":"9", "font-weight":"700", fill:"#111111", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, pillText));
   var noteLines = ["GOLD AND THE TSX MOVED", "TOGETHER; THE DOW BARELY MOVED"];
   noteLines.forEach(function(line, i){
-    svg.appendChild(el("text", {x:margin.left+PW/2, y:margin.top+8+i*10, "text-anchor":"middle", "font-size":"7.5", fill:"#666666", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, line));
+    svg.appendChild(el("text", {x:margin.left+PW/2, y:margin.top-2+i*10, "text-anchor":"middle", "font-size":"7.5", fill:"#666666", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, line));
   });
   _cs.parentNode.appendChild(svg);
 })();
