@@ -105,8 +105,8 @@ VALUES (
   svg.appendChild(el("text",{x:margin.left+30,y:margin.top+25,"font-size":"7.5",fill:"#444444","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "WTI CRUDE"));
 
   var evX = xp(10);
-  svg.appendChild(el("text",{x:evX-40,y:margin.top+PH-8,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "WARSH: INFLATION"));
-  svg.appendChild(el("text",{x:evX-40,y:margin.top+PH+2,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "TOO HOT (AUG 28)"));
+  svg.appendChild(el("text",{x:evX-40,y:margin.top+PH-16,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "WARSH: INFLATION"));
+  svg.appendChild(el("text",{x:evX-40,y:margin.top+PH-6,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "TOO HOT (AUG 28)"));
 
   _cs.parentNode.appendChild(svg);
 })();
@@ -214,8 +214,8 @@ VALUES (
   svg.appendChild(el("text",{x:margin.left+30,y:margin.top+25,"font-size":"7.5",fill:"#444444","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "WTI CRUDE (RIGHT)"));
 
   var evX = xp(10);
-  svg.appendChild(el("text",{x:evX-40,y:margin.top+PH-8,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "FED VS OIL"));
-  svg.appendChild(el("text",{x:evX-40,y:margin.top+PH+2,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "TUG-OF-WAR"));
+  svg.appendChild(el("text",{x:evX-40,y:margin.top+PH-16,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "FED VS OIL"));
+  svg.appendChild(el("text",{x:evX-40,y:margin.top+PH-6,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "TUG-OF-WAR"));
 
   _cs.parentNode.appendChild(svg);
 })();
