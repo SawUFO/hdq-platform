@@ -5,6 +5,7 @@ export const ARTICLE_CSS = `
 article { min-width: 0; }
 .article-hero { aspect-ratio: 16/7; overflow: hidden; border-radius: 6px; margin-bottom: 28px; }
 .article-hero img { width:100%; height:100%; object-fit:cover; display:block; }
+.article-hero-caption { font-size:11px; color:var(--n500); line-height:1.4; padding:6px 0 24px; font-style:italic; border-bottom:1px solid var(--n100); margin-bottom:4px; }
 .article-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .article-headline { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(24px, 4vw, 34px); font-weight: 800; line-height: 1.18; letter-spacing: -0.02em; color: var(--n900); margin-bottom: 12px; }
 .article-byline { font-size: 13px; color: var(--n600); display: flex; gap: 8px; align-items: center; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--n200); }
