@@ -118,8 +118,8 @@ VALUES (
   svg.appendChild(el("text", {x:pillX+pillW/2, y:pillY+pillH/2+4, "text-anchor":"middle", "font-size":"9", "font-weight":"700", fill:"#111111", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, pillText));
 
   // 7. Annotation text box, derived from the pill''s position
-  svg.appendChild(el("text", {x: pillX+pillW/2, y: pillY-10, "text-anchor":"middle", "font-size":"8", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "First US-Iran exchange"));
-  svg.appendChild(el("text", {x: pillX+pillW/2, y: pillY-1, "text-anchor":"middle", "font-size":"8", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "in a month, Aug 30-31"));
+  svg.appendChild(el("text", {x: pillX+pillW/2, y: pillY-18, "text-anchor":"middle", "font-size":"8", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "First US-Iran exchange"));
+  svg.appendChild(el("text", {x: pillX+pillW/2, y: pillY-9, "text-anchor":"middle", "font-size":"8", fill:"#444444", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "in a month, Aug 30-31"));
 
   _cs.parentNode.appendChild(svg);
 })();
@@ -483,7 +483,7 @@ VALUES (
   // 2. Reference line - BoC 2% target, more than 3% away from current value so label is drawn
   var refVal = 2.0;
   svg.appendChild(el("line", {x1: margin.left, x2: margin.left+PW, y1: yp(refVal), y2: yp(refVal), stroke:"#2e7d32", "stroke-dasharray":"3,3", "stroke-width":"1"}));
-  svg.appendChild(el("text", {x: margin.left+10, y: yp(refVal)-6, "text-anchor":"start", "font-size":"7", fill:"#2e7d32", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "BOC 2% TARGET"));
+  svg.appendChild(el("text", {x: margin.left+PW-10, y: yp(refVal)-6, "text-anchor":"end", "font-size":"7", fill:"#2e7d32", "font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "BOC 2% TARGET"));
 
   // 3. Series path
   var d = "";
