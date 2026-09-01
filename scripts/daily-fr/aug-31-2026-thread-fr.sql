@@ -231,7 +231,7 @@ VALUES (
   '',
   '',
   '[{"value":"86,72 $ US","label":"Clôture du brut WTI"},{"value":"4 483 $ US","label":"Prix de l’or au comptant"},{"value":"1,3890","label":"Taux de change USD/CAD"},{"value":"60 %","label":"Probabilité de hausse Fed (sept.)"}]',
-  'thread-001.jpg',
+  'thread-095.jpg',
   'L’incapacité de l’or à remonter face à une escalade en direct entre les États-Unis et l’Iran lundi a redéfini la façon dont le marché évalue la sécurité par rapport au risque de taux à l’approche de la décision de la Banque du Canada mercredi. Photo : iStock.',
   5,
   '2026-08-31T16:00:00',

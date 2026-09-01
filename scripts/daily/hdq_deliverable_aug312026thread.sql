@@ -231,7 +231,7 @@ VALUES (
   '',
   '',
   '[{"value":"$86.72","label":"WTI crude oil close"},{"value":"$4,483","label":"Gold spot price today"},{"value":"1.3890","label":"USD/CAD exchange rate"},{"value":"60%","label":"Fed September hike odds"}]',
-  'thread-001.jpg',
+  'thread-095.jpg',
   'Gold''s failure to rally against a live U.S.-Iran escalation on Monday reframed how the market is pricing safety versus rate risk heading into the Bank of Canada''s Wednesday decision. Photo: iStock.',
   5,
   '2026-08-31T16:00:00',
