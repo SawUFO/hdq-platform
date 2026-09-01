@@ -684,12 +684,12 @@ VALUES (
 <div class="toolkit-section-label">Action Checklist</div>
 <div class="checklist-item">Review energy sector weighting against benchmark for clients who have not rebalanced since the March closure</div>
 <div class="checklist-item">Flag clients with CAD-denominated liabilities coming due, since the loonie is moving with oil this week</div>
-<div class="checklist-item">Prepare a short note for Wednesday's Bank of Canada decision given the overlapping oil and rate headlines</div>
+<div class="checklist-item">Prepare a short note for Wednesday''s Bank of Canada decision given the overlapping oil and rate headlines</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Follow-Up Email Template</div>
 <div class="email-box" id="respond-email">
-<strong>Subject:</strong> This week's Strait of Hormuz headlines and your portfolio<br><br>
+<strong>Subject:</strong> This week''s Strait of Hormuz headlines and your portfolio<br><br>
 Hi [Client Name],<br><br>
 Following up on our conversation about the renewed tension near the Strait of Hormuz. Oil prices moved higher on the news, which affects your energy holdings, and I want to be transparent that I am watching closely rather than reacting to one night''s headlines. I will follow up again after Wednesday''s Bank of Canada decision, since the two stories are connected this week.<br><br>
 [Your Name]<br><br>
@@ -711,22 +711,22 @@ Following up on our conversation about the renewed tension near the Strait of Ho
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
-<div class="checklist-item">How has this year's Strait of Hormuz volatility affected how you feel about your current portfolio?</div>
+<div class="checklist-item">How has this year''s Strait of Hormuz volatility affected how you feel about your current portfolio?</div>
 <div class="checklist-item">Do you know what share of your holdings is in Canadian energy, and whether that is where you want it?</div>
-<div class="checklist-item">When headlines like Monday's hit, who do you talk to before deciding whether to act?</div>
+<div class="checklist-item">When headlines like Monday''s hit, who do you talk to before deciding whether to act?</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
 <strong>Subject:</strong> The Hormuz pattern most headlines are missing<br><br>
 Hi [First Name],<br><br>
-This week's renewed strikes near the Strait of Hormuz pushed oil higher again, the latest in a six-month pattern. If you hold Canadian energy positions or are simply trying to make sense of a conflict that keeps resurfacing, I would be glad to walk through what the pattern actually shows and what it means for a portfolio like yours.<br><br>
+This week''s renewed strikes near the Strait of Hormuz pushed oil higher again, the latest in a six-month pattern. If you hold Canadian energy positions or are simply trying to make sense of a conflict that keeps resurfacing, I would be glad to walk through what the pattern actually shows and what it means for a portfolio like yours.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
-  '[{"value":"$87.75","label":"WTI crude, up 2.3% Tuesday"},{"value":"107","label":"Weekly Hormuz transits vs. 130 normal"},{"value":"20%","label":"Global oil supply via the strait"},{"value":"$126","label":"Brent's March 2026 crisis peak"}]',
+  '[{"value":"$87.75","label":"WTI crude, up 2.3% Tuesday"},{"value":"107","label":"Weekly Hormuz transits vs. 130 normal"},{"value":"20%","label":"Global oil supply via the strait"},{"value":"$126","label":"Brents March 2026 crisis peak"}]',
   'geo-096.jpg',
   'Renewed strikes in the Strait of Hormuz have reopened a risk premium in oil markets that had spent most of August fading. Photo: iStock.',
   7,
