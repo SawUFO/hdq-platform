@@ -810,9 +810,9 @@ VALUES (
 
   var evX = xp(19);
   svg.appendChild(el("line",{x1:evX,x2:evX,y1:margin.top,y2:baseline,stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
-  svg.appendChild(el("text",{x:evX-40,y:margin.top+20,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560"},"US-IRAN COMBAT RESUMES"));
+  svg.appendChild(el("text",{x:evX-40,y:margin.top-4,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560"},"US-IRAN COMBAT RESUMES"));
 
-  svg.appendChild(el("text",{x:xp(15)+3,y:yp(36957.60)+14,"text-anchor":"start","font-size":8,fill:"#444444"},"PEAK: 36,957.60"));
+  svg.appendChild(el("text",{x:evX-4,y:yp(36957.60)+14,"text-anchor":"end","font-size":8,fill:"#444444"},"PEAK: 36,957.60"));
 
   var pillText = "36,180.72";
   var pillW = Math.ceil(pillText.length * 9 * 0.58) + 10;
