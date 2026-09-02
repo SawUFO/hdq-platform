@@ -86,9 +86,9 @@ VALUES (
     svg.appendChild(el("text",{x:xp(i),y:margin.top+PH+16,"text-anchor":"middle","font-size":"8","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#999999"}, data[i].d));
   });
   if (Math.abs(refVal-data[n-1].v)/data[n-1].v >= 0.03){
-    svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"text-anchor":"start","font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#7a3030"}, "AUG. 3 STARTING LEVEL"));
+    svg.appendChild(el("text",{x:margin.left+PW-10,y:refY-10,"text-anchor":"end","font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#7a3030"}, "AUG. 3 STARTING LEVEL"));
   }
-  svg.appendChild(el("text",{x:peakX+3,y:margin.top+20,"text-anchor":"start","font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, "SIX-WEEK HIGH"));
+  svg.appendChild(el("text",{x:peakX+9,y:margin.top+20,"text-anchor":"start","font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#1a3560"}, "SIX-WEEK HIGH"));
   _cs.parentNode.appendChild(svg);
 })();
 </script>
