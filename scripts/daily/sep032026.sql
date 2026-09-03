@@ -89,7 +89,7 @@ VALUES (
   svg.appendChild(el("line",{x1:evX,x2:evX,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-opacity":"0.5","stroke-dasharray":"2,3"}));
   var evLines = ["SECOND WAVE OF","U.S. STRIKES ON IRAN"];
   evLines.forEach(function(line, li){
-    svg.appendChild(el("text",{x:evX-40, y:margin.top+20+li*9, "text-anchor":"end", style:"font-size:7px;font-weight:700;fill:#1a3560;"}, line));
+    svg.appendChild(el("text",{x:evX-40, y:margin.top+2+li*9, "text-anchor":"end", style:"font-size:7px;font-weight:700;fill:#1a3560;"}, line));
   });
 
   function textWidth(str, fs){
@@ -119,7 +119,7 @@ VALUES (
   goldTicks.forEach(function(t){
     svg.appendChild(el("text",{x:margin.left-6,y:yG(t)+3,"text-anchor":"end",style:"font-size:8.5px;fill:#aaaaaa;"}, "$"+t.toLocaleString()));
   });
-  var oilTicks = [86,90,94,98];
+  var oilTicks = [86,90,94];
   oilTicks.forEach(function(t){
     svg.appendChild(el("text",{x:margin.left+PW-4,y:yO(t)+3,"text-anchor":"end",style:"font-size:8.5px;fill:#aaaaaa;"}, "$"+t));
   });
@@ -472,7 +472,7 @@ VALUES (
 
   var refY = yp(2.0);
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#2e7d32","stroke-dasharray":"3,3"}));
-  svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"text-anchor":"start",style:"font-size:7px;fill:#2e7d32;font-weight:700;"},"BOC 2% TARGET"));
+  svg.appendChild(el("text",{x:650,y:refY-10,"text-anchor":"end",style:"font-size:7px;fill:#2e7d32;font-weight:700;"},"BOC 2% TARGET"));
 
   var cpiPath = "M" + cpi.map(function(v,i){ return xp(i)+","+yp(v); }).join("L");
   svg.appendChild(el("path",{d:cpiPath, fill:"none", stroke:"#4a5568", "stroke-width":2}));
