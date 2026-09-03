@@ -69,7 +69,7 @@ VALUES (
   // 2. Event band: BoC decision + Waller comments (Sep 2 - Sep 3)
   var bandX0 = xp(n-2), bandX1 = xp(n-1);
   svg.appendChild(el("rect",{x:bandX0,y:margin.top,width:(bandX1-bandX0),height:PH,fill:"#2e7d32","fill-opacity":"0.07"}));
-  svg.appendChild(el("text",{x:(bandX0+bandX1)/2,y:margin.top+10,"text-anchor":"middle","font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#2e7d32"}, "BOC HOLD / WALLER"));
+  svg.appendChild(el("text",{x:margin.left+10,y:yp(data[n-2])-6,"text-anchor":"start","font-size":"7","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#2e7d32"}, "BOC HOLD / WALLER"));
 
   // 3. Series path
   var pathD = "";
