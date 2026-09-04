@@ -92,7 +92,7 @@ VALUES (
   svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":"9","font-weight":"700","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#111111"}, pillText));
 
   // 7. Annotation: today''s move
-  svg.appendChild(el("text",{x:lastX-8,y:lastY+18,"text-anchor":"end","font-size":"8","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#444444"}, "-2.2BP ON WEAK CDN JOBS"));
+  svg.appendChild(el("text",{x:lastX-8,y:yp(3.70)-10,"text-anchor":"end","font-size":"8","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif",fill:"#444444"}, "-2.2BP ON WEAK CDN JOBS"));
 
   _cs.parentNode.appendChild(svg);
 })();
