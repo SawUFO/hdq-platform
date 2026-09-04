@@ -31,6 +31,7 @@ VALUES (
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
+  _cs.parentNode.appendChild(svg);
 
   function el(tag, attrs, txt){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -60,7 +61,7 @@ VALUES (
   var refValue = data[0];
   var refY = yp(refValue);
   svg.appendChild(el("line",{x1:margin.left, x2:margin.left+PW, y1:refY, y2:refY, stroke:"#2e7d32","stroke-width":1,"stroke-dasharray":"3,3"}));
-  svg.appendChild(el("text",{x:margin.left+10, y:refY-10, "text-anchor":"start","font-size":7, fill:"#2e7d32","font-weight":700,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "AUG 7 LEVEL"));
+  svg.appendChild(el("text",{x:margin.left+PW-10, y:refY-10, "text-anchor":"end","font-size":7, fill:"#2e7d32","font-weight":700,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "AUG 7 LEVEL"));
 
   var bandX0 = xp(14), bandX1 = xp(17);
   svg.appendChild(el("rect",{x:bandX0, y:margin.top, width:(bandX1-bandX0), height:PH, fill:"#c0392b","fill-opacity":0.05}));
@@ -102,7 +103,6 @@ VALUES (
   svg.appendChild(el("rect",{x:pillX, y:pillY, width:pillW, height:pillH, fill:"#e8a825", rx:2}));
   svg.appendChild(el("text",{x:pillX+pillW/2, y:pillY+pillH/2+3, "text-anchor":"middle","font-size":9,"font-weight":700, fill:"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, pillText));
 
-  _cs.parentNode.appendChild(svg);
 })();
 </script>
 </div>
@@ -186,7 +186,7 @@ If you are managing your own portfolio, this kind of week is exactly where a cle
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
   '[{"value":"36,659.86","label":"TSX composite close, Sept. 3"},{"value":"-2.7%","label":"Three-day slide before rebound"},{"value":"41,700","label":"Canadian jobs lost in August"},{"value":"US$95","label":"Brent crude price this week"}]',
-  'behaviour-021.jpg',
+  'behaviour-099.jpg',
   'Loss aversion research helps explain why a market rebound can feel less trustworthy than the decline that preceded it, even when the same headlines are driving both moves. Photo: iStock.',
   6,
   '2026-09-04T10:58:00',
@@ -228,6 +228,7 @@ VALUES (
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
+  _cs.parentNode.appendChild(svg);
 
   function el(tag, attrs, txt){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -286,7 +287,6 @@ VALUES (
   svg.appendChild(el("rect",{x:pillX, y:pillY, width:pillW, height:pillH, fill:"#e8a825", rx:2}));
   svg.appendChild(el("text",{x:pillX+pillW/2, y:pillY+pillH/2+3, "text-anchor":"middle","font-size":9,"font-weight":700, fill:"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, pillText));
 
-  _cs.parentNode.appendChild(svg);
 })();
 </script>
 </div>
@@ -369,7 +369,7 @@ Happy to walk through whether this makes sense for your situation before the rat
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
   '[{"value":"3%","label":"Prescribed rate, Q4 2026"},{"value":"6th","label":"Consecutive quarter at 3%"},{"value":"7%","label":"CRA overdue tax rate"},{"value":"Jan. 30","label":"Annual interest payment deadline"}]',
-  'tax-014.jpg',
+  'tax-099.jpg',
   'Family income-splitting loans lock in whatever prescribed rate applies at the moment they are set up, which makes the current rate window a planning decision with a real deadline attached. Photo: iStock.',
   6,
   '2026-09-04T11:00:00',
@@ -411,6 +411,7 @@ VALUES (
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
+  _cs.parentNode.appendChild(svg);
 
   function el(tag, attrs, txt){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -480,7 +481,6 @@ VALUES (
   svg.appendChild(el("rect",{x:pillX, y:pillY, width:pillW, height:pillH, fill:"#e8a825", rx:2}));
   svg.appendChild(el("text",{x:pillX+pillW/2, y:pillY+pillH/2+3, "text-anchor":"middle","font-size":9,"font-weight":700, fill:"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, pillText));
 
-  _cs.parentNode.appendChild(svg);
 })();
 </script>
 </div>
@@ -563,7 +563,7 @@ If your portfolio or financing is positioned for only one outcome, this is a goo
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
   '[{"value":"-41,700","label":"August jobs lost"},{"value":"6.4%","label":"Unemployment rate, unchanged"},{"value":"65.0%","label":"Labour force participation rate"},{"value":"2.0%","label":"Wage growth, down from 3%"}]',
-  'economy-033.jpg',
+  'economy-099.jpg',
   'A stable headline unemployment rate can mask a labour market that is cooling from the demand side, and this week''s data lands directly against the Bank of Canada''s newly hawkish language. Photo: iStock.',
   7,
   '2026-09-04T11:02:00',
@@ -604,6 +604,7 @@ VALUES (
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
+  _cs.parentNode.appendChild(svg);
 
   function el(tag, attrs, txt){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -654,8 +655,8 @@ VALUES (
   var nearRight = (eventX + 90) > (margin.left + PW);
   var evAnchor = nearRight ? "end" : "start";
   var evOffset = nearRight ? -6 : 6;
-  svg.appendChild(el("text",{x:eventX+evOffset, y:margin.top+42, "text-anchor":evAnchor,"font-size":7,"font-weight":700, fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "US STRIKES NEAR"));
-  svg.appendChild(el("text",{x:eventX+evOffset, y:margin.top+52, "text-anchor":evAnchor,"font-size":7,"font-weight":700, fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "STRAIT OF HORMUZ"));
+  svg.appendChild(el("text",{x:eventX+evOffset, y:margin.top+PH-16, "text-anchor":evAnchor,"font-size":7,"font-weight":700, fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "US STRIKES NEAR"));
+  svg.appendChild(el("text",{x:eventX+evOffset, y:margin.top+PH-6, "text-anchor":evAnchor,"font-size":7,"font-weight":700, fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "STRAIT OF HORMUZ"));
 
   var lastX = xp(n-1), lastY = yp(data[n-1]);
   var pillText = "$95.52";
@@ -670,7 +671,6 @@ VALUES (
   svg.appendChild(el("rect",{x:pillX, y:pillY, width:pillW, height:pillH, fill:"#e8a825", rx:2}));
   svg.appendChild(el("text",{x:pillX+pillW/2, y:pillY+pillH/2+3, "text-anchor":"middle","font-size":9,"font-weight":700, fill:"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, pillText));
 
-  _cs.parentNode.appendChild(svg);
 })();
 </script>
 </div>
@@ -753,7 +753,7 @@ If you are managing your own portfolio through this, I would welcome the chance 
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
   '[{"value":"$95.52","label":"Brent crude close, Sept. 3"},{"value":"+7.3%","label":"Brent move since Aug. 17"},{"value":"~5/day","label":"Hormuz vessel crossings now"},{"value":"~20%","label":"Global oil exports via Hormuz"}]',
-  'geo-019.jpg',
+  'geo-099.jpg',
   'A shipping disruption that persists for days rather than hours changes how markets price the underlying risk, and this reassessment reaches Canadian portfolios through specific, traceable channels. Photo: iStock.',
   7,
   '2026-09-04T11:04:00',
@@ -794,6 +794,7 @@ VALUES (
   var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 680 300");
   svg.setAttribute("width","100%");
+  _cs.parentNode.appendChild(svg);
 
   function el(tag, attrs, txt){
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -860,7 +861,6 @@ VALUES (
   svg.appendChild(el("rect",{x:pillX, y:pillY, width:pillW, height:pillH, fill:"#e8a825", rx:2}));
   svg.appendChild(el("text",{x:pillX+pillW/2, y:pillY+pillH/2+3, "text-anchor":"middle","font-size":9,"font-weight":700, fill:"#111111","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, pillText));
 
-  _cs.parentNode.appendChild(svg);
 })();
 </script>
 </div>
@@ -943,7 +943,7 @@ If you are holding gold, miners, or cross-border fixed income right now, this is
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
   '[{"value":"+162,000","label":"US payrolls, August surprise"},{"value":"4.1%","label":"US unemployment rate"},{"value":"38,000","label":"ADP private jobs, August"},{"value":"$4,540","label":"Gold close, Sept. 3"}]',
-  'market-041.jpg',
+  'market-099.jpg',
   'A blowout August jobs report has reversed a week of rate-cut optimism that had pushed gold toward record territory, and the swing runs directly through TSX-listed miners. Photo: iStock.',
   7,
   '2026-09-04T11:06:00',
