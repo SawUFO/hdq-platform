@@ -95,6 +95,7 @@ VALUES (
     if(i===0) return;
     var x=xp(i), y=yp(d.v);
     var ax = x, ay = y-14, anchor="middle";
+    if (i===1){ ax = x-6; anchor="end"; }
     if (i===n-1){ ax = x-4; ay = y-24; anchor="end"; }
     svg.appendChild(el("text",{x:ax,y:ay,"text-anchor":anchor,"font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif","font-size":"7","font-weight":"700",fill:"#1a3560"}, d.note));
   });
