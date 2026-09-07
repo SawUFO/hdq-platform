@@ -77,7 +77,7 @@ VALUES (
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#7a3030","stroke-dasharray":"3,3"}));
   var currentVal = data[n-1].v;
   if (Math.abs(nineHourAnnual - currentVal) / currentVal >= 0.03){
-    svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"text-anchor":"start","font-size":7,fill:"#7a3030",style:"font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;"},"NINE-HOUR, SIX-DAY WEEK (EST.)"));
+    svg.appendChild(el("text",{x:margin.left+PW-10,y:refY-10,"text-anchor":"end","font-size":7,fill:"#7a3030",style:"font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;"},"NINE-HOUR, SIX-DAY WEEK (EST.)"));
   }
 
   var pathD = data.map(function(d,i){ return (i===0?"M":"L") + xS(d.y).toFixed(1) + "," + yS(d.v).toFixed(1); }).join(" ");
@@ -103,7 +103,7 @@ VALUES (
     var nearRight = (ex + 90) > (margin.left + PW);
     var anchor = (crowded || nearRight) ? "end" : "start";
     var offset = (crowded || nearRight) ? -3 : 3;
-    var yStart = crowded ? MT + 44 : MT + 20;
+    var yStart = (ev.yr === 1872) ? refY + 12 : (crowded ? MT + 44 : MT + 20);
     svg.appendChild(el("line",{x1:ex,x2:ex,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
     svg.appendChild(el("text",{x:ex+offset,y:yStart,"text-anchor":anchor,"font-size":7,"font-weight":700,fill:"#1a3560",style:"font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;"}, ev.label));
   });
