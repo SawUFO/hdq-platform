@@ -615,7 +615,7 @@ VALUES (
 
   var bandX1 = xp(15), bandX2 = xp(n-1);
   svg.appendChild(el("rect",{x:bandX1,y:margin.top,width:bandX2-bandX1,height:PH,fill:"#c0392b","fill-opacity":0.05}));
-  svg.appendChild(el("text",{x:(bandX1+bandX2)/2,y:margin.top+12,"text-anchor":"middle","font-size":7,"font-weight":700,fill:"#c0392b"}, "POST-ATTACK SURGE"));
+  svg.appendChild(el("text",{x:(bandX1+bandX2)/2,y:margin.top+PH-6,"text-anchor":"middle","font-size":7,"font-weight":700,fill:"#c0392b"}, "POST-ATTACK SURGE"));
 
   var ref100 = yp(100);
   if (ref100 > margin.top){
@@ -815,7 +815,7 @@ VALUES (
 
   var negCluster = [1,2];
   var clusterX = (xBand(negCluster[0]) + xBand(negCluster[1])) / 2;
-  svg.appendChild(el("text",{x:clusterX,y:zeroY+34,"text-anchor":"middle","font-size":7,"font-weight":700,fill:"#8a3030"}, "MIDEAST + FED RISK"));
+  svg.appendChild(el("text",{x:clusterX+30,y:zeroY+34,"text-anchor":"middle","font-size":7,"font-weight":700,fill:"#8a3030"}, "MIDEAST + FED RISK"));
 
   var pillIndex = 0;
   var tipX = xBand(pillIndex), tipV = data[pillIndex].v, tipY = yp(tipV);
