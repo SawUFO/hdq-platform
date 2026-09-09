@@ -110,13 +110,13 @@ VALUES (
   }
 
   if (Math.abs(bullAvg - bullCurrent)/bullCurrent >= 0.03){
-    svg.appendChild(el("text",{x:margin.left+10, y:yp(bullAvg)-12, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":FONT}, "BULLISH AVG 37.5%"));
+    svg.appendChild(el("text",{x:margin.left+40, y:yp(bullAvg)-6, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":FONT}, "BULLISH AVG 37.5%"));
   }
   if (Math.abs(bearAvg - bearCurrent)/bearCurrent >= 0.03){
-    svg.appendChild(el("text",{x:margin.left+10, y:yp(bearAvg)+13, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#7a3030", "font-family":FONT}, "BEARISH AVG 31.5%"));
+    svg.appendChild(el("text",{x:margin.left+10, y:yp(bearAvg)+20, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#7a3030", "font-family":FONT}, "BEARISH AVG 31.5%"));
   }
 
-  svg.appendChild(el("text",{x:xS(n-1)-4, y:lastYBull+3, "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#3a7a55", "font-family":FONT}, "BULLISH"));
+  svg.appendChild(el("text",{x:xS(n-1), y:lastYBull-6, "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#3a7a55", "font-family":FONT}, "BULLISH"));
 
   _cs.parentNode.appendChild(svg);
 })();
@@ -505,7 +505,7 @@ VALUES (
     svg.appendChild(el("text",{x:xS(gv), y:margin.top+PH+16, "text-anchor":"middle", "font-size":"8", fill:"#999999", "font-family":FONT}, (gv>0?"+":"") + gv + "%"));
   });
 
-  svg.appendChild(el("text",{x:margin.left+PW-6, y:margin.top+12, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#444444", "font-family":FONT}, "NET AUGUST CHANGE: -42,000"));
+  svg.appendChild(el("text",{x:margin.left+PW-6, y:rowY[0]+barH+10, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#444444", "font-family":FONT}, "NET AUGUST CHANGE: -42,000"));
 
   _cs.parentNode.appendChild(svg);
 })();
@@ -699,7 +699,7 @@ VALUES (
   }
 
   if (Math.abs(baseline - current)/current >= 0.03){
-    svg.appendChild(el("text",{x:margin.left+10, y:yp(baseline)+12, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#7a3030", "font-family":FONT}, "PRE-WAR BASELINE ~$67"));
+    svg.appendChild(el("text",{x:margin.left+PW-10, y:yp(baseline)+12, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#7a3030", "font-family":FONT}, "PRE-WAR BASELINE ~$67"));
   }
   svg.appendChild(el("text",{x:xS(warIdx)+4, y:margin.top+10, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":FONT}, "WAR ERUPTS"));
   svg.appendChild(el("text",{x:xS(ceaseIdx)+4, y:margin.top+20, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":FONT}, "CEASEFIRE"));
