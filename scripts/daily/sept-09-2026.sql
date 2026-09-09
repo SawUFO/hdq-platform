@@ -110,7 +110,7 @@ VALUES (
   }
 
   if (Math.abs(bullAvg - bullCurrent)/bullCurrent >= 0.03){
-    svg.appendChild(el("text",{x:margin.left+40, y:yp(bullAvg)-6, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":FONT}, "BULLISH AVG 37.5%"));
+    svg.appendChild(el("text",{x:margin.left+40, y:yp(bullAvg)-10, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#2e7d32", "font-family":FONT}, "BULLISH AVG 37.5%"));
   }
   if (Math.abs(bearAvg - bearCurrent)/bearCurrent >= 0.03){
     svg.appendChild(el("text",{x:margin.left+10, y:yp(bearAvg)+20, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#7a3030", "font-family":FONT}, "BEARISH AVG 31.5%"));
