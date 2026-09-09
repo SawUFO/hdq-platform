@@ -576,7 +576,7 @@ That mix makes the Bank of Canada''s October 28 decision genuinely uncertain, an
 <div class="email-box" id="prospect-email">
 <strong>Subject:</strong> Inflation up, jobs down: what it means for October<br><br>
 Hi [Name],<br><br>
-This week's data showed headline inflation at 3%, driven almost entirely by gasoline, while wage growth hit its slowest pace since 2017 and Canada lost jobs in August. That combination makes the Bank of Canada's October 28 decision genuinely uncertain.<br><br>
+This week’s data showed headline inflation at 3%, driven almost entirely by gasoline, while wage growth hit its slowest pace since 2017 and Canada lost jobs in August. That combination makes the Bank of Canada’s October 28 decision genuinely uncertain.<br><br>
 Happy to share how I am positioning around it, if useful to you.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
@@ -773,7 +773,7 @@ My base case is this keeps Canadian energy supported without a single catastroph
 <div class="email-box" id="prospect-email">
 <strong>Subject:</strong> The oil story most portfolios are not positioned for<br><br>
 Hi [Name],<br><br>
-This week's attacks on Saudi oil facilities pushed WTI crude to $92.72, part of a six-month pattern tied to the US-Iran war. The distinction that matters now is that these strikes are hitting production directly, which is a different and more durable risk than the shipping disruptions that dominated the story earlier.<br><br>
+This week’s attacks on Saudi oil facilities pushed WTI crude to $92.72, part of a six-month pattern tied to the US-Iran war. The distinction that matters now is that these strikes are hitting production directly, which is a different and more durable risk than the shipping disruptions that dominated the story earlier.<br><br>
 Happy to share how I am positioning around it, including the specific level that would change my read.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
@@ -964,7 +964,7 @@ I am watching both, but treating them as distinct risks rather than one narrativ
 <div class="email-box" id="prospect-email">
 <strong>Subject:</strong> Why the loonie rose on a day markets fell<br><br>
 Hi [Name],<br><br>
-Tuesday's market drop was driven by a blowout US jobs report that pushed Fed rate hike odds to 60% ahead of its September 16 decision. The Canadian dollar rose the same day, on oil prices rather than the same story. Two separate mechanisms, one trading day.<br><br>
+Tuesday’s market drop was driven by a blowout US jobs report that pushed Fed rate hike odds to 60% ahead of its September 16 decision. The Canadian dollar rose the same day, on oil prices rather than the same story. Two separate mechanisms, one trading day.<br><br>
 Happy to walk through what that means for your portfolio, if useful.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
