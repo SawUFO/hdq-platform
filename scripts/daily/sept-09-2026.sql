@@ -116,7 +116,7 @@ VALUES (
     svg.appendChild(el("text",{x:margin.left+10, y:yp(bearAvg)+20, "text-anchor":"start", "font-size":"7", "font-weight":"700", fill:"#7a3030", "font-family":FONT}, "BEARISH AVG 31.5%"));
   }
 
-  svg.appendChild(el("text",{x:xS(n-1)+10, y:lastYBull-6, "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#3a7a55", "font-family":FONT}, "BULLISH"));
+  svg.appendChild(el("text",{x:xS(n-1)+14, y:lastYBull-6, "text-anchor":"end", "font-size":"7.5", "font-weight":"700", fill:"#3a7a55", "font-family":FONT}, "BULLISH"));
 
   _cs.parentNode.appendChild(svg);
 })();
