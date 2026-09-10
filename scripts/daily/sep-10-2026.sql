@@ -445,7 +445,7 @@ VALUES (
   var targetVal = 2.0;
   var targetY = yS(targetVal);
   svg.appendChild(el("line",{x1:margin.left, x2:margin.left+PW, y1:targetY, y2:targetY, stroke:"#2e7d32","stroke-dasharray":"3,3"}));
-  svg.appendChild(el("text",{x:margin.left+10, y:targetY-10, "text-anchor":"start","font-size":7, fill:"#2e7d32"}, "2% INFLATION TARGET"));
+  svg.appendChild(el("text",{x:margin.left+PW-10, y:targetY-10, "text-anchor":"end","font-size":7, fill:"#2e7d32"}, "2% INFLATION TARGET"));
 
   var d = "";
   for (var i=0;i<n;i++){
