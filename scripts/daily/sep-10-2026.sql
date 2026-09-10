@@ -23,7 +23,7 @@ VALUES (
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">TSX &mdash; S&amp;P/TSX COMPOSITE INDEX</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">TSX: S&amp;P/TSX COMPOSITE INDEX</span>
 <span style="font-size:20px;font-weight:700;color:#111;">35,906.56</span>
 <span style="font-size:13px;color:#c0392b;">&#9660; -0.60%</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; AUG 21 - SEP 9, 2026</span>
@@ -127,7 +127,7 @@ VALUES (
 <div class="toolkit-section">
 <div class="toolkit-section-label">Who''s Affected</div>
 <p><strong>High impact:</strong> Clients requesting a new or larger concentrated position in energy names or an oil and gas ETF within the past two weeks.</p>
-<p><strong>Mixed impact:</strong> Diversified clients with index-level TSX exposure who are reacting to the composite's decline without realising energy has been the strongest, not the weakest, part of it.</p>
+<p><strong>Mixed impact:</strong> Diversified clients with index-level TSX exposure who are reacting to the composite’s decline without realising energy has been the strongest, not the weakest, part of it.</p>
 <p><strong>Potential benefit:</strong> Clients already holding a long-standing strategic energy allocation set before the tanker war began, which is now working exactly as intended.</p>
 </div>
 <div class="toolkit-section">
@@ -152,7 +152,7 @@ If you would like to revisit your strategic energy weighting as a permanent deci
   '<div class="toolkit-section">
 <div class="toolkit-section-label">Client Profiles to Target</div>
 <p><strong>DIY investors who bought energy in the past two weeks:</strong> self-directed investors chasing the oil rally with no framework for when to exit, and no advisor to ask whether the entry point makes sense.</p>
-<p><strong>DIY investors sitting in cash or bonds, rattled by the TSX's recent slide:</strong> reading broad market softness as a reason to wait, with no one to explain that the composite's decline and the energy rally are two separate stories.</p>
+<p><strong>DIY investors sitting in cash or bonds, rattled by the TSX’s recent slide:</strong> reading broad market softness as a reason to wait, with no one to explain that the composite’s decline and the energy rally are two separate stories.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Opening Line</div>
@@ -161,7 +161,7 @@ If you would like to revisit your strategic energy weighting as a permanent deci
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
 <p>A self-directed investor watching a geopolitical story move a commodity 18% in thirteen sessions has no framework for separating a permanent allocation decision from a reactive one, and no one to ask the question before the trade is made instead of after. The research on frequent, headline-driven trading is unambiguous: it costs money, on average, over time.</p>
-<p>The advisor's value here is not calling the next move in oil. It is being the person who asks what the client actually believes about the next twelve months before money moves, rather than after.</p>
+<p>The advisor’s value here is not calling the next move in oil. It is being the person who asks what the client actually believes about the next twelve months before money moves, rather than after.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
@@ -209,7 +209,7 @@ VALUES (
 <li><strong>The same pressure is building again,</strong><span> this time from clients sitting on fresh energy gains who are hearing early budget-season tax chatter.</span></li>
 </ul>',
   '<p>The federal government''s proposal to raise the capital gains inclusion rate from one-half to two-thirds was announced April 16, 2024, deferred in January 2025, and scrapped entirely in March 2025 ahead of the federal election. It never took effect for a single taxpayer. Federal revenue data published this week shows it did not need to, in order to cost people money.</p>
-<p>Total federal government revenue rose $51.4 billion, 11%, to $511 billion in fiscal 2024-25. Personal income tax collections rose $16.6 billion, corporate income tax rose $14.5 billion. Tax practitioners interviewed this week point to one specific driver inside those totals: a wave of clients who realised capital gains ahead of the original June 25, 2024 deadline, before the government's own reversal made that realisation unnecessary.</p>
+<p>Total federal government revenue rose $51.4 billion, 11%, to $511 billion in fiscal 2024-25. Personal income tax collections rose $16.6 billion, corporate income tax rose $14.5 billion. Tax practitioners interviewed this week point to one specific driver inside those totals: a wave of clients who realised capital gains ahead of the original June 25, 2024 deadline, before the government’s own reversal made that realisation unnecessary.</p>
 <h2>What the Proposal Actually Covered</h2>
 <p>The measure would have applied the higher two-thirds inclusion rate to individual capital gains above $250,000 in a given year, and to all corporate and most trust capital gains with no threshold at all. That asymmetry is why the corporate and trust response was sharper than the individual one. A CCPC holding company or a family trust realising gains had no exemption to plan around, only a deadline.</p>
 <p>Tax practitioner Ryan Minor described what followed as a period where there was a lot of real activity, corporations moving to trigger gains before the effective date. Carson Hamill said the number of clients intentionally realising gains ahead of the June 25 deadline was noticeably higher than in a typical year. Laura Paglia called the pattern direct evidence of a large timing response, a very real behavioural sensitivity to capital taxation.</p>
@@ -219,7 +219,7 @@ VALUES (
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">CAPITAL GAINS MEASURE &mdash; REVENUE ESTIMATES</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">CAPITAL GAINS MEASURE: REVENUE ESTIMATES</span>
 <span style="font-size:20px;font-weight:700;color:#111;">$6.9B</span>
 <span style="font-size:13px;color:#c0392b;">&#9660; -28% PBO VS FINANCE</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">ONE-TIME ESTIMATE &nbsp;|&nbsp; FY 2024-25</span>
@@ -290,7 +290,7 @@ VALUES (
     svg.appendChild(el("text",{x:xS(t), y:margin.top+PH+16, "text-anchor":"middle","font-size":8, fill:"#999"}, "$" + t + "B"));
   });
 
-  svg.appendChild(el("text",{x:xS(rows[2].value)+9, y:yC(2)-4, "text-anchor":"start","font-size":8, fill:"#444"}, "28% below Ottawa's own estimate"));
+  svg.appendChild(el("text",{x:xS(rows[2].value)+9, y:yC(2)-4, "text-anchor":"start","font-size":8, fill:"#444"}, "28% below Ottawa’s own estimate"));
 
   _cs.parentNode.appendChild(svg);
 })();
@@ -323,7 +323,7 @@ VALUES (
 <div class="checklist-item">Identify clients who realised gains in non-registered, CCPC, or trust accounts ahead of the June 25, 2024 deadline</div>
 <div class="checklist-item">Quantify the time-value cost of the early tax prepayment for those clients where relevant to a future conversation</div>
 <div class="checklist-item">Flag any client currently asking about pre-emptively realising energy gains on tax-change rumours</div>
-<div class="checklist-item">Confirm the household's current non-registered and corporate exposure above the $250,000 individual threshold</div>
+<div class="checklist-item">Confirm the household’s current non-registered and corporate exposure above the $250,000 individual threshold</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Follow-Up Email Template</div>
@@ -349,7 +349,7 @@ I wanted to flag this now because the same kind of pressure can resurface around
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
 <p>A business owner or trustee managing capital gains decisions without a coordinated advisor is exposed to exactly the kind of deadline-driven, proposal-not-law pressure that cost real money in 2024. The federal data now confirms the scale of that behavioural response, and the pattern is set to repeat around every future budget cycle.</p>
-<p>The advisor's role is not predicting which proposals become law. It is holding a firm rule, act on legislation, not speculation, and having the account-type-specific knowledge to move fast the moment something actually changes.</p>
+<p>The advisor’s role is not predicting which proposals become law. It is holding a firm rule, act on legislation, not speculation, and having the account-type-specific knowledge to move fast the moment something actually changes.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
@@ -405,7 +405,7 @@ VALUES (
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">CPI &mdash; CANADA HEADLINE INFLATION, YEAR OVER YEAR</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">CPI: CANADA HEADLINE INFLATION, YEAR OVER YEAR</span>
 <span style="font-size:20px;font-weight:700;color:#111;">3.0%</span>
 <span style="font-size:13px;color:#c0392b;">&#9660; VS 2% TARGET</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">MONTHLY &nbsp;|&nbsp; AUG 2025 - JUL 2026</span>
@@ -502,11 +502,11 @@ VALUES (
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">What to Say</div>
-<div class="script-box">Gas prices are up because of the tanker war, and that is showing up in the headline inflation number. But the Bank of Canada's own preferred measures, the ones that strip out volatile items like gasoline, are still sitting close to 2%. That distinction matters because it is the difference between a temporary, geopolitically driven price spike and the kind of broad inflation that would force the Bank's hand on rates. I am watching the September data the same way the Bank is, and I will tell you directly if that read changes before the October decision.</div>
+<div class="script-box">Gas prices are up because of the tanker war, and that is showing up in the headline inflation number. But the Bank of Canada’s own preferred measures, the ones that strip out volatile items like gasoline, are still sitting close to 2%. That distinction matters because it is the difference between a temporary, geopolitically driven price spike and the kind of broad inflation that would force the Bank’s hand on rates. I am watching the September data the same way the Bank is, and I will tell you directly if that read changes before the October decision.</div>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Who''s Affected</div>
-<p><strong>High impact:</strong> Clients with a mortgage renewing in the next six to twelve months, whose rate expectations depend on the Bank's October path.</p>
+<p><strong>High impact:</strong> Clients with a mortgage renewing in the next six to twelve months, whose rate expectations depend on the Bank’s October path.</p>
 <p><strong>Mixed impact:</strong> Fixed-income holders reassessing duration risk if headline inflation stays elevated even as core measures hold near target.</p>
 <p><strong>Potential benefit:</strong> Clients holding Canadian energy exposure, who benefit from the same oil move that is complicating the inflation picture for everyone else.</p>
 </div>
@@ -522,7 +522,7 @@ VALUES (
 <div class="email-box" id="respond-email">
 <strong>Subject:</strong> Gas prices, inflation, and your mortgage renewal<br><br>
 Hi [Client Name],<br><br>
-Wanted to follow up on the gas price question. Headline inflation is elevated because of the tanker war's effect on oil, but the Bank of Canada's core inflation measures, which exclude volatile items like gasoline, remain close to the 2% target.<br><br>
+Wanted to follow up on the gas price question. Headline inflation is elevated because of the tanker war’s effect on oil, but the Bank of Canada’s core inflation measures, which exclude volatile items like gasoline, remain close to the 2% target.<br><br>
 That distinction is central to how the Bank will read the September data ahead of its October 28 decision. I am tracking it closely and will reach out directly if anything changes our renewal planning.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
@@ -540,8 +540,8 @@ That distinction is central to how the Bank will read the September data ahead o
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
-<p>A DIY investor or homeowner reading only the headline CPI number is getting an incomplete picture of what actually drives the Bank of Canada's decisions. The gap between headline inflation, currently near 3%, and core inflation, near 2%, is the entire story for October 28, and most self-directed investors are not positioned to track that distinction in real time.</p>
-<p>The advisor's value is translating a releases calendar most people never look at into a concrete answer for a mortgage renewal date or a bond ladder decision that is actually approaching.</p>
+<p>A DIY investor or homeowner reading only the headline CPI number is getting an incomplete picture of what actually drives the Bank of Canada’s decisions. The gap between headline inflation, currently near 3%, and core inflation, near 2%, is the entire story for October 28, and most self-directed investors are not positioned to track that distinction in real time.</p>
+<p>The advisor’s value is translating a releases calendar most people never look at into a concrete answer for a mortgage renewal date or a bond ladder decision that is actually approaching.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
@@ -597,7 +597,7 @@ VALUES (
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">WTI &mdash; CRUDE OIL, FRONT-MONTH</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">WTI: CRUDE OIL, FRONT-MONTH</span>
 <span style="font-size:20px;font-weight:700;color:#111;">$97.26</span>
 <span style="font-size:13px;color:#2e7d32;">&#9650; +18% (13 SESSIONS)</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; AUG 26 - SEP 10, 2026</span>
@@ -716,7 +716,7 @@ VALUES (
 <strong>Subject:</strong> Oil is up, the loonie has not followed<br><br>
 Hi [Client Name],<br><br>
 Following up on the tanker war and its effect on your portfolio. WTI crude is up 18% over the past two weeks, and your Canadian energy holdings are reflecting that. The Canadian dollar, which usually strengthens alongside a move like this, has moved only marginally.<br><br>
-If you have U.S.-dollar needs coming up, I want to make sure we are planning around the currency market's actual behaviour right now, not the historical pattern.<br><br>
+If you have U.S.-dollar needs coming up, I want to make sure we are planning around the currency market’s actual behaviour right now, not the historical pattern.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
@@ -734,7 +734,7 @@ If you have U.S.-dollar needs coming up, I want to make sure we are planning aro
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
 <p>A self-directed investor or cross-border spender relying on the textbook relationship between oil prices and the Canadian dollar is currently working from a relationship that has not held for the past two weeks. Understanding why, and what it means for currency planning, is not something most people track in real time.</p>
-<p>The advisor's value here is separating the equity story, which is playing out as expected, from the currency story, which is not, and helping a prospect plan around both accurately.</p>
+<p>The advisor’s value here is separating the equity story, which is playing out as expected, from the currency story, which is not, and helping a prospect plan around both accurately.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
@@ -746,7 +746,7 @@ If you have U.S.-dollar needs coming up, I want to make sure we are planning aro
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
-<strong>Subject:</strong> Oil is up 18%. The loonie isn't following.<br><br>
+<strong>Subject:</strong> Oil is up 18%. The loonie isn’t following.<br><br>
 Hi [Name],<br><br>
 The tanker war in the Persian Gulf has pushed oil up 18% in about two weeks, but the Canadian dollar has moved only marginally, well below what that kind of oil move usually produces. If you hold U.S.-dollar exposure or have cross-border spending planned, that gap is worth understanding.<br><br>
 Happy to walk through what it means for your specific situation.<br><br>
@@ -793,7 +793,7 @@ VALUES (
 <div class="hdq-chart">
 <div style="background:#ffffff;border:1px solid #d0d0d0;width:100%;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;">
 <div style="background:#f5f5f5;border-bottom:1px solid #d0d0d0;padding:10px 14px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
-<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">USD/CAD &mdash; U.S. DOLLAR PER CANADIAN DOLLAR PAIR</span>
+<span style="font-size:13px;font-weight:700;color:#111;letter-spacing:0.02em;">USD/CAD: U.S. DOLLAR PER CANADIAN DOLLAR PAIR</span>
 <span style="font-size:20px;font-weight:700;color:#111;">1.3771</span>
 <span style="font-size:13px;color:#c0392b;">&#9660; -0.53% (13 SESSIONS)</span>
 <span style="font-size:11px;color:#888;margin-left:auto;">DAILY &nbsp;|&nbsp; AUG 24 - SEP 9, 2026</span>
@@ -907,7 +907,7 @@ VALUES (
 <div class="email-box" id="respond-email">
 <strong>Subject:</strong> What''s actually driving this week''s numbers<br><br>
 Hi [Client Name],<br><br>
-Wanted to give you context on this week's TSX move. The index is down, but broadly, not because of energy. The S&amp;P 500 and Nasdaq fell the same amount the same day, and your Canadian energy holdings have actually been the strongest part of your portfolio this week.<br><br>
+Wanted to give you context on this week’s TSX move. The index is down, but broadly, not because of energy. The S&amp;P 500 and Nasdaq fell the same amount the same day, and your Canadian energy holdings have actually been the strongest part of your portfolio this week.<br><br>
 Happy to walk through the full breakdown whenever is convenient.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
@@ -926,7 +926,7 @@ Happy to walk through the full breakdown whenever is convenient.<br><br>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Value Proposition</div>
 <p>A self-directed investor looking only at the index level this week would reasonably conclude markets are broadly weak, missing that Canadian energy has been the standout performer. The same investor watching gold slide during an escalating conflict is getting a signal that contradicts their intuition with no framework for why.</p>
-<p>The advisor's value is translating a confusing week of divergent, cross-asset signals into a clear picture of what is actually happening in a client's specific holdings.</p>
+<p>The advisor’s value is translating a confusing week of divergent, cross-asset signals into a clear picture of what is actually happening in a client’s specific holdings.</p>
 </div>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Discovery Questions</div>
@@ -938,10 +938,10 @@ Happy to walk through the full breakdown whenever is convenient.<br><br>
 <div class="toolkit-section">
 <div class="toolkit-section-label">Prospecting Email Template</div>
 <div class="email-box" id="prospect-email">
-<strong>Subject:</strong> Oil is up, the TSX is down. Here's why.<br><br>
+<strong>Subject:</strong> Oil is up, the TSX is down. Here’s why.<br><br>
 Hi [Name],<br><br>
 The TSX has fallen in four of the last five sessions even though oil is up 18% on the tanker war, a disconnect that is easy to misread from the headline number alone. Canadian energy has actually been the strongest part of the market this week.<br><br>
-If you'd like a clear breakdown of what's actually driving your holdings right now, I'm happy to walk through it.<br><br>
+If you’d like a clear breakdown of what’s actually driving your holdings right now, I’m happy to walk through it.<br><br>
 [Your Name]<br><br>
 <em>This communication is for educational purposes only and does not constitute personalized investment advice.</em>
 </div>
