@@ -637,7 +637,7 @@ VALUES (
   var ev2 = 22;
   var ev2x = xp(ev2);
   svg.appendChild(el("line",{x1:ev2x,x2:ev2x,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-opacity":"0.5","stroke-dasharray":"2,3"}));
-  svg.appendChild(el("text",{x:ev2x-40,y:margin.top+20,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":FS},"IRAN HITS ROUTE-BREAKING SHIPS"));
+  svg.appendChild(el("text",{x:ev2x-40,y:yp(105)+12,"text-anchor":"end","font-size":"7","font-weight":"700",fill:"#1a3560","font-family":FS},"IRAN HITS ROUTE-BREAKING SHIPS"));
 
   var lastX = xp(n-1), lastY = yp(data[n-1]);
   svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
