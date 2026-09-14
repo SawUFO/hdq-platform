@@ -92,8 +92,8 @@ VALUES (
     svg.appendChild(el("text",{x:xp(i), y:margin.top+PH+16, "text-anchor":"middle", "font-size":"8", fill:"#999", "font-family":FONT}, dates[i]));
   }
   svg.appendChild(el("text",{x:xp(n-1), y:margin.top+PH+16, "text-anchor":"end", "font-size":"8", fill:"#999", "font-family":FONT}, dates[n-1]));
-  svg.appendChild(el("text",{x:evX-40, y:margin.top+12, "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":FONT}, "Tanker, pipeline"));
-  svg.appendChild(el("text",{x:evX-40, y:margin.top+22, "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":FONT}, "strikes Sunday"));
+  svg.appendChild(el("text",{x:evX-4, y:margin.top+PH-18, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":FONT}, "Tanker, pipeline"));
+  svg.appendChild(el("text",{x:evX-4, y:margin.top+PH-8, "text-anchor":"end", "font-size":"7", "font-weight":"700", fill:"#1a3560", "font-family":FONT}, "strikes Sunday"));
 
   _cs.parentNode.appendChild(svg);
 })();
