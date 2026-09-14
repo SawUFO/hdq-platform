@@ -9,7 +9,7 @@ VALUES (
   '<ul>
 <li><strong>Canadian yields stayed flat through three shocks,</strong><span> a war escalation, a hawkish BoC hold, and a dovish Fed comment.</span></li>
 <li><strong>The Bank of Canada held at 2.25 percent for a seventh meeting,</strong><span> pushing the GoC 10-year to a two-year high of 3.80 percent.</span></li>
-<li><strong>Fed Governor Waller''''s single comment moved more than the BoC''''s own statement,</strong><span> rallying the TSX 1.3 percent Thursday.</span></li>
+<li><strong>Fed Governor Waller''s single comment moved more than the BoC''''s own statement,</strong><span> rallying the TSX 1.3 percent Thursday.</span></li>
 <li><strong>Canada shed 41,700 jobs in August against a 15,000 gain expected,</strong><span> while the U.S. added 162,000 against 53,000 expected.</span></li>
 <li><strong>A weaker Canadian dollar offset the jobs miss for the TSX,</strong><span> directly benefiting the one sector that grew: manufacturing.</span></li>
 </ul>',
