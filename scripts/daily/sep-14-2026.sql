@@ -220,8 +220,8 @@ VALUES (
   labels.forEach(function(l,i){ if (i%4===0 || i===n-1){ svg.appendChild(el("text",{x:xp(i),y:margin.top+PH+16,"text-anchor":"middle","font-size":8,fill:"#999999"}, l)); } });
   svg.appendChild(el("text",{x:bx-40,y:by-20,"font-size":7,"font-weight":700,fill:"#1a3560","text-anchor":"end"}, "BOC HOLDS"));
   svg.appendChild(el("text",{x:bx-40,y:by-10,"font-size":7,"font-weight":700,fill:"#1a3560","text-anchor":"end"}, "AT 2.25%"));
-  svg.appendChild(el("text",{x:lx,y:ly-20,"text-anchor":"middle","font-size":7,fill:"#444444"}, "AUG 25 LOW"));
-  svg.appendChild(el("text",{x:lx,y:ly-10,"text-anchor":"middle","font-size":7,fill:"#444444"}, "3.218%"));
+  svg.appendChild(el("text",{x:lx,y:margin.top+PH-20,"text-anchor":"middle","font-size":7,fill:"#444444"}, "AUG 25 LOW"));
+  svg.appendChild(el("text",{x:lx,y:margin.top+PH-10,"text-anchor":"middle","font-size":7,fill:"#444444"}, "3.218%"));
   _cs.parentNode.appendChild(svg);
 })();
 </script>
@@ -539,8 +539,8 @@ VALUES (
   svg.appendChild(el("text",{x:pillX+pillW/2,y:pillY+pillH/2+4,"text-anchor":"middle","font-size":9,"font-weight":700,fill:"#111111"}, pillText));
   ticks.forEach(function(t){ var y = yp(t); svg.appendChild(el("text",{x:margin.left-6,y:y+3,"text-anchor":"end","font-size":8.5,fill:"#aaaaaa"}, String(t))); });
   labels.forEach(function(l,i){ if (i%3===0 || i===n-1){ svg.appendChild(el("text",{x:xp(i),y:margin.top+PH+16,"text-anchor":"middle","font-size":8,fill:"#999999"}, l)); } });
-  svg.appendChild(el("text",{x:ex+3,y:ey-20,"font-size":7,"font-weight":700,fill:"#1a3560","text-anchor":"start"}, "OIL TOPS"));
-  svg.appendChild(el("text",{x:ex+3,y:ey-10,"font-size":7,"font-weight":700,fill:"#1a3560","text-anchor":"start"}, "$100"));
+  svg.appendChild(el("text",{x:ex+3,y:margin.top+PH-20,"font-size":7,"font-weight":700,fill:"#1a3560","text-anchor":"start"}, "OIL TOPS"));
+  svg.appendChild(el("text",{x:ex+3,y:margin.top+PH-10,"font-size":7,"font-weight":700,fill:"#1a3560","text-anchor":"start"}, "$100"));
   _cs.parentNode.appendChild(svg);
 })();
 </script>
