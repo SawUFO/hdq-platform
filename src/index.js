@@ -287,7 +287,7 @@ export default {
       if (articleMatch) {
         const slug = articleMatch[1];
         if (slug.includes('/hdq-thread-')) return renderThread(env, slug, authed);
-        if (slug.includes('/weekend-'))    return renderWeekend(env, slug, authed);
+        if (slug.includes('/weekend-') || slug.includes('/hdq-weekend-')) return renderWeekend(env, slug, authed);
         if (slug.includes('/hdq-month-'))  return renderWeekend(env, slug, authed);
         return renderArticle(env, slug, authed);
       }
