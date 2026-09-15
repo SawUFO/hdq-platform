@@ -60,7 +60,7 @@ VALUES (
   svg.appendChild(el("line",{x1:evX,x2:evX,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-width":1,"stroke-dasharray":"2,3",opacity:0.5}));
   var evLabel = el("text",{x:evX-6,y:margin.top+12,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "OL\u00c9ODUC SAOUD.");
   svg.appendChild(evLabel);
-  svg.appendChild(el("text",{x:evX-6,y:margin.top+21,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "CLOS");
+  svg.appendChild(el("text",{x:evX-6,y:margin.top+21,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "CLOS"));
 
   // 3. Series paths
   function buildPath(vals){
@@ -174,8 +174,8 @@ VALUES (
   var evIdx = 9; // Sep 2
   var evX = xp(evIdx);
   svg.appendChild(el("line",{x1:evX,x2:evX,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-width":1,"stroke-dasharray":"2,3",opacity:0.5}));
-  svg.appendChild(el("text",{x:evX+4,y:margin.top+12,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "TAUX FIXE");
-  svg.appendChild(el("text",{x:evX+4,y:margin.top+21,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "\u00c0 2,25\u00a0%");
+  svg.appendChild(el("text",{x:evX+4,y:margin.top+12,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "TAUX FIXE"));
+  svg.appendChild(el("text",{x:evX+4,y:margin.top+21,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "\u00c0 2,25\u00a0%"));
 
   // 3. Series path
   var d = "";
