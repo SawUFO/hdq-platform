@@ -114,7 +114,7 @@ VALUES (
   // Event marker: pipeline strike, Sep 10 (index 12)
   var evX = xp(12);
   svg.appendChild(el("line",{x1:evX, x2:evX, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560", "stroke-opacity":0.5, "stroke-dasharray":"2,3"}));
-  svg.appendChild(el("text",{x:evX-4, y:margin.top+12, "text-anchor":"end", "font-size":7, "font-weight":700, fill:"#1a3560"}, "PIPELINE STRIKE"));
+  svg.appendChild(el("text",{x:evX-4, y:margin.top+PH-6, "text-anchor":"end", "font-size":7, "font-weight":700, fill:"#1a3560"}, "PIPELINE STRIKE"));
 
   // 6. Pills
   var pillH = 16;
