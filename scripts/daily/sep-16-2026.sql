@@ -439,7 +439,7 @@ VALUES (
   var refV = 2;
   var refX = valX(refV);
   svg.appendChild(el("line",{x1:refX,x2:refX,y1:margin.top,y2:bottomY,stroke:"#7a3030","stroke-dasharray":"3,3"}));
-  svg.appendChild(el("text",{x:refX+4,y:margin.top+8,"text-anchor":"start","font-size":7,fill:"#7a3030"}, "BOC 2% TARGET"));
+  svg.appendChild(el("text",{x:valX(3)+8,y:margin.top+8,"text-anchor":"start","font-size":7,fill:"#7a3030"}, "BOC 2% TARGET"));
 
   data.forEach(function(p,i){
     var fillColor = p.label === "GASOLINE" ? "#8a3030" : "#4a5568";
@@ -640,10 +640,10 @@ VALUES (
     }
   });
 
-  svg.appendChild(el("text",{x:xp(ev1)+3,y:margin.top+20,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560"}, "US STRIKES HORMUZ"));
+  svg.appendChild(el("text",{x:xp(ev1)+3,y:margin.top+PH-10,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560"}, "US STRIKES HORMUZ"));
   svg.appendChild(el("text",{x:xp(ev2)-40,y:margin.top+20,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560"}, "INVENTORY BUILD"));
 
-  svg.appendChild(el("text",{x:xp(0),y:yp(data[0].v)-10,"text-anchor":"start","font-size":8,fill:"#444444"}, "LOW: $68.55"));
+  svg.appendChild(el("text",{x:xp(0)+60,y:yp(data[0].v)-10,"text-anchor":"start","font-size":8,fill:"#444444"}, "LOW: $68.55"));
 
   var lastX = xp(n-1), lastY = yp(data[n-1].v);
   svg.appendChild(el("circle",{cx:lastX,cy:lastY,r:4,fill:"#4a5568"}));
