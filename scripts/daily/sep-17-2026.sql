@@ -57,7 +57,7 @@ VALUES (
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#7a3030","stroke-dasharray":"3,3"}));
   var refDiff = Math.abs(refVal - data[n-1]) / data[n-1];
   if (refDiff >= 0.03) {
-    svg.appendChild(el("text",{x:margin.left+10,y:refY-10,"text-anchor":"start",style:"font-size:7px;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;fill:#7a3030;font-weight:700;"},"PRE-HIKE AVG 15.2"));
+    svg.appendChild(el("text",{x:margin.left+PW-6,y:refY-10,"text-anchor":"end",style:"font-size:7px;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;fill:#7a3030;font-weight:700;"},"PRE-HIKE AVG 15.2"));
   }
   var pathD = "";
   data.forEach(function(v,i){
@@ -583,7 +583,7 @@ VALUES (
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:refY,y2:refY,stroke:"#7a3030","stroke-dasharray":"3,3"}));
   var refDiff = Math.abs(refVal - data[n-1]) / data[n-1];
   if (refDiff >= 0.03) {
-    svg.appendChild(el("text",{x:margin.left+10,y:refY+12,"text-anchor":"start",style:"font-size:7px;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;fill:#7a3030;font-weight:700;"},"PRE-CONFLICT AVG $85"));
+    svg.appendChild(el("text",{x:margin.left+PW-6,y:refY+12,"text-anchor":"end",style:"font-size:7px;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;fill:#7a3030;font-weight:700;"},"PRE-CONFLICT AVG $85"));
   }
   var pathD = "";
   data.forEach(function(v,i){
