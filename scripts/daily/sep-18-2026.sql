@@ -399,7 +399,7 @@ VALUES (
   svg.appendChild(el("text",{x:x4-3,y:MT+30,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560"}, "SEP 16"));
   var gapX = (x4 + x5) / 2, gapY = (yBoc + yFedPost) / 2;
   svg.appendChild(el("text",{x:gapX,y:gapY,"text-anchor":"middle","font-size":8,"font-weight":700,fill:"#444444"}, "GAP: 150 BPS"));
-  var legendX = margin.left + PW - 150;
+  var legendX = margin.left + 8;
   svg.appendChild(el("rect",{x:legendX, y:24, width:8, height:8, fill:"#4a5568"}));
   svg.appendChild(el("text",{x:legendX+12, y:31, "font-size":8, fill:"#444444"}, "Fed funds, lower bound"));
   svg.appendChild(el("rect",{x:legendX, y:38, width:8, height:8, fill:"#6b7280"}));
@@ -551,7 +551,7 @@ VALUES (
   var evI1 = 6, evI2 = 16;
   var bandX1 = xp(evI1), bandX2 = margin.left + PW;
   svg.appendChild(el("rect",{x:bandX1, y:margin.top, width:(bandX2-bandX1), height:PH, fill:"#c0392b", "fill-opacity":0.05}));
-  svg.appendChild(el("text",{x:(bandX1+bandX2)/2, y:margin.top+10, "text-anchor":"middle", "font-size":7, "font-weight":700, fill:"#7a3030"}, "ACTIVE TANKER WAR PRICING"));
+  svg.appendChild(el("text",{x:(bandX1+bandX2)/2, y:margin.top+PH-6, "text-anchor":"middle", "font-size":7, "font-weight":700, fill:"#7a3030"}, "ACTIVE TANKER WAR PRICING"));
   var yticks = [80,90,100];
   yticks.forEach(function(t){
     svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:yp(t),y2:yp(t),stroke:"#ececec","stroke-width":0.5}));
