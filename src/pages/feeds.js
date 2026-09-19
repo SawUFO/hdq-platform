@@ -15,7 +15,10 @@ const ORIGIN = 'https://hdq.ca';
 
 /** Section and utility pages that are not articles. */
 const STATIC_PAGES = [
-  { loc: '/',                   priority: '1.0', changefreq: 'daily'   },
+  // '/news' (not '/') because renderNews() sets '/news' as the canonical
+  // for all three aliases ('/', '/news', '/hdq-news') - the sitemap should
+  // point at the canonical URL, not one of the aliases.
+  { loc: '/news',                priority: '1.0', changefreq: 'daily'   },
   { loc: '/archive',            priority: '0.9', changefreq: 'daily'   },
   { loc: '/fund-intel',         priority: '0.9', changefreq: 'weekly'  },
   { loc: '/charts',             priority: '0.8', changefreq: 'daily'   },

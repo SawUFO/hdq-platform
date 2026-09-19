@@ -28,6 +28,9 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
+      - name: Notify IndexNow
+        run: node scripts/indexnow-notify.js scripts/daily/${{ github.event.inputs.sql_file }}
+
   extract:
     needs: seed
     runs-on: ubuntu-latest

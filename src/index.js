@@ -216,6 +216,16 @@ async function handleFrench(request, env, url, path) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // Plain HTTP was being served directly instead of redirecting to HTTPS
+    // (found via a Search Console crawl audit - Google was crawling
+    // http://hdq.ca/... as a distinct, unindexed duplicate of the real
+    // page). 301 to the same URL over HTTPS before anything else runs.
+    if (url.protocol === 'http:') {
+      url.protocol = 'https:';
+      return Response.redirect(url.href, 301);
+    }
+
     const path = url.pathname.replace(/\/$/, '') || '/';
 
     try {
