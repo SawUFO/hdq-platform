@@ -205,6 +205,21 @@ export function pageShell(bodyHtml, opts = {}) {
     ? `<span class="date-volno">Vol. 1 &nbsp;·&nbsp; ${fr ? FR_UI.issueNo(issueNo) : `No. ${issueNo}`}</span>`
     : '';
 
+  // hreflang: only when both the canonical (self) and toggleHref (the real
+  // counterpart, already resolved above by articleToggleHref - see its
+  // comment) are known. Each language version lists itself plus the other,
+  // per Google's documented hreflang requirements; x-default points at the
+  // English edition since that's the site's primary/default language.
+  let hreflangHtml = '';
+  if (canonical && toggleHref) {
+    const altHref = `https://hdq.ca${toggleHref}`;
+    const enHref = fr ? altHref : canonical;
+    const frHref = fr ? canonical : altHref;
+    hreflangHtml = `<link rel="alternate" hreflang="en-CA" href="${enHref}">
+<link rel="alternate" hreflang="fr-CA" href="${frHref}">
+<link rel="alternate" hreflang="x-default" href="${enHref}">`;
+  }
+
   return `<!DOCTYPE html>
 <html lang="${fr ? FR_SITE.htmlLang : 'en'}"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -217,6 +232,7 @@ export function pageShell(bodyHtml, opts = {}) {
 ${metaDescription ? `<meta name="description" content="${escHtml(metaDescription)}">` : ''}
 ${robots ? `<meta name="robots" content="${robots}">` : ''}
 ${canonical ? `<link rel="canonical" href="${canonical}">` : ''}
+${hreflangHtml}
 <meta property="og:site_name" content="HDQ Publishing Canada">
 <meta property="og:type" content="${ogType}">
 <meta property="og:title" content="${escHtml(title)}">
