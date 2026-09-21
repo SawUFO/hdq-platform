@@ -80,7 +80,12 @@ const ORG_SCHEMA = {
   "description": "HDQ Publishing Canada is an independent daily financial intelligence publication for licensed Canadian financial advisors, covering markets, geopolitics, the Canadian economy, tax and wealth planning, and investor behaviour.",
   "foundingDate": "2026-05-07",
   "email": "support@hdq.ca",
-  "knowsLanguage": "en-CA",
+  // Both editions are real, full editions of the same publication (not a
+  // translated excerpt), so the organization itself knows both languages
+  // regardless of which page a crawler happens to land on - a single value
+  // here would misrepresent HDQ as English-only to anything reading this
+  // entity in isolation.
+  "knowsLanguage": ["en-CA", "fr-CA"],
   "publishingPrinciples": "https://hdq.ca/editorial-standards",
   "address": {
     "@type": "PostalAddress",
@@ -247,7 +252,7 @@ ${section ? `<meta property="article:section" content="${escHtml(section)}">` : 
 ${metaDescription ? `<meta name="twitter:description" content="${escHtml(metaDescription)}">` : ''}
 ${ogImage ? `<meta name="twitter:image" content="${escHtml(ogImage)}">` : ''}
 ${fr ? '' : '<link rel="alternate" type="application/rss+xml" title="HDQ Publishing Canada" href="https://hdq.ca/feed.xml">'}
-<script type="application/ld+json">${JSON.stringify(fr ? { ...ORG_SCHEMA, knowsLanguage: 'fr-CA', description: FR_SITE.description } : ORG_SCHEMA)}</script>
+<script type="application/ld+json">${JSON.stringify(fr ? { ...ORG_SCHEMA, description: FR_SITE.description } : ORG_SCHEMA)}</script>
 ${extraHead}
 <style>
 @media(max-width:768px){
