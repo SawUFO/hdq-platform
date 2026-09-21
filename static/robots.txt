@@ -94,3 +94,4 @@ Allow: /
 Disallow: /access
 
 Sitemap: https://hdq.ca/sitemap.xml
+Sitemap: https://hdq.ca/fr/sitemap.xml
