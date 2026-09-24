@@ -256,7 +256,7 @@ VALUES (
   // 2. Event marker: Budget 2024 step change
   var evIdx = 10, evX = xS(evIdx);
   svg.appendChild(el("line",{x1:evX, x2:evX, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
-  svg.appendChild(el("text",{x:evX-40, y:margin.top+20, "text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560"}, "BUDGET 2024: RAISED TO $1.25M"));
+  svg.appendChild(el("text",{x:evX-40, y:margin.top+14, "text-anchor":"start","font-size":7,"font-weight":700,fill:"#1a3560"}, "BUDGET 2024: RAISED TO $1.25M"));
 
   // 3. Bars
   data.forEach(function(v,i){
@@ -491,7 +491,7 @@ VALUES (
   svg.appendChild(el("circle",{cx:fedLastX, cy:fedLastY, r:4, fill:"#6b7280"}));
 
   // 6. Legend, derived from one base coordinate, right side
-  var legendX = margin.left + PW - 150, legendY0 = margin.top + 2;
+  var legendX = margin.left + 10, legendY0 = margin.top + 2;
   svg.appendChild(el("rect",{x:legendX, y:legendY0, width:8, height:8, fill:"#4a5568"}));
   svg.appendChild(el("text",{x:legendX+12, y:legendY0+7, "text-anchor":"start","font-size":7.5,fill:"#444444"}, "BANK OF CANADA"));
   svg.appendChild(el("rect",{x:legendX, y:legendY0+12, width:8, height:8, fill:"#6b7280"}));
@@ -701,7 +701,7 @@ VALUES (
 
   var ev2x = xp(18), ev2y = yp(data[18]);
   svg.appendChild(el("line",{x1:ev2x, x2:ev2x, y1:margin.top, y2:margin.top+PH, stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
-  svg.appendChild(el("text",{x:ev2x-3, y:margin.top+50, "text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560"}, "IRAN OFFERS REOPENING"));
+  svg.appendChild(el("text",{x:ev2x-3, y:margin.top+40, "text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560"}, "IRAN OFFERS REOPENING"));
 
   // 6. Gold pill (current value callout)
   function computePillWidth(str, fontSize){
