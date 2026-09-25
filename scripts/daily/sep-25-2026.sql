@@ -58,7 +58,7 @@ VALUES (
   });
   var bandX0 = xp(9), bandX1 = xp(12);
   svg.appendChild(el("rect",{x:bandX0,y:margin.top,width:bandX1-bandX0,height:PH,fill:"#c0392b","fill-opacity":"0.05"}));
-  svg.appendChild(el("text",{x:(bandX0+bandX1)/2,y:margin.top+12,"text-anchor":"middle","font-size":"7","font-weight":"700",fill:"#c0392b","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "RATE-DIVERGENCE SELLOFF"));
+  svg.appendChild(el("text",{x:(bandX0+bandX1)/2,y:margin.top+PH-6,"text-anchor":"middle","font-size":"7","font-weight":"700",fill:"#c0392b","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, "RATE-DIVERGENCE SELLOFF"));
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+PH,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left,y1:margin.top,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":"1"}));
   var dPath = "M";
@@ -236,7 +236,7 @@ VALUES (
   var cutNearRight = (cutX+cutLabelWidth+3) > (margin.left+PW);
   var cutAnchor = cutNearRight ? "end" : "start";
   var cutOffset = cutNearRight ? -40 : 3;
-  svg.appendChild(el("text",{x:cutX+cutOffset,y:margin.top+40,"text-anchor":cutAnchor,"font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, cutLabel));
+  svg.appendChild(el("text",{x:cutX+cutOffset,y:margin.top+50,"text-anchor":cutAnchor,"font-size":"7","font-weight":"700",fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, cutLabel));
   labels.forEach(function(l,i){
     svg.appendChild(el("text",{x:xp(i),y:margin.top+PH+16,"text-anchor":"middle","font-size":"8",fill:"#999999","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"}, l));
   });
