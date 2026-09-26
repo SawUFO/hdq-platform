@@ -50,15 +50,15 @@ VALUES (
     svg.appendChild(el("text",{x:margin.left-6,y:t.y+3,"text-anchor":"end","font-size":8.5,fill:"#aaaaaa","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},t.v));
   });
   svg.appendChild(el("rect",{x:548.0,y:margin.top,width:108.0,height:PH,fill:"#4a5568","fill-opacity":0.06}));
-  svg.appendChild(el("text",{x:602.0,y:margin.top+10,"text-anchor":"middle","font-size":7,"font-weight":700,fill:"#4a5568","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"THIS WEEK"));
+  svg.appendChild(el("text",{x:629.0,y:margin.top+10,"text-anchor":"middle","font-size":7,"font-weight":700,fill:"#4a5568","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"THIS WEEK"));
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:34.28,y2:34.28,stroke:"#2e7d32","stroke-width":1,"stroke-dasharray":"3,3"}));
   svg.appendChild(el("text",{x:margin.left+10,y:34.28-10,"text-anchor":"start","font-size":7,fill:"#2e7d32","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"5-WEEK HIGH 36,957.60"));
   var d = "M" + data.map(function(p){ return p.x+","+p.y; }).join("L");
   svg.appendChild(el("path",{d:d, fill:"none", stroke:"#4a5568","stroke-width":1.6}));
   svg.appendChild(el("line",{x1:margin.left,x2:margin.left+PW,y1:margin.top+PH,y2:margin.top+PH,stroke:"#d8d8d8","stroke-width":1}));
   svg.appendChild(el("line",{x1:602.0,x2:602.0,y1:margin.top,y2:margin.top+PH,stroke:"#1a3560","stroke-opacity":0.5,"stroke-dasharray":"2,3"}));
-  svg.appendChild(el("text",{x:602.0-40,y:margin.top+20,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"MATERIALS SELLOFF"));
-  svg.appendChild(el("text",{x:602.0-40,y:margin.top+30,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"-584 PTS WED"));
+  svg.appendChild(el("text",{x:602.0-40,y:margin.top+40,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"MATERIALS SELLOFF"));
+  svg.appendChild(el("text",{x:602.0-40,y:margin.top+50,"text-anchor":"end","font-size":7,"font-weight":700,fill:"#1a3560","font-family":"-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif"},"-584 PTS WED"));
   svg.appendChild(el("circle",{cx:656.0,cy:194.8,r:4,fill:"#4a5568"}));
   var pillX = 593.0, pillY = 186.77, pillW = 57, pillH = 16;
   svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,rx:3,fill:"#e8a825"}));
