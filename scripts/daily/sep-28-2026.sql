@@ -91,6 +91,7 @@ VALUES (
     svg.appendChild(el("text",{x:margin.left-6, y:ypL(t)+3, "text-anchor":"end", "font-size":8.5, fill:"#aaaaaa", "font-family":FONT}, String(t)));
   });
   rightTicks.forEach(function(t){
+    if (t===32000 || t===36000) return;
     svg.appendChild(el("text",{x:margin.left+PW-4, y:ypR(t)+3, "text-anchor":"end", "font-size":8.5, fill:"#aaaaaa", "font-family":FONT}, (t/1000)+"k"));
   });
   months.forEach(function(m,i){
@@ -658,8 +659,8 @@ VALUES (
       svg.appendChild(el("text",{x:xp(i), y:margin.top+PH+16, "text-anchor":"middle", "font-size":8, fill:"#999999", "font-family":FONT}, d));
     }
   });
-  svg.appendChild(el("text",{x:ex+3, y:margin.top+20, "font-size":7, "font-weight":700, fill:"#1a3560", "font-family":FONT},"CANADA TARIFFS"));
-  svg.appendChild(el("text",{x:ex+3, y:margin.top+29, "font-size":7, "font-weight":700, fill:"#1a3560", "font-family":FONT},"TAKE EFFECT"));
+  svg.appendChild(el("text",{x:ex+3, y:margin.top+PH-16, "font-size":7, "font-weight":700, fill:"#1a3560", "font-family":FONT},"CANADA TARIFFS"));
+  svg.appendChild(el("text",{x:ex+3, y:margin.top+PH-7, "font-size":7, "font-weight":700, fill:"#1a3560", "font-family":FONT},"TAKE EFFECT"));
   svg.appendChild(el("text",{x:margin.left+4, y:refY-10, "text-anchor":"start", "font-size":7, fill:"#7a3030", "font-family":FONT},"PRE-SPIKE LEVEL"));
   svg.appendChild(el("text",{x:xp(12)-10, y:yp(108.75)-8, "text-anchor":"end", "font-size":8, fill:"#444444", "font-family":FONT},"PEAK: TANKER STRIKES INTENSIFY"));
 
