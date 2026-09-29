@@ -782,7 +782,7 @@ var margin={left:62,right:24,top:18,bottom:46};
 var PW=680-margin.left-margin.right;
 var PH=300-margin.top-margin.bottom;
 var MT=margin.top;
-var events=[{i:11,label:"FED RAISES RATES SEP 16",dy:PH-8},{i:16,label:"TSX -1.6% SEP 23",dy:PH-8},{i:19,label:"GOLD SELLOFF SEP 28",dy:PH-24}];
+var events=[{i:11,label:"FED RAISES RATES SEP 16",dy:PH-8},{i:16,label:"TSX -1.6% SEP 23",dy:PH-8},{i:19,label:"GOLD SELLOFF SEP 28",dy:12}];
 var vmin=Math.min.apply(null,data),vmax=Math.max.apply(null,data);
 var padv=(vmax-vmin)*0.1;
 var lo=vmin-padv,hi=vmax+padv;
@@ -810,7 +810,7 @@ var pillText="35,490";
 var pillW=computePillWidth(pillText,9);
 var pillH=16;
 var pillX=lastX-pillW-6;
-var pillY=lastY-pillH/2;
+var pillY=lastY-pillH/2-8;
 if(pillX<margin.left){pillX=margin.left;}
 svg.appendChild(el("rect",{x:pillX,y:pillY,width:pillW,height:pillH,rx:2,fill:"#e8a825"}));
 svg.appendChild(mk(pillText,{x:pillX+pillW/2,y:pillY+pillH/2+3.5,"text-anchor":"middle","font-size":"9","font-weight":"700",fill:"#111111"}));
