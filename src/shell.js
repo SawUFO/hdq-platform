@@ -93,7 +93,6 @@ const ORG_SCHEMA = {
     "addressRegion": "ON",
     "addressCountry": "CA"
   },
-  "areaServed": { "@type": "Country", "name": "Canada" },
   "audience": {
     "@type": "Audience",
     "audienceType": "Canadian financial advisors, CIRO-registered representatives, CFP holders and CFA charterholders"

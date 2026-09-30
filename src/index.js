@@ -12,6 +12,7 @@ import { renderWeekend } from './pages/weekend.js';
 import { renderCharts } from './pages/charts.js';
 import { renderFundIntel } from './pages/fund-intel.js';
 import { renderSitemap, renderFeed } from './pages/feeds.js';
+import { renderNewsSitemap } from './pages/feeds-news.js';
 import { renderStandards } from './pages/standards.js';
 import { pageShell } from './shell.js';
 import { PUBLIC_MODE } from './config.js';
@@ -242,6 +243,7 @@ export default {
       // ── Machine-readable endpoints ────────────────────────────────────────
       // Declared first so nothing downstream can shadow them.
       if (path === '/sitemap.xml') return renderSitemap(env);
+      if (path === '/sitemap-news.xml') return renderNewsSitemap(env);
       if (path === '/feed.xml' || path === '/rss.xml') return renderFeed(env);
 
       // ── Access route: sets cookie and redirects ───────────────────────────
