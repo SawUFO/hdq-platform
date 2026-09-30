@@ -194,7 +194,7 @@ ${lockedOverlay}
 <div class="content-area"><div class="container">
   <div class="content-grid">
     <div style="min-width:0;">
-      <div class="block-header"><h6>${fr ? FR_NEWS.todaysBriefing : "Today's Briefing"}</h6></div>
+      <div class="block-header"><h1>${fr ? FR_NEWS.todaysBriefing : "Today's Briefing"}</h1></div>
       ${heroHtml}
       ${subHtml}
       ${recentHtml}
@@ -208,8 +208,25 @@ ${lockedOverlay}
 ${membershipFooterBand(lang)}
 `;
 
+  // CollectionPage schema for the English edition only, additive alongside
+  // the shared NewsMediaOrganization block pageShell already emits. audience
+  // is deliberately "Financial advisors and wealth professionals" rather than
+  // "Canadian financial advisors" — the subject matter is Canadian, the
+  // readership is not scoped to Canada.
+  const newsCollectionSchema = fr ? '' : `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': 'https://hdq.ca/news#webpage',
+    url: 'https://hdq.ca/news',
+    name: 'HDQ — Canadian Financial News for Financial Advisors',
+    description: "HDQ's continuously updated destination for Canadian financial news, covering markets, policy, tax, wealth and the economy for financial advisors and wealth professionals.",
+    isPartOf: { '@id': 'https://hdq.ca/#organization' },
+    audience: { '@type': 'Audience', audienceType: 'Financial advisors and wealth professionals' },
+    inLanguage: 'en-CA',
+  })}</script>`;
+
   return htmlResponse(pageShell(body, {
-    title: fr ? FR_NEWS.pageTitle : 'HDQ — Today\'s Edition',
+    title: fr ? FR_NEWS.pageTitle : 'HDQ — Canadian Financial News for Financial Advisors',
     activePage: 'news',
     activeDesk: 'all',
     issueNo,
@@ -217,9 +234,10 @@ ${membershipFooterBand(lang)}
     // is dropped from the index entirely — French build brief §8.
     canonical: fr ? 'https://hdq.ca/fr' : 'https://hdq.ca/news',
     metaDescription: fr ? FR_SITE.description
-      : 'HDQ is a daily intelligence briefing for licensed Canadian financial advisors. Five editorial desks plus a Daily Thread, published every weekday morning.',
+      : 'Canadian financial news and analysis covering markets, policy, tax, wealth, economy and behavioural finance, updated every weekday by HDQ.',
     robots: 'index, follow',
     extraStyle: PAGE_CSS,
+    extraHead: newsCollectionSchema,
     lang,
     // /news ↔ /fr — French build brief §6.
     toggleHref: fr ? '/news' : '/fr',

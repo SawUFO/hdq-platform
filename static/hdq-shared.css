@@ -108,12 +108,12 @@ h1,h2,h3,h4,h5,h6 {
 
 /* SECTION HEADERS */
 .block-header { display: flex; align-items: center; gap: 10px; padding-bottom: 16px; border-bottom: 1px solid var(--n200); margin-bottom: 24px; }
-.block-header h6 {
+.block-header h1, .block-header h6 {
   font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;
   color: var(--n900); text-transform: uppercase; letter-spacing: 0.1em;
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 8px; margin: 0;
 }
-.block-header h6::before { content: ''; width: 3px; height: 14px; background: var(--gold-400); border-radius: 2px; display: inline-block; }
+.block-header h1::before, .block-header h6::before { content: ''; width: 3px; height: 14px; background: var(--gold-400); border-radius: 2px; display: inline-block; }
 
 /* CATEGORY TAGS */
 .cat-tag {
