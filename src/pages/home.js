@@ -184,7 +184,7 @@ export async function renderHome(env) {
   </div>
   <div class="hero-content">
     <div style="max-width:580px;">
-      <div class="hero-eyebrow">${fr ? FR_ABOUT.publishedIn : 'Published in Toronto'}</div>
+      <div class="hero-eyebrow">${fr ? FR_ABOUT.publishedIn : 'Canadian Financial Intelligence'}</div>
       <h1>${fr ? FR_ABOUT.heroTitle : 'A members-only daily publication for senior Canadian financial advisors.'}</h1>
       <p class="hero-sub">${fr ? FR_ABOUT.heroSub : 'Five editorial desks. One Daily Thread. Published every weekday by 7 a.m. Eastern, for CIRO-registered advisors and CFP professionals.'}</p>
       <div class="hero-actions">

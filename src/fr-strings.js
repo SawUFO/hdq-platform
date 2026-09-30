@@ -344,7 +344,7 @@ export const FR_ARTICLE = {
 // HDQ_Build_Brief §4.4.
 
 export const FR_ABOUT = {
-  publishedIn:   'Publié à Toronto',
+  publishedIn:   'Intelligence financière canadienne',
   heroTitle:     'Un quotidien réservé aux membres, pour conseillers canadiens chevronnés.',
   heroSub:       'Cinq sections éditoriales. Un Fil quotidien. Publiés chaque jour de semaine avant 7\u00a0h, heure de l’Est, à l’intention des conseillers inscrits auprès de l’OCRI et des titulaires du titre CFP.',
   readToday:     'Lire l’édition du jour',
@@ -389,7 +389,7 @@ export const FR_ABOUT = {
 // DRAFT below this line, except the four legal link labels.
 
 export const FR_FOOTER = {
-  blurb: 'HDQ Publishing Canada. Une synthèse quotidienne de renseignements financiers destinée aux conseillers canadiens autorisés. Publiée à Toronto.',
+  blurb: 'HDQ Publishing Canada. Une synthèse quotidienne de renseignements financiers destinée aux conseillers et aux professionnels du patrimoine, couvrant les marchés, les politiques, la fiscalité, le patrimoine et la planification financière canadiens.',
 
   headings: {
     publication: 'Publication',

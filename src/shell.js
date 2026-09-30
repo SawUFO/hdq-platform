@@ -93,7 +93,6 @@ const ORG_SCHEMA = {
     "addressRegion": "ON",
     "addressCountry": "CA"
   },
-  "areaServed": { "@type": "Country", "name": "Canada" },
   "audience": {
     "@type": "Audience",
     "audienceType": "Canadian financial advisors, CIRO-registered representatives, CFP holders and CFA charterholders"
@@ -379,7 +378,7 @@ ${fr ? `<footer><div class="footer-inner">
         <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
         <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
       </a>
-      <p>HDQ Publishing Canada. A daily financial intelligence briefing for licensed Canadian financial advisors. Published in Toronto.</p>
+      <p>HDQ Publishing Canada. A daily financial intelligence briefing for financial advisors and wealth professionals, covering Canadian markets, policy, tax, wealth and financial planning.</p>
     </div>
     <div class="footer-nav"><h6>Publication</h6><ul>
       <li><a href="/news">Daily Briefing</a></li>
