@@ -825,7 +825,7 @@ var PW=W-margin.left-margin.right;
 var PH=H-margin.top-margin.bottom;
 var series=[[97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 96.24, 95.41, 98.12, 106.6, 98.82, 99.78, 97.09, 98.03, 102.31, 102.25, 100.32], [93.03, 96.05, 102.48, 100.05, 97.14, 100.75, 102.43, 101.91, 96.08, 92.37, 90.52, 92.16, 94.61, 92.41, 92.6, 89.38, 90.42, 92.87, 91.11, 89.22]];
 var names=["Brent", "WTI"];
-var offs=[-18, 14];
+var offs=[-26, 14];
 var cols=["#4a5568", "#9ca3af"];
 var labels=["Sep 8","Sep 9","Sep 10","Sep 11","Sep 14","Sep 15","Sep 16","Sep 17","Sep 18","Sep 21","Sep 22","Sep 23","Sep 24","Sep 25","Sep 28","Sep 29","Sep 30","Oct 1","Oct 2","Oct 5"];
 var band={a:10,b:19,t:"DIESEL EXPORT BAN TALK"};
@@ -867,7 +867,7 @@ svg.appendChild(tx(pillText,{x:pillX+pillW/2,y:pillY+pillH/2+3.5,"text-anchor":"
 for(s=0;s<series.length;s++){
 svg.appendChild(tx(names[s],{x:lastX-4,y:yp(series[s][n-1])+3+offs[s],"text-anchor":"end","font-size":8,"font-weight":700,fill:cols[s]}));
 }
-svg.appendChild(tx(ref.t,{x:margin.left+10,y:yp(ref.v)+12,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#2e7d32"}));
+svg.appendChild(tx(ref.t,{x:margin.left+30,y:yp(ref.v)+12,"text-anchor":"start","font-size":7,"font-weight":700,fill:"#2e7d32"}));
 svg.appendChild(tx(band.t,{x:(xp(band.a)+xp(band.b))/2,y:margin.top+8,"text-anchor":"middle","font-size":7,"font-weight":700,fill:"#c0392b"}));
 for(i=0;i<n;i+=1){
 svg.appendChild(tx(labels[i],{x:xp(i),y:margin.top+PH+14,"text-anchor":"middle","font-size":7.5,fill:"#999999"}));
@@ -1101,7 +1101,7 @@ var n=vals.length;
 var lo=Math.min.apply(null,vals),hi=Math.max.apply(null,vals);
 var pad=(hi-lo)*0.12;
 var yMin=lo-pad,yMax=hi+pad;
-function xS(i){return margin.left+15+(i/(n-1))*(PW-30);}
+function xS(i){return margin.left+34+(i/(n-1))*(PW-68);}
 function yp(v){return margin.top+PH-((v-yMin)/(yMax-yMin))*PH;}
 var barW=Math.min(Math.floor((PW-30)/(n-1)*0.6),56);
 var i,t;
