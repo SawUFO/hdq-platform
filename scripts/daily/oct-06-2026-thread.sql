@@ -85,11 +85,12 @@ var pillY = wY - pillH / 2;
 if (pillX < margin.left) pillX = margin.left;
 svg.appendChild(el("rect", {x: pillX, y: pillY, width: pillW, height: pillH, rx: 3, fill: "#e8a825"}));
 svg.appendChild(txt(pillText, {x: pillX + pillW / 2, y: pillY + pillH / 2 + 3.5, "text-anchor": "middle", "font-size": 9, "font-weight": 700, fill: "#111111"}));
-svg.appendChild(txt("BRENT " + bi[n - 1].toFixed(1), {x: lastX - 4, y: bY + 15, "text-anchor": "end", "font-size": 7.5, "font-weight": 700, fill: "#4a5568"}));
+svg.appendChild(txt("BRENT " + bi[n - 1].toFixed(1), {x: lastX - 4, y: refY - 6, "text-anchor": "end", "font-size": 7.5, "font-weight": 700, fill: "#4a5568"}));
 for (var t2 = Math.ceil(lo / step) * step; t2 <= hi; t2 += step){
   svg.appendChild(txt(String(t2), {x: margin.left - 6, y: yp(t2) + 3, "text-anchor": "end", "font-size": 8.5, fill: "#aaaaaa"}));
 }
-svg.appendChild(txt("SEPTEMBER AVERAGE", {x: margin.left + 10, y: refY - 10, "text-anchor": "start", "font-size": 7, "font-weight": 700, fill: "#888888"}));
+svg.appendChild(txt("SEPTEMBER", {x: margin.left + 10, y: refY - 19, "text-anchor": "start", "font-size": 7, "font-weight": 700, fill: "#888888"}));
+svg.appendChild(txt("AVERAGE", {x: margin.left + 10, y: refY - 10, "text-anchor": "start", "font-size": 7, "font-weight": 700, fill: "#888888"}));
 events.forEach(function(ev){
   var ex = xp(ev.i);
   var labelW = 0; ev.lines.forEach(function(l){ labelW = Math.max(labelW, tw(l, 7)); });
