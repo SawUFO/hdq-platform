@@ -270,7 +270,7 @@ export async function renderCharts(env, params, authed = true) {
 ${lockedOverlay}
 <div class="charts-wrap"><div class="container">
   <div class="charts-header">
-    <div class="block-header" style="margin-bottom:0;"><h6>Chart Gallery</h6></div>
+    <div class="block-header" style="margin-bottom:0;"><h1>Chart Gallery</h1></div>
     <span class="charts-count">${total} chart${total !== 1 ? 's' : ''}</span>
   </div>
   <div class="charts-filters">
@@ -287,6 +287,8 @@ ${membershipFooterBand()}`;
 
   return htmlResponse(pageShell(body, {
     title: 'HDQ Chart Gallery',
+    canonical: 'https://hdq.ca/charts',
+    metaDescription: "HDQ's chart gallery: original charts from the daily Canadian financial news briefing, covering markets, the economy, rates, tax and investor behaviour.",
     activePage: 'news',
     activeDesk: 'charts',
     issueNo: await getIssueNo(env),

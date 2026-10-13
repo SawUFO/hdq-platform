@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>`;
 }
 
-function articleSchemaTag(article, lang = 'en') {
+export function articleSchemaTag(article, lang = 'en') {
   const fr = lang === 'fr';
   const url = `https://hdq.ca/${fr ? 'fr/' : ''}${article.slug}`;
   const deskName = deskByline(article.desk, lang) || (fr ? FR_ARTICLE.editorial : 'HDQ Editorial');
@@ -380,15 +380,12 @@ function articleSchemaTag(article, lang = 'en') {
     // The page genuinely changed on the open date: the body went from withheld
     // to served and the markup gained structured data. Kept in step with the
     // sitemap lastmod through the same constant so the two can never disagree.
-    "dateModified": (String(article.published_at || '').slice(0, 10) > CONTENT_OPENED)
+    "dateModified": (String(article.published_at || '').slice(0, 10) >= CONTENT_OPENED)
       ? article.published_at
       : CONTENT_OPENED,
     "inLanguage": fr ? FR_SITE.htmlLang : "en-CA",
     "articleSection": deskDisplay(article.desk, lang),
-    "image": {
-      "@type": "ImageObject",
-      "url": `https://assets.hdq.ca/${article.hero_image}`
-    },
+    ...(article.hero_image ? { "image": { "@type": "ImageObject", "url": `https://assets.hdq.ca/${article.hero_image}` } } : {}),
     // Desk bylines are the house convention. Naming the desk as an
     // Organization author gives search engines a real author entity to
     // attach to, which an absent author field does not.

@@ -334,16 +334,16 @@ export async function renderArchive(env, params, authed = true) {
 
   // Article grid
   const gridHtml = articles.length ? articles.map(a => `
-<a href="/${escHtml(a.slug)}" class="archive-card">
+<a href="${articleUrl(a, lang)}" class="archive-card">
   <div class="archive-card-img">
     <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="" loading="lazy">
   </div>
   <div class="archive-card-body">
-    <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}" style="align-self:flex-start;">${escHtml(DESK_DISPLAY[a.desk] || a.desk)}</span>
+    <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || '')}" style="align-self:flex-start;">${escHtml(deskDisplay(a.desk, lang))}</span>
     <div class="archive-card-title">${escHtml(a.title)}</div>
     <div class="archive-card-dek">${escHtml(a.dek || '')}</div>
     <div class="archive-card-meta">
-      <span>${fmtDate(a.published_at)}</span>
+      <span>${fmtDate(a.published_at, lang)}</span>
       <span class="meta-dot"></span>
       <span>${a.read_time} min</span>
     </div>
@@ -442,7 +442,7 @@ export async function renderArchive(env, params, authed = true) {
 ${lockedOverlay}
 <div class="archive-wrap"><div class="container">
   <div class="archive-header">
-    <div class="block-header" style="margin-bottom:0;"><h6>${fr ? A.heading : 'Archive'}</h6></div>
+    <div class="block-header" style="margin-bottom:0;"><h1>${fr ? A.heading : 'Archive'}</h1></div>
     <div class="archive-search-wrap">
       <svg class="archive-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" class="archive-search" id="archive-search-input" placeholder="${fr ? A.searchPlaceholder : 'Search articles... (press Enter)'}" value="${escHtml(search)}" aria-label="${fr ? A.searchAria : 'Search archive'}">
