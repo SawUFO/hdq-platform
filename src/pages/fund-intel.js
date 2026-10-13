@@ -787,6 +787,7 @@ window.fiRunQuery = async function() {
 
   return htmlResponse(pageShell(body, {
     title: 'Fund Intel — Canadian Fund Industry Intelligence — HDQ',
+    canonical: 'https://hdq.ca/fund-intel',
     activePage: 'fund-intel',
     activeDesk: 'all',
     issueNo,

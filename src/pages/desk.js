@@ -52,7 +52,7 @@ export async function renderDesk(env, desk) {
 <div class="content-area"><div class="container">
   <div class="content-grid">
     <div style="min-width:0;">
-      <div class="block-header"><h6>${escHtml(fr ? dLabel : `${dLabel} Desk`)}</h6></div>
+      <div class="block-header"><h1>${escHtml(fr ? dLabel : `${dLabel} Desk`)}</h1></div>
       ${heroHtml}
       ${subHtml}
       ${recentHtml}

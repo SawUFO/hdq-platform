@@ -32,8 +32,8 @@ const STATIC_PAGES = [
   { loc: '/month-at-a-glance',  priority: '0.6', changefreq: 'monthly' },
   { loc: '/about',              priority: '0.7', changefreq: 'monthly' },
   { loc: '/editorial-standards',priority: '0.7', changefreq: 'monthly' },
-  { loc: '/hdq-whitelabel.html',priority: '0.5', changefreq: 'monthly' },
-  { loc: '/hdq-legal.html',     priority: '0.3', changefreq: 'yearly'  },
+  { loc: '/hdq-whitelabel',     priority: '0.5', changefreq: 'monthly' },
+  { loc: '/hdq-legal',          priority: '0.3', changefreq: 'yearly'  },
 ];
 // Deliberately absent: /hdq-prodev.html and /hdq-subscribe.html.
 // Professional Development is member-only and carries no public content, so

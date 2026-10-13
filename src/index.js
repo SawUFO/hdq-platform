@@ -218,6 +218,14 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // www.hdqca.com is routed to this Worker and was serving a complete second
+    // copy of the site; Google had indexed pages from it despite the hdq.ca
+    // canonical tags. 301 every request on that host to the same path on
+    // hdq.ca (query string preserved) so there is one site, not two.
+    if (url.hostname === 'hdqca.com' || url.hostname.endsWith('.hdqca.com')) {
+      return Response.redirect('https://hdq.ca' + url.pathname + url.search, 301);
+    }
+
     // Plain HTTP was being served directly instead of redirecting to HTTPS
     // (found via a Search Console crawl audit - Google was crawling
     // http://hdq.ca/... as a distinct, unindexed duplicate of the real

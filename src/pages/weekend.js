@@ -2,6 +2,7 @@ import { pageShell, escHtml, fmtDate, articleUrl, htmlResponse, getArticleIssueN
 import { FR_UI, FR_ARTICLE, FR_LOCK, FR_STATIC, FR_DESK_DISPLAY } from '../fr-strings.js';
 import { deskDisplay, articleToggleHref } from '../shell.js';
 import { membershipFooterBand } from './news.js';
+import { articleSchemaTag } from './article.js';
 
 const LOCKED_OVERLAY_CSS = `
 .hdq-locked-overlay { position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(11,26,48,0.72);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px); }
@@ -218,6 +219,11 @@ ${membershipFooterBand(lang)}`;
     canonical: `https://hdq.ca/${fr ? 'fr/' : ''}${slug}`,
     metaDescription: article.dek || '',
     robots: 'index, follow',
+    ogType: 'article',
+    ogImage: article.hero_image ? `https://assets.hdq.ca/${article.hero_image}` : '',
+    publishedTime: article.published_at,
+    section: deskDisplay(article.desk, lang),
+    extraHead: articleSchemaTag(article, lang),
     extraStyle: ARTICLE_CSS + LOCKED_OVERLAY_CSS + (isMonth ? MONTH_CSS : ''),
     extraScript: (authed && isMonth) ? monthScript() : '',
     bodyClass: authed ? '' : 'overlay-active',
