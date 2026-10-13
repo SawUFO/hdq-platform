@@ -50,8 +50,8 @@ const FR_STATIC_PAGES = [
   { loc: `/fr/${FR_DESK_PATH.thread}`,       priority: '0.8', changefreq: 'daily'   },
   { loc: `/fr/${FR_DESK_PATH.weekend}`,      priority: '0.6', changefreq: 'weekly'  },
   { loc: `/fr/${FR_DESK_PATH.month}`,        priority: '0.6', changefreq: 'monthly' },
-  { loc: '/fr/pour-les-firmes',              priority: '0.5', changefreq: 'monthly' },
-  { loc: '/fr/juridique',                    priority: '0.3', changefreq: 'yearly'  },
+  { loc: '/hdq-whitelabel-fr',              priority: '0.5', changefreq: 'monthly' },
+  { loc: '/hdq-legal-fr',                   priority: '0.3', changefreq: 'yearly'  },
 ];
 
 function escXml(str) {
