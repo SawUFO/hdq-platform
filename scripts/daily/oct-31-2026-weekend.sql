@@ -141,7 +141,7 @@ VALUES (
   '',
   '[{"value":"35,620","label":"TSX Friday close"},{"value":"-0.47%","label":"TSX weekly change"},{"value":"2.50%","label":"BoC overnight rate"},{"value":"$104.12","label":"WTI Friday settlement"}]',
   'weekend-148.jpg',
-  '[ARTIST BIO PENDING FROM JP] Artwork: [Artist Name].',
+  'Sathi Jannat is a versatile Fine Arts watercolour artist whose work is recognized for bridging the gap between traditional fine art aesthetics and modern design. Her distinctive style has made her a highly regarded name for both private collections and commercial projects. Artwork: Sathi Jannat.',
   5,
   '2026-10-31T08:43:00',
   'entity:boc,entity:fed,entity:tsx,entity:wti,entity:gold,entity:cad,entity:hormuz,theme:hormuz-disruption,theme:boc-rate-path,theme:fed-rate-path,theme:inflation-canada',
