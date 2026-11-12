@@ -3,7 +3,7 @@ name: Upload approved HDQ heroes
 on:
   push:
     branches: [hdq-hero-uploads]
-    paths: ['approved-heroes/*.jpg.b64']
+    paths: ['approved-heroes/*.jpg.b64', '.github/workflows/approved-hero-upload.yml']
 
 permissions:
   contents: read
@@ -49,8 +49,8 @@ jobs:
               exit 1
             fi
             url="https://assets.hdq.ca/$name"
-            status=$(curl -sS -o "$live" -w '%{http_code}' "$url")
-            if [[ "$status" == 200 ]]; then
+            status=$(curl -sS -o "$live" -w '%{http_code} %{content_type}' "$url?check=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT")
+            if [[ "$status" == '200 image/jpeg' ]]; then
               if cmp -s "$image" "$live"; then
                 echo "Already live: $url"
                 continue
@@ -58,20 +58,30 @@ jobs:
               echo "A different image is already live: $url" >&2
               exit 1
             fi
-            if [[ "$status" != 404 ]]; then
+            if [[ "$status" != 404\ * ]]; then
               echo "Unexpected HTTP status $status at $url" >&2
               exit 1
             fi
-            wrangler r2 object put "hdq-assets/$name" --file="$image" --content-type=image/jpeg --remote
+            if wrangler r2 object get "hdq-assets/$name" --file="$live" --remote; then
+              if ! cmp -s "$image" "$live"; then
+                echo "A different object is already stored: $name" >&2
+                exit 1
+              fi
+            else
+              wrangler r2 object put "hdq-assets/$name" --file="$image" --content-type=image/jpeg --remote
+            fi
+            wrangler r2 object get "hdq-assets/$name" --file="$live" --remote
+            cmp "$image" "$live"
+            echo "Verified exact bytes in R2: $name"
             for attempt in {1..6}; do
-              status=$(curl -sS -o "$live" -w '%{http_code} %{content_type}' "$url")
+              status=$(curl -sS -o "$live" -w '%{http_code} %{content_type}' "$url?check=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$attempt")
               if [[ "$status" == '200 image/jpeg' ]] && cmp -s "$image" "$live"; then
                 break
               fi
               sleep 5
             done
             if [[ "$status" != '200 image/jpeg' ]] || ! cmp -s "$image" "$live"; then
-              echo "Could not verify the approved JPEG at $url" >&2
+              echo "Could not verify the approved JPEG at $url (response: $status)" >&2
               exit 1
             fi
             echo "Verified: $url"
