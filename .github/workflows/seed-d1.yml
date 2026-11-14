@@ -4,9 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       sql_file:
-        description: 'SQL file to run (in scripts/daily/)'
+        description: 'English SQL file in scripts/daily/, e.g. nov-12-2026-thread.sql (French files go in "Seed D1 Articles (French)")'
         required: true
-        default: 'may-07-2026.sql'
+      allow_future:
+        description: 'Tick only to schedule an article with a future published_at (it leads the front page once its time arrives)'
+        type: boolean
+        default: false
 
 jobs:
   seed:
@@ -19,17 +22,29 @@ jobs:
         with:
           node-version: '20'
 
+      # Fails fast, before D1 is touched, on the mistakes that have caused
+      # trouble: a French file in this workflow, a missing file, a slug date
+      # that disagrees with published_at, or a published_at in the future.
+      - name: Pre-flight check
+        env:
+          SQL_FILE: ${{ github.event.inputs.sql_file }}
+          ALLOW_FUTURE: ${{ github.event.inputs.allow_future }}
+        run: node scripts/validate-seed.js en "$SQL_FILE" $( [ "$ALLOW_FUTURE" = "true" ] && echo --allow-future )
+
       - name: Install Wrangler
         run: npm install -g wrangler
 
       - name: Execute SQL against D1
-        run: wrangler d1 execute hdq-articles --file=scripts/daily/${{ github.event.inputs.sql_file }} --remote
+        run: wrangler d1 execute hdq-articles --file="scripts/daily/$SQL_FILE" --remote
         env:
+          SQL_FILE: ${{ github.event.inputs.sql_file }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Notify IndexNow
-        run: node scripts/indexnow-notify.js scripts/daily/${{ github.event.inputs.sql_file }}
+        env:
+          SQL_FILE: ${{ github.event.inputs.sql_file }}
+        run: node scripts/indexnow-notify.js "scripts/daily/$SQL_FILE"
 
   extract:
     needs: seed
