@@ -303,7 +303,7 @@ export const FR_ARCHIVE = {
 export const FR_LOCK = {
   tag:      'Avis d’accès',
   heading:  'L’accès à cette page est actuellement restreint.',
-  body1:    'L’édition publique de HDQ se lit normalement gratuitement.',
+  body1:    'Cette page n’est pas accessible pour le moment.',
   body2:    'Pour les demandes de licence institutionnelle, consultez les Solutions institutionnelles.',
   cta:      'Solutions institutionnelles',
   note:     'À des fins éducatives seulement. Ne constitue pas un conseil en placement.',
@@ -346,8 +346,8 @@ export const FR_ARTICLE = {
 
 export const FR_ABOUT = {
   publishedIn:   'Intelligence financière canadienne',
-  heroTitle:     'Une information indépendante, publiée ouvertement.',
-  heroSub:       'Cinq sections éditoriales et un Fil quotidien, en accès libre. Les institutions peuvent en obtenir la licence de diffusion, sous leur marque ou avec mention de HDQ.',
+  heroTitle:     'Une information financière indépendante.',
+  heroSub:       'Cinq sections éditoriales et un Fil quotidien, consacrés aux marchés, à l’économie, à la fiscalité et au patrimoine canadiens.',
   readToday:     'Lire l’édition du jour',
   institutional: 'Solutions institutionnelles',
 
@@ -441,7 +441,7 @@ export const FR_SITE = {
   ogLocale:    'fr_CA',
   titleSuffix: 'HDQ Publishing Canada',
   defaultTitle: 'HDQ Publishing Canada | Information financière indépendante',
-  description: 'HDQ Publishing Canada publie de l’information financière indépendante pour le secteur de la gestion de patrimoine : marchés, géopolitique, économie, fiscalité et patrimoine, et comportement des investisseurs. L’édition publique se lit gratuitement; les institutions peuvent en obtenir la licence, sous leur marque ou avec mention de HDQ.',
+  description: 'HDQ Publishing Canada publie de l’information financière indépendante pour le secteur de la gestion de patrimoine : marchés, géopolitique, économie, fiscalité et patrimoine, et comportement des investisseurs. Les institutions peuvent en obtenir la licence, sous leur marque ou avec mention de HDQ.',
 };
 
 // ── Waiting list form ───────────────────────────────────────────────────────

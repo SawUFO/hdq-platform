@@ -1,16 +1,15 @@
 /**
  * HDQ — shared corporate copy, English and Canadian French side by side.
  *
- * One place for the wording that appears on many pages: the institutional
- * strip, the sidebar note, the footer band and the footer contact block.
- * Keeping both languages in one object is deliberate. Earlier French pages
+ * One place for the wording that appears on many pages: the footer contact
+ * block, footer blurb and copyright. Keeping both languages in one object is deliberate. Earlier French pages
  * showed English promotional copy because the two languages lived in separate
  * files and a call site forgot to pass `lang`. Every helper here takes `lang`
  * and falls back to English only when it is absent.
  *
- * Positioning (settled): reading HDQ is free; commercial republication and
- * redistribution require a licence. No consumer price, no membership, no
- * waiting list. No individual is named anywhere in this file.
+ * HDQ publishes independent financial intelligence; institutions may also
+ * license it. Neither is promoted on the editorial pages. No individual is
+ * named anywhere in this file.
  */
 
 export const URLS = {
@@ -27,14 +26,7 @@ export const URLS = {
 export const COPY = {
   en: {
     institutionalLabel: 'Institutional Solutions',
-    strip: 'HDQ is free to read. Institutions can license our intelligence under their own brand or with HDQ attribution.',
-    stripLink: 'Institutional Solutions',
-    sidebarHeading: 'Institutional Solutions',
-    sidebarBody: 'HDQ intelligence is available for licensed distribution under a firm’s own brand or with HDQ attribution.',
-    sidebarLink: 'Discuss licensing',
-    band: 'Independent financial intelligence. Free to read. Institutional licensing by enquiry.',
-    bandLink: 'Institutional Solutions',
-    footerBlurb: 'HDQ Publishing Canada. Independent financial intelligence for the wealth industry, covering Canadian markets, policy, tax, wealth and financial planning. Free to read; available for licensed institutional distribution.',
+    footerBlurb: 'HDQ Publishing Canada. Independent financial intelligence for the wealth industry, covering Canadian markets, policy, tax, wealth and financial planning.',
     footerCopyright: '© 2026 HDQ Publishing Canada. All rights reserved. Content is provided for educational and informational purposes and does not constitute investment, tax or legal advice. Reproduction, redistribution and commercial use require permission or an institutional licence.',
     contactHeading: 'Contact',
     contactEnquiries: 'General and Institutional Enquiries',
@@ -44,14 +36,7 @@ export const COPY = {
   },
   fr: {
     institutionalLabel: 'Solutions institutionnelles',
-    strip: 'HDQ se lit gratuitement. Les institutions peuvent en obtenir la licence, sous leur propre marque ou avec mention de HDQ.',
-    stripLink: 'Solutions institutionnelles',
-    sidebarHeading: 'Solutions institutionnelles',
-    sidebarBody: 'L’information de HDQ peut être diffusée sous licence, sous la marque d’une firme ou avec mention de HDQ.',
-    sidebarLink: 'Discuter d’une licence',
-    band: 'Information financière indépendante. Consultation gratuite. Licences institutionnelles sur demande.',
-    bandLink: 'Solutions institutionnelles',
-    footerBlurb: 'HDQ Publishing Canada. De l’information financière indépendante pour le secteur de la gestion de patrimoine : marchés, politiques, fiscalité, patrimoine et planification financière au Canada. Consultation gratuite; diffusion institutionnelle sous licence.',
+    footerBlurb: 'HDQ Publishing Canada. De l’information financière indépendante pour le secteur de la gestion de patrimoine : marchés, politiques, fiscalité, patrimoine et planification financière au Canada.',
     footerCopyright: '© 2026 HDQ Publishing Canada. Tous droits réservés. Le contenu est fourni à des fins éducatives et informatives et ne constitue pas un conseil en placement, en fiscalité ou en droit. La reproduction, la redistribution et l’utilisation commerciale exigent une autorisation ou une licence institutionnelle.',
     contactHeading: 'Nous joindre',
     contactEnquiries: 'Renseignements généraux et institutionnels',
@@ -64,37 +49,6 @@ export const COPY = {
 const pick = (lang) => (lang === 'fr' ? 'fr' : 'en');
 
 export function institutionalHref(lang) { return URLS.institutional[pick(lang)]; }
-
-/** Slim positioning line beneath the masthead (news front page only). */
-export function institutionalStrip(lang = 'en') {
-  const l = pick(lang), c = COPY[l];
-  return `
-<div class="inst-strip" role="note" style="background:var(--navy-50);border-bottom:1px solid var(--navy-100);">
-  <div style="max-width:1200px;margin:0 auto;padding:9px 24px;font-size:13px;line-height:1.5;color:var(--navy-800);text-align:center;">
-    ${c.strip} <a href="${URLS.institutional[l]}" style="color:var(--navy-700);font-weight:600;white-space:nowrap;">${c.stripLink} &rarr;</a>
-  </div>
-</div>`;
-}
-
-/** Understated sidebar note (replaces the old membership box). */
-export function institutionalSidebar(lang = 'en') {
-  const l = pick(lang), c = COPY[l];
-  return `
-<div style="background:var(--navy-50);border:1px solid var(--navy-100);border-radius:6px;padding:20px;">
-  <div style="font-size:10px;font-weight:700;color:var(--navy-600);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">${c.sidebarHeading}</div>
-  <p style="font-size:13px;color:var(--navy-800);line-height:1.6;margin:0 0 12px;">${c.sidebarBody}</p>
-  <a href="${URLS.institutional[l]}" style="font-size:13px;color:var(--navy-700);font-weight:600;text-decoration:none;border-bottom:1px solid var(--navy-200);padding-bottom:1px;">${c.sidebarLink} &rarr;</a>
-</div>`;
-}
-
-/** Footer band shown above the footer on editorial pages. */
-export function institutionalBand(lang = 'en') {
-  const l = pick(lang), c = COPY[l];
-  return `
-<div class="nl-band"><div class="nl-inner">
-  <p style="font-size:15px;color:var(--n600);margin:0;">${c.band} <a href="${URLS.institutional[l]}" style="color:var(--navy-700);font-weight:600;">${c.bandLink} &rarr;</a></p>
-</div></div>`;
-}
 
 /** Footer "Contact" column: number, enquiries label, email, video channel. */
 export function footerContactColumn(lang = 'en') {
@@ -116,8 +70,8 @@ export function footerContactColumn(lang = 'en') {
 export function lockedNoticeHtml(lang = 'en') {
   const l = pick(lang);
   const t = l === 'fr'
-    ? { tag: 'Avis d\u2019acc\u00e8s', h: 'L\u2019acc\u00e8s \u00e0 cette page est actuellement restreint.', p1: 'L\u2019\u00e9dition publique de HDQ se lit normalement gratuitement.', p2: 'Pour les demandes de licence institutionnelle, consultez les Solutions institutionnelles.', cta: 'Solutions institutionnelles' }
-    : { tag: 'Access notice', h: 'Access to this page is currently restricted.', p1: 'HDQ\u2019s public edition is normally free to read.', p2: 'For institutional licensing enquiries, see Institutional Solutions.', cta: 'Institutional Solutions' };
+    ? { tag: 'Avis d\u2019acc\u00e8s', h: 'L\u2019acc\u00e8s \u00e0 cette page est actuellement restreint.', p1: 'Cette page n\u2019est pas accessible pour le moment.', p2: 'Pour les demandes de licence institutionnelle, consultez les Solutions institutionnelles.', cta: 'Solutions institutionnelles' }
+    : { tag: 'Access notice', h: 'Access to this page is currently restricted.', p1: 'This page is not available at the moment.', p2: 'For institutional licensing enquiries, see Institutional Solutions.', cta: 'Institutional Solutions' };
   return `<span class="hdq-locked-tag">${t.tag}</span>
     <h2>${t.h}</h2>
     <p>${t.p1}</p>

@@ -2,7 +2,6 @@ import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_CAT_CLASS, articleUrl,
          jsonKeyNumbers, htmlResponse, getIssueNo, deskDisplay, deskHref,
          archiveUrl } from '../shell.js';
 import { FR_NEWS, FR_MEMBERSHIP, FR_SITE, FR_STATIC } from '../fr-strings.js';
-import { institutionalStrip, institutionalSidebar, institutionalBand } from '../site-copy.js';
 import { visibleTags, topVisibleTags } from '../tag-labels.js';
 
 // deskHref used to live here as an English-only map. It now comes from shell.js
@@ -201,7 +200,6 @@ export async function renderNews(env, authed = true) {
 
   const body = `
 ${lockedOverlay}
-${institutionalStrip(lang)}
 <div class="content-area"><div class="container">
   <div class="content-grid">
     <div style="min-width:0;">
@@ -351,7 +349,6 @@ function renderSidebar(flash, trendingTags, articleCount, lang = 'en') {
   <div class="sidebar-label">${fr ? FR_NEWS.flashNews : 'Flash News'}</div>
   <div class="flash-list">${flashHtml}</div>
 </div>
-${institutionalSidebar(lang)}
 <div>
   <div class="sidebar-label">${fr ? FR_NEWS.topics : 'Topics'}</div>
   <div class="trending-tags">${trendHtml}</div>
@@ -371,7 +368,8 @@ function pad3(slugs) {
 }
 
 export function membershipFooterBand(lang = 'en') {
-  return institutionalBand(lang);
+  // Intentionally empty: the editorial pages carry no promotional footer band.
+  return '';
 }
 
 // Legacy export alias so any other file importing subscribeFooterBand still works

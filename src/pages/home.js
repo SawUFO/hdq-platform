@@ -186,8 +186,8 @@ export async function renderHome(env) {
   <div class="hero-content">
     <div style="max-width:580px;">
       <div class="hero-eyebrow">${fr ? FR_ABOUT.publishedIn : 'Canadian Financial Intelligence'}</div>
-      <h1>${fr ? FR_ABOUT.heroTitle : 'Independent intelligence. Published openly.'}</h1>
-      <p class="hero-sub">${fr ? FR_ABOUT.heroSub : 'HDQ produces financial analysis with a focus on Canadian wealth management: five editorial desks and a Daily Thread, free to read. Institutions may license it for distribution under their own brand or with HDQ attribution.'}</p>
+      <h1>${fr ? FR_ABOUT.heroTitle : 'Independent financial intelligence.'}</h1>
+      <p class="hero-sub">${fr ? FR_ABOUT.heroSub : 'HDQ produces financial analysis with a focus on Canadian wealth management: five editorial desks and a Daily Thread covering Canadian markets, the economy, tax and wealth.'}</p>
       <div class="hero-actions">
         <a href="${home}" class="btn-primary">${fr ? FR_ABOUT.readToday : "Read today's edition"}</a>
         <a href="${institutionalHref(lang)}" class="btn-ghost">${COPY[fr ? 'fr' : 'en'].institutionalLabel}</a>
@@ -261,14 +261,14 @@ ${fr ? '' : `    <a href="${fr ? FR_STATIC.fundIntel : '/fund-intel'}" class="di
 ${membershipFooterBand(lang)}`;
 
   return htmlResponse(pageShell(body, {
-    title: fr ? FR_SITE.defaultTitle : 'About HDQ | Independent financial intelligence, published openly',
+    title: fr ? FR_SITE.defaultTitle : 'About HDQ | Independent financial intelligence',
     activePage: 'about',
     activeDesk: 'all',
     issueNo,
     extraStyle: HOME_CSS + '\n.division-grid { grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); }',
     // Self-canonical in both editions — French build brief §8.
     extraHead: `
-<meta name="description" content="${fr ? FR_SITE.description : 'HDQ publishes independent financial intelligence, free to read. Five editorial desks plus a Daily Thread. Institutions may license HDQ content under their own brand or with HDQ attribution.'}">
+<meta name="description" content="${fr ? FR_SITE.description : 'HDQ publishes independent financial intelligence. Five editorial desks plus a Daily Thread. Institutions may license HDQ content under their own brand or with HDQ attribution.'}">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="${fr ? `https://hdq.ca/fr/${FR_ROUTES.about}` : 'https://hdq.ca/about'}">`,
     lang,
