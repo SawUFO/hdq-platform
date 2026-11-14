@@ -2,6 +2,7 @@ import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_CAT_CLASS, articleUrl,
          jsonKeyNumbers, htmlResponse, getIssueNo, deskDisplay, deskHref,
          archiveUrl } from '../shell.js';
 import { FR_NEWS, FR_MEMBERSHIP, FR_SITE, FR_STATIC } from '../fr-strings.js';
+import { institutionalStrip, institutionalSidebar, institutionalBand } from '../site-copy.js';
 import { visibleTags, topVisibleTags } from '../tag-labels.js';
 
 // deskHref used to live here as an English-only map. It now comes from shell.js
@@ -200,6 +201,7 @@ export async function renderNews(env, authed = true) {
 
   const body = `
 ${lockedOverlay}
+${institutionalStrip(lang)}
 <div class="content-area"><div class="container">
   <div class="content-grid">
     <div style="min-width:0;">
@@ -349,11 +351,7 @@ function renderSidebar(flash, trendingTags, articleCount, lang = 'en') {
   <div class="sidebar-label">${fr ? FR_NEWS.flashNews : 'Flash News'}</div>
   <div class="flash-list">${flashHtml}</div>
 </div>
-<div style="background:var(--navy-50);border:1px solid var(--navy-100);border-radius:6px;padding:20px;">
-  <div style="font-size:10px;font-weight:700;color:var(--navy-600);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">${fr ? FR_MEMBERSHIP.heading : 'Membership'}</div>
-  <p style="font-size:13px;color:var(--navy-800);line-height:1.6;margin:0 0 12px;">${fr ? FR_MEMBERSHIP.capped : 'Membership is permanently capped. Admitted by nomination only.'}</p>
-  <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" style="font-size:13px;color:var(--navy-700);font-weight:600;text-decoration:none;border-bottom:1px solid var(--navy-200);padding-bottom:1px;">${fr ? FR_MEMBERSHIP.waitingList : 'Waiting list'} &rarr;</a>
-</div>
+${institutionalSidebar(lang)}
 <div>
   <div class="sidebar-label">${fr ? FR_NEWS.topics : 'Topics'}</div>
   <div class="trending-tags">${trendHtml}</div>
@@ -373,11 +371,7 @@ function pad3(slugs) {
 }
 
 export function membershipFooterBand(lang = 'en') {
-  const fr = lang === 'fr';
-  return `
-<div class="nl-band"><div class="nl-inner">
-  <p style="font-size:15px;color:var(--n600);margin:0;">${fr ? FR_MEMBERSHIP.capped : 'Membership is permanently capped. Admitted by nomination only.'} <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" style="color:var(--navy-700);font-weight:600;">${fr ? FR_MEMBERSHIP.waitingList : 'Waiting list'} &rarr;</a></p>
-</div></div>`;
+  return institutionalBand(lang);
 }
 
 // Legacy export alias so any other file importing subscribeFooterBand still works

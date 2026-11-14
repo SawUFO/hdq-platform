@@ -158,22 +158,10 @@ document.addEventListener('keydown', function(e) {
 .nav-right { flex-shrink: 0 !important; }
 @media (max-width: 1100px) { .nav-links { gap: 18px !important; } }
 </style>
+<link rel="alternate" hreflang="en-CA" href="https://hdq.ca/hdq-prodev">
+<link rel="alternate" hreflang="fr-CA" href="https://hdq.ca/hdq-prodev-fr">
+<link rel="alternate" hreflang="x-default" href="https://hdq.ca/hdq-prodev">
 </head><body>
-<!-- PRODEV OVERLAY -->
-<div class="prodev-overlay" id="prodev-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-heading">
-  <div class="prodev-overlay-card">
-    <div style="width:52px;height:52px;background:var(--gold-50);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
-      <img src="HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28" style="display:block;">
-    </div>
-    <span style="display:inline-block;font-size:11px;font-weight:700;color:var(--navy-700);background:var(--navy-50);border:1px solid var(--navy-100);border-radius:3px;padding:4px 10px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;">Accès réservé aux membres</span>
-    <h2 id="overlay-heading" style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;color:var(--navy-900);margin-bottom:12px;line-height:1.2;">Perfectionnement professionnel</h2>
-    <p style="font-size:13px;font-weight:700;color:var(--navy-900);margin-bottom:12px;">Accès réservé aux membres.</p>
-    <p style="font-size:13px;color:var(--n600);line-height:1.7;margin-bottom:10px;">La bibliothèque de perfectionnement professionnel de HDQ — bibliothèque de modules, liste de lecture, cadres d’analyse et glossaire — est réservée aux membres vérifiés. Il s’agit de matériel de formation produit aux fins du perfectionnement professionnel des conseillers inscrits auprès de l’OCRI et des titulaires du titre CFP. Ce matériel n’est pas offert au public.</p>
-    <a href="/fr/liste-attente" style="display:block;width:100%;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:14px 24px;background:var(--gold-400);color:var(--navy-900);border:none;border-radius:4px;text-decoration:none;cursor:pointer;transition:background 0.15s;margin-top:24px;box-sizing:border-box;text-align:center;">Liste d’attente &rarr;</a>
-    <div style="font-size:11px;color:var(--n400);margin-top:14px;line-height:1.6;">À des fins éducatives seulement. Ne constitue pas un conseil en placement.</div>
-  </div>
-</div>
-
 <!-- MOBILE NAV OVERLAY -->
 <div class="mobile-nav-overlay" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
   <div class="mobile-nav-header">
@@ -185,21 +173,19 @@ document.addEventListener('keydown', function(e) {
   </div>
   <nav class="mobile-nav-links" aria-label="Navigation mobile">
     <a href="/fr" class="mobile-nav-link" onclick="window.closeMobileNav()">Nouvelles</a>
-    <a href="/fr/perfectionnement" class="mobile-nav-link" onclick="window.closeMobileNav()">Perfectionnement professionnel</a>
-    <a href="/fr/pour-les-firmes" class="mobile-nav-link" onclick="window.closeMobileNav()">Pour les firmes</a>
     <a href="/fr/a-propos" class="mobile-nav-link" onclick="window.closeMobileNav()">À propos</a>
     <div class="mobile-nav-divider"></div>
     <a href="/fr/fil-quotidien" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Fil quotidien</a>
     <a href="/fr/edition-fin-de-semaine" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Édition de fin de semaine</a>
     <a href="/fr/mois-en-bref" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Le mois en bref</a>
     <a href="/fr/archives" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archives</a>
-    <a href="/fr/juridique" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Mentions juridiques</a>
+    <a href="/hdq-legal-fr" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Mentions juridiques</a>
   </nav>
   <div class="mobile-nav-footer">
-    <a href="/fr/liste-attente" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Liste d’attente</a>
+    <a href="/hdq-whitelabel-fr" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Solutions institutionnelles</a>
   </div>
 </div>
-<header class="masthead"><div class="masthead-inner"><a href="/fr/a-propos" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="/fr" class="nav-link">Nouvelles</a></li><li><a href="/fr/perfectionnement" class="nav-link active">Perfectionnement professionnel</a></li><li><a href="/fr/pour-les-firmes" class="nav-link">Pour les firmes</a></li><li><a href="/fr/a-propos" class="nav-link">À propos</a></li></ul></nav><div class="nav-right"><a href="/fr/liste-attente" class="nav-subscribe">Liste d’attente</a><button type="button" onclick="window.openMobileNav()" aria-label="Ouvrir le menu de navigation" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
+<header class="masthead"><div class="masthead-inner"><a href="/fr/a-propos" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="/fr" class="nav-link">Nouvelles</a></li><li><a href="/fr/a-propos" class="nav-link">À propos</a></li></ul></nav><div class="nav-right"><a href="/hdq-prodev" class="lang-toggle" hreflang="en-CA">ENGLISH</a><a href="/hdq-whitelabel-fr" class="nav-subscribe">Solutions institutionnelles</a><button type="button" onclick="window.openMobileNav()" aria-label="Ouvrir le menu de navigation" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
 <script>
 // Show hamburger only on mobile
 (function(){
@@ -217,8 +203,10 @@ document.addEventListener('keydown', function(e) {
 
 <div class="prodev-hero"><div class="container">
   <h1>Perfectionnement professionnel.</h1>
-  <p>Modules admissibles aux UFC, lectures sélectionnées, cadres décisionnels et glossaire, destinés aux conseillers inscrits auprès de l’OCRI et aux titulaires du titre CFP.</p>
+  <p>Aperçu d’un concept de bibliothèque de perfectionnement professionnel destinée aux conseillers financiers.</p>
 </div></div>
+
+<div class="prodev-notice" role="note" style="background:var(--card);border-bottom:1px solid var(--n200);"><div class="container" style="padding-top:16px;padding-bottom:16px;"><p style="font-size:13px;line-height:1.65;color:var(--n600);max-width:760px;margin:0;"><strong style="color:var(--navy-900);">Aperçu de concept.</strong> Cette page est une maquette d’un possible espace de formation futur. Les titres présentés sont indicatifs. Aucun cours, module ni unité de formation continue n’est offert, et rien ici n’est agréé. <a href="/fr" style="color:var(--navy-700);font-weight:600;">Consulter la publication &rarr;</a></p></div></div>
 
 <div class="section-tabs"><div class="section-tabs-inner">
   <a href="#modules" class="tab-link active" data-tab="modules">Bibliothèque de modules</a>
@@ -228,52 +216,52 @@ document.addEventListener('keydown', function(e) {
 </div></div>
 
 <div id="modules" class="prodev-section"><div class="container">
-  <div class="section-intro"><h2>Bibliothèque de modules</h2><p>Des parcours d’apprentissage structurés sur les sujets qui comptent le plus dans la pratique. Rédigés pour les conseillers, non pour les universitaires. Les détails relatifs aux UFC seront ajoutés dès la confirmation de l’agrément de FP Canada.</p></div>
+  <div class="section-intro"><h2>Bibliothèque de modules</h2><p>Parcours d’apprentissage indicatifs sur des sujets importants dans la pratique. Les titres sont des exemples pour une éventuelle bibliothèque future.</p></div>
   <div class="module-grid">
-    <a href="#" class="module-tile"><div class="module-tile-label">Géopolitique</div><div class="module-tile-title">Comprendre la courbe des taux canadienne pour en parler avec les clients</div><div class="module-tile-desc">Ce qu’est la courbe des taux, ce que signifie son inversion, et comment expliquer les deux clairement sans perdre son client.</div><div class="module-tile-meta"><span>~45 min</span><span class="ce-badge">UFC en attente</span></div></a>
-    <a href="#" class="module-tile"><div class="module-tile-label">Gestion de la pratique</div><div class="module-tile-title">La documentation de convenance de l’OCRI — le guide complet du conseiller</div><div class="module-tile-desc">Ce qu’exigent les règles, ce que les autorités recherchent lors d’un contrôle, et comment bâtir un système de documentation qui vous protège.</div><div class="module-tile-meta"><span>~60 min</span><span class="ce-badge">UFC en attente</span></div></a>
-    <a href="#" class="module-tile"><div class="module-tile-label">Fiscalité et patrimoine</div><div class="module-tile-title">Crédit privé et fonds de dette immobilière — l’essentiel en langage clair</div><div class="module-tile-desc">Le fonctionnement de ces structures, la façon dont elles génèrent du rendement, les risques, et comment en discuter avec les clients.</div><div class="module-tile-meta"><span>~50 min</span><span class="ce-badge">UFC en attente</span></div></a>
-    <a href="#" class="module-tile"><div class="module-tile-label">Finance comportementale</div><div class="module-tile-title">Pourquoi les clients prennent de mauvaises décisions et comment le conseiller peut les aider</div><div class="module-tile-desc">Les principaux biais qui dictent le comportement des clients en marché volatil, avec des scripts pratiques pour composer avec chacun.</div><div class="module-tile-meta"><span>~40 min</span><span class="ce-badge">UFC en attente</span></div></a>
-    <a href="#" class="module-tile"><div class="module-tile-label">Marchés</div><div class="module-tile-title">Lire les résultats trimestriels d’une banque — ce que le conseiller doit savoir</div><div class="module-tile-desc">Provisions pour pertes de crédit, marge nette d’intérêts, ratio CET1 : ce qu’ils signifient, pourquoi ils comptent et comment les expliquer aux clients.</div><div class="module-tile-meta"><span>~35 min</span><span class="ce-badge">UFC en attente</span></div></a>
-    <a href="#" class="module-tile"><div class="module-tile-label">Planification successorale</div><div class="module-tile-title">Les fiducies testamentaires et la succession canadienne d’aujourd’hui</div><div class="module-tile-desc">Le fonctionnement des fiducies testamentaires depuis la réforme fiscale de 2016, les cas où elles conservent leur utilité, et le profil de client visé.</div><div class="module-tile-meta"><span>~55 min</span><span class="ce-badge">UFC en attente</span></div></a>
+    <div class="module-tile"><div class="module-tile-label">Géopolitique</div><div class="module-tile-title">Comprendre la courbe des taux canadienne pour en parler avec les clients</div><div class="module-tile-desc">Ce qu’est la courbe des taux, ce que signifie son inversion, et comment expliquer les deux clairement sans perdre son client.</div><div class="module-tile-meta"><span>~45 min</span><span class="ce-badge">UFC en attente</span></div></div>
+    <div class="module-tile"><div class="module-tile-label">Gestion de la pratique</div><div class="module-tile-title">La documentation de convenance de l’OCRI — le guide complet du conseiller</div><div class="module-tile-desc">Ce qu’exigent les règles, ce que les autorités recherchent lors d’un contrôle, et comment bâtir un système de documentation qui vous protège.</div><div class="module-tile-meta"><span>~60 min</span><span class="ce-badge">UFC en attente</span></div></div>
+    <div class="module-tile"><div class="module-tile-label">Fiscalité et patrimoine</div><div class="module-tile-title">Crédit privé et fonds de dette immobilière — l’essentiel en langage clair</div><div class="module-tile-desc">Le fonctionnement de ces structures, la façon dont elles génèrent du rendement, les risques, et comment en discuter avec les clients.</div><div class="module-tile-meta"><span>~50 min</span><span class="ce-badge">UFC en attente</span></div></div>
+    <div class="module-tile"><div class="module-tile-label">Finance comportementale</div><div class="module-tile-title">Pourquoi les clients prennent de mauvaises décisions et comment le conseiller peut les aider</div><div class="module-tile-desc">Les principaux biais qui dictent le comportement des clients en marché volatil, avec des scripts pratiques pour composer avec chacun.</div><div class="module-tile-meta"><span>~40 min</span><span class="ce-badge">UFC en attente</span></div></div>
+    <div class="module-tile"><div class="module-tile-label">Marchés</div><div class="module-tile-title">Lire les résultats trimestriels d’une banque — ce que le conseiller doit savoir</div><div class="module-tile-desc">Provisions pour pertes de crédit, marge nette d’intérêts, ratio CET1 : ce qu’ils signifient, pourquoi ils comptent et comment les expliquer aux clients.</div><div class="module-tile-meta"><span>~35 min</span><span class="ce-badge">UFC en attente</span></div></div>
+    <div class="module-tile"><div class="module-tile-label">Planification successorale</div><div class="module-tile-title">Les fiducies testamentaires et la succession canadienne d’aujourd’hui</div><div class="module-tile-desc">Le fonctionnement des fiducies testamentaires depuis la réforme fiscale de 2016, les cas où elles conservent leur utilité, et le profil de client visé.</div><div class="module-tile-meta"><span>~55 min</span><span class="ce-badge">UFC en attente</span></div></div>
   </div>
 </div></div>
 
 <div id="reading" class="prodev-section" style="background:var(--n50);"><div class="container">
   <div class="section-intro"><h2>Liste de lecture</h2><p>Des livres et des articles qui valent votre temps. Sélectionnés pour les conseillers. Annotés pour expliquer l’intérêt de chacun dans la pratique.</p></div>
   <div class="reading-list">
-    <div class="reading-item"><div class="book-cover photo-wrap thumb-treat" style="width:52px;height:72px;border-radius:3px;"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=104&h=144&fit=crop&q=80&auto=format" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div><div><div class="book-title">The Psychology of Money</div><div class="book-author">Morgan Housel</div><div class="book-note">Le meilleur ouvrage pour comprendre le rapport des clients à l’argent. Chaque page trouve une application concrète dans les échanges avec la clientèle. Lecture essentielle avant tout module de finance comportementale.</div></div></div>
-    <div class="reading-item"><div class="book-cover photo-wrap thumb-treat" style="width:52px;height:72px;border-radius:3px;"><img src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=104&h=144&fit=crop&q=80&auto=format" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div><div><div class="book-title">Against the Gods: The Remarkable Story of Risk</div><div class="book-author">Peter Bernstein</div><div class="book-note">L’histoire intellectuelle de la façon dont l’humain a appris à quantifier et à gérer le risque. Donne au conseiller un vocabulaire pour expliquer l’incertitude au client au-delà de l’écart type.</div></div></div>
-    <div class="reading-item"><div class="book-cover photo-wrap thumb-treat" style="width:52px;height:72px;border-radius:3px;"><img src="img-charts.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div><div><div class="book-title">The Little Book of Common Sense Investing</div><div class="book-author">John Bogle</div><div class="book-note">À lire ne serait-ce que pour la qualité de la vulgarisation : personne n’explique mieux la capitalisation que Bogle. Maîtrisez l’argument avant de recommander un fonds à gestion active.</div></div></div>
+    <div class="reading-item"><div class="book-cover photo-wrap thumb-treat" style="background:var(--navy-100);width:52px;height:72px;border-radius:3px;"></div><div><div class="book-title">The Psychology of Money</div><div class="book-author">Morgan Housel</div><div class="book-note">Le meilleur ouvrage pour comprendre le rapport des clients à l’argent. Chaque page trouve une application concrète dans les échanges avec la clientèle. Lecture essentielle avant tout module de finance comportementale.</div></div></div>
+    <div class="reading-item"><div class="book-cover photo-wrap thumb-treat" style="background:var(--navy-100);width:52px;height:72px;border-radius:3px;"></div><div><div class="book-title">Against the Gods: The Remarkable Story of Risk</div><div class="book-author">Peter Bernstein</div><div class="book-note">L’histoire intellectuelle de la façon dont l’humain a appris à quantifier et à gérer le risque. Donne au conseiller un vocabulaire pour expliquer l’incertitude au client au-delà de l’écart type.</div></div></div>
+    <div class="reading-item"><div class="book-cover photo-wrap thumb-treat" style="background:var(--navy-100);width:52px;height:72px;border-radius:3px;"></div><div><div class="book-title">The Little Book of Common Sense Investing</div><div class="book-author">John Bogle</div><div class="book-note">À lire ne serait-ce que pour la qualité de la vulgarisation : personne n’explique mieux la capitalisation que Bogle. Maîtrisez l’argument avant de recommander un fonds à gestion active.</div></div></div>
   </div>
 </div></div>
 
 <div id="frameworks" class="prodev-section"><div class="container">
   <div class="section-intro"><h2>Cadres d’analyse</h2><p>Des outils décisionnels conçus pour les échanges entre le conseiller et son client. Chaque cadre offre une façon structurée d’aborder une situation courante sans repartir de zéro chaque fois.</p></div>
   <div class="frameworks-grid">
-    <a href="#" class="framework-card"><div class="framework-title">Le cadre d’échange sur les taux</div><div class="framework-desc">Quatre questions à se poser avant d’expliquer une décision de banque centrale à un client. Valable pour tout contexte de taux et tout niveau de connaissance.</div></a>
-    <a href="#" class="framework-card"><div class="framework-title">Évaluation de la convenance — la liste de vérification HDQ</div><div class="framework-desc">Une liste de vérification structurée pour documenter la convenance, conforme aux exigences de l’OCRI et applicable en moins de 10 minutes par dossier.</div></a>
-    <a href="#" class="framework-card"><div class="framework-title">L’échange sur les placements alternatifs</div><div class="framework-desc">Comment présenter le crédit privé ou la dette immobilière à un client qui n’a jamais détenu de placements alternatifs. Trois portes d’entrée selon la tolérance au risque.</div></a>
-    <a href="#" class="framework-card"><div class="framework-title">Simulation de crise du portefeuille — en langage client</div><div class="framework-desc">Comment accompagner un client dans un scénario de repli hypothétique sans créer de panique. Guide d’entretien séquencé, calibré selon le type de client.</div></a>
+    <div class="framework-card"><div class="framework-title">Le cadre d’échange sur les taux</div><div class="framework-desc">Quatre questions à se poser avant d’expliquer une décision de banque centrale à un client. Valable pour tout contexte de taux et tout niveau de connaissance.</div></div>
+    <div class="framework-card"><div class="framework-title">Évaluation de la convenance — la liste de vérification HDQ</div><div class="framework-desc">Une liste de vérification structurée pour documenter la convenance, destinée à faciliter la documentation de la convenance et applicable en moins de 10 minutes par dossier.</div></div>
+    <div class="framework-card"><div class="framework-title">L’échange sur les placements alternatifs</div><div class="framework-desc">Comment présenter le crédit privé ou la dette immobilière à un client qui n’a jamais détenu de placements alternatifs. Trois portes d’entrée selon la tolérance au risque.</div></div>
+    <div class="framework-card"><div class="framework-title">Simulation de crise du portefeuille — en langage client</div><div class="framework-desc">Comment accompagner un client dans un scénario de repli hypothétique sans créer de panique. Guide d’entretien séquencé, calibré selon le type de client.</div></div>
   </div>
 </div></div>
 
 <div id="glossary" class="prodev-section" style="background:var(--n50);"><div class="container">
   <div class="section-intro"><h2>Glossaire</h2><p>Des définitions en langage clair des termes les plus courants dans la pratique. Rédigées pour les conseillers, non pour les universitaires.</p></div>
   <div class="glossary-grid">
-    <a href="#" class="glossary-item"><div class="glossary-term">Provision pour pertes de crédit</div><div class="glossary-def">Somme qu’une banque met de côté pour couvrir les prêts qu’elle prévoit ne pas recouvrer. Une provision plus élevée signale généralement que la direction anticipe davantage de défauts.</div></a>
-    <a href="#" class="glossary-item"><div class="glossary-term">Marge nette d’intérêts</div><div class="glossary-def">L’écart entre ce qu’une banque tire de ses prêts et ce qu’elle verse sur les dépôts. Une mesure clé de la rentabilité bancaire.</div></a>
-    <a href="#" class="glossary-item"><div class="glossary-term">Taux du financement à un jour</div><div class="glossary-def">Le taux auquel les grandes institutions financières empruntent et prêtent des fonds à un jour. Le principal outil de politique monétaire de la Banque du Canada.</div></a>
-    <a href="#" class="glossary-item"><div class="glossary-term">Courbe des taux</div><div class="glossary-def">Un graphique illustrant les taux obligataires selon les échéances. Sa pente est normalement ascendante ; son inversion précède souvent une récession.</div></a>
-    <a href="#" class="glossary-item"><div class="glossary-term">Ratio CET1</div><div class="glossary-def">Fonds propres de catégorie 1 sous forme d’actions ordinaires — une mesure du capital de base d’une banque par rapport à ses actifs pondérés en fonction du risque. Un ratio plus élevé indique une banque financièrement plus solide.</div></a>
-    <a href="#" class="glossary-item"><div class="glossary-term">Durée (duration)</div><div class="glossary-def">Une mesure de la sensibilité d’une obligation aux variations de taux. Plus la durée est longue, plus l’effet sur le prix est marqué, à la hausse comme à la baisse.</div></a>
-    <a href="#" class="glossary-item"><div class="glossary-term">Convenance</div><div class="glossary-def">L’obligation réglementaire de veiller à ce que les recommandations de placement conviennent à la situation financière, à la tolérance au risque et aux objectifs du client.</div></a>
-    <a href="#" class="glossary-item"><div class="glossary-term">Point de base</div><div class="glossary-def">Un centième de point de pourcentage (0,01 %). Sert à décrire de faibles variations de taux ou d’écarts. 25 points de base = 0,25 %.</div></a>
-    <a href="#" class="glossary-item"><div class="glossary-term">Provision (prêts productifs)</div><div class="glossary-def">Provisions constituées à l’égard de prêts actuellement productifs, mais dont les modèles économiques prévoient statistiquement des pertes futures.</div></a>
+    <div class="glossary-item"><div class="glossary-term">Provision pour pertes de crédit</div><div class="glossary-def">Somme qu’une banque met de côté pour couvrir les prêts qu’elle prévoit ne pas recouvrer. Une provision plus élevée signale généralement que la direction anticipe davantage de défauts.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Marge nette d’intérêts</div><div class="glossary-def">L’écart entre ce qu’une banque tire de ses prêts et ce qu’elle verse sur les dépôts. Une mesure clé de la rentabilité bancaire.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Taux du financement à un jour</div><div class="glossary-def">Le taux auquel les grandes institutions financières empruntent et prêtent des fonds à un jour. Le principal outil de politique monétaire de la Banque du Canada.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Courbe des taux</div><div class="glossary-def">Un graphique illustrant les taux obligataires selon les échéances. Sa pente est normalement ascendante ; son inversion précède souvent une récession.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Ratio CET1</div><div class="glossary-def">Fonds propres de catégorie 1 sous forme d’actions ordinaires — une mesure du capital de base d’une banque par rapport à ses actifs pondérés en fonction du risque. Un ratio plus élevé indique une banque financièrement plus solide.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Durée (duration)</div><div class="glossary-def">Une mesure de la sensibilité d’une obligation aux variations de taux. Plus la durée est longue, plus l’effet sur le prix est marqué, à la hausse comme à la baisse.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Convenance</div><div class="glossary-def">L’obligation réglementaire de veiller à ce que les recommandations de placement conviennent à la situation financière, à la tolérance au risque et aux objectifs du client.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Point de base</div><div class="glossary-def">Un centième de point de pourcentage (0,01 %). Sert à décrire de faibles variations de taux ou d’écarts. 25 points de base = 0,25 %.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Provision (prêts productifs)</div><div class="glossary-def">Provisions constituées à l’égard de prêts actuellement productifs, mais dont les modèles économiques prévoient statistiquement des pertes futures.</div></div>
   </div>
 </div></div>
 
-<footer><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><a href="/fr/a-propos" class="brand" style="margin-bottom:10px;"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span></a><p>Une synthèse quotidienne de renseignements financiers destinée aux conseillers et aux professionnels du patrimoine, couvrant les marchés, les politiques, la fiscalité, le patrimoine et la planification financière canadiens.</p></div><div class="footer-nav"><h6>Publication</h6><ul><li><a href="/fr">Sommaire quotidien</a></li><li><a href="/fr/fil-quotidien">Fil quotidien</a></li><li><a href="/fr/edition-fin-de-semaine">Édition de fin de semaine</a></li><li><a href="/fr/mois-en-bref">Le mois en bref</a></li><li><a href="/fr/archives">Archives</a></li></ul></div><div class="footer-nav"><h6>Formation</h6><ul><li><a href="/fr/perfectionnement">Bibliothèque de modules</a></li><li><a href="/fr/perfectionnement#reading">Liste de lecture</a></li><li><a href="/fr/perfectionnement#frameworks">Cadres d’analyse</a></li><li><a href="/fr/perfectionnement#glossary">Glossaire</a></li></ul></div><div class="footer-nav"><h6>Société</h6><ul><li><a href="/fr/pour-les-firmes">Pour les firmes</a></li><li><a href="/fr/a-propos">À propos de HDQ</a></li><li><a href="/fr/liste-attente">Liste d’attente</a></li><li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li></ul></div><div class="footer-nav"><h6>Juridique</h6><ul><li><a href="/fr/juridique">Avis de non-responsabilité</a></li><li><a href="/fr/juridique#terms">Conditions d’utilisation</a></li><li><a href="/fr/juridique#privacy">Politique de confidentialité</a></li><li><a href="/fr/juridique#compliance">Conformité</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 HDQ Publishing. Tous droits réservés. HDQ est une publication indépendante. Son contenu est publié aux fins du perfectionnement professionnel des conseillers canadiens autorisés et ne constitue pas un conseil en placement. <a href="/fr/juridique" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Mentions juridiques</a></span><span class="footer-badge">hdq.ca</span></div></div></footer>
+<footer><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><a href="/fr/a-propos" class="brand" style="margin-bottom:10px;"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span></a><p>HDQ Publishing Canada. De l’information financière indépendante pour le secteur de la gestion de patrimoine : marchés, politiques, fiscalité, patrimoine et planification financière au Canada. Consultation gratuite; diffusion institutionnelle sous licence.</p></div><div class="footer-nav"><h6>Publication</h6><ul><li><a href="/fr">Sommaire quotidien</a></li><li><a href="/fr/fil-quotidien">Fil quotidien</a></li><li><a href="/fr/edition-fin-de-semaine">Édition de fin de semaine</a></li><li><a href="/fr/mois-en-bref">Le mois en bref</a></li><li><a href="/fr/archives">Archives</a></li></ul></div><div class="footer-nav"><h6>Nous joindre</h6><ul><li style="font-size:13px;color:rgba(255,255,255,0.6);">HDQ Publishing Canada</li><li style="font-size:13px;color:rgba(255,255,255,0.6);">Renseignements généraux et institutionnels</li><li><a href="tel:+16479512330">1 (647) 951-2330</a></li><li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li><li><a href="https://www.youtube.com/@HDQCanada" target="_blank" rel="noopener noreferrer" aria-label="HDQ Canada sur YouTube (s’ouvre dans un nouvel onglet)" title="Vidéo : formation et information financières, en français et en anglais">HDQ Canada sur YouTube</a></li></ul></div><div class="footer-nav"><h6>Société</h6><ul><li><a href="/hdq-whitelabel-fr">Solutions institutionnelles</a></li><li><a href="/fr/a-propos">À propos de HDQ</a></li></ul></div><div class="footer-nav"><h6>Juridique</h6><ul><li><a href="/hdq-legal-fr">Avis de non-responsabilité</a></li><li><a href="/hdq-legal-fr#terms">Conditions d’utilisation</a></li><li><a href="/hdq-legal-fr#privacy">Politique de confidentialité</a></li><li><a href="/hdq-legal-fr#compliance">Conformité</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 HDQ Publishing Canada. Tous droits réservés. Le contenu est fourni à des fins éducatives et informatives et ne constitue pas un conseil en placement, en fiscalité ou en droit. La reproduction, la redistribution et l’utilisation commerciale exigent une autorisation ou une licence institutionnelle. <a href="/hdq-legal-fr" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Mentions juridiques</a></span><span class="footer-badge">hdq.ca</span></div></div></footer>
 <script>
 // Tab underline follows clicks
 var _clicked = false;
@@ -311,39 +299,6 @@ window.addEventListener('scroll', function() {
   els.forEach(function(el){ el.textContent = str; });
 })();
 </script>
-
-<script>
-// Add overlay-active class to body
-document.body.classList.add('overlay-active');
-document.addEventListener('DOMContentLoaded',function(){ var f=document.getElementById('prodev-pw'); if(f) f.value=''; });
-
-
-function checkProdevPw() {
-  var pw = document.getElementById('prodev-pw').value;
-  var err = document.getElementById('prodev-pw-error');
-  if (pw === 'HDQ1963') {
-    dismissOverlay();
-  } else {
-    err.style.display = 'block';
-    document.getElementById('prodev-pw').focus();
-  }
-}
-document.getElementById('prodev-pw').addEventListener('keydown', function(e){
-  if (e.key === 'Enter') checkProdevPw();
-});
-
-function dismissOverlay() {
-  document.getElementById('prodev-overlay').style.display = 'none';
-  document.body.classList.remove('overlay-active');
-}
-
-// Also allow Escape key for demo dismissal (after correct pw)
-// Secret: shift+click the HDQ logo to dismiss (for live demos)
-document.querySelector('.brand').addEventListener('click', function(e){
-  if (e.shiftKey) { e.preventDefault(); dismissOverlay(); }
-});
-</script>
-
 
 <script>
 // Center active desk nav tab on page load

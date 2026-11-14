@@ -12,6 +12,7 @@ import {
   FR_DESK_PATH, FR_DESK_DISPLAY, FR_DESK_BYLINE, FR_ROUTES, FR_UI,
   FR_FOOTER, FR_SITE, FR_STATIC, FR_DATE_ARRAYS, fmtDateFR, fmtDateShortFR,
 } from './fr-strings.js';
+import { COPY, URLS, institutionalHref, footerContactColumn } from './site-copy.js';
 
 /**
  * Helper that pages call to get the current issue number from D1.
@@ -77,9 +78,20 @@ const ORG_SCHEMA = {
     "@type": "ImageObject",
     "url": "https://assets.hdq.ca/HDQ_LOGO_Gold.svg"
   },
-  "description": "HDQ Publishing Canada is an independent daily financial intelligence publication for licensed Canadian financial advisors, covering markets, geopolitics, the Canadian economy, tax and wealth planning, and investor behaviour.",
+  "description": "HDQ Publishing Canada publishes independent financial intelligence for the wealth industry, covering Canadian markets, geopolitics, the economy, tax and wealth planning, and investor behaviour. The public edition is free to read; institutions may license it for distribution under their own brand or with HDQ attribution.",
   "foundingDate": "2026-05-07",
   "email": "support@hdq.ca",
+  "telephone": "+1-647-951-2330",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-647-951-2330",
+    "email": "support@hdq.ca",
+    "contactType": "customer service",
+    "areaServed": "CA",
+    "availableLanguage": ["English", "French"]
+  },
+  // HDQ Canada video channel: the same channel for both editions.
+  "sameAs": ["https://www.youtube.com/@HDQCanada"],
   // Both editions are real, full editions of the same publication (not a
   // translated excerpt), so the organization itself knows both languages
   // regardless of which page a crawler happens to land on - a single value
@@ -95,7 +107,7 @@ const ORG_SCHEMA = {
   },
   "audience": {
     "@type": "Audience",
-    "audienceType": "Canadian financial advisors, CIRO-registered representatives, CFP holders and CFA charterholders"
+    "audienceType": "Financial advisors, wealth professionals, financial institutions and readers interested in Canadian financial markets"
   },
   "knowsAbout": [
     "Canadian financial markets",
@@ -110,7 +122,7 @@ const ORG_SCHEMA = {
 export function pageShell(bodyHtml, opts = {}) {
   const {
     title = opts.lang === 'fr' ? FR_SITE.defaultTitle
-                               : 'HDQ Publishing Canada | Daily intelligence for Canadian advisors',
+                               : 'HDQ Publishing Canada | Independent financial intelligence',
     activePage = 'news',
     activeDesk = 'all',
     issueNo = 0,
@@ -144,14 +156,10 @@ export function pageShell(bodyHtml, opts = {}) {
   // present and pointing at an English page.
   const navLinks = fr ? [
     { href: '/fr',                   label: FR_UI.news,     key: 'news' },
-    { href: FR_STATIC.prodev,        label: FR_UI.prodev,   key: 'prodev' },
-    { href: FR_STATIC.forFirms,      label: FR_UI.forFirms, key: 'whitelabel' },
     { href: aboutHref,               label: FR_UI.about,    key: 'about' },
   ] : [
     { href: '/news',                  label: 'News',                     key: 'news' },
     { href: '/fund-intel',            label: 'Fund Intel',               key: 'fund-intel' },
-    { href: '/hdq-prodev.html',       label: 'Professional Development', key: 'prodev' },
-    { href: '/hdq-whitelabel.html',   label: 'For Firms',                key: 'whitelabel' },
     { href: '/about',                 label: 'About',                    key: 'about' },
   ];
 
@@ -291,11 +299,11 @@ ${fr ? `    <a href="/fr/${FR_DESK_PATH.thread}" class="mobile-nav-sub-link" onc
     <a href="/weekend" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
     <a href="/month-at-a-glance" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
     <a href="/archive" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
-    <a href="/hdq-legal.html" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>`}
+    <a href="/hdq-legal" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>`}
   </nav>
   <div class="mobile-nav-footer">
 ${toggleHref ? `    <a href="${toggleHref}" class="mobile-nav-sub-link" style="display:block;margin-bottom:14px;" hreflang="${fr ? 'en-CA' : 'fr-CA'}">${fr ? FR_UI.toggleToEN : FR_UI.toggleToFR}</a>
-` : ''}    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">${fr ? FR_UI.waitingList : 'Waiting List'}</a>
+` : ''}    <a href="${institutionalHref(lang)}" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">${COPY[fr ? 'fr' : 'en'].institutionalLabel}</a>
   </div>
 </div>
 
@@ -308,7 +316,7 @@ ${toggleHref ? `    <a href="${toggleHref}" class="mobile-nav-sub-link" style="d
   <nav><ul class="nav-links">${navHtml}</ul></nav>
   <div class="nav-right">
 ${toggleHref ? `    <a href="${toggleHref}" class="lang-toggle" hreflang="${fr ? 'en-CA' : 'fr-CA'}">${fr ? FR_UI.toggleToEN : FR_UI.toggleToFR}</a>
-` : ''}    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="nav-subscribe">${fr ? FR_UI.waitingList : 'Waiting List'}</a>
+` : ''}    <a href="${institutionalHref(lang)}" class="nav-subscribe">${COPY[fr ? 'fr' : 'en'].institutionalLabel}</a>
     <button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu"
       style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger">
       <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
@@ -338,7 +346,7 @@ ${fr ? `<footer><div class="footer-inner">
         <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
         <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
       </a>
-      <p>${FR_FOOTER.blurb}</p>
+      <p>${COPY.fr.footerBlurb}</p>
     </div>
     <div class="footer-nav"><h6>${FR_FOOTER.headings.publication}</h6><ul>
       <li><a href="/fr">${FR_FOOTER.publication.daily}</a></li>
@@ -347,18 +355,11 @@ ${fr ? `<footer><div class="footer-inner">
       <li><a href="/fr/${FR_DESK_PATH.month}">${FR_FOOTER.publication.month}</a></li>
       <li><a href="/fr/${FR_ROUTES.archive}">${FR_FOOTER.publication.archive}</a></li>
     </ul></div>
-    <div class="footer-nav"><h6>${FR_FOOTER.headings.learning}</h6><ul>
-      <li><a href="${FR_STATIC.prodev}">${FR_FOOTER.learning.modules}</a></li>
-      <li><a href="${FR_STATIC.prodev}#reading">${FR_FOOTER.learning.reading}</a></li>
-      <li><a href="${FR_STATIC.prodev}#frameworks">${FR_FOOTER.learning.frameworks}</a></li>
-      <li><a href="${FR_STATIC.prodev}#glossary">${FR_FOOTER.learning.glossary}</a></li>
-    </ul></div>
+    ${footerContactColumn('fr')}
     <div class="footer-nav"><h6>${FR_FOOTER.headings.company}</h6><ul>
-      <li><a href="${FR_STATIC.forFirms}">${FR_FOOTER.company.forFirms}</a></li>
+      <li><a href="${FR_STATIC.forFirms}">${COPY.fr.institutionalLabel}</a></li>
       <li><a href="${aboutHref}">${FR_FOOTER.company.about}</a></li>
       <li><a href="${FR_STATIC.standards}">${FR_FOOTER.company.standards}</a></li>
-      <li><a href="${FR_STATIC.waitingList}">${FR_FOOTER.company.waiting}</a></li>
-      <li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li>
     </ul></div>
     <div class="footer-nav"><h6>${FR_FOOTER.headings.legal}</h6><ul>
       <li><a href="${FR_STATIC.legal}">${FR_FOOTER.legal.disclaimer}</a></li>
@@ -368,7 +369,7 @@ ${fr ? `<footer><div class="footer-inner">
     </ul></div>
   </div>
   <div class="footer-bottom">
-    <span>${FR_FOOTER.copyright} <a href="${FR_STATIC.legal}" style="color:rgba(255,255,255,0.45);text-decoration:underline;">${FR_FOOTER.legal.combined}</a></span>
+    <span>${COPY.fr.footerCopyright} <a href="${FR_STATIC.legal}" style="color:rgba(255,255,255,0.45);text-decoration:underline;">${FR_FOOTER.legal.combined}</a></span>
     <span class="footer-badge">hdq.ca</span>
   </div>
 </div></footer>` : `<footer><div class="footer-inner">
@@ -378,7 +379,7 @@ ${fr ? `<footer><div class="footer-inner">
         <img src="/HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;">
         <span class="wordmark" style="font-size:18px;">HD<span class="wq">Q</span></span>
       </a>
-      <p>HDQ Publishing Canada. A daily financial intelligence briefing for financial advisors and wealth professionals, covering Canadian markets, policy, tax, wealth and financial planning.</p>
+      <p>${COPY.en.footerBlurb}</p>
     </div>
     <div class="footer-nav"><h6>Publication</h6><ul>
       <li><a href="/news">Daily Briefing</a></li>
@@ -387,28 +388,21 @@ ${fr ? `<footer><div class="footer-inner">
       <li><a href="/month-at-a-glance">Month at a Glance</a></li>
       <li><a href="/archive">Archive</a></li>
     </ul></div>
-    <div class="footer-nav"><h6>Learning</h6><ul>
-      <li><a href="/hdq-prodev.html">Module Library</a></li>
-      <li><a href="/hdq-prodev.html#reading">Reading List</a></li>
-      <li><a href="/hdq-prodev.html#frameworks">Frameworks</a></li>
-      <li><a href="/hdq-prodev.html#glossary">Glossary</a></li>
-    </ul></div>
+    ${footerContactColumn('en')}
     <div class="footer-nav"><h6>Company</h6><ul>
-      <li><a href="/hdq-whitelabel.html">For Firms</a></li>
+      <li><a href="/hdq-whitelabel">Institutional Solutions</a></li>
       <li><a href="/about">About HDQ</a></li>
       <li><a href="/editorial-standards">Editorial Standards</a></li>
-      <li><a href="/hdq-subscribe.html">Waiting List</a></li>
-      <li><a href="mailto:support@hdq.ca">support@hdq.ca</a></li>
     </ul></div>
     <div class="footer-nav"><h6>Legal</h6><ul>
-      <li><a href="/hdq-legal.html">Disclaimer</a></li>
-      <li><a href="/hdq-legal.html#terms">Terms of Use</a></li>
-      <li><a href="/hdq-legal.html#privacy">Privacy Policy</a></li>
-      <li><a href="/hdq-legal.html#compliance">Compliance</a></li>
+      <li><a href="/hdq-legal">Disclaimer</a></li>
+      <li><a href="/hdq-legal#terms">Terms of Use</a></li>
+      <li><a href="/hdq-legal#privacy">Privacy Policy</a></li>
+      <li><a href="/hdq-legal#compliance">Compliance</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 HDQ Publishing Canada. All rights reserved. HDQ is an independent publication. Content is published for the professional development of licensed Canadian financial advisors and does not constitute investment advice. <a href="/hdq-legal.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span>
+    <span>${COPY.en.footerCopyright} <a href="/hdq-legal" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Legal &amp; Disclaimer</a></span>
     <span class="footer-badge">hdq.ca</span>
   </div>
 </div></footer>`}

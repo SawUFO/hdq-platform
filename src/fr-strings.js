@@ -195,12 +195,12 @@ export const FR_UI = {
   about:        'À propos',
   fundIntel:    'Fund Intel',            // English product name, unchanged
   prodev:       'Perfectionnement professionnel',
-  forFirms:     'Pour les firmes',
-  waitingList:  'Liste d’attente',
+  forFirms:     'Solutions institutionnelles',
+  institutional: 'Solutions institutionnelles',
   more:         'Plus',
 
   // Lock UI
-  memberAccess: 'Accès réservé aux membres',
+  memberAccess: 'Avis d’accès',
 
   // Meta line
   readTime:     (n) => `${n} min de lecture`,
@@ -221,21 +221,22 @@ export const FR_UI = {
 // Fund Intel and Editorial Standards have no French version: Fund Intel is out
 // of scope per build brief §14, and Editorial Standards is not in §7's list.
 export const FR_STATIC = {
-  waitingList: '/fr/liste-attente',
-  legal:       '/fr/juridique',
-  prodev:      '/fr/perfectionnement',
-  forFirms:    '/fr/pour-les-firmes',
+  legal:       '/hdq-legal-fr',
+  prodev:      '/hdq-prodev-fr',
+  forFirms:    '/hdq-whitelabel-fr',
   fundIntel:   '/fund-intel',
-  standards:   '/editorial-standards',
+  standards:   '/fr/normes-editoriales',
 };
 
 // ── Membership band and news-page chrome ────────────────────────────────────
 // DRAFT.
 
+// Retained export name so existing imports keep working. The content is now
+// the institutional note; there is no membership.
 export const FR_MEMBERSHIP = {
-  heading:     'Adhésion',
-  capped:      'Le nombre de membres est plafonné de façon permanente. Admission par mise en candidature seulement.',
-  waitingList: 'Liste d’attente',
+  heading:     'Solutions institutionnelles',
+  capped:      'L’information de HDQ peut être diffusée sous licence, sous la marque d’une firme ou avec mention de HDQ.',
+  waitingList: 'Discuter d’une licence',
 };
 
 export const FR_NEWS = {
@@ -300,12 +301,12 @@ export const FR_ARCHIVE = {
 // DRAFT. Never rendered while PUBLIC_MODE is true.
 
 export const FR_LOCK = {
-  tag:      'Acc\u00e8s r\u00e9serv\u00e9 aux membres',
-  heading:  'Une publication au nombre de membres fixe.',
-  body1:    'HDQ est une publication quotidienne de renseignements financiers destin\u00e9e aux conseillers canadiens autoris\u00e9s et aux planificateurs financiers, admis par mise en candidature.',
-  body2:    'Le nombre de membres est plafonn\u00e9 de fa\u00e7on permanente. Lorsque la publication est ferm\u00e9e aux nouveaux membres, l\u2019acc\u00e8s est r\u00e9serv\u00e9 \u00e0 la liste d\u2019attente.',
-  cta:      'Liste d\u2019attente',
-  note:     '\u00c0 des fins \u00e9ducatives seulement. Ne constitue pas un conseil en placement.',
+  tag:      'Avis d’accès',
+  heading:  'L’accès à cette page est actuellement restreint.',
+  body1:    'L’édition publique de HDQ se lit normalement gratuitement.',
+  body2:    'Pour les demandes de licence institutionnelle, consultez les Solutions institutionnelles.',
+  cta:      'Solutions institutionnelles',
+  note:     'À des fins éducatives seulement. Ne constitue pas un conseil en placement.',
 };
 
 // ── Article, thread and weekend templates ───────────────────────────────────
@@ -345,21 +346,21 @@ export const FR_ARTICLE = {
 
 export const FR_ABOUT = {
   publishedIn:   'Intelligence financière canadienne',
-  heroTitle:     'Un quotidien réservé aux membres, pour conseillers canadiens chevronnés.',
-  heroSub:       'Cinq sections éditoriales. Un Fil quotidien. Publiés chaque jour de semaine avant 7\u00a0h, heure de l’Est, à l’intention des conseillers inscrits auprès de l’OCRI et des titulaires du titre CFP.',
+  heroTitle:     'Une information indépendante, publiée ouvertement.',
+  heroSub:       'Cinq sections éditoriales et un Fil quotidien, en accès libre. Les institutions peuvent en obtenir la licence de diffusion, sous leur marque ou avec mention de HDQ.',
   readToday:     'Lire l’édition du jour',
-  waitingList:   'Liste d’attente',
+  institutional: 'Solutions institutionnelles',
 
   sectionPublication: 'La publication',
   cardNews:      { num: '01 / Nouvelles', name: 'Le sommaire quotidien',
     desc: 'Cinq sections — Marchés, Géopolitique, Économie, Fiscalité et patrimoine, et Comportement — publiées avant 7\u00a0h, heure de l’Est, chaque jour de semaine.',
     link: 'Le sommaire du jour' },
   cardLearning:  { num: '02 / Formation', name: 'Perfectionnement professionnel',
-    desc: 'Des modules admissibles aux UFC, une liste de lecture sélectionnée, des cadres décisionnels et un glossaire. Pour les conseillers.',
+    desc: 'Aperçu d’un concept de ressources de formation pour conseillers.',
     link: 'La bibliothèque' },
-  cardFirms:     { num: '03 / Firmes', name: 'Pour les firmes',
-    desc: 'Le contenu de HDQ sous la marque d’une firme. Une publication quotidienne prête à remettre aux clients.',
-    link: 'Pour les firmes' },
+  cardFirms:     { num: '02 / Institutions', name: 'Solutions institutionnelles',
+    desc: 'Le contenu de HDQ, diffusé sous licence, sous la marque de l’institution ou avec mention de HDQ.',
+    link: 'Solutions institutionnelles' },
 
   todaysEdition: 'L’édition du jour',
   readArticle:   'Lire l’article',
@@ -367,29 +368,31 @@ export const FR_ABOUT = {
   viewAll:       'Voir toutes les éditions',
 
   methodologyLabel: 'Méthodologie éditoriale',
-  methodology1:  'Cette publication est produite au moyen du cadre éditorial exclusif de HDQ, assisté par intelligence artificielle et conçu pour le programme d’adhésion de HDQ.',
+  methodology1:  'Cette publication est produite au moyen du cadre éditorial exclusif de HDQ, assisté par intelligence artificielle et exploité sous la direction éditoriale de HDQ.',
   methodology2:  'Contrairement aux systèmes d’intelligence artificielle grand public, le cadre de HDQ est configuré spécifiquement pour l’analyse des récits financiers, la détection des signaux macroéconomiques, la reconnaissance des tendances de marché et la synthèse stratégique des marchés canadiens et mondiaux. L’orientation éditoriale, la structure des sections et les normes internes sont établies et maintenues par la rédaction de HDQ. Chaque édition est révisée selon les processus éditoriaux de HDQ avant publication.',
   disclaimer:    'À des fins éducatives seulement. Ne constitue pas un conseil en placement.',
 
   prodevTitle:   'Perfectionnement professionnel.',
-  prodevSub:     'Des modules admissibles aux UFC, des lectures sélectionnées et des cadres d’analyse, à l’intention des conseillers inscrits auprès de l’OCRI et des titulaires du titre CFP.',
+  prodevSub:     'Aperçu d’un concept de ressources de formation pour conseillers.',
   browseLibrary: 'Parcourir la bibliothèque',
   modules:       { name: 'Bibliothèque de modules', desc: 'Des parcours d’apprentissage structurés sur les compétences clés du conseiller' },
   reading:       { name: 'Liste de lecture',        desc: 'Des livres et articles sélectionnés pour leur pertinence dans la pratique' },
   frameworks:    { name: 'Cadres d’analyse',        desc: 'Les cadres analytiques qui sous-tendent la rédaction de HDQ' },
   glossary:      { name: 'Glossaire',               desc: 'Des définitions en langage clair des termes qui comptent' },
 
-  firmsTitle:    'HDQ pour les firmes.',
-  firmsSub:      'Une publication quotidienne à votre marque, destinée à vos clients. Rédigée, documentée et livrée par la rédaction de HDQ.',
-  firmsEnquire:  'Renseignements sur la licence d’entreprise',
-  firmsSample:   'Voir un exemple d’édition',
+  firmsTitle:    'Votre marque. Notre expertise éditoriale.',
+  firmsSub:      'Les institutions peuvent obtenir la licence du contenu de HDQ, avec mention de HDQ ou entièrement sous leur propre marque. Les modalités sont convenues individuellement.',
+  firmsEnquire:  'Discuter d’une licence institutionnelle',
+  firmsSample:   'Lire la publication',
+  youtubeLine:   'La chaîne vidéo bilingue de HDQ, consacrée à la formation et à l’information financières : ',
+  youtubeLink:   'HDQ Canada sur YouTube',
 };
 
 // ── Footer ──────────────────────────────────────────────────────────────────
 // DRAFT below this line, except the four legal link labels.
 
 export const FR_FOOTER = {
-  blurb: 'HDQ Publishing Canada. Une synthèse quotidienne de renseignements financiers destinée aux conseillers et aux professionnels du patrimoine, couvrant les marchés, les politiques, la fiscalité, le patrimoine et la planification financière canadiens.',
+  blurb: 'HDQ Publishing Canada. De l’information financière indépendante pour le secteur de la gestion de patrimoine.',
 
   headings: {
     publication: 'Publication',
@@ -414,10 +417,9 @@ export const FR_FOOTER = {
   },
 
   company: {
-    forFirms:  'Pour les firmes',
+    forFirms:  'Solutions institutionnelles',
     about:     'À propos de HDQ',
     standards: 'Normes éditoriales',
-    waiting:   'Liste d’attente',
   },
 
   legal: {
@@ -428,7 +430,7 @@ export const FR_FOOTER = {
     combined:   'Mentions juridiques',
   },
 
-  copyright: '© 2026 HDQ Publishing Canada. Tous droits réservés. HDQ est une publication indépendante. Son contenu est publié aux fins du perfectionnement professionnel des conseillers canadiens autorisés et ne constitue pas un conseil en placement.',
+  copyright: '© 2026 HDQ Publishing Canada. Tous droits réservés. Le contenu est fourni à des fins éducatives et informatives et ne constitue pas un conseil en placement, en fiscalité ou en droit.',
 };
 
 // ── Site metadata ───────────────────────────────────────────────────────────
@@ -438,8 +440,8 @@ export const FR_SITE = {
   htmlLang:    'fr-CA',
   ogLocale:    'fr_CA',
   titleSuffix: 'HDQ Publishing Canada',
-  defaultTitle: 'HDQ Publishing Canada | Renseignements quotidiens pour les conseillers canadiens',
-  description: 'HDQ Publishing Canada est une publication indépendante de renseignements financiers quotidiens destinée aux conseillers canadiens autorisés : marchés, géopolitique, économie canadienne, fiscalité et patrimoine, et comportement des investisseurs.',
+  defaultTitle: 'HDQ Publishing Canada | Information financière indépendante',
+  description: 'HDQ Publishing Canada publie de l’information financière indépendante pour le secteur de la gestion de patrimoine : marchés, géopolitique, économie, fiscalité et patrimoine, et comportement des investisseurs. L’édition publique se lit gratuitement; les institutions peuvent en obtenir la licence, sous leur marque ou avec mention de HDQ.',
 };
 
 // ── Waiting list form ───────────────────────────────────────────────────────

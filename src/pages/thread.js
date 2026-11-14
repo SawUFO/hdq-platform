@@ -1,3 +1,4 @@
+import { lockedNoticeHtml } from '../site-copy.js';
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, DESK_BYLINE, articleUrl, jsonKeyNumbers, htmlResponse, getArticleIssueNo } from '../shell.js';
 import { FR_UI, FR_ARTICLE, FR_LOCK, FR_STATIC, FR_DESK_DISPLAY } from '../fr-strings.js';
 import { deskDisplay, deskByline, articleToggleHref } from '../shell.js';
@@ -144,11 +145,7 @@ export async function renderThread(env, slug, authed = true) {
     <div class="hdq-locked-logo">
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
-    <span class="hdq-locked-tag">${fr ? FR_UI.memberAccess : 'Member Access'}</span>
-    <h2>${fr ? FR_LOCK.heading : 'A publication with a fixed membership.'}</h2>
-    <p>${fr ? FR_LOCK.body1 : 'HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.'}</p>
-    <p>${fr ? FR_LOCK.body2 : 'Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.'}</p>
-    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="hdq-locked-btn">${fr ? FR_LOCK.cta : 'Waiting list'} &rarr;</a>
+    ${lockedNoticeHtml(typeof lang === 'undefined' ? 'en' : lang)}
     <div class="hdq-locked-note">${fr ? FR_LOCK.note : 'Educational use only. Not investment advice.'}</div>
   </div>
 </div>` : '';
@@ -182,7 +179,7 @@ ${lockedOverlay}
       </div>` : ''}
       ${authed ? `
       <div class="edu-disclaimer">
-        <strong>${fr ? FR_ARTICLE.eduStrong : 'Educational content only.'}</strong> ${fr ? FR_ARTICLE.eduBody : 'This article is published for informational and professional development purposes. It does not constitute investment advice or a recommendation to buy or sell any security.'} <a href="${fr ? FR_STATIC.legal : '/hdq-legal.html'}" style="color:var(--navy-700);text-decoration:underline;">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>.
+        <strong>${fr ? FR_ARTICLE.eduStrong : 'Educational content only.'}</strong> ${fr ? FR_ARTICLE.eduBody : 'This article is published for informational and professional development purposes. It does not constitute investment advice or a recommendation to buy or sell any security.'} <a href="${fr ? FR_STATIC.legal : '/hdq-legal'}" style="color:var(--navy-700);text-decoration:underline;">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>.
       </div>
       <div class="share-row">
         <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('${fr ? FR_ARTICLE.linkCopied : 'Link copied.'}'))">${fr ? FR_ARTICLE.copyLink : 'Copy link'}</button>
@@ -195,7 +192,7 @@ ${lockedOverlay}
         ${relatedHtml}
         <div class="sidebar-legal">
           <strong>${fr ? FR_ARTICLE.eduStrong : 'Educational content only.'}</strong> ${fr ? FR_ARTICLE.sidebarBody : 'Editorial published for the professional development of Canadian financial advisors. Not investment advice.'}
-          <a href="${fr ? FR_STATIC.legal : '/hdq-legal.html'}" style="color:var(--navy-700);">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>.
+          <a href="${fr ? FR_STATIC.legal : '/hdq-legal'}" style="color:var(--navy-700);">${fr ? FR_ARTICLE.fullDisclaimer : 'Full disclaimer'}</a>.
         </div>
       </div>
     </aside>

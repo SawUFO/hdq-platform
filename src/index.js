@@ -22,8 +22,10 @@ import { FR_ROUTES, FR_PATH_DESK, FR_SLUG_PREFIX } from './fr-strings.js';
 // ── PUBLIC ACCESS MODE ──────────────────────────────────────────────────────
 //
 //   true  — every editorial page renders in full for every visitor, including
-//           search engine and AI crawlers. No membership lock is applied.
-//   false — restores cookie-gated access exactly as it behaved before.
+//           search engine and AI crawlers. No access lock is applied. This is
+//           the permanent state: reading HDQ is free.
+//   false — restores the dormant cookie-gated access path. Kept as a
+//           mechanism only; HDQ no longer operates a membership.
 //
 // This one constant is the entire open/closed switch for the publication.
 // Every template already receives an `authed` flag and renders accordingly,
@@ -31,11 +33,11 @@ import { FR_ROUTES, FR_PATH_DESK, FR_SLUG_PREFIX } from './fr-strings.js';
 // single page template.
 //
 // Article URLs are identical in both modes. Nothing that has been indexed is
-// lost when the site closes again; those URLs simply start returning the
-// membership card instead of the article body.
+// lost if the switch is ever flipped; those URLs would return a neutral
+// access notice instead of the article body.
 //
-// Professional Development is NOT governed by this flag. It is a static page
-// with its own lock and stays member-only in both modes.
+// Professional Development is NOT governed by this flag. It is a static
+// concept-preview page and carries no lock of its own.
 //
 // The constant itself lives in src/config.js so templates can read it too.
 
@@ -80,7 +82,6 @@ function setCookieHeader(token, expiresHours) {
 // news page at 200 instead of being redirected, leaving two URLs serving
 // identical content.
 const REDIRECT_MAP = {
-  '/hdq-homepage.html':     '/about',
   '/index.html':            '/',
   '/hdq-news.html':         '/news',
   '/hdq-market.html':       '/market',
@@ -94,10 +95,25 @@ const REDIRECT_MAP = {
   '/hdq-month.html':        '/month-at-a-glance',
   // Clean paths that previously resolved to nothing and fell through to the
   // guest news page, producing duplicate content on three dead URLs.
-  '/legal':                 '/hdq-legal.html',
-  '/subscribe':             '/hdq-subscribe.html',
-  '/for-firms':             '/hdq-whitelabel.html',
-  '/prodev':                '/hdq-prodev.html',
+  '/legal':                 '/hdq-legal',
+  '/for-firms':             '/hdq-whitelabel',
+  '/institutional':         '/hdq-whitelabel',
+  '/prodev':                '/hdq-prodev',
+};
+
+// ── Retired pages: TEMPORARY (302) redirects ────────────────────────────────
+// The paid-membership pages and the stale duplicate homepage are retired. The
+// static files were moved out of /static so they no longer shadow the Worker.
+// These are deliberately 302, not 301, while the change is validated. They are
+// promoted to 301 only on separate approval.
+const TEMP_REDIRECTS = {
+  '/hdq-homepage':          '/',
+  '/hdq-homepage.html':     '/',
+  '/hdq-subscribe':         '/about',
+  '/hdq-subscribe.html':    '/about',
+  '/subscribe':             '/about',
+  '/hdq-subscribe-fr':      '/fr/a-propos',
+  '/hdq-subscribe-fr.html': '/fr/a-propos',
 };
 
 // ── 404 ─────────────────────────────────────────────────────────────────────
@@ -161,11 +177,15 @@ async function handleFrench(request, env, url, path) {
   // Same shape as REDIRECT_MAP on the English side: a clean French path 301s to
   // the static file, which the ASSETS binding serves.
   const FR_STATIC_REDIRECT = {
-    'juridique':        '/hdq-legal-fr.html',
-    'liste-attente':    '/hdq-subscribe-fr.html',
-    'perfectionnement': '/hdq-prodev-fr.html',
-    'pour-les-firmes':  '/hdq-whitelabel-fr.html',
+    'juridique':        '/hdq-legal-fr',
+    'perfectionnement': '/hdq-prodev-fr',
+    'pour-les-firmes':  '/hdq-whitelabel-fr',
+    'solutions-institutionnelles': '/hdq-whitelabel-fr',
   };
+  // Retired waiting-list page: temporary redirect to the French About page.
+  if (sub === 'liste-attente') {
+    return Response.redirect(new URL('/fr/a-propos', url.origin).href, 302);
+  }
   if (FR_STATIC_REDIRECT[sub]) {
     return Response.redirect(new URL(FR_STATIC_REDIRECT[sub], url.origin).href, 301);
   }
@@ -184,6 +204,7 @@ async function handleFrench(request, env, url, path) {
 
   // ── Institutional pages ───────────────────────────────────────────────────
   if (sub === FR_ROUTES.about) return renderHome(frEnv);
+  if (sub === 'normes-editoriales') return renderStandards(frEnv);
 
   // ── Archive ───────────────────────────────────────────────────────────────
   if (sub === FR_ROUTES.archive) return renderArchive(frEnv, url.searchParams, authed);
@@ -277,6 +298,9 @@ export default {
       }
 
       // ── Redirects, for every visitor ──────────────────────────────────────
+      if (TEMP_REDIRECTS[path]) {
+        return Response.redirect(new URL(TEMP_REDIRECTS[path], url.origin).href, 302);
+      }
       if (REDIRECT_MAP[path]) {
         return Response.redirect(new URL(REDIRECT_MAP[path], url.origin).href, 301);
       }
