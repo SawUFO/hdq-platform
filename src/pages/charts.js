@@ -1,3 +1,4 @@
+import { lockedNoticeHtml } from '../site-copy.js';
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse, getIssueNo } from '../shell.js';
 import { membershipFooterBand } from './news.js';
 
@@ -257,11 +258,7 @@ export async function renderCharts(env, params, authed = true) {
     <div class="hdq-locked-logo">
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
-    <span class="hdq-locked-tag">Member Access</span>
-    <h2>A publication with a fixed membership.</h2>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.</p>
-    <p>Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.</p>
-    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
+    ${lockedNoticeHtml(typeof lang === 'undefined' ? 'en' : lang)}
     <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
   </div>
 </div>` : '';
@@ -283,7 +280,7 @@ ${lockedOverlay}
   <div class="charts-grid">${gridHtml}</div>
   ${paginationHtml}
 </div></div>
-${membershipFooterBand()}`;
+${membershipFooterBand('en')}`;
 
   return htmlResponse(pageShell(body, {
     title: 'HDQ Chart Gallery',

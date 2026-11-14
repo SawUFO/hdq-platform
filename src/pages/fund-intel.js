@@ -3,6 +3,7 @@
  * Route: /fund-intel
  */
 
+import { lockedNoticeHtml } from '../site-copy.js';
 import { pageShell, escHtml, htmlResponse, getIssueNo } from '../shell.js';
 
 const FUND_INTEL_WORKER = 'https://fund-intel-query.jpatherton1.workers.dev';
@@ -198,11 +199,7 @@ export async function renderFundIntel(env, authed) {
     <div class="hdq-locked-logo">
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
-    <span class="hdq-locked-tag">Member Access</span>
-    <h2>A publication with a fixed membership.</h2>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.</p>
-    <p>Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.</p>
-    <a href="/hdq-subscribe.html" class="hdq-locked-btn">Waiting list &rarr;</a>
+    ${lockedNoticeHtml(typeof lang === 'undefined' ? 'en' : lang)}
     <div class="hdq-locked-note">Educational use only. Not investment advice.</div>
   </div>
 </div>` : '';

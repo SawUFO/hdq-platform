@@ -1,7 +1,7 @@
 # HDQ Publishing Canada
 # https://hdq.ca
-# A daily financial intelligence publication for licensed Canadian financial
-# advisors. Original reporting, original sourced data, original charts.
+# Independent financial intelligence for the wealth industry. Free to read.
+# Original analysis, original sourced data, original charts.
 #
 # Search engines and AI systems are welcome here. Each agent below is named
 # explicitly so that no inherited, default or edge-injected policy can quietly

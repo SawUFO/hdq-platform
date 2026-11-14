@@ -35,10 +35,8 @@ const STATIC_PAGES = [
   { loc: '/hdq-whitelabel',     priority: '0.5', changefreq: 'monthly' },
   { loc: '/hdq-legal',          priority: '0.3', changefreq: 'yearly'  },
 ];
-// Deliberately absent: /hdq-prodev.html and /hdq-subscribe.html.
-// Professional Development is member-only and carries no public content, so
-// indexing it would put an empty URL in the index. The waiting list page is a
-// form with nothing to rank for.
+// Deliberately absent: /hdq-prodev. It is a noindex concept preview with no
+// public content. The retired membership pages redirect and are not listed.
 
 function escXml(str) {
   if (!str) return '';

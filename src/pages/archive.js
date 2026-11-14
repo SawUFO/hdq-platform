@@ -1,3 +1,4 @@
+import { lockedNoticeHtml } from '../site-copy.js';
 import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, htmlResponse, getIssueNo } from '../shell.js';
 import { FR_ARCHIVE, FR_NEWS, FR_LOCK, FR_STATIC, FR_UI } from '../fr-strings.js';
 import { deskDisplay, deskHref, archiveUrl } from '../shell.js';
@@ -429,11 +430,7 @@ export async function renderArchive(env, params, authed = true) {
     <div class="hdq-locked-logo">
       <img src="https://assets.hdq.ca/HDQ_LOGO_Gold_no_outline.svg" alt="HDQ" width="28" height="28">
     </div>
-    <span class="hdq-locked-tag">${fr ? FR_UI.memberAccess : 'Member Access'}</span>
-    <h2>A publication with a fixed membership.</h2>
-    <p>HDQ is a daily financial intelligence publication for CIRO-registered advisors and CFP professionals in Canada, admitted by nomination.</p>
-    <p>${fr ? FR_LOCK.body2 : 'Membership is permanently capped. When the publication is closed to new members, access is held for the waiting list.'}</p>
-    <a href="${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}" class="hdq-locked-btn">${fr ? FR_LOCK.cta : 'Waiting list'} &rarr;</a>
+    ${lockedNoticeHtml(typeof lang === 'undefined' ? 'en' : lang)}
     <div class="hdq-locked-note">${fr ? FR_LOCK.note : 'Educational use only. Not investment advice.'}</div>
   </div>
 </div>` : '';
@@ -462,7 +459,7 @@ ${lockedOverlay}
     ${sidebar}
   </div>
 </div></div>
-${membershipFooterBand()}`;
+${membershipFooterBand(lang)}`;
 
   return htmlResponse(pageShell(body, {
     title: fr ? FR_ARCHIVE.pageTitle : 'HDQ Archive',

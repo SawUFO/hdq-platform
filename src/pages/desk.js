@@ -1,6 +1,7 @@
 import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_CAT_CLASS, articleUrl,
          htmlResponse, getIssueNo, deskDisplay, deskHref, archiveUrl } from '../shell.js';
 import { subscribeFooterBand, PAGE_CSS } from './news.js';
+import { institutionalSidebar } from '../site-copy.js';
 import { FR_DESK_PAGE, FR_MEMBERSHIP, FR_NEWS, FR_STATIC } from '../fr-strings.js';
 import { visibleTags, topVisibleTags } from '../tag-labels.js';
 
@@ -178,11 +179,7 @@ function renderSidebarDesk(flash, trendingTags, lang = 'en') {
   <div class="sidebar-label">${fr ? FR_DESK_PAGE.latestFromDesk : 'Latest from this Desk'}</div>
   <div class="flash-list">${flashHtml}</div>
 </div>
-<div class="subscribe-box">
-  <h5>${fr ? FR_MEMBERSHIP.heading : 'Membership'}</h5>
-  <p>${fr ? FR_MEMBERSHIP.capped : 'Permanently capped. Admitted by nomination only.'}</p>
-  <button class="subscribe-btn" onclick="window.location.href='${fr ? FR_STATIC.waitingList : '/hdq-subscribe.html'}'">${fr ? FR_MEMBERSHIP.waitingList : 'Waiting list'}</button>
-</div>
+${institutionalSidebar(lang)}
 <div>
   <div class="sidebar-label">${fr ? FR_DESK_PAGE.trending : 'Trending Topics'}</div>
   <div class="trending-tags">${trendHtml}</div>
