@@ -110,29 +110,31 @@ document.addEventListener('keydown', function(e) {
   </div>
   <nav class="mobile-nav-links" aria-label="Mobile navigation">
     <a href="/news" class="mobile-nav-link" onclick="window.closeMobileNav()">News</a>
-    <a href="/fund-intel" class="mobile-nav-link" onclick="window.closeMobileNav()">Fund Intel</a>
+    <a href="/fund-intel" class="mobile-nav-link" onclick="window.closeMobileNav()">Fund Intelligence</a>
+    <a href="/charts" class="mobile-nav-link" onclick="window.closeMobileNav()">Charts</a>
+    <a href="/archive" class="mobile-nav-link" onclick="window.closeMobileNav()">Archives</a>
+    <a href="/hdq-whitelabel" class="mobile-nav-link" onclick="window.closeMobileNav()">Institutional Solutions</a>
+    <a href="/editorial-standards" class="mobile-nav-link" onclick="window.closeMobileNav()">Editorial Standards</a>
     <a href="/about" class="mobile-nav-link" onclick="window.closeMobileNav()">About</a>
     <div class="mobile-nav-divider"></div>
     <a href="/daily-thread" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
     <a href="/weekend" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
     <a href="/month-at-a-glance" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
-    <a href="/archive" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
     <a href="/hdq-legal" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>
   </nav>
   <div class="mobile-nav-footer">
-    <a href="/hdq-whitelabel" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Institutional Solutions</a>
   </div>
 </div>
-<header class="masthead"><div class="masthead-inner"><a href="/about" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="/news" class="nav-link">News</a></li><li><a href="/fund-intel" class="nav-link">Fund Intel</a></li><li><a href="/about" class="nav-link">About</a></li></ul></nav><div class="nav-right"><a href="/hdq-whitelabel-fr" class="lang-toggle" hreflang="fr-CA">FRANÇAIS</a><a href="/hdq-whitelabel" class="nav-subscribe">Institutional Solutions</a><button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
+<header class="masthead"><div class="masthead-inner"><a href="/about" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="/news" class="nav-link">News</a></li><li><a href="/fund-intel" class="nav-link">Fund Intelligence</a></li><li><a href="/charts" class="nav-link">Charts</a></li><li><a href="/archive" class="nav-link">Archives</a></li><li><a href="/hdq-whitelabel" class="nav-link active">Institutional Solutions</a></li><li><a href="/editorial-standards" class="nav-link">Editorial Standards</a></li><li><a href="/about" class="nav-link">About</a></li></ul></nav><div class="nav-right"><a href="/hdq-whitelabel-fr" class="lang-toggle" hreflang="fr-CA">FRANÇAIS</a><button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
 <script>
 // Show hamburger only on mobile
 (function(){
   var btn = document.getElementById('hdq-hamburger');
-  if(btn && window.innerWidth <= 768){
+  if(btn && window.innerWidth <= 980){
     btn.style.display = 'flex';
   }
   window.addEventListener('resize', function(){
-    if(btn){ btn.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; }
+    if(btn){ btn.style.display = window.innerWidth <= 980 ? 'flex' : 'none'; }
   });
 })();
 </script></div></div></header><div class="date-strip"><div class="date-strip-inner"><span class="date-left"></span></div></div>

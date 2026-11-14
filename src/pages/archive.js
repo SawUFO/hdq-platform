@@ -463,7 +463,7 @@ ${membershipFooterBand(lang)}`;
 
   return htmlResponse(pageShell(body, {
     title: fr ? FR_ARCHIVE.pageTitle : 'HDQ Archive',
-    activePage: 'news',
+    activePage: 'archive',
     activeDesk: filterDesk !== 'all' ? filterDesk : 'archive',
     issueNo: await getIssueNo(env),
     // Self-canonical — French build brief §8.
