@@ -173,28 +173,29 @@ document.addEventListener('keydown', function(e) {
   </div>
   <nav class="mobile-nav-links" aria-label="Navigation mobile">
     <a href="/fr" class="mobile-nav-link" onclick="window.closeMobileNav()">Nouvelles</a>
+    <a href="/fr/archives" class="mobile-nav-link" onclick="window.closeMobileNav()">Archives</a>
+    <a href="/hdq-whitelabel-fr" class="mobile-nav-link" onclick="window.closeMobileNav()">Solutions institutionnelles</a>
+    <a href="/fr/normes-editoriales" class="mobile-nav-link" onclick="window.closeMobileNav()">Normes éditoriales</a>
     <a href="/fr/a-propos" class="mobile-nav-link" onclick="window.closeMobileNav()">À propos</a>
     <div class="mobile-nav-divider"></div>
     <a href="/fr/fil-quotidien" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Fil quotidien</a>
     <a href="/fr/edition-fin-de-semaine" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Édition de fin de semaine</a>
     <a href="/fr/mois-en-bref" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Le mois en bref</a>
-    <a href="/fr/archives" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archives</a>
     <a href="/hdq-legal-fr" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Mentions juridiques</a>
   </nav>
   <div class="mobile-nav-footer">
-    <a href="/hdq-whitelabel-fr" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">Solutions institutionnelles</a>
   </div>
 </div>
-<header class="masthead"><div class="masthead-inner"><a href="/fr/a-propos" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="/fr" class="nav-link">Nouvelles</a></li><li><a href="/fr/a-propos" class="nav-link">À propos</a></li></ul></nav><div class="nav-right"><a href="/hdq-prodev" class="lang-toggle" hreflang="en-CA">ENGLISH</a><a href="/hdq-whitelabel-fr" class="nav-subscribe">Solutions institutionnelles</a><button type="button" onclick="window.openMobileNav()" aria-label="Ouvrir le menu de navigation" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
+<header class="masthead"><div class="masthead-inner"><a href="/fr/a-propos" class="brand"><img src="HDQ_LOGO_Gold.svg" width="32" height="32" style="display:block;flex-shrink:0;"><span class="wordmark">HD<span class="wq">Q</span></span></a><nav><ul class="nav-links"><li><a href="/fr" class="nav-link">Nouvelles</a></li><li><a href="/fr/archives" class="nav-link">Archives</a></li><li><a href="/hdq-whitelabel-fr" class="nav-link">Solutions institutionnelles</a></li><li><a href="/fr/normes-editoriales" class="nav-link">Normes éditoriales</a></li><li><a href="/fr/a-propos" class="nav-link">À propos</a></li></ul></nav><div class="nav-right"><a href="/hdq-prodev" class="lang-toggle" hreflang="en-CA">ENGLISH</a><button type="button" onclick="window.openMobileNav()" aria-label="Ouvrir le menu de navigation" style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger"><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span></button>
 <script>
 // Show hamburger only on mobile
 (function(){
   var btn = document.getElementById('hdq-hamburger');
-  if(btn && window.innerWidth <= 768){
+  if(btn && window.innerWidth <= 980){
     btn.style.display = 'flex';
   }
   window.addEventListener('resize', function(){
-    if(btn){ btn.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; }
+    if(btn){ btn.style.display = window.innerWidth <= 980 ? 'flex' : 'none'; }
   });
 })();
 </script></div></div></header><div class="date-strip"><div class="date-strip-inner"><span class="date-left"></span></div></div>

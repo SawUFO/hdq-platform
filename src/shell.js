@@ -149,18 +149,26 @@ export function pageShell(bodyHtml, opts = {}) {
   const home = fr ? '/fr' : '/news';
   const aboutHref = fr ? `/fr/${FR_ROUTES.about}` : '/about';
 
-  // Top masthead nav. Archive lives in the desk strip's "More" group, so it is
-  // not duplicated here.
-  // Fund Intel carries no French route — it is out of scope per the French
-  // build brief §14 — so it is absent from the French masthead rather than
-  // present and pointing at an English page.
+  // Top masthead nav. Archives and Institutional Solutions are first-class
+  // entries here, so they are not repeated in the desk strip's "More" menu or
+  // as a separate masthead button.
+  // Fund Intelligence and Charts have no French edition, so they are absent
+  // from the French masthead rather than pointing at English pages.
+  const instLabel = COPY[fr ? 'fr' : 'en'].institutionalLabel;
   const navLinks = fr ? [
-    { href: '/fr',                   label: FR_UI.news,     key: 'news' },
-    { href: aboutHref,               label: FR_UI.about,    key: 'about' },
+    { href: '/fr',                          label: FR_UI.news,     key: 'news' },
+    { href: `/fr/${FR_ROUTES.archive}`,     label: FR_UI.archive,  key: 'archive' },
+    { href: institutionalHref('fr'),        label: instLabel,      key: 'institutional' },
+    { href: URLS.standards.fr,              label: 'Normes éditoriales', key: 'standards' },
+    { href: aboutHref,                      label: FR_UI.about,    key: 'about' },
   ] : [
-    { href: '/news',                  label: 'News',                     key: 'news' },
-    { href: '/fund-intel',            label: 'Fund Intel',               key: 'fund-intel' },
-    { href: '/about',                 label: 'About',                    key: 'about' },
+    { href: '/news',                        label: 'News',                key: 'news' },
+    { href: '/fund-intel',                  label: 'Fund Intelligence',   key: 'fund-intel' },
+    { href: '/charts',                      label: 'Charts',              key: 'charts' },
+    { href: '/archive',                     label: 'Archives',            key: 'archive' },
+    { href: institutionalHref('en'),        label: instLabel,             key: 'institutional' },
+    { href: URLS.standards.en,              label: 'Editorial Standards', key: 'standards' },
+    { href: '/about',                       label: 'About',               key: 'about' },
   ];
 
   // Desk strip. The five desks plus All and the Daily Thread stay visible —
@@ -186,11 +194,9 @@ export function pageShell(bodyHtml, opts = {}) {
   const deskMore = fr ? [
     { href: `/fr/${FR_DESK_PATH.weekend}`, label: FR_DESK_DISPLAY.weekend, key: 'weekend' },
     { href: `/fr/${FR_DESK_PATH.month}`,   label: FR_DESK_DISPLAY.month,   key: 'month' },
-    { href: `/fr/${FR_ROUTES.archive}`,    label: FR_UI.archive,           key: 'archive' },
   ] : [
     { href: '/weekend',           label: 'Weekend Edition',   key: 'weekend' },
     { href: '/month-at-a-glance', label: 'Month at a Glance', key: 'month' },
-    { href: '/archive',           label: 'Archive',           key: 'archive' },
   ];
 
   const navHtml = navLinks.map(l =>
@@ -268,7 +274,7 @@ ${extraHead}
 }
 ${toggleHref ? `.lang-toggle { font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.55); text-decoration:none; white-space:nowrap; margin-right:20px; padding-bottom:3px; border-bottom:1px solid transparent; transition:color 0.15s, border-color 0.15s; }
 .lang-toggle:hover { color:#fff; border-bottom-color:var(--gold-400); }
-@media(max-width:768px){ .lang-toggle { display:none; } }
+@media(max-width:640px){ .lang-toggle { display:none; } }
 ` : ''}.date-volno { color: var(--gold-400); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
 ${extraStyle}
 </style>
@@ -294,16 +300,14 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')window.close
 ${fr ? `    <a href="/fr/${FR_DESK_PATH.thread}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_DESK_DISPLAY.thread}</a>
     <a href="/fr/${FR_DESK_PATH.weekend}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_DESK_DISPLAY.weekend}</a>
     <a href="/fr/${FR_DESK_PATH.month}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_DESK_DISPLAY.month}</a>
-    <a href="/fr/${FR_ROUTES.archive}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_UI.archive}</a>
     <a href="${FR_STATIC.legal}" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">${FR_FOOTER.legal.combined}</a>` : `    <a href="/daily-thread" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Daily Thread</a>
     <a href="/weekend" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Weekend Edition</a>
     <a href="/month-at-a-glance" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Month at a Glance</a>
-    <a href="/archive" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Archive</a>
     <a href="/hdq-legal" class="mobile-nav-sub-link" onclick="window.closeMobileNav()">Legal &amp; Disclaimer</a>`}
   </nav>
   <div class="mobile-nav-footer">
 ${toggleHref ? `    <a href="${toggleHref}" class="mobile-nav-sub-link" style="display:block;margin-bottom:14px;" hreflang="${fr ? 'en-CA' : 'fr-CA'}">${fr ? FR_UI.toggleToEN : FR_UI.toggleToFR}</a>
-` : ''}    <a href="${institutionalHref(lang)}" class="mobile-nav-subscribe" onclick="window.closeMobileNav()">${COPY[fr ? 'fr' : 'en'].institutionalLabel}</a>
+` : ''}
   </div>
 </div>
 
@@ -316,14 +320,13 @@ ${toggleHref ? `    <a href="${toggleHref}" class="mobile-nav-sub-link" style="d
   <nav><ul class="nav-links">${navHtml}</ul></nav>
   <div class="nav-right">
 ${toggleHref ? `    <a href="${toggleHref}" class="lang-toggle" hreflang="${fr ? 'en-CA' : 'fr-CA'}">${fr ? FR_UI.toggleToEN : FR_UI.toggleToFR}</a>
-` : ''}    <a href="${institutionalHref(lang)}" class="nav-subscribe">${COPY[fr ? 'fr' : 'en'].institutionalLabel}</a>
-    <button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu"
+` : ''}    <button type="button" onclick="window.openMobileNav()" aria-label="Open navigation menu"
       style="display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;" id="hdq-hamburger">
       <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
       <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
       <span style="display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
     </button>
-    <script>(function(){var b=document.getElementById('hdq-hamburger');if(b&&window.innerWidth<=768)b.style.display='flex';window.addEventListener('resize',function(){if(b)b.style.display=window.innerWidth<=768?'flex':'none';});})();</script>
+    <script>(function(){var b=document.getElementById('hdq-hamburger');if(b&&window.innerWidth<=980)b.style.display='flex';window.addEventListener('resize',function(){if(b)b.style.display=window.innerWidth<=980?'flex':'none';});})();</script>
   </div>
 </div></header>
 

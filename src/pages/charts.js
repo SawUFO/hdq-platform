@@ -286,7 +286,7 @@ ${membershipFooterBand('en')}`;
     title: 'HDQ Chart Gallery',
     canonical: 'https://hdq.ca/charts',
     metaDescription: "HDQ's chart gallery: original charts from the daily Canadian financial news briefing, covering markets, the economy, rates, tax and investor behaviour.",
-    activePage: 'news',
+    activePage: 'charts',
     activeDesk: 'charts',
     issueNo: await getIssueNo(env),
     extraStyle: CHARTS_CSS + lockedOverlayCSS,

@@ -39,8 +39,8 @@ h1,h2,h3,h4,h5,h6 {
 .wq { color: var(--gold-400); }
 .nav-links { display: flex; list-style: none; }
 .nav-link {
-  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
-  color: rgba(255,255,255,0.7); padding: 0 16px; height: 60px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; white-space: nowrap;
+  color: rgba(255,255,255,0.7); padding: 0 14px; height: 60px;
   display: flex; align-items: center;
   border-bottom: 3px solid transparent;
   transition: color 0.15s, border-color 0.15s;
@@ -56,7 +56,8 @@ h1,h2,h3,h4,h5,h6 {
 .nav-subscribe:hover { background: var(--gold-600); color: #fff; }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .hamburger span { width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; display: block; }
-@media (max-width:768px) { .nav-links { display: none; } .hamburger { display: flex; } }
+@media (max-width:1180px) { .nav-link { padding: 0 11px; font-size: 12.5px; } .masthead-inner { padding: 0 20px; } }
+@media (max-width:980px) { .nav-links { display: none; } .hamburger { display: flex; } }
 
 /* DATE STRIP — single line only */
 .date-strip { background: var(--navy-900); }

@@ -187,7 +187,7 @@ export async function renderStandards(env) {
 
   return new Response(pageShell(body, {
     title: t.htmlTitle,
-    activePage: 'about',
+    activePage: 'standards',
     issueNo,
     canonical: fr ? 'https://hdq.ca/fr/normes-editoriales' : 'https://hdq.ca/editorial-standards',
     metaDescription: t.metaDescription,
