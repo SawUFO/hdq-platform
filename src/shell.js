@@ -78,7 +78,7 @@ const ORG_SCHEMA = {
     "@type": "ImageObject",
     "url": "https://assets.hdq.ca/HDQ_LOGO_Gold.svg"
   },
-  "description": "HDQ Publishing Canada publishes independent financial intelligence for the wealth industry, covering Canadian markets, geopolitics, the economy, tax and wealth planning, and investor behaviour. The public edition is free to read; institutions may license it for distribution under their own brand or with HDQ attribution.",
+  "description": "HDQ Publishing Canada publishes independent financial intelligence for the wealth industry, covering Canadian markets, geopolitics, the economy, tax and wealth planning, and investor behaviour.",
   "foundingDate": "2026-05-07",
   "email": "support@hdq.ca",
   "telephone": "+1-647-951-2330",
