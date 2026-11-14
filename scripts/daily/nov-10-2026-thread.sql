@@ -1,7 +1,7 @@
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/11/11/hdq-thread-nov-11-2026',
+  '2026/11/10/hdq-thread-nov-10-2026',
   'thread',
   'thread',
   'Oil Slipped Below $90, U.S. CPI Beat Forecasts, and the Loonie Lost on Both Sides of the Rate Trade',

@@ -1,7 +1,7 @@
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text, en_slug)
 VALUES (
-  '2026/11/11/hdq-fil-11-novembre-2026',
+  '2026/11/10/hdq-fil-10-novembre-2026',
   'thread',
   'thread',
   'Pétrole sous 90 $, IPC américain au-dessus des prévisions : le huard perd des deux côtés du pari sur les taux',
@@ -187,5 +187,5 @@ _cs.parentNode.appendChild(svg);
   'entity:us-cpi,entity:fed,entity:boc,entity:tsx,entity:cad,entity:brent,theme:rate-divergence,theme:energy-inflation,stance:tail-risk-flag',
   0,
   'Date de référence de la recherche et de la rédaction : 10 novembre 2026, avant l’heure limite demandée du 11 novembre 2026, 16 h 15 HE ; les résultats du 11 novembre ne sont pas présentés comme connus. Bureau of Labor Statistics des États-Unis, Indice des prix à la consommation, septembre 2025, 24 octobre 2025 (https://www.bls.gov/news.release/archives/cpi_10242025.htm) ; Bureau of Labor Statistics des États-Unis, Indice des prix à la consommation, avril 2026, 12 mai 2026 (https://www.bls.gov/news.release/archives/cpi_05122026.htm) ; Bureau of Labor Statistics des États-Unis, Indice des prix à la consommation, octobre 2026, 10 novembre 2026 (https://www.bls.gov/news.release/archives/cpi_11102026.htm) ; Banque du Canada, Résumé des délibérations du Conseil de direction pour le 28 octobre 2026, publié le 10 novembre 2026 (https://www.bankofcanada.ca/2026/11/summary-of-governing-council-deliberations-fixed-announcement-date-of-october-28-2026/) ; Banque du Canada, annonce du taux directeur, 28 octobre 2026 (https://www.bankofcanada.ca/2026/10/fad-press-release-2026-10-28/) ; Conseil des gouverneurs de la Réserve fédérale, fourchette cible actuelle du taux au 29 octobre 2026 (https://www.federalreserve.gov/economy-at-a-glance-policy-rate.htm) ; Reuters, « US yields rise, stocks fall as inflation data boosts odds of larger December rate hike », 10 novembre 2026 (https://www.reuters.com/world/china/global-markets-wrapup-1-2026-11-10/) ; Reuters, via Kitco, « Canadian dollar hits near four-week low as US CPI data boosts greenback », 10 novembre 2026 (https://www.kitco.com/news/off-the-wire/2026-11-10/canadian-dollar-hits-near-four-week-low-us-cpi-data-boosts-greenback) ; Reuters, via MarketScreener, « TSX hits two-month high as lower oil prices ease inflation concerns », 9 novembre 2026 ; Reuters, via MarketScreener, « TSX slides as miners drag, sticky US inflation fuels rate concerns », 10 novembre 2026 ; YCharts, valeurs quotidiennes historiques de l’indice composé S&P/TSX jusqu’au 9 novembre 2026 (https://ycharts.com/indices/%5ETSX/level) ; Fund Library, historique des cours de l’indice composé S&P/TSX, consulté le 10 novembre 2026 (https://www.fundlibrary.com/Markets/Detail/176336) ; EnergyNow, « Oil Prices Fall Again as Trump Signals Restraint on Iran », 10 novembre 2026 ; The Guardian, « Oil prices fall to lowest since August », 10 novembre 2026.',
-  '2026/11/11/hdq-thread-nov-11-2026'
+  '2026/11/10/hdq-thread-nov-10-2026'
 );

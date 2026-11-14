@@ -2,6 +2,7 @@ import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_CAT_CLASS, articleUrl,
          jsonKeyNumbers, htmlResponse, getIssueNo, deskDisplay, deskHref,
          archiveUrl } from '../shell.js';
 import { FR_NEWS, FR_MEMBERSHIP, FR_SITE, FR_STATIC } from '../fr-strings.js';
+import { visibleTags, topVisibleTags } from '../tag-labels.js';
 
 // deskHref used to live here as an English-only map. It now comes from shell.js
 // so both editions resolve desk links through one place.
@@ -146,7 +147,19 @@ export async function renderNews(env, authed = true) {
     LIMIT 2
   `).bind(heroRow?.slug || '').all();
 
-  const usedSlugs = [heroRow?.slug, ...(subRows.results || []).map(r => r.slug)].filter(Boolean);
+  // Every story on the page appears once. Sections draw from one list, newest
+  // first: lead story, the two cards under it, then Flash News (the next five),
+  // then Recent News (the next nine). Flash used to re-query the five newest
+  // articles outright, which repeated the lead and cards in the sidebar.
+  const flashRows = await env.DB.prepare(`
+    SELECT * FROM articles
+    WHERE slug NOT IN (?, ?, ?)
+    ORDER BY published_at DESC
+    LIMIT 5
+  `).bind(...pad3([heroRow?.slug, ...(subRows.results || []).map(r => r.slug)])).all();
+
+  const usedSlugs = [heroRow?.slug, ...(subRows.results || []).map(r => r.slug),
+    ...(flashRows.results || []).map(r => r.slug)].filter(Boolean);
   const placeholders = usedSlugs.map(() => '?').join(',');
   const recentRows = await env.DB.prepare(`
     SELECT * FROM articles
@@ -155,14 +168,10 @@ export async function renderNews(env, authed = true) {
     LIMIT 9
   `).bind(...usedSlugs).all();
 
-  const flashRows = await env.DB.prepare(`
-    SELECT * FROM articles ORDER BY published_at DESC LIMIT 5
-  `).all();
-
   const trendingRows = await env.DB.prepare(`
     SELECT tags FROM articles ORDER BY published_at DESC LIMIT 20
   `).all();
-  const trendingTags = extractTopTags(trendingRows.results || []);
+  const trendingTags = topVisibleTags(trendingRows.results || [], lang, 10);
 
   const countRow = await env.DB.prepare(`SELECT COUNT(*) as total FROM articles`).first();
   const articleCount = countRow?.total || 0;
@@ -247,9 +256,8 @@ ${membershipFooterBand(lang)}
 // Renders hero card — links disabled for guests
 function renderHeroCard(a, authed, lang = 'en') {
   const href = authed ? articleUrl(a, lang) : '#';
-  const tags = (a.tags || '').split(',').slice(0, 5).filter(Boolean);
-  const tagHtml = tags.map(t =>
-    `<a href="${authed ? archiveUrl(`tag=${encodeURIComponent(t.trim())}`, lang) : '#'}" class="tag" ${authed ? '' : 'tabindex="-1"'}>${escHtml(t.trim())}</a>`
+  const tagHtml = visibleTags(a.tags, lang, { max: 5 }).map(({ raw, label }) =>
+    `<a href="${authed ? archiveUrl(`tag=${encodeURIComponent(raw)}`, lang) : '#'}" class="tag" ${authed ? '' : 'tabindex="-1"'}>${escHtml(label)}</a>`
   ).join('');
 
   return `
@@ -332,8 +340,8 @@ function renderSidebar(flash, trendingTags, articleCount, lang = 'en') {
   </div>
 </div>`).join('');
 
-  const trendHtml = trendingTags.map(t =>
-    `<a href="${archiveUrl(`tag=${encodeURIComponent(t)}`, lang)}" class="trending-tag">${escHtml(t)}</a>`
+  const trendHtml = trendingTags.map(({ raw, label }) =>
+    `<a href="${archiveUrl(`tag=${encodeURIComponent(raw)}`, lang)}" class="trending-tag">${escHtml(label)}</a>`
   ).join('');
 
   return `
@@ -357,18 +365,11 @@ function renderSidebar(flash, trendingTags, articleCount, lang = 'en') {
 </div>`;
 }
 
-function extractTopTags(rows) {
-  const counts = {};
-  for (const row of rows) {
-    (row.tags || '').split(',').forEach(t => {
-      t = t.trim();
-      if (t) counts[t] = (counts[t] || 0) + 1;
-    });
-  }
-  return Object.entries(counts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 10)
-    .map(([tag]) => tag);
+// Pads a slug list to exactly three entries so the SQL placeholders stay fixed.
+function pad3(slugs) {
+  const out = slugs.filter(Boolean).slice(0, 3);
+  while (out.length < 3) out.push('__none__');
+  return out;
 }
 
 export function membershipFooterBand(lang = 'en') {

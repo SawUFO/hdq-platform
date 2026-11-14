@@ -2,6 +2,7 @@ import { pageShell, escHtml, fmtDate, DESK_DISPLAY, DESK_CAT_CLASS, articleUrl, 
 import { FR_ARCHIVE, FR_NEWS, FR_LOCK, FR_STATIC, FR_UI } from '../fr-strings.js';
 import { deskDisplay, deskHref, archiveUrl } from '../shell.js';
 import { membershipFooterBand } from './news.js';
+import { tagLabel } from '../tag-labels.js';
 
 const ARCHIVE_CSS = `
 .archive-wrap { padding:36px 0 60px; }
@@ -252,10 +253,10 @@ export async function renderArchive(env, params, authed = true) {
       const deskBadges = Object.entries(deskMap).map(([d, c]) =>
         `<span class="cat-tag ${escHtml(DESK_CAT_CLASS[d] || '')}" style="font-size:11px;">${escHtml(deskDisplay(d, lang))} (${c})</span>`
       ).join('');
-      const tagLabel = filterTag.replace('entity:', '').replace('theme:', '').replace(/-/g, ' ');
+      const filterLabel = tagLabel(filterTag, lang, { themes: true }) || filterTag;
       themeContext = `
 <div class="theme-context">
-  <div class="theme-context-title">${fr ? A.coverage : 'Coverage:'} ${escHtml(tagLabel)}</div>
+  <div class="theme-context-title">${fr ? A.coverage : 'Coverage:'} ${escHtml(filterLabel)}</div>
   <div class="theme-context-stats">
     <div class="theme-stat"><span class="theme-stat-value">${tagArts.length}</span><span class="theme-stat-label">${fr ? A.statArticles : 'articles'}</span></div>
     <div class="theme-stat"><span class="theme-stat-value">${firstDate}</span><span class="theme-stat-label">${fr ? A.statFirst : 'first coverage'}</span></div>
@@ -302,7 +303,7 @@ export async function renderArchive(env, params, authed = true) {
 
   // Filter row
   const tagOptions = allTags.map(t => {
-    const label = t.replace('entity:', '').replace('theme:', '').replace(/-/g, ' ');
+    const label = tagLabel(t, lang, { themes: true }) || t;
     const prefix = t.startsWith('entity:') ? (fr ? A.entityPrefix : 'Entity: ') : (fr ? A.themePrefix : 'Theme: ');
     return `<option value="${escHtml(t)}"${filterTag === t ? ' selected' : ''}>${escHtml(prefix + label)}</option>`;
   }).join('');
@@ -319,7 +320,7 @@ export async function renderArchive(env, params, authed = true) {
   // Active filter banners
   const tagBanner = filterTag ? `
 <div style="background:var(--navy-50);border:1px solid var(--n200);border-radius:6px;padding:10px 16px;margin-bottom:16px;font-size:13px;color:var(--n700);">
-  ${fr ? A.tagged : 'Tagged:'} <strong>${escHtml(filterTag)}</strong> &nbsp; <a href="${base}" style="color:var(--navy-700);">${fr ? A.clear : 'Clear'}</a>
+  ${fr ? A.tagged : 'Tagged:'} <strong>${escHtml(tagLabel(filterTag, lang, { themes: true }) || filterTag)}</strong> &nbsp; <a href="${base}" style="color:var(--navy-700);">${fr ? A.clear : 'Clear'}</a>
 </div>` : '';
 
   const searchBanner = search ? `
@@ -399,8 +400,7 @@ export async function renderArchive(env, params, authed = true) {
 
   // Sidebar: top tags
   const tagItems = topTags.map(([t, cnt]) => {
-    const label = t.replace('entity:', '').replace('theme:', '').replace(/-/g, ' ');
-    const prefix = t.startsWith('entity:') ? 'Entity' : 'Theme';
+    const label = tagLabel(t, lang, { themes: true }) || t;
     return `
 <a href="${archiveUrl(`tag=${encodeURIComponent(t)}`, lang)}" class="sidebar-tag">
   <span class="sidebar-tag-name">${escHtml(label)}</span>

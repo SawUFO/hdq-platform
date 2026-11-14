@@ -2,6 +2,7 @@ import { pageShell, escHtml, fmtDate, fmtDateShort, DESK_CAT_CLASS, articleUrl,
          htmlResponse, getIssueNo, deskDisplay, deskHref, archiveUrl } from '../shell.js';
 import { subscribeFooterBand, PAGE_CSS } from './news.js';
 import { FR_DESK_PAGE, FR_MEMBERSHIP, FR_NEWS, FR_STATIC } from '../fr-strings.js';
+import { visibleTags, topVisibleTags } from '../tag-labels.js';
 
 const DESK_TO_NAV = {
   market: 'market', economy: 'economy', geo: 'geo',
@@ -20,21 +21,27 @@ export async function renderDesk(env, desk) {
     SELECT * FROM articles WHERE desk=? AND slug!=? ORDER BY published_at DESC LIMIT 2
   `).bind(desk, hero?.slug || '').all();
 
-  const usedSlugs = [hero?.slug, ...(subs.results || []).map(r => r.slug)].filter(Boolean);
+  // One story, one slot: lead, two cards, then the desk's next five (sidebar),
+  // then the next nine (Recent). The sidebar used to repeat the newest five.
+  const topSlugs = [hero?.slug, ...(subs.results || []).map(r => r.slug)].filter(Boolean);
+  while (topSlugs.length < 3) topSlugs.push('__none__');
+  const flash = await env.DB.prepare(`
+    SELECT * FROM articles WHERE desk=? AND slug NOT IN (?, ?, ?)
+    ORDER BY published_at DESC LIMIT 5
+  `).bind(desk, ...topSlugs.slice(0, 3)).all();
+
+  const usedSlugs = [hero?.slug, ...(subs.results || []).map(r => r.slug),
+    ...(flash.results || []).map(r => r.slug)].filter(Boolean);
   const placeholders = usedSlugs.map(() => '?').join(',');
   const recent = await env.DB.prepare(`
     SELECT * FROM articles WHERE desk=? AND slug NOT IN (${placeholders || "'__none__'"})
     ORDER BY published_at DESC LIMIT 9
   `).bind(desk, ...usedSlugs).all();
 
-  const flash = await env.DB.prepare(`
-    SELECT * FROM articles WHERE desk=? ORDER BY published_at DESC LIMIT 5
-  `).bind(desk).all();
-
   const trendRows = await env.DB.prepare(`
     SELECT tags FROM articles WHERE desk=? ORDER BY published_at DESC LIMIT 20
   `).bind(desk).all();
-  const trendTags = extractTopTags(trendRows.results || []);
+  const trendTags = topVisibleTags(trendRows.results || [], lang, 8);
 
   const issueNo = await getIssueNo(env);
 
@@ -83,9 +90,8 @@ ${subscribeFooterBand(lang)}`;
 }
 
 function renderHeroCardDesk(a, lang = 'en') {
-  const tags = (a.tags || '').split(',').slice(0, 5).filter(Boolean);
-  const tagHtml = tags.map(t =>
-    `<a href="${archiveUrl(`tag=${encodeURIComponent(t.trim())}`, lang)}" class="tag">${escHtml(t.trim())}</a>`
+  const tagHtml = visibleTags(a.tags, lang, { max: 5 }).map(({ raw, label }) =>
+    `<a href="${archiveUrl(`tag=${encodeURIComponent(raw)}`, lang)}" class="tag">${escHtml(label)}</a>`
   ).join('');
   return `
 <div class="feat-wrap">
@@ -163,8 +169,8 @@ function renderSidebarDesk(flash, trendingTags, lang = 'en') {
   </div>
 </div>`).join('');
 
-  const trendHtml = trendingTags.map(t =>
-    `<a href="${archiveUrl(`tag=${encodeURIComponent(t)}`, lang)}" class="trending-tag">${escHtml(t)}</a>`
+  const trendHtml = trendingTags.map(({ raw, label }) =>
+    `<a href="${archiveUrl(`tag=${encodeURIComponent(raw)}`, lang)}" class="trending-tag">${escHtml(label)}</a>`
   ).join('');
 
   return `
@@ -185,15 +191,4 @@ function renderSidebarDesk(flash, trendingTags, lang = 'en') {
   <div class="sidebar-label">${fr ? FR_DESK_PAGE.allDesks : 'All Desks'}</div>
   <a href="${archiveUrl('', lang)}" style="font-size:13px;color:var(--navy-700);font-weight:600;">${fr ? FR_DESK_PAGE.browseArchive : 'Browse the full archive'} →</a>
 </div>`;
-}
-
-function extractTopTags(rows) {
-  const counts = {};
-  for (const row of rows) {
-    (row.tags || '').split(',').forEach(t => {
-      t = t.trim();
-      if (t) counts[t] = (counts[t] || 0) + 1;
-    });
-  }
-  return Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0,8).map(([tag]) => tag);
 }
