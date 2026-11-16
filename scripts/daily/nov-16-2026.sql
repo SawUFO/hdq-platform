@@ -26,96 +26,119 @@ VALUES (
 <div style="padding:12px 14px 8px;">
 <script>
 (function () {
-  const data = [[0, 19.99], [1, 18.44], [2, 17.31], [3, 16.68], [4, 19.03], [5, 19.45], [6, 18.39], [7, 17.52], [8, 16.91], [9, 17.2], [10, 19.42], [11, 21.15], [12, 20.83], [13, 16.61], [14, 28.18], [15, 25.64], [16, 19.92], [17, 19.46], [18, 17.49], [19, 18.7], [20, 19.3]];
-  const opts = {"title": "After the VIX Reversal, Give Clients a Rule for the Next Spike", "mode": "stems", "min": 15, "max": 30, "ticks": [15, 20, 25, 30], "axis": "", "unit": "Index points", "pill": "19.30", "labels": [[0, "Oct 16"], [5, "Oct 23"], [10, "Oct 30"], [15, "Nov 6"], [20, "Nov 13"]], "colors": ["#315287", "#a4484d"], "shade": null, "annotation": [14, 28.18, "Nov. 5 \u00b7 28.18"], "legend": [["Daily close", "#315287"], ["Close at or above 24", "#a4484d"]]};
-  const mount = document.currentScript.parentNode;
-  const ns = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(ns, "svg");
+  var data = [[0, 19.99], [1, 18.44], [2, 17.31], [3, 16.68], [4, 19.03], [5, 19.45], [6, 18.39], [7, 17.52], [8, 16.91], [9, 17.2], [10, 19.42], [11, 21.15], [12, 20.83], [13, 16.61], [14, 28.18], [15, 25.64], [16, 19.92], [17, 19.46], [18, 17.49], [19, 18.7], [20, 19.3]];
+  var opts = {"title": "After the VIX Reversal, Give Clients a Rule for the Next Spike", "mode": "stems", "min": 15, "max": 30, "ticks": [15, 20, 25, 30], "axis": "", "unit": "Index points", "pill": "19.30", "labels": [[0, "Oct 16"], [5, "Oct 23"], [10, "Oct 30"], [15, "Nov 6"], [20, "Nov 13"]], "colors": ["#315287", "#a4484d"], "shade": null, "annotation": [14, 28.18, "Nov. 5 \u00b7 28.18"], "legend": [["Daily close", "#315287"], ["Close at or above 24", "#a4484d"]]};
+  var mount = document.currentScript.parentNode;
+  var ns = "http://www.w3.org/2000/svg";
+  var svg = document.createElementNS(ns, "svg");
+  var font = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
   svg.setAttribute("width", "100%");
-  svg.setAttribute("viewBox", "0 0 680 340");
+  svg.setAttribute("viewBox", "0 0 680 300");
   svg.setAttribute("role", "img");
   svg.setAttribute("aria-label", opts.title);
-  function add(tag, attrs, content, parent = svg) {
-    const node = document.createElementNS(ns, tag);
-    Object.keys(attrs).forEach(key => node.setAttribute(key, attrs[key]));
-    if (content) node.textContent = content;
-    parent.appendChild(node);
+
+  var left = 62, right = 646, top = 25, bottom = 249;
+  var first = data[0][0], last = data[data.length - 1][0];
+  var ink = "#364b63", accent = "#477c72", rust = "#8e4b49", muted = "#68717b";
+  function x(v) { return left + (v-first)*(right-left)/(last-first); }
+  function y(v) { return bottom-(v-opts.min)*(bottom-top)/(opts.max-opts.min); }
+  function add(tag, attrs, label) {
+    var node = document.createElementNS(ns, tag);
+    Object.keys(attrs).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+    if (label !== undefined) node.textContent = label;
+    svg.appendChild(node);
     return node;
   }
-  const left = 68, right = 580, top = 48, bottom = 270;
-  const first = data[0][0], last = data[data.length - 1][0];
-  const x = value => left + (value - first) * (right - left) / (last - first);
-  const y = value => bottom - (value - opts.min) * (bottom - top) / (opts.max - opts.min);
-  const primary = opts.colors[0], secondary = opts.colors[1];
-  function text(x, y, value, color, anchor = "start", size = 15, weight = 500) {
-    add("text", {x, y, fill:color, "text-anchor":anchor, "font-family":"system-ui, sans-serif", "font-size":size, "font-weight":weight}, value);
+  function label(x, y, value, color, anchor, size, weight, halo) {
+    var node = add("text",{x:x,y:y,fill:color,"text-anchor":anchor||"start","font-family":font,"font-size":size||10,"font-weight":weight||400},value);
+    if (halo) {
+      node.setAttribute("stroke","#ffffff");
+      node.setAttribute("stroke-width","2.6");
+      node.setAttribute("paint-order","stroke");
+    }
   }
-  function line(x1, y1, x2, y2, stroke, width = 1, dash = "") {
-    add("line", {x1, y1, x2, y2, stroke, "stroke-width":width, "stroke-dasharray":dash});
+  function line(x1,y1,x2,y2,color,width,dash) {
+    var attributes={x1:x1,y1:y1,x2:x2,y2:y2,stroke:color,"stroke-width":width};
+    if (dash) attributes["stroke-dasharray"]=dash;
+    add("line",attributes);
   }
-  function circle(cx, cy, r, fill) {
-    add("circle", {cx, cy, r, fill, stroke:"#fff", "stroke-width":1.6});
+  function shade(x1,y1,x2,y2,fill,opacity) {
+    add("rect",{x:x1,y:y1,width:x2-x1,height:y2-y1,fill:fill,opacity:opacity});
   }
-  function path(d, stroke, width, fill = "none") {
-    add("path", {d, fill, stroke, "stroke-width":width, "stroke-linejoin":"round", "stroke-linecap":"round"});
+  function dot(cx,cy,r,fill) {
+    add("circle",{cx:cx,cy:cy,r:r,fill:fill,stroke:"#fff","stroke-width":0.8});
   }
-  function series(col, step = false) {
-    return data.map((row, i) => i === 0 ? "M " + x(row[0]) + " " + y(row[col]) :
-      step ? "H " + x(row[0]) + " V " + y(row[col]) : "L " + x(row[0]) + " " + y(row[col])).join(" ");
+  function path(d,stroke,width,fill,opacity) {
+    add("path",{d:d,stroke:stroke,"stroke-width":width,fill:fill||"none",opacity:opacity||1,"stroke-linejoin":"round"});
   }
-  add("rect", {x:left, y:top, width:right-left, height:bottom-top, rx:7, fill:"#f6f8fa"});
-  if (opts.mode === "dual") {
-    add("rect", {x:left, y:y(3), width:right-left, height:y(1)-y(3), fill:"#d8eae6", opacity:0.65});
+  function series(col,step) {
+    return data.map(function (row,i) {
+      if (!i) return "M "+x(row[0])+" "+y(row[col]);
+      if (step) return "H "+x(row[0])+" V "+y(row[col]);
+      return "L "+x(row[0])+" "+y(row[col]);
+    }).join(" ");
   }
-  if (opts.shade !== null) {
-    add("rect", {x:x(opts.shade), y:top, width:right-x(opts.shade), height:bottom-top, fill:secondary, opacity:0.12});
+  function pill(px,py,value,shift) {
+    var w=Math.ceil(value.length*9.5*0.59)+10, h=15;
+    var bx=px-w-7, by=Math.max(top+1,Math.min(bottom-h-1,py-h/2+shift));
+    add("rect",{x:bx,y:by,width:w,height:h,rx:2,fill:"#e8a825"});
+    label(bx+w/2,by+10.7,value,"#171717","middle",9.5,700);
   }
-  opts.ticks.forEach(value => {
-    line(left, y(value), right, y(value), "#d9e0e6");
-    text(left-10, y(value)+5, opts.axis === "$bn" ? String(value) : opts.axis === "$" ? "$"+(value/1000)+"k" : String(value)+(opts.axis === "%" ? "%" : ""), "#46586a", "end");
+
+  if (opts.mode==="dual") shade(left,y(3),right,y(1),accent,0.07);
+  if (opts.shade!==null) shade(x(opts.shade),top,right,bottom,rust,0.055);
+
+  opts.ticks.forEach(function (v) {
+    var mark=opts.axis==="$" ? "$"+v/1000+"k" : String(v)+(opts.axis==="%" ? "%" : "");
+    line(left,y(v),right,y(v),"#e4e6e8",0.6);
+    label(left-7,y(v)+3,mark,muted,"end",10);
   });
-  text(left, 26, opts.unit, "#334155", "start", 15, 650);
-  opts.labels.forEach(([position, label], i) => {
-    const anchor = i === 0 ? "start" : i === opts.labels.length - 1 ? "end" : "middle";
-    text(x(position), bottom + 24, label, "#46586a", anchor);
+  line(left,top,left,bottom,"#d4d7db",0.8);
+  line(left,bottom,right,bottom,"#d4d7db",0.8);
+  label(left,15,opts.unit,muted,"start",10,500);
+  opts.labels.forEach(function (tick,i) {
+    var anchor=i===0?"start":i===opts.labels.length-1?"end":"middle";
+    label(x(tick[0]),bottom+15,tick[1],muted,anchor,10);
   });
-  if (opts.mode === "stems") {
-    data.forEach(row => {
-      const color = row[1] >= 24 ? secondary : primary;
-      line(x(row[0]), bottom, x(row[0]), y(row[1]), color, 3.5);
-      circle(x(row[0]), y(row[1]), 4.8, color);
+
+  var end=data[data.length-1], endY=y(end[1]);
+  if (opts.mode==="stems") {
+    var spike=x(14);
+    line(spike,top,spike,bottom,rust,0.75,"2 3");
+    path(series(1),ink,1.7);
+    dot(spike,y(data[14][1]),3.3,rust);
+    label(spike+6,top+10,opts.annotation[2],rust,"start",10,700,true);
+    label(left,bottom+34,"TRADING SESSIONS",muted,"start",9,600);
+  } else if (opts.mode==="tax") {
+    path(series(1,true),ink,1.8);
+    var peak=x(6);
+    line(peak,top,peak,y(data[6][1]),accent,0.8,"2 3");
+    dot(peak,y(data[6][1]),3.3,accent);
+    label(peak+6,y(data[6][1])-8,opts.annotation[2],accent,"start",10,700,true);
+  } else if (opts.mode==="dual") {
+    line(left,y(2),right,y(2),accent,0.85,"3 3");
+    path(series(2),rust,1.45);
+    path(series(1),ink,1.8);
+    dot(right,y(end[2]),2.8,rust);
+    label(left+8,y(2)+13,"2% TARGET",accent,"start",9,700,true);
+    [[left,"ALL-ITEMS CPI",ink],[left+145,"CPI EXCLUDING GASOLINE",rust]].forEach(function (key) {
+      line(key[0],bottom+32,key[0]+16,bottom+32,key[2],1.5);
+      label(key[0]+21,bottom+35,key[1],key[2],"start",9,650);
     });
-  } else if (opts.mode === "tax") {
-    path(series(1,true) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#dcece7");
-    path(series(1,true), primary, 3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.7,primary));
-  } else if (opts.mode === "dual") {
-    line(left,y(2),right,y(2),"#527e78",1.3,"4 5");
-    path(series(2),secondary,3.5);
-    path(series(1),primary,3.8);
-  } else if (opts.mode === "spread") {
-    path(series(1) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#bfdfd8");
-    path(series(1),primary,3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.6,primary));
+  } else if (opts.mode==="spread") {
+    path(series(1)+" L "+right+" "+bottom+" L "+left+" "+bottom+" Z","none",0,accent,0.13);
+    path(series(1),ink,1.7);
+    label(left+8,top+10,"BILATERAL GOODS SURPLUS",accent,"start",9,700);
   } else {
-    line(left,y(1.4),right,y(1.4),"#7c868f",1,"5 5");
-    path(series(1),primary,3.8);
-    circle(x(15),y(1.3960),5.4,secondary);
+    line(x(opts.shade),top,x(opts.shade),bottom,rust,0.8,"2 3");
+    line(left,y(1.4),right,y(1.4),"#87929c",0.7,"3 3");
+    path(series(1),ink,1.7);
+    dot(x(15),y(1.3960),3.1,rust);
+    label(x(15)-6,y(1.3960)+12,"OCT. 30 LOW",rust,"end",9,700,true);
+    label(x(opts.shade)+5,top+10,"NOVEMBER",rust,"start",9,700);
   }
-  const endY = y(data[data.length-1][1]);
-  circle(right,endY,6,primary);
-  const pillWidth = Math.ceil(opts.pill.length*9)+18;
-  add("rect",{x:right+8,y:endY-12,width:pillWidth,height:24,rx:5,fill:"#e8a825"});
-  text(right+8+pillWidth/2,endY+5,opts.pill,"#172637","middle",15,750);
-  if (opts.annotation) {
-    const [position,value,label] = opts.annotation;
-    text(x(position),y(value)-12,label,opts.mode === "stems" ? secondary : primary,"middle",15,700);
-  }
-  opts.legend.forEach(([caption,color],i) => {
-    const x0 = left + i*255;
-    line(x0,319,x0+21,319,color,3);
-    text(x0+27,324,caption,"#334155");
-  });
+  dot(right,endY,3.5,ink);
+  pill(right,endY,opts.pill,opts.mode==="spread"||opts.mode==="market" ? -13 : opts.mode==="dual" ? -13 : -9);
   mount.appendChild(svg);
 })();
 </script>
@@ -123,7 +146,7 @@ VALUES (
 <div style="font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999;padding:4px 14px 10px;font-style:italic;">Source: Cboe VIX daily closes via Investing.com. Nov. 12 and earlier recent closes corroborated by FRED. &nbsp;|&nbsp; hdq.ca</div>
 </div>
 </div>
-<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">The 21 trading sessions show the jump from 16.61 to 28.18 on Nov. 5 and the subsequent decline to 19.30. The chart highlights closes at or above 24 for visual comparison.</p>
+<p style="font-size:11px;color:#666;font-family:-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;margin-top:6px;">The 21 trading sessions show the jump from 16.61 to 28.18 on Nov. 5 and the subsequent decline to 19.30. The vertical marker identifies the Nov. 5 spike.</p>
 <h2>The account statement changes the question</h2>
 <p>Shlomo Benartzi and Richard Thaler&#x27;s work on myopic loss aversion offers a framework for understanding the impulse to act. If people feel losses more acutely than equivalent gains and evaluate their portfolios frequently, they encounter more occasions to feel that risk has become intolerable. In practical terms, a client who checks a diversified portfolio several times in a difficult week may evaluate it on a much shorter clock than the one they used to choose it. The research offers a possible mechanism for that behaviour. A chart of the VIX cannot establish why any particular investor traded.</p>
 <p>The Nov. 5 close was about 70% above the previous session&#x27;s reading. By Friday, the index had given back more than three quarters of that rise in index points. An investor who treats a volatility jump as a sell instruction then needs a second decision about when to buy. A retreat in the index leaves plenty of room for hesitation. It could look like an all-clear to one client and a temporary respite to another.</p>
@@ -235,96 +258,119 @@ VALUES (
 <div style="padding:12px 14px 8px;">
 <script>
 (function () {
-  const data = [[0, 5000], [1, 5000], [2, 5000], [3, 5000], [4, 5500], [5, 5500], [6, 10000], [7, 5500], [8, 5500], [9, 5500], [10, 6000], [11, 6000], [12, 6000], [13, 6000], [14, 6500], [15, 7000], [16, 7000], [17, 7000]];
-  const opts = {"title": "The TFSA Withdrawal You Make in December Can Come Back as Room in January", "mode": "tax", "min": 0, "max": 11000, "ticks": [0, 2500, 5000, 7500, 10000], "axis": "$", "unit": "Annual dollar limit, C$", "pill": "$7,000", "labels": [[0, "2009"], [4, "2013"], [8, "2017"], [12, "2021"], [17, "2026"]], "colors": ["#176b62", "#3f7295"], "shade": null, "annotation": [6, 10000, "2015 \u00b7 $10,000"], "legend": [["New annual room", "#176b62"]]};
-  const mount = document.currentScript.parentNode;
-  const ns = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(ns, "svg");
+  var data = [[0, 5000], [1, 5000], [2, 5000], [3, 5000], [4, 5500], [5, 5500], [6, 10000], [7, 5500], [8, 5500], [9, 5500], [10, 6000], [11, 6000], [12, 6000], [13, 6000], [14, 6500], [15, 7000], [16, 7000], [17, 7000]];
+  var opts = {"title": "The TFSA Withdrawal You Make in December Can Come Back as Room in January", "mode": "tax", "min": 0, "max": 11000, "ticks": [0, 2500, 5000, 7500, 10000], "axis": "$", "unit": "Annual dollar limit, C$", "pill": "$7,000", "labels": [[0, "2009"], [4, "2013"], [8, "2017"], [12, "2021"], [17, "2026"]], "colors": ["#176b62", "#3f7295"], "shade": null, "annotation": [6, 10000, "2015 \u00b7 $10,000"], "legend": [["New annual room", "#176b62"]]};
+  var mount = document.currentScript.parentNode;
+  var ns = "http://www.w3.org/2000/svg";
+  var svg = document.createElementNS(ns, "svg");
+  var font = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
   svg.setAttribute("width", "100%");
-  svg.setAttribute("viewBox", "0 0 680 340");
+  svg.setAttribute("viewBox", "0 0 680 300");
   svg.setAttribute("role", "img");
   svg.setAttribute("aria-label", opts.title);
-  function add(tag, attrs, content, parent = svg) {
-    const node = document.createElementNS(ns, tag);
-    Object.keys(attrs).forEach(key => node.setAttribute(key, attrs[key]));
-    if (content) node.textContent = content;
-    parent.appendChild(node);
+
+  var left = 62, right = 646, top = 25, bottom = 249;
+  var first = data[0][0], last = data[data.length - 1][0];
+  var ink = "#364b63", accent = "#477c72", rust = "#8e4b49", muted = "#68717b";
+  function x(v) { return left + (v-first)*(right-left)/(last-first); }
+  function y(v) { return bottom-(v-opts.min)*(bottom-top)/(opts.max-opts.min); }
+  function add(tag, attrs, label) {
+    var node = document.createElementNS(ns, tag);
+    Object.keys(attrs).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+    if (label !== undefined) node.textContent = label;
+    svg.appendChild(node);
     return node;
   }
-  const left = 68, right = 580, top = 48, bottom = 270;
-  const first = data[0][0], last = data[data.length - 1][0];
-  const x = value => left + (value - first) * (right - left) / (last - first);
-  const y = value => bottom - (value - opts.min) * (bottom - top) / (opts.max - opts.min);
-  const primary = opts.colors[0], secondary = opts.colors[1];
-  function text(x, y, value, color, anchor = "start", size = 15, weight = 500) {
-    add("text", {x, y, fill:color, "text-anchor":anchor, "font-family":"system-ui, sans-serif", "font-size":size, "font-weight":weight}, value);
+  function label(x, y, value, color, anchor, size, weight, halo) {
+    var node = add("text",{x:x,y:y,fill:color,"text-anchor":anchor||"start","font-family":font,"font-size":size||10,"font-weight":weight||400},value);
+    if (halo) {
+      node.setAttribute("stroke","#ffffff");
+      node.setAttribute("stroke-width","2.6");
+      node.setAttribute("paint-order","stroke");
+    }
   }
-  function line(x1, y1, x2, y2, stroke, width = 1, dash = "") {
-    add("line", {x1, y1, x2, y2, stroke, "stroke-width":width, "stroke-dasharray":dash});
+  function line(x1,y1,x2,y2,color,width,dash) {
+    var attributes={x1:x1,y1:y1,x2:x2,y2:y2,stroke:color,"stroke-width":width};
+    if (dash) attributes["stroke-dasharray"]=dash;
+    add("line",attributes);
   }
-  function circle(cx, cy, r, fill) {
-    add("circle", {cx, cy, r, fill, stroke:"#fff", "stroke-width":1.6});
+  function shade(x1,y1,x2,y2,fill,opacity) {
+    add("rect",{x:x1,y:y1,width:x2-x1,height:y2-y1,fill:fill,opacity:opacity});
   }
-  function path(d, stroke, width, fill = "none") {
-    add("path", {d, fill, stroke, "stroke-width":width, "stroke-linejoin":"round", "stroke-linecap":"round"});
+  function dot(cx,cy,r,fill) {
+    add("circle",{cx:cx,cy:cy,r:r,fill:fill,stroke:"#fff","stroke-width":0.8});
   }
-  function series(col, step = false) {
-    return data.map((row, i) => i === 0 ? "M " + x(row[0]) + " " + y(row[col]) :
-      step ? "H " + x(row[0]) + " V " + y(row[col]) : "L " + x(row[0]) + " " + y(row[col])).join(" ");
+  function path(d,stroke,width,fill,opacity) {
+    add("path",{d:d,stroke:stroke,"stroke-width":width,fill:fill||"none",opacity:opacity||1,"stroke-linejoin":"round"});
   }
-  add("rect", {x:left, y:top, width:right-left, height:bottom-top, rx:7, fill:"#f6f8fa"});
-  if (opts.mode === "dual") {
-    add("rect", {x:left, y:y(3), width:right-left, height:y(1)-y(3), fill:"#d8eae6", opacity:0.65});
+  function series(col,step) {
+    return data.map(function (row,i) {
+      if (!i) return "M "+x(row[0])+" "+y(row[col]);
+      if (step) return "H "+x(row[0])+" V "+y(row[col]);
+      return "L "+x(row[0])+" "+y(row[col]);
+    }).join(" ");
   }
-  if (opts.shade !== null) {
-    add("rect", {x:x(opts.shade), y:top, width:right-x(opts.shade), height:bottom-top, fill:secondary, opacity:0.12});
+  function pill(px,py,value,shift) {
+    var w=Math.ceil(value.length*9.5*0.59)+10, h=15;
+    var bx=px-w-7, by=Math.max(top+1,Math.min(bottom-h-1,py-h/2+shift));
+    add("rect",{x:bx,y:by,width:w,height:h,rx:2,fill:"#e8a825"});
+    label(bx+w/2,by+10.7,value,"#171717","middle",9.5,700);
   }
-  opts.ticks.forEach(value => {
-    line(left, y(value), right, y(value), "#d9e0e6");
-    text(left-10, y(value)+5, opts.axis === "$bn" ? String(value) : opts.axis === "$" ? "$"+(value/1000)+"k" : String(value)+(opts.axis === "%" ? "%" : ""), "#46586a", "end");
+
+  if (opts.mode==="dual") shade(left,y(3),right,y(1),accent,0.07);
+  if (opts.shade!==null) shade(x(opts.shade),top,right,bottom,rust,0.055);
+
+  opts.ticks.forEach(function (v) {
+    var mark=opts.axis==="$" ? "$"+v/1000+"k" : String(v)+(opts.axis==="%" ? "%" : "");
+    line(left,y(v),right,y(v),"#e4e6e8",0.6);
+    label(left-7,y(v)+3,mark,muted,"end",10);
   });
-  text(left, 26, opts.unit, "#334155", "start", 15, 650);
-  opts.labels.forEach(([position, label], i) => {
-    const anchor = i === 0 ? "start" : i === opts.labels.length - 1 ? "end" : "middle";
-    text(x(position), bottom + 24, label, "#46586a", anchor);
+  line(left,top,left,bottom,"#d4d7db",0.8);
+  line(left,bottom,right,bottom,"#d4d7db",0.8);
+  label(left,15,opts.unit,muted,"start",10,500);
+  opts.labels.forEach(function (tick,i) {
+    var anchor=i===0?"start":i===opts.labels.length-1?"end":"middle";
+    label(x(tick[0]),bottom+15,tick[1],muted,anchor,10);
   });
-  if (opts.mode === "stems") {
-    data.forEach(row => {
-      const color = row[1] >= 24 ? secondary : primary;
-      line(x(row[0]), bottom, x(row[0]), y(row[1]), color, 3.5);
-      circle(x(row[0]), y(row[1]), 4.8, color);
+
+  var end=data[data.length-1], endY=y(end[1]);
+  if (opts.mode==="stems") {
+    var spike=x(14);
+    line(spike,top,spike,bottom,rust,0.75,"2 3");
+    path(series(1),ink,1.7);
+    dot(spike,y(data[14][1]),3.3,rust);
+    label(spike+6,top+10,opts.annotation[2],rust,"start",10,700,true);
+    label(left,bottom+34,"TRADING SESSIONS",muted,"start",9,600);
+  } else if (opts.mode==="tax") {
+    path(series(1,true),ink,1.8);
+    var peak=x(6);
+    line(peak,top,peak,y(data[6][1]),accent,0.8,"2 3");
+    dot(peak,y(data[6][1]),3.3,accent);
+    label(peak+6,y(data[6][1])-8,opts.annotation[2],accent,"start",10,700,true);
+  } else if (opts.mode==="dual") {
+    line(left,y(2),right,y(2),accent,0.85,"3 3");
+    path(series(2),rust,1.45);
+    path(series(1),ink,1.8);
+    dot(right,y(end[2]),2.8,rust);
+    label(left+8,y(2)+13,"2% TARGET",accent,"start",9,700,true);
+    [[left,"ALL-ITEMS CPI",ink],[left+145,"CPI EXCLUDING GASOLINE",rust]].forEach(function (key) {
+      line(key[0],bottom+32,key[0]+16,bottom+32,key[2],1.5);
+      label(key[0]+21,bottom+35,key[1],key[2],"start",9,650);
     });
-  } else if (opts.mode === "tax") {
-    path(series(1,true) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#dcece7");
-    path(series(1,true), primary, 3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.7,primary));
-  } else if (opts.mode === "dual") {
-    line(left,y(2),right,y(2),"#527e78",1.3,"4 5");
-    path(series(2),secondary,3.5);
-    path(series(1),primary,3.8);
-  } else if (opts.mode === "spread") {
-    path(series(1) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#bfdfd8");
-    path(series(1),primary,3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.6,primary));
+  } else if (opts.mode==="spread") {
+    path(series(1)+" L "+right+" "+bottom+" L "+left+" "+bottom+" Z","none",0,accent,0.13);
+    path(series(1),ink,1.7);
+    label(left+8,top+10,"BILATERAL GOODS SURPLUS",accent,"start",9,700);
   } else {
-    line(left,y(1.4),right,y(1.4),"#7c868f",1,"5 5");
-    path(series(1),primary,3.8);
-    circle(x(15),y(1.3960),5.4,secondary);
+    line(x(opts.shade),top,x(opts.shade),bottom,rust,0.8,"2 3");
+    line(left,y(1.4),right,y(1.4),"#87929c",0.7,"3 3");
+    path(series(1),ink,1.7);
+    dot(x(15),y(1.3960),3.1,rust);
+    label(x(15)-6,y(1.3960)+12,"OCT. 30 LOW",rust,"end",9,700,true);
+    label(x(opts.shade)+5,top+10,"NOVEMBER",rust,"start",9,700);
   }
-  const endY = y(data[data.length-1][1]);
-  circle(right,endY,6,primary);
-  const pillWidth = Math.ceil(opts.pill.length*9)+18;
-  add("rect",{x:right+8,y:endY-12,width:pillWidth,height:24,rx:5,fill:"#e8a825"});
-  text(right+8+pillWidth/2,endY+5,opts.pill,"#172637","middle",15,750);
-  if (opts.annotation) {
-    const [position,value,label] = opts.annotation;
-    text(x(position),y(value)-12,label,opts.mode === "stems" ? secondary : primary,"middle",15,700);
-  }
-  opts.legend.forEach(([caption,color],i) => {
-    const x0 = left + i*255;
-    line(x0,319,x0+21,319,color,3);
-    text(x0+27,324,caption,"#334155");
-  });
+  dot(right,endY,3.5,ink);
+  pill(right,endY,opts.pill,opts.mode==="spread"||opts.mode==="market" ? -13 : opts.mode==="dual" ? -13 : -9);
   mount.appendChild(svg);
 })();
 </script>
@@ -444,96 +490,119 @@ VALUES (
 <div style="padding:12px 14px 8px;">
 <script>
 (function () {
-  const data = [[0, 1.7, 2.5], [1, 1.7, 2.5], [2, 1.9, 2.4], [3, 2.4, 2.6], [4, 2.2, 2.6], [5, 2.2, 2.6], [6, 2.4, 3.0], [7, 2.3, 3.0], [8, 1.8, 2.4], [9, 2.4, 2.2], [10, 2.8, 2.0], [11, 3.2, 2.2], [12, 2.8, 2.2], [13, 3.0, 2.2], [14, 3.0, 2.4], [15, 3.1, 2.2]];
-  const opts = {"title": "Canada Enters the October CPI Release With a 0.9-Point Gasoline Gap", "mode": "dual", "min": 0.8, "max": 3.8, "ticks": [1, 2, 3], "axis": "%", "unit": "Year-over-year change", "pill": "3.1%", "labels": [[0, "Jun 25"], [4, "Oct 25"], [8, "Feb 26"], [12, "Jun 26"], [15, "Sep 26"]], "colors": ["#244674", "#ad5049"], "shade": null, "annotation": null, "legend": [["All-items CPI", "#244674"], ["CPI excluding gasoline", "#ad5049"]]};
-  const mount = document.currentScript.parentNode;
-  const ns = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(ns, "svg");
+  var data = [[0, 1.7, 2.5], [1, 1.7, 2.5], [2, 1.9, 2.4], [3, 2.4, 2.6], [4, 2.2, 2.6], [5, 2.2, 2.6], [6, 2.4, 3.0], [7, 2.3, 3.0], [8, 1.8, 2.4], [9, 2.4, 2.2], [10, 2.8, 2.0], [11, 3.2, 2.2], [12, 2.8, 2.2], [13, 3.0, 2.2], [14, 3.0, 2.4], [15, 3.1, 2.2]];
+  var opts = {"title": "Canada Enters the October CPI Release With a 0.9-Point Gasoline Gap", "mode": "dual", "min": 0.8, "max": 3.8, "ticks": [1, 2, 3], "axis": "%", "unit": "Year-over-year change", "pill": "3.1%", "labels": [[0, "Jun 25"], [4, "Oct 25"], [8, "Feb 26"], [12, "Jun 26"], [15, "Sep 26"]], "colors": ["#244674", "#ad5049"], "shade": null, "annotation": null, "legend": [["All-items CPI", "#244674"], ["CPI excluding gasoline", "#ad5049"]]};
+  var mount = document.currentScript.parentNode;
+  var ns = "http://www.w3.org/2000/svg";
+  var svg = document.createElementNS(ns, "svg");
+  var font = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
   svg.setAttribute("width", "100%");
-  svg.setAttribute("viewBox", "0 0 680 340");
+  svg.setAttribute("viewBox", "0 0 680 300");
   svg.setAttribute("role", "img");
   svg.setAttribute("aria-label", opts.title);
-  function add(tag, attrs, content, parent = svg) {
-    const node = document.createElementNS(ns, tag);
-    Object.keys(attrs).forEach(key => node.setAttribute(key, attrs[key]));
-    if (content) node.textContent = content;
-    parent.appendChild(node);
+
+  var left = 62, right = 646, top = 25, bottom = 249;
+  var first = data[0][0], last = data[data.length - 1][0];
+  var ink = "#364b63", accent = "#477c72", rust = "#8e4b49", muted = "#68717b";
+  function x(v) { return left + (v-first)*(right-left)/(last-first); }
+  function y(v) { return bottom-(v-opts.min)*(bottom-top)/(opts.max-opts.min); }
+  function add(tag, attrs, label) {
+    var node = document.createElementNS(ns, tag);
+    Object.keys(attrs).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+    if (label !== undefined) node.textContent = label;
+    svg.appendChild(node);
     return node;
   }
-  const left = 68, right = 580, top = 48, bottom = 270;
-  const first = data[0][0], last = data[data.length - 1][0];
-  const x = value => left + (value - first) * (right - left) / (last - first);
-  const y = value => bottom - (value - opts.min) * (bottom - top) / (opts.max - opts.min);
-  const primary = opts.colors[0], secondary = opts.colors[1];
-  function text(x, y, value, color, anchor = "start", size = 15, weight = 500) {
-    add("text", {x, y, fill:color, "text-anchor":anchor, "font-family":"system-ui, sans-serif", "font-size":size, "font-weight":weight}, value);
+  function label(x, y, value, color, anchor, size, weight, halo) {
+    var node = add("text",{x:x,y:y,fill:color,"text-anchor":anchor||"start","font-family":font,"font-size":size||10,"font-weight":weight||400},value);
+    if (halo) {
+      node.setAttribute("stroke","#ffffff");
+      node.setAttribute("stroke-width","2.6");
+      node.setAttribute("paint-order","stroke");
+    }
   }
-  function line(x1, y1, x2, y2, stroke, width = 1, dash = "") {
-    add("line", {x1, y1, x2, y2, stroke, "stroke-width":width, "stroke-dasharray":dash});
+  function line(x1,y1,x2,y2,color,width,dash) {
+    var attributes={x1:x1,y1:y1,x2:x2,y2:y2,stroke:color,"stroke-width":width};
+    if (dash) attributes["stroke-dasharray"]=dash;
+    add("line",attributes);
   }
-  function circle(cx, cy, r, fill) {
-    add("circle", {cx, cy, r, fill, stroke:"#fff", "stroke-width":1.6});
+  function shade(x1,y1,x2,y2,fill,opacity) {
+    add("rect",{x:x1,y:y1,width:x2-x1,height:y2-y1,fill:fill,opacity:opacity});
   }
-  function path(d, stroke, width, fill = "none") {
-    add("path", {d, fill, stroke, "stroke-width":width, "stroke-linejoin":"round", "stroke-linecap":"round"});
+  function dot(cx,cy,r,fill) {
+    add("circle",{cx:cx,cy:cy,r:r,fill:fill,stroke:"#fff","stroke-width":0.8});
   }
-  function series(col, step = false) {
-    return data.map((row, i) => i === 0 ? "M " + x(row[0]) + " " + y(row[col]) :
-      step ? "H " + x(row[0]) + " V " + y(row[col]) : "L " + x(row[0]) + " " + y(row[col])).join(" ");
+  function path(d,stroke,width,fill,opacity) {
+    add("path",{d:d,stroke:stroke,"stroke-width":width,fill:fill||"none",opacity:opacity||1,"stroke-linejoin":"round"});
   }
-  add("rect", {x:left, y:top, width:right-left, height:bottom-top, rx:7, fill:"#f6f8fa"});
-  if (opts.mode === "dual") {
-    add("rect", {x:left, y:y(3), width:right-left, height:y(1)-y(3), fill:"#d8eae6", opacity:0.65});
+  function series(col,step) {
+    return data.map(function (row,i) {
+      if (!i) return "M "+x(row[0])+" "+y(row[col]);
+      if (step) return "H "+x(row[0])+" V "+y(row[col]);
+      return "L "+x(row[0])+" "+y(row[col]);
+    }).join(" ");
   }
-  if (opts.shade !== null) {
-    add("rect", {x:x(opts.shade), y:top, width:right-x(opts.shade), height:bottom-top, fill:secondary, opacity:0.12});
+  function pill(px,py,value,shift) {
+    var w=Math.ceil(value.length*9.5*0.59)+10, h=15;
+    var bx=px-w-7, by=Math.max(top+1,Math.min(bottom-h-1,py-h/2+shift));
+    add("rect",{x:bx,y:by,width:w,height:h,rx:2,fill:"#e8a825"});
+    label(bx+w/2,by+10.7,value,"#171717","middle",9.5,700);
   }
-  opts.ticks.forEach(value => {
-    line(left, y(value), right, y(value), "#d9e0e6");
-    text(left-10, y(value)+5, opts.axis === "$bn" ? String(value) : opts.axis === "$" ? "$"+(value/1000)+"k" : String(value)+(opts.axis === "%" ? "%" : ""), "#46586a", "end");
+
+  if (opts.mode==="dual") shade(left,y(3),right,y(1),accent,0.07);
+  if (opts.shade!==null) shade(x(opts.shade),top,right,bottom,rust,0.055);
+
+  opts.ticks.forEach(function (v) {
+    var mark=opts.axis==="$" ? "$"+v/1000+"k" : String(v)+(opts.axis==="%" ? "%" : "");
+    line(left,y(v),right,y(v),"#e4e6e8",0.6);
+    label(left-7,y(v)+3,mark,muted,"end",10);
   });
-  text(left, 26, opts.unit, "#334155", "start", 15, 650);
-  opts.labels.forEach(([position, label], i) => {
-    const anchor = i === 0 ? "start" : i === opts.labels.length - 1 ? "end" : "middle";
-    text(x(position), bottom + 24, label, "#46586a", anchor);
+  line(left,top,left,bottom,"#d4d7db",0.8);
+  line(left,bottom,right,bottom,"#d4d7db",0.8);
+  label(left,15,opts.unit,muted,"start",10,500);
+  opts.labels.forEach(function (tick,i) {
+    var anchor=i===0?"start":i===opts.labels.length-1?"end":"middle";
+    label(x(tick[0]),bottom+15,tick[1],muted,anchor,10);
   });
-  if (opts.mode === "stems") {
-    data.forEach(row => {
-      const color = row[1] >= 24 ? secondary : primary;
-      line(x(row[0]), bottom, x(row[0]), y(row[1]), color, 3.5);
-      circle(x(row[0]), y(row[1]), 4.8, color);
+
+  var end=data[data.length-1], endY=y(end[1]);
+  if (opts.mode==="stems") {
+    var spike=x(14);
+    line(spike,top,spike,bottom,rust,0.75,"2 3");
+    path(series(1),ink,1.7);
+    dot(spike,y(data[14][1]),3.3,rust);
+    label(spike+6,top+10,opts.annotation[2],rust,"start",10,700,true);
+    label(left,bottom+34,"TRADING SESSIONS",muted,"start",9,600);
+  } else if (opts.mode==="tax") {
+    path(series(1,true),ink,1.8);
+    var peak=x(6);
+    line(peak,top,peak,y(data[6][1]),accent,0.8,"2 3");
+    dot(peak,y(data[6][1]),3.3,accent);
+    label(peak+6,y(data[6][1])-8,opts.annotation[2],accent,"start",10,700,true);
+  } else if (opts.mode==="dual") {
+    line(left,y(2),right,y(2),accent,0.85,"3 3");
+    path(series(2),rust,1.45);
+    path(series(1),ink,1.8);
+    dot(right,y(end[2]),2.8,rust);
+    label(left+8,y(2)+13,"2% TARGET",accent,"start",9,700,true);
+    [[left,"ALL-ITEMS CPI",ink],[left+145,"CPI EXCLUDING GASOLINE",rust]].forEach(function (key) {
+      line(key[0],bottom+32,key[0]+16,bottom+32,key[2],1.5);
+      label(key[0]+21,bottom+35,key[1],key[2],"start",9,650);
     });
-  } else if (opts.mode === "tax") {
-    path(series(1,true) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#dcece7");
-    path(series(1,true), primary, 3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.7,primary));
-  } else if (opts.mode === "dual") {
-    line(left,y(2),right,y(2),"#527e78",1.3,"4 5");
-    path(series(2),secondary,3.5);
-    path(series(1),primary,3.8);
-  } else if (opts.mode === "spread") {
-    path(series(1) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#bfdfd8");
-    path(series(1),primary,3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.6,primary));
+  } else if (opts.mode==="spread") {
+    path(series(1)+" L "+right+" "+bottom+" L "+left+" "+bottom+" Z","none",0,accent,0.13);
+    path(series(1),ink,1.7);
+    label(left+8,top+10,"BILATERAL GOODS SURPLUS",accent,"start",9,700);
   } else {
-    line(left,y(1.4),right,y(1.4),"#7c868f",1,"5 5");
-    path(series(1),primary,3.8);
-    circle(x(15),y(1.3960),5.4,secondary);
+    line(x(opts.shade),top,x(opts.shade),bottom,rust,0.8,"2 3");
+    line(left,y(1.4),right,y(1.4),"#87929c",0.7,"3 3");
+    path(series(1),ink,1.7);
+    dot(x(15),y(1.3960),3.1,rust);
+    label(x(15)-6,y(1.3960)+12,"OCT. 30 LOW",rust,"end",9,700,true);
+    label(x(opts.shade)+5,top+10,"NOVEMBER",rust,"start",9,700);
   }
-  const endY = y(data[data.length-1][1]);
-  circle(right,endY,6,primary);
-  const pillWidth = Math.ceil(opts.pill.length*9)+18;
-  add("rect",{x:right+8,y:endY-12,width:pillWidth,height:24,rx:5,fill:"#e8a825"});
-  text(right+8+pillWidth/2,endY+5,opts.pill,"#172637","middle",15,750);
-  if (opts.annotation) {
-    const [position,value,label] = opts.annotation;
-    text(x(position),y(value)-12,label,opts.mode === "stems" ? secondary : primary,"middle",15,700);
-  }
-  opts.legend.forEach(([caption,color],i) => {
-    const x0 = left + i*255;
-    line(x0,319,x0+21,319,color,3);
-    text(x0+27,324,caption,"#334155");
-  });
+  dot(right,endY,3.5,ink);
+  pill(right,endY,opts.pill,opts.mode==="spread"||opts.mode==="market" ? -13 : opts.mode==="dual" ? -13 : -9);
   mount.appendChild(svg);
 })();
 </script>
@@ -653,96 +722,119 @@ VALUES (
 <div style="padding:12px 14px 8px;">
 <script>
 (function () {
-  const data = [[0, 11.1], [1, 6.8], [2, 3.1], [3, 3.2], [4, 4.2], [5, 6.9], [6, 6.0], [7, 8.6], [8, 4.8], [9, 6.6], [10, 5.7], [11, 5.9], [12, 2.7], [13, 7.4], [14, 10.2], [15, 10.9], [16, 10.4], [17, 6.0], [18, 12.1], [19, 12.3]];
-  const opts = {"title": "Bessent''s Trade Optimism Meets the Formal CUSMA Review Clock", "mode": "spread", "min": 0, "max": 15, "ticks": [0, 3, 6, 9, 12, 15], "axis": "$bn", "unit": "Exports minus imports, C$ billions", "pill": "$12.3B", "labels": [[0, "Feb 25"], [5, "Jul 25"], [10, "Dec 25"], [15, "May 26"], [19, "Sep 26"]], "colors": ["#177e78", "#3f7295"], "shade": null, "annotation": null, "legend": [["Bilateral goods balance", "#177e78"]]};
-  const mount = document.currentScript.parentNode;
-  const ns = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(ns, "svg");
+  var data = [[0, 11.1], [1, 6.8], [2, 3.1], [3, 3.2], [4, 4.2], [5, 6.9], [6, 6.0], [7, 8.6], [8, 4.8], [9, 6.6], [10, 5.7], [11, 5.9], [12, 2.7], [13, 7.4], [14, 10.2], [15, 10.9], [16, 10.4], [17, 6.0], [18, 12.1], [19, 12.3]];
+  var opts = {"title": "Bessent''s Trade Optimism Meets the Formal CUSMA Review Clock", "mode": "spread", "min": 0, "max": 15, "ticks": [0, 3, 6, 9, 12, 15], "axis": "$bn", "unit": "Exports minus imports, C$ billions", "pill": "$12.3B", "labels": [[0, "Feb 25"], [5, "Jul 25"], [10, "Dec 25"], [15, "May 26"], [19, "Sep 26"]], "colors": ["#177e78", "#3f7295"], "shade": null, "annotation": null, "legend": [["Bilateral goods balance", "#177e78"]]};
+  var mount = document.currentScript.parentNode;
+  var ns = "http://www.w3.org/2000/svg";
+  var svg = document.createElementNS(ns, "svg");
+  var font = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
   svg.setAttribute("width", "100%");
-  svg.setAttribute("viewBox", "0 0 680 340");
+  svg.setAttribute("viewBox", "0 0 680 300");
   svg.setAttribute("role", "img");
   svg.setAttribute("aria-label", opts.title);
-  function add(tag, attrs, content, parent = svg) {
-    const node = document.createElementNS(ns, tag);
-    Object.keys(attrs).forEach(key => node.setAttribute(key, attrs[key]));
-    if (content) node.textContent = content;
-    parent.appendChild(node);
+
+  var left = 62, right = 646, top = 25, bottom = 249;
+  var first = data[0][0], last = data[data.length - 1][0];
+  var ink = "#364b63", accent = "#477c72", rust = "#8e4b49", muted = "#68717b";
+  function x(v) { return left + (v-first)*(right-left)/(last-first); }
+  function y(v) { return bottom-(v-opts.min)*(bottom-top)/(opts.max-opts.min); }
+  function add(tag, attrs, label) {
+    var node = document.createElementNS(ns, tag);
+    Object.keys(attrs).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+    if (label !== undefined) node.textContent = label;
+    svg.appendChild(node);
     return node;
   }
-  const left = 68, right = 580, top = 48, bottom = 270;
-  const first = data[0][0], last = data[data.length - 1][0];
-  const x = value => left + (value - first) * (right - left) / (last - first);
-  const y = value => bottom - (value - opts.min) * (bottom - top) / (opts.max - opts.min);
-  const primary = opts.colors[0], secondary = opts.colors[1];
-  function text(x, y, value, color, anchor = "start", size = 15, weight = 500) {
-    add("text", {x, y, fill:color, "text-anchor":anchor, "font-family":"system-ui, sans-serif", "font-size":size, "font-weight":weight}, value);
+  function label(x, y, value, color, anchor, size, weight, halo) {
+    var node = add("text",{x:x,y:y,fill:color,"text-anchor":anchor||"start","font-family":font,"font-size":size||10,"font-weight":weight||400},value);
+    if (halo) {
+      node.setAttribute("stroke","#ffffff");
+      node.setAttribute("stroke-width","2.6");
+      node.setAttribute("paint-order","stroke");
+    }
   }
-  function line(x1, y1, x2, y2, stroke, width = 1, dash = "") {
-    add("line", {x1, y1, x2, y2, stroke, "stroke-width":width, "stroke-dasharray":dash});
+  function line(x1,y1,x2,y2,color,width,dash) {
+    var attributes={x1:x1,y1:y1,x2:x2,y2:y2,stroke:color,"stroke-width":width};
+    if (dash) attributes["stroke-dasharray"]=dash;
+    add("line",attributes);
   }
-  function circle(cx, cy, r, fill) {
-    add("circle", {cx, cy, r, fill, stroke:"#fff", "stroke-width":1.6});
+  function shade(x1,y1,x2,y2,fill,opacity) {
+    add("rect",{x:x1,y:y1,width:x2-x1,height:y2-y1,fill:fill,opacity:opacity});
   }
-  function path(d, stroke, width, fill = "none") {
-    add("path", {d, fill, stroke, "stroke-width":width, "stroke-linejoin":"round", "stroke-linecap":"round"});
+  function dot(cx,cy,r,fill) {
+    add("circle",{cx:cx,cy:cy,r:r,fill:fill,stroke:"#fff","stroke-width":0.8});
   }
-  function series(col, step = false) {
-    return data.map((row, i) => i === 0 ? "M " + x(row[0]) + " " + y(row[col]) :
-      step ? "H " + x(row[0]) + " V " + y(row[col]) : "L " + x(row[0]) + " " + y(row[col])).join(" ");
+  function path(d,stroke,width,fill,opacity) {
+    add("path",{d:d,stroke:stroke,"stroke-width":width,fill:fill||"none",opacity:opacity||1,"stroke-linejoin":"round"});
   }
-  add("rect", {x:left, y:top, width:right-left, height:bottom-top, rx:7, fill:"#f6f8fa"});
-  if (opts.mode === "dual") {
-    add("rect", {x:left, y:y(3), width:right-left, height:y(1)-y(3), fill:"#d8eae6", opacity:0.65});
+  function series(col,step) {
+    return data.map(function (row,i) {
+      if (!i) return "M "+x(row[0])+" "+y(row[col]);
+      if (step) return "H "+x(row[0])+" V "+y(row[col]);
+      return "L "+x(row[0])+" "+y(row[col]);
+    }).join(" ");
   }
-  if (opts.shade !== null) {
-    add("rect", {x:x(opts.shade), y:top, width:right-x(opts.shade), height:bottom-top, fill:secondary, opacity:0.12});
+  function pill(px,py,value,shift) {
+    var w=Math.ceil(value.length*9.5*0.59)+10, h=15;
+    var bx=px-w-7, by=Math.max(top+1,Math.min(bottom-h-1,py-h/2+shift));
+    add("rect",{x:bx,y:by,width:w,height:h,rx:2,fill:"#e8a825"});
+    label(bx+w/2,by+10.7,value,"#171717","middle",9.5,700);
   }
-  opts.ticks.forEach(value => {
-    line(left, y(value), right, y(value), "#d9e0e6");
-    text(left-10, y(value)+5, opts.axis === "$bn" ? String(value) : opts.axis === "$" ? "$"+(value/1000)+"k" : String(value)+(opts.axis === "%" ? "%" : ""), "#46586a", "end");
+
+  if (opts.mode==="dual") shade(left,y(3),right,y(1),accent,0.07);
+  if (opts.shade!==null) shade(x(opts.shade),top,right,bottom,rust,0.055);
+
+  opts.ticks.forEach(function (v) {
+    var mark=opts.axis==="$" ? "$"+v/1000+"k" : String(v)+(opts.axis==="%" ? "%" : "");
+    line(left,y(v),right,y(v),"#e4e6e8",0.6);
+    label(left-7,y(v)+3,mark,muted,"end",10);
   });
-  text(left, 26, opts.unit, "#334155", "start", 15, 650);
-  opts.labels.forEach(([position, label], i) => {
-    const anchor = i === 0 ? "start" : i === opts.labels.length - 1 ? "end" : "middle";
-    text(x(position), bottom + 24, label, "#46586a", anchor);
+  line(left,top,left,bottom,"#d4d7db",0.8);
+  line(left,bottom,right,bottom,"#d4d7db",0.8);
+  label(left,15,opts.unit,muted,"start",10,500);
+  opts.labels.forEach(function (tick,i) {
+    var anchor=i===0?"start":i===opts.labels.length-1?"end":"middle";
+    label(x(tick[0]),bottom+15,tick[1],muted,anchor,10);
   });
-  if (opts.mode === "stems") {
-    data.forEach(row => {
-      const color = row[1] >= 24 ? secondary : primary;
-      line(x(row[0]), bottom, x(row[0]), y(row[1]), color, 3.5);
-      circle(x(row[0]), y(row[1]), 4.8, color);
+
+  var end=data[data.length-1], endY=y(end[1]);
+  if (opts.mode==="stems") {
+    var spike=x(14);
+    line(spike,top,spike,bottom,rust,0.75,"2 3");
+    path(series(1),ink,1.7);
+    dot(spike,y(data[14][1]),3.3,rust);
+    label(spike+6,top+10,opts.annotation[2],rust,"start",10,700,true);
+    label(left,bottom+34,"TRADING SESSIONS",muted,"start",9,600);
+  } else if (opts.mode==="tax") {
+    path(series(1,true),ink,1.8);
+    var peak=x(6);
+    line(peak,top,peak,y(data[6][1]),accent,0.8,"2 3");
+    dot(peak,y(data[6][1]),3.3,accent);
+    label(peak+6,y(data[6][1])-8,opts.annotation[2],accent,"start",10,700,true);
+  } else if (opts.mode==="dual") {
+    line(left,y(2),right,y(2),accent,0.85,"3 3");
+    path(series(2),rust,1.45);
+    path(series(1),ink,1.8);
+    dot(right,y(end[2]),2.8,rust);
+    label(left+8,y(2)+13,"2% TARGET",accent,"start",9,700,true);
+    [[left,"ALL-ITEMS CPI",ink],[left+145,"CPI EXCLUDING GASOLINE",rust]].forEach(function (key) {
+      line(key[0],bottom+32,key[0]+16,bottom+32,key[2],1.5);
+      label(key[0]+21,bottom+35,key[1],key[2],"start",9,650);
     });
-  } else if (opts.mode === "tax") {
-    path(series(1,true) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#dcece7");
-    path(series(1,true), primary, 3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.7,primary));
-  } else if (opts.mode === "dual") {
-    line(left,y(2),right,y(2),"#527e78",1.3,"4 5");
-    path(series(2),secondary,3.5);
-    path(series(1),primary,3.8);
-  } else if (opts.mode === "spread") {
-    path(series(1) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#bfdfd8");
-    path(series(1),primary,3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.6,primary));
+  } else if (opts.mode==="spread") {
+    path(series(1)+" L "+right+" "+bottom+" L "+left+" "+bottom+" Z","none",0,accent,0.13);
+    path(series(1),ink,1.7);
+    label(left+8,top+10,"BILATERAL GOODS SURPLUS",accent,"start",9,700);
   } else {
-    line(left,y(1.4),right,y(1.4),"#7c868f",1,"5 5");
-    path(series(1),primary,3.8);
-    circle(x(15),y(1.3960),5.4,secondary);
+    line(x(opts.shade),top,x(opts.shade),bottom,rust,0.8,"2 3");
+    line(left,y(1.4),right,y(1.4),"#87929c",0.7,"3 3");
+    path(series(1),ink,1.7);
+    dot(x(15),y(1.3960),3.1,rust);
+    label(x(15)-6,y(1.3960)+12,"OCT. 30 LOW",rust,"end",9,700,true);
+    label(x(opts.shade)+5,top+10,"NOVEMBER",rust,"start",9,700);
   }
-  const endY = y(data[data.length-1][1]);
-  circle(right,endY,6,primary);
-  const pillWidth = Math.ceil(opts.pill.length*9)+18;
-  add("rect",{x:right+8,y:endY-12,width:pillWidth,height:24,rx:5,fill:"#e8a825"});
-  text(right+8+pillWidth/2,endY+5,opts.pill,"#172637","middle",15,750);
-  if (opts.annotation) {
-    const [position,value,label] = opts.annotation;
-    text(x(position),y(value)-12,label,opts.mode === "stems" ? secondary : primary,"middle",15,700);
-  }
-  opts.legend.forEach(([caption,color],i) => {
-    const x0 = left + i*255;
-    line(x0,319,x0+21,319,color,3);
-    text(x0+27,324,caption,"#334155");
-  });
+  dot(right,endY,3.5,ink);
+  pill(right,endY,opts.pill,opts.mode==="spread"||opts.mode==="market" ? -13 : opts.mode==="dual" ? -13 : -9);
   mount.appendChild(svg);
 })();
 </script>
@@ -862,96 +954,119 @@ VALUES (
 <div style="padding:12px 14px 8px;">
 <script>
 (function () {
-  const data = [[0, 1.4196], [1, 1.4154], [4, 1.4097], [5, 1.4054], [6, 1.4057], [7, 1.4021], [8, 1.3993], [11, 1.4025], [12, 1.4038], [13, 1.4036], [14, 1.3985], [15, 1.396], [18, 1.3978], [19, 1.3994], [20, 1.3961], [21, 1.3989], [22, 1.4113], [25, 1.4123], [26, 1.4181], [28, 1.4255], [29, 1.4257]];
-  const opts = {"title": "The Loonie Enters CPI Day Near 70 U.S. Cents as the Two-Year Yield Gap Widens", "mode": "market", "min": 1.39, "max": 1.435, "ticks": [1.395, 1.405, 1.415, 1.425], "axis": "", "unit": "Canadian dollars per U.S. dollar", "pill": "1.4257", "labels": [[0, "Oct 15"], [7, "Oct 22"], [15, "Oct 30"], [22, "Nov 6"], [29, "Nov 13"]], "colors": ["#345676", "#95575b"], "shade": 18, "annotation": null, "legend": [["BoC indicative daily rate", "#345676"], ["November observations", "#95575b"]]};
-  const mount = document.currentScript.parentNode;
-  const ns = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(ns, "svg");
+  var data = [[0, 1.4196], [1, 1.4154], [4, 1.4097], [5, 1.4054], [6, 1.4057], [7, 1.4021], [8, 1.3993], [11, 1.4025], [12, 1.4038], [13, 1.4036], [14, 1.3985], [15, 1.396], [18, 1.3978], [19, 1.3994], [20, 1.3961], [21, 1.3989], [22, 1.4113], [25, 1.4123], [26, 1.4181], [28, 1.4255], [29, 1.4257]];
+  var opts = {"title": "The Loonie Enters CPI Day Near 70 U.S. Cents as the Two-Year Yield Gap Widens", "mode": "market", "min": 1.39, "max": 1.435, "ticks": [1.395, 1.405, 1.415, 1.425], "axis": "", "unit": "Canadian dollars per U.S. dollar", "pill": "1.4257", "labels": [[0, "Oct 15"], [7, "Oct 22"], [15, "Oct 30"], [22, "Nov 6"], [29, "Nov 13"]], "colors": ["#345676", "#95575b"], "shade": 18, "annotation": null, "legend": [["BoC indicative daily rate", "#345676"], ["November observations", "#95575b"]]};
+  var mount = document.currentScript.parentNode;
+  var ns = "http://www.w3.org/2000/svg";
+  var svg = document.createElementNS(ns, "svg");
+  var font = "-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif";
   svg.setAttribute("width", "100%");
-  svg.setAttribute("viewBox", "0 0 680 340");
+  svg.setAttribute("viewBox", "0 0 680 300");
   svg.setAttribute("role", "img");
   svg.setAttribute("aria-label", opts.title);
-  function add(tag, attrs, content, parent = svg) {
-    const node = document.createElementNS(ns, tag);
-    Object.keys(attrs).forEach(key => node.setAttribute(key, attrs[key]));
-    if (content) node.textContent = content;
-    parent.appendChild(node);
+
+  var left = 62, right = 646, top = 25, bottom = 249;
+  var first = data[0][0], last = data[data.length - 1][0];
+  var ink = "#364b63", accent = "#477c72", rust = "#8e4b49", muted = "#68717b";
+  function x(v) { return left + (v-first)*(right-left)/(last-first); }
+  function y(v) { return bottom-(v-opts.min)*(bottom-top)/(opts.max-opts.min); }
+  function add(tag, attrs, label) {
+    var node = document.createElementNS(ns, tag);
+    Object.keys(attrs).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+    if (label !== undefined) node.textContent = label;
+    svg.appendChild(node);
     return node;
   }
-  const left = 68, right = 580, top = 48, bottom = 270;
-  const first = data[0][0], last = data[data.length - 1][0];
-  const x = value => left + (value - first) * (right - left) / (last - first);
-  const y = value => bottom - (value - opts.min) * (bottom - top) / (opts.max - opts.min);
-  const primary = opts.colors[0], secondary = opts.colors[1];
-  function text(x, y, value, color, anchor = "start", size = 15, weight = 500) {
-    add("text", {x, y, fill:color, "text-anchor":anchor, "font-family":"system-ui, sans-serif", "font-size":size, "font-weight":weight}, value);
+  function label(x, y, value, color, anchor, size, weight, halo) {
+    var node = add("text",{x:x,y:y,fill:color,"text-anchor":anchor||"start","font-family":font,"font-size":size||10,"font-weight":weight||400},value);
+    if (halo) {
+      node.setAttribute("stroke","#ffffff");
+      node.setAttribute("stroke-width","2.6");
+      node.setAttribute("paint-order","stroke");
+    }
   }
-  function line(x1, y1, x2, y2, stroke, width = 1, dash = "") {
-    add("line", {x1, y1, x2, y2, stroke, "stroke-width":width, "stroke-dasharray":dash});
+  function line(x1,y1,x2,y2,color,width,dash) {
+    var attributes={x1:x1,y1:y1,x2:x2,y2:y2,stroke:color,"stroke-width":width};
+    if (dash) attributes["stroke-dasharray"]=dash;
+    add("line",attributes);
   }
-  function circle(cx, cy, r, fill) {
-    add("circle", {cx, cy, r, fill, stroke:"#fff", "stroke-width":1.6});
+  function shade(x1,y1,x2,y2,fill,opacity) {
+    add("rect",{x:x1,y:y1,width:x2-x1,height:y2-y1,fill:fill,opacity:opacity});
   }
-  function path(d, stroke, width, fill = "none") {
-    add("path", {d, fill, stroke, "stroke-width":width, "stroke-linejoin":"round", "stroke-linecap":"round"});
+  function dot(cx,cy,r,fill) {
+    add("circle",{cx:cx,cy:cy,r:r,fill:fill,stroke:"#fff","stroke-width":0.8});
   }
-  function series(col, step = false) {
-    return data.map((row, i) => i === 0 ? "M " + x(row[0]) + " " + y(row[col]) :
-      step ? "H " + x(row[0]) + " V " + y(row[col]) : "L " + x(row[0]) + " " + y(row[col])).join(" ");
+  function path(d,stroke,width,fill,opacity) {
+    add("path",{d:d,stroke:stroke,"stroke-width":width,fill:fill||"none",opacity:opacity||1,"stroke-linejoin":"round"});
   }
-  add("rect", {x:left, y:top, width:right-left, height:bottom-top, rx:7, fill:"#f6f8fa"});
-  if (opts.mode === "dual") {
-    add("rect", {x:left, y:y(3), width:right-left, height:y(1)-y(3), fill:"#d8eae6", opacity:0.65});
+  function series(col,step) {
+    return data.map(function (row,i) {
+      if (!i) return "M "+x(row[0])+" "+y(row[col]);
+      if (step) return "H "+x(row[0])+" V "+y(row[col]);
+      return "L "+x(row[0])+" "+y(row[col]);
+    }).join(" ");
   }
-  if (opts.shade !== null) {
-    add("rect", {x:x(opts.shade), y:top, width:right-x(opts.shade), height:bottom-top, fill:secondary, opacity:0.12});
+  function pill(px,py,value,shift) {
+    var w=Math.ceil(value.length*9.5*0.59)+10, h=15;
+    var bx=px-w-7, by=Math.max(top+1,Math.min(bottom-h-1,py-h/2+shift));
+    add("rect",{x:bx,y:by,width:w,height:h,rx:2,fill:"#e8a825"});
+    label(bx+w/2,by+10.7,value,"#171717","middle",9.5,700);
   }
-  opts.ticks.forEach(value => {
-    line(left, y(value), right, y(value), "#d9e0e6");
-    text(left-10, y(value)+5, opts.axis === "$bn" ? String(value) : opts.axis === "$" ? "$"+(value/1000)+"k" : String(value)+(opts.axis === "%" ? "%" : ""), "#46586a", "end");
+
+  if (opts.mode==="dual") shade(left,y(3),right,y(1),accent,0.07);
+  if (opts.shade!==null) shade(x(opts.shade),top,right,bottom,rust,0.055);
+
+  opts.ticks.forEach(function (v) {
+    var mark=opts.axis==="$" ? "$"+v/1000+"k" : String(v)+(opts.axis==="%" ? "%" : "");
+    line(left,y(v),right,y(v),"#e4e6e8",0.6);
+    label(left-7,y(v)+3,mark,muted,"end",10);
   });
-  text(left, 26, opts.unit, "#334155", "start", 15, 650);
-  opts.labels.forEach(([position, label], i) => {
-    const anchor = i === 0 ? "start" : i === opts.labels.length - 1 ? "end" : "middle";
-    text(x(position), bottom + 24, label, "#46586a", anchor);
+  line(left,top,left,bottom,"#d4d7db",0.8);
+  line(left,bottom,right,bottom,"#d4d7db",0.8);
+  label(left,15,opts.unit,muted,"start",10,500);
+  opts.labels.forEach(function (tick,i) {
+    var anchor=i===0?"start":i===opts.labels.length-1?"end":"middle";
+    label(x(tick[0]),bottom+15,tick[1],muted,anchor,10);
   });
-  if (opts.mode === "stems") {
-    data.forEach(row => {
-      const color = row[1] >= 24 ? secondary : primary;
-      line(x(row[0]), bottom, x(row[0]), y(row[1]), color, 3.5);
-      circle(x(row[0]), y(row[1]), 4.8, color);
+
+  var end=data[data.length-1], endY=y(end[1]);
+  if (opts.mode==="stems") {
+    var spike=x(14);
+    line(spike,top,spike,bottom,rust,0.75,"2 3");
+    path(series(1),ink,1.7);
+    dot(spike,y(data[14][1]),3.3,rust);
+    label(spike+6,top+10,opts.annotation[2],rust,"start",10,700,true);
+    label(left,bottom+34,"TRADING SESSIONS",muted,"start",9,600);
+  } else if (opts.mode==="tax") {
+    path(series(1,true),ink,1.8);
+    var peak=x(6);
+    line(peak,top,peak,y(data[6][1]),accent,0.8,"2 3");
+    dot(peak,y(data[6][1]),3.3,accent);
+    label(peak+6,y(data[6][1])-8,opts.annotation[2],accent,"start",10,700,true);
+  } else if (opts.mode==="dual") {
+    line(left,y(2),right,y(2),accent,0.85,"3 3");
+    path(series(2),rust,1.45);
+    path(series(1),ink,1.8);
+    dot(right,y(end[2]),2.8,rust);
+    label(left+8,y(2)+13,"2% TARGET",accent,"start",9,700,true);
+    [[left,"ALL-ITEMS CPI",ink],[left+145,"CPI EXCLUDING GASOLINE",rust]].forEach(function (key) {
+      line(key[0],bottom+32,key[0]+16,bottom+32,key[2],1.5);
+      label(key[0]+21,bottom+35,key[1],key[2],"start",9,650);
     });
-  } else if (opts.mode === "tax") {
-    path(series(1,true) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#dcece7");
-    path(series(1,true), primary, 3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.7,primary));
-  } else if (opts.mode === "dual") {
-    line(left,y(2),right,y(2),"#527e78",1.3,"4 5");
-    path(series(2),secondary,3.5);
-    path(series(1),primary,3.8);
-  } else if (opts.mode === "spread") {
-    path(series(1) + " L " + right + " " + bottom + " L " + left + " " + bottom + " Z", "none", 0, "#bfdfd8");
-    path(series(1),primary,3.8);
-    data.forEach(row => circle(x(row[0]),y(row[1]),3.6,primary));
+  } else if (opts.mode==="spread") {
+    path(series(1)+" L "+right+" "+bottom+" L "+left+" "+bottom+" Z","none",0,accent,0.13);
+    path(series(1),ink,1.7);
+    label(left+8,top+10,"BILATERAL GOODS SURPLUS",accent,"start",9,700);
   } else {
-    line(left,y(1.4),right,y(1.4),"#7c868f",1,"5 5");
-    path(series(1),primary,3.8);
-    circle(x(15),y(1.3960),5.4,secondary);
+    line(x(opts.shade),top,x(opts.shade),bottom,rust,0.8,"2 3");
+    line(left,y(1.4),right,y(1.4),"#87929c",0.7,"3 3");
+    path(series(1),ink,1.7);
+    dot(x(15),y(1.3960),3.1,rust);
+    label(x(15)-6,y(1.3960)+12,"OCT. 30 LOW",rust,"end",9,700,true);
+    label(x(opts.shade)+5,top+10,"NOVEMBER",rust,"start",9,700);
   }
-  const endY = y(data[data.length-1][1]);
-  circle(right,endY,6,primary);
-  const pillWidth = Math.ceil(opts.pill.length*9)+18;
-  add("rect",{x:right+8,y:endY-12,width:pillWidth,height:24,rx:5,fill:"#e8a825"});
-  text(right+8+pillWidth/2,endY+5,opts.pill,"#172637","middle",15,750);
-  if (opts.annotation) {
-    const [position,value,label] = opts.annotation;
-    text(x(position),y(value)-12,label,opts.mode === "stems" ? secondary : primary,"middle",15,700);
-  }
-  opts.legend.forEach(([caption,color],i) => {
-    const x0 = left + i*255;
-    line(x0,319,x0+21,319,color,3);
-    text(x0+27,324,caption,"#334155");
-  });
+  dot(right,endY,3.5,ink);
+  pill(right,endY,opts.pill,opts.mode==="spread"||opts.mode==="market" ? -13 : opts.mode==="dual" ? -13 : -9);
   mount.appendChild(svg);
 })();
 </script>
