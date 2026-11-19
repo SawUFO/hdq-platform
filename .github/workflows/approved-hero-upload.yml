@@ -20,12 +20,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install Wrangler
+      - name: Install Wrangler and JPEG validator
         run: |
           npm install --global wrangler
-          if ! command -v identify >/dev/null; then
-            sudo apt-get update && sudo apt-get install -y imagemagick
-          fi
+          npm install --prefix "$RUNNER_TEMP/hdq-image-check" --no-audit --no-fund sharp@0.35.5
       - name: Upload approved JPEGs
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -44,10 +42,21 @@ jobs:
               exit 1
             fi
             base64 --decode "$source" > "$image"
-            if [[ "$(identify -quiet -format '%m %wx%h' "$image")" != 'JPEG 1200x650' ]]; then
-              echo "Invalid JPEG dimensions or format: $name" >&2
-              exit 1
-            fi
+            node - "$RUNNER_TEMP/hdq-image-check/node_modules/sharp" "$image" "$name" <<'NODE'
+          const [sharpPath, path, name] = process.argv.slice(2);
+          const image = require(sharpPath)(path, { failOn: "warning", limitInputPixels: 1200 * 650 });
+          async function validate() {
+            const { format, width, height } = await image.metadata();
+            if (format !== "jpeg" || width !== 1200 || height !== 650) {
+              throw new Error("expected a 1200x650 JPEG");
+            }
+            await image.raw().toBuffer();
+          }
+          validate().catch(error => {
+            console.error(`Invalid approved JPEG ${name}: ${error.message}`);
+            process.exitCode = 1;
+          });
+          NODE
             url="https://assets.hdq.ca/$name"
             status=$(curl -sS -o "$live" -w '%{http_code} %{content_type}' "$url?check=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT")
             if [[ "$status" == '200 image/jpeg' ]]; then
