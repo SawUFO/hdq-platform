@@ -36,7 +36,13 @@ const MONTH_CSS = `
 .mkn-item:last-child { border-bottom:none;padding-bottom:0; }
 .mkn-v { font-family:'Bricolage Grotesque',sans-serif;font-size:25px;font-weight:800;color:#fff;line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums; }
 .mkn-l { font-size:11px;color:rgba(255,255,255,0.45); }
-@media(max-width:900px){ .mtoc{position:sticky;top:8px;z-index:50;} }
+.month-toc-mobile-slot { display:none; }
+/* The report navigation is in normal article flow on a single-column layout. */
+@media(max-width:1000px){
+  .month-toc-mobile-slot { display:block; }
+  .month-toc-mobile-slot .mtoc { position:static; top:auto; z-index:auto; }
+  .sidebar-sticky { position:static; }
+}
 `;
 import { ARTICLE_CSS } from './article-css.js';
 
@@ -46,6 +52,23 @@ function monthScript() {
 (function(){
   var toc=document.getElementById('hdq-toc');
   if(!toc) return;
+  // Keep ONE navigation. Relocate it below the heading on mobile,
+  // and return it to the original sticky sidebar on desktop.
+  var mobileSlot=document.getElementById('hdq-toc-mobile-slot');
+  if(mobileSlot && window.matchMedia){
+    var home=toc.parentNode, next=toc.nextSibling;
+    var narrow=window.matchMedia('(max-width:1000px)');
+    function placeToc(){
+      if(narrow.matches){
+        if(toc.parentNode!==mobileSlot) mobileSlot.appendChild(toc);
+      } else if(toc.parentNode!==home){
+        home.insertBefore(toc,next);
+      }
+    }
+    placeToc();
+    if(narrow.addEventListener) narrow.addEventListener('change',placeToc);
+    else if(narrow.addListener) narrow.addListener(placeToc);
+  }
   var bar=document.createElement('div');bar.id='hdq-progress';document.body.appendChild(bar);
   var heads=[].slice.call(document.querySelectorAll('.article-body h2[data-toc]'));
   var links=[];
@@ -194,6 +217,7 @@ ${lockedOverlay}
         <span class="meta-dot"></span>
         <span>${fr ? FR_ARTICLE.editorial : 'HDQ Editorial'}</span>
       </div>
+      ${isMonth && authed ? '<div id="hdq-toc-mobile-slot" class="month-toc-mobile-slot"></div>' : ''}
       ${authed ? briefHtml : ''}
       <div class="article-body">${authed ? (article.body_html || '') : ''}</div>
       ${authed ? `
