@@ -37,7 +37,7 @@ jobs:
           for source in approved-heroes/*.jpg.b64; do
             name=${source##*/}
             name=${name%.b64}
-            if [[ ! "$name" =~ ^(behaviour|tax|economy|geo|market|thread|weekend)-[0-9]+\.jpg$ ]]; then
+            if [[ ! "$name" =~ ^(behaviour|tax|economy|geo|market|thread|weekend)-[0-9]+\.jpg$ && ! "$name" =~ ^month-(january|february|march|april|may|june|july|august|september|october|november|december)-[0-9]{4}\.jpg$ ]]; then
               echo "Unexpected filename: $name" >&2
               exit 1
             fi
