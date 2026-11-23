@@ -101,12 +101,13 @@ const REDIRECT_MAP = {
   '/prodev':                '/hdq-prodev',
 };
 
-// ── Retired pages: TEMPORARY (302) redirects ────────────────────────────────
+// ── Retired pages: PERMANENT (301) redirects ────────────────────────────────
 // The paid-membership pages and the stale duplicate homepage are retired. The
 // static files were moved out of /static so they no longer shadow the Worker.
-// These are deliberately 302, not 301, while the change is validated. They are
-// promoted to 301 only on separate approval.
-const TEMP_REDIRECTS = {
+// These were 302 while the change was validated; promoted to 301 (approved
+// 2026-11-23) because Google was keeping the retired URLs, and their old
+// membership wording, in its index and AI answers.
+const RETIRED_REDIRECTS = {
   '/hdq-homepage':          '/',
   '/hdq-homepage.html':     '/',
   '/hdq-subscribe':         '/about',
@@ -182,9 +183,9 @@ async function handleFrench(request, env, url, path) {
     'pour-les-firmes':  '/hdq-whitelabel-fr',
     'solutions-institutionnelles': '/hdq-whitelabel-fr',
   };
-  // Retired waiting-list page: temporary redirect to the French About page.
+  // Retired waiting-list page: permanent redirect to the French About page.
   if (sub === 'liste-attente') {
-    return Response.redirect(new URL('/fr/a-propos', url.origin).href, 302);
+    return Response.redirect(new URL('/fr/a-propos', url.origin).href, 301);
   }
   if (FR_STATIC_REDIRECT[sub]) {
     return Response.redirect(new URL(FR_STATIC_REDIRECT[sub], url.origin).href, 301);
@@ -298,8 +299,8 @@ export default {
       }
 
       // ── Redirects, for every visitor ──────────────────────────────────────
-      if (TEMP_REDIRECTS[path]) {
-        return Response.redirect(new URL(TEMP_REDIRECTS[path], url.origin).href, 302);
+      if (RETIRED_REDIRECTS[path]) {
+        return Response.redirect(new URL(RETIRED_REDIRECTS[path], url.origin).href, 301);
       }
       if (REDIRECT_MAP[path]) {
         return Response.redirect(new URL(REDIRECT_MAP[path], url.origin).href, 301);

@@ -268,7 +268,7 @@ ${membershipFooterBand(lang)}`;
     extraStyle: HOME_CSS + '\n.division-grid { grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); }',
     // Self-canonical in both editions — French build brief §8.
     extraHead: `
-<meta name="description" content="${fr ? FR_SITE.description : 'HDQ publishes independent financial intelligence. Five editorial desks plus a Daily Thread. Institutions may license HDQ content under their own brand or with HDQ attribution.'}">
+<meta name="description" content="${fr ? 'HDQ publie de l’information financière indépendante. Cinq sections éditoriales et un Fil quotidien. Les institutions peuvent obtenir une licence pour le contenu de HDQ, sous leur marque ou avec mention de HDQ.' : 'HDQ publishes independent financial intelligence. Five editorial desks plus a Daily Thread. Institutions may license HDQ content under their own brand or with HDQ attribution.'}">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="${fr ? `https://hdq.ca/fr/${FR_ROUTES.about}` : 'https://hdq.ca/about'}">`,
     lang,

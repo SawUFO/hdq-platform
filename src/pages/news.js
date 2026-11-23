@@ -265,7 +265,7 @@ function renderHeroCard(a, authed, lang = 'en') {
   <a href="${href}" class="feat-card" ${authed ? '' : 'style="pointer-events:none;cursor:default;"'}>
     <div class="feat-inner">
       <div class="feat-img photo-wrap">
-        <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="lazy">
+        <img src="https://assets.hdq.ca/${escHtml(a.hero_image)}" alt="${escHtml(a.title)}" loading="eager" fetchpriority="high">
       </div>
       <div class="feat-body">
         <span class="cat-tag ${escHtml(DESK_CAT_CLASS[a.desk] || 'cat-market')}">
