@@ -191,7 +191,7 @@ Si un CPG arrive bientôt à échéance, nous pouvons mettre côte à côte l’
 </div>',
   '[{"value":"2,45 %","label":"CPG d’un an, taux affiché le 18 novembre"},{"value":"3,20 %","label":"CPG de trois ans, taux affiché"},{"value":"2,75 %","label":"CPG de cinq ans, taux affiché"},{"value":"10 jours ouvrables","label":"Délai fédéral d’annulation du renouvellement automatique"}]',
   'behaviour-169.jpg',
-  'Une main glisse un carton de rappel près des clés de la maison.',
+  'Un téléphone affiche un rappel invitant à examiner le renouvellement d’un CPG.',
   3,
   '2026-11-25T07:04:21',
   'entity:boc,entity:fcac,theme:gic-renewals,theme:savings-behaviour,stance:base-case',
