@@ -190,7 +190,7 @@ Si un CPG arrive bientôt à échéance, nous pouvons mettre côte à côte l’
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copier le courriel</button>
 </div>',
   '[{"value":"2,45 %","label":"CPG d’un an, taux affiché le 18 novembre"},{"value":"3,20 %","label":"CPG de trois ans, taux affiché"},{"value":"2,75 %","label":"CPG de cinq ans, taux affiché"},{"value":"10 jours ouvrables","label":"Délai fédéral d’annulation du renouvellement automatique"}]',
-  'behaviour-169.jpg',
+  'behaviour-169.jpg?v=4654094a',
   'Un téléphone affiche un rappel invitant à examiner le renouvellement d’un CPG.',
   3,
   '2026-11-25T07:04:21',

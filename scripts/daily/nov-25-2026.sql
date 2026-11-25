@@ -190,7 +190,7 @@ If a certificate matures soon, we can put the renewal quote, the cash date and c
 <button class="btn-copy" onclick="copyEmail(''prospect-email'', this)">Copy email</button>
 </div>',
   '[{"value":"2.45%","label":"Posted one-year GIC, Nov. 18"},{"value":"3.20%","label":"Posted three-year GIC"},{"value":"2.75%","label":"Posted five-year GIC"},{"value":"10 business days","label":"Federal automatic-renewal cancellation window"}]',
-  'behaviour-169.jpg',
+  'behaviour-169.jpg?v=4654094a',
   'A phone displays a reminder to review a GIC renewal.',
   3,
   '2026-11-25T07:04:21',
