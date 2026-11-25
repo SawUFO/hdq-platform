@@ -57,6 +57,18 @@ jobs:
             process.exitCode = 1;
           });
           NODE
+            if [[ "$name" == 'behaviour-169.jpg' ]] && [[ "$(sha256sum "$image" | cut -d' ' -f1)" == '4654094aefb128fac1bb4ac810e8b47f9be09b4e293046e98697591ba703d669' ]]; then
+              wrangler r2 object get "hdq-assets/$name" --file="$live" --remote
+              previous=$(sha256sum "$live" | cut -d' ' -f1)
+              if [[ "$previous" == '0af2603e686c0603f4359ae4ccfcb33b8b18382394ec16451135417a317093a0' ]]; then
+                wrangler r2 object put "hdq-assets/$name" --file="$image" --content-type=image/jpeg --remote
+              elif ! cmp -s "$image" "$live"; then
+                echo "Unexpected previous replacement bytes" >&2
+                exit 1
+              fi
+              wrangler r2 object get "hdq-assets/$name" --file="$live" --remote
+              cmp "$image" "$live"
+            fi
             url="https://assets.hdq.ca/$name"
             status=$(curl -sS -o "$live" -w '%{http_code} %{content_type}' "$url?check=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT")
             if [[ "$status" == '200 image/jpeg' ]]; then
