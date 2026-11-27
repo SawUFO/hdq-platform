@@ -1,7 +1,7 @@
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/11/27/mortgage-arrears-average-balance-shift',
+  '2026/11/27/black-friday-discount-delivered-price',
   'behaviour',
   'article',
   'Canada’s Seriously Delinquent Mortgages Went From Smaller Than Average to Larger',
@@ -148,12 +148,29 @@ I can walk through your expected mortgage payment and the rest of your monthly o
   'entity:transunion,entity:cmhc,theme:mortgage-arrears,theme:household-credit',
   1,
   'TransUnion Canada, Q3 2026 Credit Industry Insights Report release, Nov. 25: https://newsroom.transunion.ca/canadas-credit-market-remained-stable-ahead-of-high-amount-of-mortgage-renewals-forecasted-for-2027/; CMHC, Residential Mortgage Industry Report, fall 2026: https://www.cmhc-schl.gc.ca/professionals/housing-markets-data-and-research/housing-research/research-reports/housing-finance/residential-mortgage-industry-report?ap=a1-p2.'
-);
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text;
 
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
 VALUES (
-  '2026/11/27/partial-superficial-loss-older-identical-shares',
+  '2026/11/27/spouse-january-purchase-december-superficial-loss',
   'tax',
   'article',
   'Ten Shares Can Deny Part of a December Capital Loss Even After You Sell Them',
@@ -301,7 +318,24 @@ I can help assemble a dated record of the original sale, later acquisitions and 
   'entity:cra,theme:tax-loss-selling,theme:capital-loss,theme:household-accounts',
   1,
   'Canada Revenue Agency, Capital losses, Superficial loss: https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/personal-income/line-12700-capital-gains/capital-losses-deductions.html; TMX, A Primer on Tax-Loss Selling in Canada: https://money.tmx.com/content-hub/navigating-volatility-content-hub/primer-tax-loss-selling-canada; CRA, technical interpretation 2005-0150811E5, Nov. 30, 2005, via Tax Interpretations: https://taxinterpretations.com/cra/severed-letters/2005-0150811e5; Income Tax Act, section 54, definition of superficial loss: https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-54.html.'
-);
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text;
 
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
@@ -455,7 +489,24 @@ I can help compare the published spending figures with the budget lines and fund
   'entity:statistics-canada,theme:government-spending,theme:fuel-charge,theme:fiscal-policy',
   1,
   'Statistics Canada, Government spending by function, 2025, Nov. 26, 2026: https://www150.statcan.gc.ca/n1/daily-quotidien/261126/dq261126b-eng.htm; Statistics Canada, table 10-10-0005-01, consolidated functional expenses: https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1010000501; Statistics Canada, table 10-10-0024-01, federal functions: https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1010002401; Finance Canada, Annual Financial Report 2025–26, revenue and expense tables, Nov. 6: https://www.canada.ca/en/department-finance/services/publications/annual-financial-report/2026.html; Public Accounts of Canada 2026, Volume I, consolidated financial statements, pollution pricing proceeds returned: https://www.tpsgc-pwgsc.gc.ca/recgen/cpc-pac/2026/vol1/s2/efc-cfs-eng.html.'
-);
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text;
 
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
@@ -609,7 +660,24 @@ I can help structure a review of the current deposit rate and historical entry e
   'entity:global-affairs-canada,theme:softwood-lumber,theme:cusma,theme:trade-duties,entity:interfor,entity:west-fraser',
   1,
   'Interfor, Third Quarter 2026 Results, Nov. 5: https://interfor.com/wp-content/uploads/2026/11/Interfor-Reports-Q326-Results.pdf; West Fraser, Third Quarter 2026 Results, Oct. 28: https://www.westfraser.com/investors/news/news-releases/west-fraser-announces-third-quarter-2026-results-and-indefinite-curtailments-in-its-osb-and-lumber-portfolios; Global Affairs Canada, Softwood lumber recent developments, Nov. 18–19, 2026: https://www.international.gc.ca/controls-controles/softwood-bois_oeuvre/recent.aspx?lang=eng; Global Affairs Canada, Softwood lumber FAQ, seventh administrative reviews: https://www.international.gc.ca/controls-controles/softwood-bois_oeuvre/other-autres/faq.aspx?lang=eng; U.S. Department of Commerce, Amended Final Results of Countervailing Duty Administrative Review, Federal Register, Nov. 19, 2026: https://www.govinfo.gov/content/pkg/FR-2026-11-19/pdf/FR-2026-11-19.pdf; Interfor, Q3 2026 quarterly report and interim financial statements, Note 15(a), Nov. 5: https://interfor.com/wp-content/uploads/2026/11/Q3-2026.pdf.'
-);
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text;
 
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text)
@@ -768,8 +836,21 @@ I can lay out the declared dividend, settlement timing and failure sensitivities
   'entity:high-liner-foods,entity:umios,theme:mergers-and-acquisitions,theme:dividend',
   1,
   'High Liner Foods, Special Meeting Management Information Circular, filed Nov. 12, 2026: https://www.highlinerfoods.com/sites/default/files/2026-11/High_Liner_-_Management_Information_Circular.pdf; High Liner Foods, Q3 2026 Filing Package, Nov. 11, 2026: https://www.highlinerfoods.com/sites/default/files/2026-11/Q3_2026_Website_Filing_Package.pdf; High Liner Foods, special meeting notice, Nov. 12, 2026: https://highlinerfoods.com/news/item/122796; High Liner Foods, proxy advisers’ recommendations, Nov. 26, 2026: https://www.newswire.ca/news-releases/leading-independent-proxy-advisory-firms-iss-and-glass-lewis-recommend-high-liner-foods-shareholders-vote-for-the-proposed-acquisition-by-umios-846748779.html; Fund Library, HLF closing-price history through Nov. 25, 2026: https://www.fundlibrary.com/Stocks/Detail/11027?FundName=High+Liner+Foods+Incorporated; MarketScreener, HLF Toronto closing quote, Nov. 26, 2026: https://www.marketscreener.com/quote/stock/HIGH-LINER-FOODS-INCORPOR-1410336/quotes/; Stock Analysis, HLF TSX closing quote, Nov. 26, 2026: https://stockanalysis.com/quote/tsx/HLF/; Bank of Canada, Daily Digest, November 25 three-month secondary Treasury bill yield: https://www.bankofcanada.ca/rates/daily-digest/; High Liner Foods, 2025 Annual Information Form, historical March 2026 dividend: https://www.highlinerfoods.com/sites/default/files/2026-02/2025_Annual_Information_Form.pdf.'
-);
-
--- Retire the two superseded rows from this same morning edition.
-DELETE FROM articles WHERE slug = '2026/11/27/black-friday-discount-delivered-price' AND desk = 'behaviour' AND published_at = '2026-11-27T07:51:47';
-DELETE FROM articles WHERE slug = '2026/11/27/spouse-january-purchase-december-superficial-loss' AND desk = 'tax' AND published_at = '2026-11-27T07:53:47';
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text;

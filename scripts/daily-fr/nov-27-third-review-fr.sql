@@ -151,8 +151,26 @@ Je peux passer en revue votre versement prévu et vos autres obligations afin qu
   'entity:transunion,entity:cmhc,theme:mortgage-arrears,theme:household-credit',
   1,
   'TransUnion Canada, rapport sur le crédit au T3 2026, communiqué du 25 novembre : https://newsroom.transunion.ca/canadas-credit-market-remained-stable-ahead-of-high-amount-of-mortgage-renewals-forecasted-for-2027/; SCHL, Rapport sur le secteur des prêts hypothécaires résidentiels, automne 2026 : https://www.cmhc-schl.gc.ca/professionals/housing-markets-data-and-research/housing-research/research-reports/housing-finance/residential-mortgage-industry-report?ap=a1-p2.',
-  '2026/11/27/mortgage-arrears-average-balance-shift'
-);
+  '2026/11/27/black-friday-discount-delivered-price'
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text,
+  en_slug = excluded.en_slug;
 
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text, en_slug)
@@ -305,8 +323,26 @@ Je peux vous aider à préparer un relevé daté de la vente, des nouvelles acqu
   'entity:cra,theme:tax-loss-selling,theme:capital-loss,theme:household-accounts',
   1,
   'Agence du revenu du Canada, Pertes en capital, perte apparente : https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/personal-income/line-12700-capital-gains/capital-losses-deductions.html; TMX, guide sur la vente à perte à des fins fiscales au Canada : https://money.tmx.com/content-hub/navigating-volatility-content-hub/primer-tax-loss-selling-canada; ARC, interprétation technique 2005-0150811E5, 30 novembre 2005, par Tax Interpretations : https://taxinterpretations.com/cra/severed-letters/2005-0150811e5; Loi de l’impôt sur le revenu, article 54, définition de perte apparente : https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-54.html.',
-  '2026/11/27/partial-superficial-loss-older-identical-shares'
-);
+  '2026/11/27/spouse-january-purchase-december-superficial-loss'
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text,
+  en_slug = excluded.en_slug;
 
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text, en_slug)
@@ -460,7 +496,25 @@ Je peux rapprocher les chiffres publiés des postes budgétaires et des autorit�
   1,
   'Statistique Canada, Dépenses publiques par fonction, 2025, 26 novembre : https://www150.statcan.gc.ca/n1/daily-quotidien/261126/dq261126b-eng.htm; Statistique Canada, tableau 10-10-0005-01, dépenses consolidées par fonction : https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1010000501; Statistique Canada, tableau 10-10-0024-01, fonctions fédérales : https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1010002401; Finances Canada, Rapport financier annuel 2025-2026, tableaux des recettes et des charges, 6 novembre : https://www.canada.ca/en/department-finance/services/publications/annual-financial-report/2026.html; Comptes publics du Canada 2026, volume I, états financiers consolidés : https://www.tpsgc-pwgsc.gc.ca/recgen/cpc-pac/2026/vol1/s2/efc-cfs-eng.html.',
   '2026/11/27/fuel-charge-rebate-pollution-abatement-government-spending'
-);
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text,
+  en_slug = excluded.en_slug;
 
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text, en_slug)
@@ -614,7 +668,25 @@ Je peux vous aider à structurer un examen du taux courant et des entrées histo
   1,
   'Interfor, résultats du T3 2026, 5 novembre : https://interfor.com/wp-content/uploads/2026/11/Interfor-Reports-Q326-Results.pdf; West Fraser, résultats du T3 2026, 28 octobre : https://www.westfraser.com/investors/news/news-releases/west-fraser-announces-third-quarter-2026-results-and-indefinite-curtailments-in-its-osb-and-lumber-portfolios; Affaires mondiales Canada, développements sur le bois d’œuvre résineux, 18 et 19 novembre : https://www.international.gc.ca/controls-controles/softwood-bois_oeuvre/recent.aspx?lang=eng; Affaires mondiales Canada, FAQ sur les septièmes examens administratifs : https://www.international.gc.ca/controls-controles/softwood-bois_oeuvre/other-autres/faq.aspx?lang=eng; Département du Commerce des États-Unis, résultats modifiés, Federal Register, 19 novembre : https://www.govinfo.gov/content/pkg/FR-2026-11-19/pdf/FR-2026-11-19.pdf; Interfor, rapport du T3 2026, états financiers intermédiaires, note 15(a), 5 novembre : https://interfor.com/wp-content/uploads/2026/11/Q3-2026.pdf.',
   '2026/11/27/lumber-duty-correction-2024-entry-assessments'
-);
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text,
+  en_slug = excluded.en_slug;
 
 INSERT OR REPLACE INTO articles
   (slug, desk, article_type, title, dek, brief_html, body_html, respond_html, prospect_html, key_numbers, hero_image, hero_caption, read_time, published_at, tags, toolkit_gated, sources_text, en_slug)
@@ -772,6 +844,24 @@ Je peux comparer le dividende déclaré, le calendrier de règlement et les scé
   1,
   'High Liner Foods, circulaire de l’assemblée extraordinaire, déposée le 12 novembre : https://www.highlinerfoods.com/sites/default/files/2026-11/High_Liner_-_Management_Information_Circular.pdf; High Liner Foods, résultats du T3 2026, 11 novembre : https://www.highlinerfoods.com/sites/default/files/2026-11/Q3_2026_Website_Filing_Package.pdf; High Liner Foods, avis d’assemblée extraordinaire, 12 novembre : https://highlinerfoods.com/news/item/122796; High Liner Foods, recommandations des sociétés de conseil en vote, 26 novembre : https://www.newswire.ca/news-releases/leading-independent-proxy-advisory-firms-iss-and-glass-lewis-recommend-high-liner-foods-shareholders-vote-for-the-proposed-acquisition-by-umios-846748779.html; Fund Library, historique de HLF au 25 novembre : https://www.fundlibrary.com/Stocks/Detail/11027?FundName=High+Liner+Foods+Incorporated; MarketScreener, cours de HLF à Toronto, 26 novembre : https://www.marketscreener.com/quote/stock/HIGH-LINER-FOODS-INCORPOR-1410336/quotes/; Stock Analysis, cours de HLF à la TSX, 26 novembre : https://stockanalysis.com/quote/tsx/HLF/; Banque du Canada, Sommaire quotidien, bon du Trésor à trois mois, 25 novembre : https://www.bankofcanada.ca/rates/daily-digest/; High Liner Foods, notice annuelle 2025, dividende historique de mars 2026 : https://www.highlinerfoods.com/sites/default/files/2026-02/2025_Annual_Information_Form.pdf.',
   '2026/11/27/high-liner-takeover-declared-dividend-deal-spread'
-);
+)
+ON CONFLICT(slug) DO UPDATE SET
+  desk = excluded.desk,
+  article_type = excluded.article_type,
+  title = excluded.title,
+  dek = excluded.dek,
+  brief_html = excluded.brief_html,
+  body_html = excluded.body_html,
+  respond_html = excluded.respond_html,
+  prospect_html = excluded.prospect_html,
+  key_numbers = excluded.key_numbers,
+  hero_image = excluded.hero_image,
+  hero_caption = excluded.hero_caption,
+  read_time = excluded.read_time,
+  published_at = excluded.published_at,
+  tags = excluded.tags,
+  toolkit_gated = excluded.toolkit_gated,
+  sources_text = excluded.sources_text,
+  en_slug = excluded.en_slug;
 DELETE FROM articles WHERE slug = '2026/11/27/vendredi-fou-rabais-prix-livre' AND desk = 'behaviour' AND published_at = '2026-11-27T07:51:47';
 DELETE FROM articles WHERE slug = '2026/11/27/achat-conjoint-janvier-perte-apparente-decembre' AND desk = 'tax' AND published_at = '2026-11-27T07:53:47';
